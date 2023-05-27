@@ -19,7 +19,6 @@
     "removeComments"  :true,
     "sourceMap"       :true,
     "watch"           :false,
-    "charset"         :"utf8",
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
     // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                      /* Generates a sourcemap for each corresponding '.d.ts' file. */

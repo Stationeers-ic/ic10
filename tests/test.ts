@@ -10,9 +10,7 @@ alias heading r2
 move heading 10
 `
 		interpreterIc10.init(code)
-		for (let i = 0; i < code.split("\n").length; i++) {
-			interpreterIc10.prepareLine()
-		}
+		while (interpreterIc10.prepareLine() === true){}
 
 		expect(interpreterIc10.memory.cell('heading')).toBe(10)
 	});
@@ -143,5 +141,15 @@ j ra
 		interpreterIc10.init(code)
 		while (interpreterIc10.prepareLine() === true){}
 		expect(interpreterIc10.memory.environ.d0.properties.Setting).toBe(5)
+	});
+
+	test('HASH',  () => {
+		const code = `
+s d0 Setting 0
+s d0 Setting HASH("H1")
+`
+		interpreterIc10.init(code)
+		while (interpreterIc10.prepareLine() === true){}
+		expect(interpreterIc10.memory.environ.d0.properties.Setting).toBe(-1)
 	});
 });

@@ -7,10 +7,10 @@ const Device_1 = require("./Device");
 const Slot_1 = require("./Slot");
 const MemoryCell_1 = require("./MemoryCell");
 exports.regexes = {
-    'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    'rr1': new RegExp("r+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    'dr1': new RegExp("d+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
     'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$"),
-    'd1': new RegExp("^d([012345b])$"),
-    'rr': new RegExp("^d([012345b])$"),
+    'd1': new RegExp("^d([012345])$"),
     'strStart': new RegExp("^\".+$"),
     'strEnd': new RegExp(".+\"$"),
 };
@@ -213,425 +213,363 @@ class InterpreterIc10 {
     __issetLabel(x) {
         return x in this.labels;
     }
-    define(op1, op2, op3, op4) {
-        this.memory.define(op1, op2);
+    define(alias, value) {
+        this.memory.define(alias, value);
     }
-    alias(op1, op2, op3, op4) {
-        this.memory.alias(op1, op2);
+    alias(alias, target) {
+        this.memory.alias(alias, target);
     }
-    l(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(op2, op3));
+    l(register, device, property) {
+        const r = this.memory.getRegister(register);
+        const value = this.memory.getDevice(device).get(property);
+        r.set(null, value);
     }
-    __l(op1, op2, op3, op4) {
-        this.l(op1, op2, op3, op4);
+    __l(register, device, property) {
+        this.l(register, device, property);
     }
-    ls(op1, op2, op3, op4) {
-        const d = this.memory.getCell(op2);
-        if (d instanceof Device_1.Device) {
-            this.memory.cell(op1, d.getSlot(this.memory.cell(op3), op4));
-        }
-        else {
-            throw exports.Execution.error(this.position, 'Unknown Device', op2);
-        }
+    ls(register, device, slot, property) {
+        const r = this.memory.getRegister(register);
+        const d = this.memory.getDevice(device);
+        const value = d.getSlot(this.memory.getValue(slot), property);
+        r.set(null, value);
     }
-    s(op1, op2, op3, op4) {
-        this.memory.cell(op1, op2, op3);
+    s(device, property, value) {
+        const d = this.memory.getDevice(device);
+        d.set(property, this.memory.getValue(value));
     }
-    __s(op1, op2, op3, op4) {
-        this.s(op1, op2, op3, op4);
+    __s(device, property, value) {
+        this.s(device, property, value);
     }
-    move(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(op2));
+    __op(op, register, ...args) {
+        const r = this.memory.getRegister(register);
+        const inputs = args.map(v => this.memory.getValue(v));
+        r.set(null, op(...inputs));
     }
-    __move(op1, op2, op3, op4) {
-        this.move(op1, op2, op3, op4);
+    move(register, value) {
+        this.__op(v => v, register, value);
     }
-    add(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(op2) + this.memory.cell(op3));
+    __move(register, value) {
+        this.move(register, value);
     }
-    sub(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(op2) - this.memory.cell(op3));
+    add(register, a, b) {
+        this.__op((a, b) => a + b, register, a, b);
     }
-    mul(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(op2) * this.memory.cell(op3));
+    sub(register, a, b) {
+        this.__op((a, b) => a - b, register, a, b);
     }
-    div(op1, op2, op3, op4) {
-        const div = this.memory.cell(op2) / this.memory.cell(op3);
-        this.memory.cell(op1, Number(div) || 0);
+    mul(register, a, b) {
+        this.__op((a, b) => a * b, register, a, b);
     }
-    mod(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.abs(this.memory.cell(op2) % this.memory.cell(op3)));
+    div(register, a, b) {
+        this.__op((a, b) => Number(a / b) || 0, register, a, b);
     }
-    sqrt(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.sqrt(this.memory.cell(op2)));
+    mod(register, a, b) {
+        this.__op((a, b) => a % b, register, a, b);
     }
-    round(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.round(this.memory.cell(op2)));
+    sqrt(register, v) {
+        this.__op(Math.sqrt, register, v);
     }
-    trunc(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.trunc(this.memory.cell(op2)));
+    round(register, v) {
+        this.__op(Math.round, register, v);
     }
-    ceil(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.ceil(this.memory.cell(op2)));
+    trunc(register, v) {
+        this.__op(Math.trunc, register, v);
     }
-    floor(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.floor(this.memory.cell(op2)));
+    ceil(register, v) {
+        this.__op(Math.ceil, register, v);
     }
-    max(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.max(this.memory.cell(op2), this.memory.cell(op3)));
+    floor(register, v) {
+        this.__op(Math.floor, register, v);
     }
-    min(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.min(this.memory.cell(op2), this.memory.cell(op3)));
+    max(register, a, b) {
+        this.__op(Math.max, register, a, b);
     }
-    abs(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.abs(this.memory.cell(op2)));
+    minx(register, a, b) {
+        this.__op(Math.min, register, a, b);
     }
-    log(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.log(this.memory.cell(op2)));
+    abs(register, v) {
+        this.__op(Math.abs, register, v);
     }
-    exp(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.exp(this.memory.cell(op2)));
+    log(register, v) {
+        this.__op(Math.log, register, v);
     }
-    rand(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.random());
+    exp(register, v) {
+        this.__op(Math.exp, register, v);
     }
-    sin(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.sin(this.memory.cell(op2)));
+    rand(register, v) {
+        this.__op(_ => Math.random(), register, v);
     }
-    cos(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.cos(this.memory.cell(op2)));
+    sin(register, v) {
+        this.__op(Math.sin, register, v);
     }
-    tan(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.tan(this.memory.cell(op2)));
+    cos(register, v) {
+        this.__op(Math.cos, register, v);
     }
-    asin(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.asin(this.memory.cell(op2)));
+    tan(register, v) {
+        this.__op(Math.tan, register, v);
     }
-    acos(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.acos(this.memory.cell(op2)));
+    asin(register, v) {
+        this.__op(Math.asin, register, v);
     }
-    atan(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.atan(this.memory.cell(op2)));
+    acos(register, v) {
+        this.__op(Math.acos, register, v);
     }
-    atan2(op1, op2, op3, op4) {
-        this.memory.cell(op1, Math.atan2(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    yield(op1, op2, op3, op4) {
-    }
-    sleep(op1, op2, op3, op4) {
-    }
-    select(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.memory.cell(this.memory.cell(op2) ? this.memory.cell(op3) : this.memory.cell(op4)));
-    }
-    hcf(op1, op2, op3, op4) {
-        console.log("Die Mother Fucker Die Mother Fucker Die !!!!!");
-    }
-    j(op1) {
-        if (this.__issetLabel(op1)) {
-            this.position = this.labels[op1];
-        }
-        else {
-            const line = this.memory.cell(op1);
-            if (!isNaN(line)) {
-                this.position = line;
-            }
-            else {
-                throw exports.Execution.error(this.position, 'Undefined label', [op1, this.labels]);
-            }
-        }
-    }
-    jr(op1) {
-        let jr = 0;
-        if (op1 > 0 || 0 > op1) {
-            jr = op1;
-        }
-        else {
-            throw exports.Execution.error(this.position, 'Can`t move on', op1);
-        }
-        this.position += jr;
-        this.position--;
-    }
-    jal(op1) {
-        this.memory.cell('r17', this.position);
-        this.j(op1);
+    atan(register, v) {
+        this.__op(Math.atan, register, v);
     }
-    __eq(op1 = 0, op2 = 0) {
-        return Number(op1 == op2);
+    atan2(register, a, b) {
+        this.__op(Math.atan2, register, a, b);
     }
-    __ge(op1 = 0, op2 = 0) {
-        return Number(op1 >= op2);
+    yield() {
     }
-    __gt(op1 = 0, op2 = 0) {
-        return Number(op1 > op2);
-    }
-    __le(op1 = 0, op2 = 0) {
-        return Number(op1 <= op2);
-    }
-    __lt(op1 = 0, op2 = 0) {
-        return Number(op1 < op2);
+    sleep(s) {
     }
-    __ne(op1 = 0, op2 = 0) {
-        return Number(op1 != op2);
-    }
-    __ap(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
-        return Number(!this.__na(...arguments));
-    }
-    __na(x = 0, y = 0, d = 0, op4 = 0) {
-        if (y == 0) {
-            return Number(d > 0);
-        }
-        return Number(Math.abs(x - y) > d * Math.max(Math.abs(x), Math.abs(y)));
-    }
-    __dse(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
-        try {
-            this.memory.getCell(op1);
-            return 1;
-        }
-        catch (e) {
-            return 0;
-        }
-    }
-    __dns(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
-        try {
-            this.memory.getCell(op1);
-            return 0;
-        }
-        catch (e) {
-            return 1;
-        }
-    }
-    seq(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__eq(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    seqz(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__eq(this.memory.cell(op2), 0));
-    }
-    sge(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ge(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    sgez(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ge(this.memory.cell(op2), 0));
-    }
-    sgt(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__gt(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    sgtz(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__gt(this.memory.cell(op2), 0));
-    }
-    sle(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__le(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    slez(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__le(this.memory.cell(op2), 0));
-    }
-    slt(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__lt(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    sltz(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__lt(this.memory.cell(op2), 0));
-    }
-    sne(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ne(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    snez(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ne(this.memory.cell(op2), 0));
-    }
-    sap(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ap(this.memory.cell(op2), this.memory.cell(op3)));
-    }
-    sapz(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__ap(this.memory.cell(op2), 0));
-    }
-    sna(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__na(this.memory.cell(op2), this.memory.cell(op3), this.memory.cell(op4)));
-    }
-    snaz(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__na(this.memory.cell(op2), 0, this.memory.cell(op3)));
-    }
-    sdse(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__dse(op2));
-    }
-    sdns(op1, op2, op3, op4) {
-        this.memory.cell(op1, this.__dns(op2));
-    }
-    beq(op1, op2, op3, op4) {
-        if (this.__eq(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    beqz(op1, op2, op3, op4) {
-        if (this.__eq(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    bge(op1, op2, op3, op4) {
-        if (this.__ge(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bgez(op1, op2, op3, op4) {
-        if (this.__ge(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    bgt(op1, op2, op3, op4) {
-        if (this.__gt(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bgtz(op1, op2, op3, op4) {
-        if (this.__gt(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    ble(op1, op2, op3, op4) {
-        if (this.__le(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    blez(op1, op2, op3, op4) {
-        if (this.__le(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    blt(op1, op2, op3, op4) {
-        if (this.__lt(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bltz(op1, op2, op3, op4) {
-        if (this.__lt(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    bne(op1, op2, op3, op4) {
-        if (this.__ne(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bnez(op1, op2, op3, op4) {
-        if (this.__ne(this.memory.cell(op1), 0)) {
-            this.j(op2);
-        }
-    }
-    bap(op1, op2, op3, op4) {
-        if (this.__ap(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
-            this.j(op4);
-        }
-    }
-    bapz(op1, op2, op3, op4) {
-        if (this.__ap(this.memory.cell(op1), 0, this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bna(op1, op2, op3, op4) {
-        if (this.__na(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
-            this.j(op4);
-        }
-    }
-    bnaz(op1, op2, op3, op4) {
-        if (this.__na(this.memory.cell(op1), 0, this.memory.cell(op2))) {
-            this.j(op3);
-        }
-    }
-    bdse(op1, op2, op3, op4) {
-        if (this.__dse(op2)) {
-            this.j(op3);
-        }
-    }
-    bdns(op1, op2, op3, op4) {
-        if (this.__dns(op2)) {
-            this.j(op3);
-        }
-    }
-    breq(op1, op2, op3, op4) {
-        if (this.__eq(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    breqz(op1, op2, op3, op4) {
-        if (this.__eq(this.memory.cell(op1))) {
-            this.jr(op2);
-        }
-    }
-    brge(op1, op2, op3, op4) {
-        if (this.__ge(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brgez(op1, op2, op3, op4) {
-        if (this.__ge(this.memory.cell(op1), 0)) {
-            this.jr(op2);
-        }
-    }
-    brgt(op1, op2, op3, op4) {
-        if (this.__gt(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
+    select(register, a, b, c) {
+        this.__op((a, b, c) => a ? b : c, register, a, b, c);
+    }
+    hcf() {
+        console.log("Die Mother Fucker Die!!!!!");
+    }
+    __jump(line) {
+        this.position = line;
+    }
+    __call(line) {
+        this.memory.getRegister("ra").set(null, this.position);
+        this.__jump(line);
+    }
+    __getJumpTarget(target) {
+        if (this.__issetLabel(target))
+            return this.labels[target];
+        const line = this.memory.getValue(target);
+        if (isNaN(line))
+            throw exports.Execution.error(this.position, 'Incorrect jump target', [target, this.labels]);
+        return line;
+    }
+    j(target) {
+        this.__jump(this.__getJumpTarget(target));
+    }
+    jr(offset) {
+        const d = this.memory.getValue(offset);
+        if (Math.abs(d) < 0.001)
+            throw exports.Execution.error(this.position, "Infinite loop detected", offset);
+        this.__jump(this.position + d - 1);
+    }
+    jal(target) {
+        this.__call(this.__getJumpTarget(target));
+    }
+    __eq(a, b = 0) {
+        return a == b;
+    }
+    __ge(a, b = 0) {
+        return a >= b;
+    }
+    __gt(a, b = 0) {
+        return a > b;
+    }
+    __le(a, b = 0) {
+        return a <= b;
+    }
+    __lt(a, b = 0) {
+        return a < b;
+    }
+    __ne(a, b = 0) {
+        return a != b;
+    }
+    __ap(x, y, c = 0) {
+        return !this.__na(x, y, c);
+    }
+    __na(x, y, c = 0) {
+        return Math.abs(x - y) > c * Math.max(Math.abs(x), Math.abs(y));
+    }
+    __dse(d) {
+        return this.memory.findDevice(d) !== undefined;
+    }
+    __dns(d) {
+        return !this.__dse(d);
+    }
+    __sOp(op, register, ...args) {
+        const r = this.memory.getRegister(register);
+        const inputs = args.map(v => this.memory.getValue(v));
+        r.set(null, op(...inputs) ? 1 : 0);
+    }
+    seq(register, a, b) {
+        this.__sOp(this.__eq.bind(this), register, a, b);
+    }
+    seqz(register, a) {
+        this.__sOp(this.__eq.bind(this), register, a);
+    }
+    sge(register, a, b) {
+        this.__sOp(this.__ge.bind(this), register, a, b);
+    }
+    sgez(register, a) {
+        this.__sOp(this.__ge.bind(this), register, a);
+    }
+    sgt(register, a, b) {
+        this.__sOp(this.__gt.bind(this), register, a, b);
+    }
+    sgtz(register, a) {
+        this.__sOp(this.__gt.bind(this), register, a);
+    }
+    sle(register, a, b) {
+        this.__sOp(this.__le.bind(this), register, a, b);
+    }
+    slez(register, a) {
+        this.__sOp(this.__le.bind(this), register, a);
+    }
+    slt(register, a, b) {
+        this.__sOp(this.__lt.bind(this), register, a, b);
+    }
+    sltz(register, a) {
+        this.__sOp(this.__lt.bind(this), register, a);
+    }
+    sne(register, a, b) {
+        this.__sOp(this.__ne.bind(this), register, a, b);
+    }
+    snez(register, a) {
+        this.__sOp(this.__ne.bind(this), register, a);
+    }
+    sap(register, x, y, c) {
+        this.__sOp(this.__ap.bind(this), register, x, y, c);
+    }
+    sapz(register, x, y) {
+        this.__sOp(this.__ap.bind(this), register, x, y);
+    }
+    sna(register, x, y, c) {
+        this.__sOp(this.__na.bind(this), register, x, y, c);
+    }
+    snaz(register, x, y) {
+        this.__sOp(this.__na.bind(this), register, x, y);
+    }
+    sdse(register, d) {
+        this.memory.getRegister(register).set(null, Number(this.__dse(d)));
+    }
+    sdns(register, d) {
+        this.memory.getRegister(register).set(null, Number(this.__dns(d)));
+    }
+    __bOp(op, line, ...args) {
+        const inputs = args.map(v => this.memory.getValue(v));
+        if (!op(...inputs))
+            return;
+        this.j(line);
+    }
+    __bROp(op, offset, ...args) {
+        const inputs = args.map(v => this.memory.getValue(v));
+        if (!op(...inputs))
+            return;
+        this.jr(offset);
+    }
+    beq(a, b, line) {
+        this.__bOp(this.__eq.bind(this), line, a, b);
+    }
+    beqz(a, line) {
+        this.__bOp(this.__eq.bind(this), line, a);
+    }
+    bge(a, b, line) {
+        this.__bOp(this.__ge.bind(this), line, a, b);
+    }
+    bgez(a, line) {
+        this.__bOp(this.__ge.bind(this), line, a);
+    }
+    bgt(a, b, line) {
+        this.__bOp(this.__gt.bind(this), line, a, b);
+    }
+    bgtz(a, line) {
+        this.__bOp(this.__gt.bind(this), line, a);
+    }
+    ble(a, b, line) {
+        this.__bOp(this.__le.bind(this), line, a, b);
+    }
+    blez(a, line) {
+        this.__bOp(this.__le.bind(this), line, a);
+    }
+    blt(a, b, line) {
+        this.__bOp(this.__lt.bind(this), line, a, b);
+    }
+    bltz(a, line) {
+        this.__bOp(this.__lt.bind(this), line, a);
+    }
+    bne(a, b, line) {
+        this.__bOp(this.__ne.bind(this), line, a, b);
+    }
+    bnez(a, line) {
+        this.__bOp(this.__ne.bind(this), line, a);
+    }
+    bap(x, y, c, line) {
+        this.__bOp(this.__ap.bind(this), line, x, y, c);
+    }
+    bapz(x, y, line) {
+        this.__bOp(this.__ap.bind(this), line, x, y);
+    }
+    bna(x, y, c, line) {
+        this.__bOp(this.__na.bind(this), line, x, y, c);
+    }
+    bnaz(x, y, line) {
+        this.__bOp(this.__na.bind(this), line, x, y);
+    }
+    bdse(d, line) {
+        if (this.__dse(d))
+            this.j(line);
+    }
+    bdns(d, line) {
+        if (this.__dns(d))
+            this.j(line);
+    }
+    breq(a, b, offset) {
+        this.__bROp(this.__eq.bind(this), offset, a, b);
+    }
+    breqz(a, offset) {
+        this.__bROp(this.__eq.bind(this), offset, a);
+    }
+    brge(a, b, offset) {
+        this.__bROp(this.__ge.bind(this), offset, a);
+    }
+    brgez(a, offset) {
+        this.__bROp(this.__ge.bind(this), offset, a);
+    }
+    brgt(a, b, offset) {
+        this.__bROp(this.__gt.bind(this), offset, a, b);
+    }
+    brgtz(a, offset) {
+        this.__bROp(this.__gt.bind(this), offset, a);
+    }
+    brle(a, b, offset) {
+        this.__bROp(this.__le.bind(this), offset, a, b);
+    }
+    brlez(a, offset) {
+        this.__bROp(this.__le.bind(this), offset, a);
+    }
+    brlt(a, b, offset) {
+        this.__bROp(this.__lt.bind(this), offset, a, b);
+    }
+    brltz(a, offset) {
+        this.__bROp(this.__lt.bind(this), offset, a);
+    }
+    brne(a, b, offset) {
+        this.__bROp(this.__ne.bind(this), offset, a, b);
+    }
+    brnez(a, offset) {
+        this.__bROp(this.__ne.bind(this), offset, a);
+    }
+    brap(x, y, c, offset) {
+        this.__bROp(this.__ap.bind(this), offset, x, y, c);
+    }
+    brapz(x, y, offset) {
+        this.__bROp(this.__ap.bind(this), offset, x, y);
+    }
+    brna(x, y, c, offset) {
+        this.__bROp(this.__na.bind(this), offset, x, y, c);
+    }
+    brnaz(x, y, offset) {
+        this.__bROp(this.__ap.bind(this), offset, x, y);
+    }
+    brdse(d, offset) {
+        if (this.__dse(d)) {
+            this.jr(offset);
         }
     }
-    brgtz(op1, op2, op3, op4) {
-        if (this.__gt(this.memory.cell(op1), 0)) {
-            this.jr(op2);
-        }
-    }
-    brle(op1, op2, op3, op4) {
-        if (this.__le(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brlez(op1, op2, op3, op4) {
-        if (this.__le(this.memory.cell(op1), 0)) {
-            this.jr(op2);
-        }
-    }
-    brlt(op1, op2, op3, op4) {
-        if (this.__lt(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brltz(op1, op2, op3, op4) {
-        if (this.__lt(this.memory.cell(op1), 0)) {
-            this.jr(op2);
-        }
-    }
-    brne(op1, op2, op3, op4) {
-        if (this.__ne(this.memory.cell(op1), this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brnez(op1, op2, op3, op4) {
-        if (this.__ne(this.memory.cell(op1), 0)) {
-            this.jr(op2);
-        }
-    }
-    brap(op1, op2, op3, op4) {
-        if (this.__ap(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
-            this.jr(op4);
-        }
-    }
-    brapz(op1, op2, op3, op4) {
-        if (this.__ap(this.memory.cell(op1), 0, this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brna(op1, op2, op3, op4) {
-        if (this.__na(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
-            this.jr(op4);
-        }
-    }
-    brnaz(op1, op2, op3, op4) {
-        if (this.__na(this.memory.cell(op1), 0, this.memory.cell(op2))) {
-            this.jr(op3);
-        }
-    }
-    brdse(op1, op2, op3, op4) {
-        if (this.__dse(op2)) {
-            this.jr(op3);
-        }
-    }
-    brdns(op1, op2, op3, op4) {
-        if (this.__dns(op2)) {
-            this.jr(op3);
+    brdns(d, offset) {
+        if (this.__dns(d)) {
+            this.jr(offset);
         }
     }
     beqal(op1, op2, op3, op4) {
@@ -811,15 +749,52 @@ class InterpreterIc10 {
             }
         }
     }
-    and(op1, op2, op3, op4) {
-        op2 = this.memory.cell(op2);
-        op3 = this.memory.cell(op3);
-        if (op2 && op3) {
-            this.memory.cell(op1, 1);
+    lbn(targetRegister, deviceHash, nameHash, property, batchMode) {
+        const values = [];
+        const hash = this.memory.cell(deviceHash);
+        for (let i = 0; i <= 5; i++) {
+            const d = this.memory.getCell('d' + i);
+            if (d instanceof Device_1.Device) {
+                if (d.hash == hash) {
+                    values.push(d.get(property));
+                }
+            }
         }
-        else {
-            this.memory.cell(op1, 0);
+        if (values.length === 0) {
+            throw exports.Execution.error(this.position, 'Can`t find Device wich hash:', hash);
         }
+        let result = 0;
+        switch (batchMode) {
+            case 0:
+            case 'Average':
+                result = values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length;
+                break;
+            case 1:
+            case 'Sum':
+                result = values.reduce((partial_sum, a) => partial_sum + a, 0);
+                break;
+            case 2:
+            case 'Minimum':
+                result = Math.min.apply(null, values);
+                break;
+            case 3:
+            case 'Maximum':
+                result = Math.max.apply(null, values);
+                break;
+        }
+        this.memory.cell(targetRegister, Number(result));
+    }
+    sbn() { }
+    lbs() { }
+    lbns() { }
+    ss() { }
+    sbs() { }
+    snan() { }
+    snanz() { }
+    bnan() { }
+    brnan() { }
+    and(register, a, b) {
+        this.__op((a, b) => a && b, register, a, b);
     }
     or(op1, op2, op3, op4) {
         op2 = this.memory.cell(op2);

@@ -15,7 +15,6 @@ class ConstantCell extends MemoryCell_1.MemoryCell {
     }
     set(value, _ = null) {
         throw main_1.Execution.error(this.#scope.position, 'Can`t change constant');
-        return this;
     }
 }
 exports.ConstantCell = ConstantCell;

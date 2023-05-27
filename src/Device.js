@@ -44,6 +44,8 @@ class Device extends MemoryCell_1.MemoryCell {
         return this;
     }
     getSlot(op1, op2 = null) {
+        if (typeof op1 === "number")
+            op1 = String(op1);
         if (op1 in this.properties.slots) {
             const index = parseInt(op1);
             if (op2) {

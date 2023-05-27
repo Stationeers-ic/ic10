@@ -9,8 +9,8 @@ export declare class Device extends MemoryCell {
     properties: DeviceProperties;
     constructor(scope: InterpreterIc10, name: string, number: number);
     get scope(): InterpreterIc10;
-    get(variable: any): Device | number | DeviceProperties | Slot[];
+    get(variable: any): Device | number | Slot[];
     set(variable: any, value: any): MemoryCell;
-    getSlot(op1: string, op2?: null): number | Slot;
+    getSlot(op1: string | number, op2?: any): number | Slot;
     setSlot(op1: string, op2: any, value: any): void;
 }

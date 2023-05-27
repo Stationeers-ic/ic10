@@ -1,2 +1,15 @@
-export declare type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N ? Acc[number] : Enumerate<N, [...Acc, Acc['length']]>;
-export declare type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
+export type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N ? Acc[number] : Enumerate<N, [...Acc, Acc['length']]>;
+export type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
+export type Tuple<T, N extends number> = N extends N ? number extends N ? T[] : _TupleOf<T, N, []> : never;
+export type _TupleOf<T, N extends number, R extends unknown[]> = R['length'] extends N ? R : _TupleOf<T, N, [T, ...R]>;
+export type Register = `r${IntRange<0, 15>}` | 'ra';
+export type Port = `d${IntRange<0, 5>}`;
+export type Chip = `db`;
+export type Stack = 'sp' | 'r16';
+export type Hash = `HASH("${string}")`;
+export declare function isNumber(value: any): value is number;
+export declare function isRegister(value: any): value is Register;
+export declare function isPort(value: any): value is Port;
+export declare function isChip(value: any): value is Chip;
+export declare function isStack(value: any): value is Stack;
+export declare function isHash(value: any): value is Hash;
