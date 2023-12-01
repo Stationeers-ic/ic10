@@ -267,32 +267,32 @@ export const makeArithmeticCommands: CommandBuilder = scope => {
 
     /*
     * @and@
-    * [en] Logical AND, one if both op2 and op3 are true, zero otherwise
-    * [ru] Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае
+    * [en] AND, Sets bits to 1 if the same bits in op2 and op3 are also 1
+    * [ru] И, Устанавливает биты в 1, если одни и те же биты в op2 и op3 также равны 1
     */
     const and = (register: string, a: string, b: string) =>
         op((a, b) => a & b, register, a, b)
 
     /*
     * @or@
-    * [en] Logical OR, zero if both op2 and op3 are false, one otherwise
-    * [ru] Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае
+    * [en] OR, Sets bits to 1 if the same bit is 1 in op2 or op3
+    * [ru] ИЛИ. Устанавливает биты в 1, если тот же бит равен 1 в op2 или op3
     */
     const or = (register: string, a: string, b: string) =>
         op((a, b) => a | b, register, a, b)
 
     /*
     * @xor@
-    * [en] XOR, one if one and only one of op2 and op3 is true, zero otherwise
-    * [ru] Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае
+    * [en] Exclusive OR, Sets all bits to 1 which are different between op2 and op3
+    * [ru] Исключающее ИЛИ, устанавливает все биты в 1, которые различаются между op2 и op3
     */
     const xor = (register: string, a: string, b: string) =>
         op((a, b) => a ^ b, register, a, b)
 
     /*
     * @nor@
-    * [en] Inverse OR, one if both op2 and op3 are false, zero otherwise
-    * [ru] Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае
+    * [en] Inverse OR, sets all bits to 1 that are 0 in op2 or op3 and all bits to 0 that are 1 in op2 or op3
+    * [ru] Инверсное ИЛИ, единица, устанавливает все биты в 1, которые равны 0 в op2 или op3, и все биты в 0, которые равны 1 в op2 или op3
     */
     const nor = (register: string, a: string, b: string) =>
         op((a, b) => ~(a | b), register, a, b)
