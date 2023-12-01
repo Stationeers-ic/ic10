@@ -156,6 +156,20 @@ export class InterpreterIc10 implements Scope {
                         let arg = command.args[argsKey]
                         if (arg.startsWith("#"))
                             break;
+                        
+                        /**
+                         * [en] Execute the `$` macro - converts a hexidecimal number to a decimal number.
+                         * [ru] Выполните макрос `$` — преобразует шестнадцатеричное число в десятичное.
+                         */
+                        if (arg.startsWith("$"))
+                            arg = parseInt(arg.replaceAll(/[^0-9a-fA-F]/, ""), 16).toString();
+
+                        /**
+                         * [en] Execute the `%` macro - converts a binary number to decimal number.
+                         * [ru] Выполните макрос `%` — преобразует двоичное число в десятичное число.
+                         */
+                        if (arg.startsWith("%"))
+                            arg = parseInt(arg.replaceAll(/[^01]/, ""), 2).toString();
 
                         if (mode === 0)
                             argNumber++
