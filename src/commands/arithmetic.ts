@@ -271,7 +271,7 @@ export const makeArithmeticCommands: CommandBuilder = scope => {
     * [ru] Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае
     */
     const and = (register: string, a: string, b: string) =>
-        op((a, b) => a && b, register, a, b)
+        op((a, b) => a & b, register, a, b)
 
     /*
     * @or@
@@ -279,7 +279,7 @@ export const makeArithmeticCommands: CommandBuilder = scope => {
     * [ru] Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае
     */
     const or = (register: string, a: string, b: string) =>
-        op((a, b) => a || b, register, a, b)
+        op((a, b) => a | b, register, a, b)
 
     /*
     * @xor@
@@ -295,7 +295,7 @@ export const makeArithmeticCommands: CommandBuilder = scope => {
     * [ru] Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае
     */
     const nor = (register: string, a: string, b: string) =>
-        op((a, b) => Number(!(a || b)), register, a, b)
+        op((a, b) => ~(a | b), register, a, b)
 
     return {
         alias, move, define, select,
