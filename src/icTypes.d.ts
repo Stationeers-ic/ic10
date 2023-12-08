@@ -16,8 +16,8 @@ export declare const isChannel: (val: string) => val is "Channel0" | "Channel1" 
 export declare const valuesBM: readonly ["Average", "Maximum", "Minimum", "Sum"];
 export type TypeBM = (typeof valuesBM)[number];
 export declare const isBM: (val: string) => val is "Maximum" | "Minimum" | "Average" | "Sum";
-export declare const valuesRM: readonly [];
+export declare const valuesRM: readonly ["Contents", "Required", "Recipe"];
 export type TypeRM = (typeof valuesRM)[number];
-export declare const isRM: (val: string) => val is never;
+export declare const isRM: (val: string) => val is "Contents" | "Recipe" | "Required";
 export declare const isKeyword: (s: string) => boolean;
 export declare const isKeywordNoConst: (s: string) => boolean;

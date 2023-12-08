@@ -19,7 +19,7 @@ exports.isChannel = isChannel;
 exports.valuesBM = ['Average', 'Maximum', 'Minimum', 'Sum'];
 const isBM = (val) => exports.valuesBM.includes(val);
 exports.isBM = isBM;
-exports.valuesRM = [];
+exports.valuesRM = ['Contents', 'Required', 'Recipe'];
 const isRM = (val) => exports.valuesRM.includes(val);
 exports.isRM = isRM;
 const isKeyword = (s) => (0, exports.isChannel)(s) || (0, exports.isSlotParameter)(s) || (0, exports.isDeviceParameter)(s) || (0, exports.isConst)(s);

@@ -16,7 +16,7 @@ export const isChannel = (val: string): val is TypeChannel => valuesChannel.incl
 export const valuesBM = [ 'Average', 'Maximum', 'Minimum', 'Sum' ] as const
 export type TypeBM = (typeof valuesBM)[number]
 export const isBM = (val: string): val is TypeBM => valuesBM.includes(val as TypeBM)
-export const valuesRM = [  ] as const
+export const valuesRM = [ 'Contents','Required','Recipe' ] as const
 export type TypeRM = (typeof valuesRM)[number]
 export const isRM = (val: string): val is TypeRM => valuesRM.includes(val as TypeRM)
 export const isKeyword = (s: string) => isChannel(s) || isSlotParameter(s) || isDeviceParameter(s) || isConst(s)
