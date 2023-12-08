@@ -3,7 +3,7 @@ import {RegisterCell} from "./RegisterCell";
 import {MemoryStack} from "./MemoryStack";
 import {Device} from "./devices/Device";
 import {ConstantCell} from "./ConstantCell";
-import {hashStr, isHash, isNumber, isRecPort, isRegister, isSimplePort, patterns} from "./Utils";
+import {hash2Int, hashStr, isHash, isNumber, isRecPort, isRegister, isSimplePort, patterns} from "./Utils";
 import {ValueCell} from "./ValueCell";
 import {DeviceOutput} from "./DeviceOutput";
 import {Ic10Error} from "./Ic10Error";
@@ -162,14 +162,7 @@ export class Memory {
             return value
 
         if (isHash(value)) {
-            const m = patterns.hash.exec(value)
-
-            if (!m)
-                throw new Ic10Error('Internal error')
-
-            const hash = m.groups?.hash ?? ""
-
-            return hashStr(hash)
+            return hash2Int(value)
         }
 
         const n = Number(value)

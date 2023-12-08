@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeArithmeticCommands = void 0;
 const Ic10Error_1 = require("../Ic10Error");
 const icTypes_1 = require("../icTypes");
+const Utils_1 = require("../Utils");
 const makeArithmeticCommands = scope => {
     function op(op, register, ...args) {
         const r = scope.memory.getRegister(register);
@@ -26,6 +27,9 @@ const makeArithmeticCommands = scope => {
     const define = (alias, value) => {
         if ((0, icTypes_1.isKeyword)(alias)) {
             throw new Ic10Error_1.Ic10DiagnosticError((0, Ic10Error_1.keywordErrorMsg)('constant'), alias);
+        }
+        if (typeof value === "string" && (0, Utils_1.isHash)(value)) {
+            value = (0, Utils_1.hash2Int)(value);
         }
         scope.memory.define(alias, value);
     };
@@ -57,10 +61,10 @@ const makeArithmeticCommands = scope => {
     const acos = (register, v) => op(Math.acos, register, v);
     const atan = (register, v) => op(Math.atan, register, v);
     const atan2 = (register, a, b) => op(Math.atan2, register, a, b);
-    const and = (register, a, b) => op((a, b) => a && b, register, a, b);
-    const or = (register, a, b) => op((a, b) => a || b, register, a, b);
+    const and = (register, a, b) => op((a, b) => a & b, register, a, b);
+    const or = (register, a, b) => op((a, b) => a | b, register, a, b);
     const xor = (register, a, b) => op((a, b) => a ^ b, register, a, b);
-    const nor = (register, a, b) => op((a, b) => Number(!(a || b)), register, a, b);
+    const nor = (register, a, b) => op((a, b) => ~(a | b), register, a, b);
     return {
         alias, move, define, select,
         add, sub, mul, div, mod, sqrt,

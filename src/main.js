@@ -139,6 +139,10 @@ class InterpreterIc10 {
                         let arg = command.args[argsKey];
                         if (arg.startsWith("#"))
                             break;
+                        if (arg.startsWith("$"))
+                            arg = parseInt(arg.replaceAll(/[^0-9a-fA-F]/, ""), 16).toString();
+                        if (arg.startsWith("%"))
+                            arg = parseInt(arg.replaceAll(/[^01]/, ""), 2).toString();
                         if (mode === 0)
                             argNumber++;
                         if (regexes.strStart.test(arg))

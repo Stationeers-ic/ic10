@@ -1,6 +1,7 @@
 import {CommandBuilder} from "./core";
 import {Ic10DiagnosticError, keywordErrorMsg} from "../Ic10Error";
 import {isKeyword, isKeywordNoConst} from "../icTypes";
+import {hash2Int, isHash} from "../Utils";
 
 export const makeArithmeticCommands: CommandBuilder = scope => {
     function op<Args extends number[]>(op: (...args: Args) => number, register: string, ...args: { [K in keyof Args]: string }) {
@@ -46,6 +47,9 @@ export const makeArithmeticCommands: CommandBuilder = scope => {
     const define = (alias: string, value: number | string) => {
         if (isKeyword(alias)) {
             throw new Ic10DiagnosticError(keywordErrorMsg('constant'), alias)
+        }
+        if(typeof value === "string" && isHash(value)){
+            value = hash2Int(value)
         }
         scope.memory.define(alias, value)
     }

@@ -121,11 +121,7 @@ class Memory {
         if (typeof value === "number")
             return value;
         if ((0, Utils_1.isHash)(value)) {
-            const m = Utils_1.patterns.hash.exec(value);
-            if (!m)
-                throw new Ic10Error_1.Ic10Error('Internal error');
-            const hash = m.groups?.hash ?? "";
-            return (0, Utils_1.hashStr)(hash);
+            return (0, Utils_1.hash2Int)(value);
         }
         const n = Number(value);
         if (!isNaN(n))

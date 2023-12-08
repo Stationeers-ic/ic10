@@ -108,7 +108,6 @@ export declare const devices: {
         readonly "368327958": "ItemDirtCannisterMode0";
         readonly "374891127": "ItemHardBackpack";
         readonly "377745425": "ItemKitGasGenerator";
-        readonly "378084505": "StructureBlocker";
         readonly "379851134": "ItemWreckageTransformerMedium3";
         readonly "385093531": "ItemFilterN";
         readonly "391453348": "ItemWreckageStructureRTG1";
@@ -129,6 +128,7 @@ export declare const devices: {
         readonly "469451637": "StructureCableJunctionH";
         readonly "479890266": "ItemWreckageArcFurnace1";
         readonly "489494578": "ItemKitLadder";
+        readonly "491845673": "StructureButton";
         readonly "496604530": "ItemWreckageCentrifuge3";
         readonly "496830914": "ItemKitAIMeE";
         readonly "498481505": "ItemSprayCanWhite";
@@ -175,6 +175,7 @@ export declare const devices: {
         readonly "682546947": "ItemKitAirlockGate";
         readonly "682727744": "ItemEggBottom";
         readonly "683129777": "ItemWreckageSatelliteDish2";
+        readonly "687940869": "ItemScrewdriver";
         readonly "688734890": "ItemTomatoSoup";
         readonly "690945935": "StructureCentrifuge";
         readonly "697908419": "StructureBlockBed";
@@ -339,7 +340,6 @@ export declare const devices: {
         readonly "1458578903": "StructureAutolatheMKIIDestroyed";
         readonly "1465402885": "StructureButtonNot";
         readonly "1467558064": "ItemMkIIToolbelt";
-        readonly "1470787934": "ItemMiningBeltMKII";
         readonly "1474623122": "ItemWreckageLightLong1";
         readonly "1483915047": "ItemAccessCard";
         readonly "1490073526": "GasItemGasMole";
@@ -405,6 +405,7 @@ export declare const devices: {
         readonly "1788192961": "OreScannerColorDisplay";
         readonly "1788782052": "ItemWreckageCentrifuge2";
         readonly "1791306431": "ItemEmergencyEvaSuit";
+        readonly "1795117420": "ItemSoyoil";
         readonly "1796942787": "OreCoalIcon";
         readonly "1798764247": "ItemWasteIngot";
         readonly "1798782354": "CartridgeTrackerDistance";
@@ -556,6 +557,7 @@ export declare const devices: {
         readonly "-1778339150": "ItemCobaltIngot";
         readonly "-1776897113": "ItemKitSensor";
         readonly "-1772152364": "ItemKitComplete";
+        readonly "-1771350380": "ItemHeadLamp";
         readonly "-1768732546": "CartridgeOreScanner";
         readonly "-1767047463": "ItemSkullHuman";
         readonly "-1766786437": "ItemWreckageShuttleLandingPad5";
@@ -876,7 +878,7 @@ export declare const devices: {
         readonly "-375961053": "ItemGasCanisterChlorine";
         readonly "-374567952": "AccessCardGreen";
         readonly "-374535709": "OreSilverIcon";
-        readonly "-360308577": "StructureButton";
+        readonly "-360308577": "StructureBlocker";
         readonly "-355127880": "ItemToolBelt";
         readonly "-351438780": "ItemEmergencyAngleGrinder";
         readonly "-349716617": "StructureCableFuse50k";
@@ -913,6 +915,7 @@ export declare const devices: {
         readonly "-247344692": "StructureArcFurnace";
         readonly "-243371742": "HandgunMagazineController";
         readonly "-241475022": "StructureArcFurnaceDestroyed";
+        readonly "-231217432": "ItemRoadflare";
         readonly "-229808600": "ItemTablet";
         readonly "-225121674": "ItemWreckageArcFurnace3";
         readonly "-222909164": "ItemChemLight";
@@ -1316,6 +1319,7 @@ export declare const devices: {
         readonly ItemHardsuitHelmet: -84573099;
         readonly ItemHastelloyIngot: 1579842814;
         readonly ItemHat: 299189339;
+        readonly ItemHeadLamp: -1771350380;
         readonly ItemHeadlamp: 911866282;
         readonly ItemHealPill: -1075983932;
         readonly ItemHelmet: -1832640756;
@@ -1500,7 +1504,6 @@ export declare const devices: {
         readonly ItemMarineUniform: -563374698;
         readonly ItemMilk: 1327248310;
         readonly ItemMiningBelt: -676435305;
-        readonly ItemMiningBeltMKII: 1470787934;
         readonly ItemMiningDrill: 1055173191;
         readonly ItemMiningDrillHeavy: -1663349918;
         readonly ItemMiningDrillHeavybK: 1104776740;
@@ -1561,8 +1564,10 @@ export declare const devices: {
         readonly ItemResearchMachine: -406908055;
         readonly ItemRice: 658916791;
         readonly ItemRoadFlare: 871811564;
+        readonly ItemRoadflare: -231217432;
         readonly ItemScanner: 1661270830;
         readonly ItemScrewDriver: 783097907;
+        readonly ItemScrewdriver: 687940869;
         readonly ItemSecurityCamera: -1981101032;
         readonly ItemSensorKit: -677525974;
         readonly ItemSensorLenses: -1176140051;
@@ -1578,6 +1583,7 @@ export declare const devices: {
         readonly ItemSolderIngot: -82508479;
         readonly ItemSoyOil: 1387403148;
         readonly ItemSoybean: 1924673028;
+        readonly ItemSoyoil: 1795117420;
         readonly ItemSpaceCleaner: -1737666461;
         readonly ItemSpaceCleanercPm: -12461686;
         readonly ItemSpaceHelmet: 714830451;
@@ -1885,8 +1891,8 @@ export declare const devices: {
         readonly StructureBenchCable2: -970370890;
         readonly StructureBlastDoor: 337416191;
         readonly StructureBlockBed: 697908419;
-        readonly StructureBlocker: 378084505;
-        readonly StructureButton: -360308577;
+        readonly StructureBlocker: -360308577;
+        readonly StructureButton: 491845673;
         readonly StructureButtonNot: 1465402885;
         readonly StructureCableAnalysizer: 1036015121;
         readonly StructureCableCorner: -889269388;
@@ -3217,60 +3223,60 @@ export declare const devices: {
             readonly PrefabHash: 1840108251;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly CombustionOutput: "read|write";
-                readonly CombustionInput: "read|write";
-                readonly Combustion: "read|write";
                 readonly Activate: "read|write";
-                readonly CombustionOutput2: "read|write";
+                readonly Combustion: "read|write";
+                readonly Lock: "read|write";
+                readonly CombustionInput: "read|write";
+                readonly CombustionOutput: "read|write";
                 readonly Maximum: "read|write";
                 readonly Error: "read|write";
-                readonly Lock: "read|write";
-                readonly On: "read|write";
                 readonly Mode: "read|write";
-                readonly Power: "read|write";
+                readonly CombustionOutput2: "read|write";
                 readonly Open: "read|write";
+                readonly On: "read|write";
+                readonly Power: "read|write";
                 readonly Pressure: "read|write";
-                readonly PressureOutput: "read|write";
                 readonly PressureInput: "read|write";
+                readonly PressureOutput: "read|write";
                 readonly PressureOutput2: "read|write";
-                readonly RatioCarbonDioxide: "read|write";
                 readonly Ratio: "read|write";
+                readonly RatioCarbonDioxide: "read|write";
                 readonly RatioCarbonDioxideInput: "read|write";
-                readonly RatioCarbonDioxideOutput2: "read|write";
-                readonly RatioNitrogen: "read|write";
                 readonly RatioCarbonDioxideOutput: "read|write";
+                readonly RatioCarbonDioxideOutput2: "read|write";
                 readonly RatioNitrogenInput: "read|write";
+                readonly RatioNitrogen: "read|write";
                 readonly RatioNitrogenOutput: "read|write";
-                readonly RatioNitrogenOutput2: "read|write";
                 readonly RatioNitrousOxide: "read|write";
+                readonly RatioNitrogenOutput2: "read|write";
                 readonly RatioNitrousOxideInput: "read|write";
                 readonly RatioNitrousOxideOutput: "read|write";
                 readonly RatioNitrousOxideOutput2: "read|write";
-                readonly RatioOxygen: "read|write";
                 readonly RatioOxygenInput: "read|write";
                 readonly RatioOxygenOutput: "read|write";
+                readonly RatioOxygen: "read|write";
                 readonly RatioOxygenOutput2: "read|write";
                 readonly RatioPollutant: "read|write";
-                readonly RatioPollutantOutput: "read|write";
                 readonly RatioPollutantInput: "read|write";
+                readonly RatioPollutantOutput: "read|write";
                 readonly RatioPollutantOutput2: "read|write";
                 readonly RatioVolatiles: "read|write";
                 readonly RatioVolatilesInput: "read|write";
                 readonly RatioVolatilesOutput: "read|write";
-                readonly RatioWaterInput: "read|write";
-                readonly RatioWater: "read|write";
                 readonly RatioVolatilesOutput2: "read|write";
+                readonly RatioWaterInput: "read|write";
                 readonly RatioWaterOutput: "read|write";
-                readonly RatioWaterOutput2: "read|write";
+                readonly RatioWater: "read|write";
                 readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
                 readonly Temperature: "read|write";
-                readonly TemperatureInput: "read|write";
-                readonly TemperatureOutput: "read|write";
-                readonly TotalMoles: "read|write";
+                readonly RatioWaterOutput2: "read|write";
                 readonly TemperatureOutput2: "read|write";
-                readonly TotalMolesOutput: "read|write";
+                readonly TemperatureInput: "read|write";
+                readonly TotalMoles: "read|write";
+                readonly TemperatureOutput: "read|write";
                 readonly TotalMolesInput: "read|write";
+                readonly TotalMolesOutput: "read|write";
                 readonly TotalMolesOutput2: "read|write";
             };
             readonly name: "H2Combustor";
@@ -3371,9 +3377,9 @@ export declare const devices: {
             readonly PrefabHash: 201215010;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Activate: "read|write";
-                readonly Power: "read|write";
                 readonly Charge: "read|write";
+                readonly Power: "read|write";
+                readonly Activate: "read|write";
             };
             readonly name: "ItemAngleGrinder";
             readonly description: "Angle Grinder";
@@ -3383,9 +3389,9 @@ export declare const devices: {
             readonly PrefabHash: 1385062886;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Power: "read|write";
-                readonly Charge: "read|write";
                 readonly Activate: "read|write";
+                readonly Charge: "read|write";
+                readonly Power: "read|write";
             };
             readonly name: "ItemArcWelder";
             readonly description: "Arc Welder";
@@ -3513,8 +3519,8 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Charge: "read|write";
-                readonly On: "read|write";
                 readonly Error: "read|write";
+                readonly On: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemBeacon";
@@ -3966,8 +3972,8 @@ export declare const devices: {
             readonly PrefabHash: 2009673399;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Charge: "read|write";
                 readonly Activate: "read|write";
+                readonly Charge: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemDrill";
@@ -5079,8 +5085,8 @@ export declare const devices: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
                 readonly On: "read|write";
-                readonly Temperature: "read|write";
                 readonly Pressure: "read|write";
+                readonly Temperature: "read|write";
             };
             readonly name: "ItemHardJetpack";
             readonly description: "Hard Jetpack";
@@ -5092,27 +5098,27 @@ export declare const devices: {
                 readonly PrefabHash: "read|write";
                 readonly Activate: "read|write";
                 readonly Combustion: "read|write";
-                readonly Filtration: "read|write";
                 readonly Error: "read|write";
+                readonly Filtration: "read|write";
                 readonly Lock: "read|write";
-                readonly On: "read|write";
-                readonly PositionY: "read|write";
                 readonly PositionX: "read|write";
+                readonly PositionY: "read|write";
+                readonly On: "read|write";
                 readonly PositionZ: "read|write";
                 readonly Power: "read|write";
                 readonly Pressure: "read|write";
                 readonly PressureExternal: "read|write";
-                readonly PressureSetting: "read|write";
                 readonly RatioCarbonDioxide: "read|write";
                 readonly RatioNitrogen: "read|write";
                 readonly RatioNitrousOxide: "read|write";
+                readonly PressureSetting: "read|write";
                 readonly RatioOxygen: "read|write";
                 readonly RatioPollutant: "read|write";
                 readonly RatioVolatiles: "read|write";
                 readonly RatioWater: "read|write";
-                readonly Setting: "read|write";
                 readonly SoundAlert: "read|write";
                 readonly Temperature: "read|write";
+                readonly Setting: "read|write";
                 readonly TemperatureExternal: "read|write";
                 readonly TemperatureSetting: "read|write";
                 readonly VelocityMagnitude: "read|write";
@@ -5134,16 +5140,16 @@ export declare const devices: {
                 readonly Open: "read|write";
                 readonly Power: "read|write";
                 readonly PressureSetting: "read|write";
+                readonly RatioNitrogen: "read|write";
                 readonly Pressure: "read|write";
                 readonly RatioCarbonDioxide: "read|write";
-                readonly RatioNitrogen: "read|write";
                 readonly RatioNitrousOxide: "read|write";
-                readonly RatioPollutant: "read|write";
                 readonly RatioOxygen: "read|write";
+                readonly RatioPollutant: "read|write";
                 readonly RatioVolatiles: "read|write";
+                readonly Temperature: "read|write";
                 readonly RatioWater: "read|write";
                 readonly Vertical: "read|write";
-                readonly Temperature: "read|write";
             };
             readonly name: "ItemHardsuitHelmet";
             readonly description: "Hardsuit Helmet";
@@ -5165,6 +5171,15 @@ export declare const devices: {
             };
             readonly name: "ItemHat";
             readonly description: "Hat";
+            readonly slot_count: 0;
+        };
+        readonly ItemHeadLamp: {
+            readonly PrefabHash: -1771350380;
+            readonly params: {
+                readonly PrefabHash: "read";
+            };
+            readonly name: "ItemHeadLamp";
+            readonly description: "Head Lamp";
             readonly slot_count: 0;
         };
         readonly ItemHeadlamp: {
@@ -5378,8 +5393,8 @@ export declare const devices: {
             readonly PrefabHash: 1969189000;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly On: "read|write";
                 readonly Activate: "read|write";
+                readonly On: "read|write";
                 readonly Pressure: "read|write";
                 readonly Temperature: "read|write";
             };
@@ -6075,7 +6090,6 @@ export declare const devices: {
             readonly PrefabHash: -851746783;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly LineNumber: "read|write";
                 readonly Setting: "read|write";
             };
             readonly name: "ItemKitLogicMemory";
@@ -6783,11 +6797,11 @@ export declare const devices: {
             readonly PrefabHash: -1875271296;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Activate: "read|write";
-                readonly Mode: "read|write";
                 readonly Charge: "read|write";
                 readonly Error: "read|write";
                 readonly On: "read|write";
+                readonly Activate: "read|write";
+                readonly Mode: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemMKIIMiningDrill";
@@ -6848,21 +6862,12 @@ export declare const devices: {
             readonly description: "Mining Belt";
             readonly slot_count: 0;
         };
-        readonly ItemMiningBeltMKII: {
-            readonly PrefabHash: 1470787934;
-            readonly params: {
-                readonly PrefabHash: "read";
-            };
-            readonly name: "ItemMiningBeltMKII";
-            readonly description: "";
-            readonly slot_count: 0;
-        };
         readonly ItemMiningDrill: {
             readonly PrefabHash: 1055173191;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Charge: "read|write";
                 readonly Activate: "read|write";
+                readonly Charge: "read|write";
                 readonly Error: "read|write";
                 readonly On: "read|write";
                 readonly Mode: "read|write";
@@ -6876,10 +6881,10 @@ export declare const devices: {
             readonly PrefabHash: -1663349918;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Activate: "read|write";
-                readonly Charge: "read|write";
-                readonly Mode: "read|write";
                 readonly Error: "read|write";
+                readonly Charge: "read|write";
+                readonly Activate: "read|write";
+                readonly Mode: "read|write";
                 readonly On: "read|write";
                 readonly Power: "read|write";
             };
@@ -6964,8 +6969,8 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Charge: "read|write";
-                readonly On: "read|write";
                 readonly Lock: "read|write";
+                readonly On: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemNVG";
@@ -7220,9 +7225,9 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
-                readonly Mode: "read|write";
                 readonly Charge: "read|write";
                 readonly On: "read|write";
+                readonly Mode: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemPlantSampler";
@@ -7422,6 +7427,15 @@ export declare const devices: {
             readonly description: "";
             readonly slot_count: 0;
         };
+        readonly ItemRoadflare: {
+            readonly PrefabHash: -231217432;
+            readonly params: {
+                readonly PrefabHash: "read";
+            };
+            readonly name: "ItemRoadflare";
+            readonly description: "";
+            readonly slot_count: 0;
+        };
         readonly ItemScanner: {
             readonly PrefabHash: 1661270830;
             readonly params: {
@@ -7437,6 +7451,15 @@ export declare const devices: {
                 readonly PrefabHash: "read";
             };
             readonly name: "ItemScrewDriver";
+            readonly description: "";
+            readonly slot_count: 0;
+        };
+        readonly ItemScrewdriver: {
+            readonly PrefabHash: 687940869;
+            readonly params: {
+                readonly PrefabHash: "read";
+            };
+            readonly name: "ItemScrewdriver";
             readonly description: "";
             readonly slot_count: 0;
         };
@@ -7463,8 +7486,8 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Charge: "read|write";
-                readonly On: "read|write";
                 readonly Power: "read|write";
+                readonly On: "read|write";
             };
             readonly name: "ItemSensorLenses";
             readonly description: "";
@@ -7578,6 +7601,15 @@ export declare const devices: {
             readonly description: "";
             readonly slot_count: 0;
         };
+        readonly ItemSoyoil: {
+            readonly PrefabHash: 1795117420;
+            readonly params: {
+                readonly PrefabHash: "read";
+            };
+            readonly name: "ItemSoyoil";
+            readonly description: "";
+            readonly slot_count: 0;
+        };
         readonly ItemSpaceCleaner: {
             readonly PrefabHash: -1737666461;
             readonly params: {
@@ -7601,19 +7633,19 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Combustion: "read|write";
-                readonly Flush: "write";
                 readonly Lock: "read|write";
                 readonly On: "read|write";
+                readonly Flush: "write";
                 readonly Open: "read|write";
-                readonly Power: "read|write";
                 readonly Pressure: "read|write";
                 readonly PressureSetting: "read|write";
                 readonly RatioCarbonDioxide: "read|write";
+                readonly Power: "read|write";
+                readonly RatioNitrogen: "read|write";
                 readonly RatioNitrousOxide: "read|write";
                 readonly RatioOxygen: "read|write";
-                readonly RatioNitrogen: "read|write";
-                readonly RatioPollutant: "read|write";
                 readonly RatioVolatiles: "read|write";
+                readonly RatioPollutant: "read|write";
                 readonly RatioWater: "read|write";
                 readonly Temperature: "read|write";
                 readonly Vertical: "read|write";
@@ -7626,8 +7658,8 @@ export declare const devices: {
             readonly PrefabHash: -1260618380;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly On: "read|write";
                 readonly Activate: "read|write";
+                readonly On: "read|write";
                 readonly Pressure: "read|write";
                 readonly Temperature: "read|write";
             };
@@ -7873,8 +7905,8 @@ export declare const devices: {
             readonly PrefabHash: 111280987;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Activate: "read|write";
                 readonly Charge: "read|write";
+                readonly Activate: "read|write";
                 readonly Error: "read|write";
                 readonly Mode: "read|write";
                 readonly On: "read|write";
@@ -8024,8 +8056,8 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Quantity: "read|write";
-                readonly Charge: "read|write";
                 readonly On: "read|write";
+                readonly Charge: "read|write";
                 readonly Power: "read|write";
             };
             readonly name: "ItemWearLamp";
@@ -9999,18 +10031,18 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
-                readonly Error: "read|write";
                 readonly ClearMemory: "write";
                 readonly CompletionRatio: "read|write";
-                readonly ImportCount: "read|write";
+                readonly Error: "read|write";
                 readonly ExportCount: "read|write";
-                readonly Lock: "read|write";
+                readonly ImportCount: "read|write";
                 readonly On: "read|write";
                 readonly Open: "read|write";
+                readonly Lock: "read|write";
                 readonly Power: "read|write";
+                readonly RecipeHash: "read|write";
                 readonly Reagents: "read|write";
                 readonly RequiredPower: "read|write";
-                readonly RecipeHash: "read|write";
             };
             readonly name: "StructureAdvancedPackagingMachine";
             readonly description: "";
@@ -10191,19 +10223,19 @@ export declare const devices: {
             readonly PrefabHash: 336213101;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly ClearMemory: "write";
                 readonly Activate: "read|write";
                 readonly CompletionRatio: "read|write";
                 readonly Error: "read|write";
-                readonly ImportCount: "read|write";
-                readonly On: "read|write";
-                readonly Lock: "read|write";
+                readonly ClearMemory: "write";
                 readonly ExportCount: "read|write";
-                readonly Power: "read|write";
-                readonly Open: "read|write";
+                readonly ImportCount: "read|write";
+                readonly Lock: "read|write";
+                readonly On: "read|write";
                 readonly Reagents: "read|write";
-                readonly RequiredPower: "read|write";
+                readonly Power: "read|write";
                 readonly RecipeHash: "read|write";
+                readonly RequiredPower: "read|write";
+                readonly Open: "read|write";
             };
             readonly name: "StructureAutolathe";
             readonly description: "";
@@ -10242,16 +10274,16 @@ export declare const devices: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
                 readonly ClearMemory: "write";
-                readonly CompletionRatio: "read|write";
                 readonly Error: "read|write";
                 readonly ExportCount: "read|write";
+                readonly CompletionRatio: "read|write";
                 readonly ImportCount: "read|write";
                 readonly Lock: "read|write";
                 readonly On: "read|write";
-                readonly Reagents: "read|write";
                 readonly Open: "read|write";
                 readonly Power: "read|write";
                 readonly RecipeHash: "read|write";
+                readonly Reagents: "read|write";
                 readonly RequiredPower: "read|write";
             };
             readonly name: "StructureAutomatedOven";
@@ -10263,10 +10295,10 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Lock: "read|write";
-                readonly Error: "read|write";
                 readonly Maximum: "read|write";
-                readonly Power: "read|write";
                 readonly On: "read|write";
+                readonly Error: "read|write";
+                readonly Power: "read|write";
                 readonly Ratio: "read|write";
                 readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
@@ -10279,9 +10311,9 @@ export declare const devices: {
             readonly PrefabHash: -1613497288;
             readonly params: {
                 readonly PrefabHash: "read";
+                readonly On: "read|write";
                 readonly Lock: "read|write";
                 readonly Power: "read|write";
-                readonly On: "read|write";
                 readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
             };
@@ -10425,7 +10457,7 @@ export declare const devices: {
             readonly slot_count: 0;
         };
         readonly StructureBlocker: {
-            readonly PrefabHash: 378084505;
+            readonly PrefabHash: -360308577;
             readonly params: {
                 readonly PrefabHash: "read";
             };
@@ -10434,7 +10466,7 @@ export declare const devices: {
             readonly slot_count: 0;
         };
         readonly StructureButton: {
-            readonly PrefabHash: -360308577;
+            readonly PrefabHash: 491845673;
             readonly params: {
                 readonly PrefabHash: "read";
             };
@@ -10794,8 +10826,8 @@ export declare const devices: {
                 readonly ImportCount: "read|write";
                 readonly On: "read|write";
                 readonly Open: "read|write";
-                readonly Reagents: "read|write";
                 readonly Power: "read|write";
+                readonly Reagents: "read|write";
                 readonly RequiredPower: "read|write";
             };
             readonly name: "StructureCentrifuge";
@@ -10806,11 +10838,11 @@ export declare const devices: {
             readonly PrefabHash: -128473777;
             readonly params: {
                 readonly PrefabHash: "read";
+                readonly Error: "read|write";
                 readonly On: "read|write";
                 readonly Power: "read|write";
-                readonly Error: "read|write";
-                readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
+                readonly RequiredPower: "read|write";
             };
             readonly name: "StructureCircuitHousing";
             readonly description: "";
@@ -10820,47 +10852,47 @@ export declare const devices: {
             readonly PrefabHash: 1238905683;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly CombustionInput: "read|write";
-                readonly ClearMemory: "write";
                 readonly Combustion: "read|write";
                 readonly CombustionLimiter: "read|write";
+                readonly ClearMemory: "write";
+                readonly CombustionInput: "read|write";
                 readonly CombustionOutput: "read|write";
                 readonly Error: "read|write";
                 readonly ExportCount: "read|write";
                 readonly ImportCount: "read|write";
-                readonly Lock: "read|write";
                 readonly On: "read|write";
+                readonly Lock: "read|write";
                 readonly Power: "read|write";
+                readonly Open: "read|write";
                 readonly Pressure: "read|write";
                 readonly PressureInput: "read|write";
-                readonly Open: "read|write";
-                readonly PressureOutput: "read|write";
                 readonly RatioCarbonDioxide: "read|write";
-                readonly RatioNitrogen: "read|write";
+                readonly PressureOutput: "read|write";
                 readonly RatioCarbonDioxideInput: "read|write";
                 readonly RatioCarbonDioxideOutput: "read|write";
                 readonly RatioNitrogenInput: "read|write";
                 readonly RatioNitrogenOutput: "read|write";
+                readonly RatioNitrogen: "read|write";
                 readonly RatioNitrousOxide: "read|write";
-                readonly RatioOxygen: "read|write";
-                readonly RatioNitrousOxideOutput: "read|write";
                 readonly RatioNitrousOxideInput: "read|write";
-                readonly RatioOxygenOutput: "read|write";
-                readonly RatioPollutant: "read|write";
+                readonly RatioNitrousOxideOutput: "read|write";
+                readonly RatioOxygen: "read|write";
                 readonly RatioOxygenInput: "read|write";
+                readonly RatioPollutant: "read|write";
                 readonly RatioPollutantInput: "read|write";
+                readonly RatioOxygenOutput: "read|write";
                 readonly RatioPollutantOutput: "read|write";
                 readonly RatioVolatiles: "read|write";
                 readonly RatioVolatilesInput: "read|write";
                 readonly RatioVolatilesOutput: "read|write";
                 readonly RatioWater: "read|write";
-                readonly RatioWaterInput: "read|write";
-                readonly RequiredPower: "read|write";
                 readonly RatioWaterOutput: "read|write";
+                readonly RequiredPower: "read|write";
+                readonly RatioWaterInput: "read|write";
                 readonly Rpm: "read|write";
-                readonly Stress: "read|write";
                 readonly Temperature: "read|write";
                 readonly TemperatureInput: "read|write";
+                readonly Stress: "read|write";
                 readonly TemperatureOutput: "read|write";
                 readonly Throttle: "read|write";
                 readonly TotalMoles: "read|write";
@@ -10876,7 +10908,6 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Error: "read|write";
-                readonly LineNumber: "read|write";
                 readonly Lock: "read|write";
                 readonly On: "read|write";
                 readonly Open: "read|write";
@@ -10896,10 +10927,10 @@ export declare const devices: {
                 readonly Minimum: "read|write";
                 readonly On: "read|write";
                 readonly Open: "read|write";
-                readonly Power: "read|write";
                 readonly Ratio: "read|write";
-                readonly RequiredPower: "read|write";
+                readonly Power: "read|write";
                 readonly Setting: "read|write";
+                readonly RequiredPower: "read|write";
             };
             readonly name: "StructureCondensationChamber";
             readonly description: "";
@@ -10910,15 +10941,15 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly ClearMemory: "write";
-                readonly ExportCount: "read|write";
                 readonly Error: "read|write";
+                readonly ExportCount: "read|write";
                 readonly ImportCount: "read|write";
-                readonly On: "read|write";
                 readonly Maximum: "read|write";
                 readonly Power: "read|write";
                 readonly Ratio: "read|write";
-                readonly RequiredPower: "read|write";
+                readonly On: "read|write";
                 readonly Setting: "read|write";
+                readonly RequiredPower: "read|write";
             };
             readonly name: "StructureDeepMiner";
             readonly description: "";
@@ -10928,13 +10959,13 @@ export declare const devices: {
             readonly PrefabHash: 1307165496;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly ClearMemory: "write";
                 readonly Activate: "read|write";
-                readonly ImportCount: "read|write";
+                readonly ClearMemory: "write";
                 readonly CompletionRatio: "read|write";
                 readonly Error: "read|write";
-                readonly ExportCount: "read|write";
+                readonly ImportCount: "read|write";
                 readonly Lock: "read|write";
+                readonly ExportCount: "read|write";
                 readonly On: "read|write";
                 readonly Power: "read|write";
                 readonly Open: "read|write";
@@ -10950,14 +10981,14 @@ export declare const devices: {
             readonly PrefabHash: -1429782576;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Lock: "read|write";
                 readonly Error: "read|write";
+                readonly Lock: "read|write";
                 readonly Minimum: "read|write";
-                readonly Open: "read|write";
                 readonly On: "read|write";
-                readonly Power: "read|write";
+                readonly Open: "read|write";
                 readonly Ratio: "read|write";
                 readonly RequiredPower: "read|write";
+                readonly Power: "read|write";
                 readonly Setting: "read|write";
             };
             readonly name: "StructureEvaporationChamber";
@@ -10970,17 +11001,17 @@ export declare const devices: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
                 readonly ClearMemory: "write";
-                readonly Error: "read|write";
                 readonly CompletionRatio: "read|write";
+                readonly Error: "read|write";
                 readonly ImportCount: "read|write";
                 readonly ExportCount: "read|write";
                 readonly Lock: "read|write";
                 readonly On: "read|write";
-                readonly Reagents: "read|write";
                 readonly Open: "read|write";
                 readonly Power: "read|write";
-                readonly RequiredPower: "read|write";
+                readonly Reagents: "read|write";
                 readonly RecipeHash: "read|write";
+                readonly RequiredPower: "read|write";
             };
             readonly name: "StructureHydraulicPipeBender";
             readonly description: "";
@@ -11001,11 +11032,11 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Error: "read|write";
-                readonly Maximum: "read|write";
                 readonly Lock: "read|write";
                 readonly Power: "read|write";
-                readonly Ratio: "read|write";
                 readonly On: "read|write";
+                readonly Ratio: "read|write";
+                readonly Maximum: "read|write";
                 readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
             };
@@ -11021,11 +11052,11 @@ export declare const devices: {
                 readonly Activate: "read|write";
                 readonly ClearMemory: "write";
                 readonly Error: "read|write";
-                readonly ExportCount: "read|write";
                 readonly ImportCount: "read|write";
-                readonly Maximum: "read|write";
+                readonly ExportCount: "read|write";
                 readonly Lock: "read|write";
                 readonly Mode: "read|write";
+                readonly Maximum: "read|write";
                 readonly On: "read|write";
                 readonly Open: "read|write";
                 readonly Power: "read|write";
@@ -11042,18 +11073,18 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
-                readonly ClearMemory: "write";
                 readonly CompletionRatio: "read|write";
                 readonly Error: "read|write";
                 readonly ExportCount: "read|write";
+                readonly ClearMemory: "write";
                 readonly ImportCount: "read|write";
                 readonly Lock: "read|write";
                 readonly On: "read|write";
-                readonly Reagents: "read|write";
+                readonly Open: "read|write";
                 readonly Power: "read|write";
                 readonly RecipeHash: "read|write";
-                readonly Open: "read|write";
                 readonly RequiredPower: "read|write";
+                readonly Reagents: "read|write";
             };
             readonly name: "StructureSecurityPrinter";
             readonly description: "";
@@ -11064,18 +11095,18 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Activate: "read|write";
-                readonly InterrogationProgress: "read|write";
-                readonly Horizontal: "read|write";
                 readonly Error: "read|write";
+                readonly Horizontal: "read|write";
+                readonly InterrogationProgress: "read|write";
                 readonly MinimumWattsToContact: "read|write";
                 readonly On: "read|write";
+                readonly Power: "read|write";
                 readonly RequiredPower: "read|write";
                 readonly Setting: "read|write";
-                readonly Power: "read|write";
-                readonly SignalStrength: "read|write";
                 readonly SignalID: "read|write";
-                readonly SizeZ: "read|write";
+                readonly SignalStrength: "read|write";
                 readonly SizeX: "read|write";
+                readonly SizeZ: "read|write";
                 readonly TargetPadIndex: "read|write";
                 readonly VelocityRelativeZ: "read|write";
                 readonly Volume: "read|write";
@@ -11088,19 +11119,19 @@ export declare const devices: {
             readonly PrefabHash: -465741100;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly CompletionRatio: "read|write";
-                readonly Activate: "read|write";
                 readonly ClearMemory: "write";
+                readonly Activate: "read|write";
+                readonly CompletionRatio: "read|write";
                 readonly Error: "read|write";
                 readonly ExportCount: "read|write";
+                readonly Lock: "read|write";
                 readonly ImportCount: "read|write";
                 readonly On: "read|write";
-                readonly Lock: "read|write";
                 readonly Open: "read|write";
                 readonly Power: "read|write";
                 readonly Reagents: "read|write";
-                readonly RecipeHash: "read|write";
                 readonly RequiredPower: "read|write";
+                readonly RecipeHash: "read|write";
             };
             readonly name: "StructureToolManufactory";
             readonly description: "";
@@ -11111,10 +11142,10 @@ export declare const devices: {
             readonly params: {
                 readonly PrefabHash: "read";
                 readonly Charge: "read|write";
+                readonly Lock: "read|write";
                 readonly Mode: "read|write";
                 readonly Error: "read|write";
                 readonly On: "read|write";
-                readonly Lock: "read|write";
                 readonly Open: "read|write";
                 readonly Power: "read|write";
             };
@@ -11126,11 +11157,11 @@ export declare const devices: {
             readonly PrefabHash: 1154745374;
             readonly params: {
                 readonly PrefabHash: "read";
-                readonly Mode: "read|write";
-                readonly Error: "read|write";
                 readonly Charge: "read|write";
                 readonly Lock: "read|write";
+                readonly Mode: "read|write";
                 readonly On: "read|write";
+                readonly Error: "read|write";
                 readonly Power: "read|write";
                 readonly Open: "read|write";
             };

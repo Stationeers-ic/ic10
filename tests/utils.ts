@@ -86,7 +86,8 @@ export const m = {
     reg: (r: string) => interpreterIc10.memory.getRegister(r),
     val: (v: string) => interpreterIc10.memory.getValue(v),
     chan: (c: string) => interpreterIc10.memory.getDeviceOutput(c),
-    stack: () => interpreterIc10.memory.stack.getStack()
+    stack: () => interpreterIc10.memory.stack.getStack(),
+    findValue: (a:string) => interpreterIc10.memory.findValue(a)
 }
 
 export const makeDebugger = () => {

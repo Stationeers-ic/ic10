@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findDevice = exports.isRegister = exports.isSimplePort = exports.isRecPort = exports.isPort = exports.isNumber = exports.isHash = exports.hashStr = exports.patterns = void 0;
+exports.findDevice = exports.isRegister = exports.isSimplePort = exports.isRecPort = exports.isPort = exports.hash2Int = exports.isNumber = exports.isHash = exports.hashStr = exports.patterns = void 0;
 const crc_1 = require("crc");
 const devices_1 = __importDefault(require("./data/devices"));
+const Ic10Error_1 = require("./Ic10Error");
 exports.patterns = {
     reg: /^(?<prefix>r*)r(?<index>0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$/,
     dev: /^d([012345b])$/,
@@ -23,6 +24,16 @@ const isNumber = (value) => {
     return regex.exec(value.trim()) !== null;
 };
 exports.isNumber = isNumber;
+const hash2Int = (value) => {
+    if (!(0, exports.isHash)(value))
+        return NaN;
+    const m = exports.patterns.hash.exec(value);
+    if (!m)
+        throw new Ic10Error_1.Ic10Error('Internal error');
+    const hash = m.groups?.hash ?? "";
+    return (0, exports.hashStr)(hash);
+};
+exports.hash2Int = hash2Int;
 const isPort = (value) => (0, exports.isSimplePort)(value) || (0, exports.isRecPort)(value);
 exports.isPort = isPort;
 const isRecPort = (value) => exports.patterns.recDev.test(value);

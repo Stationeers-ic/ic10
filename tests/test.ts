@@ -143,4 +143,15 @@ describe('general', () => {
         expect(ic10.memory.getDevice("d0").properties.PrefabHash).toBe(hashStr("StructureAdvancedPackagingMachine"))
         expect(ic10.memory.getDevice("d0").name).toBe("StructureAdvancedPackagingMachine")
     })
+    test('macro hash', () => {
+        run({ device: new Hardsuit() })`
+            move r0 HASH("bar")
+        `
+        expect(m.reg("r0").value).toBe(hashStr('bar'))
+
+        run({ device: new Hardsuit() })`
+            define test HASH("bar")
+        `
+        expect(m.findValue("test")).toBe(hashStr('bar'))
+    })
 })
