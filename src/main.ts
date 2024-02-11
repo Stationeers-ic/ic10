@@ -3,7 +3,6 @@ import {Line} from "./core/Line.js";
 
 export class InterpreterIc10 {
     constructor(public readonly env: Environment, private code: string) {
-        this.parseCode()
     }
 
     public setCode(code: string) {
@@ -17,9 +16,10 @@ export class InterpreterIc10 {
         });
     }
 
-    public run() {
-        this.parseCode().forEach(async (line) => {
-           await line.run()
-        })
+    public async run() {
+        const lines = this.parseCode()
+        for (const line of lines) {
+            await line.run()
+        }
     }
 }

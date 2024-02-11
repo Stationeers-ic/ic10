@@ -1,10 +1,13 @@
 import {Environment} from "./abstract/Environment.js";
 import {getProperty, setProperty} from 'dot-prop';
+
 export class DevEnv extends Environment {
     public data: any = {}
     public aliases = new Map<string, string|number>()
 
-    get(name: string): any {
+    get(name: string | number): string | number | undefined {
+        if (typeof name === 'number') return name
+        if (isNaN(parseFloat(name))) return parseFloat(name)
         if (this.aliases.has(name)) {
             return this.aliases.get(name);
         }

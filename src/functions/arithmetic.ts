@@ -1,5 +1,5 @@
-import {icFunction} from "../types.js";
 import {z} from "zod";
+import {icFunction} from "../functions";
 export const arithmetic: { [key: string]: icFunction } = {
     add: (env, data) => {
         const d = z.tuple([z.string(), z.string().or(z.number()), z.string().or(z.number())]).parse(data)

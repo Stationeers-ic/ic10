@@ -1,16 +1,17 @@
 import {InterpreterIc10} from "../main.js";
 import {DevEnv} from "../DevEnv.js";
-import {functions} from "../functions.js";
 
-
-console.log(functions)
-const mem = new DevEnv();
-(new InterpreterIc10(mem,
-    `
+(async () => {
+    const mem = new DevEnv();
+    const a = new InterpreterIc10(mem, `
 add r1 1 2
 `
-))
-console.log(mem.data)
+    )
+    await a.run()
+    console.log(mem.data)
+})()
+
+
 //    `
 //     test:
 //  alias speaker r2

@@ -19,8 +19,7 @@
     "removeComments"  :true,
     "sourceMap"       :false,
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
-    "declaration": true,
-    "declarationDir": "types",
+    "declaration": false,
 //    "outFile": "result/bundle.js",
     /* Concatenate and emit output to single file. */
     "outDir": "build",
