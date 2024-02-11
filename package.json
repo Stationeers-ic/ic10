@@ -8,7 +8,8 @@
     "watch": "tsc -w",
     "build": "bun build ./src/main.ts --outdir ./build",
     "test": "jest",
-    "nodemon": "nodemon tests/dev.ts"
+    "nodemon": "nodemon tests/dev.ts",
+    "devTest": "ts-node tests/dev.ts"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "@types/crc": "^3.8.0",
     "@types/lodash": "^4.14.195",
     "crc": "^4.3.2",
-    "dot-prop": "^8.0.2"
+    "dot-prop": "^8.0.2",
+    "zod": "^3.22.4"
   }
 }
