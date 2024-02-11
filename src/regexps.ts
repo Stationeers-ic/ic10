@@ -1,0 +1,1 @@
+export const line = new RegExp("^(?<function>^:?[^#:\\s]+)?(?<args>.*?)(?<comment>\\#.*)*$", "");
