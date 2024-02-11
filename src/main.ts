@@ -1,5 +1,5 @@
-import {Environment} from "./abstract/Environment";
-import {Line} from "./core/Line";
+import {Environment} from "./abstract/Environment.js";
+import {Line} from "./core/Line.js";
 
 export class InterpreterIc10 {
     constructor(public readonly env: Environment, private code: string) {

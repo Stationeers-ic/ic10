@@ -1,6 +1,6 @@
-import {line} from "../regexps";
-import {InterpreterIc10} from "../main";
-import {functions} from "../functions";
+import {line} from "../regexps.js";
+import {InterpreterIc10} from "../main.js";
+import {functions} from "../functions.js";
 
 export class Line {
     private fn: string | undefined;

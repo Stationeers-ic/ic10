@@ -1,8 +1,9 @@
-import {InterpreterIc10} from "../src/main";
-import {DevEnv} from "../src/DevEnv";
-import {functions} from "../src/functions";
+import {InterpreterIc10} from "../main.js";
+import {DevEnv} from "../DevEnv.js";
+import {functions} from "../functions.js";
 
-// console.log(functions)
+
+console.log(functions)
 const mem = new DevEnv();
 (new InterpreterIc10(mem,
     `

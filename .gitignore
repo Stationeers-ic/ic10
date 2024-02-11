@@ -81,3 +81,6 @@ typings/
 .fusebox/
 
 .project-manager/
+build/
+
+src/**/*.js

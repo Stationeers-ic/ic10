@@ -1,4 +1,4 @@
-import {Environment} from "./abstract/Environment";
+import {Environment} from "./abstract/Environment.js";
 import {getProperty, setProperty} from 'dot-prop';
 export class DevEnv extends Environment {
     public data: any = {}
