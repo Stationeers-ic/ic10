@@ -10,16 +10,25 @@ export class InterpreterIc10 {
     }
 
     parseCode() {
-        return this.code.split('\n').map((line, i) => {
+        return new Map(this.code.split('\n').map((line, i) => {
             const l = line.trim().replace(/\s+/g, ' ')// clear string
-            return new Line(this, l, i)
-        });
+            return [i, new Line(this, l, i)]
+        }));
     }
 
     public async run() {
         const lines = this.parseCode()
-        for (const line of lines) {
-            await line.run()
+
+        const size = lines.size
+        while (this.env.line < size) {
+            let old = this.env.line
+            const line = lines.get(this.env.line)
+            if (line) {
+                await line.run()
+            }
+            if (old === this.env.line) {
+                this.env.line++
+            }
         }
     }
 }

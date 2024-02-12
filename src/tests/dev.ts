@@ -4,7 +4,10 @@ import {DevEnv} from "../DevEnv.js";
 (async () => {
     const mem = new DevEnv();
     const a = new InterpreterIc10(mem, `
-add r1 1 2
+add r1 0 1
+add r1 r1 1
+mul r1 r1 3
+
 `
     )
     await a.run()
