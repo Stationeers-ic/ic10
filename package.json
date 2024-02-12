@@ -8,7 +8,7 @@
     "watch": "tsc -w",
     "build": "bun build ./src/main.ts --outdir ./build",
     "test": "jest",
-    "nodemon": "nodemon tests/dev.ts",
+    "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
   },
   "repository": {

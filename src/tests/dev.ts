@@ -3,15 +3,21 @@ import {DevEnv} from "../DevEnv.js";
 
 (async () => {
     const mem = new DevEnv();
-    const a = new InterpreterIc10(mem, `
-add r1 0 1
-add r1 r1 1
-mul r1 r1 3
 
+    try {
+        const a = new InterpreterIc10(mem, `
+test:
+add r0 r0 1
+
+j test
 `
-    )
-    await a.run()
+        )
+        await a.run()
+    } catch (e) {
+        console.error(e)
+    }
     console.log(mem.data)
+    console.log(mem.aliases)
 })()
 
 

@@ -7,6 +7,7 @@ export class DevEnv extends Environment {
     constructor() {
         super()
         this.alias('sp', 'r16')
+        this.alias('ra', 'r17')
     }
 
     public data: any = {}
@@ -21,7 +22,7 @@ export class DevEnv extends Environment {
         if (typeof name === 'number') return name
         if (!isNaN(parseFloat(name))) return parseFloat(name)
         if (this.aliases.has(name)) {
-            return z.number().parse(this.get(z.string().parse(this.aliases.get(name))))
+            return z.number().parse(this.get(z.string().or(z.number()).parse(this.aliases.get(name))))
         }
         this.pathValidate(name)
         return z.number().parse(getProperty(this.data, name) ?? 0);
@@ -41,8 +42,12 @@ export class DevEnv extends Environment {
     }
 
     jump(line: string | number): void {
-        if (typeof line === 'number') this.line = line
-        else this.line = this.get(line)
+        console.log('jump', line)
+        if (typeof line === 'number') {
+            this.line = line
+        } else {
+            this.line = this.get(line)
+        }
     }
 
     peek(): number {
@@ -64,5 +69,12 @@ export class DevEnv extends Environment {
         this.set('sp', sp)
     }
 
+    getAlias(alias: string): string {
+        if (this.aliases.has(alias)) return z.string().parse(this.aliases.get(alias))
+        return alias
+    }
 
+    hasDevice(name: string): boolean {
+        return true;
+    }
 }

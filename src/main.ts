@@ -1,5 +1,6 @@
 import {Environment} from "./abstract/Environment.js";
 import {Line} from "./core/Line.js";
+import {InfiniteLoop} from "./errors/InfiniteLoop";
 
 export class InterpreterIc10 {
     constructor(public readonly env: Environment, private code: string) {
@@ -10,10 +11,20 @@ export class InterpreterIc10 {
     }
 
     parseCode() {
-        return new Map(this.code.split('\n').map((line, i) => {
-            const l = line.trim().replace(/\s+/g, ' ')// clear string
-            return [i, new Line(this, l, i)]
-        }));
+        return new Map(
+            this.code.split('\n')
+                .map((str) => str.trim().replace(/\s+/g, ' '))
+                .filter((str) => str)
+                .map((str, i) => {
+                    const l = new Line(this, str, i)
+                    if (l.fn?.endsWith(':')) {
+                        const label = l.fn?.split(':')[0]
+                        this.env.alias(label, i)
+                    }
+                    return [i, l]
+                })
+        )
+            ;
     }
 
     public async run() {
@@ -28,6 +39,11 @@ export class InterpreterIc10 {
             }
             if (old === this.env.line) {
                 this.env.line++
+            }
+
+            let whileTrueLine = [...lines].filter(([, l]) => l.runCounter > this.env.InfiniteLoopLimit)
+            if (whileTrueLine.length) {
+                throw new InfiniteLoop(`Infinite loop detected at line ${whileTrueLine[0][0]}`, 'warn', whileTrueLine[0][0])
             }
         }
     }

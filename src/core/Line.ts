@@ -4,9 +4,10 @@ import {functions} from "../functions.js";
 import {z} from "zod";
 
 export class Line {
-    private fn: string | undefined;
-    private args: any[] | undefined;
-    private comment: string | undefined;
+    public fn: string | undefined;
+    public args: any[] | undefined;
+    public comment: string | undefined
+    public runCounter: number = 0
 
     constructor(private scope: InterpreterIc10, public line: string, public lineIndex: number) {
         this.parseLine()
@@ -37,10 +38,15 @@ export class Line {
     }
 
     public async run() {
+        this.runCounter++
         if (this.fn) {
             if (this.fn in functions) {
-                return functions[this.fn](this.scope.env, this.args ?? []);
+                functions[this.fn](this.scope.env, this.args ?? []);
+                return
             }
+            // else{
+            //     console.warn(`Function ${this.fn} not found`)
+            // }
         }
     }
 
