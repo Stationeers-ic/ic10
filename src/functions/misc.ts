@@ -21,4 +21,14 @@ export const misc: { [key: string]: icFunction } = {
         const d = z.tuple([z.string(), z.string().or(z.number())]).parse(data)
         env.set(d[0], env.get(d[1]))
     },
+    yield: (env, data) => {
+    },
+    sleep: async (env, data) => {
+        const [time] = z.tuple([z.string().or(z.number())]).parse(data)
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve()
+            }, env.get(time) * 1000)
+        })
+    }
 }

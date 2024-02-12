@@ -8,6 +8,11 @@ export class DevEnv extends Environment {
         super()
         this.alias('sp', 'r16')
         this.alias('ra', 'r17')
+
+        this.alias('Average', 0)
+        this.alias('Sum', 1)
+        this.alias('Minimum', 2)
+        this.alias('Maximum', 3)
     }
 
     public data: any = {}
@@ -77,11 +82,11 @@ export class DevEnv extends Environment {
         return true;
     }
 
-    batchRead(hash: number, logic: string): number {
-        return this.get(`${hash}.${logic}`)
+    getDeviceByHash(hash: number): string[] {
+        return [];
     }
 
-    batchWrite(hash: number, logic: string, value: number): void {
-        this.set(`${hash}.${logic}`, value)
+    getDeviceByHashAndName(hash: number, name: number): string[] {
+        return [];
     }
 }

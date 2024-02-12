@@ -35,7 +35,7 @@ export class InterpreterIc10 {
             const line = lines.get(this.env.line)
             if (line) {
                 await line.run()
-                this.env.afterLineRun()
+                this.env.afterLineRun(line)
             }
             if (old === this.env.line) {
                 this.env.line++

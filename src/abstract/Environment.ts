@@ -1,4 +1,7 @@
-export abstract class Environment{
+import {Line} from "../core/Line";
+import EventEmitter from 'eventemitter3';
+
+export abstract class Environment extends EventEmitter {
     public line: number = 0;
     public InfiniteLoopLimit: number = 500;
 
@@ -13,13 +16,13 @@ export abstract class Environment{
 
     abstract hasDevice(name: string): boolean;
 
-    abstract batchWrite(hash: number, logic: string, value: number): void;
+    abstract getDeviceByHash(hash: number): string[];
 
-    abstract batchRead(hash: number, logic: string): number;
+    abstract getDeviceByHashAndName(hash: number, name: number): string[];
 
     abstract alias(alias: string, value: string | number): void;
     abstract getAlias(alias: string): string;
 
-    afterLineRun() {
+    afterLineRun(line: Line) {
     }
 }
