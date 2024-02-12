@@ -42,7 +42,6 @@ export class DevEnv extends Environment {
     }
 
     jump(line: string | number): void {
-        console.log('jump', line)
         if (typeof line === 'number') {
             this.line = line
         } else {
@@ -76,5 +75,13 @@ export class DevEnv extends Environment {
 
     hasDevice(name: string): boolean {
         return true;
+    }
+
+    batchRead(hash: number, logic: string): number {
+        return this.get(`${hash}.${logic}`)
+    }
+
+    batchWrite(hash: number, logic: string, value: number): void {
+        this.set(`${hash}.${logic}`, value)
     }
 }

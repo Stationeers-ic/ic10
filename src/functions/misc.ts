@@ -1,10 +1,17 @@
 import {icFunction} from "../functions";
 import {z} from "zod";
+import {dev, reg} from "../regexps";
 
 export const misc: { [key: string]: icFunction } = {
     alias: (env, data) => {
-        const d = z.tuple([z.string(), z.string()]).parse(data)
-        env.alias(d[0], d[1])
+        const [alias, dr,] = z.tuple([
+            z.string(),
+            z.union([
+                z.string().regex(reg),
+                z.string().regex(dev)
+            ])
+        ]).parse(data)
+        env.alias(alias, dr)
     },
     define: (env, data) => {
         const d = z.tuple([z.string(), z.string().or(z.number())]).parse(data)

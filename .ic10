@@ -1,24 +1,31 @@
-move r0 5
-slt r15 r0 5
-beqz r15 if0exit
-s d0 Setting 0
-if0exit:
-move r15 80
-move r14 15
-jal update
-move r13 r0
-move r12 0
-jal update2
-jr 13
-update:
-alias b r15
-alias a r14
-s d0 Setting b
-s d0 Vertical a
-j ra
-update2:
-alias b r13
-alias c r12
-s d0 Setting b
-s d0 Vertical a
-j ra
+alias sensor d0
+alias freezevent d1
+alias freezepump d4
+alias inputvent d2
+alias tank d3
+yield # Switch on-off and see the pin's names
+define heater -287495560
+s d4 Setting 1
+sb heater On 0
+yield
+l r0 d3 VolumeOfLiquid
+l r1 d0 Temperature
+bge r0 5 15
+s d2 On 1
+j 16
+s d2 On 0
+sub r0 r1 273.15
+s db Setting r0
+ble r1 363.15 20
+sb heater On 0
+ble r1 373.15 24
+sb heater On 0
+s d1 On 1
+s d4 On 1
+bge r1 363.15 27
+s d1 On 0
+s d4 On 0
+bge r1 353.15 29
+sb heater On 1
+j 9
+# Compiled at 2024-01-03 14:23 by Exca's Basic10.

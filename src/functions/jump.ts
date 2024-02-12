@@ -511,7 +511,7 @@ const jal: icFunction = (env, data) => {
 }
 
 export const jump: { [key: string]: icFunction } = {
-    j, jr,
+    j, jr, jal,
     beq: (env, data) => {
         const [x, y, line] = z.tuple([z.string().or(z.number()), z.string().or(z.number()), z.string().or(z.number())]).parse(data)
         if (conditions.eq(env, [x, y])) j(env, [line])

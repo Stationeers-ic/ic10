@@ -6,10 +6,12 @@ import {DevEnv} from "../DevEnv.js";
 
     try {
         const a = new InterpreterIc10(mem, `
-test:
-add r0 r0 1
-
-j test
+alias al1 r0
+alias ddd1 d1
+move al1 5
+move r1 6
+s d0 On 1
+s ddd1 On 1
 `
         )
         await a.run()

@@ -13,7 +13,13 @@ export abstract class Environment{
 
     abstract hasDevice(name: string): boolean;
 
-    abstract alias(alias: string, value: string | number): void;
+    abstract batchWrite(hash: number, logic: string, value: number): void;
 
+    abstract batchRead(hash: number, logic: string): number;
+
+    abstract alias(alias: string, value: string | number): void;
     abstract getAlias(alias: string): string;
+
+    afterLineRun() {
+    }
 }

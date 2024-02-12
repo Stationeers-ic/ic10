@@ -29,18 +29,17 @@ export class InterpreterIc10 {
 
     public async run() {
         const lines = this.parseCode()
-
         const size = lines.size
         while (this.env.line < size) {
             let old = this.env.line
             const line = lines.get(this.env.line)
             if (line) {
                 await line.run()
+                this.env.afterLineRun()
             }
             if (old === this.env.line) {
                 this.env.line++
             }
-
             let whileTrueLine = [...lines].filter(([, l]) => l.runCounter > this.env.InfiniteLoopLimit)
             if (whileTrueLine.length) {
                 throw new InfiniteLoop(`Infinite loop detected at line ${whileTrueLine[0][0]}`, 'warn', whileTrueLine[0][0])

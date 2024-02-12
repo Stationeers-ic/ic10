@@ -1,7 +1,8 @@
-import {line} from "../regexps.js";
+import {hash, line} from "../regexps.js";
 import {InterpreterIc10} from "../main.js";
 import {functions} from "../functions.js";
 import {z} from "zod";
+import {crc32} from "crc";
 
 export class Line {
     public fn: string | undefined;
@@ -27,6 +28,8 @@ export class Line {
                 fn,
                 args: args?.split(" ").filter((i) => i).map((i): number | string => {
                     if (!isNaN(parseFloat(i))) return parseFloat(i)
+                    const h = this.parseHash(i)
+                    if (h) return h.toString()
                     return i
                 }),
                 comment
@@ -37,16 +40,23 @@ export class Line {
         }
     }
 
+    // parse str HASH("SOME_STRING") to crc32(SOME_STRING)
+    parseHash(str: string) {
+        const matches = hash.exec(str) as [string, string] | null
+        if (matches) {
+            return crc32(matches[1])
+        }
+    }
+
     public async run() {
         this.runCounter++
-        if (this.fn) {
+        if (this.fn && !this.fn.endsWith(':')) {
             if (this.fn in functions) {
                 functions[this.fn](this.scope.env, this.args ?? []);
                 return
+            } else {
+                console.warn(`Function ${this.fn} not found`)
             }
-            // else{
-            //     console.warn(`Function ${this.fn} not found`)
-            // }
         }
     }
 
