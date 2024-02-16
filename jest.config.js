@@ -1,5 +1,5 @@
 module.exports = {
-	preset: 'ts-jest',
+	preset: "ts-jest",
 	testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(test).ts?(x)"],
 	transform: {
 		"^.+\\.(ts)$": "ts-jest",

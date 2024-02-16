@@ -1,8 +1,8 @@
 {
-  "execMap": {
-    "ts": "bun"
-  },
-  "watch": [
-    "src"
-  ]
+	"execMap": {
+		"ts": "bun"
+	},
+	"watch": [
+		"src"
+	]
 }

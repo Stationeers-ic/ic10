@@ -1,22 +1,23 @@
-import {InterpreterIc10} from "../main.js";
-import {DevEnv} from "../DevEnv.js";
+import { InterpreterIc10 } from "../main.js"
+import { DevEnv } from "../DevEnv.js"
+
 
 (async () => {
-
-    const mem = new DevEnv();
-    try {
-        const a = new InterpreterIc10(mem, `
+	const mem = new DevEnv()
+	try {
+		const a = new InterpreterIc10(
+			mem,
+			`
 mod r0 -4 0
-`
-        )
-        await a.run()
-    } catch (e) {
-        console.error(e)
-    }
-    console.log(mem.data)
-    // console.log(mem.aliases)
+`,
+		)
+		await a.run()
+	} catch (e) {
+		console.error(e)
+	}
+	console.log(mem.data)
+	// console.log(mem.aliases)
 })()
-
 
 //    `
 //     test:

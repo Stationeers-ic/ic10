@@ -30,56 +30,70 @@
 //
 // export type Conditions = ReturnType<typeof makeConditions>
 
-import {icCondition} from "../functions";
-import {z} from "zod";
+import { icCondition } from "../functions"
+import { z } from "zod"
+import { StringOrNumberOrNaN } from "../ZodTypes"
 
 const eq: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) == env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) == env.get(y)
 }
 const ge: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) >= env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) >= env.get(y)
 }
 const gt: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) > env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) > env.get(y)
 }
 const le: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) <= env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) <= env.get(y)
 }
 const lt: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) < env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) < env.get(y)
 }
 const ne: icCondition = (env, data): boolean => {
-    const [x, y] = z.tuple([z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return env.get(x) != env.get(y)
+	const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return env.get(x) != env.get(y)
 }
 const na: icCondition = (env, data): boolean => {
-    const [x, y, c] = z.tuple([z.string().or(z.number()), z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return Math.abs(env.get(x) - env.get(y)) > env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y)))
+	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return Math.abs(env.get(x) - env.get(y)) > env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y)))
 }
 const ap: icCondition = (env, data): boolean => {
-    const [x, y, c] = z.tuple([z.string().or(z.number()), z.string().or(z.number()), z.string().or(z.number())]).parse(data)
-    return !na(env, [env.get(x), env.get(y), env.get(c)])
+	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
+	return !na(env, [env.get(x), env.get(y), env.get(c)])
 }
 const dse: icCondition = (env, data): boolean => {
-    const [d] = z.tuple([z.string()]).parse(data)
-    return env.hasDevice(env.getAlias(d))
+	const [d] = z.tuple([z.string()]).parse(data)
+	return env.hasDevice(env.getAlias(d))
 }
 const dns: icCondition = (env, data): boolean => {
-    const [d] = z.tuple([z.string()]).parse(data)
-    return !env.hasDevice(env.getAlias(d))
+	const [d] = z.tuple([z.string()]).parse(data)
+	return !env.hasDevice(env.getAlias(d))
 }
 const nan: icCondition = (env, data): boolean => {
-    const [v] = z.tuple([z.string().or(z.number())]).parse(data)
-    return isNaN(env.get(v))
+	const [v] = z.tuple([StringOrNumberOrNaN]).parse(data)
+	return isNaN(env.get(v))
 }
 const nanz: icCondition = (env, data): boolean => {
-    const [v] = z.tuple([z.string().or(z.number())]).parse(data)
-    return !isNaN(env.get(v))
+	const [v] = z.tuple([StringOrNumberOrNaN]).parse(data)
+	return !isNaN(env.get(v))
 }
 
-export const conditions = {eq, ge, gt, le, lt, ne, ap, na, dse, dns, nan, nanz}
+export const conditions = {
+	eq,
+	ge,
+	gt,
+	le,
+	lt,
+	ne,
+	ap,
+	na,
+	dse,
+	dns,
+	nan,
+	nanz,
+}
