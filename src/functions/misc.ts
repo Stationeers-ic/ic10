@@ -25,7 +25,7 @@ export const misc: { [key: string]: icFunction } = {
     },
     sleep: async (env, data) => {
         const [time] = z.tuple([z.string().or(z.number())]).parse(data)
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
             setTimeout(() => {
                 resolve()
             }, env.get(time) * 1000)

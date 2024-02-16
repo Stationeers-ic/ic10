@@ -52,7 +52,7 @@ export class Line {
         this.runCounter++
         if (this.fn && !this.fn.endsWith(':')) {
             if (this.fn in functions) {
-                functions[this.fn](this.scope.env, this.args ?? []);
+                const errors = functions[this.fn](this.scope.env, this.args ?? []);
                 return
             } else {
                 console.warn(`Function ${this.fn} not found`)

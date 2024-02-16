@@ -2,26 +2,11 @@ import {InterpreterIc10} from "../main.js";
 import {DevEnv} from "../DevEnv.js";
 
 (async () => {
+
     const mem = new DevEnv();
-    mem.set('db.Stress', 50)
     try {
         const a = new InterpreterIc10(mem, `
-define targetrmp 1000
-yield
-l r0 db Rpm
-l r1 db Stress
-bge r0 targetrmp 13
-bne r1 0 8
-s db Throttle 100
-j 12
-bge r1 20 11
-s db Throttle 10
-j 12
-s db Throttle 0
-j 14
-s db Throttle 0
-j 1
-# Compiled at 2023-12-30 13:03 by Exca's Basic10.
+mod r0 -4 0
 `
         )
         await a.run()
@@ -29,7 +14,7 @@ j 1
         console.error(e)
     }
     console.log(mem.data)
-    console.log(mem.aliases)
+    // console.log(mem.aliases)
 })()
 
 

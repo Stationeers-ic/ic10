@@ -2,9 +2,10 @@ import {Environment} from "./abstract/Environment.js";
 import {getProperty, setProperty} from 'dot-prop';
 import {z} from "zod";
 
+//Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
 
-    constructor() {
+    constructor(data: { [key: string]: number } = {}) {
         super()
         this.alias('sp', 'r16')
         this.alias('ra', 'r17')
@@ -13,6 +14,9 @@ export class DevEnv extends Environment {
         this.alias('Sum', 1)
         this.alias('Minimum', 2)
         this.alias('Maximum', 3)
+        Object.entries(data).forEach(([key, value]) => {
+            this.set(key, value)
+        })
     }
 
     public data: any = {}
