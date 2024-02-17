@@ -3,8 +3,8 @@
 	"type": "module",
 	"version": "4.0.0",
 	"description": "ic10 interpreter",
-	"main": "build/main.js",
-	"types": "build/main.d.ts",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
 	"scripts": {
 		"prepublish": "prettier . --write",
 		"watch": "tsc -w",
