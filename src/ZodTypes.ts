@@ -39,9 +39,9 @@ export const AliasOrValue = Alias.or(Value)
  * Alias | Register | numeric value
  */
 export const RaliasOrValue = Alias.or(Value)
-export const RaliasOrValuePositive = Alias.or(Value.positive())
-export const SlotIndex = Alias.or(Value.positive().int())
-export const LineIndex = Alias.or(Value.positive().int())
+export const RaliasOrValuePositive = Alias.or(Value.min(0))
+export const SlotIndex = Alias.or(Value.min(0).int())
+export const LineIndex = Alias.or(Value.min(0).int())
 export const RelativeLineIndex = Alias.or(Value.int())
 export const Hash = Alias.or(Value.int())
 
