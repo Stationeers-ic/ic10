@@ -13,9 +13,9 @@ export const Alias = z.string()
  */
 export const Register = z.string().regex(/^r([0-9]|1[0-7])$/) //https://regex101.com/r/UiCGWX/1
 /**
- * d0 | d1 | d2 | d3 | d4 | d5 | d6
+ * d0 - d6
  */
-export const Device = z.string().regex(/^d([0-6])$/) //https://regex101.com/r/0x46i6/1
+export const Device = z.string().regex(/^d([b0-5])$/) //https://regex101.com/r/pAET99/1
 /**
  * Register | Alias
  */
@@ -30,10 +30,6 @@ export const RegisterOrAlias = Ralias
  * Device | Alias
  */
 export const DeviceOrAlias = Device.or(Alias)
-/**
- * Register | Device
- */
-export const RegisterOrDevice = Register.or(Device)
 
 /**
  * Alias | numeric value
@@ -45,6 +41,8 @@ export const AliasOrValue = Alias.or(Value)
 export const RaliasOrValue = Alias.or(Value)
 export const RaliasOrValuePositive = Alias.or(Value.positive())
 export const SlotIndex = Alias.or(Value.positive().int())
+export const LineIndex = Alias.or(Value.positive().int())
+export const RelativeLineIndex = Alias.or(Value.int())
 export const Hash = Alias.or(Value.int())
 
 /**

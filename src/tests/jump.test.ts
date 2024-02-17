@@ -9,4 +9,8 @@ describe("jump", () => {
 	test("jr", () => {
 		expect(runFuncJump(jump.jr, [1],10)).resolves.toBe(11)
 	})
+	test("jal", () => {
+		expect(runFuncJump(jump.jal, [1],10)).resolves.toBe(1)
+	})
+
 })
