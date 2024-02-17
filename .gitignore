@@ -82,5 +82,6 @@ typings/
 
 .project-manager/
 build/
+out/
 
 src/**/*
