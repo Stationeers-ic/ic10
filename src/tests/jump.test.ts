@@ -3,7 +3,10 @@ import { runFunc, runFuncJump } from "./testUtils"
 import { jump } from "../functions/jump"
 
 describe("jump", () => {
-	test("add", () => {
-		expect(runFuncJump(jump., ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
+	test("j", () => {
+		expect(runFuncJump(jump.j, [5],10)).resolves.toBe(5)
+	})
+	test("jr", () => {
+		expect(runFuncJump(jump.jr, [1],10)).resolves.toBe(11)
 	})
 })

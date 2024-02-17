@@ -13,9 +13,11 @@ export async function run(code: string, data: { [key: string]: number } = {}): P
 export async function runFuncJump(
 	fn: icFunction,
 	args: (string | number)[],
+	line: number = 0,
 	data: { [key: string]: number } = {},
 ): Promise<number> {
 	const mem = new DevEnv(data)
+	mem.line = line
 	await fn(mem, args)
 	return mem.line
 }
