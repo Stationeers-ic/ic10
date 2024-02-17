@@ -1,6 +1,5 @@
 import { InterpreterIc10 } from "../main.js"
 import { DevEnv } from "../DevEnv.js"
-
 ;(async () => {
 	const mem = new DevEnv()
 	mem.on("error", (e) => console.error(e))
