@@ -3,4 +3,6 @@
 .hg
 node_modules
 dist/
-package-lockon
+build/
+out/
+package-lock.json
