@@ -8,11 +8,10 @@
 	"arrowParens": "always",
 	"overrides": [
 		{
-			"files": ".prettierrc",
-			"options": {
+"files": ".prettierrc",
+"options": {
 				"parser": "json"
 			}
 		}
 	]
 }
-
