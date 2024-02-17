@@ -2,7 +2,5 @@
 	"execMap": {
 		"ts": "bun"
 	},
-	"watch": [
-		"src"
-	]
+	"watch": ["src"]
 }

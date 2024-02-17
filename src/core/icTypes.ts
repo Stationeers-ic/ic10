@@ -39,7 +39,7 @@ export const valuesDeviceParameter = [
 	"Flush",
 	"ForceWrite",
 	"Fuel",
-	"HASH(\"name\")",
+	'HASH("name")',
 	"Harvest",
 	"Horizontal",
 	"Idle",

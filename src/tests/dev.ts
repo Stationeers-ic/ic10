@@ -1,8 +1,7 @@
 import { InterpreterIc10 } from "../main.js"
 import { DevEnv } from "../DevEnv.js"
 
-
-(async () => {
+;(async () => {
 	const mem = new DevEnv()
 	mem.on("error", (e) => console.error(e))
 	mem.on("warn", (e) => console.warn(e))

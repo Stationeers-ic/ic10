@@ -108,5 +108,3 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 		return super.removeListener(event, fn, this)
 	}
 }
-
-

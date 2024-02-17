@@ -62,17 +62,11 @@ export const DeviceOrAlias = Device.or(z.string())
 /*
  *TODO: Add list reserved words
  */
-export const NotReservedWord = z.string().refine((val) => ![
-	'NaN',
-	'Average',
-	'Sum',
-	'Minimum',
-	'Maximum',
-].includes(val),{
-	message: 'Reserved word',
-});
-
-
+export const NotReservedWord = z
+	.string()
+	.refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {
+		message: "Reserved word",
+	})
 
 export const JumpFunctionName = z.union([
 	z.literal("j"),

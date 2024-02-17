@@ -1,7 +1,8 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
 import {
-	DeviceOrAlias, Hash,
+	DeviceOrAlias,
+	Hash,
 	Logic,
 	Ralias,
 	RaliasOrValue,
@@ -64,9 +65,7 @@ export const device: Record<string, icFunction> = {
 		}
 	},
 	lbn: (env, data) => {
-		const [register, hash, name, logic, mode] = z
-			.tuple([Ralias, Hash, Hash, Logic, Ralias])
-			.parse(data)
+		const [register, hash, name, logic, mode] = z.tuple([Ralias, Hash, Hash, Logic, Ralias]).parse(data)
 		const values: number[] = []
 		env.getDeviceByHashAndName(env.get(hash), env.get(name)).forEach((d) => {
 			values.push(env.get(`${d}.${logic}`))
@@ -90,15 +89,11 @@ export const device: Record<string, icFunction> = {
 		}
 	},
 	lr: (env, data) => {
-		const [register, device, reagentMode, hash] = z
-			.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash])
-			.parse(data)
+		const [register, device, reagentMode, hash] = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash]).parse(data)
 		env.set(register, env.get(`${device}.reagents.${reagentMode}.${hash}`))
 	},
 	sbn: (env, data) => {
-		const [hash, name, logic, register] = z
-			.tuple([Hash, Hash, Logic, RaliasOrValue])
-			.parse(data)
+		const [hash, name, logic, register] = z.tuple([Hash, Hash, Logic, RaliasOrValue]).parse(data)
 		env.getDeviceByHashAndName(env.get(hash), env.get(name)).forEach((d) => {
 			env.set(`${d}.${logic}`, env.get(register))
 		})
@@ -163,9 +158,7 @@ export const device: Record<string, icFunction> = {
 		}
 	},
 	ss: (env, data) => {
-		const [device, slot, property, value] = z
-			.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue])
-			.parse(data)
+		const [device, slot, property, value] = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue]).parse(data)
 		env.set(`${device}.slots.${slot}.${property}`, env.get(value))
 	},
 	sbs: (env, data) => {

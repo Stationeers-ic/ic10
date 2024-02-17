@@ -247,7 +247,7 @@ const bdnsal: icFunction = (env, data) => {
 	const [d, line] = z.tuple([DeviceOrAlias, LineIndex]).parse(data)
 	if (conditions.dns(env, [d])) jal(env, [line])
 }
-export const jump= {
+export const jump = {
 	j,
 	jr,
 	jal,
