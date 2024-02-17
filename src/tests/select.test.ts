@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import { runFunc } from "./testUtils"
 import { functions } from "../functions"
-//import {icFunction} from "../functions.js";
-// import {conditions} from "./conditions.js";
+//import {icFunction} from "../functions";
+// import {conditions} from "./conditions";
 // import {z} from "zod";
 // import {RegisterOrAlias, StringOrNumber} from "../ZodTypes";
 //

@@ -1,4 +1,4 @@
-import { Err } from "../abstract/Err.js"
+import { Err } from "../abstract/Err"
 
 export class SyntaxError extends Err {
 	constructor(

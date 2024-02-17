@@ -1,4 +1,4 @@
-import { Environment } from "./abstract/Environment.js"
+import { Environment } from "./abstract/Environment"
 import { getProperty, hasProperty, setProperty } from "dot-prop"
 import { z } from "zod"
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"

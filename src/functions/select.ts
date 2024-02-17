@@ -1,5 +1,5 @@
-import { icFunction } from "../functions.js"
-import conditions from "./conditions.js"
+import { icFunction } from "../functions"
+import conditions from "./conditions"
 import { z } from "zod"
 import { DeviceOrAlias, Ralias, RaliasOrValue } from "../ZodTypes"
 

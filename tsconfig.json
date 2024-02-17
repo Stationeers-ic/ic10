@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		/* Visit https://aka.ms/tsconfig.json to read more about this file */
+		/* Visit https://aka.ms/tsconfigon to read more about this file */
 		"lib": ["ESNEXT"],
 		/* Basic Options */
 		// "incremental": true,                         /* Enable incremental compilation */
@@ -11,14 +11,14 @@
 		"allowJs": false,
 		/* Allow javascript files to be compiled. */
 		"checkJs": false,
-		/* Report errors in .js files. */
+		/* Report errors in  files. */
 		"noEmitOnError": true,
 		"pretty": true,
 		"removeComments": true,
 		"sourceMap": false,
 		// "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
 		"declaration": false,
-		//    "outFile": "result/bundle.js",
+		//    "outFile": "result/bundle",
 		/* Concatenate and emit output to single file. */
 		"outDir": "build",
 		/* Redirect output structure to the directory. */
@@ -53,7 +53,7 @@
 
 		/* Module Resolution Options */
 		"moduleResolution": "node",
-		/* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+		/* Specify module resolution strategy: 'node' (Node) or 'classic' (TypeScript pre-1.6). */
 		// "baseUrl": "./",                             /* Base directory to resolve non-absolute module names. */
 		// "paths": {},                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
 		// "rootDirs": [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */
@@ -79,5 +79,6 @@
 		// "skipLibCheck": true,                           /* Skip type checking of declaration files. */
 		"resolveJsonModule": true
 	},
-	"exclude": ["node_modules", "tests"]
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "**/*.test.ts", "src/tests", "jest.config.ts"]
 }

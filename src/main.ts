@@ -1,5 +1,5 @@
-import { Environment } from "./abstract/Environment.js"
-import { Line } from "./core/Line.js"
+import { Environment } from "./abstract/Environment"
+import { Line } from "./core/Line"
 import { InfiniteLoop } from "./errors/InfiniteLoop"
 import { Err } from "./abstract/Err"
 
