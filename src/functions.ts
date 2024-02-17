@@ -20,3 +20,4 @@ export const functions: { [key: string]: icFunction } = {
 	...device,
 	...stack,
 }
+
