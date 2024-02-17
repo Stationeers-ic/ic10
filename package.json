@@ -1,54 +1,54 @@
 {
-	"name": "ic10",
-	"type": "module",
-	"version": "4.0.0",
-	"description": "ic10 interpreter",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
-	"scripts": {
-		"prepublish": "prettier . --write",
-		"watch": "tsc -w",
-		"build:node": "bun build ./src/main.ts --outdir ./build --target node --minify",
-		"build:bun": "bun build ./src/main.ts --outdir ./build --target bun --minify",
-		"build:brower": "bun build ./src/main.ts --outdir ./build --minify",
-		"build": "tsc",
-		"test": "jest",
-		"nodemon": "nodemon src/tests/dev.ts",
-		"devTest": "ts-node tests/dev.ts"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Stationeers-ic/ic10.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Stationeers-ic/ic10/issues"
-	},
-	"exclude": [
-		".idea",
-		".vscode",
-		".project-manager",
-		".ic10"
-	],
-	"homepage": "https://github.com/Stationeers-ic/ic10#readme",
-	"devDependencies": {
-		"@types/bun": "^1.0.5",
-		"@types/jest": "^29.5.5",
-		"@types/crc": "^3.8.0",
-		"@types/node": "^20.11.19",
-		"jest": "^29.7.0",
-		"nodemon": "^3.0.3",
-		"prettier": "^3.2.5",
-		"ts-jest": "^29.1.1",
-		"ts-node": "^10.9.2",
-		"typescript": "^4.9.5"
-	},
-	"dependencies": {
-		"crc-32": "^1.2.2",
-		"dot-prop": "^8.0.2",
-		"eventemitter3": "^5.0.1",
-		"zod": "^3.22.4"
-	}
+  "name": "ic10",
+  "type": "module",
+  "version": "4.0.0",
+  "description": "ic10 interpreter",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "prepublish": "prettier . --write",
+    "watch": "tsc -w",
+    "build:node": "bun build ./src/main.ts --outdir ./build --target node --minify",
+    "build:bun": "bun build ./src/main.ts --outdir ./build --target bun --minify",
+    "build:brower": "bun build ./src/main.ts --outdir ./build --minify",
+    "build": "tsc",
+    "test": "jest",
+    "nodemon": "nodemon src/tests/dev.ts",
+    "devTest": "ts-node tests/dev.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stationeers-ic/ic10.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stationeers-ic/ic10/issues"
+  },
+  "exclude": [
+    ".idea",
+    ".vscode",
+    ".project-manager",
+    ".ic10"
+  ],
+  "homepage": "https://github.com/Stationeers-ic/ic10#readme",
+  "devDependencies": {
+    "@types/bun": "^1.0.5",
+    "@types/jest": "^29.5.5",
+    "@types/crc": "^3.8.0",
+    "@types/node": "^20.11.19",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "crc-32": "^1.2.2",
+    "dot-prop": "^8.0.2",
+    "eventemitter3": "^5.0.1",
+    "zod": "^3.22.4"
+  }
 }
