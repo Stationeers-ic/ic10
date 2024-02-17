@@ -2,6 +2,7 @@ import { z } from "zod"
 import { icCondition } from "../functions"
 import { StringOrNumberOrNaN } from "../ZodTypes"
 
+// for later use, exported later in file
 const epsilon = 2 ** -23
 
 const conditions: Record<string, icCondition> = {}

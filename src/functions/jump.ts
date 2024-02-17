@@ -18,7 +18,7 @@ const jal: icFunction = (env, data) => {
 	env.jump(env.line + env.get(d[0]))
 }
 
-export const jump: { [key: string]: icFunction } = {
+export const jump: Record<string, icFunction> = {
 	j,
 	jr,
 	jal,
