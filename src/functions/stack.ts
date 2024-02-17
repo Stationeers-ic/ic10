@@ -1,8 +1,6 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { dev, reg } from "../regexps"
-import { Alias, Ralias, RaliasOrValue, RaliasOrValueOrNaN, AliasOrValue } from "../ZodTypes"
-import { RegisterOrDevice } from "../RegisterOrDevice"
+import { Ralias, RaliasOrValue } from "../ZodTypes"
 
 export const stack: Record<string, icFunction> = {
 	push: (env, data) => {

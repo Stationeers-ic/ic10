@@ -1,15 +1,6 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import {
-	DeviceOrAlias,
-	Hash,
-	Logic,
-	Ralias,
-	RaliasOrValue,
-	RaliasOrValuePositive,
-	SlotIndex,
-	StringOrNumberOrNaN,
-} from "../ZodTypes"
+import { DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrNumberOrNaN } from "../ZodTypes"
 //    /*
 //     * @ls@
 //     * [en] Read value op4 from slot op3 of port op2

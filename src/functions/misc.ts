@@ -1,7 +1,6 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { dev, reg } from "../regexps"
-import { Alias, Ralias, RaliasOrValue, RaliasOrValueOrNaN, AliasOrValue } from "../ZodTypes"
+import { Alias, AliasOrValue, Ralias, RaliasOrValue, RaliasOrValueOrNaN } from "../ZodTypes"
 import { RegisterOrDevice } from "../RegisterOrDevice"
 
 export const misc: Record<string, icFunction> = {

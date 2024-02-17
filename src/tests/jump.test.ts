@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { runFunc, runFuncJump } from "./testUtils"
+import { runFuncJump } from "./testUtils"
 import { jump } from "../functions/jump"
 
 describe("jump", () => {

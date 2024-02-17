@@ -2,7 +2,7 @@ import { hash, line } from "../regexps"
 import { InterpreterIc10 } from "../main"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
-import { crc32 } from "crc"
+import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 
 export class Line {
@@ -54,7 +54,7 @@ export class Line {
 	parseHash(str: string) {
 		const matches = hash.exec(str) as [string, string] | null
 		if (matches) {
-			return crc32(matches[1])
+			return CRC32.str(matches[1])
 		}
 	}
 

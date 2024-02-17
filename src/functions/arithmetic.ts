@@ -63,14 +63,14 @@ arithmetic.abs = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.abs(env.get(d[1]))))
 }
-;(arithmetic.log = (env, data) => {
+arithmetic.log = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.log(env.get(d[1]))))
-}),
-	(arithmetic.exp = (env, data) => {
-		const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-		env.set(d[0], jsThing(Math.exp(env.get(d[1]))))
-	})
+}
+arithmetic.exp = (env, data) => {
+	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
+	env.set(d[0], jsThing(Math.exp(env.get(d[1]))))
+}
 arithmetic.rand = (env, data) => {
 	const d = z.tuple([Ralias]).parse(data)
 	env.set(d[0], jsThing(Math.random()))
