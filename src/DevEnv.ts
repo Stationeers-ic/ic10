@@ -7,14 +7,14 @@ import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
 export class DevEnv extends Environment {
 	constructor(data: { [key: string]: number } = {}) {
 		super()
-		this.alias("sp", "r16")
-		this.alias("ra", "r17")
+		this.aliases.set("sp", "r16")
+		this.aliases.set("ra", "r17")
 
-		this.alias("NaN", NaN)
-		this.alias("Average", 0)
-		this.alias("Sum", 1)
-		this.alias("Minimum", 2)
-		this.alias("Maximum", 3)
+		this.aliases.set("NaN", NaN)
+		this.aliases.set("Average", 0)
+		this.aliases.set("Sum", 1)
+		this.aliases.set("Minimum", 2)
+		this.aliases.set("Maximum", 3)
 		Object.entries(data).forEach(([key, value]) => {
 			this.set(key, value)
 		})

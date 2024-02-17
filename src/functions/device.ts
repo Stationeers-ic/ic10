@@ -1,25 +1,46 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { StringOrNumberOrNaN } from "../ZodTypes"
-
+import {
+	DeviceOrAlias, Hash,
+	Logic,
+	Ralias,
+	RaliasOrValue,
+	RaliasOrValuePositive,
+	SlotIndex,
+	StringOrNumberOrNaN,
+} from "../ZodTypes"
+//    /*
+//     * @ls@
+//     * [en] Read value op4 from slot op3 of port op2
+//     * [ru] Чтение из устройства op2, слота op3, параметра op4 в регистр op1
+//     */
+//     const ls = (register: string, device: string, slot: string, property: string) => {
+//         const r = scope.memory.getRegister(register)
+//         const d = scope.memory.getDevice(device)
+//         r.value = d.getSlot(scope.memory.getValue(slot), property) as number
+//     }
 export const device: Record<string, icFunction> = {
 	s: (env, data) => {
-		const [op1, op2, op3] = z.tuple([z.string(), z.string(), StringOrNumberOrNaN]).parse(data)
+		const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, Ralias]).parse(data)
 		env.set(`${env.getAlias(op1)}.${env.getAlias(op2)}`, env.get(op3))
 	},
 	l: (env, data) => {
-		const [op1, op2, op3] = z.tuple([z.string(), z.string(), z.string()]).parse(data)
+		const [op1, op2, op3] = z.tuple([Ralias, DeviceOrAlias, Logic]).parse(data)
 		env.set(op1, env.get(`${env.getAlias(op2)}.${env.getAlias(op3)}`))
+	},
+	ls: (env, data) => {
+		const [register, device, slot, property] = z.tuple([Ralias, DeviceOrAlias, SlotIndex, Logic]).parse(data)
+		env.set(register, env.get(`${device}.slots.${slot}.${property}`))
 	},
 
 	sb: (env, data) => {
-		const [hash, logic, register] = z.tuple([z.string(), z.string(), StringOrNumberOrNaN]).parse(data)
+		const [hash, logic, register] = z.tuple([Hash, Logic, Ralias]).parse(data)
 		env.getDeviceByHash(env.get(hash)).forEach((d) => {
 			env.set(`${d}.${logic}`, env.get(register))
 		})
 	},
 	lb: (env, data) => {
-		const [register, hash, logic, mode] = z.tuple([z.string(), z.string(), z.string(), z.string()]).parse(data)
+		const [register, hash, logic, mode] = z.tuple([Ralias, Hash, Logic, Ralias]).parse(data)
 		const values: number[] = []
 		env.getDeviceByHash(env.get(hash)).forEach((d) => {
 			values.push(env.get(`${d}.${logic}`))
@@ -44,7 +65,7 @@ export const device: Record<string, icFunction> = {
 	},
 	lbn: (env, data) => {
 		const [register, hash, name, logic, mode] = z
-			.tuple([z.string(), z.string(), z.string(), z.string(), z.string()])
+			.tuple([Ralias, Hash, Hash, Logic, Ralias])
 			.parse(data)
 		const values: number[] = []
 		env.getDeviceByHashAndName(env.get(hash), env.get(name)).forEach((d) => {
@@ -70,13 +91,13 @@ export const device: Record<string, icFunction> = {
 	},
 	lr: (env, data) => {
 		const [register, device, reagentMode, hash] = z
-			.tuple([z.string(), z.string(), StringOrNumberOrNaN, StringOrNumberOrNaN])
+			.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash])
 			.parse(data)
 		env.set(register, env.get(`${device}.reagents.${reagentMode}.${hash}`))
 	},
 	sbn: (env, data) => {
 		const [hash, name, logic, register] = z
-			.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, z.string()])
+			.tuple([Hash, Hash, Logic, RaliasOrValue])
 			.parse(data)
 		env.getDeviceByHashAndName(env.get(hash), env.get(name)).forEach((d) => {
 			env.set(`${d}.${logic}`, env.get(register))
@@ -143,7 +164,7 @@ export const device: Record<string, icFunction> = {
 	},
 	ss: (env, data) => {
 		const [device, slot, property, value] = z
-			.tuple([z.string(), StringOrNumberOrNaN, z.string(), StringOrNumberOrNaN])
+			.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue])
 			.parse(data)
 		env.set(`${device}.slots.${slot}.${property}`, env.get(value))
 	},

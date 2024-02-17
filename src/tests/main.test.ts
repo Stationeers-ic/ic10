@@ -3,7 +3,7 @@ import { functions } from "../functions"
 import data from "./data/data.json"
 
 describe("main", () => {
-	test.todo("functions", () => {
+	test("functions", () => {
 		let functionNames: string[] = []
 		Object.entries(data).map(function([key, value]) {
 			if (value.type === "Function") {

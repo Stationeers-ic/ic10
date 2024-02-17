@@ -43,6 +43,9 @@ export const AliasOrValue = Alias.or(Value)
  * Alias | Register | numeric value
  */
 export const RaliasOrValue = Alias.or(Value)
+export const RaliasOrValuePositive = Alias.or(Value.positive())
+export const SlotIndex = Alias.or(Value.positive().int())
+export const Hash = Alias.or(Value.int())
 
 /**
  * Alias | NaN | numeric value
@@ -53,6 +56,7 @@ export const AliasOrValueOrNaN = AliasOrValue.or(z.nan())
  */
 export const RaliasOrValueOrNaN = AliasOrValue.or(z.nan())
 
+export const Logic = z.string()
 /*
 export const RegisterOrAlias = Register.or(z.string())
 export const DeviceOrAlias = Device.or(z.string())
@@ -60,4 +64,12 @@ export const DeviceOrAlias = Device.or(z.string())
 /*
  *TODO: Add list reserved words
  */
-export const NotReservedWord = z.string()
+export const NotReservedWord = z.string().refine((val) => ![
+	'NaN',
+	'Average',
+	'Sum',
+	'Minimum',
+	'Maximum',
+].includes(val),{
+	message: 'Reserved word',
+});
