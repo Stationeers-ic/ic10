@@ -3,11 +3,15 @@
 	"type": "module",
 	"version": "4.0.0",
 	"description": "ic10 interpreter",
-	"main": "src/main",
+	"main": "build/main.js",
+	"types": "build/main.d.ts",
 	"scripts": {
 		"prepublish": "prettier . --write",
 		"watch": "tsc -w",
-		"build": "bun build ./src/main.ts --outdir ./build",
+		"build:node": "bun build ./src/main.ts --outdir ./build --target node --minify",
+		"build:bun": "bun build ./src/main.ts --outdir ./build --target bun --minify",
+		"build:brower": "bun build ./src/main.ts --outdir ./build --minify",
+		"build": "tsc",
 		"test": "jest",
 		"nodemon": "nodemon src/tests/dev.ts",
 		"devTest": "ts-node tests/dev.ts"
