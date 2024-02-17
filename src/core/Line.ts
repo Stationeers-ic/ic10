@@ -1,8 +1,9 @@
 import { hash, line } from "../regexps.js"
 import { InterpreterIc10 } from "../main.js"
 import { functions } from "../functions.js"
-import { z } from "zod"
+import { z, ZodError } from "zod"
 import { crc32 } from "crc"
+import { SyntaxError } from "../errors/SyntaxError"
 
 export class Line {
 	public fn: string | undefined
@@ -61,10 +62,18 @@ export class Line {
 		this.runCounter++
 		if (this.fn && !this.fn.endsWith(":")) {
 			if (this.fn in functions) {
-				const errors = functions[this.fn](this.scope.env, this.args ?? [])
+				try {
+					functions[this.fn](this.scope.env, this.args ?? [])
+				} catch (e: ZodError | unknown) {
+					if (e instanceof ZodError) {
+						this.scope.env.throwError(new SyntaxError(e.errors[0].message, "error"))
+					} else {
+						throw e
+					}
+				}
 				return
 			} else {
-				console.warn(`Function ${this.fn} not found`)
+				this.scope.env.throwError(new SyntaxError(`Function ${this.fn} not found`, "error"))
 			}
 		}
 	}

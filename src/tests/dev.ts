@@ -4,6 +4,7 @@ import { DevEnv } from "../DevEnv.js"
 
 (async () => {
 	const mem = new DevEnv()
+	mem.on("error", (e) => console.error(e))
 	try {
 		const a = new InterpreterIc10(
 			mem,

@@ -3,7 +3,7 @@ import { Err } from "../abstract/Err.js"
 export class BitWarn extends Err {
 	constructor(
 		message: string,
-		public level: string,
+		level: "error" | "warn" | "info" | "debug" = "warn",
 		public lineStart?: number,
 		public lineEnd?: number,
 		charStart: number = 0,

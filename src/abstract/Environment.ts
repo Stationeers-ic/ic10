@@ -1,10 +1,37 @@
 import { Line } from "../core/Line"
 import EventEmitter from "eventemitter3"
 import { Register } from "../ZodTypes"
+import { Err } from "./Err"
 
-export abstract class Environment extends EventEmitter {
+declare interface EnvironmentEvents {
+	error: (err: Err) => void
+	warn: (err: Err) => void
+	info: (err: Err) => void
+	debug: (err: Err) => void
+}
+
+/*
+ * Окружение для интерпретатора
+ * Хранит все данные необходимые для интерпретации
+ */
+export abstract class Environment extends EventEmitter<EnvironmentEvents> {
+	/*
+	 * Текущая строка
+	 */
 	public line: number = 0
+	/*
+	 * Все строки текущего выполнения
+	 */
+	public lines: Map<number, Line> = new Map<number, Line>()
 	public InfiniteLoopLimit: number = 500
+
+	public getLine(index: number) {
+		return this.lines.get(index)
+	}
+
+	public getCurrentLine() {
+		return this.lines.get(this.line)
+	}
 
 	abstract jump(line: string | number): void
 
@@ -33,11 +60,15 @@ export abstract class Environment extends EventEmitter {
 	// получить alias если существует иначе вернуть значение
 	abstract getAlias(alias: string): string
 
+	throwError(err: Err) {
+		err.lineStart = err.lineStart ?? this.line
+		this.emit(err.level, err)
+	}
+
 	// Самоуничтожение
 	abstract hcf(): void
 
-	afterLineRun(line: Line) {
-	}
+	afterLineRun(line: Line) {}
 
 	dynamicDevicePort(string: string): string {
 		if (string.startsWith("dr") && string.length <= 4) {
@@ -46,4 +77,34 @@ export abstract class Environment extends EventEmitter {
 		}
 		return string
 	}
+
+	on<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+		event: T,
+		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
+	): this {
+		return super.on(event, fn, this)
+	}
+
+	addListener<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+		event: T,
+		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
+	): this {
+		return super.addListener(event, fn, this)
+	}
+
+	once<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+		event: T,
+		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
+	): this {
+		return super.once(event, fn, this)
+	}
+
+	removeListener<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+		event: T,
+		fn?: EventEmitter.EventListener<EnvironmentEvents, T>,
+	): this {
+		return super.removeListener(event, fn, this)
+	}
 }
+
+

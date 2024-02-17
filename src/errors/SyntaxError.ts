@@ -3,7 +3,7 @@ import { Err } from "../abstract/Err.js"
 export class SyntaxError extends Err {
 	constructor(
 		message: string,
-		public level: string,
+		level: "error" | "warn" | "info" | "debug" = "error",
 		public lineStart?: number,
 		public lineEnd?: number,
 		charStart: number = 0,

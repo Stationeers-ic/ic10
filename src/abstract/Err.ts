@@ -1,7 +1,7 @@
-export class Err extends Error {
-	constructor(
+export abstract class Err extends Error {
+	protected constructor(
 		message: string,
-		public level: string,
+		public level: "error" | "warn" | "info" | "debug" = "error",
 		public lineStart?: number,
 		public lineEnd?: number,
 		charStart: number = 0,
