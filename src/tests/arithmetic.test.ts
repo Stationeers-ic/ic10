@@ -3,11 +3,6 @@ import { run, runFunc } from "./testUtils"
 import { functions } from "../functions"
 
 describe("arithmetic", () => {
-	// TODO: move "move" test lol
-	test("move", () => {
-		expect(run(`move r0 1`)).resolves.toBe(1)
-		expect(run(`move`)).rejects.toThrow()
-	})
 	test("add", () => {
 		expect(runFunc(functions.add, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
 		expect(runFunc(functions.add, ["r0", "r0", 1], { r0: NaN })).resolves.toBeNaN()

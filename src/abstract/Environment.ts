@@ -24,6 +24,7 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 	 */
 	public lines: Map<number, Line> = new Map<number, Line>()
 	public InfiniteLoopLimit: number = 500
+	public errors: Err[] = []
 
 	public getLine(index: number) {
 		return this.lines.get(index)
@@ -62,6 +63,7 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 
 	throwError(err: Err) {
 		err.lineStart = err.lineStart ?? this.line
+		this.errors.push(err)
 		this.emit(err.level, err)
 	}
 
