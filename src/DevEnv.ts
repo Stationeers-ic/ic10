@@ -106,5 +106,6 @@ export class DevEnv extends Environment {
 
 	hcf(): void {
 		console.log("Died")
+		this.jump(this.lines.size)
 	}
 }

@@ -10,6 +10,16 @@ export async function run(code: string, data: { [key: string]: number } = {}): P
 	return mem
 }
 
+export async function runFuncJump(
+	fn: icFunction,
+	args: (string | number)[],
+	data: { [key: string]: number } = {},
+): Promise<number> {
+	const mem = new DevEnv(data)
+	await fn(mem, args)
+	return mem.line
+}
+
 export async function runThrow(code: string, data: { [key: string]: number } = {}): Promise<Err[]> {
 	const mem = new DevEnv(data)
 	const a = new InterpreterIc10(mem, code)

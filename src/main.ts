@@ -57,7 +57,6 @@ export class InterpreterIc10 {
 						),
 					)
 				}
-
 				let ErrLine = this.env.errors.filter((err) => err.level === "error")
 				if (ErrLine.length) {
 					break

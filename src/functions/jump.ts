@@ -3,255 +3,313 @@ import { z } from "zod"
 import { conditions } from "./conditions"
 import { StringOrNumberOrNaN } from "../ZodTypes"
 
-
-
-export const jump: Record<string, icFunction> = {}
-jump.j = (env, data) => {
+const j: icFunction = (env, data) => {
 	const d = z.tuple([StringOrNumberOrNaN]).parse(data)
 	env.jump(d[0])
 }
-jump.jr = (env, data) => {
+const jr: icFunction = (env, data) => {
 	const d = z.tuple([StringOrNumberOrNaN]).parse(data)
 	env.jump(env.line + env.get(d[0]))
 }
-jump.jal = (env, data) => {
+const jal: icFunction = (env, data) => {
 	const d = z.tuple([StringOrNumberOrNaN]).parse(data)
 	env.set("ra", env.line)
 	env.jump(env.line + env.get(d[0]))
 }
-jump.beq = (env, data) => {
+const beq: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [x, y])) jump.j(env, [line])
+	if (conditions.eq(env, [x, y])) j(env, [line])
 }
-jump.beqz = (env, data) => {
+const beqz: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [x, 0])) jump.j(env, [line])
+	if (conditions.eq(env, [x, 0])) j(env, [line])
 }
-jump.bge = (env, data) => {
+const bge: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [x, y])) jump.j(env, [line])
+	if (conditions.ge(env, [x, y])) j(env, [line])
 }
-jump.bgez = (env, data) => {
+const bgez: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [x, 0])) jump.j(env, [line])
+	if (conditions.ge(env, [x, 0])) j(env, [line])
 }
-jump.bgt = (env, data) => {
+const bgt: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [x, y])) jump.j(env, [line])
+	if (conditions.gt(env, [x, y])) j(env, [line])
 }
-jump.bgtz = (env, data) => {
+const bgtz: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [x, 0])) jump.j(env, [line])
+	if (conditions.gt(env, [x, 0])) j(env, [line])
 }
-jump.ble = (env, data) => {
+const ble: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [x, y])) jump.j(env, [line])
+	if (conditions.le(env, [x, y])) j(env, [line])
 }
-jump.blez = (env, data) => {
+const blez: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [x, 0])) jump.j(env, [line])
+	if (conditions.le(env, [x, 0])) j(env, [line])
 }
-jump.blt = (env, data) => {
+const blt: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [x, y])) jump.j(env, [line])
+	if (conditions.lt(env, [x, y])) j(env, [line])
 }
-jump.bltz = (env, data) => {
+const bltz: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [x, 0])) jump.j(env, [line])
+	if (conditions.lt(env, [x, 0])) j(env, [line])
 }
-jump.bne = (env, data) => {
+const bne: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [x, y])) jump.j(env, [line])
+	if (conditions.ne(env, [x, y])) j(env, [line])
 }
-jump.bnez = (env, data) => {
+const bnez: icFunction = (env, data) => {
 	const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [x, 0])) jump.j(env, [line])
+	if (conditions.ne(env, [x, 0])) j(env, [line])
 }
-jump.bap = (env, data) => {
+const bap: icFunction = (env, data) => {
 	const [x, y, c, line] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.ap(env, [x, y, c])) jump.j(env, [line])
+	if (conditions.ap(env, [x, y, c])) j(env, [line])
 }
-jump.bapz = (env, data) => {
+const bapz: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ap(env, [x, y])) jump.j(env, [line])
+	if (conditions.ap(env, [x, y])) j(env, [line])
 }
-jump.bna = (env, data) => {
+const bna: icFunction = (env, data) => {
 	const [x, y, c, line] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.na(env, [x, y, c])) jump.j(env, [line])
+	if (conditions.na(env, [x, y, c])) j(env, [line])
 }
-jump.bnaz = (env, data) => {
+const bnaz: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.na(env, [x, y, 0])) jump.j(env, [line])
+	if (conditions.na(env, [x, y, 0])) j(env, [line])
 }
-jump.bdse = (env, data) => {
+const bdse: icFunction = (env, data) => {
 	const [d, line] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dse(env, [d])) jump.j(env, [line])
+	if (conditions.dse(env, [d])) j(env, [line])
 }
-jump.bdns = (env, data) => {
+const bdns: icFunction = (env, data) => {
 	const [d, line] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dns(env, [d])) jump.j(env, [line])
+	if (conditions.dns(env, [d])) j(env, [line])
 }
-jump.bnan = (env, data) => {
+const bnan: icFunction = (env, data) => {
 	const [v, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.nan(env, [v])) jump.j(env, [line])
+	if (conditions.nan(env, [v])) j(env, [line])
 }
-jump.breq = (env, data) => {
+const breq: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.eq(env, [a, b])) jr(env, [offset])
 }
-jump.breqz = (env, data) => {
+const breqz: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.eq(env, [a, 0])) jr(env, [offset])
 }
-jump.brge = (env, data) => {
+const brge: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.ge(env, [a, b])) jr(env, [offset])
 }
-jump.brgez = (env, data) => {
+const brgez: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.ge(env, [a, 0])) jr(env, [offset])
 }
-jump.brgt = (env, data) => {
+const brgt: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.gt(env, [a, b])) jr(env, [offset])
 }
-jump.brgtz = (env, data) => {
+const brgtz: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.gt(env, [a, 0])) jr(env, [offset])
 }
-jump.brle = (env, data) => {
+const brle: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.le(env, [a, b])) jr(env, [offset])
 }
-jump.brlez = (env, data) => {
+const brlez: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.le(env, [a, 0])) jr(env, [offset])
 }
-jump.brlt = (env, data) => {
+const brlt: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.lt(env, [a, b])) jr(env, [offset])
 }
-jump.brltz = (env, data) => {
+const brltz: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.lt(env, [a, 0])) jr(env, [offset])
 }
-jump.brne = (env, data) => {
+const brne: icFunction = (env, data) => {
 	const [a, b, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [a, b])) jump.jr(env, [offset])
+	if (conditions.ne(env, [a, b])) jr(env, [offset])
 }
-jump.brnez = (env, data) => {
+const brnez: icFunction = (env, data) => {
 	const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [a, 0])) jump.jr(env, [offset])
+	if (conditions.ne(env, [a, 0])) jr(env, [offset])
 }
-jump.brap = (env, data) => {
+const brap: icFunction = (env, data) => {
 	const [x, y, c, offset] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.ap(env, [x, y, c])) jump.jr(env, [offset])
+	if (conditions.ap(env, [x, y, c])) jr(env, [offset])
 }
-jump.brapz = (env, data) => {
+const brapz: icFunction = (env, data) => {
 	const [x, y, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ap(env, [x, y])) jump.jr(env, [offset])
+	if (conditions.ap(env, [x, y])) jr(env, [offset])
 }
-jump.brna = (env, data) => {
+const brna: icFunction = (env, data) => {
 	const [x, y, c, offset] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.na(env, [x, y, c])) jump.jr(env, [offset])
+	if (conditions.na(env, [x, y, c])) jr(env, [offset])
 }
-jump.brnaz = (env, data) => {
+const brnaz: icFunction = (env, data) => {
 	const [x, y, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.na(env, [x, y, 0])) jump.jr(env, [offset])
+	if (conditions.na(env, [x, y, 0])) jr(env, [offset])
 }
-jump.brdse = (env, data) => {
+const brdse: icFunction = (env, data) => {
 	const [d, offset] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dse(env, [d])) jump.jal(env, [offset])
+	if (conditions.dse(env, [d])) jal(env, [offset])
 }
-jump.brdns = (env, data) => {
+const brdns: icFunction = (env, data) => {
 	const [d, offset] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dns(env, [d])) jump.jal(env, [offset])
+	if (conditions.dns(env, [d])) jal(env, [offset])
 }
-jump.brnan = (env, data) => {
+const brnan: icFunction = (env, data) => {
 	const [v, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.nan(env, [v])) jump.jr(env, [offset])
+	if (conditions.nan(env, [v])) jr(env, [offset])
 }
-jump.beqal = (env, data) => {
+const beqal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [a, b])) jump.jal(env, [line])
+	if (conditions.eq(env, [a, b])) jal(env, [line])
 }
-jump.beqzal = (env, data) => {
+const beqzal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.eq(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.eq(env, [a, 0])) jal(env, [line])
 }
-jump.bgeal = (env, data) => {
+const bgeal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [a, b])) jump.jal(env, [line])
+	if (conditions.ge(env, [a, b])) jal(env, [line])
 }
-jump.bgezal = (env, data) => {
+const bgezal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ge(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.ge(env, [a, 0])) jal(env, [line])
 }
-jump.bgtal = (env, data) => {
+const bgtal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [a, b])) jump.jal(env, [line])
+	if (conditions.gt(env, [a, b])) jal(env, [line])
 }
-jump.bgtzal = (env, data) => {
+const bgtzal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.gt(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.gt(env, [a, 0])) jal(env, [line])
 }
-jump.bleal = (env, data) => {
+const bleal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [a, b])) jump.jal(env, [line])
+	if (conditions.le(env, [a, b])) jal(env, [line])
 }
-jump.blezal = (env, data) => {
+const blezal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.le(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.le(env, [a, 0])) jal(env, [line])
 }
-jump.bltal = (env, data) => {
+const bltal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [a, b])) jump.jal(env, [line])
+	if (conditions.lt(env, [a, b])) jal(env, [line])
 }
-jump.bltzal = (env, data) => {
+const bltzal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.lt(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.lt(env, [a, 0])) jal(env, [line])
 }
-jump.bneal = (env, data) => {
+const bneal: icFunction = (env, data) => {
 	const [a, b, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [a, b])) jump.jal(env, [line])
+	if (conditions.ne(env, [a, b])) jal(env, [line])
 }
-jump.bnezal = (env, data) => {
+const bnezal: icFunction = (env, data) => {
 	const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ne(env, [a, 0])) jump.jal(env, [line])
+	if (conditions.ne(env, [a, 0])) jal(env, [line])
 }
-jump.bapal = (env, data) => {
+const bapal: icFunction = (env, data) => {
 	const [x, y, c, line] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.ap(env, [x, y, c])) jump.jal(env, [line])
+	if (conditions.ap(env, [x, y, c])) jal(env, [line])
 }
-jump.bapzal = (env, data) => {
+const bapzal: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.ap(env, [x, y])) jump.jal(env, [line])
+	if (conditions.ap(env, [x, y])) jal(env, [line])
 }
-jump.bnaal = (env, data) => {
+const bnaal: icFunction = (env, data) => {
 	const [x, y, c, line] = z
 		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
 		.parse(data)
-	if (conditions.na(env, [x, y, c])) jump.jal(env, [line])
+	if (conditions.na(env, [x, y, c])) jal(env, [line])
 }
-jump.bnazal = (env, data) => {
+const bnazal: icFunction = (env, data) => {
 	const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	if (conditions.na(env, [x, y, 0])) jump.jal(env, [line])
+	if (conditions.na(env, [x, y, 0])) jal(env, [line])
 }
-jump.bdseal = (env, data) => {
+const bdseal: icFunction = (env, data) => {
 	const [d, line] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dse(env, [d])) jump.jal(env, [line])
+	if (conditions.dse(env, [d])) jal(env, [line])
 }
-jump.bdnsal = (env, data) => {
+const bdnsal: icFunction = (env, data) => {
 	const [d, line] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
-	if (conditions.dns(env, [d])) jump.jal(env, [line])
+	if (conditions.dns(env, [d])) jal(env, [line])
+}
+export const jump= {
+	j,
+	jr,
+	jal,
+	beq,
+	beqz,
+	bge,
+	bgez,
+	bgt,
+	bgtz,
+	ble,
+	blez,
+	blt,
+	bltz,
+	bne,
+	bnez,
+	bap,
+	bapz,
+	bna,
+	bnaz,
+	bdse,
+	bdns,
+	bnan,
+	breq,
+	breqz,
+	brge,
+	brgez,
+	brgt,
+	brgtz,
+	brle,
+	brlez,
+	brlt,
+	brltz,
+	brne,
+	brnez,
+	brap,
+	brapz,
+	brna,
+	brnaz,
+	brdse,
+	brdns,
+	brnan,
+	beqal,
+	beqzal,
+	bgeal,
+	bgezal,
+	bgtal,
+	bgtzal,
+	bleal,
+	blezal,
+	bltal,
+	bltzal,
+	bneal,
+	bnezal,
+	bapal,
+	bapzal,
+	bnaal,
+	bnazal,
+	bdseal,
+	bdnsal,
 }
