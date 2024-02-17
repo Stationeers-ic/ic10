@@ -61,7 +61,7 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 	// получить alias если существует иначе вернуть значение
 	abstract getAlias(alias: string): string
 
-	throwError(err: Err) {
+	throw(err: Err) {
 		err.lineStart = err.lineStart ?? this.line
 		this.errors.push(err)
 		this.emit(err.level, err)
@@ -70,7 +70,7 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 	// Самоуничтожение
 	abstract hcf(): void
 
-	afterLineRun(line: Line) {}
+	async afterLineRun(line: Line) {}
 
 	dynamicDevicePort(string: string): string {
 		if (string.startsWith("dr") && string.length <= 4) {

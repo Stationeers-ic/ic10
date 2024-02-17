@@ -66,14 +66,14 @@ export class Line {
 					functions[this.fn](this.scope.env, this.args ?? [])
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
-						this.scope.env.throwError(new SyntaxError(e.errors[0].message, "error"))
+						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
 					} else {
 						throw e
 					}
 				}
 				return
 			} else {
-				this.scope.env.throwError(new SyntaxError(`Function ${this.fn} not found`, "error"))
+				this.scope.env.throw(new SyntaxError(`Function ${this.fn} not found`, "error"))
 			}
 		}
 	}

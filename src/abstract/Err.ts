@@ -4,8 +4,8 @@ export abstract class Err extends Error {
 		public level: "error" | "warn" | "info" | "debug" = "error",
 		public lineStart?: number,
 		public lineEnd?: number,
-		charStart: number = 0,
-		charEnd: number = 0,
+		public charStart?: number,
+		public charEnd?: number,
 	) {
 		super(message)
 	}

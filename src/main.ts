@@ -40,7 +40,7 @@ export class InterpreterIc10 {
 				// Запуск строки
 				if (line) {
 					await line.run()
-					this.env.afterLineRun(line)
+					await this.env.afterLineRun(line)
 				}
 				// Проверка не прыжок
 				if (old === this.env.line) {
@@ -49,28 +49,23 @@ export class InterpreterIc10 {
 				// Проверка на бесконечный цикл
 				let whileTrueLine = [...this.env.lines].filter(([, l]) => l.runCounter > this.env.InfiniteLoopLimit)
 				if (whileTrueLine.length) {
-					throw new InfiniteLoop(
-						`Infinite loop detected at line ${whileTrueLine[0][0]}`,
-						"warn",
-						whileTrueLine[0][0],
+					this.env.throw(
+						new InfiniteLoop(
+							`Infinite loop detected at line ${whileTrueLine[0][0]}`,
+							"error",
+							whileTrueLine[0][0],
+						),
 					)
+				}
+
+				let ErrLine = this.env.errors.filter((err) => err.level === "error")
+				if (ErrLine.length) {
+					break
 				}
 			}
 		} catch (e: Err | unknown) {
 			if (e instanceof Err) {
-				switch (e.level) {
-					case "warn":
-						this.env.emit("warn", e)
-						break
-					case "info":
-						this.env.emit("info", e)
-						break
-					case "debug":
-						this.env.emit("debug", e)
-						break
-					default:
-						this.env.emit("error", e)
-				}
+				this.env.throw(e)
 			} else {
 				throw e
 			}

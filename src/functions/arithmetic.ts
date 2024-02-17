@@ -83,7 +83,7 @@ arithmetic.sll = (env, data) => {
 	} else {
 		env.set(d[0], jsThing(env.get(d[1]) << l))
 	}
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
@@ -95,7 +95,7 @@ arithmetic.srl = (env, data) => {
 	} else {
 		env.set(d[0], jsThing(env.get(d[1]) >>> env.get(d[2])))
 	}
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
@@ -110,7 +110,7 @@ arithmetic.sla = (env, data) => {
 			jsThing((env.get(d[1]) << env.get(d[2])) + Number(env.get(d[1]) < 0) * ((2 << env.get(d[2])) - 1)),
 		)
 	}
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
@@ -122,7 +122,7 @@ arithmetic.sra = (env, data) => {
 	} else {
 		env.set(d[0], jsThing(env.get(d[1]) >> env.get(d[2])))
 	}
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
@@ -157,28 +157,28 @@ arithmetic.atan2 = (env, data) => {
 arithmetic.and = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) & env.get(d[2])))
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
 arithmetic.or = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) | env.get(d[2])))
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
 arithmetic.xor = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) ^ env.get(d[2])))
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
 arithmetic.nor = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(~(env.get(d[1]) | env.get(d[2]))))
-	env.throwError(
+	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
