@@ -1,7 +1,7 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
 import { conditions } from "./conditions"
-import { StringOrNumberOrNaN } from "../ZodTypes"
+import { JumpFunctionName, StringOrNumberOrNaN } from "../ZodTypes"
 
 const j: icFunction = (env, data) => {
 	const d = z.tuple([StringOrNumberOrNaN]).parse(data)
@@ -252,7 +252,7 @@ const bdnsal: icFunction = (env, data) => {
 	const [d, line] = z.tuple([z.string(), StringOrNumberOrNaN]).parse(data)
 	if (conditions.dns(env, [d])) jal(env, [line])
 }
-export const jump= {
+export const jump :Record<JumpFunctionName, icFunction> = {
 	j,
 	jr,
 	jal,
@@ -313,3 +313,4 @@ export const jump= {
 	bdseal,
 	bdnsal,
 }
+export default jump
