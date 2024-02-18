@@ -10,3 +10,5 @@ export abstract class Err extends Error {
 		super(message)
 	}
 }
+
+export default Err

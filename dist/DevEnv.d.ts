@@ -20,3 +20,4 @@ export declare class DevEnv extends Environment {
     getDeviceByHashAndName(hash: number, name: number): string[];
     hcf(): void;
 }
+export default DevEnv;

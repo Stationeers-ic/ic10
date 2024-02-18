@@ -15,3 +15,4 @@ export class InfiniteLoop extends Err {
         this.name = "InfiniteLoop";
     }
 }
+export default InfiniteLoop;

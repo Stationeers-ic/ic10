@@ -1,7 +1,6 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { Alias, AliasOrValue, Ralias, RaliasOrValue, RaliasOrValueOrNaN } from "../ZodTypes"
-import { RegisterOrDevice } from "../RegisterOrDevice"
+import { Alias, AliasOrValue, Ralias, RaliasOrValue, RaliasOrValueOrNaN, RegisterOrDevice } from "../ZodTypes"
 
 export const misc: Record<string, icFunction> = {
 	alias: (env, data) => {

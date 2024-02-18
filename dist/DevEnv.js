@@ -97,3 +97,4 @@ export class DevEnv extends Environment {
         this.jump(this.lines.size);
     }
 }
+export default DevEnv;

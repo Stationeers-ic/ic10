@@ -4,3 +4,4 @@ export type icCondition = (env: Environment, data: (string | number)[]) => boole
 export declare const functions: {
     [key: string]: icFunction;
 };
+export default functions;

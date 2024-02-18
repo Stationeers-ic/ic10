@@ -1,6 +1,15 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrNumberOrNaN } from "../ZodTypes"
+import {
+	DeviceOrAlias,
+	Hash,
+	Logic,
+	Ralias,
+	RaliasOrValue,
+	RegisterOrAlias,
+	SlotIndex,
+	StringOrNumberOrNaN,
+} from "../ZodTypes"
 //    /*
 //     * @ls@
 //     * [en] Read value op4 from slot op3 of port op2
@@ -13,7 +22,7 @@ import { DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrN
 //     }
 export const device: Record<string, icFunction> = {
 	s: (env, data) => {
-		const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, Ralias]).parse(data)
+		const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data)
 		env.set(`${env.getAlias(op1)}.${env.getAlias(op2)}`, env.get(op3))
 	},
 	l: (env, data) => {

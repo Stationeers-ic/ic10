@@ -12,3 +12,4 @@ export declare class Line {
     parseHash(str: string): number | undefined;
     run(): Promise<void>;
 }
+export default Line;
