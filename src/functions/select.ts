@@ -35,6 +35,10 @@ select.sap = (env, data) => {
 	const [op1, op2, op3, op4] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(op1, booleanToNumber(conditions.ap(env, [op2, op3, op4])))
 }
+select.sna = (env, data) => {
+	const [op1, op2, op3, op4] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue]).parse(data)
+	env.set(op1, booleanToNumber(conditions.na(env, [op2, op3, op4])))
+}
 // ZZZs
 select.seqz = (env, data) => select.seq(env, [...data, 0])
 select.sgez = (env, data) => select.sge(env, [...data, 0])
@@ -46,11 +50,7 @@ select.snez = (env, data) => select.sne(env, [...data, 0])
 // TODO: not working as intended
 select.sapz = (env, data) => {
 	const [op1, op2, op3] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(op1, booleanToNumber(conditions.ap(env, [op2, op3, 0])))
-}
-select.sna = (env, data) => {
-	const [op1, op2, op3, op4] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(op1, booleanToNumber(conditions.na(env, [op2, op3, op4])))
+	env.set(op1, booleanToNumber(conditions.ap(env, [op2, 0, op3])))
 }
 // TODO: not working as intended
 select.snaz = (env, data) => {
