@@ -34,6 +34,7 @@ export declare const AliasOrValue: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
  * Alias | Register | numeric value
  */
 export declare const RaliasOrValue: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
+export declare const RegisterOrDevice: z.ZodUnion<[z.ZodString, z.ZodString]>;
 export declare const RaliasOrValuePositive: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
 export declare const SlotIndex: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
 export declare const LineIndex: z.ZodUnion<[z.ZodString, z.ZodNumber]>;

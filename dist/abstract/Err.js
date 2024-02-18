@@ -13,3 +13,4 @@ export class Err extends Error {
         this.charEnd = charEnd;
     }
 }
+export default Err;

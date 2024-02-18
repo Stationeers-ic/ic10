@@ -13,3 +13,5 @@ export class SyntaxError extends Err {
 		this.name = "SyntaxError"
 	}
 }
+
+export default SyntaxError

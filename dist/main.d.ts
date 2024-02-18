@@ -1,10 +1,9 @@
-import { Environment } from "./abstract/Environment";
-import { Line } from "./core/Line";
-export declare class InterpreterIc10 {
-    readonly env: Environment;
-    private code;
-    constructor(env: Environment, code: string);
-    setCode(code: string): void;
-    parseCode(): Map<number, Line>;
-    run(): Promise<void>;
-}
+import InterpreterIc10 from "./InterpreterIc10";
+import DevEnv from "./DevEnv";
+import Err from "./abstract/Err";
+import Environment from "./abstract/Environment";
+import BitWarn from "./errors/BitWarn";
+import InfiniteLoop from "./errors/InfiniteLoop";
+import SyntaxError from "./errors/SyntaxError";
+import functions from "./functions";
+export { InterpreterIc10, DevEnv, Environment, Err, BitWarn, InfiniteLoop, SyntaxError, functions };

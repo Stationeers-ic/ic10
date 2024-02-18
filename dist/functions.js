@@ -12,3 +12,4 @@ export const functions = {
     ...device,
     ...stack,
 };
+export default functions;

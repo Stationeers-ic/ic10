@@ -79,3 +79,4 @@ export class Line {
         }
     }
 }
+export default Line;

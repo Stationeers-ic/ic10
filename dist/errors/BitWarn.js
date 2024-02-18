@@ -15,3 +15,4 @@ export class BitWarn extends Err {
         this.name = "BitWarn";
     }
 }
+export default BitWarn;

@@ -47,3 +47,4 @@ export class Environment extends EventEmitter {
         return super.removeListener(event, fn, this);
     }
 }
+export default Environment;

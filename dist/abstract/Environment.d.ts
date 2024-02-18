@@ -34,4 +34,4 @@ export declare abstract class Environment extends EventEmitter<EnvironmentEvents
     once<T extends EventEmitter.EventNames<EnvironmentEvents>>(event: T, fn: EventEmitter.EventListener<EnvironmentEvents, T>): this;
     removeListener<T extends EventEmitter.EventNames<EnvironmentEvents>>(event: T, fn?: EventEmitter.EventListener<EnvironmentEvents, T>): this;
 }
-export {};
+export default Environment;
