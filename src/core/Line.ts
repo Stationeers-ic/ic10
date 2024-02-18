@@ -1,5 +1,5 @@
 import { hash, line } from "../regexps"
-import { InterpreterIc10 } from "../main"
+import { InterpreterIc10 } from ".."
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
 import CRC32 from "crc-32"
