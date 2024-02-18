@@ -1,5 +1,5 @@
 import { DevEnv } from "../DevEnv"
-import { InterpreterIc10 } from ".."
+import { InterpreterIc10 } from "../"
 import { icFunction } from "../functions"
 import { Err } from "../abstract/Err"
 

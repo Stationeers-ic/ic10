@@ -239,3 +239,4 @@ export const jump = {
 	bdseal,
 	bdnsal,
 }
+export default jump

@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { icFunction } from "../functions"
 import { BitWarn } from "../errors/BitWarn"
-import { Ralias, RaliasOrValue } from "../ZodTypes"
+import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
 
 function jsThing(value: number) {
 	if (Object.is(value, -0)) return 0
@@ -9,73 +9,71 @@ function jsThing(value: number) {
 	return value
 }
 
-export const arithmetic: { [key: string]: icFunction } = {}
-
-arithmetic.add = (env, data) => {
+const add: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) + env.get(d[2])))
 }
-arithmetic.sub = (env, data) => {
+const sub: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) - env.get(d[2])))
 }
-arithmetic.mul = (env, data) => {
+const mul: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) * env.get(d[2])))
 }
-arithmetic.div = (env, data) => {
+const div: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) / env.get(d[2])))
 }
-arithmetic.mod = (env, data) => {
+const mod: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) % env.get(d[2])))
 }
-arithmetic.sqrt = (env, data) => {
+const sqrt: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.sqrt(env.get(d[1]))))
 }
-arithmetic.round = (env, data) => {
+const round: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.round(env.get(d[1]))))
 }
-arithmetic.trunc = (env, data) => {
+const trunc: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.trunc(env.get(d[1]))))
 }
-arithmetic.ceil = (env, data) => {
+const ceil: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.ceil(env.get(d[1]))))
 }
-arithmetic.floor = (env, data) => {
+const floor: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.floor(env.get(d[1]))))
 }
-arithmetic.max = (env, data) => {
+const max: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.max(env.get(d[1]), env.get(d[2]))))
 }
-arithmetic.min = (env, data) => {
+const min: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.min(env.get(d[1]), env.get(d[2]))))
 }
-arithmetic.abs = (env, data) => {
+const abs: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.abs(env.get(d[1]))))
 }
-arithmetic.log = (env, data) => {
+const log: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.log(env.get(d[1]))))
 }
-arithmetic.exp = (env, data) => {
+const exp: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.exp(env.get(d[1]))))
 }
-arithmetic.rand = (env, data) => {
+const rand: icFunction = (env, data) => {
 	const d = z.tuple([Ralias]).parse(data)
 	env.set(d[0], jsThing(Math.random()))
 }
-arithmetic.sll = (env, data) => {
+const sll: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = env.get(d[2])
 	if (l < 0) {
@@ -87,7 +85,7 @@ arithmetic.sll = (env, data) => {
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.srl = (env, data) => {
+const srl: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = env.get(d[2])
 	if (l < 0) {
@@ -99,7 +97,7 @@ arithmetic.srl = (env, data) => {
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.sla = (env, data) => {
+const sla: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = env.get(d[2])
 	if (l < 0) {
@@ -114,7 +112,7 @@ arithmetic.sla = (env, data) => {
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.sra = (env, data) => {
+const sra: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = env.get(d[2])
 	if (l < 0) {
@@ -126,59 +124,94 @@ arithmetic.sra = (env, data) => {
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.sin = (env, data) => {
+const sin: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.sin(env.get(d[1]))))
 }
-arithmetic.cos = (env, data) => {
+const cos: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.cos(env.get(d[1]))))
 }
-arithmetic.tan = (env, data) => {
+const tan: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.tan(env.get(d[1]))))
 }
-arithmetic.asin = (env, data) => {
+const asin: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.asin(env.get(d[1]))))
 }
-arithmetic.acos = (env, data) => {
+const acos: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.acos(env.get(d[1]))))
 }
-arithmetic.atan = (env, data) => {
+const atan: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.atan(env.get(d[1]))))
 }
-arithmetic.atan2 = (env, data) => {
+const atan2: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(Math.atan2(env.get(d[1]), env.get(d[2]))))
 }
-arithmetic.and = (env, data) => {
+const and: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) & env.get(d[2])))
 	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.or = (env, data) => {
+const or: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) | env.get(d[2])))
 	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.xor = (env, data) => {
+const xor: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(env.get(d[1]) ^ env.get(d[2])))
 	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-arithmetic.nor = (env, data) => {
+const nor: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	env.set(d[0], jsThing(~(env.get(d[1]) | env.get(d[2]))))
 	env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
+
+export const arithmetic: Record<ArithmeticFunctionName, icFunction> = {
+	add,
+	sub,
+	mul,
+	div,
+	mod,
+	sqrt,
+	round,
+	trunc,
+	ceil,
+	floor,
+	max,
+	min,
+	abs,
+	log,
+	exp,
+	rand,
+	sll,
+	srl,
+	sla,
+	sra,
+	sin,
+	cos,
+	tan,
+	asin,
+	acos,
+	atan,
+	atan2,
+	and,
+	or,
+	xor,
+	nor,
+}
+export default arithmetic

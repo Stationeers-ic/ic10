@@ -1,10 +1,11 @@
-import { arithmetic } from "./functions/arithmetic"
-import { Environment } from "./abstract/Environment"
-import { misc } from "./functions/misc"
-import { jump } from "./functions/jump"
-import { select } from "./functions/select"
-import { device } from "./functions/device"
-import { stack } from "./functions/stack"
+import arithmetic from "./functions/arithmetic"
+import jump from "./functions/jump"
+import select from "./functions/select"
+import Environment from "./abstract/Environment"
+import misc from "./functions/misc"
+import device from "./functions/device"
+import stack from "./functions/stack"
+import { AnyFunctionName } from "./ZodTypes"
 
 export type icFunction = (
 	env: Environment,
@@ -12,7 +13,7 @@ export type icFunction = (
 ) => void | Promise<void> | Error[] | Promise<Error[]>
 export type icCondition = (env: Environment, data: (string | number)[]) => boolean
 
-export const functions: { [key: string]: icFunction } = {
+export const functions: Record<AnyFunctionName, icFunction> = {
 	...arithmetic,
 	...misc,
 	...jump,

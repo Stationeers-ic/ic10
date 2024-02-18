@@ -1,9 +1,10 @@
 import { hash, line } from "../regexps"
-import { InterpreterIc10 } from ".."
+import { InterpreterIc10 } from "../"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
 import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
+import { AnyFunctionName } from "../ZodTypes"
 
 export class Line {
 	public fn: string | undefined
@@ -61,9 +62,11 @@ export class Line {
 	public async run() {
 		this.runCounter++
 		if (this.fn && !this.fn.endsWith(":")) {
-			if (this.fn in functions) {
+
+			const fn = AnyFunctionName.safeParse(this.fn)
+			if (fn.success) {
 				try {
-					functions[this.fn](this.scope.env, this.args ?? [])
+					functions[fn.data](this.scope.env, this.args ?? [])
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
 						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
