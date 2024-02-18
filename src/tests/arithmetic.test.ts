@@ -173,6 +173,7 @@ describe("arithmetic", () => {
 		expect(runFunc(functions.sll, ["r0", 1, -1], { r0: 1 })).resolves.toBe(0)
 		expect(runFunc(functions.sll, ["r0", "r0", "r0"], { r0: -1 })).resolves.toBe(0)
 		expect(runFunc(functions.sll, ["r0", -1, "r0"])).resolves.toBe(-1)
+		expect(runFunc(functions.sll, ["r0", 1, 30])).resolves.toBe(1073741824)
 	})
 	test("srl", () => {
 		expect(runFunc(functions.srl, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()

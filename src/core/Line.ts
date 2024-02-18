@@ -66,7 +66,6 @@ export class Line {
 					functions[this.fn](this.scope.env, this.args ?? [])
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
-						console.log(e)
 						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
 					} else {
 						throw e
