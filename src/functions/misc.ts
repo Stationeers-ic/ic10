@@ -1,6 +1,14 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
-import { Alias, AliasOrValue, MiscFunctionName, Ralias, RaliasOrValue, RaliasOrValueOrNaN, RegisterOrDevice } from "../ZodTypes"
+import {
+	Alias,
+	AliasOrValue,
+	MiscFunctionName,
+	Ralias,
+	RaliasOrValue,
+	RaliasOrValueOrNaN,
+	RegisterOrDevice,
+} from "../ZodTypes"
 
 const alias: icFunction = (env, data) => {
 	const [alias, dr] = z.tuple([Alias, RegisterOrDevice]).parse(data)

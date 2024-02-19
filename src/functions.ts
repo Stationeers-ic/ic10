@@ -7,13 +7,9 @@ import device from "./functions/device"
 import stack from "./functions/stack"
 import { AnyFunctionName } from "./ZodTypes"
 
-
 export type FunctionData = (string | number)[]
 
-export type icFunction = (
-	env: Environment,
-	data: FunctionData,
-) => void | Promise<void> | Error[] | Promise<Error[]>
+export type icFunction = (env: Environment, data: FunctionData) => void | Promise<void> | Error[] | Promise<Error[]>
 export type icCondition = (env: Environment, data: FunctionData) => boolean
 
 export const functions: Record<AnyFunctionName, icFunction> = {

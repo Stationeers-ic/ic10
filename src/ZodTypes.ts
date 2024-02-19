@@ -69,10 +69,6 @@ export const NotReservedWord = z
 		message: "Reserved word",
 	})
 
-
-
-
-
 export const ConditionName = z.union([
 	z.literal("eq"),
 	z.literal("ge"),
@@ -232,11 +228,7 @@ export const MiscFunctionName = z.union([
 	z.literal("hcf"),
 ])
 export type MiscFunctionName = z.infer<typeof MiscFunctionName>
-export const StackFunctionName = z.union([
-	z.literal("push"),
-	z.literal("pop"),
-	z.literal("peek"),
-])
+export const StackFunctionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")])
 export type StackFunctionName = z.infer<typeof StackFunctionName>
 export const AnyFunctionName = z.union([
 	ArithmeticFunctionName,
@@ -247,4 +239,3 @@ export const AnyFunctionName = z.union([
 	StackFunctionName,
 ])
 export type AnyFunctionName = z.infer<typeof AnyFunctionName>
-

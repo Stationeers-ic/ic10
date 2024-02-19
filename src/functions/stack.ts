@@ -1,7 +1,6 @@
-import { icFunction } from '../functions';
+import { icFunction } from "../functions"
 import { z } from "zod"
 import { Ralias, RaliasOrValue, StackFunctionName } from "../ZodTypes"
-
 
 const push: icFunction = (env, data) => {
 	const d = z.tuple([RaliasOrValue]).parse(data)
