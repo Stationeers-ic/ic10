@@ -6,6 +6,27 @@ import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 import { AnyFunctionName } from "../ZodTypes"
 
+const LineTest = z
+			.tuple([
+				z.string(),
+				z.string().optional(),
+				z.string()
+					.optional()
+					.transform(args => args
+						?.split(" ")
+						.filter((i) => i)
+						.map((i): number | string => {
+							if (!isNaN(parseFloat(i))) return parseFloat(i)
+							const h = Line.parseHash(i)
+							if (h) return h.toString()
+							return i
+						})
+					).pipe(z.array(z.union([z.string(), z.number()])).optional()),
+				z.string().optional(),
+			])
+			.nullable()
+
+
 export class Line {
 	fn: string | undefined
 	args: any[] | undefined
@@ -22,40 +43,18 @@ export class Line {
 		this.isGoTo = this.fn?.endsWith(":") ?? false
 	}
 
-	parseLine() {
-		const m = line.exec(this.line) as [string, string | undefined, string | undefined, string | undefined] | null
-		if (m) {
-			// TODO: add correct tag: support
-			const [str, fn, args, comment] = m
-			const matches = z
-				.object({
-					str: z.string(),
-					fn: z.string().optional(),
-					args: z.array(z.union([z.string(), z.number()])).optional(),
-					comment: z.string().optional(),
-				})
-				.parse({
-					str,
-					fn,
-					args: args
-						?.split(" ")
-						.filter((i) => i)
-						.map((i): number | string => {
-							if (!isNaN(parseFloat(i))) return parseFloat(i)
-							const h = this.parseHash(i)
-							if (h) return h.toString()
-							return i
-						}),
-					comment,
-				})
-			this.fn = matches.fn
-			this.args = matches.args
-			this.comment = matches.comment
-		}
+	parseLine():void {
+		const m = LineTest.safeParse(line.exec(this.line))
+		if (!m.success) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
+		if (m.data === null) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
+
+		this.fn = m.data[1]
+		this.args = m.data[2]
+		this.comment = m.data[3]
 	}
 
 	// parse str HASH("SOME_STRING") to crc32(SOME_STRING)
-	parseHash(str: string) {
+	static parseHash(str: string) {
 		const matches = hash.exec(str) as [string, string] | null
 		if (matches) {
 			return CRC32.str(matches[1])

@@ -13,9 +13,10 @@ export class InterpreterIc10 {
 		this.parseCode()
 	}
 
-	setCode(code: string) {
+	setCode(code: string): this {
 		this.code = code
 		this.parseCode()
+		return this
 	}
 
 	private parseCode(): this {
@@ -38,6 +39,7 @@ export class InterpreterIc10 {
 		return this
 	}
 	async step(): Promise<string | boolean> {
+		if (this.env.errorCounter !== 0) return "ERR"
 		const old = this.env.line
 		const line = this.env.getCurrentLine()
 		if (line === null) {
@@ -68,6 +70,7 @@ export class InterpreterIc10 {
 	async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
 		codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER)
+		if (this.env.errorCounter !== 0) return "ERR"
 		try {
 			let result: string | boolean = false
 			while (codeLines > 0 && dryRun > 0) {
