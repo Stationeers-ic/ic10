@@ -1,20 +1,24 @@
 import { Line } from "../core/Line"
 import EventEmitter from "eventemitter3"
-import { Register } from "../ZodTypes"
+import { AnyFunctionName, Register } from "../ZodTypes"
 import { Err } from "./Err"
+import { FunctionData } from "../functions"
 
-declare interface EnvironmentEvents {
+type EnvironmentEvents = {
 	error: (err: Err) => void
 	warn: (err: Err) => void
 	info: (err: Err) => void
 	debug: (err: Err) => void
 }
+type BeforeFunction = Record<`before_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>
+type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>
 
+type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
 /*
  * Окружение для интерпретатора
  * Хранит все данные необходимые для интерпретации
  */
-export abstract class Environment extends EventEmitter<EnvironmentEvents> {
+export abstract class Environment extends EventEmitter<EventNames, Environment> {
 	/*
 	 * Текущая строка
 	 */
@@ -22,16 +26,17 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 	/*
 	 * Все строки текущего выполнения
 	 */
-	public lines: Map<number, Line> = new Map<number, Line>()
+	lines: ReadonlyArray<Line | null> = []
 	public InfiniteLoopLimit: number = 500
 	public errors: Err[] = []
+	public errorCounter: number = 0
 
-	public getLine(index: number) {
-		return this.lines.get(index)
+	public getLine(index: number): Line | null | undefined {
+		return this.lines[index]
 	}
 
-	public getCurrentLine() {
-		return this.lines.get(this.line)
+	public getCurrentLine(): Line | null | undefined {
+		return this.lines[this.line]
 	}
 
 	abstract jump(line: string | number): void
@@ -64,6 +69,7 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 	throw(err: Err) {
 		err.lineStart = err.lineStart ?? this.line
 		this.errors.push(err)
+		if (err.level === "error") this.errorCounter++
 		this.emit(err.level, err)
 	}
 
@@ -80,30 +86,24 @@ export abstract class Environment extends EventEmitter<EnvironmentEvents> {
 		return string
 	}
 
-	on<T extends EventEmitter.EventNames<EnvironmentEvents>>(
-		event: T,
-		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
-	): this {
+	on<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this {
 		return super.on(event, fn, this)
 	}
 
-	addListener<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+	addListener<T extends EventEmitter.EventNames<EventNames>>(
 		event: T,
-		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
+		fn: EventEmitter.EventListener<EventNames, T>,
 	): this {
 		return super.addListener(event, fn, this)
 	}
 
-	once<T extends EventEmitter.EventNames<EnvironmentEvents>>(
-		event: T,
-		fn: EventEmitter.EventListener<EnvironmentEvents, T>,
-	): this {
+	once<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this {
 		return super.once(event, fn, this)
 	}
 
-	removeListener<T extends EventEmitter.EventNames<EnvironmentEvents>>(
+	removeListener<T extends EventEmitter.EventNames<EventNames>>(
 		event: T,
-		fn?: EventEmitter.EventListener<EnvironmentEvents, T>,
+		fn?: EventEmitter.EventListener<EventNames, T>,
 	): this {
 		return super.removeListener(event, fn, this)
 	}

@@ -7,10 +7,11 @@ import { SyntaxError } from "../errors/SyntaxError"
 import { AnyFunctionName } from "../ZodTypes"
 
 export class Line {
-	public fn: string | undefined
-	public args: any[] | undefined
-	public comment: string | undefined
-	public runCounter: number = 0
+	fn: string | undefined
+	args: any[] | undefined
+	comment: string | undefined
+	runCounter: number = 0
+	isGoTo: boolean
 
 	constructor(
 		private scope: InterpreterIc10,
@@ -18,11 +19,13 @@ export class Line {
 		public lineIndex: number,
 	) {
 		this.parseLine()
+		this.isGoTo = this.fn?.endsWith(":") ?? false
 	}
 
 	parseLine() {
 		const m = line.exec(this.line) as [string, string | undefined, string | undefined, string | undefined] | null
 		if (m) {
+			// TODO: add correct tag: support
 			const [str, fn, args, comment] = m
 			const matches = z
 				.object({
@@ -59,14 +62,16 @@ export class Line {
 		}
 	}
 
-	public async run() {
-		this.runCounter++
+	public async run(): Promise<Boolean> {
 		if (this.fn && !this.fn.endsWith(":")) {
-
+			this.runCounter++
 			const fn = AnyFunctionName.safeParse(this.fn)
 			if (fn.success) {
 				try {
+					this.scope.env.emit(`before_${fn.data}`, this.args ?? [], this)
 					functions[fn.data](this.scope.env, this.args ?? [])
+					this.scope.env.emit(`after_${fn.data}`, this.args ?? [], this)
+
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
 						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
@@ -74,11 +79,12 @@ export class Line {
 						throw e
 					}
 				}
-				return
 			} else {
 				this.scope.env.throw(new SyntaxError(`Function ${this.fn} not found`, "error"))
 			}
+			return true
 		}
+		return false
 	}
 }
 

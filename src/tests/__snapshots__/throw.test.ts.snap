@@ -1,0 +1,73 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throw move 1`] = `
+[
+  [SyntaxError: Array must contain at least 2 element(s)],
+]
+`;
+
+exports[`throw move 2`] = `
+[
+  [SyntaxError: Invalid input],
+]
+`;
+
+exports[`throw alias 1`] = `
+[
+  [SyntaxError: Array must contain at least 2 element(s)],
+]
+`;
+
+exports[`throw alias 2`] = `
+[
+  [SyntaxError: Expected string, received number],
+]
+`;
+
+exports[`throw alias 3`] = `
+[
+  [SyntaxError: Invalid input],
+]
+`;
+
+exports[`throw alias 4`] = `
+[
+  [SyntaxError: Invalid],
+]
+`;
+
+exports[`throw alias 5`] = `
+[
+  [SyntaxError: Invalid],
+]
+`;
+
+exports[`throw alias 6`] = `
+[
+  [SyntaxError: Invalid],
+]
+`;
+
+exports[`throw jump 1`] = `
+[
+  [SyntaxError: Array must contain at least 1 element(s)],
+]
+`;
+
+exports[`throw jump 2`] = `
+[
+  [SyntaxError: Jump to the same line 0 is not allowed],
+]
+`;
+
+exports[`throw stack 1`] = `
+[
+  [SyntaxError: Required],
+]
+`;
+
+exports[`throw stack 2`] = `
+[
+  [SyntaxError: Required],
+]
+`;
