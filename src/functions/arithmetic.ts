@@ -27,7 +27,9 @@ const div: icFunction = (env, data) => {
 }
 const mod: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) % env.get(d[2])))
+	let num = env.get(d[1]) % env.get(d[2])
+	if (num < 0) num += env.get(d[2])
+	env.set(d[0], jsThing(num))
 }
 const sqrt: icFunction = (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)

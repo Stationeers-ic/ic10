@@ -64,6 +64,10 @@ describe("arithmetic", () => {
 		expect(runFunc(functions.mod, ["r0", "r0", "r0"], { r0: -4 })).resolves.toBe(0)
 		expect(runFunc(functions.mod, ["r0", -4, 0])).resolves.toBeNaN()
 		expect(runFunc(functions.mod, ["r0", -4, -0])).resolves.toBeNaN()
+		expect(runFunc(functions.mod, ["r0", -2, "r0"], { r0: 4 })).resolves.toBe(2)
+		expect(runFunc(functions.mod, ["r0", "r0", -2], { r0: 3 })).resolves.toBe(1)
+		expect(runFunc(functions.mod, ["r0", -0.1, 2], { r0: 4 })).resolves.toBe(1.9)
+		expect(runFunc(functions.mod, ["r0", -1.5, 2], { r0: 4 })).resolves.toBe(0.5)
 	})
 	test("sqrt", () => {
 		expect(runFunc(functions.sqrt, ["r0", NaN])).rejects.toThrow()
