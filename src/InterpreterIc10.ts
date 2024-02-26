@@ -78,7 +78,7 @@ export class InterpreterIc10 {
 				// exit with code
 				if (typeof result === "string") return result
 				// on code lines
-				if (result === true) codeLines--
+				if (result) codeLines--
 				// on empty lines
 				else dryRun--
 			}

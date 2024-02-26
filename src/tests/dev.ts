@@ -8,7 +8,7 @@ import { DevEnv } from "../DevEnv"
 		const a = new InterpreterIc10(
 			mem,
 			`
-mod r0 -4 0
+move d1 HASH("Pizdeck")
 `,
 		)
 		await a.run()

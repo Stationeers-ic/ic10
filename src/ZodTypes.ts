@@ -4,18 +4,22 @@ export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()])
 export const StringOrNumber = z.union([z.string(), z.number()])
 export const NumberOrNan = z.number().or(z.nan())
 // export const Result = RegisterOrAlias
+/**
+ * r0 - r17, sp
+ */
+export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]) //https://regex101.com/r/UiCGWX/1
+/**
+ * d0 - d5, db
+ */
+//https://regex101.com/r/pAET99/1
+export const Device = z.union([z.literal("db"), z.string().regex(/d[0-9]+/)])
 
+export const RegisterOrDevice = Register.or(Device)
 export const Value = z.number()
-export const Alias = z.string()
+export const Alias = z.string().refine((val: string) => {
+	return !RegisterOrDevice.safeParse(val).success
+}, "Alias can be only string and not a register or device name.")
 
-/**
- * r0 - r17
- */
-export const Register = z.string().regex(/^r([0-9]|1[0-7])$/) //https://regex101.com/r/UiCGWX/1
-/**
- * d0 - d6
- */
-export const Device = z.string().regex(/^d([b0-5])$/) //https://regex101.com/r/pAET99/1
 /**
  * Register | Alias
  */
@@ -38,13 +42,13 @@ export const AliasOrValue = Alias.or(Value)
 /**
  * Alias | Register | numeric value
  */
-export const RaliasOrValue = Alias.or(Value)
-export const RegisterOrDevice = Register.or(Device)
-export const RaliasOrValuePositive = Alias.or(Value.min(0))
-export const SlotIndex = Alias.or(Value.min(0).int())
-export const LineIndex = Alias.or(Value.min(0).int())
-export const RelativeLineIndex = Alias.or(Value.int())
-export const Hash = Alias.or(Value.int())
+export const RaliasOrValue = Ralias.or(Value)
+
+export const RaliasOrValuePositive = Ralias.or(Value.min(0))
+export const SlotIndex = Ralias.or(Value.min(0).int())
+export const LineIndex = Ralias.or(Value.min(0).int())
+export const RelativeLineIndex = Ralias.or(Value.int())
+export const Hash = Ralias.or(Value.int())
 
 /**
  * Alias | NaN | numeric value

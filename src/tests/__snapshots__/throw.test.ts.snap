@@ -26,25 +26,25 @@ exports[`throw alias 2`] = `
 
 exports[`throw alias 3`] = `
 [
-  [SyntaxError: Invalid input],
+  [SyntaxError: Alias can be only string and not a register or device name.],
 ]
 `;
 
 exports[`throw alias 4`] = `
 [
-  [SyntaxError: Invalid],
+  [SyntaxError: Alias can be only string and not a register or device name.],
 ]
 `;
 
 exports[`throw alias 5`] = `
 [
-  [SyntaxError: Invalid],
+  [SyntaxError: Alias can be only string and not a register or device name.],
 ]
 `;
 
 exports[`throw alias 6`] = `
 [
-  [SyntaxError: Invalid],
+  [SyntaxError: Alias can be only string and not a register or device name.],
 ]
 `;
 

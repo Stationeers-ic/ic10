@@ -29,16 +29,28 @@ const LineTest = z
 	])
 	.nullable()
 
+const Position = z.object({
+	start: z.number(),
+	end: z.number(),
+	length: z.number(),
+})
+const Positions = z.object({
+	fn: Position,
+	args: z.array(Position),
+	comment: Position,
+})
+
 export class Line {
 	fn: string | undefined
-	args: any[] | undefined
+	args: (string | number)[] | undefined
 	comment: string | undefined
 	runCounter: number = 0
 	isGoTo: boolean
+	positions: z.infer<typeof Positions> | undefined
 
 	constructor(
 		private scope: InterpreterIc10,
-		public line: string,
+		public readonly line: string,
 		public lineIndex: number,
 	) {
 		this.parseLine()
@@ -46,13 +58,19 @@ export class Line {
 	}
 
 	parseLine(): void {
-		const m = LineTest.safeParse(line.exec(this.line))
+		const reLine = line.exec(this.line)
+		const m = LineTest.safeParse(reLine)
 		if (!m.success) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
 		if (m.data === null) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
 
 		this.fn = m.data[1]
 		this.args = m.data[2]
 		this.comment = m.data[3]
+		if (reLine) {
+			reLine?.forEach((match, index) => {})
+
+			// this.positions = Positions.parse()
+		}
 	}
 
 	// parse str HASH("SOME_STRING") to crc32(SOME_STRING)
@@ -75,6 +93,7 @@ export class Line {
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
 						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
+						// SyntaxError.fromZod(e, this).forEach((e) => this.scope.env.throw(e))
 					} else {
 						throw e
 					}
