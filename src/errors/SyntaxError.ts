@@ -1,6 +1,7 @@
 import { Err } from "../abstract/Err"
 import { ZodError, ZodIssue } from "zod"
 import Line from "../core/Line"
+import { isKeyOfArray } from "../ZodTypes"
 
 export class SyntaxError extends Err {
 	constructor(
@@ -17,37 +18,28 @@ export class SyntaxError extends Err {
 
 	static fromZod(zodError: ZodError, line: Line): SyntaxError[] {
 		const errors: SyntaxError[] = []
-
 		const defaultError = (e: ZodIssue, line: Line) => {
 			errors.push(new SyntaxError(e.message, "error", line.lineIndex, line.lineIndex, 0, line.line.length))
 		}
-
 		zodError.errors.forEach((e) => {
 			console.log(e)
 			if (e.path.length === 0) {
 				return defaultError(e, line)
 			}
 			e.path.forEach((opIndex) => {
-				const args = line.args
-				if (args === undefined) {
+				const tokens = line.tokens
+				if (!tokens) {
 					return defaultError(e, line)
 				}
-				const op = args[parseInt(opIndex.toString())].toString()
-				console.log(op)
-				if (op === undefined) {
+				const op = parseInt(opIndex.toString())
+				if (isNaN(op)) {
 					return defaultError(e, line)
 				}
-
-				errors.push(
-					new SyntaxError(
-						e.message,
-						"error",
-						line.lineIndex,
-						line.lineIndex,
-						line.line.indexOf(op),
-						line.line.indexOf(op) + op.length,
-					),
-				)
+				const p = tokens.args[op]
+				if (p == undefined) {
+					return defaultError(e, line)
+				}
+				errors.push(new SyntaxError(e.message, "error", line.lineIndex, line.lineIndex, p.start, p.end))
 			})
 		})
 		return errors

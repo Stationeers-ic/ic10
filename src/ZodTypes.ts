@@ -243,3 +243,11 @@ export const AnyFunctionName = z.union([
 	StackFunctionName,
 ])
 export type AnyFunctionName = z.infer<typeof AnyFunctionName>
+
+export function isKeyOfObject<T extends object>(key: string | number | symbol, obj: T): key is keyof T {
+	return key in obj
+}
+
+export function isKeyOfArray<T extends Array<any>>(key: string | number | symbol, arr: T): key is keyof T {
+	return arr.includes(key)
+}
