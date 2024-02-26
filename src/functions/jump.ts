@@ -1,7 +1,15 @@
 import { icFunction } from "../functions"
 import { z } from "zod"
 import { conditions } from "./conditions"
-import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, StringOrNumberOrNaN } from "../ZodTypes"
+import {
+	DeviceOrAlias,
+	LineIndex,
+	Ralias,
+	RaliasOrValue,
+	RelativeLineIndex,
+	StringOrNumberOrNaN,
+	Value,
+} from "../ZodTypes"
 
 const jValidate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
 const jrValidate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex])
@@ -10,16 +18,21 @@ const jrApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, Relat
 
 const j: icFunction = (env, data) => {
 	const d = z.tuple([LineIndex]).parse(data)
-	env.jump(env.get(d[0]))
+	const line = Value.min(0).int().parse(env.get(d[0]))
+	env.jump(line)
 }
 const jr: icFunction = (env, data) => {
 	const d = z.tuple([RelativeLineIndex]).parse(data)
-	env.jump(env.line + env.get(d[0]))
+	const line = Value.min(0)
+		.int()
+		.parse(env.line + env.get(d[0]))
+	env.jump(line)
 }
 const jal: icFunction = (env, data) => {
 	const d = z.tuple([LineIndex]).parse(data)
+	const line = Value.min(0).int().parse(env.get(d[0]))
 	env.set("r17", env.line)
-	env.jump(env.get(d[0]))
+	env.jump(line)
 }
 const beq: icFunction = (env, data) => {
 	const [x, y, line] = jValidate.parse(data)

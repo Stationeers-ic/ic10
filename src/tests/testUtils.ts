@@ -38,3 +38,18 @@ export async function runFunc(
 	await fn(mem, args)
 	return mem.get("r0")
 }
+
+export async function runJal(
+	fn: icFunction,
+	args: (string | number)[],
+	line: number = 0,
+	data: { [key: string]: number } = {},
+) {
+	const mem = new DevEnv(data)
+	mem.line = line
+	await fn(mem, args)
+	return {
+		line: mem.line,
+		r17: mem.get("r17"),
+	}
+}
