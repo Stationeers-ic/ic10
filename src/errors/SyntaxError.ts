@@ -1,7 +1,7 @@
 import { Err } from "../abstract/Err"
-import { ZodError, ZodIssue } from "zod"
+import { undefined, ZodError, ZodIssue } from "zod"
 import Line from "../core/Line"
-import { isKeyOfArray } from "../ZodTypes"
+import { Position } from "../regexps"
 
 export class SyntaxError extends Err {
 	constructor(
@@ -22,7 +22,6 @@ export class SyntaxError extends Err {
 			errors.push(new SyntaxError(e.message, "error", line.lineIndex, line.lineIndex, 0, line.line.length))
 		}
 		zodError.errors.forEach((e) => {
-			console.log(e)
 			if (e.path.length === 0) {
 				return defaultError(e, line)
 			}
@@ -35,8 +34,8 @@ export class SyntaxError extends Err {
 				if (isNaN(op)) {
 					return defaultError(e, line)
 				}
-				const p = tokens.args[op]
-				if (p == undefined) {
+				const p: Position | undefined = tokens.args[op]
+				if (typeof p === "undefined") {
 					return defaultError(e, line)
 				}
 				errors.push(new SyntaxError(e.message, "error", line.lineIndex, line.lineIndex, p.start, p.end))

@@ -1,23 +1,24 @@
-import { InterpreterIc10 } from "../"
+import { Err, InterpreterIc10 } from "../"
 import { DevEnv } from "../DevEnv"
-console.clear()
+// console.clear()
 ;(async () => {
 	const mem = new DevEnv()
-	mem.on("error", (e) => console.error(e))
-	mem.on("warn", (e) => console.warn(e))
+	mem.on("error", (e) => console.error(e.format()))
+	// mem.on("warn", (e) => console.warn(e))
+
 	try {
 		const a = new InterpreterIc10(
 			mem,
 			`
-  move move  r0  r1r1  r1  r1 r1 r1    # 123 24
+mother ebal
 `,
 		)
-		await a.run()
-	} catch (e) {
-		console.error(e)
+		await a.testCode()
+	} catch (e: unknown) {
+		console.error("ПИЗДЕЦ Бляяяяяяяя", e)
 	}
-	console.log("mem.data :>> ", mem.data)
-	console.log("mem.aliases :>> ", mem.aliases)
+	// console.log("mem.data :>> ", mem.data)
+	// console.log("mem.aliases :>> ", mem.aliases)
 })()
 
 //    `

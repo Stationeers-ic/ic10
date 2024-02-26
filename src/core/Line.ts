@@ -81,14 +81,23 @@ export class Line {
 					this.scope.env.emit(`after_${fn.data}`, this.args ?? [], this)
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
-						this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
-						// SyntaxError.fromZod(e, this).forEach((e) => this.scope.env.throw(e))
+						// this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
+						SyntaxError.fromZod(e, this).forEach((e) => this.scope.env.throw(e))
 					} else {
 						throw e
 					}
 				}
 			} else {
-				this.scope.env.throw(new SyntaxError(`Function ${this.fn} not found`, "error"))
+				this.scope.env.throw(
+					new SyntaxError(
+						`Function ${this.fn} not found`,
+						"error",
+						this.lineIndex,
+						this.lineIndex,
+						this.tokens?.fn.start,
+						this.tokens?.fn.end,
+					),
+				)
 			}
 			return true
 		}

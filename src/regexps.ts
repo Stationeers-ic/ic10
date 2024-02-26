@@ -4,7 +4,7 @@ import { isKeyOfObject } from "./ZodTypes"
 export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/
 export const args = /\s*(\S+)/g
 
-const Position = z.object({
+export const Position = z.object({
 	value: z.string(),
 	start: z.number(),
 	end: z.number(),
@@ -16,6 +16,7 @@ export const Positions = z.object({
 	comment: Position,
 })
 export type Positions = z.infer<typeof Positions>
+export type Position = z.infer<typeof Position>
 
 export const getLineRegexGroupPositions = (text: string) => {
 	const match = line.exec(text)

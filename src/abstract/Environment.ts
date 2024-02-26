@@ -20,6 +20,10 @@ type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
  */
 export abstract class Environment extends EventEmitter<EventNames, Environment> {
 	/*
+	 * Тестовый режим
+	 */
+	public isTest: boolean = false
+	/*
 	 * Текущая строка
 	 */
 	public line: number = 0
