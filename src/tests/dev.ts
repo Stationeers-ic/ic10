@@ -9,7 +9,7 @@ console.clear()
 		const a = new InterpreterIc10(
 			mem,
 			`
-move r0  1
+  move move  r0  r1r1  r1  r1 r1 r1    # 123 24
 `,
 		)
 		await a.run()

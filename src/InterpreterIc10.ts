@@ -22,7 +22,7 @@ export class InterpreterIc10 {
 	private parseCode(): this {
 		this.env.lines = this.code
 			.split("\n")
-			.map((str) => str.trim().replace(/\s+/g, " "))
+			// .map((str) => str.trim().replace(/\s+/g, " "))
 			.map((str) => (str === "" ? null : str))
 			.map((str, i) => {
 				if (str === null) return null

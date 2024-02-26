@@ -1,27 +1,67 @@
-export const line = new RegExp("^\\s*(?<function>^[^#:\\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$", "")
+import { z } from "zod"
 
-export const getRegexGroupPositions = (text: string, regex: RegExp): number[][] => {
-	const positions: number[][] = []
-	let match: RegExpExecArray | null
+export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/
+export const args = /\s*(\S+)/g
 
-	while ((match = regex.exec(text)) !== null) {
-		let groupPositions: number[] = []
-		for (let i = 1; i < match.length; i++) {
-			const group = match[i]
-			if (group !== undefined) {
-				const start = match.index + match[0].indexOf(group)
-				const end = start + group.length
-				groupPositions.push(start, end)
+const Position = z.object({
+	value: z.string(),
+	start: z.number(),
+	end: z.number(),
+	length: z.number(),
+})
+export const Positions = z.object({
+	fn: Position,
+	args: z.array(Position),
+	comment: Position,
+})
+export type Positions = z.infer<typeof Positions>
+
+export function isKeyOfObject<T extends object>(key: string | number | symbol, obj: T): key is keyof T {
+	return key in obj
+}
+
+export const getLineRegexGroupPositions = (text: string) => {
+	const match = line.exec(text)
+	if (match === null) return null
+	const groups = match.groups
+	if (!groups) return null
+
+	const groupPositions: Positions = {
+		fn: { value: "", start: 0, end: 0, length: 0 },
+		args: [],
+		comment: { value: "", start: 0, end: 0, length: 0 },
+	}
+	Object.entries(groups).forEach(([groupName, group]) => {
+		if (group !== undefined) {
+			const start = match.index + match[0].indexOf(group)
+			const length = group.length
+			const end = start + length
+
+			if (isKeyOfObject(groupName, groupPositions)) {
+				if (groupName === "args") {
+					;[...group.matchAll(args)].forEach((k, i) => {
+						const [v, arg] = k
+						const argStart = start + v.indexOf(arg) + (k.index ?? 0)
+						const argLength = arg.length
+						const argEnd = argStart + argLength
+						groupPositions[groupName].push({
+							value: arg,
+							start: argStart,
+							end: argEnd,
+							length: argLength,
+						})
+					})
+				} else
+					groupPositions[groupName] = {
+						value: group,
+						start,
+						end,
+						length,
+					}
 			}
 		}
-		positions.push(groupPositions)
-		if (!regex.global) {
-			// For non-global regexes, prevent infinite loops.
-			break
-		}
-	}
-
-	return positions
+	})
+	return Positions.parse(groupPositions)
 }
 
 export const hash = new RegExp('^HASH\\("(?<hash>.+?)"\\)$', "")

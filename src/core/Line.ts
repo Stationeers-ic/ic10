@@ -1,4 +1,4 @@
-import { getRegexGroupPositions, hash, line } from "../regexps"
+import { Positions, getLineRegexGroupPositions, hash, line } from "../regexps"
 import { InterpreterIc10 } from "../"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
@@ -29,24 +29,13 @@ const LineTest = z
 	])
 	.nullable()
 
-const Position = z.object({
-	start: z.number(),
-	end: z.number(),
-	length: z.number(),
-})
-const Positions = z.object({
-	fn: Position,
-	args: z.array(Position),
-	comment: Position,
-})
-
 export class Line {
 	fn: string | undefined
 	args: (string | number)[] | undefined
 	comment: string | undefined
 	runCounter: number = 0
 	isGoTo: boolean
-	positions: z.infer<typeof Positions> | undefined
+	positions: Positions | undefined
 
 	constructor(
 		private scope: InterpreterIc10,
@@ -58,7 +47,7 @@ export class Line {
 	}
 
 	parseLine(): void {
-		console.log("dd:", getRegexGroupPositions(this.line, line))
+		console.log("dd:", getLineRegexGroupPositions(this.line))
 		const reLine = line.exec(this.line)
 		console.log(reLine)
 		const m = LineTest.safeParse(reLine)
