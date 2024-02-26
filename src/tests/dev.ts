@@ -1,5 +1,6 @@
 import { InterpreterIc10 } from "../"
 import { DevEnv } from "../DevEnv"
+console.clear()
 ;(async () => {
 	const mem = new DevEnv()
 	mem.on("error", (e) => console.error(e))
@@ -8,15 +9,15 @@ import { DevEnv } from "../DevEnv"
 		const a = new InterpreterIc10(
 			mem,
 			`
-move d1 HASH("Pizdeck")
+move r0  1
 `,
 		)
 		await a.run()
 	} catch (e) {
 		console.error(e)
 	}
-	console.log(mem.data)
-	// console.log(mem.aliases)
+	console.log("mem.data :>> ", mem.data)
+	console.log("mem.aliases :>> ", mem.aliases)
 })()
 
 //    `

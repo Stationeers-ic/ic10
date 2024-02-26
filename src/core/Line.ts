@@ -1,4 +1,4 @@
-import { hash, line } from "../regexps"
+import { getRegexGroupPositions, hash, line } from "../regexps"
 import { InterpreterIc10 } from "../"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
@@ -58,7 +58,9 @@ export class Line {
 	}
 
 	parseLine(): void {
+		console.log("dd:", getRegexGroupPositions(this.line, line))
 		const reLine = line.exec(this.line)
+		console.log(reLine)
 		const m = LineTest.safeParse(reLine)
 		if (!m.success) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
 		if (m.data === null) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
