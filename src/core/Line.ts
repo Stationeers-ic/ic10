@@ -1,4 +1,4 @@
-import { Positions, getLineRegexGroupPositions, hash, line } from "../regexps"
+import { getLineRegexGroupPositions, hash, Positions } from "../regexps"
 import { InterpreterIc10 } from "../"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
@@ -30,12 +30,12 @@ const LineTest = z
 	.nullable()
 
 export class Line {
-	fn: string | undefined
-	args: (string | number)[] | undefined
-	comment: string | undefined
+	fn: string = ""
+	args: (string | number)[] = []
+	comment: string = ""
 	runCounter: number = 0
 	isGoTo: boolean
-	positions: Positions | undefined
+	tokens: Positions | null = null
 
 	constructor(
 		private scope: InterpreterIc10,
@@ -47,21 +47,19 @@ export class Line {
 	}
 
 	parseLine(): void {
-		console.log("dd:", getLineRegexGroupPositions(this.line))
-		const reLine = line.exec(this.line)
-		console.log(reLine)
-		const m = LineTest.safeParse(reLine)
-		if (!m.success) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
-		if (m.data === null) return this.scope.env.throw(new SyntaxError("Invalid line", "error", this.lineIndex))
-
-		this.fn = m.data[1]
-		this.args = m.data[2]
-		this.comment = m.data[3]
-		if (reLine) {
-			reLine?.forEach((match, index) => {})
-
-			// this.positions = Positions.parse()
+		this.tokens = getLineRegexGroupPositions(this.line)
+		if (!this.tokens) {
+			return
 		}
+
+		this.fn = this.tokens.fn.value
+		this.args = this.tokens.args.map((i) => {
+			if (!isNaN(parseFloat(i.value))) return parseFloat(i.value)
+			const h = Line.parseHash(i.value)
+			if (h) return h.toString()
+			return i.value
+		})
+		this.comment = this.tokens.comment.value
 	}
 
 	// parse str HASH("SOME_STRING") to crc32(SOME_STRING)
