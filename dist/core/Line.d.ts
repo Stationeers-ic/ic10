@@ -1,15 +1,18 @@
-import { InterpreterIc10 } from "../main";
+import { Positions } from "../regexps";
+import { InterpreterIc10 } from "../";
 export declare class Line {
     private scope;
-    line: string;
+    readonly line: string;
     lineIndex: number;
-    fn: string | undefined;
-    args: any[] | undefined;
-    comment: string | undefined;
+    fn: string;
+    args: (string | number)[];
+    comment: string;
     runCounter: number;
+    isGoTo: boolean;
+    tokens: Positions | null;
     constructor(scope: InterpreterIc10, line: string, lineIndex: number);
     parseLine(): void;
-    parseHash(str: string): number | undefined;
-    run(): Promise<void>;
+    static parseHash(str: string): number | undefined;
+    run(): Promise<Boolean>;
 }
 export default Line;

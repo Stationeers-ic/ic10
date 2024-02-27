@@ -1,4 +1,4 @@
 import { icFunction } from "../functions";
-export declare const arithmetic: {
-    [key: string]: icFunction;
-};
+import { ArithmeticFunctionName } from "../ZodTypes";
+export declare const arithmetic: Record<ArithmeticFunctionName, icFunction>;
+export default arithmetic;

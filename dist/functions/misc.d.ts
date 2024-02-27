@@ -1,2 +1,4 @@
 import { icFunction } from "../functions";
-export declare const misc: Record<string, icFunction>;
+import { MiscFunctionName } from "../ZodTypes";
+export declare const misc: Record<MiscFunctionName, icFunction>;
+export default misc;

@@ -1,2 +1,4 @@
 import { icFunction } from "../functions";
-export declare const stack: Record<string, icFunction>;
+import { StackFunctionName } from "../ZodTypes";
+export declare const stack: Record<StackFunctionName, icFunction>;
+export default stack;

@@ -1,31 +1,31 @@
 import { z } from "zod";
 import { conditions } from "./conditions";
-import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, StringOrNumberOrNaN } from "../ZodTypes";
+import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, StringOrNumberOrNaN, Value, } from "../ZodTypes";
 const jValidate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex]);
 const jrValidate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex]);
 const jApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, LineIndex]);
 const jrApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, RelativeLineIndex]);
 const j = (env, data) => {
     const d = z.tuple([LineIndex]).parse(data);
-    env.jump(env.get(d[0]));
+    const line = Value.min(0).int().parse(env.get(d[0]));
+    env.jump(line);
 };
 const jr = (env, data) => {
     const d = z.tuple([RelativeLineIndex]).parse(data);
-    env.jump(env.line + env.get(d[0]));
+    const line = Value.min(0)
+        .int()
+        .parse(env.line + env.get(d[0]));
+    env.jump(line);
 };
 const jal = (env, data) => {
     const d = z.tuple([LineIndex]).parse(data);
+    const line = Value.min(0).int().parse(env.get(d[0]));
     env.set("r17", env.line);
-    env.jump(env.get(d[0]));
+    env.jump(line);
 };
 const beq = (env, data) => {
     const [x, y, line] = jValidate.parse(data);
     if (conditions.eq(env, [x, y]))
-        j(env, [line]);
-};
-const beqz = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.eq(env, [x, 0]))
         j(env, [line]);
 };
 const bge = (env, data) => {
@@ -33,19 +33,9 @@ const bge = (env, data) => {
     if (conditions.ge(env, [x, y]))
         j(env, [line]);
 };
-const bgez = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ge(env, [x, 0]))
-        j(env, [line]);
-};
 const bgt = (env, data) => {
     const [x, y, line] = jValidate.parse(data);
     if (conditions.gt(env, [x, y]))
-        j(env, [line]);
-};
-const bgtz = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.gt(env, [x, 0]))
         j(env, [line]);
 };
 const ble = (env, data) => {
@@ -53,19 +43,9 @@ const ble = (env, data) => {
     if (conditions.le(env, [x, y]))
         j(env, [line]);
 };
-const blez = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.le(env, [x, 0]))
-        j(env, [line]);
-};
 const blt = (env, data) => {
     const [x, y, line] = jValidate.parse(data);
     if (conditions.lt(env, [x, y]))
-        j(env, [line]);
-};
-const bltz = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.lt(env, [x, 0]))
         j(env, [line]);
 };
 const bne = (env, data) => {
@@ -73,29 +53,14 @@ const bne = (env, data) => {
     if (conditions.ne(env, [x, y]))
         j(env, [line]);
 };
-const bnez = (env, data) => {
-    const [x, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ne(env, [x, 0]))
-        j(env, [line]);
-};
 const bap = (env, data) => {
     const [x, y, c, line] = jApValidate.parse(data);
     if (conditions.ap(env, [x, y, c]))
         j(env, [line]);
 };
-const bapz = (env, data) => {
-    const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ap(env, [x, y]))
-        j(env, [line]);
-};
 const bna = (env, data) => {
     const [x, y, c, line] = jApValidate.parse(data);
     if (conditions.na(env, [x, y, c]))
-        j(env, [line]);
-};
-const bnaz = (env, data) => {
-    const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.na(env, [x, y, 0]))
         j(env, [line]);
 };
 const bdse = (env, data) => {
@@ -113,14 +78,17 @@ const bnan = (env, data) => {
     if (conditions.nan(env, [v]))
         j(env, [line]);
 };
+const beqz = (env, data) => beq(env, [...data, 0]);
+const bgez = (env, data) => bge(env, [...data, 0]);
+const bgtz = (env, data) => bgt(env, [...data, 0]);
+const blez = (env, data) => ble(env, [...data, 0]);
+const bltz = (env, data) => blt(env, [...data, 0]);
+const bnez = (env, data) => bne(env, [...data, 0]);
+const bapz = (env, [x, y]) => bap(env, [x, 0, y]);
+const bnaz = (env, [x, y]) => bna(env, [x, 0, y]);
 const breq = (env, data) => {
     const [a, b, offset] = jrValidate.parse(data);
     if (conditions.eq(env, [a, b]))
-        jr(env, [offset]);
-};
-const breqz = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.eq(env, [a, 0]))
         jr(env, [offset]);
 };
 const brge = (env, data) => {
@@ -128,19 +96,9 @@ const brge = (env, data) => {
     if (conditions.ge(env, [a, b]))
         jr(env, [offset]);
 };
-const brgez = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ge(env, [a, 0]))
-        jr(env, [offset]);
-};
 const brgt = (env, data) => {
     const [a, b, offset] = jrValidate.parse(data);
     if (conditions.gt(env, [a, b]))
-        jr(env, [offset]);
-};
-const brgtz = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.gt(env, [a, 0]))
         jr(env, [offset]);
 };
 const brle = (env, data) => {
@@ -148,19 +106,9 @@ const brle = (env, data) => {
     if (conditions.le(env, [a, b]))
         jr(env, [offset]);
 };
-const brlez = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.le(env, [a, 0]))
-        jr(env, [offset]);
-};
 const brlt = (env, data) => {
     const [a, b, offset] = jrValidate.parse(data);
     if (conditions.lt(env, [a, b]))
-        jr(env, [offset]);
-};
-const brltz = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.lt(env, [a, 0]))
         jr(env, [offset]);
 };
 const brne = (env, data) => {
@@ -168,29 +116,14 @@ const brne = (env, data) => {
     if (conditions.ne(env, [a, b]))
         jr(env, [offset]);
 };
-const brnez = (env, data) => {
-    const [a, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ne(env, [a, 0]))
-        jr(env, [offset]);
-};
 const brap = (env, data) => {
     const [x, y, c, offset] = jrApValidate.parse(data);
     if (conditions.ap(env, [x, y, c]))
         jr(env, [offset]);
 };
-const brapz = (env, data) => {
-    const [x, y, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ap(env, [x, y]))
-        jr(env, [offset]);
-};
 const brna = (env, data) => {
     const [x, y, c, offset] = jrApValidate.parse(data);
     if (conditions.na(env, [x, y, c]))
-        jr(env, [offset]);
-};
-const brnaz = (env, data) => {
-    const [x, y, offset] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.na(env, [x, y, 0]))
         jr(env, [offset]);
 };
 const brdse = (env, data) => {
@@ -208,14 +141,17 @@ const brnan = (env, data) => {
     if (conditions.nan(env, [v]))
         jr(env, [offset]);
 };
+const breqz = (env, data) => breq(env, [...data, 0]);
+const brgez = (env, data) => brge(env, [...data, 0]);
+const brgtz = (env, data) => brgt(env, [...data, 0]);
+const brlez = (env, data) => brle(env, [...data, 0]);
+const brltz = (env, data) => brlt(env, [...data, 0]);
+const brnez = (env, data) => brne(env, [...data, 0]);
+const brapz = (env, [x, y]) => bap(env, [x, 0, y]);
+const brnaz = (env, [x, y]) => bna(env, [x, 0, y]);
 const beqal = (env, data) => {
     const [a, b, line] = jValidate.parse(data);
     if (conditions.eq(env, [a, b]))
-        jal(env, [line]);
-};
-const beqzal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.eq(env, [a, 0]))
         jal(env, [line]);
 };
 const bgeal = (env, data) => {
@@ -223,19 +159,9 @@ const bgeal = (env, data) => {
     if (conditions.ge(env, [a, b]))
         jal(env, [line]);
 };
-const bgezal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ge(env, [a, 0]))
-        jal(env, [line]);
-};
 const bgtal = (env, data) => {
     const [a, b, line] = jValidate.parse(data);
     if (conditions.gt(env, [a, b]))
-        jal(env, [line]);
-};
-const bgtzal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.gt(env, [a, 0]))
         jal(env, [line]);
 };
 const bleal = (env, data) => {
@@ -243,29 +169,14 @@ const bleal = (env, data) => {
     if (conditions.le(env, [a, b]))
         jal(env, [line]);
 };
-const blezal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.le(env, [a, 0]))
-        jal(env, [line]);
-};
 const bltal = (env, data) => {
     const [a, b, line] = jValidate.parse(data);
     if (conditions.lt(env, [a, b]))
         jal(env, [line]);
 };
-const bltzal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.lt(env, [a, 0]))
-        jal(env, [line]);
-};
 const bneal = (env, data) => {
     const [a, b, line] = jValidate.parse(data);
     if (conditions.ne(env, [a, b]))
-        jal(env, [line]);
-};
-const bnezal = (env, data) => {
-    const [a, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.ne(env, [a, 0]))
         jal(env, [line]);
 };
 const bapal = (env, data) => {
@@ -275,19 +186,9 @@ const bapal = (env, data) => {
     if (conditions.ap(env, [x, y, c]))
         jal(env, [line]);
 };
-const bapzal = (env, data) => {
-    const [x, y, line] = jValidate.parse(data);
-    if (conditions.ap(env, [x, y]))
-        jal(env, [line]);
-};
 const bnaal = (env, data) => {
     const [x, y, c, line] = jApValidate.parse(data);
     if (conditions.na(env, [x, y, c]))
-        jal(env, [line]);
-};
-const bnazal = (env, data) => {
-    const [x, y, line] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    if (conditions.na(env, [x, y, 0]))
         jal(env, [line]);
 };
 const bdseal = (env, data) => {
@@ -300,6 +201,14 @@ const bdnsal = (env, data) => {
     if (conditions.dns(env, [d]))
         jal(env, [line]);
 };
+const beqzal = (env, data) => beqzal(env, [...data, 0]);
+const bgezal = (env, data) => bgezal(env, [...data, 0]);
+const bgtzal = (env, data) => bgtzal(env, [...data, 0]);
+const blezal = (env, data) => blezal(env, [...data, 0]);
+const bltzal = (env, data) => bltzal(env, [...data, 0]);
+const bnezal = (env, data) => bnezal(env, [...data, 0]);
+const bapzal = (env, [x, y]) => bapzal(env, [x, 0, y]);
+const bnazal = (env, [x, y]) => bnazal(env, [x, 0, y]);
 export const jump = {
     j,
     jr,
@@ -361,3 +270,4 @@ export const jump = {
     bdseal,
     bdnsal,
 };
+export default jump;

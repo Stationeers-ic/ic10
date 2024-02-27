@@ -1,5 +1,5 @@
 import { icCondition } from "../functions";
-declare const epsilon: number;
-declare const conditions: Record<string, icCondition>;
-export { conditions, epsilon };
+import { ConditionName } from "../ZodTypes";
+export declare const epsilon: number;
+export declare const conditions: Record<ConditionName, icCondition>;
 export default conditions;

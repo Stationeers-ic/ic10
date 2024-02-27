@@ -6,24 +6,31 @@ import { Register } from "../ZodTypes";
  */
 export class Environment extends EventEmitter {
     /*
+     * Тестовый режим
+     */
+    isTest = false;
+    /*
      * Текущая строка
      */
     line = 0;
     /*
      * Все строки текущего выполнения
      */
-    lines = new Map();
+    lines = [];
     InfiniteLoopLimit = 500;
     errors = [];
+    errorCounter = 0;
     getLine(index) {
-        return this.lines.get(index);
+        return this.lines[index];
     }
     getCurrentLine() {
-        return this.lines.get(this.line);
+        return this.lines[this.line];
     }
     throw(err) {
         err.lineStart = err.lineStart ?? this.line;
         this.errors.push(err);
+        if (err.level === "error")
+            this.errorCounter++;
         this.emit(err.level, err);
     }
     async afterLineRun(line) { }

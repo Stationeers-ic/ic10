@@ -2,6 +2,7 @@ import { Environment } from "./abstract/Environment";
 import { getProperty, hasProperty, setProperty } from "dot-prop";
 import { z } from "zod";
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes";
+import SyntaxError from "./errors/SyntaxError";
 //Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
     constructor(data = {}) {
@@ -55,11 +56,15 @@ export class DevEnv extends Environment {
         this.aliases.set(name, value);
     }
     jump(line) {
+        const oldLine = this.line;
         if (typeof line === "number") {
             this.line = line;
         }
         else {
             this.line = this.get(line);
+        }
+        if (oldLine === this.line) {
+            this.throw(new SyntaxError(`Jump to the same line ${this.line} is not allowed`, "error", this.line));
         }
     }
     peek() {
@@ -94,7 +99,7 @@ export class DevEnv extends Environment {
     }
     hcf() {
         console.log("Died");
-        this.jump(this.lines.size);
+        this.jump(this.lines.length);
     }
 }
 export default DevEnv;

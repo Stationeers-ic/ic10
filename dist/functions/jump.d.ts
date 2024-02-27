@@ -60,3 +60,4 @@ export declare const jump: {
     bdseal: icFunction;
     bdnsal: icFunction;
 };
+export default jump;

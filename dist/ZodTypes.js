@@ -3,16 +3,20 @@ export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()]);
 export const StringOrNumber = z.union([z.string(), z.number()]);
 export const NumberOrNan = z.number().or(z.nan());
 // export const Result = RegisterOrAlias
+/**
+ * r0 - r17, sp
+ */
+export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]); //https://regex101.com/r/UiCGWX/1
+/**
+ * d0 - d5, db
+ */
+//https://regex101.com/r/pAET99/1
+export const Device = z.union([z.literal("db"), z.string().regex(/d[0-9]+/)]);
+export const RegisterOrDevice = Register.or(Device);
 export const Value = z.number();
-export const Alias = z.string();
-/**
- * r0 - r17
- */
-export const Register = z.string().regex(/^r([0-9]|1[0-7])$/); //https://regex101.com/r/UiCGWX/1
-/**
- * d0 - d6
- */
-export const Device = z.string().regex(/^d([b0-5])$/); //https://regex101.com/r/pAET99/1
+export const Alias = z.string().refine((val) => {
+    return !RegisterOrDevice.safeParse(val).success;
+}, "Alias can be only string and not a register or device name.");
 /**
  * Register | Alias
  */
@@ -34,13 +38,12 @@ export const AliasOrValue = Alias.or(Value);
 /**
  * Alias | Register | numeric value
  */
-export const RaliasOrValue = Alias.or(Value);
-export const RegisterOrDevice = Register.or(Device);
-export const RaliasOrValuePositive = Alias.or(Value.min(0));
-export const SlotIndex = Alias.or(Value.min(0).int());
-export const LineIndex = Alias.or(Value.min(0).int());
-export const RelativeLineIndex = Alias.or(Value.int());
-export const Hash = Alias.or(Value.int());
+export const RaliasOrValue = Ralias.or(Value);
+export const RaliasOrValuePositive = Ralias.or(Value.min(0));
+export const SlotIndex = Ralias.or(Value.min(0).int());
+export const LineIndex = Ralias.or(Value.min(0).int());
+export const RelativeLineIndex = Ralias.or(Value.int());
+export const Hash = Ralias.or(Value.int());
 /**
  * Alias | NaN | numeric value
  */
@@ -62,6 +65,76 @@ export const NotReservedWord = z
     .refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {
     message: "Reserved word",
 });
+export const ConditionName = z.union([
+    z.literal("eq"),
+    z.literal("ge"),
+    z.literal("gt"),
+    z.literal("le"),
+    z.literal("lt"),
+    z.literal("ne"),
+    z.literal("na"),
+    z.literal("ap"),
+    z.literal("dse"),
+    z.literal("dns"),
+    z.literal("nan"),
+    z.literal("nanz"),
+]);
+export const ArithmeticFunctionName = z.union([
+    z.literal("add"),
+    z.literal("sub"),
+    z.literal("mul"),
+    z.literal("div"),
+    z.literal("mod"),
+    z.literal("sqrt"),
+    z.literal("round"),
+    z.literal("trunc"),
+    z.literal("ceil"),
+    z.literal("floor"),
+    z.literal("max"),
+    z.literal("min"),
+    z.literal("abs"),
+    z.literal("log"),
+    z.literal("exp"),
+    z.literal("rand"),
+    z.literal("sll"),
+    z.literal("srl"),
+    z.literal("sla"),
+    z.literal("sra"),
+    z.literal("sin"),
+    z.literal("cos"),
+    z.literal("tan"),
+    z.literal("asin"),
+    z.literal("acos"),
+    z.literal("atan"),
+    z.literal("atan2"),
+    z.literal("and"),
+    z.literal("or"),
+    z.literal("xor"),
+    z.literal("nor"),
+]);
+export const SelectFunctionName = z.union([
+    z.literal("seq"),
+    z.literal("sge"),
+    z.literal("sgt"),
+    z.literal("sle"),
+    z.literal("slt"),
+    z.literal("sne"),
+    z.literal("sap"),
+    z.literal("sna"),
+    z.literal("seqz"),
+    z.literal("sgez"),
+    z.literal("sgtz"),
+    z.literal("slez"),
+    z.literal("sltz"),
+    z.literal("snez"),
+    z.literal("sapz"),
+    z.literal("snaz"),
+    z.literal("sdse"),
+    z.literal("sdns"),
+    z.literal("snan"),
+    z.literal("snanz"),
+    z.literal("select"),
+]);
 export const JumpFunctionName = z.union([
     z.literal("j"),
     z.literal("jr"),
@@ -123,3 +196,40 @@ export const JumpFunctionName = z.union([
     z.literal("bdseal"),
     z.literal("bdnsal"),
 ]);
+export const DeviceFunctionName = z.union([
+    z.literal("s"),
+    z.literal("l"),
+    z.literal("ls"),
+    z.literal("sb"),
+    z.literal("lb"),
+    z.literal("lbn"),
+    z.literal("lr"),
+    z.literal("sbn"),
+    z.literal("lbs"),
+    z.literal("lbns"),
+    z.literal("ss"),
+    z.literal("sbs"),
+]);
+export const MiscFunctionName = z.union([
+    z.literal("alias"),
+    z.literal("define"),
+    z.literal("move"),
+    z.literal("yield"),
+    z.literal("sleep"),
+    z.literal("hcf"),
+]);
+export const StackFunctionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")]);
+export const AnyFunctionName = z.union([
+    ArithmeticFunctionName,
+    SelectFunctionName,
+    JumpFunctionName,
+    DeviceFunctionName,
+    MiscFunctionName,
+    StackFunctionName,
+]);
+export function isKeyOfObject(key, obj) {
+    return key in obj;
+}
+export function isKeyOfArray(key, arr) {
+    return arr.includes(key);
+}

@@ -1,2 +1,4 @@
 import { icFunction } from "../functions";
-export declare const device: Record<string, icFunction>;
+import { DeviceFunctionName } from "../ZodTypes";
+export declare const device: Record<DeviceFunctionName, icFunction>;
+export default device;

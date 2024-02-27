@@ -1,2 +1,4 @@
 import { icFunction } from "../functions";
-export declare const select: Record<string, icFunction>;
+import { SelectFunctionName } from "../ZodTypes";
+export declare const select: Record<SelectFunctionName, icFunction>;
+export default select;
