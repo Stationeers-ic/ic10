@@ -3,6 +3,7 @@ import { InfiniteLoop } from "./errors/InfiniteLoop";
 import { Err } from "./abstract/Err";
 export class InterpreterIc10 {
     code;
+    stopRun = false;
     env;
     constructor(env, code) {
         this.env = env;
@@ -29,6 +30,9 @@ export class InterpreterIc10 {
             return line;
         });
         return this;
+    }
+    stop() {
+        this.stopRun = true;
     }
     async step() {
         const old = this.env.line;
@@ -58,11 +62,12 @@ export class InterpreterIc10 {
     async run(codeLines = 10_000, dryRun = 100_000) {
         codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER);
         dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER);
+        this.stopRun = false;
         if (this.env.errorCounter !== 0)
             return "ERR";
         try {
             let result = false;
-            while (codeLines > 0 && dryRun > 0) {
+            while (codeLines > 0 && dryRun > 0 && this.stopRun === false) {
                 result = await this.step();
                 if (typeof result === "string")
                     return result;
@@ -84,6 +89,8 @@ export class InterpreterIc10 {
         }
         if (codeLines <= 0 || dryRun <= 0)
             return "safeGuard";
+        if (this.stopRun)
+            return "STOP";
         return "ERR";
     }
 }

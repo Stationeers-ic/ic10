@@ -5,6 +5,7 @@ import { Err } from "./abstract/Err"
 
 export class InterpreterIc10 {
 	private code: string
+	private stopRun: boolean = false
 	readonly env: Environment
 
 	constructor(env: Environment, code: string) {
@@ -35,6 +36,9 @@ export class InterpreterIc10 {
 				return line
 			})
 		return this
+	}
+	stop() {
+		this.stopRun = true
 	}
 	async step(): Promise<string | boolean> {
 		const old = this.env.line
@@ -72,10 +76,11 @@ export class InterpreterIc10 {
 	async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
 		codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER)
+		this.stopRun = false
 		if (this.env.errorCounter !== 0) return "ERR"
 		try {
 			let result: string | boolean = false
-			while (codeLines > 0 && dryRun > 0) {
+			while (codeLines > 0 && dryRun > 0 && this.stopRun === false) {
 				result = await this.step()
 				// exit with code
 				if (typeof result === "string") return result
@@ -93,6 +98,7 @@ export class InterpreterIc10 {
 			}
 		}
 		if (codeLines <= 0 || dryRun <= 0) return "safeGuard"
+		if (this.stopRun) return "STOP"
 		return "ERR"
 	}
 }
