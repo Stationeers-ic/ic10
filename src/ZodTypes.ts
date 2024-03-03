@@ -1,54 +1,77 @@
-import { z } from "zod"
+import {z} from "zod"
 
 export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()])
+export type StringOrNumberOrNaN = z.infer<typeof StringOrNumberOrNaN>
 export const StringOrNumber = z.union([z.string(), z.number()])
+export type StringOrNumber = z.infer<typeof StringOrNumber>
 export const NumberOrNan = z.number().or(z.nan())
+export type NumberOrNan = z.infer<typeof NumberOrNan>
 // export const Result = RegisterOrAlias
 /**
  * r0 - r17, sp
  */
 export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]) //https://regex101.com/r/UiCGWX/1
+export type Register = z.infer<typeof Register>
 /**
  * d0 - d5, db
  */
 //https://regex101.com/r/pAET99/1
 export const Device = z.union([z.literal("db"), z.string().regex(/d[0-9]+/)])
+export type Device = z.infer<typeof Device>
 
 export const RegisterOrDevice = Register.or(Device)
+export type RegisterOrDevice = z.infer<typeof RegisterOrDevice>
 export const Value = z.number()
+export type Value = z.infer<typeof Value>
 export const Alias = z.string().refine((val: string) => {
 	return !RegisterOrDevice.safeParse(val).success
 }, "Alias can be only string and not a register or device name.")
+export type Alias = z.infer<typeof Alias>
 
 /**
  * Register | Alias
  */
 export const Ralias = Register.or(Alias)
+export type Ralias = z.infer<typeof Ralias>
 /**
  * Register | Alias
  *
  * alias for "Ralias"
  */
 export const RegisterOrAlias = Ralias
+export type RegisterOrAlias = z.infer<typeof RegisterOrAlias>
+
 /**
  * Device | Alias
  */
 export const DeviceOrAlias = Device.or(Alias)
+export type DeviceOrAlias = z.infer<typeof DeviceOrAlias>
 
 /**
  * Alias | numeric value
  */
 export const AliasOrValue = Alias.or(Value)
+export type AliasOrValue = z.infer<typeof AliasOrValue>
 /**
  * Alias | Register | numeric value
  */
 export const RaliasOrValue = Ralias.or(Value)
+export type RaliasOrValue = z.infer<typeof RaliasOrValue>
 
 export const RaliasOrValuePositive = Ralias.or(Value.min(0))
+export type RaliasOrValuePositive = z.infer<typeof RaliasOrValuePositive>
 export const SlotIndex = Ralias.or(Value.min(0).int())
+export type SlotIndex = z.infer<typeof SlotIndex>
+
+export const RelativeSlotIndex = Ralias.or(Value.int())
+export type RelativeSlotIndex = z.infer<typeof RelativeSlotIndex>
 export const LineIndex = Ralias.or(Value.min(0).int())
+export type LineIndex = z.infer<typeof LineIndex>
+
 export const RelativeLineIndex = Ralias.or(Value.int())
+export type RelativeLineIndex = z.infer<typeof RelativeLineIndex>
 export const Hash = Ralias.or(Value.int())
+export type Hash = z.infer<typeof Hash>
 
 /**
  * Alias | NaN | numeric value

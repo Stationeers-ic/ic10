@@ -1,8 +1,8 @@
-import { Line } from "../core/Line"
+import {Line} from "../core/Line"
 import EventEmitter from "eventemitter3"
-import { AnyFunctionName, Register } from "../ZodTypes"
-import { Err } from "./Err"
-import { FunctionData } from "../functions"
+import {AnyFunctionName, Register} from "../ZodTypes"
+import {Err} from "./Err"
+import {FunctionData} from "../functions"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -14,6 +14,7 @@ type BeforeFunction = Record<`before_${AnyFunctionName}`, (data: FunctionData, l
 type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>
 
 type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
+
 /*
  * Окружение для интерпретатора
  * Хранит все данные необходимые для интерпретации
@@ -23,24 +24,48 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	 * Тестовый режим
 	 */
 	public isTest: boolean = false
-	/*
-	 * Текущая строка
-	 */
-	public line: number = 0
-	/*
-	 * Все строки текущего выполнения
-	 */
-	lines: ReadonlyArray<Line | null> = []
+
 	public InfiniteLoopLimit: number = 500
 	public errors: Err[] = []
 	public errorCounter: number = 0
 
-	public getLine(index: number): Line | null | undefined {
-		return this.lines[index]
-	}
+	abstract addLine(line: Line | null): void
+
+	abstract setLine(index: number, line: Line): void
+
+	abstract getLine(index: number): Line | null
+
+	abstract getLines(): (Line|null)[]
+
+
+	abstract getPosition(): number
+
+	abstract setPosition(index: number): void
+
+	abstract addPosition(modify: number): void
+
+	/*
+	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
+	 */
+	abstract appendDevice(name: string, hash: number): string
+
+	/*
+	 * Убрать устройство из окружения
+	 */
+	abstract removeDevice(id: string): void
+
+	/*
+	 * Подключить устройство к порту
+	 */
+	abstract attachDevice(id: string, port: string): string
+
+	/*
+	 * Отключить устройство от порта
+	 */
+	abstract detachDevice(id: string): void
 
 	public getCurrentLine(): Line | null | undefined {
-		return this.lines[this.line]
+		return this.getLine(this.getPosition())
 	}
 
 	abstract jump(line: string | number): void
@@ -71,7 +96,7 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	abstract getAlias(alias: string): string
 
 	throw(err: Err) {
-		err.lineStart = err.lineStart ?? this.line
+		err.lineStart = err.lineStart ?? this.getPosition()
 		this.errors.push(err)
 		if (err.level === "error") this.errorCounter++
 		this.emit(err.level, err)
@@ -80,7 +105,11 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	// Самоуничтожение
 	abstract hcf(): void
 
-	async afterLineRun(line: Line) {}
+	async beforeLineRun(line: Line) {
+	}
+
+	async afterLineRun(line: Line) {
+	}
 
 	dynamicDevicePort(string: string): string {
 		if (string.startsWith("dr") && string.length <= 4) {

@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test"
-import { runThrow } from "./testUtils"
+import {describe, expect, test} from "bun:test"
+import {runThrow} from "./testUtils"
 
 describe("throw", () => {
 	test("move", () => {

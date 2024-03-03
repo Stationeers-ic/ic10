@@ -1,7 +1,7 @@
-import { z } from "zod"
-import { icFunction } from "../functions"
-import { BitWarn } from "../errors/BitWarn"
-import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
+import {z} from "zod"
+import {icFunction} from "../functions"
+import {BitWarn} from "../errors/BitWarn"
+import {ArithmeticFunctionName, Ralias, RaliasOrValue} from "../ZodTypes"
 
 function jsThing(value: number) {
 	if (Object.is(value, -0)) return 0

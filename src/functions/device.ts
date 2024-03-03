@@ -1,5 +1,5 @@
-import { icFunction } from "../functions"
-import { z } from "zod"
+import {icFunction} from "../functions"
+import {z} from "zod"
 import {
 	DeviceFunctionName,
 	DeviceOrAlias,

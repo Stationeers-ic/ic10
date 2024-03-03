@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test"
-import { functions } from "../functions"
+import {describe, expect, test} from "bun:test"
+import {functions} from "../functions"
 import data from "./data/data.json"
 
 describe("main", () => {

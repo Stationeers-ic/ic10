@@ -1,6 +1,6 @@
-import { describe, expect, test } from "bun:test"
-import { runFunc } from "./testUtils"
-import { functions } from "../functions"
+import {describe, expect, test} from "bun:test"
+import {runFunc} from "./testUtils"
+import {functions} from "../functions"
 
 describe("arithmetic", () => {
 	test("add", () => {

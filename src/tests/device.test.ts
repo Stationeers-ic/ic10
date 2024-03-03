@@ -1,9 +1,7 @@
-import { describe, expect, test } from "bun:test"
-import { runFuncJump } from "./testUtils"
-import { jump } from "../functions/jump"
+import {describe, expect, test} from "bun:test"
 
 describe("device", () => {
-	test("j", () => {
-		expect(runFuncJump(jump.j, [5], 10)).resolves.toBe(5)
+	test("sb", () => {
+		expect()
 	})
 })

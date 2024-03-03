@@ -1,7 +1,7 @@
-import { Err } from "../abstract/Err"
-import { undefined, ZodError, ZodIssue } from "zod"
+import {Err} from "../abstract/Err"
+import {undefined, ZodError, ZodIssue} from "zod"
 import Line from "../core/Line"
-import { Position } from "../regexps"
+import {Position} from "../regexps"
 
 export class SyntaxError extends Err {
 	constructor(

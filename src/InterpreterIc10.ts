@@ -1,7 +1,7 @@
-import { Environment } from "./abstract/Environment"
-import { Line } from "./core/Line"
-import { InfiniteLoop } from "./errors/InfiniteLoop"
-import { Err } from "./abstract/Err"
+import {Environment} from "./abstract/Environment"
+import {Line} from "./core/Line"
+import {InfiniteLoop} from "./errors/InfiniteLoop"
+import {Err} from "./abstract/Err"
 
 export class InterpreterIc10 {
 	private code: string
@@ -14,14 +14,14 @@ export class InterpreterIc10 {
 		this.parseCode()
 	}
 
-	setCode(code: string): this {
+	public setCode(code: string): this {
 		this.code = code
 		this.parseCode()
 		return this
 	}
 
 	private parseCode(): this {
-		this.env.lines = this.code
+		this.code
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
 			.map((str) => (str.trim() === "" ? null : str))
@@ -34,17 +34,21 @@ export class InterpreterIc10 {
 					this.env.alias(label, i)
 				}
 				return line
-			})
+			}).forEach((line) => {
+			this.env.addLine(line)
+		})
 		return this
 	}
-	stop() {
+
+	public stop() {
 		this.stopRun = true
 	}
-	async step(): Promise<string | boolean> {
-		const old = this.env.line
+
+	public async step(): Promise<string | boolean> {
+		const old = this.env.getPosition()
 		const line = this.env.getCurrentLine()
 		if (line === null) {
-			this.env.line++
+			this.env.addPosition(1)
 			return false
 		}
 		if (line === undefined) return "EOF"
@@ -60,27 +64,29 @@ export class InterpreterIc10 {
 		}
 
 		// Проверка не прыжок
-		if (old === this.env.line) {
-			this.env.line++
+		if (old === this.env.getPosition()) {
+			this.env.addPosition(1)
 		}
 		await this.env.afterLineRun(line)
 		return true
 	}
 
-	async testCode() {
+	public async testCode() {
 		this.env.isTest = true
-		for (const line in this.env.lines) {
-			await this.env.lines[line]?.run()
+		const lines = this.env.getLines()
+		for (const line in lines) {
+			await lines[line]?.run()
 		}
 	}
-	async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
+
+	public async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
 		codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
 		if (this.env.errorCounter !== 0) return "ERR"
 		try {
 			let result: string | boolean = false
-			while (codeLines > 0 && dryRun > 0 && this.stopRun === false) {
+			while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
 				result = await this.step()
 				// exit with code
 				if (typeof result === "string") return result

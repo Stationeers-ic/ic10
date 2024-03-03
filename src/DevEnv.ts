@@ -1,11 +1,25 @@
-import { Environment } from "./abstract/Environment"
-import { getProperty, hasProperty, setProperty } from "dot-prop"
-import { z } from "zod"
-import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
+import {Environment} from "./abstract/Environment"
+import {getProperty, hasProperty, setProperty} from "dot-prop"
+import {z} from "zod"
+import {NotReservedWord, NumberOrNan, StringOrNumberOrNaN} from "./ZodTypes"
 import SyntaxError from "./errors/SyntaxError"
+import Line from "./core/Line"
 
 //Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
+
+	/*
+	 * Текущая строка
+	 */
+	public line: number = 0
+	/*
+	 * Все строки текущего выполнения
+	 */
+	public lines: Array<Line | null> = []
+	public data: any = {}
+	public stack: number[] = new Array(512)
+	public aliases = new Map<string, string | number>()
+
 	constructor(data: { [key: string]: number } = {}) {
 		super()
 		this.aliases.set("sp", "r16")
@@ -21,12 +35,45 @@ export class DevEnv extends Environment {
 		})
 	}
 
-	public data: any = {}
-	public stack: number[] = new Array(512)
-	public aliases = new Map<string, string | number>()
 
-	pathValidate(path: string) {
-		return true
+	addLine(line: Line | null): void {
+		this.lines.push(line)
+	}
+
+	setLine(index: number, line: Line): void {
+		this.lines[index] = line
+	}
+
+	getLine(index: number): Line | null {
+		return this.lines[index] ?? null
+	}
+
+	getPosition(): number {
+		return this.line
+	}
+
+	addPosition(modify: number): void {
+		this.line += modify
+	}
+
+	setPosition(index: number): void {
+		this.line = index
+	}
+
+	appendDevice(name: string, hash: number): string {
+		throw new Error("Method not implemented.")
+	}
+
+	removeDevice(id: string): void {
+		throw new Error("Method not implemented.")
+	}
+
+	attachDevice(id: string, port: string): string {
+		throw new Error("Method not implemented.")
+	}
+
+	detachDevice(id: string): void {
+		throw new Error("Method not implemented.")
 	}
 
 	get(name: string | number): number {
@@ -40,7 +87,6 @@ export class DevEnv extends Environment {
 		if (this.aliases.has(name)) {
 			return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))))
 		}
-		this.pathValidate(name)
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
 
@@ -113,6 +159,12 @@ export class DevEnv extends Environment {
 		console.log("Died")
 		this.jump(this.lines.length)
 	}
+
+	getLines(): (Line|null)[] {
+		return this.lines
+	}
+
+
 }
 
 export default DevEnv

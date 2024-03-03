@@ -1,5 +1,4 @@
-import { Err } from "../abstract/Err"
-import SyntaxError from "./SyntaxError"
+import {Err} from "../abstract/Err"
 
 export class InfiniteLoop extends Err {
 	constructor(
