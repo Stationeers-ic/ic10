@@ -59,12 +59,12 @@ export class InterpreterIc10 {
         this.env.isTest = true;
         const lines = this.env.getLines();
         for (const line in lines) {
-            await lines[line]?.run();
+            lines[line]?.run();
         }
     }
     async run(codeLines = 10_000, dryRun = 100_000) {
-        codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER);
-        dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER);
+        codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER);
+        dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER);
         this.stopRun = false;
         if (this.env.errorCounter !== 0)
             return "ERR";

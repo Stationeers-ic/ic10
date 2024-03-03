@@ -40,7 +40,7 @@ export class DevEnv extends Environment {
     setPosition(index) {
         this.line = index;
     }
-    appendDevice(name, hash) {
+    appendDevice(hash, name) {
         throw new Error("Method not implemented.");
     }
     removeDevice(id) {

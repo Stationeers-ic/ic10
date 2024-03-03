@@ -24,7 +24,7 @@ export declare abstract class Environment extends EventEmitter<EventNames, Envir
     abstract getPosition(): number;
     abstract setPosition(index: number): void;
     abstract addPosition(modify: number): void;
-    abstract appendDevice(name: string, hash: number): string;
+    abstract appendDevice(hash: number, name?: number): string;
     abstract removeDevice(id: string): void;
     abstract attachDevice(id: string, port: string): string;
     abstract detachDevice(id: string): void;

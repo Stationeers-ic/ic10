@@ -15,7 +15,7 @@ export declare class DevEnv extends Environment {
     getPosition(): number;
     addPosition(modify: number): void;
     setPosition(index: number): void;
-    appendDevice(name: string, hash: number): string;
+    appendDevice(hash: number, name?: number): string;
     removeDevice(id: string): void;
     attachDevice(id: string, port: string): string;
     detachDevice(id: string): void;
