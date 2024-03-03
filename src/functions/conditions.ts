@@ -30,14 +30,14 @@ const na: icCondition = (env, data) => {
 	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
 	return (
 		Math.abs(env.get(x) - env.get(y)) >
-		Math.max(env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y))), epsilon)
+		Math.max(env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y))), 1.1210387714598537e-44)
 	)
 }
 const ap: icCondition = (env, data) => {
 	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
 	return (
 		Math.abs(env.get(x) - env.get(y)) <=
-		Math.max(env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y))), epsilon)
+		Math.max(env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y))), 1.1210387714598537e-44)
 	)
 }
 const dse: icCondition = (env, data) => {

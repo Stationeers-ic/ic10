@@ -12,7 +12,7 @@
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
     "build:browser": "bun build ./src/index.ts --outdir ./build --minify",
     "build": "tsc",
-    "test": "jest",
+    "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
   },
