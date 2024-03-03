@@ -47,7 +47,6 @@ export class InterpreterIc10 {
 
 		// Запуск строки
 		await line.run()
-		await this.env.afterLineRun(line)
 
 		// Проверка на бесконечный цикл
 		if (line.runCounter > this.env.InfiniteLoopLimit) {
@@ -60,6 +59,7 @@ export class InterpreterIc10 {
 		if (old === this.env.line) {
 			this.env.line++
 		}
+		await this.env.afterLineRun(line)
 		return true
 	}
 

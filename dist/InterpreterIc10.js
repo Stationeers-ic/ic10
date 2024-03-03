@@ -43,7 +43,6 @@ export class InterpreterIc10 {
             return "EOF";
         // Запуск строки
         await line.run();
-        await this.env.afterLineRun(line);
         // Проверка на бесконечный цикл
         if (line.runCounter > this.env.InfiniteLoopLimit) {
             this.env.throw(new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex));
@@ -52,6 +51,7 @@ export class InterpreterIc10 {
         if (old === this.env.line) {
             this.env.line++;
         }
+        await this.env.afterLineRun(line);
         return true;
     }
     async testCode() {
