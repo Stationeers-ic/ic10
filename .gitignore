@@ -133,6 +133,6 @@ out
 
 
 .project-manager/
-build/
+# build/
 
 src/**/*.js

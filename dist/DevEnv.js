@@ -3,7 +3,6 @@ import { getProperty, hasProperty, setProperty } from "dot-prop";
 import { z } from "zod";
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes";
 import SyntaxError from "./errors/SyntaxError";
-//Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
     constructor(data = {}) {
         super();

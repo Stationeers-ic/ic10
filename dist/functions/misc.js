@@ -12,7 +12,6 @@ const move = (env, data) => {
     const d = z.tuple([Ralias, RaliasOrValue]).parse(data);
     env.set(d[0], env.get(d[1]));
 };
-// TODO: ?
 const yield_ = (env, data) => { };
 const sleep = async (env, data) => {
     const [time] = z.tuple([RaliasOrValueOrNaN]).parse(data);

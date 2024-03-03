@@ -59,7 +59,6 @@ export class Line {
         });
         this.comment = this.tokens.comment.value;
     }
-    // parse str HASH("SOME_STRING") to crc32(SOME_STRING)
     static parseHash(str) {
         const matches = hash.exec(str);
         if (matches) {
@@ -78,7 +77,6 @@ export class Line {
                 }
                 catch (e) {
                     if (e instanceof ZodError) {
-                        // this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
                         SyntaxError.fromZod(e, this).forEach((e) => this.scope.env.throw(e));
                     }
                     else {

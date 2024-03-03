@@ -2,51 +2,22 @@ import { z } from "zod";
 export declare const StringOrNumberOrNaN: z.ZodUnion<[z.ZodString, z.ZodNumber, z.ZodNaN]>;
 export declare const StringOrNumber: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
 export declare const NumberOrNan: z.ZodUnion<[z.ZodNumber, z.ZodNaN]>;
-/**
- * r0 - r17, sp
- */
 export declare const Register: z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>;
-/**
- * d0 - d5, db
- */
 export declare const Device: z.ZodUnion<[z.ZodLiteral<"db">, z.ZodString]>;
 export declare const RegisterOrDevice: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodUnion<[z.ZodLiteral<"db">, z.ZodString]>]>;
 export declare const Value: z.ZodNumber;
 export declare const Alias: z.ZodEffects<z.ZodString, string, string>;
-/**
- * Register | Alias
- */
 export declare const Ralias: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>;
-/**
- * Register | Alias
- *
- * alias for "Ralias"
- */
 export declare const RegisterOrAlias: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>;
-/**
- * Device | Alias
- */
 export declare const DeviceOrAlias: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"db">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>;
-/**
- * Alias | numeric value
- */
 export declare const AliasOrValue: z.ZodUnion<[z.ZodEffects<z.ZodString, string, string>, z.ZodNumber]>;
-/**
- * Alias | Register | numeric value
- */
 export declare const RaliasOrValue: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
 export declare const RaliasOrValuePositive: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
 export declare const SlotIndex: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
 export declare const LineIndex: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
 export declare const RelativeLineIndex: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
 export declare const Hash: z.ZodUnion<[z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"sp">, z.ZodString]>, z.ZodEffects<z.ZodString, string, string>]>, z.ZodNumber]>;
-/**
- * Alias | NaN | numeric value
- */
 export declare const AliasOrValueOrNaN: z.ZodUnion<[z.ZodUnion<[z.ZodEffects<z.ZodString, string, string>, z.ZodNumber]>, z.ZodNaN]>;
-/**
- * Alias | Register | NaN | numeric value
- */
 export declare const RaliasOrValueOrNaN: z.ZodUnion<[z.ZodUnion<[z.ZodEffects<z.ZodString, string, string>, z.ZodNumber]>, z.ZodNaN]>;
 export declare const Logic: z.ZodString;
 export declare const NotReservedWord: z.ZodEffects<z.ZodString, string, string>;

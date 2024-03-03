@@ -2,64 +2,26 @@ import { z } from "zod";
 export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()]);
 export const StringOrNumber = z.union([z.string(), z.number()]);
 export const NumberOrNan = z.number().or(z.nan());
-// export const Result = RegisterOrAlias
-/**
- * r0 - r17, sp
- */
-export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]); //https://regex101.com/r/UiCGWX/1
-/**
- * d0 - d5, db
- */
-//https://regex101.com/r/pAET99/1
+export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]);
 export const Device = z.union([z.literal("db"), z.string().regex(/d[0-9]+/)]);
 export const RegisterOrDevice = Register.or(Device);
 export const Value = z.number();
 export const Alias = z.string().refine((val) => {
     return !RegisterOrDevice.safeParse(val).success;
 }, "Alias can be only string and not a register or device name.");
-/**
- * Register | Alias
- */
 export const Ralias = Register.or(Alias);
-/**
- * Register | Alias
- *
- * alias for "Ralias"
- */
 export const RegisterOrAlias = Ralias;
-/**
- * Device | Alias
- */
 export const DeviceOrAlias = Device.or(Alias);
-/**
- * Alias | numeric value
- */
 export const AliasOrValue = Alias.or(Value);
-/**
- * Alias | Register | numeric value
- */
 export const RaliasOrValue = Ralias.or(Value);
 export const RaliasOrValuePositive = Ralias.or(Value.min(0));
 export const SlotIndex = Ralias.or(Value.min(0).int());
 export const LineIndex = Ralias.or(Value.min(0).int());
 export const RelativeLineIndex = Ralias.or(Value.int());
 export const Hash = Ralias.or(Value.int());
-/**
- * Alias | NaN | numeric value
- */
 export const AliasOrValueOrNaN = AliasOrValue.or(z.nan());
-/**
- * Alias | Register | NaN | numeric value
- */
 export const RaliasOrValueOrNaN = AliasOrValue.or(z.nan());
 export const Logic = z.string();
-/*
-export const RegisterOrAlias = Register.or(z.string())
-export const DeviceOrAlias = Device.or(z.string())
- */
-/*
- *TODO: Add list reserved words
- */
 export const NotReservedWord = z
     .string()
     .refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {

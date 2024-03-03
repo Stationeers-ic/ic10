@@ -1,15 +1,5 @@
 import { z } from "zod";
 import { DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrNumberOrNaN, } from "../ZodTypes";
-//    /*
-//     * @ls@
-//     * [en] Read value op4 from slot op3 of port op2
-//     * [ru] Чтение из устройства op2, слота op3, параметра op4 в регистр op1
-//     */
-//     const ls = (register: string, device: string, slot: string, property: string) => {
-//         const r = scope.memory.getRegister(register)
-//         const d = scope.memory.getDevice(device)
-//         r.value = d.getSlot(scope.memory.getValue(slot), property) as number
-//     }
 const s = (env, data) => {
     const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data);
     env.set(`${env.getAlias(op1)}.${env.getAlias(op2)}`, env.get(op3));

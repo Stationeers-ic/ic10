@@ -1,21 +1,8 @@
 import EventEmitter from "eventemitter3";
 import { Register } from "../ZodTypes";
-/*
- * Окружение для интерпретатора
- * Хранит все данные необходимые для интерпретации
- */
 export class Environment extends EventEmitter {
-    /*
-     * Тестовый режим
-     */
     isTest = false;
-    /*
-     * Текущая строка
-     */
     line = 0;
-    /*
-     * Все строки текущего выполнения
-     */
     lines = [];
     InfiniteLoopLimit = 500;
     errors = [];

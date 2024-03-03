@@ -17,13 +17,11 @@ export class InterpreterIc10 {
     parseCode() {
         this.env.lines = this.code
             .split("\n")
-            // .map((str) => str.trim().replace(/\s+/g, " "))
             .map((str) => (str.trim() === "" ? null : str))
             .map((str, i) => {
             if (str === null)
                 return null;
             const line = new Line(this, str, i);
-            // add alias for goto
             if (line.fn?.endsWith(":")) {
                 const label = line.fn?.split(":")[0];
                 this.env.alias(label, i);
@@ -41,13 +39,10 @@ export class InterpreterIc10 {
         }
         if (line === undefined)
             return "EOF";
-        // Запуск строки
         await line.run();
-        // Проверка на бесконечный цикл
         if (line.runCounter > this.env.InfiniteLoopLimit) {
             this.env.throw(new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex));
         }
-        // Проверка не прыжок
         if (old === this.env.line) {
             this.env.line++;
         }
@@ -69,15 +64,12 @@ export class InterpreterIc10 {
             let result = false;
             while (codeLines > 0 && dryRun > 0) {
                 result = await this.step();
-                // exit with code
                 if (typeof result === "string")
                     return result;
                 if (this.env.errorCounter !== 0)
                     return "ERR";
-                // on code lines
                 if (result)
                     codeLines--;
-                // on empty lines
                 else
                     dryRun--;
             }

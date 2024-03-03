@@ -34,7 +34,6 @@ const sna = (env, data) => {
     const [op1, op2, op3, op4] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue]).parse(data);
     env.set(op1, booleanToNumber(conditions.na(env, [op2, op3, op4])));
 };
-// ZZZs
 const seqz = (env, data) => seq(env, [...data, 0]);
 const sgez = (env, data) => sge(env, [...data, 0]);
 const sgtz = (env, data) => sgt(env, [...data, 0]);
@@ -43,7 +42,6 @@ const sltz = (env, data) => slt(env, [...data, 0]);
 const snez = (env, data) => sne(env, [...data, 0]);
 const sapz = (env, [op1, op2, op3]) => sap(env, [op1, op2, 0, op3]);
 const snaz = (env, [op1, op2, op3]) => sna(env, [op1, op2, 0, op3]);
-// set
 const sdse = (env, data) => {
     const [op1, op2] = z.tuple([Ralias, DeviceOrAlias]).parse(data);
     env.set(op1, booleanToNumber(conditions.dse(env, [op2])));
