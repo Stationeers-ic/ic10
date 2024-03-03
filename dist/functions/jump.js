@@ -14,13 +14,13 @@ const jr = (env, data) => {
     const d = z.tuple([RelativeLineIndex]).parse(data);
     const line = Value.min(0)
         .int()
-        .parse(env.line + env.get(d[0]));
+        .parse(env.getPosition() + env.get(d[0]));
     env.jump(line);
 };
 const jal = (env, data) => {
     const d = z.tuple([LineIndex]).parse(data);
     const line = Value.min(0).int().parse(env.get(d[0]));
-    env.set("r17", env.line);
+    env.set("r17", env.getPosition());
     env.jump(line);
 };
 const beq = (env, data) => {

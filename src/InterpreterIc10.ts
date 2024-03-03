@@ -21,6 +21,7 @@ export class InterpreterIc10 {
 	}
 
 	private parseCode(): this {
+
 		this.code
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
@@ -43,7 +44,6 @@ export class InterpreterIc10 {
 	public stop() {
 		this.stopRun = true
 	}
-
 
 	public async step(): Promise<string | boolean> {
 		const old = this.env.getPosition()
@@ -76,13 +76,13 @@ export class InterpreterIc10 {
 		this.env.isTest = true
 		const lines = this.env.getLines()
 		for (const line in lines) {
-			await lines[line]?.run()
+			lines[line]?.run()
 		}
 	}
 
 	public async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
-		codeLines = Math.max(codeLines, Number.MAX_SAFE_INTEGER)
-		dryRun = Math.max(dryRun, Number.MAX_SAFE_INTEGER)
+		codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER)
+		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
 		if (this.env.errorCounter !== 0) return "ERR"
 		try {

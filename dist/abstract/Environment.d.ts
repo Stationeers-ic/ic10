@@ -14,12 +14,20 @@ type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, lin
 type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction;
 export declare abstract class Environment extends EventEmitter<EventNames, Environment> {
     isTest: boolean;
-    line: number;
-    lines: ReadonlyArray<Line | null>;
     InfiniteLoopLimit: number;
     errors: Err[];
     errorCounter: number;
-    getLine(index: number): Line | null | undefined;
+    abstract addLine(line: Line | null): void;
+    abstract setLine(index: number, line: Line): void;
+    abstract getLine(index: number): Line | null;
+    abstract getLines(): (Line | null)[];
+    abstract getPosition(): number;
+    abstract setPosition(index: number): void;
+    abstract addPosition(modify: number): void;
+    abstract appendDevice(name: string, hash: number): string;
+    abstract removeDevice(id: string): void;
+    abstract attachDevice(id: string, port: string): string;
+    abstract detachDevice(id: string): void;
     getCurrentLine(): Line | null | undefined;
     abstract jump(line: string | number): void;
     abstract get(name: string | number): number;
@@ -34,6 +42,7 @@ export declare abstract class Environment extends EventEmitter<EventNames, Envir
     abstract getAlias(alias: string): string;
     throw(err: Err): void;
     abstract hcf(): void;
+    beforeLineRun(line: Line): Promise<void>;
     afterLineRun(line: Line): Promise<void>;
     dynamicDevicePort(string: string): string;
     on<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this;

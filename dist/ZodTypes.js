@@ -16,6 +16,7 @@ export const AliasOrValue = Alias.or(Value);
 export const RaliasOrValue = Ralias.or(Value);
 export const RaliasOrValuePositive = Ralias.or(Value.min(0));
 export const SlotIndex = Ralias.or(Value.min(0).int());
+export const RelativeSlotIndex = Ralias.or(Value.int());
 export const LineIndex = Ralias.or(Value.min(0).int());
 export const RelativeLineIndex = Ralias.or(Value.int());
 export const Hash = Ralias.or(Value.int());

@@ -44,22 +44,22 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract addPosition(modify: number): void
 
-	/*
+	/**
 	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
 	 */
-	abstract appendDevice(name: string, hash: number): string
+	abstract appendDevice(hash: number,name?: number,): string
 
-	/*
+	/**
 	 * Убрать устройство из окружения
 	 */
 	abstract removeDevice(id: string): void
 
-	/*
+	/**
 	 * Подключить устройство к порту
 	 */
 	abstract attachDevice(id: string, port: string): string
 
-	/*
+	/**
 	 * Отключить устройство от порта
 	 */
 	abstract detachDevice(id: string): void

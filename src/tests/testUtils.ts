@@ -17,12 +17,13 @@ export async function runFuncJump(
 	data: { [key: string]: number } = {},
 ): Promise<number> {
 	const mem = new DevEnv(data)
-	mem.line = line
+	mem.setPosition(line)
 	await fn(mem, args)
-	return mem.line
+	return mem.getPosition()
 }
 
 export async function runThrow(code: string, data: { [key: string]: number } = {}): Promise<Err[]> {
+	console.log(code)
 	const mem = new DevEnv(data)
 	const a = new InterpreterIc10(mem, code)
 	await a.run()
@@ -46,10 +47,10 @@ export async function runJal(
 	data: { [key: string]: number } = {},
 ) {
 	const mem = new DevEnv(data)
-	mem.line = line
+	mem.setPosition(line)
 	await fn(mem, args)
 	return {
-		line: mem.line,
+		line: mem.getPosition(),
 		r17: mem.get("r17"),
 	}
 }

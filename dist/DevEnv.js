@@ -4,6 +4,11 @@ import { z } from "zod";
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes";
 import SyntaxError from "./errors/SyntaxError";
 export class DevEnv extends Environment {
+    line = 0;
+    lines = [];
+    data = {};
+    stack = new Array(512);
+    aliases = new Map();
     constructor(data = {}) {
         super();
         this.aliases.set("sp", "r16");
@@ -17,11 +22,35 @@ export class DevEnv extends Environment {
             this.set(key, value);
         });
     }
-    data = {};
-    stack = new Array(512);
-    aliases = new Map();
-    pathValidate(path) {
-        return true;
+    addLine(line) {
+        this.lines.push(line);
+    }
+    setLine(index, line) {
+        this.lines[index] = line;
+    }
+    getLine(index) {
+        return this.lines[index] ?? null;
+    }
+    getPosition() {
+        return this.line;
+    }
+    addPosition(modify) {
+        this.line += modify;
+    }
+    setPosition(index) {
+        this.line = index;
+    }
+    appendDevice(name, hash) {
+        throw new Error("Method not implemented.");
+    }
+    removeDevice(id) {
+        throw new Error("Method not implemented.");
+    }
+    attachDevice(id, port) {
+        throw new Error("Method not implemented.");
+    }
+    detachDevice(id) {
+        throw new Error("Method not implemented.");
     }
     get(name) {
         if (typeof name === "number")
@@ -36,7 +65,6 @@ export class DevEnv extends Environment {
         if (this.aliases.has(name)) {
             return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))));
         }
-        this.pathValidate(name);
         return NumberOrNan.parse(getProperty(this.data, name) ?? 0);
     }
     set(name, value) {
@@ -99,6 +127,9 @@ export class DevEnv extends Environment {
     hcf() {
         console.log("Died");
         this.jump(this.lines.length);
+    }
+    getLines() {
+        return this.lines;
     }
 }
 export default DevEnv;

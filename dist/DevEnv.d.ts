@@ -1,12 +1,24 @@
 import { Environment } from "./abstract/Environment";
+import Line from "./core/Line";
 export declare class DevEnv extends Environment {
+    private line;
+    private lines;
+    data: any;
+    stack: number[];
+    private aliases;
     constructor(data?: {
         [key: string]: number;
     });
-    data: any;
-    stack: number[];
-    aliases: Map<string, string | number>;
-    pathValidate(path: string): boolean;
+    addLine(line: Line | null): void;
+    setLine(index: number, line: Line): void;
+    getLine(index: number): Line | null;
+    getPosition(): number;
+    addPosition(modify: number): void;
+    setPosition(index: number): void;
+    appendDevice(name: string, hash: number): string;
+    removeDevice(id: string): void;
+    attachDevice(id: string, port: string): string;
+    detachDevice(id: string): void;
     get(name: string | number): number;
     set(name: string, value: number): void;
     alias(name: string, value: string | number): void;
@@ -19,5 +31,6 @@ export declare class DevEnv extends Environment {
     getDeviceByHash(hash: number): string[];
     getDeviceByHashAndName(hash: number, name: number): string[];
     hcf(): void;
+    getLines(): (Line | null)[];
 }
 export default DevEnv;

@@ -24,7 +24,7 @@ const lt = (env, data) => {
 const ne = (env, data) => !conditions.eq(env, data);
 const na = (env, data) => {
     const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);
-    return (Math.abs(env.get(x) - env.get(y)) <=
+    return (Math.abs(env.get(x) - env.get(y)) >
         Math.max(env.get(c) * Math.max(Math.abs(env.get(x)), Math.abs(env.get(y))), 1.1210387714598537e-44));
 };
 const ap = (env, data) => {

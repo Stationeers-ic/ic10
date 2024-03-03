@@ -2,25 +2,23 @@ import EventEmitter from "eventemitter3";
 import { Register } from "../ZodTypes";
 export class Environment extends EventEmitter {
     isTest = false;
-    line = 0;
-    lines = [];
     InfiniteLoopLimit = 500;
     errors = [];
     errorCounter = 0;
-    getLine(index) {
-        return this.lines[index];
-    }
     getCurrentLine() {
-        return this.lines[this.line];
+        return this.getLine(this.getPosition());
     }
     throw(err) {
-        err.lineStart = err.lineStart ?? this.line;
+        err.lineStart = err.lineStart ?? this.getPosition();
         this.errors.push(err);
         if (err.level === "error")
             this.errorCounter++;
         this.emit(err.level, err);
     }
-    async afterLineRun(line) { }
+    async beforeLineRun(line) {
+    }
+    async afterLineRun(line) {
+    }
     dynamicDevicePort(string) {
         if (string.startsWith("dr") && string.length <= 4) {
             const register = Register.parse(string.slice(1));

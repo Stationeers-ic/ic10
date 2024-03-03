@@ -11,14 +11,14 @@ export class DevEnv extends Environment {
 	/*
 	 * Текущая строка
 	 */
-	public line: number = 0
+	private line: number = 0
 	/*
 	 * Все строки текущего выполнения
 	 */
-	public lines: Array<Line | null> = []
+	private lines: Array<Line | null> = []
 	public data: any = {}
 	public stack: number[] = new Array(512)
-	public aliases = new Map<string, string | number>()
+	private aliases = new Map<string, string | number>()
 
 	constructor(data: { [key: string]: number } = {}) {
 		super()
@@ -60,7 +60,7 @@ export class DevEnv extends Environment {
 		this.line = index
 	}
 
-	appendDevice(name: string, hash: number): string {
+	appendDevice(hash: number, name?: number,): string {
 		throw new Error("Method not implemented.")
 	}
 
@@ -160,7 +160,7 @@ export class DevEnv extends Environment {
 		this.jump(this.lines.length)
 	}
 
-	getLines(): (Line|null)[] {
+	getLines(): (Line | null)[] {
 		return this.lines
 	}
 

@@ -16,7 +16,7 @@ export class InterpreterIc10 {
         return this;
     }
     parseCode() {
-        this.env.lines = this.code
+        this.code
             .split("\n")
             .map((str) => (str.trim() === "" ? null : str))
             .map((str, i) => {
@@ -28,6 +28,8 @@ export class InterpreterIc10 {
                 this.env.alias(label, i);
             }
             return line;
+        }).forEach((line) => {
+            this.env.addLine(line);
         });
         return this;
     }
@@ -35,10 +37,10 @@ export class InterpreterIc10 {
         this.stopRun = true;
     }
     async step() {
-        const old = this.env.line;
+        const old = this.env.getPosition();
         const line = this.env.getCurrentLine();
         if (line === null) {
-            this.env.line++;
+            this.env.addPosition(1);
             return false;
         }
         if (line === undefined)
@@ -47,16 +49,17 @@ export class InterpreterIc10 {
         if (line.runCounter > this.env.InfiniteLoopLimit) {
             this.env.throw(new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex));
         }
-        if (old === this.env.line) {
-            this.env.line++;
+        if (old === this.env.getPosition()) {
+            this.env.addPosition(1);
         }
         await this.env.afterLineRun(line);
         return true;
     }
     async testCode() {
         this.env.isTest = true;
-        for (const line in this.env.lines) {
-            await this.env.lines[line]?.run();
+        const lines = this.env.getLines();
+        for (const line in lines) {
+            await lines[line]?.run();
         }
     }
     async run(codeLines = 10_000, dryRun = 100_000) {
@@ -67,7 +70,7 @@ export class InterpreterIc10 {
             return "ERR";
         try {
             let result = false;
-            while (codeLines > 0 && dryRun > 0 && this.stopRun === false) {
+            while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
                 result = await this.step();
                 if (typeof result === "string")
                     return result;

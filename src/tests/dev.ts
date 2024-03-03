@@ -10,13 +10,7 @@ import {DevEnv} from "../DevEnv";
 		const a = new InterpreterIc10(
 			mem,
 			`
-define CableAnalyzer 1036015121
-define Button 491845673
-define MediumLED -53151617
-define LargeLED -1949054743
-sb LargeLED Mode 2
-sb LargeLED Color 6
-
+			alias test d0
 `,
 		)
 		await a.testCode()
