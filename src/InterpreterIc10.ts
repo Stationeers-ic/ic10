@@ -44,6 +44,7 @@ export class InterpreterIc10 {
 		this.stopRun = true
 	}
 
+
 	public async step(): Promise<string | boolean> {
 		const old = this.env.getPosition()
 		const line = this.env.getCurrentLine()
