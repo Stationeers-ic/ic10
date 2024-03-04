@@ -1,8 +1,8 @@
-import {Line} from "../core/Line"
+import { Line } from "../core/Line"
 import EventEmitter from "eventemitter3"
-import {AnyFunctionName, Register} from "../ZodTypes"
-import {Err} from "./Err"
-import {FunctionData} from "../functions"
+import { AnyFunctionName, Register } from "../ZodTypes"
+import { Err } from "./Err"
+import { FunctionData } from "../functions"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -35,8 +35,7 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract getLine(index: number): Line | null
 
-	abstract getLines(): (Line|null)[]
-
+	abstract getLines(): (Line | null)[]
 
 	abstract getPosition(): number
 
@@ -47,7 +46,7 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	/**
 	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
 	 */
-	abstract appendDevice(hash: number,name?: number,): string
+	abstract appendDevice(hash: number, name?: number): string
 
 	/**
 	 * Убрать устройство из окружения
@@ -105,11 +104,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	// Самоуничтожение
 	abstract hcf(): void
 
-	async beforeLineRun(line: Line) {
-	}
+	async beforeLineRun(line: Line) {}
 
-	async afterLineRun(line: Line) {
-	}
+	async afterLineRun(line: Line) {}
 
 	dynamicDevicePort(string: string): string {
 		if (string.startsWith("dr") && string.length <= 4) {
