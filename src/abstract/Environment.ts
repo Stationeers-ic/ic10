@@ -33,7 +33,14 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract setLine(index: number, line: Line): void
 
-	abstract getLine(index: number): Line | null
+	/**
+	 * Получить строку по индексу
+	 *
+	 *  - *null* - пустая строка
+	 *  - *undefined* - строка не существует
+	 * @param index
+	 */
+	abstract getLine(index: number): Line | null | undefined
 
 	abstract getLines(): (Line | null)[]
 

@@ -42,8 +42,8 @@ export class DevEnv extends Environment {
 		this.lines[index] = line
 	}
 
-	getLine(index: number): Line | null {
-		return this.lines[index] ?? null
+	getLine(index: number): Line | null | undefined {
+		return this.lines[index]
 	}
 
 	getPosition(): number {
@@ -108,9 +108,9 @@ export class DevEnv extends Environment {
 	jump(line: string | number): void {
 		const oldLine = this.line
 		if (typeof line === "number") {
-			this.line = line
+			this.setPosition(line)
 		} else {
-			this.line = this.get(line)
+			this.setPosition(this.get(line))
 		}
 		if (oldLine === this.line) {
 			this.throw(new SyntaxError(`Jump to the same line ${this.line} is not allowed`, "error", this.line))
@@ -155,7 +155,7 @@ export class DevEnv extends Environment {
 
 	hcf(): void {
 		console.log("Died")
-		this.jump(this.lines.length)
+		this.jump(this.getLines().length)
 	}
 
 	getLines(): (Line | null)[] {
