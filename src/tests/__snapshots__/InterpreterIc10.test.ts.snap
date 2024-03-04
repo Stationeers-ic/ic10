@@ -1,0 +1,7 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InterpreterIc10 Infinite loop 1`] = `
+[
+  [InfiniteLoop: Infinite loop detected at line 3],
+]
+`;
