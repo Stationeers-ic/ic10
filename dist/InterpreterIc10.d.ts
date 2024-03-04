@@ -1,4 +1,5 @@
-import { Environment } from "./abstract/Environment";
+import {Environment} from "./abstract/Environment";
+
 export declare class InterpreterIc10 {
     private code;
     private stopRun;

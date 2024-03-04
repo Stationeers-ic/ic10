@@ -1,5 +1,6 @@
-import { z } from "zod";
-import { Alias, AliasOrValue, Ralias, RaliasOrValue, RaliasOrValueOrNaN, RegisterOrDevice, } from "../ZodTypes";
+import {z} from "zod";
+import {Alias, AliasOrValue, Ralias, RaliasOrValue, RaliasOrValueOrNaN, RegisterOrDevice,} from "../ZodTypes";
+
 const alias = (env, data) => {
     const [alias, dr] = z.tuple([Alias, RegisterOrDevice]).parse(data);
     env.alias(alias, dr);

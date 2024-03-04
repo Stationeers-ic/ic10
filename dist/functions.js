@@ -4,6 +4,7 @@ import select from "./functions/select";
 import misc from "./functions/misc";
 import device from "./functions/device";
 import stack from "./functions/stack";
+
 export const functions = {
     ...arithmetic,
     ...misc,

@@ -1,6 +1,7 @@
-import { Err } from "../abstract/Err";
-import { ZodError } from "zod";
+import {Err} from "../abstract/Err";
+import {ZodError} from "zod";
 import Line from "../core/Line";
+
 export declare class SyntaxError extends Err {
     level: "error" | "warn" | "info" | "debug";
     lineStart?: number | undefined;

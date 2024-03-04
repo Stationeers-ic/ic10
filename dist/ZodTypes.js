@@ -1,4 +1,5 @@
-import { z } from "zod";
+import {z} from "zod";
+
 export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()]);
 export const StringOrNumber = z.union([z.string(), z.number()]);
 export const NumberOrNan = z.number().or(z.nan());

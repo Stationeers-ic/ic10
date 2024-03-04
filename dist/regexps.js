@@ -1,5 +1,6 @@
-import { z } from "zod";
-import { isKeyOfObject } from "./ZodTypes";
+import {z} from "zod";
+import {isKeyOfObject} from "./ZodTypes";
+
 export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/;
 export const args = /\s*(\S+)/g;
 export const Position = z.object({

@@ -1,8 +1,9 @@
-import { Environment } from "./abstract/Environment";
-import { getProperty, hasProperty, setProperty } from "dot-prop";
-import { z } from "zod";
-import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes";
+import {Environment} from "./abstract/Environment";
+import {getProperty, hasProperty, setProperty} from "dot-prop";
+import {z} from "zod";
+import {NotReservedWord, NumberOrNan, StringOrNumberOrNaN} from "./ZodTypes";
 import SyntaxError from "./errors/SyntaxError";
+
 export class DevEnv extends Environment {
     line = 0;
     lines = [];

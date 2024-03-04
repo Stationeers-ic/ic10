@@ -1,6 +1,6 @@
-import {z} from "zod"
-import {icCondition} from "../functions"
-import {ConditionName, StringOrNumberOrNaN} from "../ZodTypes"
+import { z } from "zod"
+import { icCondition } from "../functions"
+import { ConditionName, StringOrNumberOrNaN } from "../ZodTypes"
 
 export const epsilon = 2 ** -23
 

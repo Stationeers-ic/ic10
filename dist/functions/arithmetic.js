@@ -1,6 +1,7 @@
-import { z } from "zod";
-import { BitWarn } from "../errors/BitWarn";
-import { Ralias, RaliasOrValue } from "../ZodTypes";
+import {z} from "zod";
+import {BitWarn} from "../errors/BitWarn";
+import {Ralias, RaliasOrValue} from "../ZodTypes";
+
 function jsThing(value) {
     if (Object.is(value, -0))
         return 0;

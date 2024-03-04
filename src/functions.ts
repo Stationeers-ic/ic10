@@ -5,7 +5,7 @@ import Environment from "./abstract/Environment"
 import misc from "./functions/misc"
 import device from "./functions/device"
 import stack from "./functions/stack"
-import {AnyFunctionName} from "./ZodTypes"
+import { AnyFunctionName } from "./ZodTypes"
 
 export type FunctionData = (string | number)[]
 

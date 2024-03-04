@@ -1,4 +1,4 @@
-import {Err} from "../abstract/Err"
+import { Err } from "../abstract/Err"
 
 export class BitWarn extends Err {
 	constructor(

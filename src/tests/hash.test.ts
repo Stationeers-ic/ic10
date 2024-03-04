@@ -1,4 +1,4 @@
-import {expect, test} from "bun:test"
+import { expect, test } from "bun:test"
 import CRC32 from "crc-32"
 
 test("hash", () => {

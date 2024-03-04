@@ -1,4 +1,5 @@
-import { Device, Register } from "./ZodTypes";
+import {Device, Register} from "./ZodTypes";
+
 /**
  * Register | Device
  */

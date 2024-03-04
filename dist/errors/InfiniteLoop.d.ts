@@ -1,4 +1,5 @@
-import { Err } from "../abstract/Err";
+import {Err} from "../abstract/Err";
+
 export declare class InfiniteLoop extends Err {
     level: "error" | "warn" | "info" | "debug";
     lineStart?: number | undefined;

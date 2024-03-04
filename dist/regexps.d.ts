@@ -1,4 +1,5 @@
-import { z } from "zod";
+import {z} from "zod";
+
 export declare const line: RegExp;
 export declare const args: RegExp;
 export declare const Position: z.ZodObject<{

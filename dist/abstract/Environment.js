@@ -1,5 +1,6 @@
 import EventEmitter from "eventemitter3";
-import { Register } from "../ZodTypes";
+import {Register} from "../ZodTypes";
+
 export class Environment extends EventEmitter {
     isTest = false;
     InfiniteLoopLimit = 500;

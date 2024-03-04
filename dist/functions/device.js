@@ -1,5 +1,6 @@
-import { z } from "zod";
-import { DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrNumberOrNaN, } from "../ZodTypes";
+import {z} from "zod";
+import {DeviceOrAlias, Hash, Logic, Ralias, RaliasOrValue, SlotIndex, StringOrNumberOrNaN,} from "../ZodTypes";
+
 const s = (env, data) => {
     const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data);
     env.set(`${env.getAlias(op1)}.${env.getAlias(op2)}`, env.get(op3));

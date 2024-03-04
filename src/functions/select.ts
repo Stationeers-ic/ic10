@@ -1,7 +1,7 @@
-import {icFunction} from "../functions"
+import { icFunction } from "../functions"
 import conditions from "./conditions"
-import {z} from "zod"
-import {DeviceOrAlias, Ralias, RaliasOrValue, SelectFunctionName} from "../ZodTypes"
+import { z } from "zod"
+import { DeviceOrAlias, Ralias, RaliasOrValue, SelectFunctionName } from "../ZodTypes"
 
 const booleanToNumber = (x: boolean): 1 | 0 => (x ? 1 : 0)
 

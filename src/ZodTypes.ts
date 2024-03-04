@@ -1,4 +1,4 @@
-import {z} from "zod"
+import { z } from "zod"
 
 export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()])
 export type StringOrNumberOrNaN = z.infer<typeof StringOrNumberOrNaN>

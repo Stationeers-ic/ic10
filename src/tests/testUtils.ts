@@ -1,7 +1,7 @@
-import {DevEnv} from "../DevEnv"
-import {InterpreterIc10} from "../"
-import {icFunction} from "../functions"
-import {Err} from "../abstract/Err"
+import { DevEnv } from "../DevEnv"
+import { InterpreterIc10 } from "../"
+import { icFunction } from "../functions"
+import { Err } from "../abstract/Err"
 
 export async function run(code: string, data: { [key: string]: number } = {}): Promise<DevEnv> {
 	const mem = new DevEnv(data)

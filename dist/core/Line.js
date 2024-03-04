@@ -1,9 +1,10 @@
-import { getLineRegexGroupPositions, hash } from "../regexps";
-import { functions } from "../functions";
-import { z, ZodError } from "zod";
+import {getLineRegexGroupPositions, hash} from "../regexps";
+import {functions} from "../functions";
+import {z, ZodError} from "zod";
 import CRC32 from "crc-32";
-import { SyntaxError } from "../errors/SyntaxError";
-import { AnyFunctionName } from "../ZodTypes";
+import {SyntaxError} from "../errors/SyntaxError";
+import {AnyFunctionName} from "../ZodTypes";
+
 const LineTest = z
     .tuple([
     z.string(),

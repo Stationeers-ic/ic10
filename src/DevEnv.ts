@@ -1,13 +1,12 @@
-import {Environment} from "./abstract/Environment"
-import {getProperty, hasProperty, setProperty} from "dot-prop"
-import {z} from "zod"
-import {NotReservedWord, NumberOrNan, StringOrNumberOrNaN} from "./ZodTypes"
+import { Environment } from "./abstract/Environment"
+import { getProperty, hasProperty, setProperty } from "dot-prop"
+import { z } from "zod"
+import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
 import SyntaxError from "./errors/SyntaxError"
 import Line from "./core/Line"
 
 //Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
-
 	/*
 	 * Текущая строка
 	 */
@@ -35,7 +34,6 @@ export class DevEnv extends Environment {
 		})
 	}
 
-
 	addLine(line: Line | null): void {
 		this.lines.push(line)
 	}
@@ -60,7 +58,7 @@ export class DevEnv extends Environment {
 		this.line = index
 	}
 
-	appendDevice(hash: number, name?: number,): string {
+	appendDevice(hash: number, name?: number): string {
 		throw new Error("Method not implemented.")
 	}
 
@@ -163,8 +161,6 @@ export class DevEnv extends Environment {
 	getLines(): (Line | null)[] {
 		return this.lines
 	}
-
-
 }
 
 export default DevEnv

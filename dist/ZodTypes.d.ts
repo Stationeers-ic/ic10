@@ -1,4 +1,5 @@
-import { z } from "zod";
+import {z} from "zod";
+
 export declare const StringOrNumberOrNaN: z.ZodUnion<[z.ZodString, z.ZodNumber, z.ZodNaN]>;
 export type StringOrNumberOrNaN = z.infer<typeof StringOrNumberOrNaN>;
 export declare const StringOrNumber: z.ZodUnion<[z.ZodString, z.ZodNumber]>;

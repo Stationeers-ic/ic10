@@ -1,6 +1,6 @@
-import {icFunction} from "../functions"
-import {z} from "zod"
-import {conditions} from "./conditions"
+import { icFunction } from "../functions"
+import { z } from "zod"
+import { conditions } from "./conditions"
 import {
 	DeviceOrAlias,
 	LineIndex,

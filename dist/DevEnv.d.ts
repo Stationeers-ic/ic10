@@ -1,5 +1,6 @@
-import { Environment } from "./abstract/Environment";
+import {Environment} from "./abstract/Environment";
 import Line from "./core/Line";
+
 export declare class DevEnv extends Environment {
     private line;
     private lines;

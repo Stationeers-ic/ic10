@@ -1,7 +1,6 @@
-import {InterpreterIc10} from "../"
-import {DevEnv} from "../DevEnv";
-
-(async () => {
+import { InterpreterIc10 } from "../"
+import { DevEnv } from "../DevEnv"
+;(async () => {
 	const mem = new DevEnv()
 	mem.on("error", (e) => console.error(e.format()))
 	// mem.on("warn", (e) => console.warn(e))

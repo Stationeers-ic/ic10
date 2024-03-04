@@ -1,7 +1,7 @@
-import {Environment} from "./abstract/Environment"
-import {Line} from "./core/Line"
-import {InfiniteLoop} from "./errors/InfiniteLoop"
-import {Err} from "./abstract/Err"
+import { Environment } from "./abstract/Environment"
+import { Line } from "./core/Line"
+import { InfiniteLoop } from "./errors/InfiniteLoop"
+import { Err } from "./abstract/Err"
 
 export class InterpreterIc10 {
 	private code: string
@@ -21,7 +21,6 @@ export class InterpreterIc10 {
 	}
 
 	private parseCode(): this {
-
 		this.code
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
@@ -35,9 +34,10 @@ export class InterpreterIc10 {
 					this.env.alias(label, i)
 				}
 				return line
-			}).forEach((line) => {
-			this.env.addLine(line)
-		})
+			})
+			.forEach((line) => {
+				this.env.addLine(line)
+			})
 		return this
 	}
 
