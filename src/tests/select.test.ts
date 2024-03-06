@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test"
-import { runFunc } from "./testUtils"
+import { runFunc, runFuncWithMem } from "./testUtils"
 import { functions } from "../functions"
+import DevEnv from "../DevEnv"
 
 describe("select", () => {
 	test("seq", () => {
@@ -117,14 +118,20 @@ describe("select", () => {
 	})
 
 	test("sdse", () => {
-		expect(runFunc(functions.sdse, ["r0", "d0"], { "d0.on": 1 })).resolves.toBe(1)
-		expect(runFunc(functions.sdse, ["r0", "d0"], { "d0.on": 0 })).resolves.toBe(1)
+		const mem = new DevEnv()
+		const id = mem.appendDevice(123)
+		mem.attachDevice(id, "d0")
+
+		expect(runFuncWithMem(functions.sdse, ["r0", "d0"], mem)).resolves.toBe(1)
 		expect(runFunc(functions.sdse, ["r0", "d0"])).resolves.toBe(0)
 	})
 
 	test("sdns", () => {
-		expect(runFunc(functions.sdns, ["r0", "d0"], { "d0.on": 1 })).resolves.toBe(0)
-		expect(runFunc(functions.sdns, ["r0", "d0"], { "d0.on": 0 })).resolves.toBe(0)
+		const mem = new DevEnv()
+		const id = mem.appendDevice(123)
+		mem.attachDevice(id, "d0")
+
+		expect(runFuncWithMem(functions.sdns, ["r0", "d0"], mem)).resolves.toBe(0)
 		expect(runFunc(functions.sdns, ["r0", "d0"])).resolves.toBe(1)
 	})
 

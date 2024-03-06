@@ -10,6 +10,7 @@ import {
 	SlotIndex,
 	StringOrNumberOrNaN,
 } from "../ZodTypes"
+import SyntaxError from "../errors/SyntaxError"
 //    /*
 //     * @ls@
 //     * [en] Read value op4 from slot op3 of port op2
@@ -22,10 +23,16 @@ import {
 //     }
 const s: icFunction = (env, data) => {
 	const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data)
+	if (!env.hasDevice(env.getAlias(op1))) {
+		throw new SyntaxError(`Device ${env.getAlias(op1)} not found`, "error", env.getPosition())
+	}
 	env.set(`${env.getAlias(op1)}.${env.getAlias(op2)}`, env.get(op3))
 }
 const l: icFunction = (env, data) => {
 	const [op1, op2, op3] = z.tuple([Ralias, DeviceOrAlias, Logic]).parse(data)
+	if (!env.hasDevice(env.getAlias(op2))) {
+		throw new SyntaxError(`Device ${env.getAlias(op2)} not found`, "error", env.getPosition())
+	}
 	env.set(op1, env.get(`${env.getAlias(op2)}.${env.getAlias(op3)}`))
 }
 const ls: icFunction = (env, data) => {

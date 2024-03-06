@@ -29,9 +29,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	public errors: Err[] = []
 	public errorCounter: number = 0
 
-	abstract addLine(line: Line | null): void
+	abstract addLine(line: Line | null): this
 
-	abstract setLine(index: number, line: Line): void
+	abstract setLine(index: number, line: Line): this
 
 	/**
 	 * Получить строку по индексу
@@ -46,9 +46,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract getPosition(): number
 
-	abstract setPosition(index: number): void
+	abstract setPosition(index: number): this
 
-	abstract addPosition(modify: number): void
+	abstract addPosition(modify: number): this
 
 	/**
 	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
@@ -58,45 +58,45 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	/**
 	 * Убрать устройство из окружения
 	 */
-	abstract removeDevice(id: string): void
+	abstract removeDevice(id: string): this
 
 	/**
 	 * Подключить устройство к порту
 	 */
-	abstract attachDevice(id: string, port: string): string
+	abstract attachDevice(id: string, port: string): this
 
 	/**
 	 * Отключить устройство от порта
 	 */
-	abstract detachDevice(id: string): void
+	abstract detachDevice(id: string): this
 
 	public getCurrentLine(): Line | null | undefined {
 		return this.getLine(this.getPosition())
 	}
 
-	abstract jump(line: string | number): void
+	abstract jump(line: string | number): this
 
 	abstract get(name: string | number): number
 
-	abstract set(name: string, value: number): void
+	abstract set(name: string, value: number): this
 
-	abstract push(name: string | number): void
+	abstract push(name: string | number): this
 
 	abstract pop(): number
 
 	abstract peek(): number
 
 	//Проверить подключено ли устройство к порту
-	abstract hasDevice(name: string): boolean
+	abstract hasDevice(port: string): boolean
 
-	// получить устройство по имени
+	// получить устройство по имени возвращает строку по которой можно получить устройство
 	abstract getDeviceByHash(hash: number): string[]
 
 	// получить устройство по хэшу и имени
 	abstract getDeviceByHashAndName(hash: number, name: number): string[]
 
 	// создать alias, если alias существует, то перезаписать его
-	abstract alias(alias: string, value: string | number): void
+	abstract alias(alias: string, value: string | number): this
 
 	// получить alias если существует иначе вернуть значение
 	abstract getAlias(alias: string): string
@@ -109,7 +109,7 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	}
 
 	// Самоуничтожение
-	abstract hcf(): void
+	abstract hcf(): this
 
 	async beforeLineRun(line: Line) {}
 
@@ -119,6 +119,11 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 		if (string.startsWith("dr") && string.length <= 4) {
 			const register = Register.parse(string.slice(1))
 			return `d${this.get(register)}`
+		}
+		return string
+	}
+	dynamicRegister(string: string): string {
+		if (/^r+\d+$/.test(string)) {
 		}
 		return string
 	}
