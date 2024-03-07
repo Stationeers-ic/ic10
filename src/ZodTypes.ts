@@ -10,13 +10,13 @@ export type NumberOrNan = z.infer<typeof NumberOrNan>
 /**
  * r0 - r17, sp
  */
-export const Register = z.union([z.literal("sp"), z.string().regex(/r[0-9]+/)]) //https://regex101.com/r/UiCGWX/1
+export const Register = z.union([z.literal("sp"), z.string().regex(/r+[0-9]+/)]) //https://regex101.com/r/UiCGWX/1
 export type Register = z.infer<typeof Register>
 /**
  * d0 - d5, db
  */
 //https://regex101.com/r/pAET99/1
-export const Device = z.union([z.literal("db"), z.string().regex(/d[0-9]+/)])
+export const Device = z.union([z.literal("db"), z.string().regex(/dr*[0-9]+/)])
 export type Device = z.infer<typeof Device>
 
 export const RegisterOrDevice = Register.or(Device)
