@@ -216,6 +216,7 @@ export class DevEnv extends Environment {
 				return device.PrefabHash === hash
 			})
 			.map(([, device]) => getProperty(device, logic))
+			//TODO: исправить типы
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -226,6 +227,7 @@ export class DevEnv extends Environment {
 				return device.PrefabHash === hash && device.Name === name
 			})
 			.map(([, device]) => getProperty(device, logic))
+			//TODO: исправить типы
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -237,6 +239,7 @@ export class DevEnv extends Environment {
 				// @ts-ignore
 			})
 			.map(([, device]) => getProperty(device, "slots." + slot + "." + logic))
+			//TODO: исправить типы
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
