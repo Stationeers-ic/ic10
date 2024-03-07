@@ -107,6 +107,7 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	 * lbs
 	 */
 	abstract getSlotDeviceByHash(hash: number, slot: number, logic: string): number[]
+
 	/**
 	 * lbns
 	 */
@@ -117,6 +118,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	 */
 	abstract setDeviceByHash(hash: number, logic: string, value: number): this
 
+	/**
+	 * sbs
+	 */
 	abstract setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this
 
 	/**

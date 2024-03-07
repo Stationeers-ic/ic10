@@ -128,6 +128,7 @@ const ss: icFunction = (env, data) => {
 	const [device, slot, property, value] = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue]).parse(data)
 	env.set(`${device}.slots.${slot}.${property}`, env.get(value))
 }
+
 const device: Record<DeviceFunctionName, icFunction> = {
 	l,
 	lb,

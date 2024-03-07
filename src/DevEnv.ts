@@ -1,3 +1,5 @@
+// noinspection SuspiciousTypeOfGuard
+
 import { Environment } from "./abstract/Environment"
 import { getProperty, setProperty } from "dot-prop"
 import { z } from "zod"
