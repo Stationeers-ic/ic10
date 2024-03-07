@@ -22,7 +22,7 @@ const ls: icFunction = (env, data) => {
 	env.set(register, env.get(`${device}.slots.${slot}.${property}`))
 }
 const sb: icFunction = (env, data) => {
-	const [hash, logic, register] = z.tuple([Hash, Logic, Ralias]).parse(data)
+	const [hash, logic, register] = z.tuple([Hash, Logic, RaliasOrValue]).parse(data)
 	env.setDeviceByHash(env.get(hash), logic, env.get(register))
 }
 const sbn: icFunction = (env, data) => {

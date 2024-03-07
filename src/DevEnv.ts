@@ -121,7 +121,7 @@ export class DevEnv extends Environment {
 			const device = this.devices.get(id)
 			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")))
 		}
-		// только регистры илл рррррегистры :)
+		// только регистры илл рррррегистры 😀
 		name = this.dynamicRegister(name)
 		name = this.dynamicDevicePort(name)
 
@@ -142,7 +142,7 @@ export class DevEnv extends Environment {
 			setProperty(device, [a, b, c, d].filter((i) => i !== undefined).join("."), value)
 			return this
 		}
-		// только регистры илл рррррегистры :)
+		// только регистры или рррррегистры 😀
 		name = this.dynamicRegister(name)
 		name = this.dynamicDevicePort(name)
 
