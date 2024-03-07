@@ -33,16 +33,21 @@
     ".ic10"
   ],
   "homepage": "https://github.com/Stationeers-ic/ic10#readme",
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "bun"
+    },
+    "watch": [
+      "src"
+    ]
+  },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/bun": "^1.0.8",
-    "@types/crc": "^3.8.0",
-    "@types/jest": "^29.5.5",
+    "@types/crc": "^3.8.3",
     "@types/uuid": "^9.0.8",
-    "jest": "^29.7.0",
-    "nodemon": "^3.0.3",
+    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
-    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   },
