@@ -4,6 +4,15 @@ import { isKeyOfObject } from "./ZodTypes"
 export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/
 export const args = /\s*(\S+)/g
 
+export const dynamicRegister = /^(?<rr>r+)(?<first>r\d+)$/
+export const dynamicRegisterGroups = z.object({
+	rr: z.string(),
+	first: z.string(),
+})
+export const dynamicDevice = /^d(?<rr>(r+\d+))$/
+export const dynamicDeviceGroups = z.object({
+	rr: z.string(),
+})
 export const Position = z.object({
 	value: z.string(),
 	start: z.number(),

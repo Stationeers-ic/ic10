@@ -1,8 +1,9 @@
 import { Line } from "../core/Line"
 import EventEmitter from "eventemitter3"
-import { AnyFunctionName, Register } from "../ZodTypes"
+import { AnyFunctionName } from "../ZodTypes"
 import { Err } from "./Err"
 import { FunctionData } from "../functions"
+import { dynamicDevice, dynamicDeviceGroups, dynamicRegister, dynamicRegisterGroups } from "../regexps"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -115,15 +116,38 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	async afterLineRun(line: Line) {}
 
+	/**
+	 * Парсинг динамических устройств
+	 * - на входе строка drrrrr1
+	 * - на выходе строка d1
+	 * @param string
+	 */
 	dynamicDevicePort(string: string): string {
-		if (string.startsWith("dr") && string.length <= 4) {
-			const register = Register.parse(string.slice(1))
-			return `d${this.get(register)}`
+		if (dynamicDevice.test(string)) {
+			const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
+			const r = this.dynamicRegister(rr)
+			return `d${this.get(r)}`
 		}
 		return string
 	}
+
+	/**
+	 * Парсинг динамических регистров
+	 *  - на входе строка rrrrrr1
+	 *  - на выходе строка r1
+	 * @param string
+	 */
 	dynamicRegister(string: string): string {
-		if (/^r+\d+$/.test(string)) {
+		if (dynamicRegister.test(string)) {
+			const { first, rr } = dynamicRegisterGroups.parse(dynamicRegister.exec(string)?.groups)
+			let next = this.get(first)
+			// console.log('-*******************', first)
+			for (let i = 1; i < rr.length; i++) {
+				next = this.get(`r${next}`)
+				// console.log(i+'*******************', `r${next}`)
+			}
+			// console.log('++++*************', `r${next}`)
+			return `r${next}`
 		}
 		return string
 	}

@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test"
 import { functions } from "../functions"
 import data from "./data/data.json"
 import { runCode } from "./testUtils"
+import DevEnv from "../DevEnv"
 
 describe("main", () => {
 	test("functions", () => {
@@ -19,8 +20,15 @@ describe("main", () => {
 		functionNames = functionNames.sort()
 		expect(functionNames).toEqual(myf)
 	})
+	test("dynamicRegister", () => {
+		const mem = new DevEnv()
+		mem.set("r1", 9)
+		mem.set("r9", 5)
+		expect(mem.dynamicRegister("rr1")).toBe("r9")
+		expect(mem.dynamicRegister("rrr1")).toBe("r5")
+	})
 
-	test.todo("RRRRRegisters", () => {
+	test("RRRRRegisters", () => {
 		expect(
 			runCode(`
 		move r5 4
@@ -28,7 +36,7 @@ describe("main", () => {
 		move r3 2
 		move r2 1
 		move r1 0
-		move rrrrr5 888
+		move rrrrrr5 888
 		`),
 		).resolves.toBe(888)
 	})
