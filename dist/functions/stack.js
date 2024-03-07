@@ -1,6 +1,5 @@
-import {z} from "zod";
-import {Ralias, RaliasOrValue} from "../ZodTypes";
-
+import { z } from "zod";
+import { Ralias, RaliasOrValue } from "../ZodTypes";
 const push = (env, data) => {
     const d = z.tuple([RaliasOrValue]).parse(data);
     env.push(d[0]);

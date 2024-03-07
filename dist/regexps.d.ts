@@ -1,7 +1,25 @@
-import {z} from "zod";
-
+import { z } from "zod";
 export declare const line: RegExp;
 export declare const args: RegExp;
+export declare const dynamicRegister: RegExp;
+export declare const dynamicRegisterGroups: z.ZodObject<{
+    rr: z.ZodString;
+    first: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    rr: string;
+    first: string;
+}, {
+    rr: string;
+    first: string;
+}>;
+export declare const dynamicDevice: RegExp;
+export declare const dynamicDeviceGroups: z.ZodObject<{
+    rr: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    rr: string;
+}, {
+    rr: string;
+}>;
 export declare const Position: z.ZodObject<{
     value: z.ZodString;
     start: z.ZodNumber;

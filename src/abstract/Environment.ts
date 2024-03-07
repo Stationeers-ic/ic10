@@ -16,12 +16,12 @@ type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, lin
 
 type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
 
-/*
+/**
  * Окружение для интерпретатора
  * Хранит все данные необходимые для интерпретации
  */
 export abstract class Environment extends EventEmitter<EventNames, Environment> {
-	/*
+	/**
 	 * Тестовый режим
 	 */
 	public isTest: boolean = false
@@ -87,19 +87,55 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract peek(): number
 
-	//Проверить подключено ли устройство к порту
+	/**
+	 *  Проверить подключено ли устройство к порту
+	 * @param port
+	 */
 	abstract hasDevice(port: string): boolean
 
-	// получить устройство по имени возвращает строку по которой можно получить устройство
-	abstract getDeviceByHash(hash: number): string[]
+	/**
+	 * lb
+	 */
+	abstract getDeviceByHash(hash: number, logic: string): number[]
 
-	// получить устройство по хэшу и имени
-	abstract getDeviceByHashAndName(hash: number, name: number): string[]
+	/**
+	 * lbn
+	 */
+	abstract getDeviceByHashAndName(hash: number, name: number, logic: string): number[]
 
-	// создать alias, если alias существует, то перезаписать его
+	/**
+	 * lbs
+	 */
+	abstract getSlotDeviceByHash(hash: number, slot: number, logic: string): number[]
+	/**
+	 * lbns
+	 */
+	abstract getSlotDeviceByHashAndName(hash: number, name: number, slot: number, logic: string): number[]
+
+	/**
+	 * lsb
+	 */
+	abstract setDeviceByHash(hash: number, logic: string, value: number): this
+
+	abstract setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this
+
+	/**
+	 * sbn
+	 */
+	abstract setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): this
+
+	/**
+	 * создать alias, если alias существует, то перезаписать его
+	 * @param alias
+	 * @param value
+	 *
+	 */
 	abstract alias(alias: string, value: string | number): this
 
-	// получить alias если существует иначе вернуть значение
+	/**
+	 * получить alias если существует иначе вернуть значение
+	 * @param alias
+	 */
 	abstract getAlias(alias: string): string
 
 	throw(err: Err) {
@@ -109,7 +145,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 		this.emit(err.level, err)
 	}
 
-	// Самоуничтожение
+	/**
+	 * Самоуничтожение
+	 */
 	abstract hcf(): this
 
 	async beforeLineRun(line: Line) {}

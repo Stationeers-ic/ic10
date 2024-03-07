@@ -1,15 +1,6 @@
-import {z} from "zod";
-import {conditions} from "./conditions";
-import {
-	DeviceOrAlias,
-	LineIndex,
-	Ralias,
-	RaliasOrValue,
-	RelativeLineIndex,
-	StringOrNumberOrNaN,
-	Value,
-} from "../ZodTypes";
-
+import { z } from "zod";
+import { conditions } from "./conditions";
+import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, StringOrNumberOrNaN, Value, } from "../ZodTypes";
 const jValidate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex]);
 const jrValidate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex]);
 const jApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, LineIndex]);

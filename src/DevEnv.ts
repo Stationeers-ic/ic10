@@ -3,24 +3,27 @@ import { getProperty, setProperty } from "dot-prop"
 import { z } from "zod"
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
 import SyntaxError from "./errors/SyntaxError"
-import Line from "./core/Line"
+import { Line } from "./core/Line"
 import { v4 as uuid } from "uuid"
 
-const device = z.union([z.record(z.number()), z.record(z.record(z.number())), z.record(z.record(z.record(z.number())))])
-type device = z.infer<typeof device>
+const ZodDevice = z.union([
+	z.record(z.number()),
+	z.record(z.record(z.number())),
+	z.record(z.record(z.record(z.number()))),
+])
+type ZodDevice = z.infer<typeof ZodDevice>
 
 //Окружение без проверок которое просто сохраняет все как есть
 export class DevEnv extends Environment {
-	/*
+	/**
 	 * Текущая строка
 	 */
 	private line: number = 0
-	/*
+	/**
 	 * Все строки текущего выполнения
 	 */
 	private lines: Array<Line | null> = []
-	public devices: Map<string, device> = new Map<string, device>()
-	public devicesIndex: Map<number, string> = new Map<number, string>()
+	public devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
 	public devicesAttached: Map<string, string> = new Map<string, string>()
 	public data: any = {}
 	public stack: number[] = new Array(512)
@@ -71,27 +74,20 @@ export class DevEnv extends Environment {
 
 	appendDevice(hash: number, name?: number): string {
 		const id = uuid()
-		const device: device = {
+		const device: ZodDevice = {
 			PrefabHash: hash,
 		}
 		if (name) {
 			device.Name = name
-			this.devicesIndex.set(name, id)
 		}
-		this.devicesIndex.set(hash, id)
 		this.devices.set(id, device)
 		return id
 	}
 
 	removeDevice(id: string): this {
 		const d = this.devices.get(id)
+		this.detachDevice(id)
 		if (d) {
-			if (typeof d.Name === "number") {
-				this.devicesIndex.delete(d.Name)
-			}
-			if (typeof d.PrefabHash === "number") {
-				this.devicesIndex.delete(d.PrefabHash)
-			}
 			this.devices.delete(id)
 		}
 		return this
@@ -204,14 +200,6 @@ export class DevEnv extends Environment {
 		return this.devicesAttached.has(port)
 	}
 
-	getDeviceByHash(hash: number): string[] {
-		return []
-	}
-
-	getDeviceByHashAndName(hash: number, name: number): string[] {
-		return []
-	}
-
 	hcf(): this {
 		console.log("Died")
 		this.jump(this.getLines().length)
@@ -220,6 +208,78 @@ export class DevEnv extends Environment {
 
 	getLines(): (Line | null)[] {
 		return this.lines
+	}
+
+	getDeviceByHash(hash: number, logic: string): number[] {
+		const output = Array.from(this.devices)
+			.filter(([, device]) => {
+				return device.PrefabHash === hash
+			})
+			.map(([, device]) => getProperty(device, logic))
+			.filter((i) => typeof i === "number")
+		return z.array(z.number()).parse(output)
+	}
+
+	getDeviceByHashAndName(hash: number, name: number, logic: string): number[] {
+		const output = Array.from(this.devices)
+			.filter(([, device]) => {
+				return device.PrefabHash === hash && device.Name === name
+			})
+			.map(([, device]) => getProperty(device, logic))
+			.filter((i) => typeof i === "number")
+		return z.array(z.number()).parse(output)
+	}
+
+	getSlotDeviceByHash(hash: number, slot: number, logic: string): number[] {
+		const output = Array.from(this.devices)
+			.filter(([, device]) => {
+				return device.PrefabHash === hash
+				// @ts-ignore
+			})
+			.map(([, device]) => getProperty(device, "slots." + slot + "." + logic))
+			.filter((i) => typeof i === "number")
+		return z.array(z.number()).parse(output)
+	}
+
+	getSlotDeviceByHashAndName(hash: number, name: number, slot: number, logic: string): number[] {
+		const output = Array.from(this.devices)
+			.filter(([, device]) => {
+				return device.PrefabHash === hash && device.Name === name
+				// @ts-ignore
+			})
+			.map(([, device]) => getProperty(device, "slots." + slot + "." + logic))
+			.filter((i) => typeof i === "number")
+		return z.array(z.number()).parse(output)
+	}
+
+	setDeviceByHash(hash: number, logic: string, value: number): this {
+		const devices = Array.from(this.devices).filter(([, device]) => {
+			return device.PrefabHash === hash
+		})
+		devices.forEach(([, device]) => {
+			setProperty(device, logic, value)
+		})
+		return this
+	}
+
+	setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): this {
+		const devices = Array.from(this.devices).filter(([, device]) => {
+			return device.PrefabHash === hash && device.Name === name
+		})
+		devices.forEach(([, device]) => {
+			setProperty(device, logic, value)
+		})
+		return this
+	}
+
+	setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this {
+		const devices = Array.from(this.devices).filter(([, device]) => {
+			return device.PrefabHash === hash
+		})
+		devices.forEach(([, device]) => {
+			setProperty(device, "slots." + slot + "." + logic, value)
+		})
+		return this
 	}
 }
 

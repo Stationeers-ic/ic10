@@ -1,5 +1,4 @@
-import {z} from "zod";
-
+import { z } from "zod";
 export const StringOrNumberOrNaN = z.union([z.string(), z.number(), z.nan()]);
 export const StringOrNumber = z.union([z.string(), z.number()]);
 export const NumberOrNan = z.number().or(z.nan());
@@ -24,6 +23,7 @@ export const Hash = Ralias.or(Value.int());
 export const AliasOrValueOrNaN = AliasOrValue.or(z.nan());
 export const RaliasOrValueOrNaN = AliasOrValue.or(z.nan());
 export const Logic = z.string();
+export const Mode = z.string();
 export const NotReservedWord = z
     .string()
     .refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {

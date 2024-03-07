@@ -1,7 +1,6 @@
-import {Line} from "./core/Line";
-import {InfiniteLoop} from "./errors/InfiniteLoop";
-import {Err} from "./abstract/Err";
-
+import { Line } from "./core/Line";
+import { InfiniteLoop } from "./errors/InfiniteLoop";
+import { Err } from "./abstract/Err";
 export class InterpreterIc10 {
     code;
     stopRun = false;
@@ -29,7 +28,8 @@ export class InterpreterIc10 {
                 this.env.alias(label, i);
             }
             return line;
-        }).forEach((line) => {
+        })
+            .forEach((line) => {
             this.env.addLine(line);
         });
         return this;

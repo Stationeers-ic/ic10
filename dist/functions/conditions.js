@@ -1,6 +1,5 @@
-import {z} from "zod";
-import {StringOrNumberOrNaN} from "../ZodTypes";
-
+import { z } from "zod";
+import { StringOrNumberOrNaN } from "../ZodTypes";
 export const epsilon = 2 ** -23;
 const eq = (env, data) => {
     const [x, y] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data);

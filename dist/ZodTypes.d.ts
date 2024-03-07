@@ -1,5 +1,4 @@
-import {z} from "zod";
-
+import { z } from "zod";
 export declare const StringOrNumberOrNaN: z.ZodUnion<[z.ZodString, z.ZodNumber, z.ZodNaN]>;
 export type StringOrNumberOrNaN = z.infer<typeof StringOrNumberOrNaN>;
 export declare const StringOrNumber: z.ZodUnion<[z.ZodString, z.ZodNumber]>;
@@ -41,6 +40,7 @@ export type Hash = z.infer<typeof Hash>;
 export declare const AliasOrValueOrNaN: z.ZodUnion<[z.ZodUnion<[z.ZodEffects<z.ZodString, string, string>, z.ZodNumber]>, z.ZodNaN]>;
 export declare const RaliasOrValueOrNaN: z.ZodUnion<[z.ZodUnion<[z.ZodEffects<z.ZodString, string, string>, z.ZodNumber]>, z.ZodNaN]>;
 export declare const Logic: z.ZodString;
+export declare const Mode: z.ZodString;
 export declare const NotReservedWord: z.ZodEffects<z.ZodString, string, string>;
 export declare const ConditionName: z.ZodUnion<[z.ZodLiteral<"eq">, z.ZodLiteral<"ge">, z.ZodLiteral<"gt">, z.ZodLiteral<"le">, z.ZodLiteral<"lt">, z.ZodLiteral<"ne">, z.ZodLiteral<"na">, z.ZodLiteral<"ap">, z.ZodLiteral<"dse">, z.ZodLiteral<"dns">, z.ZodLiteral<"nan">, z.ZodLiteral<"nanz">]>;
 export type ConditionName = z.infer<typeof ConditionName>;

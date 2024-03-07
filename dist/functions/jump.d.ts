@@ -1,5 +1,4 @@
-import {icFunction} from "../functions";
-
+import { icFunction } from "../functions";
 export declare const jump: {
     j: icFunction;
     jr: icFunction;

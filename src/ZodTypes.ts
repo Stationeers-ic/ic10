@@ -83,6 +83,7 @@ export const AliasOrValueOrNaN = AliasOrValue.or(z.nan())
 export const RaliasOrValueOrNaN = AliasOrValue.or(z.nan())
 
 export const Logic = z.string()
+export const Mode = z.string()
 /*
 export const RegisterOrAlias = Register.or(z.string())
 export const DeviceOrAlias = Device.or(z.string())

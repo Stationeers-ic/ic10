@@ -1,5 +1,4 @@
-import {Err} from "../abstract/Err";
-
+import { Err } from "../abstract/Err";
 export class SyntaxError extends Err {
     level;
     lineStart;

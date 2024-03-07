@@ -6,5 +6,4 @@ import BitWarn from "./errors/BitWarn";
 import InfiniteLoop from "./errors/InfiniteLoop";
 import SyntaxError from "./errors/SyntaxError";
 import functions from "./functions";
-
 export { InterpreterIc10, DevEnv, Environment, Err, BitWarn, InfiniteLoop, SyntaxError, functions };

@@ -1,6 +1,5 @@
 import EventEmitter from "eventemitter3";
-import {Register} from "../ZodTypes";
-
+import { dynamicDevice, dynamicDeviceGroups, dynamicRegister, dynamicRegisterGroups } from "../regexps";
 export class Environment extends EventEmitter {
     isTest = false;
     InfiniteLoopLimit = 500;
@@ -21,9 +20,21 @@ export class Environment extends EventEmitter {
     async afterLineRun(line) {
     }
     dynamicDevicePort(string) {
-        if (string.startsWith("dr") && string.length <= 4) {
-            const register = Register.parse(string.slice(1));
-            return `d${this.get(register)}`;
+        if (dynamicDevice.test(string)) {
+            const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups);
+            const r = this.dynamicRegister(rr);
+            return `d${this.get(r)}`;
+        }
+        return string;
+    }
+    dynamicRegister(string) {
+        if (dynamicRegister.test(string)) {
+            const { first, rr } = dynamicRegisterGroups.parse(dynamicRegister.exec(string)?.groups);
+            let next = this.get(first);
+            for (let i = 1; i < rr.length; i++) {
+                next = this.get(`r${next}`);
+            }
+            return `r${next}`;
         }
         return string;
     }

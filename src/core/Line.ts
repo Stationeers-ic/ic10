@@ -104,5 +104,3 @@ export class Line {
 		return false
 	}
 }
-
-export default Line

@@ -1,7 +1,6 @@
 import conditions from "./conditions";
-import {z} from "zod";
-import {DeviceOrAlias, Ralias, RaliasOrValue} from "../ZodTypes";
-
+import { z } from "zod";
+import { DeviceOrAlias, Ralias, RaliasOrValue } from "../ZodTypes";
 const booleanToNumber = (x) => (x ? 1 : 0);
 const seq = (env, data) => {
     const [op1, op2, op3] = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data);
