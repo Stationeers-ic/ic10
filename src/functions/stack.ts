@@ -2,17 +2,17 @@ import { icFunction } from "../functions"
 import { z } from "zod"
 import { Ralias, RaliasOrValue, StackFunctionName } from "../ZodTypes"
 
-const push: icFunction = (env, data) => {
+const push: icFunction = async (env, data) => {
 	const d = z.tuple([RaliasOrValue]).parse(data)
-	env.push(d[0])
+	await env.push(d[0])
 }
-const pop: icFunction = (env, data) => {
+const pop: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias]).parse(data)
-	env.set(d[0], env.pop())
+	await env.set(d[0], await env.pop())
 }
-const peek: icFunction = (env, data) => {
+const peek: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias]).parse(data)
-	env.set(d[0], env.peek())
+	await env.set(d[0], await env.peek())
 }
 
 export const stack: Record<StackFunctionName, icFunction> = {

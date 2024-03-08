@@ -1,7 +1,7 @@
-import { Environment } from "./abstract/Environment"
-import { Line } from "./core/Line"
-import { InfiniteLoop } from "./errors/InfiniteLoop"
-import { Err } from "./abstract/Err"
+import Environment from "./abstract/Environment"
+import Line from "./core/Line"
+import InfiniteLoop from "./errors/InfiniteLoop"
+import Err from "./abstract/Err"
 
 export class InterpreterIc10 {
 	private code: string
@@ -46,10 +46,10 @@ export class InterpreterIc10 {
 	}
 
 	public async step(): Promise<string | boolean> {
-		const old = this.env.getPosition()
-		const line = this.env.getCurrentLine()
+		const old = await this.env.getPosition()
+		const line = await this.env.getCurrentLine()
 		if (line === null) {
-			this.env.addPosition(1)
+			await this.env.addPosition(1)
 			return false
 		}
 		if (line === undefined) return "EOF"
@@ -59,14 +59,14 @@ export class InterpreterIc10 {
 
 		// Проверка на бесконечный цикл
 		if (line.runCounter > this.env.InfiniteLoopLimit) {
-			this.env.throw(
+			await this.env.throw(
 				new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
 			)
 		}
 
 		// Проверка не прыжок
-		if (old === this.env.getPosition()) {
-			this.env.addPosition(1)
+		if (old === (await this.env.getPosition())) {
+			await this.env.addPosition(1)
 		}
 		await this.env.afterLineRun(line)
 		return true
@@ -74,7 +74,7 @@ export class InterpreterIc10 {
 
 	public async testCode() {
 		this.env.isTest = true
-		const lines = this.env.getLines()
+		const lines = await this.env.getLines()
 		for (const line in lines) {
 			lines[line]?.run()
 		}
@@ -84,14 +84,14 @@ export class InterpreterIc10 {
 		codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
-		if (this.env.errorCounter !== 0) return "ERR"
+		if ((await this.env.getErrorCount()) !== 0) return "ERR"
 		try {
 			let result: string | boolean = false
 			while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
 				result = await this.step()
 				// exit with code
 				if (typeof result === "string") return result
-				if (this.env.errorCounter !== 0) return "ERR"
+				if ((await this.env.getErrorCount()) !== 0) return "ERR"
 				// on code lines
 				if (result) codeLines--
 				// on empty lines

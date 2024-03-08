@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { run, runThrow } from "./testUtils"
+import { run } from "./testUtils"
 import CRC32 from "crc-32"
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {

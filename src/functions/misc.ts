@@ -10,33 +10,32 @@ import {
 	RegisterOrDevice,
 } from "../ZodTypes"
 
-const alias: icFunction = (env, data) => {
+const alias: icFunction = async (env, data) => {
 	const [alias, dr] = z.tuple([Alias, RegisterOrDevice]).parse(data)
-	env.alias(alias, dr)
+	await env.alias(alias, dr)
 }
-const define: icFunction = (env, data) => {
+const define: icFunction = async (env, data) => {
 	const d = z.tuple([Alias, AliasOrValue]).parse(data)
-	env.alias(d[0], env.get(d[1]))
+	await env.alias(d[0], await env.get(d[1]))
 }
-const move: icFunction = (env, data) => {
+const move: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], env.get(d[1]))
+	await env.set(d[0], await env.get(d[1]))
 }
-// TODO: ?
-const yield_: icFunction = (env, data) => {}
+const yield_: icFunction = async (env, data) => {}
 const sleep: icFunction = async (env, data) => {
 	const [time] = z.tuple([RaliasOrValueOrNaN]).parse(data)
-	return new Promise<void>((resolve) => {
+	return new Promise<void>(async (resolve) => {
 		setTimeout(
 			() => {
 				resolve()
 			},
-			env.get(time) * 1000,
+			(await env.get(time)) * 1000,
 		)
 	})
 }
-const hcf: icFunction = (env, data) => {
-	env.hcf()
+const hcf: icFunction = async (env, data) => {
+	await env.hcf()
 }
 
 export const misc: Record<MiscFunctionName, icFunction> = {

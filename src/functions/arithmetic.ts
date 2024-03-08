@@ -1,6 +1,6 @@
 import { z } from "zod"
 import { icFunction } from "../functions"
-import { BitWarn } from "../errors/BitWarn"
+import BitWarn from "../errors/BitWarn"
 import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
 
 function jsThing(value: number) {
@@ -9,176 +9,179 @@ function jsThing(value: number) {
 	return value
 }
 
-const add: icFunction = (env, data) => {
+const add: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) + env.get(d[2])))
+	await env.set(d[0], jsThing((await env.get(d[1])) + (await env.get(d[2]))))
 }
-const sub: icFunction = (env, data) => {
+const sub: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) - env.get(d[2])))
+	await env.set(d[0], jsThing((await env.get(d[1])) - (await env.get(d[2]))))
 }
-const mul: icFunction = (env, data) => {
+const mul: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) * env.get(d[2])))
+	await env.set(d[0], jsThing((await env.get(d[1])) * (await env.get(d[2]))))
 }
-const div: icFunction = (env, data) => {
+const div: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) / env.get(d[2])))
+	await env.set(d[0], jsThing((await env.get(d[1])) / (await env.get(d[2]))))
 }
-const mod: icFunction = (env, data) => {
+const mod: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	let num = env.get(d[1]) % env.get(d[2])
-	if (num < 0) num += env.get(d[2])
-	env.set(d[0], jsThing(num))
+	let num = (await env.get(d[1])) % (await env.get(d[2]))
+	if (num < 0) num += await env.get(d[2])
+	await env.set(d[0], jsThing(num))
 }
-const sqrt: icFunction = (env, data) => {
+const sqrt: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.sqrt(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.sqrt(await env.get(d[1]))))
 }
-const round: icFunction = (env, data) => {
+const round: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.round(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.round(await env.get(d[1]))))
 }
-const trunc: icFunction = (env, data) => {
+const trunc: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.trunc(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.trunc(await env.get(d[1]))))
 }
-const ceil: icFunction = (env, data) => {
+const ceil: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.ceil(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.ceil(await env.get(d[1]))))
 }
-const floor: icFunction = (env, data) => {
+const floor: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.floor(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.floor(await env.get(d[1]))))
 }
-const max: icFunction = (env, data) => {
+const max: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.max(env.get(d[1]), env.get(d[2]))))
+	await env.set(d[0], jsThing(Math.max(await env.get(d[1]), await env.get(d[2]))))
 }
-const min: icFunction = (env, data) => {
+const min: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.min(env.get(d[1]), env.get(d[2]))))
+	await env.set(d[0], jsThing(Math.min(await env.get(d[1]), await env.get(d[2]))))
 }
-const abs: icFunction = (env, data) => {
+const abs: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.abs(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.abs(await env.get(d[1]))))
 }
-const log: icFunction = (env, data) => {
+const log: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.log(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.log(await env.get(d[1]))))
 }
-const exp: icFunction = (env, data) => {
+const exp: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.exp(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.exp(await env.get(d[1]))))
 }
-const rand: icFunction = (env, data) => {
+const rand: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias]).parse(data)
-	env.set(d[0], jsThing(Math.random()))
+	await env.set(d[0], jsThing(Math.random()))
 }
-const sll: icFunction = (env, data) => {
+const sll: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	const l = env.get(d[2])
+	const l = await env.get(d[2])
 	if (l < 0) {
-		env.set(d[0], 0)
+		await env.set(d[0], 0)
 	} else {
-		env.set(d[0], jsThing(env.get(d[1]) << l))
+		await env.set(d[0], jsThing((await env.get(d[1])) << l))
 	}
-	env.throw(
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const srl: icFunction = (env, data) => {
+const srl: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	const l = env.get(d[2])
+	const l = await env.get(d[2])
 	if (l < 0) {
-		env.set(d[0], 0)
+		await env.set(d[0], 0)
 	} else {
-		env.set(d[0], jsThing(env.get(d[1]) >>> env.get(d[2])))
+		await env.set(d[0], jsThing((await env.get(d[1])) >>> (await env.get(d[2]))))
 	}
-	env.throw(
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const sla: icFunction = (env, data) => {
+const sla: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	const l = env.get(d[2])
+	const l = await env.get(d[2])
 	if (l < 0) {
-		env.set(d[0], 0)
+		await env.set(d[0], 0)
 	} else {
-		env.set(
+		await env.set(
 			d[0],
-			jsThing((env.get(d[1]) << env.get(d[2])) + Number(env.get(d[1]) < 0) * ((2 << env.get(d[2])) - 1)),
+			jsThing(
+				((await env.get(d[1])) << (await env.get(d[2]))) +
+					Number((await env.get(d[1])) < 0) * ((2 << (await env.get(d[2]))) - 1),
+			),
 		)
 	}
-	env.throw(
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const sra: icFunction = (env, data) => {
+const sra: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	const l = env.get(d[2])
+	const l = await env.get(d[2])
 	if (l < 0) {
-		env.set(d[0], 0)
+		await env.set(d[0], 0)
 	} else {
-		env.set(d[0], jsThing(env.get(d[1]) >> env.get(d[2])))
+		await env.set(d[0], jsThing((await env.get(d[1])) >> (await env.get(d[2]))))
 	}
-	env.throw(
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const sin: icFunction = (env, data) => {
+const sin: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.sin(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.sin(await env.get(d[1]))))
 }
-const cos: icFunction = (env, data) => {
+const cos: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.cos(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.cos(await env.get(d[1]))))
 }
-const tan: icFunction = (env, data) => {
+const tan: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.tan(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.tan(await env.get(d[1]))))
 }
-const asin: icFunction = (env, data) => {
+const asin: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.asin(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.asin(await env.get(d[1]))))
 }
-const acos: icFunction = (env, data) => {
+const acos: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.acos(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.acos(await env.get(d[1]))))
 }
-const atan: icFunction = (env, data) => {
+const atan: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.atan(env.get(d[1]))))
+	await env.set(d[0], jsThing(Math.atan(await env.get(d[1]))))
 }
-const atan2: icFunction = (env, data) => {
+const atan2: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(Math.atan2(env.get(d[1]), env.get(d[2]))))
+	await env.set(d[0], jsThing(Math.atan2(await env.get(d[1]), await env.get(d[2]))))
 }
-const and: icFunction = (env, data) => {
+const and: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) & env.get(d[2])))
-	env.throw(
+	await env.set(d[0], jsThing((await env.get(d[1])) & (await env.get(d[2]))))
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const or: icFunction = (env, data) => {
+const or: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) | env.get(d[2])))
-	env.throw(
+	await env.set(d[0], jsThing((await env.get(d[1])) | (await env.get(d[2]))))
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const xor: icFunction = (env, data) => {
+const xor: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(env.get(d[1]) ^ env.get(d[2])))
-	env.throw(
+	await env.set(d[0], jsThing((await env.get(d[1])) ^ (await env.get(d[2]))))
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }
-const nor: icFunction = (env, data) => {
+const nor: icFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
-	env.set(d[0], jsThing(~(env.get(d[1]) | env.get(d[2]))))
-	env.throw(
+	await env.set(d[0], jsThing(~((await env.get(d[1])) | (await env.get(d[2])))))
+	await env.throw(
 		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
 	)
 }

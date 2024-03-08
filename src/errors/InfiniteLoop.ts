@@ -1,6 +1,6 @@
-import { Err } from "../abstract/Err"
+import Err from "../abstract/Err"
 
-export class InfiniteLoop extends Err {
+class InfiniteLoop extends Err {
 	constructor(
 		message: string,
 		public level: "error" | "warn" | "info" | "debug" = "error",

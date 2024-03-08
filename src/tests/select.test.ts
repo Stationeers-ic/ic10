@@ -116,25 +116,6 @@ describe("select", () => {
 		expect(runFunc(functions.sna, ["r0", 10, 0.1])).resolves.toBe(0)
 		expect(runFunc(functions.sna, ["r0", 10, 0.1])).resolves.toBe(1)
 	})
-
-	test("sdse", () => {
-		const mem = new DevEnv()
-		const id = mem.appendDevice(123)
-		mem.attachDevice(id, "d0")
-
-		expect(runFuncWithMem(functions.sdse, ["r0", "d0"], mem)).resolves.toBe(1)
-		expect(runFunc(functions.sdse, ["r0", "d0"])).resolves.toBe(0)
-	})
-
-	test("sdns", () => {
-		const mem = new DevEnv()
-		const id = mem.appendDevice(123)
-		mem.attachDevice(id, "d0")
-
-		expect(runFuncWithMem(functions.sdns, ["r0", "d0"], mem)).resolves.toBe(0)
-		expect(runFunc(functions.sdns, ["r0", "d0"])).resolves.toBe(1)
-	})
-
 	test("snan", () => {
 		expect(runFunc(functions.snan, ["r0", "r1"], { r1: NaN })).resolves.toBe(1)
 		expect(runFunc(functions.snan, ["r0", "r1"], { r1: 1 })).resolves.toBe(0)

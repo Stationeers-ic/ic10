@@ -1,4 +1,4 @@
-import { Err } from "../abstract/Err";
+import Err from "../abstract/Err";
 export declare class BitWarn extends Err {
     level: "error" | "warn" | "info" | "debug";
     lineStart?: number | undefined;

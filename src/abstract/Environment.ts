@@ -1,9 +1,9 @@
-import { Line } from "../core/Line"
+import Line from "../core/Line"
 import EventEmitter from "eventemitter3"
 import { AnyFunctionName } from "../ZodTypes"
-import { Err } from "./Err"
+import Err from "./Err"
 import { FunctionData } from "../functions"
-import { dynamicDevice, dynamicDeviceGroups, dynamicRegister, dynamicRegisterGroups } from "../regexps"
+import { dynamicDevice, dynamicDeviceGroups, dynamicRegisterReg, dynamicRegisterGroups } from "../regexps"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -20,19 +20,17 @@ type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
  * Окружение для интерпретатора
  * Хранит все данные необходимые для интерпретации
  */
-export abstract class Environment extends EventEmitter<EventNames, Environment> {
+abstract class Environment extends EventEmitter<EventNames, Environment> {
 	/**
 	 * Тестовый режим
 	 */
 	public isTest: boolean = false
 
 	public InfiniteLoopLimit: number = 500
-	public errors: Err[] = []
-	public errorCounter: number = 0
 
-	abstract addLine(line: Line | null): this
+	abstract addLine(line: Line | null): Promise<this> | this
 
-	abstract setLine(index: number, line: Line): this
+	abstract setLine(index: number, line: Line): Promise<this> | this
 
 	/**
 	 * Получить строку по индексу
@@ -41,92 +39,31 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	 *  - *undefined* - строка не существует
 	 * @param index
 	 */
-	abstract getLine(index: number): Line | null | undefined
+	abstract getLine(index: number): Promise<Line | null | undefined> | (Line | null | undefined)
 
-	abstract getLines(): (Line | null)[]
+	abstract getLines(): Promise<(Line | null)[]> | (Line | null)[]
 
-	abstract getPosition(): number
+	abstract getPosition(): Promise<number> | number
 
-	abstract setPosition(index: number): this
+	abstract setPosition(index: number): Promise<this> | this
 
-	abstract addPosition(modify: number): this
+	abstract addPosition(modify: number): Promise<this> | this
 
-	/**
-	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
-	 */
-	abstract appendDevice(hash: number, name?: number): string
+	abstract getCurrentLine(): Promise<Line | null | undefined> | (Line | null | undefined)
 
-	/**
-	 * Убрать устройство из окружения
-	 */
-	abstract removeDevice(id: string): this
+	abstract jump(line: string | number): Promise<this> | this
 
-	/**
-	 * Подключить устройство к порту
-	 */
-	abstract attachDevice(id: string, port: string): this
+	//Работа с памятью
 
-	/**
-	 * Отключить устройство от порта
-	 */
-	abstract detachDevice(id: string): this
+	abstract get(name: string | number): Promise<number> | number
 
-	public getCurrentLine(): Line | null | undefined {
-		return this.getLine(this.getPosition())
-	}
+	abstract set(name: string, value: number): Promise<this> | this
 
-	abstract jump(line: string | number): this
+	abstract push(name: string | number): Promise<this> | this
 
-	abstract get(name: string | number): number
+	abstract pop(): Promise<number> | number
 
-	abstract set(name: string, value: number): this
-
-	abstract push(name: string | number): this
-
-	abstract pop(): number
-
-	abstract peek(): number
-
-	/**
-	 *  Проверить подключено ли устройство к порту
-	 * @param port
-	 */
-	abstract hasDevice(port: string): boolean
-
-	/**
-	 * lb
-	 */
-	abstract getDeviceByHash(hash: number, logic: string): number[]
-
-	/**
-	 * lbn
-	 */
-	abstract getDeviceByHashAndName(hash: number, name: number, logic: string): number[]
-
-	/**
-	 * lbs
-	 */
-	abstract getSlotDeviceByHash(hash: number, slot: number, logic: string): number[]
-
-	/**
-	 * lbns
-	 */
-	abstract getSlotDeviceByHashAndName(hash: number, name: number, slot: number, logic: string): number[]
-
-	/**
-	 * sb
-	 */
-	abstract setDeviceByHash(hash: number, logic: string, value: number): this
-
-	/**
-	 * sbs
-	 */
-	abstract setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this
-
-	/**
-	 * sbn
-	 */
-	abstract setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): this
+	abstract peek(): Promise<number> | number
 
 	/**
 	 * создать alias, если alias существует, то перезаписать его
@@ -134,62 +71,97 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 	 * @param value
 	 *
 	 */
-	abstract alias(alias: string, value: string | number): this
+	abstract alias(alias: string, value: string | number): Promise<this> | this
 
 	/**
 	 * получить alias если существует иначе вернуть значение
 	 * @param alias
 	 */
-	abstract getAlias(alias: string): string
+	abstract getAlias(alias: string): Promise<string> | string
 
-	throw(err: Err) {
-		err.lineStart = err.lineStart ?? this.getPosition()
-		this.errors.push(err)
-		if (err.level === "error") this.errorCounter++
-		this.emit(err.level, err)
-	}
+	//Работа с устройствами
+
+	/**
+	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
+	 */
+	abstract appendDevice(hash: number, name?: number): Promise<string> | string
+
+	/**
+	 * Убрать устройство из окружения
+	 */
+	abstract removeDevice(id: string): Promise<this> | this
+
+	/**
+	 * Подключить устройство к порту
+	 */
+	abstract attachDevice(id: string, port: string): Promise<this> | this
+
+	/**
+	 * Отключить устройство от порта
+	 */
+	abstract detachDevice(id: string): Promise<this> | this
+
+	/**
+	 *  Проверить подключено ли устройство к порту
+	 * @param port
+	 */
+	abstract hasDevice(port: string): Promise<boolean> | boolean
+
+	/**
+	 * lb
+	 */
+	abstract getDeviceByHash(hash: number, logic: string): Promise<number[]> | number[]
+
+	/**
+	 * lbn
+	 */
+	abstract getDeviceByHashAndName(hash: number, name: number, logic: string): Promise<number[]> | number[]
+
+	/**
+	 * lbs
+	 */
+	abstract getSlotDeviceByHash(hash: number, slot: number, logic: string): Promise<number[]> | number[]
+
+	/**
+	 * lbns
+	 */
+	abstract getSlotDeviceByHashAndName(
+		hash: number,
+		name: number,
+		slot: number,
+		logic: string,
+	): Promise<number[]> | number[]
+
+	/**
+	 * sb
+	 */
+	abstract setDeviceByHash(hash: number, logic: string, value: number): Promise<this> | this
+
+	/**
+	 * sbs
+	 */
+	abstract setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): Promise<this> | this
+
+	/**
+	 * sbn
+	 */
+	abstract setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): Promise<this> | this
 
 	/**
 	 * Самоуничтожение
 	 */
-	abstract hcf(): this
+	abstract hcf(): Promise<this> | this
 
 	async beforeLineRun(line: Line) {}
 
 	async afterLineRun(line: Line) {}
 
-	/**
-	 * Парсинг динамических устройств
-	 * - на входе строка drrrrr1
-	 * - на выходе строка d1
-	 * @param string
-	 */
-	dynamicDevicePort(string: string): string {
-		if (dynamicDevice.test(string)) {
-			const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
-			const r = this.dynamicRegister(rr)
-			return `d${this.get(r)}`
-		}
-		return string
-	}
+	//Обработка ошибок
+	abstract throw(err: Err): Promise<this> | this
 
-	/**
-	 * Парсинг динамических регистров
-	 *  - на входе строка rrrrrr1
-	 *  - на выходе строка r1
-	 * @param string
-	 */
-	dynamicRegister(string: string): string {
-		if (dynamicRegister.test(string)) {
-			const { first, rr } = dynamicRegisterGroups.parse(dynamicRegister.exec(string)?.groups)
-			let next = this.get(first)
-			for (let i = 1; i < rr.length; i++) {
-				next = this.get(`r${next}`)
-			}
-			return `r${next}`
-		}
-		return string
-	}
+	abstract getErrorCount(): Promise<number> | number
+
+	abstract getErrors(): Promise<Err[]> | Err[]
 
 	on<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this {
 		return super.on(event, fn, this)

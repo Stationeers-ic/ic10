@@ -3,6 +3,7 @@ import { functions } from "../functions"
 import data from "./data/data.json"
 import { runCode } from "./testUtils"
 import DevEnv from "../DevEnv"
+import { dynamicRegister } from "../core/Helpers"
 
 describe("main", () => {
 	test("functions", () => {
@@ -24,8 +25,8 @@ describe("main", () => {
 		const mem = new DevEnv()
 		mem.set("r1", 9)
 		mem.set("r9", 5)
-		expect(mem.dynamicRegister("rr1")).toBe("r9")
-		expect(mem.dynamicRegister("rrr1")).toBe("r5")
+		expect(dynamicRegister(mem, "rr1")).toBe("r9")
+		expect(dynamicRegister(mem, "rrr1")).toBe("r5")
 	})
 
 	test("RRRRRegisters", () => {

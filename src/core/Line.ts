@@ -29,7 +29,7 @@ const LineTest = z
 	])
 	.nullable()
 
-export class Line {
+class Line {
 	fn: string = ""
 	args: (string | number)[] = []
 	comment: string = ""
@@ -77,7 +77,7 @@ export class Line {
 			if (fn.success) {
 				try {
 					this.scope.env.emit(`before_${fn.data}`, this.args ?? [], this)
-					functions[fn.data](this.scope.env, this.args ?? [])
+					await functions[fn.data](this.scope.env, this.args ?? [])
 					this.scope.env.emit(`after_${fn.data}`, this.args ?? [], this)
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
@@ -104,3 +104,5 @@ export class Line {
 		return false
 	}
 }
+
+export default Line

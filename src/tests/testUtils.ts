@@ -1,7 +1,6 @@
-import { DevEnv } from "../DevEnv"
-import { Environment, InterpreterIc10 } from "../"
+import DevEnv from "../DevEnv"
+import { Environment, Err, InterpreterIc10 } from "../"
 import { icFunction } from "../functions"
-import { Err } from "../abstract/Err"
 
 export async function run(code: string, data: { [key: string]: number } = {}): Promise<DevEnv> {
 	const mem = new DevEnv(data)
@@ -9,6 +8,7 @@ export async function run(code: string, data: { [key: string]: number } = {}): P
 	await a.run()
 	return mem
 }
+
 export async function runCode(code: string, data: { [key: string]: number } = {}): Promise<number> {
 	const mem = new DevEnv(data)
 	const a = new InterpreterIc10(mem, code)
@@ -39,7 +39,7 @@ export async function runThrow(code: string, data: { [key: string]: number } = {
 	const mem = new DevEnv(data)
 	const a = new InterpreterIc10(mem, code)
 	await a.run()
-	return mem.errors
+	return mem.getErrors()
 }
 
 export async function runFunc(

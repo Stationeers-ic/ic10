@@ -1,12 +1,14 @@
 // noinspection SuspiciousTypeOfGuard
 
-import { Environment } from "./abstract/Environment"
-import { getProperty, setProperty } from "dot-prop"
+import Environment from "./abstract/Environment"
 import { z } from "zod"
-import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
+import Line from "./core/Line"
+import Err from "./abstract/Err"
 import SyntaxError from "./errors/SyntaxError"
-import { Line } from "./core/Line"
+import { getProperty, setProperty } from "dot-prop"
+import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
 import { v4 as uuid } from "uuid"
+import { dynamicDevicePort, dynamicRegister } from "./core/Helpers"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -16,7 +18,7 @@ const ZodDevice = z.union([
 type ZodDevice = z.infer<typeof ZodDevice>
 
 //Окружение без проверок которое просто сохраняет все как есть
-export class DevEnv extends Environment {
+class DevEnv extends Environment {
 	/**
 	 * Текущая строка
 	 */
@@ -25,10 +27,12 @@ export class DevEnv extends Environment {
 	 * Все строки текущего выполнения
 	 */
 	private lines: Array<Line | null> = []
-	public devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
-	public devicesAttached: Map<string, string> = new Map<string, string>()
-	public data: any = {}
-	public stack: number[] = new Array(512)
+	private errors: Err[] = []
+	private errorCounter: number = 0
+	private devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
+	private devicesAttached: Map<string, string> = new Map<string, string>()
+	private data: any = {}
+	private stack: number[] = new Array(512)
 	private aliases = new Map<string, string | number>()
 
 	constructor(data: { [key: string]: number } = {}) {
@@ -44,6 +48,14 @@ export class DevEnv extends Environment {
 		Object.entries(data).forEach(([key, value]) => {
 			this.set(key, value)
 		})
+	}
+
+	getDevices() {
+		return this.devices
+	}
+
+	getCurrentLine(): Line | null | undefined {
+		return this.getLine(this.getPosition())
 	}
 
 	addLine(line: Line | null): this {
@@ -124,8 +136,8 @@ export class DevEnv extends Environment {
 			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")))
 		}
 		// только регистры илл рррррегистры 😀
-		name = this.dynamicRegister(name)
-		name = this.dynamicDevicePort(name)
+		name = dynamicRegister(this, name)
+		name = dynamicDevicePort(this, name)
 
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
@@ -145,8 +157,8 @@ export class DevEnv extends Environment {
 			return this
 		}
 		// только регистры или рррррегистры 😀
-		name = this.dynamicRegister(name)
-		name = this.dynamicDevicePort(name)
+		name = dynamicRegister(this, name)
+		name = dynamicDevicePort(this, name)
 
 		setProperty(this.data, name, value)
 		return this
@@ -240,7 +252,7 @@ export class DevEnv extends Environment {
 				return device.PrefabHash === hash
 				// @ts-ignore
 			})
-			.map(([, device]) => getProperty(device, "slots." + slot + "." + logic))
+			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			//TODO: исправить типы
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
@@ -252,7 +264,7 @@ export class DevEnv extends Environment {
 				return device.PrefabHash === hash && device.Name === name
 				// @ts-ignore
 			})
-			.map(([, device]) => getProperty(device, "slots." + slot + "." + logic))
+			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -282,9 +294,25 @@ export class DevEnv extends Environment {
 			return device.PrefabHash === hash
 		})
 		devices.forEach(([, device]) => {
-			setProperty(device, "slots." + slot + "." + logic, value)
+			setProperty(device, "Slots." + slot + "." + logic, value)
 		})
 		return this
+	}
+
+	throw(err: Err): this {
+		err.lineStart = err.lineStart ?? this.getPosition()
+		this.errors.push(err)
+		if (err.level === "error") this.errorCounter++
+		this.emit(err.level, err)
+		return this
+	}
+
+	getErrorCount(): number {
+		return this.errorCounter
+	}
+
+	getErrors(): Err[] {
+		return this.errors
 	}
 }
 

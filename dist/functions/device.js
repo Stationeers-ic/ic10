@@ -17,7 +17,7 @@ const l = (env, data) => {
 };
 const ls = (env, data) => {
     const [register, device, slot, property] = z.tuple([Ralias, DeviceOrAlias, SlotIndex, Logic]).parse(data);
-    env.set(register, env.get(`${device}.slots.${slot}.${property}`));
+    env.set(register, env.get(`${device}.Slots.${slot}.${property}`));
 };
 const sb = (env, data) => {
     const [hash, logic, register] = z.tuple([Hash, Logic, Ralias]).parse(data);
@@ -111,11 +111,11 @@ const lbns = (env, data) => {
 };
 const lr = (env, data) => {
     const [register, device, reagentMode, hash] = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash]).parse(data);
-    env.set(register, env.get(`${device}.reagents.${reagentMode}.${hash}`));
+    env.set(register, env.get(`${device}.Reagents.${reagentMode}.${hash}`));
 };
 const ss = (env, data) => {
     const [device, slot, property, value] = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue]).parse(data);
-    env.set(`${device}.slots.${slot}.${property}`, env.get(value));
+    env.set(`${device}.Slots.${slot}.${property}`, env.get(value));
 };
 const device = {
     l,

@@ -4,7 +4,7 @@ import { isKeyOfObject } from "./ZodTypes"
 export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/
 export const args = /\s*(\S+)/g
 
-export const dynamicRegister = /^(?<rr>r+)(?<first>r\d+)$/
+export const dynamicRegisterReg = /^(?<rr>r+)(?<first>r\d+)$/
 export const dynamicRegisterGroups = z.object({
 	rr: z.string(),
 	first: z.string(),

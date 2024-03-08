@@ -1,6 +1,6 @@
-import { Environment } from "./abstract/Environment";
+import Environment from"./abstract/Environment";
 import { z } from "zod";
-import { Line } from "./core/Line";
+import Line from "./core/Line";
 declare const ZodDevice: z.ZodUnion<[z.ZodRecord<z.ZodString, z.ZodNumber>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>>]>;
 type ZodDevice = z.infer<typeof ZodDevice>;
 export declare class DevEnv extends Environment {

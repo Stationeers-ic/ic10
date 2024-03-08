@@ -1,7 +1,7 @@
-import { Line } from "../core/Line";
+import Line from "../core/Line";
 import EventEmitter from "eventemitter3";
 import { AnyFunctionName } from "../ZodTypes";
-import { Err } from "./Err";
+import Err from "./Err";
 import { FunctionData } from "../functions";
 type EnvironmentEvents = {
     error: (err: Err) => void;

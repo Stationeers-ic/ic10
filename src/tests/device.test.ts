@@ -1,6 +1,7 @@
-import { describe, expect, spyOn, test } from "bun:test"
-import { runThrow, runWithMen } from "./testUtils"
+import { describe, expect, test } from "bun:test"
+import { runFuncWithMem, runThrow, runWithMen } from "./testUtils"
 import DevEnv from "../DevEnv"
+import { functions } from "../index"
 
 describe("device", () => {
 	test("s", async () => {
@@ -32,8 +33,38 @@ describe("device", () => {
 		mem.appendDevice(123)
 		const t = mem.appendDevice(123)
 		await runWithMen(`sb 123 On 1`, mem)
-		expect(mem.devices.get(t)?.["On"]).toBe(1)
+		expect(mem.getDevices().get(t)?.["On"]).toBe(1)
 		await runWithMen(`lb r0 123 On Sum`, mem)
 		expect(mem.get("r0")).toBe(3)
+	})
+
+	test("sdse&sdns", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(123)
+		mem.attachDevice(a, "d0")
+		mem.set("r0", 5)
+		expect(runFuncWithMem(functions.sdse, ["r0", "d0"], mem)).resolves.toBe(1)
+		mem.set("r0", 5)
+		expect(runFuncWithMem(functions.sdse, ["r0", "d1"], mem)).resolves.toBe(0)
+		mem.set("r0", 5)
+		expect(runFuncWithMem(functions.sdns, ["r0", "d0"], mem)).resolves.toBe(0)
+		mem.set("r0", 5)
+		expect(runFuncWithMem(functions.sdns, ["r0", "d1"], mem)).resolves.toBe(1)
+	})
+
+	test("ss", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(123)
+		mem.attachDevice(a, "d0")
+		await runWithMen(`ss d0 0 On 1`, mem)
+		expect(mem.get("d0.Slots.0.On")).toBe(1)
+	})
+
+	test("lr", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(123)
+		mem.attachDevice(a, "d0")
+		mem.set("d0.Reagents.1.123", 2)
+		expect(runFuncWithMem(functions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
 	})
 })

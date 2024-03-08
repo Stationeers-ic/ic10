@@ -43,6 +43,7 @@ import { InterpreterIc10, DevEnv } from "ic10"
     - d0.Activate
     - d0.Slots.1.Quantity
     - d0.Channels.1
+    - d0.Reagents.{ReagentMod}.{ReagentHash}
 
 3. добавляем устройства сначала в окружение `appendDevice`, а потом подключаем к порту `attachDevice`
 4. в функциях `get` и `set` обязательно должны быть эти строки

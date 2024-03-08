@@ -11,7 +11,7 @@ DevEnv {
   "InfiniteLoopLimit": 500,
   "_events": {},
   "_eventsCount": 0,
-  "aliases": 
+  "aliases":
 Map {
     "sp" => "r16",
     "ra" => "r17",
@@ -27,24 +27,24 @@ Map {
       "On": 1,
     },
   },
-  "devices": 
+  "devices":
 Map {
     "fd93a72e-9d22-4159-a55d-ae7ea5dfb792" => {
       "connection": {},
       "logic": {
         "PrefabHash": 123,
       },
-      "slots": {},
+      "Slots": {},
     },
   }
 ,
-  "devicesAttached": 
+  "devicesAttached":
 Map {
     "d0" => "fd93a72e-9d22-4159-a55d-ae7ea5dfb792",
     "fd93a72e-9d22-4159-a55d-ae7ea5dfb792" => "d0",
   }
 ,
-  "devicesIndex": 
+  "devicesIndex":
 Map {
     123 => "fd93a72e-9d22-4159-a55d-ae7ea5dfb792",
   }

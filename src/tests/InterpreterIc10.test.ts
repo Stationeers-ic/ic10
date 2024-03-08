@@ -1,4 +1,4 @@
-import { describe, expect, test, spyOn } from "bun:test"
+import { describe, expect, spyOn, test } from "bun:test"
 import InterpreterIc10 from "../InterpreterIc10"
 import DevEnv from "../DevEnv"
 
@@ -29,7 +29,7 @@ describe("InterpreterIc10", () => {
 		const ic = init(["", "", "", "j 0"])
 		const spy = spyOn(ic, "step")
 		expect(ic.run()).resolves.toBe("ERR")
-		expect(ic.env.errors).toMatchSnapshot()
+		expect(ic.env.getErrors()).toMatchSnapshot()
 		expect(spy).toHaveBeenCalledTimes(2004)
 	})
 })
