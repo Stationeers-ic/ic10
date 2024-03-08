@@ -47,8 +47,15 @@ import { InterpreterIc10, DevEnv } from "ic10"
 
 3. добавляем устройства сначала в окружение `appendDevice`, а потом подключаем к порту `attachDevice`
 4. в функциях `get` и `set` обязательно должны быть эти строки
+
     ```typescript
-    name = this.dynamicRegister(name)
-    name = this.dynamicDevicePort(name)
+    import { dynamicDevicePort, dynamicRegister } from "./core/Helpers"
+
+    name = dynamicRegister(this, name)
+    name = dynamicDevicePort(this, name)
+    // ---OR---
+    name = await dynamicDevicePortAsync(this, name)
+    name = await dynamicRegisterAsync(this, name)
     ```
+
     Это нужно, чтобы обрабатывать динамические адреса и динамические порты такие как `rrr1` и `drrr1`
