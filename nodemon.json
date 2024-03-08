@@ -1,6 +1,0 @@
-{
-	"execMap": {
-		"ts": "bun"
-	},
-	"watch": ["src"]
-}
