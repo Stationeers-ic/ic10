@@ -27,12 +27,11 @@ export const Positions = z.object({
 export type Positions = z.infer<typeof Positions>
 export type Position = z.infer<typeof Position>
 
-export const getLineRegexGroupPositions = (text: string) => {
+export const tokenize = (text: string) => {
 	const match = line.exec(text)
 	if (match === null) return null
 	const groups = match.groups
 	if (!groups) return null
-
 	const groupPositions: Positions = {
 		fn: { value: "", start: 0, end: 0, length: 0 },
 		args: [],

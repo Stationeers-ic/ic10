@@ -1,4 +1,4 @@
-import { getLineRegexGroupPositions, hash, Positions } from "../regexps"
+import { tokenize, hash, Positions } from "../regexps"
 import { InterpreterIc10 } from "../"
 import { functions } from "../functions"
 import { z, ZodError } from "zod"
@@ -47,7 +47,7 @@ class Line {
 	}
 
 	parseLine(): void {
-		this.tokens = getLineRegexGroupPositions(this.line)
+		this.tokens = tokenize(this.line)
 		if (!this.tokens) {
 			return
 		}
