@@ -183,12 +183,9 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 		if (dynamicRegister.test(string)) {
 			const { first, rr } = dynamicRegisterGroups.parse(dynamicRegister.exec(string)?.groups)
 			let next = this.get(first)
-			// console.log('-*******************', first)
 			for (let i = 1; i < rr.length; i++) {
 				next = this.get(`r${next}`)
-				// console.log(i+'*******************', `r${next}`)
 			}
-			// console.log('++++*************', `r${next}`)
 			return `r${next}`
 		}
 		return string
