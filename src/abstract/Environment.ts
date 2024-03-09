@@ -3,7 +3,6 @@ import EventEmitter from "eventemitter3"
 import { AnyFunctionName } from "../ZodTypes"
 import Err from "./Err"
 import { FunctionData } from "../functions"
-import { dynamicDevice, dynamicDeviceGroups, dynamicRegisterReg, dynamicRegisterGroups } from "../regexps"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -25,7 +24,9 @@ abstract class Environment extends EventEmitter<EventNames, Environment> {
 	 * Тестовый режим
 	 */
 	public isTest: boolean = false
-
+	/**
+	 *  Лимит бесконечного цикла
+	 */
 	public InfiniteLoopLimit: number = 500
 
 	abstract addLine(line: Line | null): Promise<this> | this

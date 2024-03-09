@@ -29,18 +29,18 @@ class DevEnv extends Environment {
 	/**
 	 * Current line
 	 */
-	private line: number = 0
+	protected line: number = 0
 	/**
 	 * All lines of current execution
 	 */
-	private lines: Array<Line | null> = []
-	private errors: Err[] = []
-	private errorCounter: number = 0
-	private devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
-	private devicesAttached: Map<string, string> = new Map<string, string>()
-	private data: any = {}
-	private stack: number[] = new Array(512)
-	private aliases = new Map<string, string | number>()
+	protected lines: Array<Line | null> = []
+	protected errors: Err[] = []
+	protected errorCounter: number = 0
+	protected devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
+	protected devicesAttached: Map<string, string> = new Map<string, string>()
+	protected data: any = {}
+	protected stack: number[] = new Array(512)
+	protected aliases = new Map<string, string | number>()
 
 	constructor(data: { [key: string]: number } = {}) {
 		super()
