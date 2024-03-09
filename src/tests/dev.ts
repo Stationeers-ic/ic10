@@ -1,19 +1,9 @@
 import { InterpreterIc10 } from "../"
 import DevEnv from "../core/DevEnv"
-;(async () => {
-	const mem = new DevEnv()
-	mem.on("error", (e) => console.error(e.format()))
-	// mem.on("warn", (e) => console.warn(e))
+import { runWithMen } from "./testUtils"
 
-	try {
-		const a = new InterpreterIc10(
-			mem,
-			`
-			alias test d0
-`,
-		)
-		await a.testCode()
-	} catch (e: unknown) {
-		console.error("ПИЗДЕЦ Бляяяяяяяя", e)
-	}
-})()
+const mem = new DevEnv()
+const a = mem.appendDevice(123)
+mem.attachDevice(a, "d0")
+await runWithMen(`s d0:1 Channel1 10`, mem)
+expect(mem.get("r0")).toBe(10)

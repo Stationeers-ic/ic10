@@ -43,4 +43,19 @@ function dynamicRegister(env: Environment, string: string) {
 	return string
 }
 
+function portParse(port: string): {
+	port: string
+	connection: null | string
+} {
+	let connection = null
+	if (port.includes(":")) {
+		;[port, connection] = port.split(":")
+	}
+
+	return {
+		port,
+		connection,
+	}
+}
+
 export { dynamicDevicePort, dynamicRegister, dynamicDevicePortAsync, dynamicRegisterAsync }

@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { isKeyOfObject } from "./ZodTypes"
 
-export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>[^:]*?)(?<comment>#.*)*$/
+export const line = /^\s*(?<fn>[^#:\s]+:?)(?<args>.*?)(?<comment>#.*)*$/
 export const args = /\s*(HASH\(".*?(?="\))"\)|\S+)/g
 
 export const dynamicRegisterReg = /^(?<rr>r+)(?<first>r\d+)$/
