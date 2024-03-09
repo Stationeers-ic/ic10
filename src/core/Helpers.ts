@@ -58,4 +58,4 @@ function portParse(port: string): {
 	}
 }
 
-export { dynamicDevicePort, dynamicRegister, dynamicDevicePortAsync, dynamicRegisterAsync }
+export { dynamicDevicePort, dynamicRegister, dynamicDevicePortAsync, dynamicRegisterAsync, portParse }

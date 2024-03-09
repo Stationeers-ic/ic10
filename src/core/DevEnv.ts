@@ -8,7 +8,7 @@ import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
-import { dynamicDevicePort, dynamicRegister } from "./Helpers"
+import { dynamicDevicePort, dynamicRegister, portParse } from "./Helpers"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -140,6 +140,10 @@ class DevEnv extends Environment {
 		// только регистры илл рррррегистры 😀
 		name = dynamicRegister(this, name)
 		name = dynamicDevicePort(this, name)
+		const p = portParse(name)
+		if (p.connection) {
+			name = `${p.port}.Connection.${p.connection}`
+		}
 
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
@@ -161,6 +165,10 @@ class DevEnv extends Environment {
 		// только регистры или рррррегистры 😀
 		name = dynamicRegister(this, name)
 		name = dynamicDevicePort(this, name)
+		const p = portParse(name)
+		if (p.connection) {
+			name = `${p.port}.Connection.${p.connection}`
+		}
 
 		setProperty(this.data, name, value)
 		return this
@@ -213,7 +221,8 @@ class DevEnv extends Environment {
 	}
 
 	hasDevice(port: string): boolean {
-		return this.devicesAttached.has(port)
+		const p = portParse(port)
+		return this.devicesAttached.has(p.port)
 	}
 
 	hcf(): this {
