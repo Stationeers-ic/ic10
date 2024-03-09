@@ -17,14 +17,16 @@ const ZodDevice = z.union([
 ])
 type ZodDevice = z.infer<typeof ZodDevice>
 
-//Окружение без проверок которое просто сохраняет все как есть
+/**
+ * An environment without checks, which simply saves as it is
+ */
 class DevEnv extends Environment {
 	/**
-	 * Текущая строка
+	 * Current line
 	 */
 	private line: number = 0
 	/**
-	 * Все строки текущего выполнения
+	 * All lines of current execution
 	 */
 	private lines: Array<Line | null> = []
 	private errors: Err[] = []
