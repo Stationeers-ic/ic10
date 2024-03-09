@@ -9,8 +9,8 @@ import { AnyFunctionName } from "./ZodTypes"
 
 export type FunctionData = (string | number)[]
 
-export type icFunction = (env: Environment, data: FunctionData) => void | Promise<void>
-export type icCondition = (env: Environment, data: FunctionData) => boolean | Promise<boolean>
+export type icFunction = (env: Environment, data: FunctionData) => Promise<void>
+export type icCondition = (env: Environment, data: FunctionData) => Promise<boolean>
 
 export const functions: Record<AnyFunctionName, icFunction> = {
 	...arithmetic,

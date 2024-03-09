@@ -6,23 +6,37 @@ export const StringOrNumber = z.union([z.string(), z.number()])
 export type StringOrNumber = z.infer<typeof StringOrNumber>
 export const NumberOrNan = z.number().or(z.nan())
 export type NumberOrNan = z.infer<typeof NumberOrNan>
-// export const Result = RegisterOrAlias
+
 /**
- * r0 - r17, sp
+ * r0 - r17, sp,
+ *
+ * nested registers (rrr?) also
  */
-export const Register = z.union([z.literal("sp"), z.string().regex(/r+[0-9]+/)]) //https://regex101.com/r/UiCGWX/1
+export const Register = z.union([z.literal("sp"), z.string().regex(/r+[0-9]+/)])
 export type Register = z.infer<typeof Register>
 /**
- * d0 - d5, db
+ * d0 - d5, db,
+ *
+ * nested registers (drr?) also
  */
-//https://regex101.com/r/pAET99/1
 export const Device = z.union([z.literal("db"), z.string().regex(/dr*[0-9]+/)])
 export type Device = z.infer<typeof Device>
-
+/**
+ * Register | Device
+ */
 export const RegisterOrDevice = Register.or(Device)
 export type RegisterOrDevice = z.infer<typeof RegisterOrDevice>
+/**
+ * Number
+ */
 export const Value = z.number()
 export type Value = z.infer<typeof Value>
+
+/**
+ * Alias
+ *
+ * Any string that is not Register or Device
+ */
 export const Alias = z.string().refine((val: string) => {
 	return !RegisterOrDevice.safeParse(val).success
 }, "Alias can be only string and not a register or device name.")
@@ -48,42 +62,66 @@ export const DeviceOrAlias = Device.or(Alias)
 export type DeviceOrAlias = z.infer<typeof DeviceOrAlias>
 
 /**
- * Alias | numeric value
+ * Alias | Number
  */
 export const AliasOrValue = Alias.or(Value)
 export type AliasOrValue = z.infer<typeof AliasOrValue>
 /**
- * Alias | Register | numeric value
+ * Alias | Register | Number
  */
 export const RaliasOrValue = Ralias.or(Value)
 export type RaliasOrValue = z.infer<typeof RaliasOrValue>
-
+/**
+ * TODO: add jsdoc
+ */
 export const RaliasOrValuePositive = Ralias.or(Value.min(0))
 export type RaliasOrValuePositive = z.infer<typeof RaliasOrValuePositive>
+/**
+ * TODO: add jsdoc
+ */
 export const SlotIndex = Ralias.or(Value.min(0).int())
 export type SlotIndex = z.infer<typeof SlotIndex>
-
+/**
+ * TODO: add jsdoc
+ */
 export const RelativeSlotIndex = Ralias.or(Value.int())
 export type RelativeSlotIndex = z.infer<typeof RelativeSlotIndex>
+/**
+ * TODO: add jsdoc
+ */
 export const LineIndex = Ralias.or(Value.min(0).int())
 export type LineIndex = z.infer<typeof LineIndex>
-
+/**
+ * TODO: add jsdoc
+ */
 export const RelativeLineIndex = Ralias.or(Value.int())
 export type RelativeLineIndex = z.infer<typeof RelativeLineIndex>
+/**
+ * TODO: add jsdoc
+ */
 export const Hash = Ralias.or(Value.int())
 export type Hash = z.infer<typeof Hash>
 
 /**
- * Alias | NaN | numeric value
+ * Alias | NaN | Number
  */
 export const AliasOrValueOrNaN = AliasOrValue.or(z.nan())
+export type AliasOrValueOrNaN = z.infer<typeof AliasOrValueOrNaN>
 /**
- * Alias | Register | NaN | numeric value
+ * Alias | Register | NaN | Number
  */
 export const RaliasOrValueOrNaN = AliasOrValue.or(z.nan())
-
+export type RaliasOrValueOrNaN = z.infer<typeof RaliasOrValueOrNaN>
+/**
+ * TODO: add jsdoc
+ */
 export const Logic = z.string()
+export type Logic = z.infer<typeof Logic>
+/**
+ * TODO: add jsdoc
+ */
 export const Mode = z.string()
+export type Mode = z.infer<typeof Mode>
 /*
 export const RegisterOrAlias = Register.or(z.string())
 export const DeviceOrAlias = Device.or(z.string())
@@ -112,6 +150,7 @@ export const ConditionName = z.union([
 	z.literal("nanz"),
 ])
 export type ConditionName = z.infer<typeof ConditionName>
+
 export const ArithmeticFunctionName = z.union([
 	z.literal("add"),
 	z.literal("sub"),
@@ -146,6 +185,7 @@ export const ArithmeticFunctionName = z.union([
 	z.literal("nor"),
 ])
 export type ArithmeticFunctionName = z.infer<typeof ArithmeticFunctionName>
+
 export const SelectFunctionName = z.union([
 	z.literal("seq"),
 	z.literal("sge"),
@@ -170,6 +210,7 @@ export const SelectFunctionName = z.union([
 	z.literal("select"),
 ])
 export type SelectFunctionName = z.infer<typeof SelectFunctionName>
+
 export const JumpFunctionName = z.union([
 	z.literal("j"),
 	z.literal("jr"),
@@ -232,6 +273,7 @@ export const JumpFunctionName = z.union([
 	z.literal("bdnsal"),
 ])
 export type JumpFunctionName = z.infer<typeof JumpFunctionName>
+
 export const DeviceFunctionName = z.union([
 	z.literal("s"),
 	z.literal("l"),
@@ -247,6 +289,7 @@ export const DeviceFunctionName = z.union([
 	z.literal("sbs"),
 ])
 export type DeviceFunctionName = z.infer<typeof DeviceFunctionName>
+
 export const MiscFunctionName = z.union([
 	z.literal("alias"),
 	z.literal("define"),
@@ -256,8 +299,10 @@ export const MiscFunctionName = z.union([
 	z.literal("hcf"),
 ])
 export type MiscFunctionName = z.infer<typeof MiscFunctionName>
+
 export const StackFunctionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")])
 export type StackFunctionName = z.infer<typeof StackFunctionName>
+
 export const AnyFunctionName = z.union([
 	ArithmeticFunctionName,
 	SelectFunctionName,
