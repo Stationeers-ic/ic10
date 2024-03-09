@@ -2,6 +2,19 @@ import { icFunction } from "../functions"
 import { z } from "zod"
 import { DeviceFunctionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
+import { Environment } from ".."
+
+async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
+	const m = env.get(mode)
+	if (m === 0) return env.set(register, values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length)
+	if (m === 1)
+		return env.set(
+			register,
+			values.reduce((partial_sum, a) => partial_sum + a, 0),
+		)
+	if (m === 2) return env.set(register, Math.min(...values))
+	if (m === 3) return env.set(register, Math.max(...values))
+}
 
 const s: icFunction = async (env, data) => {
 	const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data)
@@ -36,66 +49,17 @@ const sbs: icFunction = async (env, data) => {
 const lb: icFunction = async (env, data) => {
 	const [register, hash, logic, mode] = z.tuple([Ralias, Hash, Logic, Ralias]).parse(data)
 	const values: number[] = await env.getDeviceByHash(await env.get(hash), logic)
-	switch (await env.get(mode)) {
-		case 0:
-			await env.set(register, values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length)
-			break
-		case 1:
-			await env.set(
-				register,
-				values.reduce((partial_sum, a) => partial_sum + a, 0),
-			)
-			break
-		case 2:
-			await env.set(register, Math.min(...values))
-			break
-		case 3:
-			await env.set(register, Math.max(...values))
-			break
-	}
+	action(env, register, mode, values)
 }
 const lbn: icFunction = async (env, data) => {
 	const [register, hash, name, logic, mode] = z.tuple([Ralias, Hash, Hash, Logic, Ralias]).parse(data)
 	const values: number[] = await env.getDeviceByHashAndName(await env.get(hash), await env.get(name), logic)
-	switch (await env.get(mode)) {
-		case 0:
-			await env.set(register, values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length)
-			break
-		case 1:
-			await env.set(
-				register,
-				values.reduce((partial_sum, a) => partial_sum + a, 0),
-			)
-			break
-		case 2:
-			await env.set(register, Math.min(...values))
-			break
-		case 3:
-			await env.set(register, Math.max(...values))
-			break
-	}
+	action(env, register, mode, values)
 }
 const lbs: icFunction = async (env, data) => {
 	const [register, hash, slot, logic, mode] = z.tuple([Ralias, Hash, RaliasOrValue, Logic, Mode]).parse(data)
 	const values: number[] = await env.getSlotDeviceByHash(await env.get(hash), await env.get(slot), logic)
-
-	switch (await env.get(mode)) {
-		case 0:
-			await env.set(register, values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length)
-			break
-		case 1:
-			await env.set(
-				register,
-				values.reduce((partial_sum, a) => partial_sum + a, 0),
-			)
-			break
-		case 2:
-			await env.set(register, Math.min(...values))
-			break
-		case 3:
-			await env.set(register, Math.max(...values))
-			break
-	}
+	action(env, register, mode, values)
 }
 const lbns: icFunction = async (env, data) => {
 	const [register, hash, name, slot, logic, mode] = z
@@ -107,23 +71,7 @@ const lbns: icFunction = async (env, data) => {
 		await env.get(slot),
 		logic,
 	)
-	switch (await env.get(mode)) {
-		case 0:
-			await env.set(register, values.reduce((partial_sum, a) => partial_sum + a, 0) / values.length)
-			break
-		case 1:
-			await env.set(
-				register,
-				values.reduce((partial_sum, a) => partial_sum + a, 0),
-			)
-			break
-		case 2:
-			await env.set(register, Math.min(...values))
-			break
-		case 3:
-			await env.set(register, Math.max(...values))
-			break
-	}
+	action(env, register, mode, values)
 }
 const lr: icFunction = async (env, data) => {
 	const [register, device, reagentMode, hash] = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash]).parse(data)
