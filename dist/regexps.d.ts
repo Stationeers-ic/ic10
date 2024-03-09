@@ -1,7 +1,7 @@
 import { z } from "zod";
 export declare const line: RegExp;
 export declare const args: RegExp;
-export declare const dynamicRegister: RegExp;
+export declare const dynamicRegisterReg: RegExp;
 export declare const dynamicRegisterGroups: z.ZodObject<{
     rr: z.ZodString;
     first: z.ZodString;
@@ -126,7 +126,7 @@ export declare const Positions: z.ZodObject<{
 }>;
 export type Positions = z.infer<typeof Positions>;
 export type Position = z.infer<typeof Position>;
-export declare const getLineRegexGroupPositions: (text: string) => {
+export declare const tokenize: (text: string) => {
     fn: {
         length: number;
         value: string;

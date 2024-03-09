@@ -1,6 +1,6 @@
 import { Positions } from "../regexps";
 import { InterpreterIc10 } from "../";
-export declare class Line {
+declare class Line {
     private scope;
     readonly line: string;
     lineIndex: number;
@@ -15,3 +15,4 @@ export declare class Line {
     static parseHash(str: string): number | undefined;
     run(): Promise<Boolean>;
 }
+export default Line;

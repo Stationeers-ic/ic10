@@ -1,5 +1,5 @@
 import InterpreterIc10 from "./InterpreterIc10";
-import DevEnv from "./DevEnv";
+import DevEnv from "./core/DevEnv";
 import Err from "./abstract/Err";
 import Environment from "./abstract/Environment";
 import BitWarn from "./errors/BitWarn";

@@ -1,5 +1,5 @@
-import Environment from"./abstract/Environment";
-export declare class InterpreterIc10 {
+import Environment from "./abstract/Environment";
+declare class InterpreterIc10 {
     private code;
     private stopRun;
     readonly env: Environment;

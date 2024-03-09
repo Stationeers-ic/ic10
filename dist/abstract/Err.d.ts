@@ -1,4 +1,4 @@
-export declare abstract class Err extends Error {
+declare abstract class Err extends Error {
     level: "error" | "warn" | "info" | "debug";
     lineStart?: number | undefined;
     lineEnd?: number | undefined;

@@ -1,5 +1,5 @@
 import InterpreterIc10 from "./InterpreterIc10";
-import DevEnv from "./DevEnv";
+import DevEnv from "./core/DevEnv";
 import Err from "./abstract/Err";
 import Environment from "./abstract/Environment";
 import BitWarn from "./errors/BitWarn";
@@ -7,3 +7,4 @@ import InfiniteLoop from "./errors/InfiniteLoop";
 import SyntaxError from "./errors/SyntaxError";
 import functions from "./functions";
 export { InterpreterIc10, DevEnv, Environment, Err, BitWarn, InfiniteLoop, SyntaxError, functions };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxlQUFlLE1BQU0sbUJBQW1CLENBQUE7QUFDL0MsT0FBTyxNQUFNLE1BQU0sZUFBZSxDQUFBO0FBQ2xDLE9BQU8sR0FBRyxNQUFNLGdCQUFnQixDQUFBO0FBQ2hDLE9BQU8sV0FBVyxNQUFNLHdCQUF3QixDQUFBO0FBQ2hELE9BQU8sT0FBTyxNQUFNLGtCQUFrQixDQUFBO0FBQ3RDLE9BQU8sWUFBWSxNQUFNLHVCQUF1QixDQUFBO0FBQ2hELE9BQU8sV0FBVyxNQUFNLHNCQUFzQixDQUFBO0FBQzlDLE9BQU8sU0FBUyxNQUFNLGFBQWEsQ0FBQTtBQUVuQyxPQUFPLEVBQUUsZUFBZSxFQUFFLE1BQU0sRUFBRSxXQUFXLEVBQUUsR0FBRyxFQUFFLE9BQU8sRUFBRSxZQUFZLEVBQUUsV0FBVyxFQUFFLFNBQVMsRUFBRSxDQUFBIn0=

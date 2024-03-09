@@ -1,43 +1,9 @@
 import EventEmitter from "eventemitter3";
-import { dynamicDevice, dynamicDeviceGroups, dynamicRegister, dynamicRegisterGroups } from "../regexps";
-export class Environment extends EventEmitter {
+class Environment extends EventEmitter {
     isTest = false;
     InfiniteLoopLimit = 500;
-    errors = [];
-    errorCounter = 0;
-    getCurrentLine() {
-        return this.getLine(this.getPosition());
-    }
-    throw(err) {
-        err.lineStart = err.lineStart ?? this.getPosition();
-        this.errors.push(err);
-        if (err.level === "error")
-            this.errorCounter++;
-        this.emit(err.level, err);
-    }
-    async beforeLineRun(line) {
-    }
-    async afterLineRun(line) {
-    }
-    dynamicDevicePort(string) {
-        if (dynamicDevice.test(string)) {
-            const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups);
-            const r = this.dynamicRegister(rr);
-            return `d${this.get(r)}`;
-        }
-        return string;
-    }
-    dynamicRegister(string) {
-        if (dynamicRegister.test(string)) {
-            const { first, rr } = dynamicRegisterGroups.parse(dynamicRegister.exec(string)?.groups);
-            let next = this.get(first);
-            for (let i = 1; i < rr.length; i++) {
-                next = this.get(`r${next}`);
-            }
-            return `r${next}`;
-        }
-        return string;
-    }
+    async beforeLineRun(line) { }
+    async afterLineRun(line) { }
     on(event, fn) {
         return super.on(event, fn, this);
     }
@@ -52,3 +18,4 @@ export class Environment extends EventEmitter {
     }
 }
 export default Environment;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW52aXJvbm1lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvYWJzdHJhY3QvRW52aXJvbm1lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0EsT0FBTyxZQUFZLE1BQU0sZUFBZSxDQUFBO0FBcUJ4QyxNQUFlLFdBQVksU0FBUSxZQUFxQztJQUloRSxNQUFNLEdBQVksS0FBSyxDQUFBO0lBRXZCLGlCQUFpQixHQUFXLEdBQUcsQ0FBQTtJQThIdEMsS0FBSyxDQUFDLGFBQWEsQ0FBQyxJQUFVLElBQUcsQ0FBQztJQUVsQyxLQUFLLENBQUMsWUFBWSxDQUFDLElBQVUsSUFBRyxDQUFDO0lBU2pDLEVBQUUsQ0FBZ0QsS0FBUSxFQUFFLEVBQTZDO1FBQ3hHLE9BQU8sS0FBSyxDQUFDLEVBQUUsQ0FBQyxLQUFLLEVBQUUsRUFBRSxFQUFFLElBQUksQ0FBQyxDQUFBO0lBQ2pDLENBQUM7SUFFRCxXQUFXLENBQ1YsS0FBUSxFQUNSLEVBQTZDO1FBRTdDLE9BQU8sS0FBSyxDQUFDLFdBQVcsQ0FBQyxLQUFLLEVBQUUsRUFBRSxFQUFFLElBQUksQ0FBQyxDQUFBO0lBQzFDLENBQUM7SUFFRCxJQUFJLENBQWdELEtBQVEsRUFBRSxFQUE2QztRQUMxRyxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsS0FBSyxFQUFFLEVBQUUsRUFBRSxJQUFJLENBQUMsQ0FBQTtJQUNuQyxDQUFDO0lBRUQsY0FBYyxDQUNiLEtBQVEsRUFDUixFQUE4QztRQUU5QyxPQUFPLEtBQUssQ0FBQyxjQUFjLENBQUMsS0FBSyxFQUFFLEVBQUUsRUFBRSxJQUFJLENBQUMsQ0FBQTtJQUM3QyxDQUFDO0NBQ0Q7QUFFRCxlQUFlLFdBQVcsQ0FBQSJ9

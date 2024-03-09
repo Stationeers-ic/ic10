@@ -19,7 +19,7 @@ export type Register = z.infer<typeof Register>
  *
  * nested registers (drr?) also
  */
-export const Device = z.union([z.literal("db"), z.string().regex(/dr*[0-9]+/)])
+export const Device = z.union([z.literal("db"), z.string().regex(/(dr*[0-9]+)|:([0-9]+)/)])
 export type Device = z.infer<typeof Device>
 /**
  * Register | Device
