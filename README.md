@@ -24,7 +24,7 @@ import { InterpreterIc10, DevEnv } from "ic10"
 		)
 		await a.testCode()
 	} catch (e: unknown) {
-		console.error("ПИЗДЕЦ Бляяяяяяяя", e)
+		console.error("Не предвиденная ошибка", e)
 	}
 })()
 ```
@@ -42,8 +42,8 @@ import { InterpreterIc10, DevEnv } from "ic10"
 
     - d0.Activate
     - d0.Slots.1.Quantity
-    - d0.Channels.1
     - d0.Reagents.{ReagentMod}.{ReagentHash}
+    - d0.Connection.{number}.Channel{number}
 
 3. добавляем устройства сначала в окружение `appendDevice`, а потом подключаем к порту `attachDevice`
 4. в функциях `get` и `set` обязательно должны быть эти строки
