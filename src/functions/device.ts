@@ -49,17 +49,17 @@ const sbs: icFunction = async (env, data) => {
 const lb: icFunction = async (env, data) => {
 	const [register, hash, logic, mode] = z.tuple([Ralias, Hash, Logic, Ralias]).parse(data)
 	const values: number[] = await env.getDeviceByHash(await env.get(hash), logic)
-	action(env, register, mode, values)
+	await action(env, register, mode, values)
 }
 const lbn: icFunction = async (env, data) => {
 	const [register, hash, name, logic, mode] = z.tuple([Ralias, Hash, Hash, Logic, Ralias]).parse(data)
 	const values: number[] = await env.getDeviceByHashAndName(await env.get(hash), await env.get(name), logic)
-	action(env, register, mode, values)
+	await action(env, register, mode, values)
 }
 const lbs: icFunction = async (env, data) => {
 	const [register, hash, slot, logic, mode] = z.tuple([Ralias, Hash, RaliasOrValue, Logic, Mode]).parse(data)
 	const values: number[] = await env.getSlotDeviceByHash(await env.get(hash), await env.get(slot), logic)
-	action(env, register, mode, values)
+	await action(env, register, mode, values)
 }
 const lbns: icFunction = async (env, data) => {
 	const [register, hash, name, slot, logic, mode] = z
@@ -71,7 +71,7 @@ const lbns: icFunction = async (env, data) => {
 		await env.get(slot),
 		logic,
 	)
-	action(env, register, mode, values)
+	await action(env, register, mode, values)
 }
 const lr: icFunction = async (env, data) => {
 	const [register, device, reagentMode, hash] = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash]).parse(data)
