@@ -3,11 +3,11 @@ import { runCode, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {
-	test.todo("Channels", async () => {
+	test.only("Channels", async () => {
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
-		await runWithMen(`s d0:1 Channel1 10`, mem)
+		await runWithMen(`s d0:1 Channel1 10\nl r0 d0:1 Channel1`, mem)
 		expect(mem.get("r0")).toBe(10)
 	})
 

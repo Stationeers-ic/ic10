@@ -8,7 +8,12 @@ import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
-import { dynamicDevicePort, dynamicRegister } from "./Helpers"
+import {
+	pathFor_DynamicDevicePort,
+	pathFor_DynamicRegister,
+	pathFor_PortWithConnection,
+	PortWithConnection,
+} from "./Helpers"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -131,16 +136,16 @@ class DevEnv extends Environment {
 		if (this.aliases.has(name)) {
 			return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))))
 		}
+		name = pathFor_DynamicRegister(this, name)
+		name = pathFor_DynamicDevicePort(this, name)
+		name = pathFor_PortWithConnection(this, name)
+
 		if (/^d\d+/.test(name)) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
 			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")))
 		}
-		// только регистры илл рррррегистры 😀
-		name = dynamicRegister(this, name)
-		name = dynamicDevicePort(this, name)
-
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
 
@@ -148,6 +153,10 @@ class DevEnv extends Environment {
 		if (this.aliases.has(name)) {
 			name = NotReservedWord.parse(this.aliases.get(name))
 		}
+		name = pathFor_DynamicRegister(this, name)
+		name = pathFor_DynamicDevicePort(this, name)
+		name = pathFor_PortWithConnection(this, name)
+
 		if (/^d\d+/.test(name)) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
@@ -158,10 +167,6 @@ class DevEnv extends Environment {
 			setProperty(device, [a, b, c, d].filter((i) => i !== undefined).join("."), value)
 			return this
 		}
-		// только регистры или рррррегистры 😀
-		name = dynamicRegister(this, name)
-		name = dynamicDevicePort(this, name)
-
 		setProperty(this.data, name, value)
 		return this
 	}
@@ -213,7 +218,8 @@ class DevEnv extends Environment {
 	}
 
 	hasDevice(port: string): boolean {
-		return this.devicesAttached.has(port)
+		const p = PortWithConnection(port)
+		return this.devicesAttached.has(p.port)
 	}
 
 	hcf(): this {

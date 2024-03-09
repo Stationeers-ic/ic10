@@ -3,7 +3,7 @@ import { functions } from "../functions"
 import data from "./data/data.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
-import { dynamicRegister } from "../core/Helpers"
+import { pathFor_DynamicRegister } from "../core/Helpers"
 import CRC32 from "crc-32"
 
 describe("main", () => {
@@ -26,8 +26,8 @@ describe("main", () => {
 		const mem = new DevEnv()
 		mem.set("r1", 9)
 		mem.set("r9", 5)
-		expect(dynamicRegister(mem, "rr1")).toBe("r9")
-		expect(dynamicRegister(mem, "rrr1")).toBe("r5")
+		expect(pathFor_DynamicRegister(mem, "rr1")).toBe("r9")
+		expect(pathFor_DynamicRegister(mem, "rrr1")).toBe("r5")
 	})
 
 	test("RRRRRegisters", () => {

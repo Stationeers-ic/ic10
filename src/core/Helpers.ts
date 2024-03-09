@@ -1,16 +1,19 @@
 import { dynamicDevice, dynamicDeviceGroups, dynamicRegisterGroups, dynamicRegisterReg } from "../regexps"
 import Environment from "../abstract/Environment"
 
-async function dynamicDevicePortAsync(env: Environment, string: string) {
+type PathFor = (env: Environment, string: string) => string
+type PathForAsync = (env: Environment, string: string) => Promise<string>
+
+const pathFor_DynamicDevicePortAsync: PathForAsync = async (env: Environment, string: string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
-		const r = await dynamicRegisterAsync(env, rr)
+		const r = await pathFor_DynamicRegisterAsync(env, rr)
 		return `d${await env.get(r)}`
 	}
 	return string
 }
 
-async function dynamicRegisterAsync(env: Environment, string: string) {
+const pathFor_DynamicRegisterAsync: PathForAsync = async (env: Environment, string: string) => {
 	if (dynamicRegisterReg.test(string)) {
 		const { first, rr } = dynamicRegisterGroups.parse(dynamicRegisterReg.exec(string)?.groups)
 		let next = await env.get(first)
@@ -22,16 +25,16 @@ async function dynamicRegisterAsync(env: Environment, string: string) {
 	return string
 }
 
-function dynamicDevicePort(env: Environment, string: string) {
+const pathFor_DynamicDevicePort: PathFor = (env: Environment, string: string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
-		const r = dynamicRegisterAsync(env, rr) as unknown as string
+		const r = pathFor_DynamicRegisterAsync(env, rr) as unknown as string
 		return `d${env.get(r)}`
 	}
 	return string
 }
 
-function dynamicRegister(env: Environment, string: string) {
+const pathFor_DynamicRegister: PathFor = (env: Environment, string: string) => {
 	if (dynamicRegisterReg.test(string)) {
 		const { first, rr } = dynamicRegisterGroups.parse(dynamicRegisterReg.exec(string)?.groups)
 		let next = env.get(first) as number
@@ -43,19 +46,38 @@ function dynamicRegister(env: Environment, string: string) {
 	return string
 }
 
-function portParse(port: string): {
+const pathFor_PortWithConnection: PathFor = (_env: Environment, string: string) => {
+	const p = PortWithConnection(string)
+	if (p.connection) {
+		string = `${p.port}.Connection.${p.connection}`
+	}
+	return string
+}
+
+const PortWithConnection = (
+	port: string,
+): {
 	port: string
 	connection: null | string
-} {
+} => {
 	let connection = null
 	if (port.includes(":")) {
 		;[port, connection] = port.split(":")
 	}
-
 	return {
 		port,
 		connection,
 	}
 }
 
-export { dynamicDevicePort, dynamicRegister, dynamicDevicePortAsync, dynamicRegisterAsync }
+/**
+ * Функция преобразующие аргумент в путь в памяти
+ */
+export {
+	pathFor_DynamicDevicePort,
+	pathFor_DynamicRegister,
+	pathFor_DynamicDevicePortAsync,
+	pathFor_DynamicRegisterAsync,
+	PortWithConnection,
+	pathFor_PortWithConnection,
+}
