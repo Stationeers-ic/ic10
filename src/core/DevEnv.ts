@@ -1,14 +1,14 @@
 // noinspection SuspiciousTypeOfGuard
 
-import Environment from "./abstract/Environment"
+import Environment from "../abstract/Environment"
 import { z } from "zod"
-import Line from "./core/Line"
-import Err from "./abstract/Err"
-import SyntaxError from "./errors/SyntaxError"
+import Line from "./Line"
+import Err from "../abstract/Err"
+import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
-import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "./ZodTypes"
+import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
-import { dynamicDevicePort, dynamicRegister } from "./core/Helpers"
+import { dynamicDevicePort, dynamicRegister } from "./Helpers"
 
 const ZodDevice = z.union([
 	z.record(z.number()),

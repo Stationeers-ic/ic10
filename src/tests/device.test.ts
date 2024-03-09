@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import { runFuncWithMem, runThrow, runWithMen } from "./testUtils"
-import DevEnv from "../DevEnv"
+import DevEnv from "../core/DevEnv"
 import { functions } from "../index"
 
 describe("device", () => {

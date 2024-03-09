@@ -1,9 +1,10 @@
 import { describe, expect, test } from "bun:test"
 import { functions } from "../functions"
 import data from "./data/data.json"
-import { runCode } from "./testUtils"
-import DevEnv from "../DevEnv"
+import { run, runCode } from "./testUtils"
+import DevEnv from "../core/DevEnv"
 import { dynamicRegister } from "../core/Helpers"
+import CRC32 from "crc-32"
 
 describe("main", () => {
 	test("functions", () => {
@@ -40,5 +41,11 @@ describe("main", () => {
 		move rrrrrr5 888
 		`),
 		).resolves.toBe(888)
+	})
+
+	test("SemlerPDX", async () => {
+		expect((await run(`move r0 HASH("Cable Analyzer MAIN OUT")`)).get("r0")).toBe(
+			CRC32.str("Cable Analyzer MAIN OUT"),
+		)
 	})
 })

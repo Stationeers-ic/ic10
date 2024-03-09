@@ -1,4 +1,4 @@
-import DevEnv from "../DevEnv"
+import DevEnv from "../core/DevEnv"
 import { Environment, Err, InterpreterIc10 } from "../"
 import { icFunction } from "../functions"
 

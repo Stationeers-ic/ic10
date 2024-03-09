@@ -1,6 +1,6 @@
 import { describe, expect, spyOn, test } from "bun:test"
 import InterpreterIc10 from "../InterpreterIc10"
-import DevEnv from "../DevEnv"
+import DevEnv from "../core/DevEnv"
 
 const init = (code: string[]): InterpreterIc10 => {
 	return new InterpreterIc10(new DevEnv(), code.join("\n"))
