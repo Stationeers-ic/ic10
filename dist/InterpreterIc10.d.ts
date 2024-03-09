@@ -1,10 +1,11 @@
 import Environment from "./abstract/Environment";
 declare class InterpreterIc10 {
-    private code;
-    private stopRun;
-    readonly env: Environment;
+    code: string;
+    stopRun: boolean;
+    env: Environment;
     constructor(env: Environment, code: string);
     setCode(code: string): this;
+    setEnv(env: Environment): this;
     private parseCode;
     stop(): void;
     step(): Promise<string | boolean>;
