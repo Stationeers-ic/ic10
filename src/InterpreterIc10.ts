@@ -4,9 +4,9 @@ import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
 
 class InterpreterIc10 {
-	private code: string
-	private stopRun: boolean = false
-	readonly env: Environment
+	code: string
+	stopRun: boolean = false
+	env: Environment
 
 	constructor(env: Environment, code: string) {
 		this.env = env
@@ -16,6 +16,12 @@ class InterpreterIc10 {
 
 	public setCode(code: string): this {
 		this.code = code
+		this.parseCode()
+		return this
+	}
+
+	public setEnv(env: Environment): this {
+		this.env = env
 		this.parseCode()
 		return this
 	}
