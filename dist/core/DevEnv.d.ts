@@ -5,15 +5,15 @@ import Err from "../abstract/Err";
 declare const ZodDevice: z.ZodUnion<[z.ZodRecord<z.ZodString, z.ZodNumber>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>>]>;
 type ZodDevice = z.infer<typeof ZodDevice>;
 declare class DevEnv extends Environment {
-    protected line: number;
-    protected lines: Array<Line | null>;
-    protected errors: Err[];
-    protected errorCounter: number;
-    protected devices: Map<string, ZodDevice>;
-    protected devicesAttached: Map<string, string>;
-    protected data: any;
-    protected stack: number[];
-    protected aliases: Map<string, string | number>;
+    line: number;
+    lines: Array<Line | null>;
+    errors: Err[];
+    errorCounter: number;
+    devices: Map<string, ZodDevice>;
+    devicesAttached: Map<string, string>;
+    data: any;
+    stack: number[];
+    aliases: Map<string, string | number>;
     constructor(data?: {
         [key: string]: number;
     });
