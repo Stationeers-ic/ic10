@@ -249,7 +249,6 @@ class DevEnv extends Environment {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
 				return device.PrefabHash === hash
-				// @ts-ignore
 			})
 			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			.filter((i) => typeof i === "number")
@@ -260,7 +259,6 @@ class DevEnv extends Environment {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
 				return device.PrefabHash === hash && device.Name === name
-				// @ts-ignore
 			})
 			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			.filter((i) => typeof i === "number")
