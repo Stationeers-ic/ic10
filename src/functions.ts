@@ -20,5 +20,4 @@ export const functions: Record<AnyFunctionName, icFunction> = {
 	...device,
 	...stack,
 }
-
 export default functions

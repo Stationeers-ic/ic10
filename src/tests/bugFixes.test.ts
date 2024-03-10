@@ -3,7 +3,7 @@ import { runCode, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {
-	test.only("Channels", async () => {
+	test("Channels", async () => {
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")

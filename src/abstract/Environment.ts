@@ -16,17 +16,14 @@ type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, lin
 type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
 
 /**
- * Окружение для интерпретатора
- * Хранит все данные необходимые для интерпретации
+ * Environment for the interpreter
+ * Stores all data necessary for interpretation
  */
 abstract class Environment extends EventEmitter<EventNames, Environment> {
 	/**
-	 * Тестовый режим
+	 * is Test mode
 	 */
 	public isTest: boolean = false
-	/**
-	 *  Лимит бесконечного цикла
-	 */
 	public InfiniteLoopLimit: number = 500
 
 	abstract addLine(line: Line | null): Promise<this> | this
@@ -34,11 +31,11 @@ abstract class Environment extends EventEmitter<EventNames, Environment> {
 	abstract setLine(index: number, line: Line): Promise<this> | this
 
 	/**
-	 * Получить строку по индексу
+	 * Get Line by index
 	 *
-	 *  - *null* - пустая строка
-	 *  - *undefined* - строка не существует
-	 * @param index
+	 *  - *null* - empty line
+	 *  - *undefined* - line is not existent
+	 * @param {number} index
 	 */
 	abstract getLine(index: number): Promise<Line | null | undefined> | (Line | null | undefined)
 
