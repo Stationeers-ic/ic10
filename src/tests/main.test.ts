@@ -6,8 +6,20 @@ import DevEnv from "../core/DevEnv"
 import { pathFor_DynamicRegister } from "../core/Helpers"
 import CRC32 from "crc-32"
 import { z } from "zod"
+import { AnyFunctionName } from "../ZodTypes"
 
 describe("main", () => {
+	test("functionsHasProto", () => {
+		const test = z.record(
+			AnyFunctionName,
+			z.object({
+				description: z.string(),
+				example: z.string(),
+				validate: z.any(),
+			}),
+		)
+	})
+
 	test.todo("functions", () => {
 		const a = z.array(
 			z.object({
@@ -21,7 +33,6 @@ describe("main", () => {
 			data: expect.anything(),
 		})
 		if (!result.success) return
-
 		expect(data.map((x) => x.name).sort()).toEqual(Object.keys(functions).sort())
 	})
 	test("dynamicRegister", () => {
