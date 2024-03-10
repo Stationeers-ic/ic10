@@ -11,20 +11,24 @@ import {
 } from "../ZodTypes"
 
 const alias: icFunction = async (env, data) => {
-	const [alias, dr] = z.tuple([Alias, RegisterOrDevice]).parse(data)
-	await env.alias(alias, dr)
+	const [a, dr] = alias.validate.parse(data)
+	await env.alias(a, dr)
 }
+alias.validate = z.tuple([Alias, RegisterOrDevice])
 const define: icFunction = async (env, data) => {
-	const d = z.tuple([Alias, AliasOrValue]).parse(data)
+	const d = define.validate.parse(data)
 	await env.alias(d[0], await env.get(d[1]))
 }
+define.validate = z.tuple([Alias, AliasOrValue])
 const move: icFunction = async (env, data) => {
-	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
+	const d = move.validate.parse(data)
 	await env.set(d[0], await env.get(d[1]))
 }
+move.validate = z.tuple([Ralias, RaliasOrValue])
 const yield_: icFunction = async (env, data) => {}
+yield_.validate = z.tuple([])
 const sleep: icFunction = async (env, data) => {
-	const [time] = z.tuple([RaliasOrValueOrNaN]).parse(data)
+	const [time] = sleep.validate.parse(data)
 	return new Promise<void>(async (resolve) => {
 		setTimeout(
 			() => {
@@ -34,9 +38,11 @@ const sleep: icFunction = async (env, data) => {
 		)
 	})
 }
+sleep.validate = z.tuple([RaliasOrValueOrNaN])
 const hcf: icFunction = async (env, data) => {
 	await env.hcf()
 }
+hcf.validate = z.tuple([])
 
 export const misc: Record<MiscFunctionName, icFunction> = {
 	alias,
