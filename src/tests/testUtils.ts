@@ -35,7 +35,6 @@ export async function runFuncJump(
 }
 
 export async function runThrow(code: string, data: { [key: string]: number } = {}): Promise<Err[]> {
-	console.log(code)
 	const mem = new DevEnv(data)
 	const a = new InterpreterIc10(mem, code)
 	await a.run()
