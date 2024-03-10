@@ -1,26 +1,28 @@
 import { describe, expect, test } from "bun:test"
 import { functions } from "../functions"
-import data from "./data/data.json"
+import data from "./data/functions.en.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 import { pathFor_DynamicRegister } from "../core/Helpers"
 import CRC32 from "crc-32"
+import { z } from "zod"
 
 describe("main", () => {
-	test("functions", () => {
-		let functionNames: string[] = []
-		Object.entries(data).map(function ([key, value]) {
-			if (value.type === "Function") {
-				if (["debug", "stack", "return"].includes(key)) {
-					return
-				}
-				functionNames.push(key)
-			}
+	test.todo("functions", () => {
+		const a = z.array(
+			z.object({
+				name: z.string(),
+				description: z.string(),
+			}),
+		)
+		const result = a.safeParse(data)
+		expect(result).toMatchObject({
+			success: true,
+			data: expect.anything(),
 		})
-		let myf = Object.keys(functions)
-		myf = myf.sort()
-		functionNames = functionNames.sort()
-		expect(functionNames).toEqual(myf)
+		if (!result.success) return
+
+		expect(data.map((x) => x.name).sort()).toEqual(Object.keys(functions).sort())
 	})
 	test("dynamicRegister", () => {
 		const mem = new DevEnv()

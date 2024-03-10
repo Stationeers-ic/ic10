@@ -1,0 +1,267 @@
+[
+	{
+		"name": "l",
+		"description": "Loads device LogicType to register by housing index value."
+	},
+	{
+		"name": "lb",
+		"description": "Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+	},
+	{
+		"name": "s",
+		"description": "Stores register value to LogicType on device by housing index value."
+	},
+	{
+		"name": "sb",
+		"description": "Stores register value to LogicType on all output network devices with provided type hash."
+	},
+	{ "name": "ls", "description": "Loads slot LogicSlotType on device to register." },
+	{
+		"name": "lr",
+		"description": "Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number."
+	},
+	{
+		"name": "alias",
+		"description": "Labels register or device reference with name, device references also affect what shows on the screws on the IC base."
+	},
+	{
+		"name": "define",
+		"description": "Creates a label that will be replaced throughout the program with the provided value."
+	},
+	{ "name": "move", "description": "Register = provided num or register value." },
+	{ "name": "add", "description": "Register = a + b." },
+	{ "name": "sub", "description": "Register = a - b." },
+	{ "name": "sdse", "description": "Register = 1 if device is set, otherwise 0." },
+	{ "name": "sdns", "description": "Register = 1 if device is not set, otherwise 0" },
+	{ "name": "slt", "description": "Register = 1 if a < b, otherwise 0" },
+	{ "name": "sgt", "description": "Register = 1 if a > b, otherwise 0" },
+	{ "name": "sle", "description": "Register = 1 if a <= b, otherwise 0" },
+	{ "name": "sge", "description": "Register = 1 if a >= b, otherwise 0" },
+	{ "name": "seq", "description": "Register = 1 if a == b, otherwise 0" },
+	{ "name": "sne", "description": "Register = 1 if a != b, otherwise 0" },
+	{
+		"name": "sap",
+		"description": "Register = 1 if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8), otherwise 0"
+	},
+	{
+		"name": "sna",
+		"description": "Register = 1 if abs(a - b) > max(c * max(abs(a), abs(b)), float.epsilon * 8), otherwise 0"
+	},
+	{ "name": "sltz", "description": "Register = 1 if a < 0, otherwise 0" },
+	{ "name": "sgtz", "description": "Register = 1 if a > 0, otherwise 0" },
+	{ "name": "slez", "description": "Register = 1 if a <= 0, otherwise 0" },
+	{ "name": "sgez", "description": "Register = 1 if a >= 0, otherwise 0" },
+	{ "name": "seqz", "description": "Register = 1 if a == 0, otherwise 0" },
+	{ "name": "snez", "description": "Register = 1 if a != 0, otherwise 0" },
+	{ "name": "sapz", "description": "Register = 1 if |a| <= float.epsilon * 8, otherwise 0" },
+	{ "name": "snaz", "description": "Register = 1 if |a| > float.epsilon, otherwise 0" },
+	{ "name": "and", "description": "Register = 1 if a and b not zero, otherwise 0" },
+	{ "name": "or", "description": "Register = 1 if a and/or b not 0, otherwise 0" },
+	{ "name": "xor", "description": "Register = 1 if either a or b not 0, otherwise 0" },
+	{ "name": "nor", "description": "Register = 1 if a and b are 0, otherwise 0" },
+	{ "name": "mul", "description": "Register = a * b" },
+	{ "name": "div", "description": "Register = a / b" },
+	{ "name": "mod", "description": "Register = a mod b (note: NOT a % b)" },
+	{ "name": "j", "description": "Jump execution to line a" },
+	{ "name": "bdse", "description": "Branch to line a if device d is set" },
+	{ "name": "bdns", "description": "Branch to line a if device d isn't set" },
+	{ "name": "blt", "description": "Branch to line c if a < b" },
+	{ "name": "bgt", "description": "Branch to line c if a > b" },
+	{ "name": "ble", "description": "Branch to line c if a <= b" },
+	{ "name": "bge", "description": "Branch to line c if a >= b" },
+	{ "name": "beq", "description": "Branch to line c if a == b" },
+	{ "name": "bne", "description": "Branch to line c if a != b" },
+	{
+		"name": "bap",
+		"description": "Branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8)"
+	},
+	{
+		"name": "bna",
+		"description": "Branch to line d if abs(a - b) > max(c * max(abs(a), abs(b)), float.epsilon * 8)"
+	},
+	{ "name": "bltz", "description": "Branch to line b if a < 0" },
+	{ "name": "bgez", "description": "Branch to line b if a >= 0" },
+	{ "name": "blez", "description": "Branch to line b if a <= 0" },
+	{ "name": "bgtz", "description": "Branch to line b if a > 0" },
+	{ "name": "beqz", "description": "Branch to line b if a == 0" },
+	{ "name": "bnez", "description": "branch to line b if a != 0" },
+	{ "name": "bapz", "description": "Branch to line c if abs(a) <= float.epsilon * 8" },
+	{ "name": "bnaz", "description": "Branch to line c if abs(a) > float.epsilon * 8" },
+	{ "name": "jr", "description": "Relative jump to line a" },
+	{ "name": "brdse", "description": "Relative jump to line a if device is set" },
+	{ "name": "brdns", "description": "Relative jump to line a if device is not set" },
+	{ "name": "brlt", "description": "Relative jump to line c if a < b" },
+	{ "name": "brgt", "description": "relative jump to line c if a > b" },
+	{ "name": "brle", "description": "Relative jump to line c if a <= b" },
+	{ "name": "brge", "description": "Relative jump to line c if a >= b" },
+	{ "name": "breq", "description": "Relative branch to line c if a == b" },
+	{ "name": "brne", "description": "Relative branch to line c if a != b" },
+	{
+		"name": "brap",
+		"description": "Relative branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8)"
+	},
+	{
+		"name": "brna",
+		"description": "Relative branch to line d if abs(a - b) > max(c * max(abs(a), abs(b)), float.epsilon * 8)"
+	},
+	{ "name": "brltz", "description": "Relative branch to line b if a < 0" },
+	{ "name": "brgez", "description": "Relative branch to line b if a >= 0" },
+	{ "name": "brlez", "description": "Relative branch to line b if a <= 0" },
+	{ "name": "brgtz", "description": "Relative branch to line b if a > 0" },
+	{ "name": "breqz", "description": "Relative branch to line b if a == 0" },
+	{ "name": "brnez", "description": "Relative branch to line b if a != 0" },
+	{
+		"name": "brapz",
+		"description": "Relative branch to line c if abs(a) <= float.epsilon * 8"
+	},
+	{
+		"name": "brnaz",
+		"description": "Relative branch to line c if abs(a) > float.epsilon * 8"
+	},
+	{
+		"name": "jal",
+		"description": "Jump execution to line a and store next line number in ra"
+	},
+	{
+		"name": "bdseal",
+		"description": "Jump execution to line a and store next line number if device is set"
+	},
+	{
+		"name": "bdnsal",
+		"description": "Jump execution to line a and store next line number if device is not set"
+	},
+	{
+		"name": "bltal",
+		"description": "Branch to line c if a < b and store next line number in ra"
+	},
+	{
+		"name": "bgtal",
+		"description": "Branch to line c if a > b and store next line number in ra"
+	},
+	{
+		"name": "bleal",
+		"description": "Branch to line c if a <= b and store next line number in ra"
+	},
+	{
+		"name": "bgeal",
+		"description": "Branch to line c if a >= b and store next line number in ra"
+	},
+	{
+		"name": "beqal",
+		"description": "Branch to line c if a == b and store next line number in ra"
+	},
+	{
+		"name": "bneal",
+		"description": "Branch to line c if a != b and store next line number in ra"
+	},
+	{
+		"name": "bapal",
+		"description": "Branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8) and store next line number in ra"
+	},
+	{
+		"name": "bnaal",
+		"description": "Branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8) and store next line number in ra"
+	},
+	{
+		"name": "bltzal",
+		"description": "Branch to line b if a < 0 and store next line number in ra"
+	},
+	{
+		"name": "bgezal",
+		"description": "Branch to line b if a >= 0 and store next line number in ra"
+	},
+	{
+		"name": "blezal",
+		"description": "Branch to line b if a <= 0 and store next line number in ra"
+	},
+	{
+		"name": "bgtzal",
+		"description": "Branch to line b if a > 0 and store next line number in ra"
+	},
+	{
+		"name": "beqzal",
+		"description": "Branch to line b if a == 0 and store next line number in ra"
+	},
+	{
+		"name": "bnezal",
+		"description": "Branch to line b if a != 0 and store next line number in ra"
+	},
+	{ "name": "bapzal", "description": "Branch to line c if abs(a) <= float.epsilon * 8" },
+	{ "name": "bnazal", "description": "Branch to line c if abs(a) > float.epsilon * 8" },
+	{ "name": "sqrt", "description": "Register = square root of a" },
+	{ "name": "round", "description": "Register = a rounded to nearest integer" },
+	{ "name": "trunc", "description": "Register = a with fractional part removed" },
+	{ "name": "ceil", "description": "Register = smallest integer greater than a" },
+	{ "name": "floor", "description": "Register = largest integer less than a" },
+	{ "name": "max", "description": "Register = max of a or b" },
+	{ "name": "min", "description": "Register = min of a or b" },
+	{ "name": "abs", "description": "Register = the absolute value of a" },
+	{ "name": "log", "description": "Register = log(a)" },
+	{ "name": "exp", "description": "Register = exp(a)" },
+	{ "name": "rand", "description": "Register = a random value x with 0 <= x < 1" },
+	{ "name": "yield", "description": "Pauses execution for 1 tick" },
+	{ "name": "label", "description": "DEPRECATED" },
+	{ "name": "peek", "description": "Register = the value at the top of the stack" },
+	{
+		"name": "push",
+		"description": "Pushes the value of a to the stack at sp and increments sp"
+	},
+	{
+		"name": "pop",
+		"description": "Register = the value at the top of the stack and decrements sp"
+	},
+	{ "name": "hcf", "description": "Halt and catch fire" },
+	{ "name": "select", "description": "Register = b if a is non-zero, otherwise c" },
+	{ "name": "sleep", "description": "Pauses execution on the IC for a seconds" },
+	{ "name": "sin", "description": "Returns the sine of the specified angle (radians)" },
+	{ "name": "cos", "description": "Returns the cosine of the specified angle (radians)" },
+	{ "name": "tan", "description": "Returns the tan of the specified angle (radians) " },
+	{
+		"name": "asin",
+		"description": "Returns the angle (radians) whose sine is the specified value"
+	},
+	{
+		"name": "acos",
+		"description": "Returns the angle (radians) whose cosine is the specified value"
+	},
+	{
+		"name": "atan",
+		"description": "Returns the angle (radians) whose tan is the specified value"
+	},
+	{
+		"name": "atan2",
+		"description": "Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)"
+	},
+	{
+		"name": "ld",
+		"description": "Loads device LogicType to register by direct ID reference."
+	},
+	{
+		"name": "lbn",
+		"description": "Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+	},
+	{
+		"name": "lbs",
+		"description": "Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+	},
+	{
+		"name": "lbns",
+		"description": "Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+	},
+	{
+		"name": "sd",
+		"description": "Stores register value to LogicType on device by direct ID reference."
+	},
+	{
+		"name": "ss",
+		"description": "Stores register value to device stored in a slot LogicSlotType on device."
+	},
+	{
+		"name": "sbs",
+		"description": "Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot."
+	},
+	{ "name": "snan", "description": "Register = 1 if a is NaN, otherwise 0" },
+	{ "name": "snanz", "description": "Register = 0 if a is NaN, otherwise 1" },
+	{ "name": "bnan", "description": "Branch to line b if a is not a number (NaN)" },
+	{ "name": "brnan", "description": "Relative branch to line b if a is not a number (NaN)" }
+]
