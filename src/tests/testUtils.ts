@@ -1,6 +1,6 @@
 import DevEnv from "../core/DevEnv"
 import { Environment, Err, InterpreterIc10 } from "../"
-import { icFunction } from "../functions"
+import { icPartialFunction } from "../functions"
 
 export async function run(code: string, data: { [key: string]: number } = {}): Promise<DevEnv> {
 	const mem = new DevEnv(data)
@@ -23,7 +23,7 @@ export async function runWithMen(code: string, mem: Environment): Promise<Enviro
 }
 
 export async function runFuncJump(
-	fn: icFunction,
+	fn: icPartialFunction,
 	args: (string | number)[],
 	line: number = 0,
 	data: { [key: string]: number } = {},
@@ -42,7 +42,7 @@ export async function runThrow(code: string, data: { [key: string]: number } = {
 }
 
 export async function runFunc(
-	fn: icFunction,
+	fn: icPartialFunction,
 	args: (string | number)[],
 	data: { [key: string]: number } = {},
 ): Promise<number> {
@@ -51,13 +51,17 @@ export async function runFunc(
 	return mem.get("r0")
 }
 
-export async function runFuncWithMem(fn: icFunction, args: (string | number)[], mem: Environment): Promise<number> {
+export async function runFuncWithMem(
+	fn: icPartialFunction,
+	args: (string | number)[],
+	mem: Environment,
+): Promise<number> {
 	await fn(mem, args)
 	return mem.get("r0")
 }
 
 export async function runJal(
-	fn: icFunction,
+	fn: icPartialFunction,
 	args: (string | number)[],
 	line: number = 0,
 	data: { [key: string]: number } = {},

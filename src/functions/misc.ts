@@ -1,4 +1,4 @@
-import { icFunction } from "../functions"
+import { icPartialFunction } from "../functions"
 import { z } from "zod"
 import {
 	Alias,
@@ -10,21 +10,25 @@ import {
 	RegisterOrDevice,
 } from "../ZodTypes"
 
-const alias: icFunction = async (env, data) => {
-	const [alias, dr] = z.tuple([Alias, RegisterOrDevice]).parse(data)
-	await env.alias(alias, dr)
+const alias: icPartialFunction = async (env, data) => {
+	const [a, dr] = alias.validate.parse(data)
+	await env.alias(a, dr)
 }
-const define: icFunction = async (env, data) => {
-	const d = z.tuple([Alias, AliasOrValue]).parse(data)
+alias.validate = z.tuple([Alias, RegisterOrDevice])
+const define: icPartialFunction = async (env, data) => {
+	const d = define.validate.parse(data)
 	await env.alias(d[0], await env.get(d[1]))
 }
-const move: icFunction = async (env, data) => {
-	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
+define.validate = z.tuple([Alias, AliasOrValue])
+const move: icPartialFunction = async (env, data) => {
+	const d = move.validate.parse(data)
 	await env.set(d[0], await env.get(d[1]))
 }
-const yield_: icFunction = async (env, data) => {}
-const sleep: icFunction = async (env, data) => {
-	const [time] = z.tuple([RaliasOrValueOrNaN]).parse(data)
+move.validate = z.tuple([Ralias, RaliasOrValue])
+const yield_: icPartialFunction = async (env, data) => {}
+yield_.validate = z.tuple([])
+const sleep: icPartialFunction = async (env, data) => {
+	const [time] = sleep.validate.parse(data)
 	return new Promise<void>(async (resolve) => {
 		setTimeout(
 			() => {
@@ -34,11 +38,13 @@ const sleep: icFunction = async (env, data) => {
 		)
 	})
 }
-const hcf: icFunction = async (env, data) => {
+sleep.validate = z.tuple([RaliasOrValueOrNaN])
+const hcf: icPartialFunction = async (env, data) => {
 	await env.hcf()
 }
+hcf.validate = z.tuple([])
 
-export const misc: Record<MiscFunctionName, icFunction> = {
+export const misc: Record<MiscFunctionName, icPartialFunction> = {
 	alias,
 	define,
 	move,

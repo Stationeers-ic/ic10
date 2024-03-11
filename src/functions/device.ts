@@ -1,4 +1,4 @@
-import { icFunction } from "../functions"
+import { icPartialFunction } from "../functions"
 import { z } from "zod"
 import { DeviceFunctionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
@@ -16,55 +16,62 @@ async function action(env: Environment, register: string, mode: string, values: 
 	if (m === 3) return env.set(register, Math.max(...values))
 }
 
-const s: icFunction = async (env, data) => {
-	const [op1, op2, op3] = z.tuple([DeviceOrAlias, Logic, RaliasOrValue]).parse(data)
+const s: icPartialFunction = async (env, data) => {
+	const [op1, op2, op3] = s.validate.parse(data)
 	if (!env.hasDevice(await env.getAlias(op1))) {
 		throw new SyntaxError(`Device ${await env.getAlias(op1)} not found`, "error", await env.getPosition())
 	}
 	await env.set(`${await env.getAlias(op1)}.${await env.getAlias(op2)}`, await env.get(op3))
 }
-const l: icFunction = async (env, data) => {
-	const [op1, op2, op3] = z.tuple([Ralias, DeviceOrAlias, Logic]).parse(data)
+s.validate = z.tuple([DeviceOrAlias, Logic, RaliasOrValue])
+const l: icPartialFunction = async (env, data) => {
+	const [op1, op2, op3] = l.validate.parse(data)
 	if (!env.hasDevice(await env.getAlias(op2))) {
 		throw new SyntaxError(`Device ${await env.getAlias(op2)} not found`, "error", await env.getPosition())
 	}
 	await env.set(op1, await env.get(`${env.getAlias(op2)}.${env.getAlias(op3)}`))
 }
-const ls: icFunction = async (env, data) => {
-	const [register, device, slot, property] = z.tuple([Ralias, DeviceOrAlias, SlotIndex, Logic]).parse(data)
+l.validate = z.tuple([Ralias, DeviceOrAlias, Logic])
+const ls: icPartialFunction = async (env, data) => {
+	const [register, device, slot, property] = ls.validate.parse(data)
 	await env.set(register, await env.get(`${device}.Slots.${slot}.${property}`))
 }
-const sb: icFunction = async (env, data) => {
-	const [hash, logic, register] = z.tuple([Hash, Logic, RaliasOrValue]).parse(data)
+ls.validate = z.tuple([Ralias, DeviceOrAlias, SlotIndex, Logic])
+const sb: icPartialFunction = async (env, data) => {
+	const [hash, logic, register] = sb.validate.parse(data)
 	env.setDeviceByHash(await env.get(hash), logic, await env.get(register))
 }
-const sbn: icFunction = async (env, data) => {
-	const [hash, name, logic, register] = z.tuple([Hash, Hash, Logic, RaliasOrValue]).parse(data)
+sb.validate = z.tuple([Hash, Logic, RaliasOrValue])
+const sbn: icPartialFunction = async (env, data) => {
+	const [hash, name, logic, register] = sbn.validate.parse(data)
 	env.setDeviceByHashAndName(await env.get(hash), await env.get(name), logic, await env.get(register))
 }
-const sbs: icFunction = async (env, data) => {
-	const [hash, slot, logic, value] = z.tuple([Hash, RaliasOrValue, Logic, RaliasOrValue]).parse(data)
+sbn.validate = z.tuple([Hash, Hash, Logic, RaliasOrValue])
+const sbs: icPartialFunction = async (env, data) => {
+	const [hash, slot, logic, value] = sbs.validate.parse(data)
 	env.setSlotDeviceByHash(await env.get(hash), await env.get(slot), logic, await env.get(value))
 }
-const lb: icFunction = async (env, data) => {
-	const [register, hash, logic, mode] = z.tuple([Ralias, Hash, Logic, Ralias]).parse(data)
+sbs.validate = z.tuple([Hash, RaliasOrValue, Logic, RaliasOrValue])
+const lb: icPartialFunction = async (env, data) => {
+	const [register, hash, logic, mode] = lb.validate.parse(data)
 	const values: number[] = await env.getDeviceByHash(await env.get(hash), logic)
 	await action(env, register, mode, values)
 }
-const lbn: icFunction = async (env, data) => {
-	const [register, hash, name, logic, mode] = z.tuple([Ralias, Hash, Hash, Logic, Ralias]).parse(data)
+lb.validate = z.tuple([Ralias, Hash, Logic, Ralias])
+const lbn: icPartialFunction = async (env, data) => {
+	const [register, hash, name, logic, mode] = lbn.validate.parse(data)
 	const values: number[] = await env.getDeviceByHashAndName(await env.get(hash), await env.get(name), logic)
 	await action(env, register, mode, values)
 }
-const lbs: icFunction = async (env, data) => {
-	const [register, hash, slot, logic, mode] = z.tuple([Ralias, Hash, RaliasOrValue, Logic, Mode]).parse(data)
+lbn.validate = z.tuple([Ralias, Hash, Hash, Logic, Ralias])
+const lbs: icPartialFunction = async (env, data) => {
+	const [register, hash, slot, logic, mode] = lbs.validate.parse(data)
 	const values: number[] = await env.getSlotDeviceByHash(await env.get(hash), await env.get(slot), logic)
 	await action(env, register, mode, values)
 }
-const lbns: icFunction = async (env, data) => {
-	const [register, hash, name, slot, logic, mode] = z
-		.tuple([Ralias, Hash, RaliasOrValue, RaliasOrValue, Logic, Mode])
-		.parse(data)
+lbs.validate = z.tuple([Ralias, Hash, RaliasOrValue, Logic, Mode])
+const lbns: icPartialFunction = async (env, data) => {
+	const [register, hash, name, slot, logic, mode] = lbns.validate.parse(data)
 	const values: number[] = await env.getSlotDeviceByHashAndName(
 		await env.get(hash),
 		await env.get(name),
@@ -73,16 +80,19 @@ const lbns: icFunction = async (env, data) => {
 	)
 	await action(env, register, mode, values)
 }
-const lr: icFunction = async (env, data) => {
-	const [register, device, reagentMode, hash] = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash]).parse(data)
+lbns.validate = z.tuple([Ralias, Hash, RaliasOrValue, RaliasOrValue, Logic, Mode])
+const lr: icPartialFunction = async (env, data) => {
+	const [register, device, reagentMode, hash] = lr.validate.parse(data)
 	await env.set(register, await env.get(`${device}.Reagents.${reagentMode}.${hash}`))
 }
-const ss: icFunction = async (env, data) => {
-	const [device, slot, property, value] = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue]).parse(data)
+lr.validate = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue, Hash])
+const ss: icPartialFunction = async (env, data) => {
+	const [device, slot, property, value] = ss.validate.parse(data)
 	await env.set(`${device}.Slots.${slot}.${property}`, await env.get(value))
 }
+ss.validate = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue])
 
-const device: Record<DeviceFunctionName, icFunction> = {
+const device: Record<DeviceFunctionName, icPartialFunction> = {
 	l,
 	lb,
 	lbn,

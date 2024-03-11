@@ -6,13 +6,29 @@ import misc from "./functions/misc"
 import device from "./functions/device"
 import stack from "./functions/stack"
 import { AnyFunctionName } from "./ZodTypes"
+import { z } from "zod"
+import allFunctions from "./data/functions"
 
 export type FunctionData = (string | number)[]
 
-export type icFunction = (env: Environment, data: FunctionData) => Promise<void>
+export type icPartialFunction = {
+	(env: Environment, data: FunctionData): Promise<void>
+	validate: z.ZodType
+	description?: string
+	example?: string
+	deprecated?: boolean
+}
+export type icFunction = {
+	(env: Environment, data: FunctionData): Promise<void>
+	validate: z.ZodType
+	description: string
+	example: string
+	deprecated: boolean
+}
+
 export type icCondition = (env: Environment, data: FunctionData) => Promise<boolean>
 
-export const functions: Record<AnyFunctionName, icFunction> = {
+const functionsPartial: Record<AnyFunctionName, icPartialFunction> = {
 	...arithmetic,
 	...misc,
 	...jump,
@@ -20,4 +36,16 @@ export const functions: Record<AnyFunctionName, icFunction> = {
 	...device,
 	...stack,
 }
+
+allFunctions.forEach(({ name, preview, description, deprecated }) => {
+	const data = AnyFunctionName.safeParse(name)
+	if (!data.success) return console.error(`${name} is not implemented`)
+	const n = data.data
+	functionsPartial[n].description = description
+	functionsPartial[n].example = preview
+	functionsPartial[n].deprecated = deprecated || false
+})
+
+//						validated in types									validated in types
+export const functions: Record<AnyFunctionName, icFunction> = functionsPartial as Record<AnyFunctionName, icFunction>
 export default functions

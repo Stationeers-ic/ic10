@@ -1,36 +1,31 @@
-import { icFunction } from "../functions"
+import { icPartialFunction } from "../functions"
 import { z } from "zod"
 import { conditions } from "./conditions"
-import {
-	DeviceOrAlias,
-	LineIndex,
-	Ralias,
-	RaliasOrValue,
-	RelativeLineIndex,
-	StringOrNumberOrNaN,
-	Value,
-} from "../ZodTypes"
+import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, Value } from "../ZodTypes"
 
 const jValidate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
-const jrValidate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex])
 const jApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, LineIndex])
+
+const jrValidate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex])
 const jrApValidate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, RelativeLineIndex])
 
-const j: icFunction = async (env, data) => {
+const j: icPartialFunction = async (env, data) => {
 	const d = z.tuple([LineIndex]).parse(data)
 	const line = Value.min(0)
 		.int()
 		.parse(await env.get(d[0]))
 	await env.jump(line)
 }
-const jr: icFunction = async (env, data) => {
+j.validate = z.tuple([LineIndex])
+const jr: icPartialFunction = async (env, data) => {
 	const d = z.tuple([RelativeLineIndex]).parse(data)
 	const line = Value.min(0)
 		.int()
 		.parse((await env.getPosition()) + (await env.get(d[0])))
 	await env.jump(line)
 }
-const jal: icFunction = async (env, data) => {
+jr.validate = z.tuple([RelativeLineIndex])
+const jal: icPartialFunction = async (env, data) => {
 	const d = z.tuple([LineIndex]).parse(data)
 	const line = Value.min(0)
 		.int()
@@ -38,162 +33,219 @@ const jal: icFunction = async (env, data) => {
 	await env.set("r17", await env.getPosition())
 	await env.jump(line)
 }
-const beq: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+jal.validate = z.tuple([LineIndex])
+const beq: icPartialFunction = async (env, data) => {
+	const [x, y, line] = beq.validate.parse(data)
 	if (await conditions.eq(env, [x, y])) await j(env, [line])
 }
-const bge: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+beq.validate = jValidate
+const bge: icPartialFunction = async (env, data) => {
+	const [x, y, line] = bge.validate.parse(data)
 	if (await conditions.ge(env, [x, y])) await j(env, [line])
 }
-const bgt: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+bge.validate = jValidate
+const bgt: icPartialFunction = async (env, data) => {
+	const [x, y, line] = bgt.validate.parse(data)
 	if (await conditions.gt(env, [x, y])) await j(env, [line])
 }
-const ble: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+bgt.validate = jValidate
+const ble: icPartialFunction = async (env, data) => {
+	const [x, y, line] = ble.validate.parse(data)
 	if (await conditions.le(env, [x, y])) await j(env, [line])
 }
-const blt: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+ble.validate = jValidate
+const blt: icPartialFunction = async (env, data) => {
+	const [x, y, line] = blt.validate.parse(data)
 	if (await conditions.lt(env, [x, y])) await j(env, [line])
 }
-const bne: icFunction = async (env, data) => {
-	const [x, y, line] = jValidate.parse(data)
+blt.validate = jValidate
+const bne: icPartialFunction = async (env, data) => {
+	const [x, y, line] = bne.validate.parse(data)
 	if (await conditions.ne(env, [x, y])) await j(env, [line])
 }
-const bap: icFunction = async (env, data) => {
-	const [x, y, c, line] = jApValidate.parse(data)
+bne.validate = jValidate
+const bap: icPartialFunction = async (env, data) => {
+	const [x, y, c, line] = bna.validate.parse(data)
 	if (await conditions.ap(env, [x, y, c])) await j(env, [line])
 }
-const bna: icFunction = async (env, data) => {
-	const [x, y, c, line] = jApValidate.parse(data)
+bap.validate = jApValidate
+const bna: icPartialFunction = async (env, data) => {
+	const [x, y, c, line] = bna.validate.parse(data)
 	if (await conditions.na(env, [x, y, c])) await j(env, [line])
 }
-const bdse: icFunction = async (env, data) => {
-	const [d, line] = z.tuple([DeviceOrAlias, LineIndex]).parse(data)
+bna.validate = jApValidate
+const bdse: icPartialFunction = async (env, data) => {
+	const [d, line] = bdse.validate.parse(data)
 	if (await conditions.dse(env, [d])) await j(env, [line])
 }
-const bdns: icFunction = async (env, data) => {
-	const [d, line] = z.tuple([DeviceOrAlias, LineIndex]).parse(data)
+bdse.validate = z.tuple([DeviceOrAlias, LineIndex])
+const bdns: icPartialFunction = async (env, data) => {
+	const [d, line] = bdns.validate.parse(data)
 	if (await conditions.dns(env, [d])) await j(env, [line])
 }
-const bnan: icFunction = async (env, data) => {
-	const [v, line] = z.tuple([Ralias, LineIndex]).parse(data)
+bdns.validate = z.tuple([DeviceOrAlias, LineIndex])
+const bnan: icPartialFunction = async (env, data) => {
+	const [v, line] = bnan.validate.parse(data)
 	if (await conditions.nan(env, [v])) await j(env, [line])
 }
-const beqz: icFunction = async (env, data) => beq(env, [...data, 0])
-const bgez: icFunction = async (env, data) => bge(env, [...data, 0])
-const bgtz: icFunction = async (env, data) => bgt(env, [...data, 0])
-const blez: icFunction = async (env, data) => ble(env, [...data, 0])
-const bltz: icFunction = async (env, data) => blt(env, [...data, 0])
-const bnez: icFunction = async (env, data) => bne(env, [...data, 0])
-const bapz: icFunction = async (env, [x, y]) => bap(env, [x, 0, y])
-const bnaz: icFunction = async (env, [x, y]) => bna(env, [x, 0, y])
+bnan.validate = z.tuple([Ralias, LineIndex])
+const beqz: icPartialFunction = async (env, [x, y]) => beq(env, [x, 0, y])
+const bgez: icPartialFunction = async (env, [x, y]) => bge(env, [x, 0, y])
+const bgtz: icPartialFunction = async (env, [x, y]) => bgt(env, [x, 0, y])
+const blez: icPartialFunction = async (env, [x, y]) => ble(env, [x, 0, y])
+const bltz: icPartialFunction = async (env, [x, y]) => blt(env, [x, 0, y])
+const bnez: icPartialFunction = async (env, [x, y]) => bne(env, [x, 0, y])
+const bapz: icPartialFunction = async (env, [x, y, z]) => bap(env, [x, 0, y, z])
+const bnaz: icPartialFunction = async (env, [x, y, z]) => bna(env, [x, 0, y, z])
+beqz.validate = z.tuple([RaliasOrValue, LineIndex])
+bgez.validate = z.tuple([RaliasOrValue, LineIndex])
+bgtz.validate = z.tuple([RaliasOrValue, LineIndex])
+blez.validate = z.tuple([RaliasOrValue, LineIndex])
+bltz.validate = z.tuple([RaliasOrValue, LineIndex])
+bnez.validate = z.tuple([RaliasOrValue, LineIndex])
+bapz.validate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
+bnaz.validate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
 
-const breq: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+const breq: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = breq.validate.parse(data)
 	if (await conditions.eq(env, [a, b])) await jr(env, [offset])
 }
-const brge: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+breq.validate = jrValidate
+const brge: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = brge.validate.parse(data)
 	if (await conditions.ge(env, [a, b])) await jr(env, [offset])
 }
-const brgt: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+brge.validate = jrValidate
+const brgt: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = brgt.validate.parse(data)
 	if (await conditions.gt(env, [a, b])) await jr(env, [offset])
 }
-const brle: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+brgt.validate = jrValidate
+const brle: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = brle.validate.parse(data)
 	if (await conditions.le(env, [a, b])) await jr(env, [offset])
 }
-const brlt: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+brle.validate = jrValidate
+const brlt: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = brlt.validate.parse(data)
 	if (await conditions.lt(env, [a, b])) await jr(env, [offset])
 }
-const brne: icFunction = async (env, data) => {
-	const [a, b, offset] = jrValidate.parse(data)
+brlt.validate = jrValidate
+const brne: icPartialFunction = async (env, data) => {
+	const [a, b, offset] = brne.validate.parse(data)
 	if (await conditions.ne(env, [a, b])) await jr(env, [offset])
 }
-const brap: icFunction = async (env, data) => {
-	const [x, y, c, offset] = jrApValidate.parse(data)
+brne.validate = jrValidate
+const brap: icPartialFunction = async (env, data) => {
+	const [x, y, c, offset] = brap.validate.parse(data)
 	if (await conditions.ap(env, [x, y, c])) await jr(env, [offset])
 }
-const brna: icFunction = async (env, data) => {
-	const [x, y, c, offset] = jrApValidate.parse(data)
+brap.validate = jrApValidate
+const brna: icPartialFunction = async (env, data) => {
+	const [x, y, c, offset] = brna.validate.parse(data)
 	if (await conditions.na(env, [x, y, c])) await jr(env, [offset])
 }
-const brdse: icFunction = async (env, data) => {
-	const [d, offset] = z.tuple([DeviceOrAlias, RelativeLineIndex]).parse(data)
+brna.validate = jrApValidate
+const brdse: icPartialFunction = async (env, data) => {
+	const [d, offset] = brdse.validate.parse(data)
 	if (await conditions.dse(env, [d])) await jal(env, [offset])
 }
-const brdns: icFunction = async (env, data) => {
-	const [d, offset] = z.tuple([DeviceOrAlias, RelativeLineIndex]).parse(data)
+brdse.validate = z.tuple([DeviceOrAlias, RelativeLineIndex])
+const brdns: icPartialFunction = async (env, data) => {
+	const [d, offset] = brdns.validate.parse(data)
 	if (await conditions.dns(env, [d])) await jal(env, [offset])
 }
-const brnan: icFunction = async (env, data) => {
-	const [v, offset] = z.tuple([Ralias, RelativeLineIndex]).parse(data)
+brdns.validate = z.tuple([DeviceOrAlias, RelativeLineIndex])
+const brnan: icPartialFunction = async (env, data) => {
+	const [v, offset] = brnan.validate.parse(data)
 	if (await conditions.nan(env, [v])) await jr(env, [offset])
 }
-const breqz: icFunction = async (env, data) => breq(env, [...data, 0])
-const brgez: icFunction = async (env, data) => brge(env, [...data, 0])
-const brgtz: icFunction = async (env, data) => brgt(env, [...data, 0])
-const brlez: icFunction = async (env, data) => brle(env, [...data, 0])
-const brltz: icFunction = async (env, data) => brlt(env, [...data, 0])
-const brnez: icFunction = async (env, data) => brne(env, [...data, 0])
-const brapz: icFunction = async (env, [x, y]) => bap(env, [x, 0, y])
-const brnaz: icFunction = async (env, [x, y]) => bna(env, [x, 0, y])
+brnan.validate = z.tuple([Ralias, RelativeLineIndex])
+const breqz: icPartialFunction = async (env, [x, y]) => breq(env, [x, 0, y])
+const brgez: icPartialFunction = async (env, [x, y]) => brge(env, [x, 0, y])
+const brgtz: icPartialFunction = async (env, [x, y]) => brgt(env, [x, 0, y])
+const brlez: icPartialFunction = async (env, [x, y]) => brle(env, [x, 0, y])
+const brltz: icPartialFunction = async (env, [x, y]) => brlt(env, [x, 0, y])
+const brnez: icPartialFunction = async (env, [x, y]) => brne(env, [x, 0, y])
+const brapz: icPartialFunction = async (env, [x, y, z]) => bap(env, [x, 0, y, z])
+const brnaz: icPartialFunction = async (env, [x, y, z]) => bna(env, [x, 0, y, z])
+breqz.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brgez.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brgtz.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brlez.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brltz.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brnez.validate = z.tuple([RaliasOrValue, RelativeLineIndex])
+brapz.validate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex])
+brnaz.validate = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLineIndex])
 
-const beqal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+const beqal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = beqal.validate.parse(data)
 	if (await conditions.eq(env, [a, b])) await jal(env, [line])
 }
-const bgeal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+beqal.validate = jValidate
+const bgeal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = bgeal.validate.parse(data)
 	if (await conditions.ge(env, [a, b])) await jal(env, [line])
 }
-const bgtal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+bgeal.validate = jValidate
+const bgtal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = bgtal.validate.parse(data)
 	if (await conditions.gt(env, [a, b])) await jal(env, [line])
 }
-const bleal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+bgtal.validate = jValidate
+const bleal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = bleal.validate.parse(data)
 	if (await conditions.le(env, [a, b])) await jal(env, [line])
 }
-const bltal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+bleal.validate = jValidate
+const bltal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = bltal.validate.parse(data)
 	if (await conditions.lt(env, [a, b])) await jal(env, [line])
 }
-const bneal: icFunction = async (env, data) => {
-	const [a, b, line] = jValidate.parse(data)
+bltal.validate = jValidate
+const bneal: icPartialFunction = async (env, data) => {
+	const [a, b, line] = bneal.validate.parse(data)
 	if (await conditions.ne(env, [a, b])) await jal(env, [line])
 }
-const bapal: icFunction = async (env, data) => {
-	const [x, y, c, line] = z
-		.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN])
-		.parse(data)
+bneal.validate = jValidate
+const bapal: icPartialFunction = async (env, data) => {
+	const [x, y, c, line] = bapal.validate.parse(data)
 	if (await conditions.ap(env, [x, y, c])) await jal(env, [line])
 }
-const bnaal: icFunction = async (env, data) => {
-	const [x, y, c, line] = jApValidate.parse(data)
+bapal.validate = jrApValidate
+const bnaal: icPartialFunction = async (env, data) => {
+	const [x, y, c, line] = bnaal.validate.parse(data)
 	if (await conditions.na(env, [x, y, c])) await jal(env, [line])
 }
-const bdseal: icFunction = async (env, data) => {
-	const [d, line] = z.tuple([DeviceOrAlias, LineIndex]).parse(data)
+bnaal.validate = jApValidate
+const bdseal: icPartialFunction = async (env, data) => {
+	const [d, line] = bdseal.validate.parse(data)
 	if (await conditions.dse(env, [d])) await jal(env, [line])
 }
-const bdnsal: icFunction = async (env, data) => {
-	const [d, line] = z.tuple([DeviceOrAlias, LineIndex]).parse(data)
+bdseal.validate = z.tuple([DeviceOrAlias, LineIndex])
+const bdnsal: icPartialFunction = async (env, data) => {
+	const [d, line] = bdnsal.validate.parse(data)
 	if (await conditions.dns(env, [d])) await jal(env, [line])
 }
-const beqzal: icFunction = async (env, data) => beqzal(env, [...data, 0])
-const bgezal: icFunction = async (env, data) => bgezal(env, [...data, 0])
-const bgtzal: icFunction = async (env, data) => bgtzal(env, [...data, 0])
-const blezal: icFunction = async (env, data) => blezal(env, [...data, 0])
-const bltzal: icFunction = async (env, data) => bltzal(env, [...data, 0])
-const bnezal: icFunction = async (env, data) => bnezal(env, [...data, 0])
-const bapzal: icFunction = async (env, [x, y]) => bapzal(env, [x, 0, y])
-const bnazal: icFunction = async (env, [x, y]) => bnazal(env, [x, 0, y])
+bdnsal.validate = z.tuple([DeviceOrAlias, LineIndex])
+
+const beqzal: icPartialFunction = async (env, [x, y]) => beqzal(env, [x, 0, y])
+const bgezal: icPartialFunction = async (env, [x, y]) => bgezal(env, [x, 0, y])
+const bgtzal: icPartialFunction = async (env, [x, y]) => bgtzal(env, [x, 0, y])
+const blezal: icPartialFunction = async (env, [x, y]) => blezal(env, [x, 0, y])
+const bltzal: icPartialFunction = async (env, [x, y]) => bltzal(env, [x, 0, y])
+const bnezal: icPartialFunction = async (env, [x, y]) => bnezal(env, [x, 0, y])
+const bapzal: icPartialFunction = async (env, [x, y, z]) => bapzal(env, [x, 0, y, z])
+const bnazal: icPartialFunction = async (env, [x, y, z]) => bnazal(env, [x, 0, y, z])
+
+beqzal.validate = z.tuple([RaliasOrValue, LineIndex])
+bgezal.validate = z.tuple([RaliasOrValue, LineIndex])
+bgtzal.validate = z.tuple([RaliasOrValue, LineIndex])
+blezal.validate = z.tuple([RaliasOrValue, LineIndex])
+bltzal.validate = z.tuple([RaliasOrValue, LineIndex])
+bnezal.validate = z.tuple([RaliasOrValue, LineIndex])
+bapzal.validate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
+bnazal.validate = z.tuple([RaliasOrValue, RaliasOrValue, LineIndex])
 
 export const jump = {
 	j,
