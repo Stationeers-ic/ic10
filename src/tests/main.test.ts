@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { functions } from "../functions"
+import { functions, icFunction } from "../functions"
 import data from "./data/functions.en.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
@@ -10,14 +10,27 @@ import { AnyFunctionName } from "../ZodTypes"
 
 describe("main", () => {
 	test("functionsHasProto", () => {
-		const test = z.record(
+		const test = z.tuple([
 			AnyFunctionName,
 			z.object({
 				description: z.string(),
 				example: z.string(),
-				validate: z.any(),
+				validate: z.instanceof(z.ZodSchema),
 			}),
-		)
+		])
+		for (const key in functions) {
+			const element: icFunction = functions[key]
+			const result = test.safeParse([
+				key,
+				{
+					description: element.description,
+					example: element.example,
+					validate: element.validate,
+				},
+			])
+			if (!result.success) console.error(key, result.error.message)
+			expect(result.success).toBe(true)
+		}
 	})
 
 	test.todo("functions", () => {
