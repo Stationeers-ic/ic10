@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { icFunction } from "../functions"
+import { icPartialFunction } from "../functions"
 import BitWarn from "../errors/BitWarn"
 import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
 
@@ -9,89 +9,89 @@ export function jsThing(value: number) {
 	return value
 }
 
-const add: icFunction = async (env, data) => {
+const add: icPartialFunction = async (env, data) => {
 	const d = add.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) + (await env.get(d[2]))))
 }
 add.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const sub: icFunction = async (env, data) => {
+const sub: icPartialFunction = async (env, data) => {
 	const d = sub.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) - (await env.get(d[2]))))
 }
 sub.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const mul: icFunction = async (env, data) => {
+const mul: icPartialFunction = async (env, data) => {
 	const d = mul.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) * (await env.get(d[2]))))
 }
 mul.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const div: icFunction = async (env, data) => {
+const div: icPartialFunction = async (env, data) => {
 	const d = div.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) / (await env.get(d[2]))))
 }
 div.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const mod: icFunction = async (env, data) => {
+const mod: icPartialFunction = async (env, data) => {
 	const d = mod.validate.parse(data)
 	let num = (await env.get(d[1])) % (await env.get(d[2]))
 	if (num < 0) num += await env.get(d[2])
 	await env.set(d[0], jsThing(num))
 }
 mod.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const sqrt: icFunction = async (env, data) => {
+const sqrt: icPartialFunction = async (env, data) => {
 	const d = sqrt.validate.parse(data)
 	await env.set(d[0], jsThing(Math.sqrt(await env.get(d[1]))))
 }
 sqrt.validate = z.tuple([Ralias, RaliasOrValue])
-const round: icFunction = async (env, data) => {
+const round: icPartialFunction = async (env, data) => {
 	const d = round.validate.parse(data)
 	await env.set(d[0], jsThing(Math.round(await env.get(d[1]))))
 }
 round.validate = z.tuple([Ralias, RaliasOrValue])
-const trunc: icFunction = async (env, data) => {
+const trunc: icPartialFunction = async (env, data) => {
 	const d = trunc.validate.parse(data)
 	await env.set(d[0], jsThing(Math.trunc(await env.get(d[1]))))
 }
 trunc.validate = z.tuple([Ralias, RaliasOrValue])
-const ceil: icFunction = async (env, data) => {
+const ceil: icPartialFunction = async (env, data) => {
 	const d = ceil.validate.parse(data)
 	await env.set(d[0], jsThing(Math.ceil(await env.get(d[1]))))
 }
 ceil.validate = z.tuple([Ralias, RaliasOrValue])
-const floor: icFunction = async (env, data) => {
+const floor: icPartialFunction = async (env, data) => {
 	const d = floor.validate.parse(data)
 	await env.set(d[0], jsThing(Math.floor(await env.get(d[1]))))
 }
 floor.validate = z.tuple([Ralias, RaliasOrValue])
-const max: icFunction = async (env, data) => {
+const max: icPartialFunction = async (env, data) => {
 	const d = max.validate.parse(data)
 	await env.set(d[0], jsThing(Math.max(await env.get(d[1]), await env.get(d[2]))))
 }
 max.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const min: icFunction = async (env, data) => {
+const min: icPartialFunction = async (env, data) => {
 	const d = min.validate.parse(data)
 	await env.set(d[0], jsThing(Math.min(await env.get(d[1]), await env.get(d[2]))))
 }
 min.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const abs: icFunction = async (env, data) => {
+const abs: icPartialFunction = async (env, data) => {
 	const d = abs.validate.parse(data)
 	await env.set(d[0], jsThing(Math.abs(await env.get(d[1]))))
 }
 abs.validate = z.tuple([Ralias, RaliasOrValue])
-const log: icFunction = async (env, data) => {
+const log: icPartialFunction = async (env, data) => {
 	const d = log.validate.parse(data)
 	await env.set(d[0], jsThing(Math.log(await env.get(d[1]))))
 }
 log.validate = z.tuple([Ralias, RaliasOrValue])
-const exp: icFunction = async (env, data) => {
+const exp: icPartialFunction = async (env, data) => {
 	const d = exp.validate.parse(data)
 	await env.set(d[0], jsThing(Math.exp(await env.get(d[1]))))
 }
 exp.validate = z.tuple([Ralias, RaliasOrValue])
-const rand: icFunction = async (env, data) => {
+const rand: icPartialFunction = async (env, data) => {
 	const d = rand.validate.parse(data)
 	await env.set(d[0], jsThing(Math.random()))
 }
 rand.validate = z.tuple([Ralias])
-const sll: icFunction = async (env, data) => {
+const sll: icPartialFunction = async (env, data) => {
 	const d = sll.validate.parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -104,7 +104,7 @@ const sll: icFunction = async (env, data) => {
 	)
 }
 sll.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const srl: icFunction = async (env, data) => {
+const srl: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -117,7 +117,7 @@ const srl: icFunction = async (env, data) => {
 	)
 }
 srl.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const sla: icFunction = async (env, data) => {
+const sla: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -136,7 +136,7 @@ const sla: icFunction = async (env, data) => {
 	)
 }
 sla.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const sra: icFunction = async (env, data) => {
+const sra: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -149,42 +149,42 @@ const sra: icFunction = async (env, data) => {
 	)
 }
 sra.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const sin: icFunction = async (env, data) => {
+const sin: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.sin(await env.get(d[1]))))
 }
 sin.validate = z.tuple([Ralias, RaliasOrValue])
-const cos: icFunction = async (env, data) => {
+const cos: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.cos(await env.get(d[1]))))
 }
 cos.validate = z.tuple([Ralias, RaliasOrValue])
-const tan: icFunction = async (env, data) => {
+const tan: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.tan(await env.get(d[1]))))
 }
 tan.validate = z.tuple([Ralias, RaliasOrValue])
-const asin: icFunction = async (env, data) => {
+const asin: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.asin(await env.get(d[1]))))
 }
 asin.validate = z.tuple([Ralias, RaliasOrValue])
-const acos: icFunction = async (env, data) => {
+const acos: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.acos(await env.get(d[1]))))
 }
 acos.validate = z.tuple([Ralias, RaliasOrValue])
-const atan: icFunction = async (env, data) => {
+const atan: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.atan(await env.get(d[1]))))
 }
 atan.validate = z.tuple([Ralias, RaliasOrValue])
-const atan2: icFunction = async (env, data) => {
+const atan2: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(Math.atan2(await env.get(d[1]), await env.get(d[2]))))
 }
 atan2.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const and: icFunction = async (env, data) => {
+const and: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) & (await env.get(d[2]))))
 	await env.throw(
@@ -192,7 +192,7 @@ const and: icFunction = async (env, data) => {
 	)
 }
 and.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const or: icFunction = async (env, data) => {
+const or: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) | (await env.get(d[2]))))
 	await env.throw(
@@ -200,7 +200,7 @@ const or: icFunction = async (env, data) => {
 	)
 }
 or.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const xor: icFunction = async (env, data) => {
+const xor: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) ^ (await env.get(d[2]))))
 	await env.throw(
@@ -208,7 +208,7 @@ const xor: icFunction = async (env, data) => {
 	)
 }
 xor.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-const nor: icFunction = async (env, data) => {
+const nor: icPartialFunction = async (env, data) => {
 	const d = z.tuple([Ralias, RaliasOrValue, RaliasOrValue]).parse(data)
 	await env.set(d[0], jsThing(~((await env.get(d[1])) | (await env.get(d[2])))))
 	await env.throw(
@@ -217,7 +217,7 @@ const nor: icFunction = async (env, data) => {
 }
 nor.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
 
-export const arithmetic: Record<ArithmeticFunctionName, icFunction> = {
+export const arithmetic: Record<ArithmeticFunctionName, icPartialFunction> = {
 	add,
 	sub,
 	mul,

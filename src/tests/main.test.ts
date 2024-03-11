@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { functions, icFunction } from "../functions"
+import { functions, icPartialFunction } from "../functions"
 import data from "./data/functions.en.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
@@ -19,7 +19,7 @@ describe("main", () => {
 			}),
 		])
 		for (const key in functions) {
-			const element: icFunction = functions[key]
+			const element: icPartialFunction = functions[key]
 			const result = test.safeParse([
 				key,
 				{
