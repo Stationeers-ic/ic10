@@ -1,4 +1,4 @@
-import { icPartialFunction } from "../functions"
+import { icPartialFunction, tupleR_RV } from "./types"
 import { z } from "zod"
 import {
 	Alias,
@@ -24,7 +24,7 @@ const move: icPartialFunction = async (env, data) => {
 	const d = move.validate.parse(data)
 	await env.set(d[0], await env.get(d[1]))
 }
-move.validate = z.tuple([Ralias, RaliasOrValue])
+move.validate = tupleR_RV
 const yield_: icPartialFunction = async (env, data) => {}
 yield_.validate = z.tuple([])
 const sleep: icPartialFunction = async (env, data) => {

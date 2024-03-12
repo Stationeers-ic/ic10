@@ -1,4 +1,4 @@
-import { icPartialFunction } from "../functions"
+import { icPartialFunction } from "./types"
 import { z } from "zod"
 import { Ralias, RaliasOrValue, StackFunctionName } from "../ZodTypes"
 

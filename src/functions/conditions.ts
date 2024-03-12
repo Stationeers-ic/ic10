@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { icCondition } from "../functions"
+import { icCondition } from "./types"
 import { ConditionName, StringOrNumberOrNaN } from "../ZodTypes"
 
 export const epsilon = 1.1210387714598537e-44

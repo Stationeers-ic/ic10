@@ -5,6 +5,10 @@
   "description": "ic10 interpreter",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "engines": {
+    "bun": ">=1.0.20",
+    "node": ">=20.10.0"
+  },
   "scripts": {
     "prepublish": "prettier . --write",
     "watch": "tsc -w",

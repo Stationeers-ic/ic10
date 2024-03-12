@@ -3,7 +3,7 @@ import Line from "./core/Line"
 import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
 
-class InterpreterIc10 {
+export class InterpreterIc10 {
 	code: string
 	stopRun: boolean = false
 	env: Environment

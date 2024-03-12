@@ -1,4 +1,4 @@
-import { icPartialFunction } from "../functions"
+import { icPartialFunction } from "./types"
 import { z } from "zod"
 import { DeviceFunctionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"

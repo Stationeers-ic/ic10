@@ -1,4 +1,4 @@
-import { icPartialFunction } from "../functions"
+import { icPartialFunction } from "./types"
 import { z } from "zod"
 import { conditions } from "./conditions"
 import { DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RelativeLineIndex, Value } from "../ZodTypes"

@@ -25,7 +25,7 @@ type ZodDevice = z.infer<typeof ZodDevice>
 /**
  * An environment without checks, which simply saves as it is
  */
-class DevEnv extends Environment {
+export class DevEnv extends Environment {
 	/**
 	 * Current line
 	 */

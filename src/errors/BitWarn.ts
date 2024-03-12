@@ -1,6 +1,6 @@
 import Err from "../abstract/Err"
 
-class BitWarn extends Err {
+export class BitWarn extends Err {
 	constructor(
 		message: string,
 		public level: "error" | "warn" | "info" | "debug" = "error",

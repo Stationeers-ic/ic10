@@ -69,10 +69,14 @@
 	],
 	// The path to the `bun` executable.
 	"bun.runtime": "/home/kirill/.bun/bin/bun",
-	
+
 	// If support for Bun should be added to the default "JavaScript Debug Terminal".
 	"bun.debugTerminal.enabled": true,
-	
+
 	// If the debugger should stop on the first line of the program.
 	"bun.debugTerminal.stopOnEntry": false,
+	"todo-tree.tree.scanMode": "workspace only",
+	"todo-tree.tree.showCountsInTree": true,
+	"todo-tree.tree.disableCompactFolders": true,
+	"todo-tree.tree.showBadges": true,
 }

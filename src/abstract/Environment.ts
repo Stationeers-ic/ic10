@@ -2,7 +2,7 @@ import Line from "../core/Line"
 import EventEmitter from "eventemitter3"
 import { AnyFunctionName } from "../ZodTypes"
 import Err from "./Err"
-import { FunctionData } from "../functions"
+import { FunctionData } from "../functions/types"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
@@ -19,7 +19,7 @@ type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
  * Environment for the interpreter
  * Stores all data necessary for interpretation
  */
-abstract class Environment extends EventEmitter<EventNames, Environment> {
+export abstract class Environment extends EventEmitter<EventNames, Environment> {
 	/**
 	 * is Test mode
 	 */

@@ -1,93 +1,121 @@
-import { icPartialFunction } from "../functions"
+import { icCondition, icPartialFunction, tupleR_DA, tupleR_R, tupleR_RV, tupleR_RV_RV, tupleR_RV_RV_RV } from "./types"
 import conditions from "./conditions"
-import { z } from "zod"
-import { DeviceOrAlias, Ralias, RaliasOrValue, SelectFunctionName } from "../ZodTypes"
+import { SelectFunctionName } from "../ZodTypes"
+import { Environment } from ".."
 
 const booleanToNumber = (x: boolean): 1 | 0 => (x ? 1 : 0)
+// function to simplify
+const condition = async (env: Environment, con: icCondition, set: any, ...args: any[]) => {
+	await env.set(set, booleanToNumber(await con(env, args)))
+}
 
 const seq: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = seq.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.eq(env, [op2, op3])))
+	await condition(env, conditions.eq, op1, op2, op3)
 }
-seq.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+seq.validate = tupleR_RV_RV
 const sge: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = sge.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.ge(env, [op2, op3])))
+	await condition(env, conditions.ge, op1, op2, op3)
 }
-sge.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+sge.validate = tupleR_RV_RV
 const sgt: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = sgt.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.gt(env, [op2, op3])))
+	await condition(env, conditions.gt, op1, op2, op3)
 }
-sgt.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+sgt.validate = tupleR_RV_RV
 const sle: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = sle.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.le(env, [op2, op3])))
+	await condition(env, conditions.le, op1, op2, op3)
 }
-sle.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+sle.validate = tupleR_RV_RV
 const slt: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = slt.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.lt(env, [op2, op3])))
+	await condition(env, conditions.lt, op1, op2, op3)
 }
-slt.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+slt.validate = tupleR_RV_RV
 const sne: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3] = sne.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.ne(env, [op2, op3])))
+	await condition(env, conditions.ne, op1, op2, op3)
 }
-sne.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+sne.validate = tupleR_RV_RV
 const sap: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3, op4] = sap.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.ap(env, [op2, op3, op4])))
+	await condition(env, conditions.ap, op1, op2, op3, op4)
 }
-sap.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue])
+sap.validate = tupleR_RV_RV_RV
 const sna: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3, op4] = sna.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.na(env, [op2, op3, op4])))
+	await condition(env, conditions.na, op1, op2, op3, op4)
 }
-sna.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue])
+sna.validate = tupleR_RV_RV_RV
 // ZZZs
-const seqz: icPartialFunction = async (env, data) => seq(env, [...data, 0])
-const sgez: icPartialFunction = async (env, data) => sge(env, [...data, 0])
-const sgtz: icPartialFunction = async (env, data) => sgt(env, [...data, 0])
-const slez: icPartialFunction = async (env, data) => sle(env, [...data, 0])
-const sltz: icPartialFunction = async (env, data) => slt(env, [...data, 0])
-const snez: icPartialFunction = async (env, data) => sne(env, [...data, 0])
-const sapz: icPartialFunction = async (env, [op1, op2, op3]) => sap(env, [op1, op2, 0, op3])
-const snaz: icPartialFunction = async (env, [op1, op2, op3]) => sna(env, [op1, op2, 0, op3])
-seqz.validate = z.tuple([Ralias, RaliasOrValue])
-sgez.validate = z.tuple([Ralias, RaliasOrValue])
-sgtz.validate = z.tuple([Ralias, RaliasOrValue])
-slez.validate = z.tuple([Ralias, RaliasOrValue])
-sltz.validate = z.tuple([Ralias, RaliasOrValue])
-snez.validate = z.tuple([Ralias, RaliasOrValue])
-sapz.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
-snaz.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+const seqz: icPartialFunction = async (env, data) => {
+	const [op1, op2] = seqz.validate.parse(data)
+	await condition(env, conditions.eq, op1, op2, 0)
+}
+seqz.validate = tupleR_RV
+const sgez: icPartialFunction = async (env, data) => {
+	const [op1, op2] = sgez.validate.parse(data)
+	await condition(env, conditions.ge, op1, op2, 0)
+}
+sgez.validate = tupleR_RV
+const sgtz: icPartialFunction = async (env, data) => {
+	const [op1, op2] = sgtz.validate.parse(data)
+	await condition(env, conditions.gt, op1, op2, 0)
+}
+sgtz.validate = tupleR_RV
+const slez: icPartialFunction = async (env, data) => {
+	const [op1, op2] = slez.validate.parse(data)
+	await condition(env, conditions.le, op1, op2, 0)
+}
+slez.validate = tupleR_RV
+const sltz: icPartialFunction = async (env, data) => {
+	const [op1, op2] = sltz.validate.parse(data)
+	await condition(env, conditions.lt, op1, op2, 0)
+}
+sltz.validate = tupleR_RV
+const snez: icPartialFunction = async (env, data) => {
+	const [op1, op2] = snez.validate.parse(data)
+	await condition(env, conditions.ne, op1, op2, 0)
+}
+snez.validate = tupleR_RV
+const sapz: icPartialFunction = async (env, data) => {
+	const [op1, op2, op3] = sapz.validate.parse(data)
+	await condition(env, conditions.ap, op1, op2, op3, 0)
+}
+sapz.validate = tupleR_RV_RV
+const snaz: icPartialFunction = async (env, data) => {
+	const [op1, op2, op3] = snaz.validate.parse(data)
+	await condition(env, conditions.na, op1, op2, op3, 0)
+}
+snaz.validate = tupleR_RV_RV
 // set
 const sdse: icPartialFunction = async (env, data) => {
 	const [op1, op2] = sdse.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.dse(env, [op2])))
+	await condition(env, conditions.dse, op1, op2)
 }
-sdse.validate = z.tuple([Ralias, DeviceOrAlias])
+sdse.validate = tupleR_DA
 const sdns: icPartialFunction = async (env, data) => {
 	const [op1, op2] = sdns.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.dns(env, [op2])))
+	await condition(env, conditions.dns, op1, op2)
 }
-sdns.validate = z.tuple([Ralias, DeviceOrAlias])
+sdns.validate = tupleR_DA
 const snan: icPartialFunction = async (env, data) => {
 	const [op1, op2] = snan.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.nan(env, [op2])))
+	await condition(env, conditions.nan, op1, op2)
 }
-snan.validate = z.tuple([Ralias, Ralias])
+snan.validate = tupleR_R
 const snanz: icPartialFunction = async (env, data) => {
 	const [op1, op2] = snanz.validate.parse(data)
-	await env.set(op1, booleanToNumber(await conditions.nanz(env, [op2])))
+	await condition(env, conditions.nanz, op1, op2)
 }
-snanz.validate = z.tuple([Ralias, Ralias])
+snanz.validate = tupleR_R
 const sel: icPartialFunction = async (env, data) => {
 	const [op1, op2, op3, op4] = sel.validate.parse(data)
 	await env.set(op1, (await env.get(op2)) ? await env.get(op3) : await env.get(op4))
 }
-sel.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue, RaliasOrValue])
+sel.validate = tupleR_RV_RV_RV
 
 export const select: Record<SelectFunctionName, icPartialFunction> = {
 	seq,

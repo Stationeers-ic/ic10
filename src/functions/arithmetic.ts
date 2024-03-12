@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { icPartialFunction } from "../functions"
+import { icPartialFunction } from "./types"
 import BitWarn from "../errors/BitWarn"
 import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
 

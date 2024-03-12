@@ -6,7 +6,7 @@ describe("throw", () => {
 		expect(runThrow(`move`)).resolves.toMatchSnapshot()
 		expect(runThrow(`move 1 1`)).resolves.toMatchSnapshot()
 	})
-	test("alias", () => {
+	test("alias", async () => {
 		expect(runThrow(`alias`)).resolves.toMatchSnapshot()
 		expect(runThrow(`alias 1 1`)).resolves.toMatchSnapshot()
 		expect(runThrow(`alias d0 1`)).resolves.toMatchSnapshot()
