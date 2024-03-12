@@ -8,4 +8,4 @@ export { SyntaxError } from "./errors/SyntaxError"
 export { functions } from "./functions"
 
 //types
-export type { icFunction } from "./functions/types"
+export type { icFunction } from "./functions"
