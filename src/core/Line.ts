@@ -1,7 +1,7 @@
-import { tokenize, hash, Positions } from "../regexps"
-import { InterpreterIc10 } from "../"
+import type { InterpreterIc10 } from "../InterpreterIc10"
+import { type Positions, tokenize, hash } from "../regexps"
 import { functions } from "../functions"
-import { z, ZodError } from "zod"
+import { ZodError, z } from "zod"
 import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 import { AnyFunctionName } from "../ZodTypes"
@@ -29,7 +29,7 @@ const LineTest = z
 	])
 	.nullable()
 
-class Line {
+export class Line {
 	fn: string = ""
 	args: (string | number)[] = []
 	comment: string = ""

@@ -1,5 +1,5 @@
+import type Environment from "../abstract/Environment"
 import { dynamicDevice, dynamicDeviceGroups, dynamicRegisterGroups, dynamicRegisterReg } from "../regexps"
-import Environment from "../abstract/Environment"
 
 type PathFor = (env: Environment, string: string) => string
 type PathForAsync = (env: Environment, string: string) => Promise<string>

@@ -1,6 +1,6 @@
+import type { icCondition } from "./types"
 import { z } from "zod"
-import { icCondition } from "./types"
-import { ConditionName, StringOrNumberOrNaN } from "../ZodTypes"
+import { type ConditionName, StringOrNumberOrNaN } from "../ZodTypes"
 
 export const epsilon = 1.1210387714598537e-44
 

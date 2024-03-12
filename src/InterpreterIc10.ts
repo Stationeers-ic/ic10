@@ -1,4 +1,4 @@
-import Environment from "./abstract/Environment"
+import type Environment from "./abstract/Environment"
 import Line from "./core/Line"
 import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"

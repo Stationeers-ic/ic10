@@ -1,14 +1,6 @@
-import { icPartialFunction, tupleR_RV } from "./types"
+import { tupleR_RV, type icPartialFunction } from "./types"
 import { z } from "zod"
-import {
-	Alias,
-	AliasOrValue,
-	MiscFunctionName,
-	Ralias,
-	RaliasOrValue,
-	RaliasOrValueOrNaN,
-	RegisterOrDevice,
-} from "../ZodTypes"
+import { Alias, AliasOrValue, MiscFunctionName, RaliasOrValueOrNaN, RegisterOrDevice } from "../ZodTypes"
 
 const alias: icPartialFunction = async (env, data) => {
 	const [a, dr] = alias.validate.parse(data)

@@ -1,7 +1,7 @@
+import type { ZodError, ZodIssue } from "zod"
+import type Line from "../core/Line"
+import type { Position } from "../regexps"
 import Err from "../abstract/Err"
-import { ZodError, ZodIssue } from "zod"
-import Line from "../core/Line"
-import { Position } from "../regexps"
 
 export class SyntaxError extends Err {
 	public readonly name: string

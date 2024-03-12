@@ -1,6 +1,7 @@
-import { icPartialFunction } from "./types"
+import type { icPartialFunction } from "./types"
+import type { StackFunctionName } from "../ZodTypes"
 import { z } from "zod"
-import { Ralias, RaliasOrValue, StackFunctionName } from "../ZodTypes"
+import { Ralias, RaliasOrValue } from "../ZodTypes"
 
 const push: icPartialFunction = async (env, data) => {
 	const d = push.validate.parse(data)

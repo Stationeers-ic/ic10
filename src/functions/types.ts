@@ -1,6 +1,6 @@
 import { z } from "zod"
 import { DeviceOrAlias, Ralias, RaliasOrValue } from "../ZodTypes"
-import Environment from "../abstract/Environment"
+import type Environment from "../abstract/Environment"
 
 export type FunctionData = (string | number)[]
 

@@ -1,9 +1,9 @@
 // noinspection SuspiciousTypeOfGuard
 
+import type Line from "./Line"
+import type Err from "../abstract/Err"
 import Environment from "../abstract/Environment"
 import { z } from "zod"
-import Line from "./Line"
-import Err from "../abstract/Err"
 import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
 import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"

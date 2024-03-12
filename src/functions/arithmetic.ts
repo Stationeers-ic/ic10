@@ -1,7 +1,7 @@
+import type { icPartialFunction } from "./types"
 import { z } from "zod"
-import { icPartialFunction } from "./types"
 import BitWarn from "../errors/BitWarn"
-import { ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
+import { type ArithmeticFunctionName, Ralias, RaliasOrValue } from "../ZodTypes"
 
 export function jsThing(value: number) {
 	if (Object.is(value, -0)) return 0

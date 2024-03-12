@@ -1,3 +1,5 @@
+import type { icPartialFunction, icFunction } from "./types"
+export type { icFunction } from "./types"
 import arithmetic from "./arithmetic"
 import jump from "./jump"
 import select from "./select"
@@ -6,9 +8,7 @@ import device from "./device"
 import stack from "./stack"
 import { AnyFunctionName } from "../ZodTypes"
 import allFunctions from "../data/functions"
-import { icPartialFunction, icFunction } from "./types"
 
-export type { icFunction } from "./types"
 const functionsPartial: Record<AnyFunctionName, icPartialFunction> = {
 	...arithmetic,
 	...misc,

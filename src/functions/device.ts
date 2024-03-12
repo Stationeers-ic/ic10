@@ -1,8 +1,8 @@
-import { icPartialFunction } from "./types"
+import type { Environment } from "../abstract/Environment"
+import type { icPartialFunction } from "./types"
 import { z } from "zod"
 import { DeviceFunctionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
-import { Environment } from ".."
 
 async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
 	const m = env.get(mode)

@@ -1,8 +1,8 @@
-import Line from "../core/Line"
+import type Line from "../core/Line"
+import type { AnyFunctionName } from "../ZodTypes"
+import type Err from "./Err"
+import type { FunctionData } from "../functions/types"
 import EventEmitter from "eventemitter3"
-import { AnyFunctionName } from "../ZodTypes"
-import Err from "./Err"
-import { FunctionData } from "../functions/types"
 
 type EnvironmentEvents = {
 	error: (err: Err) => void
