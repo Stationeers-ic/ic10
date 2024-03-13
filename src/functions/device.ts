@@ -1,7 +1,16 @@
 import type { Environment } from "../abstract/Environment"
 import type { icPartialFunction } from "./types"
 import { z } from "zod"
-import { DeviceFunctionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
+import {
+	type DeviceFunctionName,
+	DeviceOrAlias,
+	Hash,
+	Logic,
+	Mode,
+	Ralias,
+	RaliasOrValue,
+	SlotIndex,
+} from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
 
 async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
