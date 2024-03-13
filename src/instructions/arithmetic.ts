@@ -1,5 +1,5 @@
-import type { ArithmeticFunctionName } from "../ZodTypes"
-import { tupleR, tupleR_RV, tupleR_RV_RV, type icPartialFunction } from "./types"
+import type { ArithmeticInstructionName } from "../ZodTypes"
+import { tupleR, tupleR_RV, tupleR_RV_RV, type icPartialInstruction } from "./types"
 import BitWarn from "../errors/BitWarn"
 
 export function jsThing(value: number): number {
@@ -8,89 +8,89 @@ export function jsThing(value: number): number {
 	return value
 }
 
-const add: icPartialFunction = async (env, data) => {
+const add: icPartialInstruction = async (env, data) => {
 	const d = add.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) + (await env.get(d[2]))))
 }
 add.validate = tupleR_RV_RV
-const sub: icPartialFunction = async (env, data) => {
+const sub: icPartialInstruction = async (env, data) => {
 	const d = sub.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) - (await env.get(d[2]))))
 }
 sub.validate = tupleR_RV_RV
-const mul: icPartialFunction = async (env, data) => {
+const mul: icPartialInstruction = async (env, data) => {
 	const d = mul.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) * (await env.get(d[2]))))
 }
 mul.validate = tupleR_RV_RV
-const div: icPartialFunction = async (env, data) => {
+const div: icPartialInstruction = async (env, data) => {
 	const d = div.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) / (await env.get(d[2]))))
 }
 div.validate = tupleR_RV_RV
-const mod: icPartialFunction = async (env, data) => {
+const mod: icPartialInstruction = async (env, data) => {
 	const d = mod.validate.parse(data)
 	let num = (await env.get(d[1])) % (await env.get(d[2]))
 	if (num < 0) num += await env.get(d[2])
 	await env.set(d[0], jsThing(num))
 }
 mod.validate = tupleR_RV_RV
-const sqrt: icPartialFunction = async (env, data) => {
+const sqrt: icPartialInstruction = async (env, data) => {
 	const d = sqrt.validate.parse(data)
 	await env.set(d[0], jsThing(Math.sqrt(await env.get(d[1]))))
 }
 sqrt.validate = tupleR_RV
-const round: icPartialFunction = async (env, data) => {
+const round: icPartialInstruction = async (env, data) => {
 	const d = round.validate.parse(data)
 	await env.set(d[0], jsThing(Math.round(await env.get(d[1]))))
 }
 round.validate = tupleR_RV
-const trunc: icPartialFunction = async (env, data) => {
+const trunc: icPartialInstruction = async (env, data) => {
 	const d = trunc.validate.parse(data)
 	await env.set(d[0], jsThing(Math.trunc(await env.get(d[1]))))
 }
 trunc.validate = tupleR_RV
-const ceil: icPartialFunction = async (env, data) => {
+const ceil: icPartialInstruction = async (env, data) => {
 	const d = ceil.validate.parse(data)
 	await env.set(d[0], jsThing(Math.ceil(await env.get(d[1]))))
 }
 ceil.validate = tupleR_RV
-const floor: icPartialFunction = async (env, data) => {
+const floor: icPartialInstruction = async (env, data) => {
 	const d = floor.validate.parse(data)
 	await env.set(d[0], jsThing(Math.floor(await env.get(d[1]))))
 }
 floor.validate = tupleR_RV
-const max: icPartialFunction = async (env, data) => {
+const max: icPartialInstruction = async (env, data) => {
 	const d = max.validate.parse(data)
 	await env.set(d[0], jsThing(Math.max(await env.get(d[1]), await env.get(d[2]))))
 }
 max.validate = tupleR_RV_RV
-const min: icPartialFunction = async (env, data) => {
+const min: icPartialInstruction = async (env, data) => {
 	const d = min.validate.parse(data)
 	await env.set(d[0], jsThing(Math.min(await env.get(d[1]), await env.get(d[2]))))
 }
 min.validate = tupleR_RV_RV
-const abs: icPartialFunction = async (env, data) => {
+const abs: icPartialInstruction = async (env, data) => {
 	const d = abs.validate.parse(data)
 	await env.set(d[0], jsThing(Math.abs(await env.get(d[1]))))
 }
 abs.validate = tupleR_RV
-const log: icPartialFunction = async (env, data) => {
+const log: icPartialInstruction = async (env, data) => {
 	const d = log.validate.parse(data)
 	await env.set(d[0], jsThing(Math.log(await env.get(d[1]))))
 }
 log.validate = tupleR_RV
-const exp: icPartialFunction = async (env, data) => {
+const exp: icPartialInstruction = async (env, data) => {
 	const d = exp.validate.parse(data)
 	await env.set(d[0], jsThing(Math.exp(await env.get(d[1]))))
 }
 exp.validate = tupleR_RV
-const rand: icPartialFunction = async (env, data) => {
+const rand: icPartialInstruction = async (env, data) => {
 	const d = rand.validate.parse(data)
 	await env.set(d[0], jsThing(Math.random()))
 }
 rand.validate = tupleR
-const sll: icPartialFunction = async (env, data) => {
+const sll: icPartialInstruction = async (env, data) => {
 	const d = sll.validate.parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -103,7 +103,7 @@ const sll: icPartialFunction = async (env, data) => {
 	)
 }
 sll.validate = tupleR_RV_RV
-const srl: icPartialFunction = async (env, data) => {
+const srl: icPartialInstruction = async (env, data) => {
 	const d = srl.validate.parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -116,7 +116,7 @@ const srl: icPartialFunction = async (env, data) => {
 	)
 }
 srl.validate = tupleR_RV_RV
-const sla: icPartialFunction = async (env, data) => {
+const sla: icPartialInstruction = async (env, data) => {
 	const d = sla.validate.parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -135,7 +135,7 @@ const sla: icPartialFunction = async (env, data) => {
 	)
 }
 sla.validate = tupleR_RV_RV
-const sra: icPartialFunction = async (env, data) => {
+const sra: icPartialInstruction = async (env, data) => {
 	const d = sra.validate.parse(data)
 	const l = await env.get(d[2])
 	if (l < 0) {
@@ -148,42 +148,42 @@ const sra: icPartialFunction = async (env, data) => {
 	)
 }
 sra.validate = tupleR_RV_RV
-const sin: icPartialFunction = async (env, data) => {
+const sin: icPartialInstruction = async (env, data) => {
 	const d = sin.validate.parse(data)
 	await env.set(d[0], jsThing(Math.sin(await env.get(d[1]))))
 }
 sin.validate = tupleR_RV
-const cos: icPartialFunction = async (env, data) => {
+const cos: icPartialInstruction = async (env, data) => {
 	const d = cos.validate.parse(data)
 	await env.set(d[0], jsThing(Math.cos(await env.get(d[1]))))
 }
 cos.validate = tupleR_RV
-const tan: icPartialFunction = async (env, data) => {
+const tan: icPartialInstruction = async (env, data) => {
 	const d = tan.validate.parse(data)
 	await env.set(d[0], jsThing(Math.tan(await env.get(d[1]))))
 }
 tan.validate = tupleR_RV
-const asin: icPartialFunction = async (env, data) => {
+const asin: icPartialInstruction = async (env, data) => {
 	const d = asin.validate.parse(data)
 	await env.set(d[0], jsThing(Math.asin(await env.get(d[1]))))
 }
 asin.validate = tupleR_RV
-const acos: icPartialFunction = async (env, data) => {
+const acos: icPartialInstruction = async (env, data) => {
 	const d = acos.validate.parse(data)
 	await env.set(d[0], jsThing(Math.acos(await env.get(d[1]))))
 }
 acos.validate = tupleR_RV
-const atan: icPartialFunction = async (env, data) => {
+const atan: icPartialInstruction = async (env, data) => {
 	const d = atan.validate.parse(data)
 	await env.set(d[0], jsThing(Math.atan(await env.get(d[1]))))
 }
 atan.validate = tupleR_RV
-const atan2: icPartialFunction = async (env, data) => {
+const atan2: icPartialInstruction = async (env, data) => {
 	const d = atan2.validate.parse(data)
 	await env.set(d[0], jsThing(Math.atan2(await env.get(d[1]), await env.get(d[2]))))
 }
 atan2.validate = tupleR_RV_RV
-const and: icPartialFunction = async (env, data) => {
+const and: icPartialInstruction = async (env, data) => {
 	const d = and.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) & (await env.get(d[2]))))
 	await env.throw(
@@ -191,7 +191,7 @@ const and: icPartialFunction = async (env, data) => {
 	)
 }
 and.validate = tupleR_RV_RV
-const or: icPartialFunction = async (env, data) => {
+const or: icPartialInstruction = async (env, data) => {
 	const d = or.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) | (await env.get(d[2]))))
 	await env.throw(
@@ -199,7 +199,7 @@ const or: icPartialFunction = async (env, data) => {
 	)
 }
 or.validate = tupleR_RV_RV
-const xor: icPartialFunction = async (env, data) => {
+const xor: icPartialInstruction = async (env, data) => {
 	const d = xor.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) ^ (await env.get(d[2]))))
 	await env.throw(
@@ -207,7 +207,7 @@ const xor: icPartialFunction = async (env, data) => {
 	)
 }
 xor.validate = tupleR_RV_RV
-const nor: icPartialFunction = async (env, data) => {
+const nor: icPartialInstruction = async (env, data) => {
 	const d = nor.validate.parse(data)
 	await env.set(d[0], jsThing(~((await env.get(d[1])) | (await env.get(d[2])))))
 	await env.throw(
@@ -216,7 +216,7 @@ const nor: icPartialFunction = async (env, data) => {
 }
 nor.validate = tupleR_RV_RV
 
-export const arithmetic: Record<ArithmeticFunctionName, icPartialFunction> = {
+export const arithmetic: Record<ArithmeticInstructionName, icPartialInstruction> = {
 	add,
 	sub,
 	mul,

@@ -1,25 +1,25 @@
-import { tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV, type icPartialFunction } from "./types"
+import { tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV, type icPartialInstruction } from "./types"
 import { z } from "zod"
-import { type MiscFunctionName, RaliasOrValueOrNaN } from "../ZodTypes"
+import { type MiscInstructionName, RaliasOrValueOrNaN } from "../ZodTypes"
 
-const alias: icPartialFunction = async (env, data) => {
+const alias: icPartialInstruction = async (env, data) => {
 	const [a, dr] = alias.validate.parse(data)
 	await env.alias(a, dr)
 }
 alias.validate = tupleA_RD
-const define: icPartialFunction = async (env, data) => {
+const define: icPartialInstruction = async (env, data) => {
 	const d = define.validate.parse(data)
 	await env.alias(d[0], await env.get(d[1]))
 }
 define.validate = tupleA_AV
-const move: icPartialFunction = async (env, data) => {
+const move: icPartialInstruction = async (env, data) => {
 	const d = move.validate.parse(data)
 	await env.set(d[0], await env.get(d[1]))
 }
 move.validate = tupleR_RV
-const yield_: icPartialFunction = async (env, data) => {}
+const yield_: icPartialInstruction = async (env, data) => {}
 yield_.validate = tupleEmpty
-const sleep: icPartialFunction = async (env, data) => {
+const sleep: icPartialInstruction = async (env, data) => {
 	const [time] = sleep.validate.parse(data)
 	return new Promise<void>(async (resolve) => {
 		setTimeout(
@@ -31,12 +31,12 @@ const sleep: icPartialFunction = async (env, data) => {
 	})
 }
 sleep.validate = z.tuple([RaliasOrValueOrNaN])
-const hcf: icPartialFunction = async (env, data) => {
+const hcf: icPartialInstruction = async (env, data) => {
 	await env.hcf()
 }
 hcf.validate = tupleEmpty
 
-export const misc: Record<MiscFunctionName, icPartialFunction> = {
+export const misc: Record<MiscInstructionName, icPartialInstruction> = {
 	alias,
 	define,
 	move,

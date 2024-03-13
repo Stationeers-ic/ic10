@@ -11,7 +11,7 @@ import {
 } from "../ZodTypes"
 import type Environment from "../abstract/Environment"
 
-export type FunctionData = (string | number)[]
+export type InstructionData = (string | number)[]
 
 export const tupleA_RD = z.tuple([Alias, RegisterOrDevice])
 export const tupleR = z.tuple([Ralias])
@@ -36,19 +36,19 @@ export const tupleRV_RV_RLI = z.tuple([RaliasOrValue, RaliasOrValue, RelativeLin
 export const tupleRV_RV_RV_RLI = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue, RelativeLineIndex])
 export const tupleEmpty = z.tuple([])
 
-export type icPartialFunction = {
-	(env: Environment, data: FunctionData): Promise<void>
+export type icPartialInstruction = {
+	(env: Environment, data: InstructionData): Promise<void>
 	validate: z.ZodTuple | z.ZodTuple<[]>
 	description?: string
 	example?: string
 	deprecated?: boolean
 }
-export type icFunction = {
-	(env: Environment, data: FunctionData): Promise<void>
+export type icInstruction = {
+	(env: Environment, data: InstructionData): Promise<void>
 	validate: z.ZodTuple | z.ZodTuple<[]>
 	description: string
 	example: string
 	deprecated: boolean
 }
 
-export type icCondition = (env: Environment, data: FunctionData) => Promise<boolean>
+export type icCondition = (env: Environment, data: InstructionData) => Promise<boolean>

@@ -1,25 +1,26 @@
 import { describe, expect, test } from "bun:test"
-import { functions, icPartialFunction } from "../functions"
+import { instructions } from "../instructions"
+import { icPartialInstruction } from "../instructions/types"
 import data from "./data/functions.en.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 import { pathFor_DynamicRegister } from "../core/Helpers"
 import CRC32 from "crc-32"
 import { z } from "zod"
-import { AnyFunctionName } from "../ZodTypes"
+import { AnyInstructionName } from "../ZodTypes"
 
 describe("main", () => {
 	test("functionsHasProto", () => {
 		const test = z.tuple([
-			AnyFunctionName,
+			AnyInstructionName,
 			z.object({
 				description: z.string(),
 				example: z.string(),
 				validate: z.instanceof(z.ZodSchema),
 			}),
 		])
-		for (const key in functions) {
-			const element: icPartialFunction = functions[key]
+		for (const key in instructions) {
+			const element: icPartialInstruction = instructions[key]
 			const result = test.safeParse([
 				key,
 				{
@@ -46,7 +47,7 @@ describe("main", () => {
 			data: expect.anything(),
 		})
 		if (!result.success) return
-		expect(data.map((x) => x.name).sort()).toEqual(Object.keys(functions).sort())
+		expect(data.map((x) => x.name).sort()).toEqual(Object.keys(instructions).sort())
 	})
 	test("dynamicRegister", () => {
 		const mem = new DevEnv()

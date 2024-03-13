@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import { runFuncWithMem, runThrow, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
-import { functions } from "../index"
+import { instructions } from "../instructions"
 
 describe("device", () => {
 	test("s", async () => {
@@ -43,13 +43,13 @@ describe("device", () => {
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
 		mem.set("r0", 5)
-		expect(runFuncWithMem(functions.sdse, ["r0", "d0"], mem)).resolves.toBe(1)
+		expect(runFuncWithMem(instructions.sdse, ["r0", "d0"], mem)).resolves.toBe(1)
 		mem.set("r0", 5)
-		expect(runFuncWithMem(functions.sdse, ["r0", "d1"], mem)).resolves.toBe(0)
+		expect(runFuncWithMem(instructions.sdse, ["r0", "d1"], mem)).resolves.toBe(0)
 		mem.set("r0", 5)
-		expect(runFuncWithMem(functions.sdns, ["r0", "d0"], mem)).resolves.toBe(0)
+		expect(runFuncWithMem(instructions.sdns, ["r0", "d0"], mem)).resolves.toBe(0)
 		mem.set("r0", 5)
-		expect(runFuncWithMem(functions.sdns, ["r0", "d1"], mem)).resolves.toBe(1)
+		expect(runFuncWithMem(instructions.sdns, ["r0", "d1"], mem)).resolves.toBe(1)
 	})
 
 	test("ss", async () => {
@@ -65,6 +65,6 @@ describe("device", () => {
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
 		mem.set("d0.Reagents.1.123", 2)
-		expect(runFuncWithMem(functions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
+		expect(runFuncWithMem(instructions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
 	})
 })

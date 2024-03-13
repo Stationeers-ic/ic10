@@ -151,7 +151,7 @@ export const ConditionName = z.union([
 ])
 export type ConditionName = z.infer<typeof ConditionName>
 
-export const ArithmeticFunctionName = z.union([
+export const ArithmeticInstructionName = z.union([
 	z.literal("add"),
 	z.literal("sub"),
 	z.literal("mul"),
@@ -184,9 +184,9 @@ export const ArithmeticFunctionName = z.union([
 	z.literal("xor"),
 	z.literal("nor"),
 ])
-export type ArithmeticFunctionName = z.infer<typeof ArithmeticFunctionName>
+export type ArithmeticInstructionName = z.infer<typeof ArithmeticInstructionName>
 
-export const SelectFunctionName = z.union([
+export const SelectInstructionName = z.union([
 	z.literal("seq"),
 	z.literal("sge"),
 	z.literal("sgt"),
@@ -209,9 +209,9 @@ export const SelectFunctionName = z.union([
 	z.literal("snanz"),
 	z.literal("select"),
 ])
-export type SelectFunctionName = z.infer<typeof SelectFunctionName>
+export type SelectInstructionName = z.infer<typeof SelectInstructionName>
 
-export const JumpFunctionName = z.union([
+export const JumpInstructionName = z.union([
 	z.literal("j"),
 	z.literal("jr"),
 	z.literal("jal"),
@@ -272,9 +272,9 @@ export const JumpFunctionName = z.union([
 	z.literal("bdseal"),
 	z.literal("bdnsal"),
 ])
-export type JumpFunctionName = z.infer<typeof JumpFunctionName>
+export type JumpInstructionName = z.infer<typeof JumpInstructionName>
 
-export const DeviceFunctionName = z.union([
+export const DeviceInstructionName = z.union([
 	z.literal("s"),
 	z.literal("l"),
 	z.literal("ls"),
@@ -288,9 +288,9 @@ export const DeviceFunctionName = z.union([
 	z.literal("ss"),
 	z.literal("sbs"),
 ])
-export type DeviceFunctionName = z.infer<typeof DeviceFunctionName>
+export type DeviceInstructionName = z.infer<typeof DeviceInstructionName>
 
-export const MiscFunctionName = z.union([
+export const MiscInstructionName = z.union([
 	z.literal("alias"),
 	z.literal("define"),
 	z.literal("move"),
@@ -298,20 +298,20 @@ export const MiscFunctionName = z.union([
 	z.literal("sleep"),
 	z.literal("hcf"),
 ])
-export type MiscFunctionName = z.infer<typeof MiscFunctionName>
+export type MiscInstructionName = z.infer<typeof MiscInstructionName>
 
-export const StackFunctionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")])
-export type StackFunctionName = z.infer<typeof StackFunctionName>
+export const StackInstructionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")])
+export type StackInstructionName = z.infer<typeof StackInstructionName>
 
-export const AnyFunctionName = z.union([
-	ArithmeticFunctionName,
-	SelectFunctionName,
-	JumpFunctionName,
-	DeviceFunctionName,
-	MiscFunctionName,
-	StackFunctionName,
+export const AnyInstructionName = z.union([
+	ArithmeticInstructionName,
+	SelectInstructionName,
+	JumpInstructionName,
+	DeviceInstructionName,
+	MiscInstructionName,
+	StackInstructionName,
 ])
-export type AnyFunctionName = z.infer<typeof AnyFunctionName>
+export type AnyInstructionName = z.infer<typeof AnyInstructionName>
 
 export function isKeyOfObject<T extends object>(key: string | number | symbol, obj: T): key is keyof T {
 	return key in obj

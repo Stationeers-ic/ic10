@@ -1,10 +1,10 @@
 import type { InterpreterIc10 } from "../InterpreterIc10"
 import { type Positions, tokenize, hash } from "../regexps"
-import { functions } from "../functions"
+import { instructions } from "../instructions"
 import { ZodError, z } from "zod"
 import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
-import { AnyFunctionName } from "../ZodTypes"
+import { AnyInstructionName } from "../ZodTypes"
 
 const LineTest = z
 	.tuple([
@@ -73,11 +73,11 @@ export class Line {
 	public async run(): Promise<Boolean> {
 		if (this.fn && !this.fn.endsWith(":")) {
 			this.runCounter++
-			const fn = AnyFunctionName.safeParse(this.fn)
+			const fn = AnyInstructionName.safeParse(this.fn)
 			if (fn.success) {
 				try {
 					this.scope.env.emit(`before_${fn.data}`, this.args ?? [], this)
-					await functions[fn.data](this.scope.env, this.args ?? [])
+					await instructions[fn.data](this.scope.env, this.args ?? [])
 					this.scope.env.emit(`after_${fn.data}`, this.args ?? [], this)
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {

@@ -1,4 +1,4 @@
-export const allFunctions: {
+export const allInstructions: {
 	name: string
 	preview: string
 	description: string
@@ -735,4 +735,4 @@ export const allFunctions: {
 	},
 ]
 
-export default allFunctions
+export default allInstructions

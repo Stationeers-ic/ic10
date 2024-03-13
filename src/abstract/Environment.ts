@@ -1,7 +1,7 @@
 import type Line from "../core/Line"
-import type { AnyFunctionName } from "../ZodTypes"
+import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
-import type { FunctionData } from "../functions/types"
+import type { InstructionData } from "../instructions/types"
 import EventEmitter from "eventemitter3"
 
 type EnvironmentEvents = {
@@ -10,10 +10,10 @@ type EnvironmentEvents = {
 	info: (err: Err) => void
 	debug: (err: Err) => void
 }
-type BeforeFunction = Record<`before_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>
-type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>
+type BeforeInstruction = Record<`before_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>
+type AfterInstruction = Record<`after_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>
 
-type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction
+type EventNames = EnvironmentEvents & BeforeInstruction & AfterInstruction
 
 /**
  * Environment for the interpreter
