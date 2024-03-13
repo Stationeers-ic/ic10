@@ -93,6 +93,7 @@ describe("select", () => {
 		expect(runFunc(instructions.sap, ["r0", 10, 11, 0.1])).resolves.toBe(1)
 		expect(runFunc(instructions.sap, ["r0", 10, 12, 0.1])).resolves.toBe(0)
 	})
+	// FIXME
 	test.todo("sapz", () => {
 		expect(runFunc(instructions.sapz, ["r0", "r0", "r0"], { r0: 1 })).resolves.toBe(1)
 		expect(runFunc(instructions.sapz, ["r0", "r0", "r0"], { r0: 0 })).resolves.toBe(0)
@@ -107,6 +108,7 @@ describe("select", () => {
 		expect(runFunc(instructions.sna, ["r0", 10, 11, 0.1])).resolves.toBe(0)
 		expect(runFunc(instructions.sna, ["r0", 10, 12, 0.1])).resolves.toBe(1)
 	})
+	// FIXME
 	test.todo("snaz", () => {
 		expect(runFunc(instructions.sna, ["r0", NaN, 0.01])).rejects.toThrow()
 		expect(runFunc(instructions.sna, ["r0", "r0", 0.01], { r0: NaN })).resolves.toBe(0)

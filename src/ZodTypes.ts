@@ -301,7 +301,12 @@ export const MiscInstructionName = z.union([
 ])
 export type MiscInstructionName = z.infer<typeof MiscInstructionName>
 
-export const StackInstructionName = z.union([z.literal("push"), z.literal("pop"), z.literal("peek")])
+export const StackInstructionName = z.union([
+	//
+	z.literal("push"),
+	z.literal("pop"),
+	z.literal("peek"),
+])
 export type StackInstructionName = z.infer<typeof StackInstructionName>
 
 export const AnyInstructionName = z.union([

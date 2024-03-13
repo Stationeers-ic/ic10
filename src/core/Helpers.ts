@@ -28,7 +28,7 @@ const pathFor_DynamicRegisterAsync: PathForAsync = async (env: Environment, stri
 const pathFor_DynamicDevicePort: PathFor = (env: Environment, string: string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
-		// TODO: wtf is this
+		// FIXME: wtf is this
 		const r = pathFor_DynamicRegisterAsync(env, rr) as unknown as string
 		return `d${env.get(r)}`
 	}
@@ -38,10 +38,10 @@ const pathFor_DynamicDevicePort: PathFor = (env: Environment, string: string) =>
 const pathFor_DynamicRegister: PathFor = (env: Environment, string: string) => {
 	if (dynamicRegisterReg.test(string)) {
 		const { first, rr } = dynamicRegisterGroups.parse(dynamicRegisterReg.exec(string)?.groups)
-		// TODO: fix as
+		// FIXME: fix as
 		let next = env.get(first) as number
 		for (let i = 1; i < rr.length; i++) {
-			// TODO: fix as
+			// FIXME: fix as
 			next = env.get(`r${next}`) as number
 		}
 		return `r${next}`
