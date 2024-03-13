@@ -292,6 +292,7 @@ export type DeviceInstructionName = z.infer<typeof DeviceInstructionName>
 
 export const MiscInstructionName = z.union([
 	z.literal("alias"),
+	z.literal("label"),
 	z.literal("define"),
 	z.literal("move"),
 	z.literal("yield"),

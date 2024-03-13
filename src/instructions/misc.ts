@@ -1,12 +1,17 @@
 import { tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV, type icPartialInstruction } from "./types"
 import { z } from "zod"
-import { type MiscInstructionName, RaliasOrValueOrNaN } from "../ZodTypes"
+import { type MiscInstructionName, RaliasOrValueOrNaN, RegisterOrDevice, Alias } from "../ZodTypes"
 
 const alias: icPartialInstruction = async (env, data) => {
 	const [a, dr] = alias.validate.parse(data)
 	await env.alias(a, dr)
 }
 alias.validate = tupleA_RD
+const label: icPartialInstruction = async (env, data) => {
+	const [dr, a] = label.validate.parse(data)
+	await env.alias(a, dr)
+}
+label.validate = z.tuple([RegisterOrDevice, Alias])
 const define: icPartialInstruction = async (env, data) => {
 	const d = define.validate.parse(data)
 	await env.alias(d[0], await env.get(d[1]))
@@ -38,6 +43,7 @@ hcf.validate = tupleEmpty
 
 export const misc: Record<MiscInstructionName, icPartialInstruction> = {
 	alias,
+	label,
 	define,
 	move,
 	yield: yield_,
