@@ -27,7 +27,7 @@ allInstructions.forEach(({ name, preview, description, deprecated }) => {
 	instructionsPartial[n].deprecated = deprecated || false
 })
 
-//						validated in types									validated in types
+//						validated in tests									validated in tests
 export const instructions: Record<AnyInstructionName, icInstruction> = instructionsPartial as Record<
 	AnyInstructionName,
 	icInstruction
