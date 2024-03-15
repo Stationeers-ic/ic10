@@ -53,29 +53,16 @@ async function short(f: "j" | "jr" | "jal", env: Environment, d: number): Promis
 const j: icPartialInstruction = async (env, data) => {
 	const [line] = j.validate.parse(data)
 	await short("j", env, line)
-	// const line = Value.min(0)
-	// 	.int()
-	// 	.parse(await env.get(d[0]))
-	// await env.jump(line)
 }
 j.validate = tupleLI
 const jr: icPartialInstruction = async (env, data) => {
 	const [line] = jr.validate.parse(data)
 	await short("jr", env, line)
-	// const line = Value.min(0)
-	// 	.int()
-	// 	.parse((await env.getPosition()) + (await env.get(d[0])))
-	// await env.jump(line)
 }
 jr.validate = tupleRLI
 const jal: icPartialInstruction = async (env, data) => {
 	const [line] = jal.validate.parse(data)
 	await short("jal", env, line)
-	// const line = Value.min(0)
-	// 	.int()
-	// 	.parse(await env.get(d[0]))
-	// await env.set("r17", await env.getPosition())
-	// await env.jump(line)
 }
 jal.validate = tupleLI
 const beq: icPartialInstruction = async (env, data) => {
@@ -133,21 +120,46 @@ const bnan: icPartialInstruction = async (env, data) => {
 	if (await conditions.nan(env, [v])) await short("j", env, line)
 }
 bnan.validate = tupleR_LI
-const beqz: icPartialInstruction = async (env, [x, y]) => beq(env, [x, 0, y])
-const bgez: icPartialInstruction = async (env, [x, y]) => bge(env, [x, 0, y])
-const bgtz: icPartialInstruction = async (env, [x, y]) => bgt(env, [x, 0, y])
-const blez: icPartialInstruction = async (env, [x, y]) => ble(env, [x, 0, y])
-const bltz: icPartialInstruction = async (env, [x, y]) => blt(env, [x, 0, y])
-const bnez: icPartialInstruction = async (env, [x, y]) => bne(env, [x, 0, y])
-const bapz: icPartialInstruction = async (env, [x, y, z]) => bap(env, [x, 0, y, z])
-const bnaz: icPartialInstruction = async (env, [x, y, z]) => bna(env, [x, 0, y, z])
+//zzz
+const beqz: icPartialInstruction = async (env, data) => {
+	const [x, line] = beqz.validate.parse(data)
+	if (await conditions.eq(env, [x, 0])) await short("j", env, line)
+}
 beqz.validate = tupleRV_LI
+const bgez: icPartialInstruction = async (env, data) => {
+	const [x, line] = bgez.validate.parse(data)
+	if (await conditions.ge(env, [x, 0])) await short("j", env, line)
+}
 bgez.validate = tupleRV_LI
+const bgtz: icPartialInstruction = async (env, data) => {
+	const [x, line] = bgtz.validate.parse(data)
+	if (await conditions.gt(env, [x, 0])) await short("j", env, line)
+}
 bgtz.validate = tupleRV_LI
+const blez: icPartialInstruction = async (env, data) => {
+	const [x, line] = blez.validate.parse(data)
+	if (await conditions.le(env, [x, 0])) await short("j", env, line)
+}
 blez.validate = tupleRV_LI
+const bltz: icPartialInstruction = async (env, data) => {
+	const [x, line] = bltz.validate.parse(data)
+	if (await conditions.lt(env, [x, 0])) await short("j", env, line)
+}
 bltz.validate = tupleRV_LI
+const bnez: icPartialInstruction = async (env, data) => {
+	const [x, line] = bnez.validate.parse(data)
+	if (await conditions.ne(env, [x, 0])) await short("j", env, line)
+}
 bnez.validate = tupleRV_LI
+const bapz: icPartialInstruction = async (env, data) => {
+	const [x, c, line] = bnaz.validate.parse(data)
+	if (await conditions.ap(env, [x, 0, c])) await short("j", env, line)
+}
 bapz.validate = tupleRV_RV_LI
+const bnaz: icPartialInstruction = async (env, data) => {
+	const [x, c, line] = bnaz.validate.parse(data)
+	if (await conditions.na(env, [x, 0, c])) await short("j", env, line)
+}
 bnaz.validate = tupleRV_RV_LI
 
 const breq: icPartialInstruction = async (env, data) => {
@@ -205,21 +217,47 @@ const brnan: icPartialInstruction = async (env, data) => {
 	if (await conditions.nan(env, [v])) await short("jr", env, offset)
 }
 brnan.validate = tupleR_RLI
-const breqz: icPartialInstruction = async (env, [x, y]) => breq(env, [x, 0, y])
-const brgez: icPartialInstruction = async (env, [x, y]) => brge(env, [x, 0, y])
-const brgtz: icPartialInstruction = async (env, [x, y]) => brgt(env, [x, 0, y])
-const brlez: icPartialInstruction = async (env, [x, y]) => brle(env, [x, 0, y])
-const brltz: icPartialInstruction = async (env, [x, y]) => brlt(env, [x, 0, y])
-const brnez: icPartialInstruction = async (env, [x, y]) => brne(env, [x, 0, y])
-const brapz: icPartialInstruction = async (env, [x, y, z]) => bap(env, [x, 0, y, z])
-const brnaz: icPartialInstruction = async (env, [x, y, z]) => bna(env, [x, 0, y, z])
+
+//zzz
+const breqz: icPartialInstruction = async (env, data) => {
+	const [a, offset] = breqz.validate.parse(data)
+	if (await conditions.eq(env, [a, 0])) await short("jr", env, offset)
+}
 breqz.validate = tupleRV_RLI
+const brgez: icPartialInstruction = async (env, data) => {
+	const [a, offset] = brgez.validate.parse(data)
+	if (await conditions.ge(env, [a, 0])) await short("jr", env, offset)
+}
 brgez.validate = tupleRV_RLI
+const brgtz: icPartialInstruction = async (env, data) => {
+	const [a, offset] = brgtz.validate.parse(data)
+	if (await conditions.gt(env, [a, 0])) await short("jr", env, offset)
+}
 brgtz.validate = tupleRV_RLI
+const brlez: icPartialInstruction = async (env, data) => {
+	const [a, offset] = brlez.validate.parse(data)
+	if (await conditions.le(env, [a, 0])) await short("jr", env, offset)
+}
 brlez.validate = tupleRV_RLI
+const brltz: icPartialInstruction = async (env, data) => {
+	const [a, offset] = brltz.validate.parse(data)
+	if (await conditions.lt(env, [a, 0])) await short("jr", env, offset)
+}
 brltz.validate = tupleRV_RLI
+const brnez: icPartialInstruction = async (env, data) => {
+	const [a, offset] = brnez.validate.parse(data)
+	if (await conditions.ne(env, [a, 0])) await short("jr", env, offset)
+}
 brnez.validate = tupleRV_RLI
+const brapz: icPartialInstruction = async (env, data) => {
+	const [x, c, offset] = brapz.validate.parse(data)
+	if (await conditions.ap(env, [x, 0, c])) await short("jr", env, offset)
+}
 brapz.validate = tupleRV_RV_RLI
+const brnaz: icPartialInstruction = async (env, data) => {
+	const [x, c, offset] = brnaz.validate.parse(data)
+	if (await conditions.na(env, [x, 0, c])) await short("jr", env, offset)
+}
 brnaz.validate = tupleRV_RV_RLI
 
 const beqal: icPartialInstruction = async (env, data) => {
@@ -273,22 +311,46 @@ const bdnsal: icPartialInstruction = async (env, data) => {
 }
 bdnsal.validate = tupleDA_LI
 
-const beqzal: icPartialInstruction = async (env, [x, y]) => beqzal(env, [x, 0, y])
-const bgezal: icPartialInstruction = async (env, [x, y]) => bgezal(env, [x, 0, y])
-const bgtzal: icPartialInstruction = async (env, [x, y]) => bgtzal(env, [x, 0, y])
-const blezal: icPartialInstruction = async (env, [x, y]) => blezal(env, [x, 0, y])
-const bltzal: icPartialInstruction = async (env, [x, y]) => bltzal(env, [x, 0, y])
-const bnezal: icPartialInstruction = async (env, [x, y]) => bnezal(env, [x, 0, y])
-const bapzal: icPartialInstruction = async (env, [x, y, z]) => bapzal(env, [x, 0, y, z])
-const bnazal: icPartialInstruction = async (env, [x, y, z]) => bnazal(env, [x, 0, y, z])
-
+//zzz
+const beqzal: icPartialInstruction = async (env, data) => {
+	const [a, line] = beqzal.validate.parse(data)
+	if (await conditions.eq(env, [a, 0])) await short("jal", env, line)
+}
 beqzal.validate = tupleRV_LI
+const bgezal: icPartialInstruction = async (env, data) => {
+	const [a, line] = bgezal.validate.parse(data)
+	if (await conditions.ge(env, [a, 0])) await short("jal", env, line)
+}
 bgezal.validate = tupleRV_LI
+const bgtzal: icPartialInstruction = async (env, data) => {
+	const [a, line] = bgtzal.validate.parse(data)
+	if (await conditions.gt(env, [a, 0])) await short("jal", env, line)
+}
 bgtzal.validate = tupleRV_LI
+const blezal: icPartialInstruction = async (env, data) => {
+	const [a, line] = blezal.validate.parse(data)
+	if (await conditions.le(env, [a, 0])) await short("jal", env, line)
+}
 blezal.validate = tupleRV_LI
+const bltzal: icPartialInstruction = async (env, data) => {
+	const [a, line] = bltzal.validate.parse(data)
+	if (await conditions.lt(env, [a, 0])) await short("jal", env, line)
+}
 bltzal.validate = tupleRV_LI
+const bnezal: icPartialInstruction = async (env, data) => {
+	const [a, line] = bnezal.validate.parse(data)
+	if (await conditions.ne(env, [a, 0])) await short("jal", env, line)
+}
 bnezal.validate = tupleRV_LI
+const bapzal: icPartialInstruction = async (env, data) => {
+	const [x, c, line] = bapzal.validate.parse(data)
+	if (await conditions.ap(env, [x, 0, c])) await short("jal", env, line)
+}
 bapzal.validate = tupleRV_RV_LI
+const bnazal: icPartialInstruction = async (env, data) => {
+	const [x, c, line] = bnazal.validate.parse(data)
+	if (await conditions.na(env, [x, 0, c])) await short("jal", env, line)
+}
 bnazal.validate = tupleRV_RV_LI
 
 export const jump = {
