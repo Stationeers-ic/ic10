@@ -1,6 +1,6 @@
-import { Positions } from "../regexps";
-import { InterpreterIc10 } from "../";
-declare class Line {
+import type { InterpreterIc10 } from "../InterpreterIc10";
+import { type Positions } from "../regexps";
+export declare class Line {
     private scope;
     readonly line: string;
     lineIndex: number;

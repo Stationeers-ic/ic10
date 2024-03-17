@@ -1,5 +1,5 @@
 import Err from "../abstract/Err";
-declare class InfiniteLoop extends Err {
+export declare class InfiniteLoop extends Err {
     level: "error" | "warn" | "info" | "debug";
     lineStart?: number | undefined;
     lineEnd?: number | undefined;

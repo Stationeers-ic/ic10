@@ -1,9 +1,9 @@
-import InterpreterIc10 from "./InterpreterIc10";
-import DevEnv from "./core/DevEnv";
-import Err from "./abstract/Err";
-import Environment from "./abstract/Environment";
-import BitWarn from "./errors/BitWarn";
-import InfiniteLoop from "./errors/InfiniteLoop";
-import SyntaxError from "./errors/SyntaxError";
-import functions from "./functions";
-export { InterpreterIc10, DevEnv, Environment, Err, BitWarn, InfiniteLoop, SyntaxError, functions };
+export { InterpreterIc10 } from "./InterpreterIc10";
+export { DevEnv } from "./core/DevEnv";
+export { Err } from "./abstract/Err";
+export { Environment } from "./abstract/Environment";
+export { BitWarn } from "./errors/BitWarn";
+export { InfiniteLoop } from "./errors/InfiniteLoop";
+export { SyntaxError } from "./errors/SyntaxError";
+export { instructions } from "./instructions";
+export type { icInstruction } from "./instructions";

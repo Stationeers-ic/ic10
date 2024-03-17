@@ -1,5 +1,5 @@
-import Environment from "./abstract/Environment";
-declare class InterpreterIc10 {
+import type Environment from "./abstract/Environment";
+export declare class InterpreterIc10 {
     code: string;
     stopRun: boolean;
     env: Environment;
@@ -7,9 +7,9 @@ declare class InterpreterIc10 {
     setCode(code: string): this;
     setEnv(env: Environment): this;
     private parseCode;
-    stop(): void;
-    step(): Promise<string | boolean>;
     testCode(): Promise<void>;
+    step(): Promise<string | boolean>;
     run(codeLines?: number, dryRun?: number): Promise<string>;
+    stop(): void;
 }
 export default InterpreterIc10;

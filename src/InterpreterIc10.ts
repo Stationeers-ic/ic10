@@ -47,8 +47,12 @@ export class InterpreterIc10 {
 		return this
 	}
 
-	public stop() {
-		this.stopRun = true
+	public async testCode() {
+		this.env.isTest = true
+		const lines = await this.env.getLines()
+		for (const line in lines) {
+			lines[line]?.run()
+		}
 	}
 
 	public async step(): Promise<string | boolean> {
@@ -60,6 +64,7 @@ export class InterpreterIc10 {
 		}
 		if (line === undefined) return "EOF"
 
+		await this.env.beforeLineRun(line)
 		// Запуск строки
 		await line.run()
 
@@ -76,14 +81,6 @@ export class InterpreterIc10 {
 		}
 		await this.env.afterLineRun(line)
 		return true
-	}
-
-	public async testCode() {
-		this.env.isTest = true
-		const lines = await this.env.getLines()
-		for (const line in lines) {
-			lines[line]?.run()
-		}
 	}
 
 	public async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
@@ -113,6 +110,10 @@ export class InterpreterIc10 {
 		if (codeLines <= 0 || dryRun <= 0) return "safeGuard"
 		if (this.stopRun) return "STOP"
 		return "ERR"
+	}
+
+	public stop() {
+		this.stopRun = true
 	}
 }
 

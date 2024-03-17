@@ -1,18 +1,18 @@
-import Line from "../core/Line";
+import type Line from "../core/Line";
+import type { AnyInstructionName } from "../ZodTypes";
+import type Err from "./Err";
+import type { InstructionData } from "../instructions/types";
 import EventEmitter from "eventemitter3";
-import { AnyFunctionName } from "../ZodTypes";
-import Err from "./Err";
-import { FunctionData } from "../functions";
 type EnvironmentEvents = {
     error: (err: Err) => void;
     warn: (err: Err) => void;
     info: (err: Err) => void;
     debug: (err: Err) => void;
 };
-type BeforeFunction = Record<`before_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>;
-type AfterFunction = Record<`after_${AnyFunctionName}`, (data: FunctionData, line: Line) => void>;
-type EventNames = EnvironmentEvents & BeforeFunction & AfterFunction;
-declare abstract class Environment extends EventEmitter<EventNames, Environment> {
+type BeforeInstruction = Record<`before_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>;
+type AfterInstruction = Record<`after_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>;
+type EventNames = EnvironmentEvents & BeforeInstruction & AfterInstruction;
+export declare abstract class Environment extends EventEmitter<EventNames, Environment> {
     isTest: boolean;
     InfiniteLoopLimit: number;
     abstract addLine(line: Line | null): Promise<this> | this;
