@@ -1,4 +1,5 @@
 import type Environment from "./abstract/Environment";
+
 export declare class InterpreterIc10 {
     code: string;
     stopRun: boolean;
@@ -6,7 +7,7 @@ export declare class InterpreterIc10 {
     constructor(env: Environment, code: string);
     setCode(code: string): this;
     setEnv(env: Environment): this;
-    private parseCode;
+    parseCode(): this;
     testCode(): Promise<void>;
     step(): Promise<string | boolean>;
     run(codeLines?: number, dryRun?: number): Promise<string>;

@@ -6,4 +6,5 @@ export { BitWarn } from "./errors/BitWarn";
 export { InfiniteLoop } from "./errors/InfiniteLoop";
 export { SyntaxError } from "./errors/SyntaxError";
 export { instructions } from "./instructions";
+export { str as hash } from "crc-32";
 export type { icInstruction } from "./instructions";
