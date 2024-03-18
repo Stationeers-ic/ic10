@@ -26,7 +26,7 @@ export class InterpreterIc10 {
 		return this
 	}
 
-	private parseCode(): this {
+	public parseCode(): this {
 		this.code
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
