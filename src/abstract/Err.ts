@@ -10,10 +10,10 @@ export abstract class Err extends Error {
 		super(message)
 	}
 
-	format(): string {
+	format(startLineNumber: 1 | 0 = 0): string {
 		if (this.lineStart === undefined) return `${this.level}: ${this.message}`
-		if (this.charStart === undefined) return `${this.level}: ${this.message} at ${this.lineStart}`
-		return `${this.level}: ${this.message} at ${this.lineStart}:${this.charStart + 1}`
+		if (this.charStart === undefined) return `${this.level}: ${this.message} at ${this.lineStart + startLineNumber}`
+		return `${this.level}: ${this.message} at ${this.lineStart + startLineNumber}:${this.charStart + 1}`
 	}
 
 	position(): {
@@ -21,8 +21,8 @@ export abstract class Err extends Error {
 		end: { line: number; char: number }
 	} {
 		return {
-			start: { line: this.lineStart ?? -1, char: this.charStart ?? -1 },
-			end: { line: this.lineEnd ?? -1, char: this.charEnd ?? -1 },
+			start: {line: this.lineStart ?? -1, char: this.charStart ?? -1},
+			end: {line: this.lineEnd ?? -1, char: this.charEnd ?? -1},
 		}
 	}
 }
