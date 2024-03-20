@@ -44,17 +44,20 @@ export class DevEnv extends Environment {
 
 	constructor(data: { [key: string]: number } = {}) {
 		super()
+		this.setDefaultAliases()
+		Object.entries(data).forEach(([key, value]) => {
+			this.set(key, value)
+		})
+	}
+
+	setDefaultAliases() {
 		this.aliases.set("sp", "r16")
 		this.aliases.set("ra", "r17")
-
 		this.aliases.set("NaN", NaN)
 		this.aliases.set("Average", 0)
 		this.aliases.set("Sum", 1)
 		this.aliases.set("Minimum", 2)
 		this.aliases.set("Maximum", 3)
-		Object.entries(data).forEach(([key, value]) => {
-			this.set(key, value)
-		})
 	}
 
 	getDevices() {
@@ -115,6 +118,14 @@ export class DevEnv extends Environment {
 	}
 
 	attachDevice(id: string, port: string): this {
+		if (this.devicesAttached.has(port)) {
+			const old = this.devicesAttached.get(port)
+			if (old) {
+				this.detachDevice(old)
+			} else {
+				this.devicesAttached.delete(port)
+			}
+		}
 		this.devicesAttached.set(port, id)
 		this.devicesAttached.set(id, port)
 		return this
