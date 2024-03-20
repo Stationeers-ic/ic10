@@ -1,7 +1,8 @@
 import type Line from "./Line";
 import type Err from "../abstract/Err";
 import Environment from "../abstract/Environment";
-import { z } from "zod";
+import {z} from "zod";
+
 declare const ZodDevice: z.ZodUnion<[z.ZodRecord<z.ZodString, z.ZodNumber>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>>]>;
 type ZodDevice = z.infer<typeof ZodDevice>;
 export declare class DevEnv extends Environment {
@@ -17,6 +18,7 @@ export declare class DevEnv extends Environment {
     constructor(data?: {
         [key: string]: number;
     });
+    setDefaultAliases(): void;
     getDevices(): Map<string, Record<string, number> | Record<string, Record<string, number>> | Record<string, Record<string, Record<string, number>>>>;
     getCurrentLine(): Line | null | undefined;
     addLine(line: Line | null): this;
