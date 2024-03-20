@@ -3,11 +3,11 @@
 import type Line from "./Line"
 import type Err from "../abstract/Err"
 import Environment from "../abstract/Environment"
-import { z } from "zod"
+import {z} from "zod"
 import SyntaxError from "../errors/SyntaxError"
-import { getProperty, setProperty } from "dot-prop"
-import { NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
-import { v4 as uuid } from "uuid"
+import {getProperty, setProperty} from "dot-prop"
+import {Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN} from "../ZodTypes"
+import {v4 as uuid} from "uuid"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
@@ -140,7 +140,7 @@ export class DevEnv extends Environment {
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (/^d\d+/.test(name)) {
+		if (Device.safeParse(name).success) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
@@ -157,7 +157,7 @@ export class DevEnv extends Environment {
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (/^d\d+/.test(name)) {
+		if (Device.safeParse(name).success) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
