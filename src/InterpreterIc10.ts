@@ -60,6 +60,7 @@ export class InterpreterIc10 {
 		const line = await this.env.getCurrentLine()
 		if (line === null) {
 			await this.env.addPosition(1)
+			await this.env.afterLineRun()
 			return false
 		}
 		if (line === undefined) return "EOF"

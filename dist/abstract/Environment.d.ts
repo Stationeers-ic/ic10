@@ -1,8 +1,9 @@
 import type Line from "../core/Line";
-import type { AnyInstructionName } from "../ZodTypes";
+import type {AnyInstructionName} from "../ZodTypes";
 import type Err from "./Err";
-import type { InstructionData } from "../instructions/types";
+import type {InstructionData} from "../instructions/types";
 import EventEmitter from "eventemitter3";
+
 type EnvironmentEvents = {
     error: (err: Err) => void;
     warn: (err: Err) => void;
@@ -45,7 +46,7 @@ export declare abstract class Environment extends EventEmitter<EventNames, Envir
     abstract setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): Promise<this> | this;
     abstract hcf(): Promise<this> | this;
     beforeLineRun(line: Line): Promise<void>;
-    afterLineRun(line: Line): Promise<void>;
+    afterLineRun(line?: Line): Promise<void>;
     abstract throw(err: Err): Promise<this> | this;
     abstract getErrorCount(): Promise<number> | number;
     abstract getErrors(): Promise<Err[]> | Err[];
