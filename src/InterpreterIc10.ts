@@ -56,31 +56,40 @@ export class InterpreterIc10 {
 	}
 
 	public async step(): Promise<string | boolean> {
-		const old = await this.env.getPosition()
-		const line = await this.env.getCurrentLine()
-		if (line === null) {
-			await this.env.addPosition(1)
-			await this.env.afterLineRun()
-			return false
-		}
-		if (line === undefined) return "EOF"
+		try {
+			const old = await this.env.getPosition()
+			const line = await this.env.getCurrentLine()
+			if (line === null) {
+				await this.env.addPosition(1)
+				await this.env.afterLineRun()
+				return false
+			}
+			if (line === undefined) return "EOF"
 
-		await this.env.beforeLineRun(line)
-		// Запуск строки
-		await line.run()
+			await this.env.beforeLineRun(line)
+			// Запуск строки
+			await line.run()
 
-		// Проверка на бесконечный цикл
-		if (line.runCounter > this.env.InfiniteLoopLimit) {
-			await this.env.throw(
-				new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
-			)
-		}
+			// Проверка на бесконечный цикл
+			if (line.runCounter > this.env.InfiniteLoopLimit) {
+				await this.env.throw(
+					new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
+				)
+			}
 
-		// Проверка не прыжок
-		if (old === (await this.env.getPosition())) {
-			await this.env.addPosition(1)
+			// Проверка не прыжок
+			if (old === (await this.env.getPosition())) {
+				await this.env.addPosition(1)
+			}
+			await this.env.afterLineRun(line)
+		} catch (e: Err | unknown) {
+			if (e instanceof Err) {
+				this.env.throw(e)
+			} else {
+				throw e
+			}
+			return "ERR"
 		}
-		await this.env.afterLineRun(line)
 		return true
 	}
 
@@ -89,25 +98,19 @@ export class InterpreterIc10 {
 		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
 		if ((await this.env.getErrorCount()) !== 0) return "ERR"
-		try {
-			let result: string | boolean = false
-			while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
-				result = await this.step()
-				// exit with code
-				if (typeof result === "string") return result
-				if ((await this.env.getErrorCount()) !== 0) return "ERR"
-				// on code lines
-				if (result) codeLines--
-				// on empty lines
-				else dryRun--
-			}
-		} catch (e: Err | unknown) {
-			if (e instanceof Err) {
-				this.env.throw(e)
-			} else {
-				throw e
-			}
+
+		let result: string | boolean = false
+		while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
+			result = await this.step()
+			// exit with code
+			if (typeof result === "string") return result
+			if ((await this.env.getErrorCount()) !== 0) return "ERR"
+			// on code lines
+			if (result) codeLines--
+			// on empty lines
+			else dryRun--
 		}
+
 		if (codeLines <= 0 || dryRun <= 0) return "safeGuard"
 		if (this.stopRun) return "STOP"
 		return "ERR"
