@@ -21,9 +21,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Install bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -40,12 +37,19 @@ jobs:
         run: mkdir build
       - name: Pack
         id: build
-        run:  echo OUTPUT="$(npm pack)" >> "$GITHUB_OUTPUT"
+        run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
+      - name: Set outputs
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          fullname="${{ steps.build.outputs.OUTPUT }}"
+          echo "filename=${fullname%.*}" >> $GITHUB_OUTPUT
+          echo "extension=${fullname##*.}" >> $GITHUB_OUTPUT
       - name: Rename
-        run: mv "${{ steps.build.outputs.OUTPUT }}" "${{ steps.build.outputs.OUTPUT }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}"
+        run: mv "${{ steps.build.outputs.OUTPUT }}" "${{ steps.vars.outputs.filename }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}.${{ steps.vars.outputs.extension }}"
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ steps.build.outputs.OUTPUT }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}
+          path: ${{ steps.vars.outputs.filename }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}.${{ steps.vars.outputs.extension }}
           retention-days: 60
 
