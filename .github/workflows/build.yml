@@ -40,7 +40,7 @@ jobs:
         run: mkdir build
       - name: Pack
         id: build
-        run:  echo 'OUTPUT="$(npm pack)"' >> "$GITHUB_OUTPUT"
+        run:  echo OUTPUT="$(npm pack)" >> "$GITHUB_OUTPUT"
       - name: Rename
         run: mv "${{ steps.build.outputs.OUTPUT }}" "${{ steps.build.outputs.OUTPUT }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}"
       - name: 'Upload Artifact'
