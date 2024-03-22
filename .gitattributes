@@ -25,9 +25,9 @@
 *.html            text diff=html
 *.inc             text
 *.ini             text
-*              text
-*on            text
-*x             text
+*.js              text
+*.json            text
+*.jsx             text
 *.less            text
 *.ls              text
 *.map             text -diff
@@ -109,8 +109,8 @@ TODO              text
 .gitconfig        text
 .htaccess         text
 *.lock            text -diff
-packageon      text eol=lf
-package-lockon text eol=lf -diff
+package.json      text eol=lf
+package-lock.json text eol=lf -diff
 pnpm-lock.yaml    text eol=lf -diff
 .prettierrc       text
 yarn.lock         text -diff
@@ -299,7 +299,7 @@ Procfile          text
 *.ps1      text eol=crlf
 
 # Serialisation
-*on     text
+*.json     text
 *.toml     text
 *.xml      text
 *.yaml     text
