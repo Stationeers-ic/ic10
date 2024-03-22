@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"streetsidesoftware.code-spell-checker",
+		"oven.bun-vscode",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"streetsidesoftware.code-spell-checker-russian"
+	]
+}
