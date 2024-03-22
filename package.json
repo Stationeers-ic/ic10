@@ -20,13 +20,16 @@
     "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Stationeers-ic/ic10.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC BY-NC 4.0",
   "bugs": {
     "url": "https://github.com/Stationeers-ic/ic10/issues"
   },
