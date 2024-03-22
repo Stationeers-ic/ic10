@@ -21,8 +21,8 @@ export abstract class Err extends Error {
 		end: { line: number; char: number }
 	} {
 		return {
-			start: {line: this.lineStart ?? -1, char: this.charStart ?? -1},
-			end: {line: this.lineEnd ?? -1, char: this.charEnd ?? -1},
+			start: { line: this.lineStart ?? -1, char: this.charStart ?? -1 },
+			end: { line: this.lineEnd ?? -1, char: this.charEnd ?? -1 },
 		}
 	}
 }

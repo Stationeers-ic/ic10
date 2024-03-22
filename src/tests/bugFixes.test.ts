@@ -1,5 +1,5 @@
-import {describe, expect, test} from "bun:test"
-import {runCode, runWithMen} from "./testUtils"
+import { describe, expect, test } from "bun:test"
+import { runCode, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {
@@ -21,7 +21,7 @@ l r0 d1:1 Channel1
 		).resolves.toBe(10)
 	})
 
-	test('err error',()=>{
+	test("err error", () => {
 		runCode(`alias r0 test`)
 	})
 })

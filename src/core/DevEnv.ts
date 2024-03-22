@@ -3,11 +3,11 @@
 import type Line from "./Line"
 import type Err from "../abstract/Err"
 import Environment from "../abstract/Environment"
-import {z} from "zod"
+import { z } from "zod"
 import SyntaxError from "../errors/SyntaxError"
-import {getProperty, setProperty} from "dot-prop"
-import {Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN} from "../ZodTypes"
-import {v4 as uuid} from "uuid"
+import { getProperty, setProperty } from "dot-prop"
+import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
+import { v4 as uuid } from "uuid"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,

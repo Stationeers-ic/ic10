@@ -1,7 +1,7 @@
 import type Line from "../core/Line"
-import type {AnyInstructionName} from "../ZodTypes"
+import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
-import type {InstructionData} from "../instructions/types"
+import type { InstructionData } from "../instructions/types"
 import EventEmitter from "eventemitter3"
 
 type EnvironmentEvents = {
