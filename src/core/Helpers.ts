@@ -1,10 +1,10 @@
 import type Environment from "../abstract/Environment"
 import { dynamicDevice, dynamicDeviceGroups, dynamicRegisterGroups, dynamicRegisterReg } from "../regexps"
 
-type PathFor = (env: Environment, string: string) => string
-type PathForAsync = (env: Environment, string: string) => Promise<string>
+type PathFor = (env: Environment<any>, string: string) => string
+type PathForAsync = (env: Environment<any>, string: string) => Promise<string>
 
-const pathFor_DynamicDevicePortAsync: PathForAsync = async (env: Environment, string: string) => {
+const pathFor_DynamicDevicePortAsync: PathForAsync = async (env, string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
 		const r = await pathFor_DynamicRegisterAsync(env, rr)
@@ -13,7 +13,7 @@ const pathFor_DynamicDevicePortAsync: PathForAsync = async (env: Environment, st
 	return string
 }
 
-const pathFor_DynamicRegisterAsync: PathForAsync = async (env: Environment, string: string) => {
+const pathFor_DynamicRegisterAsync: PathForAsync = async (env, string) => {
 	if (dynamicRegisterReg.test(string)) {
 		const { first, rr } = dynamicRegisterGroups.parse(dynamicRegisterReg.exec(string)?.groups)
 		let next = await env.get(first)
@@ -25,7 +25,7 @@ const pathFor_DynamicRegisterAsync: PathForAsync = async (env: Environment, stri
 	return string
 }
 
-const pathFor_DynamicDevicePort: PathFor = (env: Environment, string: string) => {
+const pathFor_DynamicDevicePort: PathFor = (env, string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
 		// FIXME: wtf is this
@@ -35,7 +35,7 @@ const pathFor_DynamicDevicePort: PathFor = (env: Environment, string: string) =>
 	return string
 }
 
-const pathFor_DynamicRegister: PathFor = (env: Environment, string: string) => {
+const pathFor_DynamicRegister: PathFor = (env, string) => {
 	if (dynamicRegisterReg.test(string)) {
 		const { first, rr } = dynamicRegisterGroups.parse(dynamicRegisterReg.exec(string)?.groups)
 		// FIXME: fix as
@@ -49,7 +49,7 @@ const pathFor_DynamicRegister: PathFor = (env: Environment, string: string) => {
 	return string
 }
 
-const pathFor_PortWithConnection: PathFor = (_env: Environment, string: string) => {
+const pathFor_PortWithConnection: PathFor = (_env, string) => {
 	const p = PortWithConnection(string)
 	if (p.connection) {
 		string = `${p.port}.Connection.${p.connection}`

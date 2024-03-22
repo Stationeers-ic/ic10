@@ -25,7 +25,7 @@ type ZodDevice = z.infer<typeof ZodDevice>
 /**
  * An environment without checks, which simply saves as it is
  */
-export class DevEnv extends Environment {
+export class DevEnv<E extends Record<string, Function> = {}> extends Environment<E> {
 	/**
 	 * Current line
 	 */
@@ -219,7 +219,6 @@ export class DevEnv extends Environment {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		this.stack[sp++] = this.get(name)
 		this.set("sp", sp)
-
 		return this
 	}
 
@@ -318,6 +317,9 @@ export class DevEnv extends Environment {
 		err.lineStart = err.lineStart ?? this.getPosition()
 		this.errors.push(err)
 		if (err.level === "error") this.errorCounter++
+		err.level
+		//   ^?
+		// @ts-ignore Type 'string' is not assignable to type...
 		this.emit(err.level, err)
 		return this
 	}

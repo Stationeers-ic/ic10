@@ -4,12 +4,14 @@ import type Err from "./Err"
 import type { InstructionData } from "../instructions/types"
 import EventEmitter from "eventemitter3"
 
-type EnvironmentEvents = {
-	error: (err: Err) => void
-	warn: (err: Err) => void
-	info: (err: Err) => void
-	debug: (err: Err) => void
-}
+// {
+// error: (err: Err) => void
+// warn: (err: Err) => void
+// info: (err: Err) => void
+// debug: (err: Err) => void
+// }
+type EnvironmentEvents = Record<"error" | "warn" | "info" | "debug", (err: Err) => void>
+
 type BeforeInstruction = Record<`before_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>
 type AfterInstruction = Record<`after_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>
 
@@ -19,7 +21,10 @@ type EventNames = EnvironmentEvents & BeforeInstruction & AfterInstruction
  * Environment for the interpreter
  * Stores all data necessary for interpretation
  */
-export abstract class Environment extends EventEmitter<EventNames, Environment> {
+export abstract class Environment<E extends Record<string, Function> = {}> extends EventEmitter<
+	EventNames & E,
+	Environment<E>
+> {
 	/**
 	 * is Test mode
 	 */
@@ -161,24 +166,30 @@ export abstract class Environment extends EventEmitter<EventNames, Environment> 
 
 	abstract getErrors(): Promise<Err[]> | Err[]
 
-	on<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this {
+	on<T extends EventEmitter.EventNames<EventNames & E>>(
+		event: T,
+		fn: EventEmitter.EventListener<EventNames & E, T>,
+	): this {
 		return super.on(event, fn, this)
 	}
 
-	addListener<T extends EventEmitter.EventNames<EventNames>>(
+	addListener<T extends EventEmitter.EventNames<EventNames & E>>(
 		event: T,
-		fn: EventEmitter.EventListener<EventNames, T>,
+		fn: EventEmitter.EventListener<EventNames & E, T>,
 	): this {
 		return super.addListener(event, fn, this)
 	}
 
-	once<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this {
+	once<T extends EventEmitter.EventNames<EventNames & E>>(
+		event: T,
+		fn: EventEmitter.EventListener<EventNames & E, T>,
+	): this {
 		return super.once(event, fn, this)
 	}
 
-	removeListener<T extends EventEmitter.EventNames<EventNames>>(
+	removeListener<T extends EventEmitter.EventNames<EventNames & E>>(
 		event: T,
-		fn?: EventEmitter.EventListener<EventNames, T>,
+		fn?: EventEmitter.EventListener<EventNames & E, T>,
 	): this {
 		return super.removeListener(event, fn, this)
 	}
