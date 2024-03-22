@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Bun Test
+name: Build
 
 on:
   push:
@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Install bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -36,11 +39,13 @@ jobs:
       - name: Make folder
         run: mkdir build
       - name: Pack
-        run: npm pack --pack-destination build
+        id: build
+        run:  echo 'OUTPUT="$(npm pack)"' >> "$GITHUB_OUTPUT"
+      - name: Rename
+        run: mv "${{ steps.build.outputs.OUTPUT }}" "${{ steps.build.outputs.OUTPUT }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}"
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
-          name: packResult
-          path: build
+          path: ${{ steps.build.outputs.OUTPUT }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}
           retention-days: 60
 
