@@ -7,7 +7,7 @@ on:
   # push:
   #   branches: [ "v4" ]
   pull_request:
-    branches: [ "v4" ]
+    branches: [ "v4", "main" ]
 
 jobs:
   build:
@@ -32,3 +32,5 @@ jobs:
         run: bun test
       - name: Test formatting
         run: bunx prettier -c .
+      - name: Test building
+        run: bunx tsc --noEmit
