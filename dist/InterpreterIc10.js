@@ -1,7 +1,6 @@
 import Line from "./core/Line";
 import InfiniteLoop from "./errors/InfiniteLoop";
 import Err from "./abstract/Err";
-
 export class InterpreterIc10 {
     code;
     stopRun = false;

@@ -1,11 +1,10 @@
 import type Line from "./Line";
 import type Err from "../abstract/Err";
 import Environment from "../abstract/Environment";
-import {z} from "zod";
-
+import { z } from "zod";
 declare const ZodDevice: z.ZodUnion<[z.ZodRecord<z.ZodString, z.ZodNumber>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodRecord<z.ZodString, z.ZodNumber>>>]>;
 type ZodDevice = z.infer<typeof ZodDevice>;
-export declare class DevEnv extends Environment {
+export declare class DevEnv<E extends Record<string, Function> = {}> extends Environment<E> {
     line: number;
     lines: Array<Line | null>;
     errors: Err[];

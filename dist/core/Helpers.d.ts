@@ -1,6 +1,6 @@
 import type Environment from "../abstract/Environment";
-type PathFor = (env: Environment, string: string) => string;
-type PathForAsync = (env: Environment, string: string) => Promise<string>;
+type PathFor = (env: Environment<any>, string: string) => string;
+type PathForAsync = (env: Environment<any>, string: string) => Promise<string>;
 declare const pathFor_DynamicDevicePortAsync: PathForAsync;
 declare const pathFor_DynamicRegisterAsync: PathForAsync;
 declare const pathFor_DynamicDevicePort: PathFor;

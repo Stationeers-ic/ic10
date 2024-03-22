@@ -1,19 +1,13 @@
 import type Line from "../core/Line";
-import type {AnyInstructionName} from "../ZodTypes";
+import type { AnyInstructionName } from "../ZodTypes";
 import type Err from "./Err";
-import type {InstructionData} from "../instructions/types";
+import type { InstructionData } from "../instructions/types";
 import EventEmitter from "eventemitter3";
-
-type EnvironmentEvents = {
-    error: (err: Err) => void;
-    warn: (err: Err) => void;
-    info: (err: Err) => void;
-    debug: (err: Err) => void;
-};
+type EnvironmentEvents = Record<"error" | "warn" | "info" | "debug", (err: Err) => void>;
 type BeforeInstruction = Record<`before_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>;
 type AfterInstruction = Record<`after_${AnyInstructionName}`, (data: InstructionData, line: Line) => void>;
 type EventNames = EnvironmentEvents & BeforeInstruction & AfterInstruction;
-export declare abstract class Environment extends EventEmitter<EventNames, Environment> {
+export declare abstract class Environment<E extends Record<string, Function> = {}> extends EventEmitter<EventNames & E, Environment<E>> {
     isTest: boolean;
     InfiniteLoopLimit: number;
     abstract addLine(line: Line | null): Promise<this> | this;
@@ -50,9 +44,9 @@ export declare abstract class Environment extends EventEmitter<EventNames, Envir
     abstract throw(err: Err): Promise<this> | this;
     abstract getErrorCount(): Promise<number> | number;
     abstract getErrors(): Promise<Err[]> | Err[];
-    on<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this;
-    addListener<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this;
-    once<T extends EventEmitter.EventNames<EventNames>>(event: T, fn: EventEmitter.EventListener<EventNames, T>): this;
-    removeListener<T extends EventEmitter.EventNames<EventNames>>(event: T, fn?: EventEmitter.EventListener<EventNames, T>): this;
+    on<T extends EventEmitter.EventNames<EventNames & E>>(event: T, fn: EventEmitter.EventListener<EventNames & E, T>): this;
+    addListener<T extends EventEmitter.EventNames<EventNames & E>>(event: T, fn: EventEmitter.EventListener<EventNames & E, T>): this;
+    once<T extends EventEmitter.EventNames<EventNames & E>>(event: T, fn: EventEmitter.EventListener<EventNames & E, T>): this;
+    removeListener<T extends EventEmitter.EventNames<EventNames & E>>(event: T, fn?: EventEmitter.EventListener<EventNames & E, T>): this;
 }
 export default Environment;

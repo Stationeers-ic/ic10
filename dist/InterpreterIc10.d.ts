@@ -1,5 +1,4 @@
 import type Environment from "./abstract/Environment";
-
 export declare class InterpreterIc10 {
     code: string;
     stopRun: boolean;
