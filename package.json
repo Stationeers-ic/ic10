@@ -10,7 +10,7 @@
     "node": ">=20.10.0"
   },
   "scripts": {
-    "prepublish": "prettier . --write",
+    "prepare": "prettier . --write && npm version patch",
     "watch": "tsc -w",
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
