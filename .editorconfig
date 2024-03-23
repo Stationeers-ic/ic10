@@ -15,6 +15,6 @@ max_line_length = off
 indent_size = 2
 indent_style = space
 
-[.github/workflows/*.yml]
+[.github/**/*.yml]
 indent_size = 2
 indent_style = space
