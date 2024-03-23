@@ -39,7 +39,7 @@ jobs:
       - name: Publish
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Pack
         id: build
         run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
