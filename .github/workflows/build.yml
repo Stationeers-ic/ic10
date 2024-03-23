@@ -39,7 +39,7 @@ jobs:
       - name: Publish
         run: npm publish
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          codemirror-lang-ic10: ${{ secrets.NPM_TOKEN }}
       - name: Pack
         id: build
         run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
