@@ -1,7 +1,7 @@
 {
   "name": "ic10",
   "type": "module",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "ic10 interpreter",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
