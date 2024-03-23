@@ -151,7 +151,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (Device.safeParse(name).success) {
+		if (Device.safeParse(name.split(".")[0]).success) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
@@ -168,7 +168,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (Device.safeParse(name).success) {
+		if (Device.safeParse(name.split(".")[0]).success) {
 			const [port, a, b, c, d] = name.split(".")
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)

@@ -24,4 +24,13 @@ l r0 d1:1 Channel1
 	test("err error", () => {
 		runCode(`alias r0 test`)
 	})
+
+	test("write db", async () => {
+		const mem = new DevEnv()
+		const id = mem.appendDevice(123)
+		mem.attachDevice(id, "db")
+		await runWithMen(`s db Setting 10\nl r0 db Setting`, mem)
+		expect(mem.get("r0")).toBe(10)
+		expect(mem.devices.get(id)?.Setting).toBe(10)
+	})
 })
