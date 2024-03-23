@@ -16,12 +16,10 @@
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
     "build:browser": "bun build ./src/index.ts --outdir ./build --minify",
-    "build": "tsc",
+    "build": "npm test && tsc",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
-    "devTest": "ts-node tests/dev.ts",
-    "preversion": "npm test && prettier . --write",
-    "version": "npm run build"
+    "devTest": "ts-node tests/dev.ts"
   },
   "files": [
     "dist"
