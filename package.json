@@ -11,7 +11,7 @@
   },
   "scripts": {
     "prepack": "npm run build",
-    "prepublishOnly": "npm version patch",
+    "postpublish": "npm version patch",
     "watch": "tsc -w",
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
