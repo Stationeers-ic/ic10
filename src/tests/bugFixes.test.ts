@@ -1,5 +1,5 @@
-import {describe, expect, test} from "bun:test"
-import {runCode, runWithMen} from "./testUtils"
+import { describe, expect, test } from "bun:test"
+import { runCode, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {

@@ -19,7 +19,9 @@
     "build": "tsc",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
-    "devTest": "ts-node tests/dev.ts"
+    "devTest": "ts-node tests/dev.ts",
+    "preversion": "npm test && prettier . --write",
+    "version": "npm run build"
   },
   "files": [
     "dist"
