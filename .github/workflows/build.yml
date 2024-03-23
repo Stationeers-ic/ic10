@@ -12,7 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
     # strategy:
     #   matrix:
     #     node-version: [14.x, 16.x, 18.x]
@@ -31,25 +33,19 @@ jobs:
           node-version: "20.x"
       - name: Install dependencies
         run: bun install --frozen-lockfile
-      - name: Building
-        run: bunx tsc
-      - name: Make folder
-        run: mkdir build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Pack
         id: build
         run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
-      - name: Set outputs
-        id: vars
-        run: |
-          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          fullname="${{ steps.build.outputs.OUTPUT }}"
-          echo "filename=${fullname%.*}" >> $GITHUB_OUTPUT
-          echo "extension=${fullname##*.}" >> $GITHUB_OUTPUT
-      - name: Rename
-        run: mv "${{ steps.build.outputs.OUTPUT }}" "${{ steps.vars.outputs.filename }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}.${{ steps.vars.outputs.extension }}"
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ steps.vars.outputs.filename }}-${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}.${{ steps.vars.outputs.extension }}
+          path: ${{ steps.build.outputs.OUTPUT }}
           retention-days: 60
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: dev
+          file_pattern: package.json
 
