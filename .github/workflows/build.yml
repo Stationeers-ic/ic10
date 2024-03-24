@@ -6,6 +6,13 @@ name: Build
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'src/**'
+      - '!src/tests/**'
+      - 'package.json'
+      - 'bun.lockb'
+      - 'LICENSE'
+      - 'README.md'
 #   pull_request:
 #     branches: [ "v4", "main" ]
 
