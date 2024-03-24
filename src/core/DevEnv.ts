@@ -8,12 +8,14 @@ import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
 import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
+import { hash as Hash } from "../index"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
 	pathFor_PortWithConnection,
 	PortWithConnection,
 } from "./Helpers"
+import EnvError from "../errors/EnvError"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -103,16 +105,20 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	appendDevice(hash: number, name?: number): string {
-		const id = uuid()
+	appendDevice(hash: number, name?: number, id?: number): string {
+		id = id ?? Hash(uuid())
+		const stringId = id.toString()
 		const device: ZodDevice = {
 			PrefabHash: hash,
 		}
 		if (name) {
 			device.Name = name
 		}
-		this.devices.set(id, device)
-		return id
+		if (this.devices.has(stringId)) {
+			this.throw(new EnvError(`Device ${stringId} already exists`, "error"))
+		}
+		this.devices.set(stringId, device)
+		return stringId
 	}
 
 	removeDevice(id: string): this {

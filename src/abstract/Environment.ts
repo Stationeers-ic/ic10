@@ -2,7 +2,7 @@ import type Line from "../core/Line"
 import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
 import type { InstructionData } from "../instructions/types"
-import EventEmitter from "eventemitter3"
+import EventEmitter from "eventemitter3" // {
 
 // {
 // error: (err: Err) => void
@@ -77,6 +77,7 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	abstract alias(alias: string, value: string): Promise<this> | this
 
 	abstract label(alias: string, value: number): Promise<this> | this
+
 	abstract define(alias: string, value: number): Promise<this> | this
 
 	/**
@@ -89,8 +90,11 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 
 	/**
 	 * Добавить устройство в окружение возвращает Уникальный id uuid устройства
+	 * @param hash PrefabHash
+	 * @param name NameHash
+	 * @param id unique id for all env
 	 */
-	abstract appendDevice(hash: number, name?: number): Promise<string> | string
+	abstract appendDevice(hash: number, name?: number, id?: number): Promise<string> | string
 
 	/**
 	 * Убрать устройство из окружения

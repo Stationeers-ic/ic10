@@ -5,6 +5,7 @@ export { Environment } from "./abstract/Environment"
 export { BitWarn } from "./errors/BitWarn"
 export { InfiniteLoop } from "./errors/InfiniteLoop"
 export { SyntaxError } from "./errors/SyntaxError"
+export { EnvError } from "./errors/EnvError"
 export { instructions } from "./instructions"
 export { str as hash } from "crc-32"
 //types
