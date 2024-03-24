@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test"
 import { runFuncWithMem, runThrow, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
 import { instructions } from "../instructions"
+import { hash } from "../index"
 
 describe("device", () => {
 	test("s", async () => {
@@ -17,7 +18,7 @@ describe("device", () => {
 		expect(mem.get("d0.On")).toBe(2)
 	})
 
-	test("s", async () => {
+	test("l", async () => {
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
@@ -68,5 +69,15 @@ describe("device", () => {
 		expect(runFuncWithMem(instructions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
 	})
 
-	test("lbn", async () => {})
+	test("lbn", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(336213101, hash("Autolathe"))
+
+		// mem.attachDevice(a, "d0")
+		await runWithMen(
+			`alias Machine r7\nalias MachineHash r10\ndefine Autolathe 336213101\nmove Machine HASH("Autolathe")\nlbn MachineHash Autolathe Machine PrefabHash 1`,
+			mem,
+		)
+		expect(mem.get("r10")).toBe(336213101)
+	})
 })

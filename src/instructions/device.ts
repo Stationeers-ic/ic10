@@ -66,13 +66,13 @@ const lb: icPartialInstruction = async (env, data) => {
 	const values: number[] = await env.getDeviceByHash(await env.get(hash), logic)
 	await action(env, register, mode, values)
 }
-lb.validate = z.tuple([Ralias, Hash, Logic, Ralias])
+lb.validate = z.tuple([Ralias, Hash, Logic, Mode])
 const lbn: icPartialInstruction = async (env, data) => {
 	const [register, hash, name, logic, mode] = lbn.validate.parse(data)
 	const values: number[] = await env.getDeviceByHashAndName(await env.get(hash), await env.get(name), logic)
 	await action(env, register, mode, values)
 }
-lbn.validate = z.tuple([Ralias, Hash, Hash, Logic, Ralias])
+lbn.validate = z.tuple([Ralias, Hash, Hash, Logic, Mode])
 const lbs: icPartialInstruction = async (env, data) => {
 	const [register, hash, slot, logic, mode] = lbs.validate.parse(data)
 	const values: number[] = await env.getSlotDeviceByHash(await env.get(hash), await env.get(slot), logic)
