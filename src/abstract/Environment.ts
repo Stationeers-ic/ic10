@@ -76,6 +76,7 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 */
 	abstract alias(alias: string, value: string): Promise<this> | this
 
+	abstract label(alias: string, value: number): Promise<this> | this
 	abstract define(alias: string, value: number): Promise<this> | this
 
 	/**

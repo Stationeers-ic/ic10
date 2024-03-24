@@ -213,6 +213,18 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
+	label(name: string, value: number): this {
+		let result = NotReservedWord.safeParse(name)
+		if (result.success) {
+			this.aliases.set(name, value)
+		} else if (!this.aliases.has(name)) {
+			this.aliases.set(name, value)
+		} else {
+			this.throw(new SyntaxError(`Label ${name} already exists`, "error", this.line))
+		}
+		return this
+	}
+
 	jump(line: string | number): this {
 		const oldLine = this.line
 		if (typeof line === "number") {

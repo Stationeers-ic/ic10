@@ -37,7 +37,7 @@ export class InterpreterIc10 {
 				// add alias for goto
 				if (line.fn?.endsWith(":")) {
 					const label = line.fn?.split(":")[0]
-					this.env.alias(label, i)
+					this.env.label(label, i)
 				}
 				return line
 			})
