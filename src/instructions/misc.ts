@@ -14,7 +14,7 @@ const label: icPartialInstruction = async (env, data) => {
 label.validate = z.tuple([RegisterOrDevice, Alias])
 const define: icPartialInstruction = async (env, data) => {
 	const d = define.validate.parse(data)
-	await env.alias(d[0], await env.get(d[1]))
+	await env.define(d[0], await env.get(d[1]))
 }
 define.validate = tupleA_AV
 const move: icPartialInstruction = async (env, data) => {

@@ -44,20 +44,27 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	constructor(data: { [key: string]: number } = {}) {
 		super()
-		this.setDefaultAliases()
+		this.setDefault()
 		Object.entries(data).forEach(([key, value]) => {
 			this.set(key, value)
 		})
 	}
 
-	setDefaultAliases() {
-		this.aliases.set("sp", "r16")
-		this.aliases.set("ra", "r17")
-		this.aliases.set("NaN", NaN)
-		this.aliases.set("Average", 0)
-		this.aliases.set("Sum", 1)
-		this.aliases.set("Minimum", 2)
-		this.aliases.set("Maximum", 3)
+	setDefault() {
+		this.alias("sp", "r16")
+		this.alias("ra", "r17")
+
+		this.define("Average", 0)
+		this.define("Sum", 1)
+		this.define("Minimum", 2)
+
+		this.define("rad2deg", 57.295780181884766)
+		this.define("deg2rad", 0.01745329238474369)
+		this.define("ninf", -Infinity)
+		this.define("pinf", Infinity)
+		this.define("pi", 3.1415926535897931)
+		this.define("epsilon", 4.94065645841247e-324)
+		this.define("nan", NaN)
 	}
 
 	getDevices() {
@@ -182,10 +189,27 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	alias(name: string, value: string | number): this {
-		name = NotReservedWord.parse(name)
-		value = StringOrNumberOrNaN.parse(value)
-		this.aliases.set(name, value)
+	alias(name: string, value: string): this {
+		let result = NotReservedWord.safeParse(name)
+		if (result.success) {
+			this.aliases.set(name, value)
+		} else if (!this.aliases.has(name)) {
+			this.aliases.set(name, value)
+		} else {
+			this.throw(new SyntaxError(`Alias ${name} already exists`, "error", this.line))
+		}
+		return this
+	}
+
+	define(name: string, value: number): this {
+		let result = NotReservedWord.safeParse(name)
+		if (result.success) {
+			this.aliases.set(name, value)
+		} else if (!this.aliases.has(name)) {
+			this.aliases.set(name, value)
+		} else {
+			this.throw(new SyntaxError(`Constant ${name} already exists`, "error", this.line))
+		}
 		return this
 	}
 
