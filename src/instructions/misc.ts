@@ -1,6 +1,6 @@
-import { tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV, type icPartialInstruction } from "./types"
+import { type icPartialInstruction, tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV } from "./types"
 import { z } from "zod"
-import { type MiscInstructionName, RaliasOrValueOrNaN, RegisterOrDevice, Alias } from "../ZodTypes"
+import { Alias, type MiscInstructionName, RaliasOrValueOrNaN, RegisterOrDevice } from "../ZodTypes"
 
 const alias: icPartialInstruction = async (env, data) => {
 	const [a, dr] = alias.validate.parse(data)

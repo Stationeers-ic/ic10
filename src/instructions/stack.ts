@@ -1,4 +1,4 @@
-import { tupleR, tupleRV, type icPartialInstruction } from "./types"
+import { type icPartialInstruction, tupleR, tupleRV } from "./types"
 import type { StackInstructionName } from "../ZodTypes"
 
 const push: icPartialInstruction = async (env, data) => {

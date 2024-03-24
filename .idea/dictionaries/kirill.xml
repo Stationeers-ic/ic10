@@ -1,9 +1,119 @@
 <component name="ProjectDictionaryState">
   <dictionary name="kirill">
     <words>
-      <w />
+      <w>abs</w>
+      <w>acos</w>
+      <w>add</w>
+      <w>alias</w>
+      <w>and</w>
+      <w>ap</w>
+      <w>asin</w>
+      <w>atan</w>
+      <w>atan2</w>
+      <w>bap</w>
+      <w>bapal</w>
+      <w>bapz</w>
+      <w>bapzal</w>
+      <w>bdns</w>
+      <w>bdnsal</w>
+      <w>bdse</w>
+      <w>bdseal</w>
+      <w>beq</w>
+      <w>beqal</w>
+      <w>beqz</w>
+      <w>beqzal</w>
+      <w>bge</w>
+      <w>bgeal</w>
+      <w>bgez</w>
+      <w>bgezal</w>
+      <w>bgt</w>
+      <w>bgtal</w>
+      <w>bgtz</w>
+      <w>bgtzal</w>
+      <w>ble</w>
+      <w>bleal</w>
+      <w>blez</w>
+      <w>blezal</w>
+      <w>blt</w>
+      <w>bltal</w>
+      <w>bltz</w>
+      <w>bltzal</w>
+      <w>bna</w>
+      <w>bnaal</w>
+      <w>bnan</w>
+      <w>bnaz</w>
+      <w>bnazal</w>
+      <w>bne</w>
+      <w>bneal</w>
+      <w>bnez</w>
+      <w>bnezal</w>
+      <w>brap</w>
+      <w>brapz</w>
+      <w>brdns</w>
+      <w>brdse</w>
+      <w>breq</w>
+      <w>breqz</w>
+      <w>brge</w>
+      <w>brgez</w>
+      <w>brgt</w>
+      <w>brgtz</w>
+      <w>brle</w>
+      <w>brlez</w>
+      <w>brlt</w>
+      <w>brltz</w>
+      <w>brna</w>
+      <w>brnan</w>
+      <w>brnaz</w>
+      <w>brne</w>
+      <w>brnez</w>
+      <w>ceil</w>
+      <w>cos</w>
+      <w>define</w>
+      <w>div</w>
+      <w>dns</w>
+      <w>dse</w>
+      <w>eq</w>
+      <w>exp</w>
+      <w>floor</w>
+      <w>ge</w>
+      <w>gt</w>
+      <w>hcf</w>
+      <w>j</w>
+      <w>jal</w>
+      <w>jr</w>
+      <w>l</w>
+      <w>label</w>
+      <w>lb</w>
+      <w>lbn</w>
+      <w>lbns</w>
+      <w>lbs</w>
+      <w>le</w>
+      <w>log</w>
+      <w>lr</w>
+      <w>ls</w>
+      <w>lt</w>
+      <w>max</w>
+      <w>min</w>
+      <w>mod</w>
+      <w>move</w>
+      <w>mul</w>
+      <w>na</w>
+      <w>nan</w>
+      <w>nanz</w>
+      <w>ne</w>
+      <w>nor</w>
+      <w>or</w>
+      <w>peek</w>
+      <w>pop</w>
+      <w>push</w>
+      <w>rand</w>
+      <w>round</w>
+      <w>s</w>
       <w>sap</w>
       <w>sapz</w>
+      <w>sb</w>
+      <w>sbn</w>
+      <w>sbs</w>
       <w>sdns</w>
       <w>sdse</w>
       <w>select</w>
@@ -13,8 +123,12 @@
       <w>sgez</w>
       <w>sgt</w>
       <w>sgtz</w>
+      <w>sin</w>
+      <w>sla</w>
       <w>sle</w>
+      <w>sleep</w>
       <w>slez</w>
+      <w>sll</w>
       <w>slt</w>
       <w>sltz</w>
       <w>sna</w>
@@ -23,6 +137,15 @@
       <w>snaz</w>
       <w>sne</w>
       <w>snez</w>
+      <w>sqrt</w>
+      <w>sra</w>
+      <w>srl</w>
+      <w>ss</w>
+      <w>sub</w>
+      <w>tan</w>
+      <w>trunc</w>
+      <w>xor</w>
+      <w>yield</w>
     </words>
   </dictionary>
 </component>

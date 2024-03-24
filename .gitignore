@@ -134,3 +134,4 @@ build/
 dist/
 src/**/*.js
 /codeql-custom-queries-javascript
+/qodana.yaml

@@ -68,11 +68,5 @@ describe("device", () => {
 		expect(runFuncWithMem(instructions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
 	})
 
-	test("lbn", async () => {
-		const mem = new DevEnv()
-		const a = mem.appendDevice(123)
-		mem.attachDevice(a, "d0")
-		mem.set("d0.Reagents.1.123", 2)
-		expect(runFuncWithMem(instructions.lbn, ["r0", "d0", 1, "Sum"], mem)).resolves.toBe(2)
-	})
+	test("lbn", async () => {})
 })

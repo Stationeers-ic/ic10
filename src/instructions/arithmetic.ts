@@ -1,5 +1,5 @@
 import type { ArithmeticInstructionName } from "../ZodTypes"
-import { tupleR, tupleR_RV, tupleR_RV_RV, type icPartialInstruction } from "./types"
+import { type icPartialInstruction, tupleR, tupleR_RV, tupleR_RV_RV } from "./types"
 import BitWarn from "../errors/BitWarn"
 
 export function jsThing(value: number): number {
