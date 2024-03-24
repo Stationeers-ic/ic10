@@ -17,7 +17,7 @@ describe("device", () => {
 		expect(mem.get("d0.On")).toBe(2)
 	})
 
-	test("s&l", async () => {
+	test("s", async () => {
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
@@ -27,7 +27,7 @@ describe("device", () => {
 		expect(mem.get("r0")).toBe(99)
 	})
 
-	test("sb&lb", async () => {
+	test("sb", async () => {
 		const mem = new DevEnv()
 		mem.appendDevice(123)
 		mem.appendDevice(123)
@@ -38,7 +38,7 @@ describe("device", () => {
 		expect(mem.get("r0")).toBe(3)
 	})
 
-	test("sdse&sdns", async () => {
+	test("sdse", async () => {
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
@@ -66,5 +66,13 @@ describe("device", () => {
 		mem.attachDevice(a, "d0")
 		mem.set("d0.Reagents.1.123", 2)
 		expect(runFuncWithMem(instructions.lr, ["r0", "d0", 1, 123], mem)).resolves.toBe(2)
+	})
+
+	test("lbn", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(123)
+		mem.attachDevice(a, "d0")
+		mem.set("d0.Reagents.1.123", 2)
+		expect(runFuncWithMem(instructions.lbn, ["r0", "d0", 1, "Sum"], mem)).resolves.toBe(2)
 	})
 })

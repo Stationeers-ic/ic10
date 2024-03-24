@@ -129,9 +129,6 @@ out
 # add coustom under
 
 
-.idea
-
-
 .project-manager/
 build/
 dist/
