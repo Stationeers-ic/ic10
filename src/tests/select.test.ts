@@ -1,7 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { runFunc, runFuncWithMem } from "./testUtils"
+import { runFunc } from "./testUtils"
 import { instructions } from "../instructions"
-import DevEnv from "../core/DevEnv"
 
 describe("select", () => {
 	test("seq", () => {

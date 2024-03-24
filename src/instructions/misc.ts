@@ -1,6 +1,6 @@
-import { tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV, type icPartialInstruction } from "./types"
+import { type icPartialInstruction, tupleA_AV, tupleA_RD, tupleEmpty, tupleR_RV } from "./types"
 import { z } from "zod"
-import { type MiscInstructionName, RaliasOrValueOrNaN, RegisterOrDevice, Alias } from "../ZodTypes"
+import { Alias, type MiscInstructionName, RaliasOrValueOrNaN, RegisterOrDevice } from "../ZodTypes"
 
 const alias: icPartialInstruction = async (env, data) => {
 	const [a, dr] = alias.validate.parse(data)
@@ -14,7 +14,7 @@ const label: icPartialInstruction = async (env, data) => {
 label.validate = z.tuple([RegisterOrDevice, Alias])
 const define: icPartialInstruction = async (env, data) => {
 	const d = define.validate.parse(data)
-	await env.alias(d[0], await env.get(d[1]))
+	await env.define(d[0], await env.get(d[1]))
 }
 define.validate = tupleA_AV
 const move: icPartialInstruction = async (env, data) => {

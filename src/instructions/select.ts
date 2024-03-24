@@ -1,8 +1,7 @@
 import type { icCondition, icPartialInstruction } from "./types"
+import { tupleR_DA, tupleR_R, tupleR_RV, tupleR_RV_RV, tupleR_RV_RV_RV } from "./types"
 import type { SelectInstructionName } from "../ZodTypes"
 import type { Environment } from "../abstract/Environment"
-
-import { tupleR_DA, tupleR_R, tupleR_RV, tupleR_RV_RV, tupleR_RV_RV_RV } from "./types"
 import conditions from "./conditions"
 
 const booleanToNumber = (x: boolean): 1 | 0 => (x ? 1 : 0)

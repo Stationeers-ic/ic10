@@ -1,5 +1,4 @@
-import type { icPartialInstruction, icInstruction } from "./types"
-export type { icInstruction } from "./types"
+import type { icInstruction, icPartialInstruction } from "./types"
 import arithmetic from "./arithmetic"
 import jump from "./jump"
 import select from "./select"
@@ -8,6 +7,8 @@ import device from "./device"
 import stack from "./stack"
 import { AnyInstructionName } from "../ZodTypes"
 import allInstructions from "../data/instructions"
+
+export type { icInstruction } from "./types"
 
 const instructionsPartial: Record<AnyInstructionName, icPartialInstruction> = {
 	...arithmetic,

@@ -1,6 +1,5 @@
 import { describe, expect, test } from "bun:test"
 import { instructions } from "../instructions"
-import { icPartialInstruction } from "../instructions/types"
 import data from "./data/functions.en.json"
 import { run, runCode } from "./testUtils"
 import DevEnv from "../core/DevEnv"
@@ -19,8 +18,7 @@ describe("main", () => {
 				validate: z.instanceof(z.ZodSchema),
 			}),
 		])
-		for (const key in instructions) {
-			const element: icPartialInstruction = instructions[key]
+		Object.entries(instructions).forEach(([key, element]) => {
 			const result = test.safeParse([
 				key,
 				{
@@ -31,7 +29,7 @@ describe("main", () => {
 			])
 			if (!result.success) console.error(key, result.error.message)
 			expect(result.success).toBe(true)
-		}
+		})
 	})
 	// TODO
 	test.todo("functions", () => {

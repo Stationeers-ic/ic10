@@ -120,7 +120,14 @@ export type Logic = z.infer<typeof Logic>
 /**
  * TODO: add jsdoc
  */
-export const Mode = z.string()
+export const Mode = z.union([
+	z.literal("Average"),
+	z.literal("Sum"),
+	z.literal("Minimum"),
+	z.literal("Maximum"),
+	z.number().min(0).max(3).int(),
+	Ralias,
+])
 export type Mode = z.infer<typeof Mode>
 /*
 export const RegisterOrAlias = Register.or(z.string())

@@ -1,8 +1,11 @@
 import type Environment from "../abstract/Environment"
 import {
+	type icPartialInstruction,
 	tupleDA_LI,
 	tupleDA_RLI,
 	tupleLI,
+	tupleR_LI,
+	tupleR_RLI,
 	tupleRLI,
 	tupleRV_LI,
 	tupleRV_RLI,
@@ -10,9 +13,6 @@ import {
 	tupleRV_RV_RLI,
 	tupleRV_RV_RV_LI,
 	tupleRV_RV_RV_RLI,
-	tupleR_LI,
-	tupleR_RLI,
-	type icPartialInstruction,
 } from "./types"
 import { conditions } from "./conditions"
 import { Value } from "../ZodTypes"
