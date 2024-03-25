@@ -29,7 +29,7 @@ const pathFor_DynamicDevicePort: PathFor = (env, string) => {
 	if (dynamicDevice.test(string)) {
 		const { rr } = dynamicDeviceGroups.parse(dynamicDevice.exec(string)?.groups)
 		// FIXME: wtf is this
-		const r = pathFor_DynamicRegisterAsync(env, rr) as unknown as string
+		const r = pathFor_DynamicRegister(env, rr) as unknown as string
 		return `d${env.get(r)}`
 	}
 	return string
@@ -57,13 +57,14 @@ const pathFor_PortWithConnection: PathFor = (_env, string) => {
 	return string
 }
 
-const PortWithConnection = (
-	port: string,
-): {
-	port: string
-	connection: null | string
-} => {
+const PortWithConnection = (port: any): { port: string; connection: null | string } => {
 	let connection = null
+	if (typeof port !== "string") {
+		return {
+			port,
+			connection,
+		}
+	}
 	if (port.includes(":")) {
 		;[port, connection] = port.split(":")
 	}

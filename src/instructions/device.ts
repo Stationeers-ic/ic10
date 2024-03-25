@@ -27,7 +27,7 @@ async function action(env: Environment, register: string, mode: string, values: 
 
 const s: icPartialInstruction = async (env, data) => {
 	const [op1, op2, op3] = s.validate.parse(data)
-	if (!env.hasDevice(await env.getAlias(op1))) {
+	if (!(await env.hasDevice(await env.getAlias(op1)))) {
 		throw new SyntaxError(`Device ${await env.getAlias(op1)} not found`, "error", await env.getPosition())
 	}
 	await env.set(`${await env.getAlias(op1)}.${await env.getAlias(op2)}`, await env.get(op3))
@@ -35,10 +35,10 @@ const s: icPartialInstruction = async (env, data) => {
 s.validate = z.tuple([DeviceOrAlias, Logic, RaliasOrValue])
 const l: icPartialInstruction = async (env, data) => {
 	const [op1, op2, op3] = l.validate.parse(data)
-	if (!env.hasDevice(await env.getAlias(op2))) {
+	if (!(await env.hasDevice(await env.getAlias(op2)))) {
 		throw new SyntaxError(`Device ${await env.getAlias(op2)} not found`, "error", await env.getPosition())
 	}
-	await env.set(op1, await env.get(`${env.getAlias(op2)}.${env.getAlias(op3)}`))
+	await env.set(op1, await env.get(`${await env.getAlias(op2)}.${await env.getAlias(op3)}`))
 }
 l.validate = z.tuple([Ralias, DeviceOrAlias, Logic])
 const ls: icPartialInstruction = async (env, data) => {
