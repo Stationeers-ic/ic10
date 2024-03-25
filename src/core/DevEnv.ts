@@ -165,10 +165,11 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_PortWithConnection(this, name)
 
 		if (Device.safeParse(name.split(".")[0]).success) {
-			const [port, a, b, c, d] = name.split(".")
+			let [port, a, b, c, d] = name.split(".")
+			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
-			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")))
+			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")) ?? 0)
 		}
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
@@ -182,7 +183,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_PortWithConnection(this, name)
 
 		if (Device.safeParse(name.split(".")[0]).success) {
-			const [port, a, b, c, d] = name.split(".")
+			let [port, a, b, c, d] = name.split(".")
+			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const device = this.devices.get(id)
 			if (device === undefined) {
@@ -271,7 +273,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	hasDevice(port: string): boolean {
 		const p = PortWithConnection(port)
-		return this.devicesAttached.has(p.port)
+		const p2 = pathFor_DynamicDevicePort(this, p.port)
+		return this.devicesAttached.has(p2)
 	}
 
 	hcf(): this {

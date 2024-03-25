@@ -80,4 +80,13 @@ describe("device", () => {
 		)
 		expect(mem.get("r10")).toBe(336213101)
 	})
+
+	test("dr10", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(336213101, hash("Autolathe"))
+		mem.attachDevice(a, "d2")
+		mem.set("r10", 2)
+		mem.set("d2.Setting", 999)
+		expect(mem.get("dr10.Setting")).toBe(999)
+	})
 })
