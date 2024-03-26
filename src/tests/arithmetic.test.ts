@@ -300,4 +300,8 @@ describe("arithmetic", () => {
 		expect(runFunc(instructions.nor, ["r0", "r0", "r0"], { r0: -2 })).resolves.toBe(1)
 		expect(runFunc(instructions.nor, ["r0", -2, "r0"])).resolves.toBe(1)
 	})
+	test("not", () => {
+		expect(runFunc(instructions.not, ["r0", NaN], { r0: 1 })).rejects.toThrow()
+		expect(runFunc(instructions.not, ["r0", 3], { r0: 1 })).resolves.toBe(-4)
+	})
 })

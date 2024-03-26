@@ -190,6 +190,7 @@ export const ArithmeticInstructionName = z.union([
 	z.literal("or"),
 	z.literal("xor"),
 	z.literal("nor"),
+	z.literal("not"),
 ])
 export type ArithmeticInstructionName = z.infer<typeof ArithmeticInstructionName>
 
@@ -294,6 +295,13 @@ export const DeviceInstructionName = z.union([
 	z.literal("lbns"),
 	z.literal("ss"),
 	z.literal("sbs"),
+	z.literal("get"),
+	z.literal("getd"),
+	z.literal("put"),
+	z.literal("putd"),
+	z.literal("poke"),
+	z.literal("sd"),
+	z.literal("ld"),
 ])
 export type DeviceInstructionName = z.infer<typeof DeviceInstructionName>
 
