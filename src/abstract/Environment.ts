@@ -75,6 +75,7 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	abstract ic_getd(id: string, index: number): Promise<number> | number
 
 	abstract ic_get(port: string, index: number): Promise<number> | number
+
 	/**
 	 * создать alias, если alias существует, то перезаписать его
 	 * @param alias
@@ -122,7 +123,13 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 *  Проверить подключено ли устройство к порту
 	 * @param port
 	 */
-	abstract hasDevice(port: string): Promise<boolean> | boolean
+	abstract isPortConnected(port: string): Promise<boolean> | boolean
+
+	abstract hasDevice(id: string): Promise<boolean> | boolean
+
+	abstract setDeviceProp(id: string, path: string, value: number): Promise<this> | this
+
+	abstract getDeviceProp(id: string, path: string): Promise<number> | number
 
 	/**
 	 * lb

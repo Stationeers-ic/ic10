@@ -299,6 +299,9 @@ export const DeviceInstructionName = z.union([
 	z.literal("getd"),
 	z.literal("put"),
 	z.literal("putd"),
+	z.literal("poke"),
+	z.literal("sd"),
+	z.literal("ld"),
 ])
 export type DeviceInstructionName = z.infer<typeof DeviceInstructionName>
 

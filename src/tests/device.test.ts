@@ -131,4 +131,33 @@ describe("device", () => {
 		await runFuncWithMem(instructions.putd, [a, 10, 999], mem)
 		expect(runFuncWithMem(instructions.getd, ["r0", a, 10], mem)).resolves.toBe(999)
 	})
+
+	test("poke", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		mem.attachDevice(a, "db")
+		const b = mem.appendDevice(-128473777, hash("Circuit Housing 2"))
+		mem.attachDevice(b, "d2")
+
+		await runFuncWithMem(instructions.poke, [10, 999], mem)
+		expect(mem.stack[10]).toBe(999)
+	})
+
+	test("ld", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		mem.attachDevice(a, "db")
+		mem.setDeviceProp(a, "On", 999)
+		await runFuncWithMem(instructions.ld, ["r0", a, "On"], mem)
+		expect(mem.get("r0")).toBe(999)
+	})
+
+	test("sd", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		mem.attachDevice(a, "db")
+
+		await runFuncWithMem(instructions.sd, [a, "On", 999], mem)
+		expect(runFuncWithMem(instructions.ld, ["r0", a, "On"], mem)).resolves.toBe(999)
+	})
 })

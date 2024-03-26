@@ -41,7 +41,7 @@ const ap: icCondition = async (env, data) => {
 }
 const dse: icCondition = async (env, data) => {
 	const [d] = z.tuple([z.string()]).parse(data)
-	return env.hasDevice(await env.getAlias(d))
+	return env.isPortConnected(await env.getAlias(d))
 }
 const dns: icCondition = async (env, data) => !(await conditions.dse(env, data))
 const nan: icCondition = async (env, data) => {

@@ -170,8 +170,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			let [port, a, b, c, d] = name.split(".")
 			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
-			const device = this.devices.get(id)
-			return NumberOrNan.parse(getProperty(device, [a, b, c, d].filter((i) => i !== undefined).join(".")) ?? 0)
+			const path = [a, b, c, d].filter((i) => i !== undefined).join(".")
+			return this.getDeviceProp(id, path)
 		}
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
@@ -188,11 +188,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			let [port, a, b, c, d] = name.split(".")
 			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
-			const device = this.devices.get(id)
-			if (device === undefined) {
-				throw new SyntaxError(`Device ${id} not found`, "error", this.line)
-			}
-			setProperty(device, [a, b, c, d].filter((i) => i !== undefined).join("."), value)
+			const path = [a, b, c, d].filter((i) => i !== undefined).join(".")
+			this.setDeviceProp(id, path, value)
 			return this
 		}
 		setProperty(this.data, name, value)
@@ -330,7 +327,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return alias
 	}
 
-	hasDevice(port: string): boolean {
+	isPortConnected(port: string): boolean {
 		const p = PortWithConnection(port)
 		const p2 = pathFor_DynamicDevicePort(this, p.port)
 		return this.devicesAttached.has(p2)
@@ -432,6 +429,29 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	getErrors(): Err[] {
 		return this.errors
+	}
+
+	hasDevice(id: string): boolean {
+		return this.devices.has(id)
+	}
+
+	getDeviceProp(id: string, path: string): number {
+		const device = this.devices.get(id)
+		if (device === undefined) {
+			this.throw(new SyntaxError(`Device with id "${id}" not found`, "error", this.line))
+			return 0
+		}
+		return NumberOrNan.parse(getProperty(device, path) ?? 0)
+	}
+
+	setDeviceProp(id: string, path: string, value: number): this {
+		const device = this.devices.get(id)
+		if (device === undefined) {
+			this.throw(new SyntaxError(`Device with id "${id}" not found`, "error", this.line))
+			return this
+		}
+		setProperty(device, path, value)
+		return this
 	}
 }
 
