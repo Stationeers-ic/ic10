@@ -89,4 +89,46 @@ describe("device", () => {
 		mem.set("d2.Setting", 999)
 		expect(mem.get("dr10.Setting")).toBe(999)
 	})
+	test("put", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		mem.attachDevice(a, "db")
+		const b = mem.appendDevice(-128473777, hash("Circuit Housing 2"))
+		mem.attachDevice(b, "d2")
+
+		await runFuncWithMem(instructions.put, ["db", 10, 999], mem)
+		expect(mem.stack[10]).toBe(999)
+		expect(runFuncWithMem(instructions.put, ["d1", 10, 999], mem)).rejects.toThrow()
+
+		await runFuncWithMem(instructions.put, ["d2", 10, 999], mem)
+		expect(mem.devicesStack.get(b)?.[10]).toBe(999)
+	})
+	test("get", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		mem.attachDevice(a, "db")
+		const b = mem.appendDevice(-128473777, hash("Circuit Housing 2"))
+		mem.attachDevice(b, "d2")
+
+		await runFuncWithMem(instructions.put, ["db", 10, 999], mem)
+		expect(runFuncWithMem(instructions.get, ["r0", "db", 10], mem)).resolves.toBe(999)
+
+		await runFuncWithMem(instructions.put, ["d2", 10, 999], mem)
+		expect(runFuncWithMem(instructions.get, ["r0", "d2", 10], mem)).resolves.toBe(999)
+	})
+
+	test("putd", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+
+		await runFuncWithMem(instructions.putd, [a, 10, 999], mem)
+		expect(mem.devicesStack.get(a)?.[10]).toBe(999)
+	})
+	test("getd", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+
+		await runFuncWithMem(instructions.putd, [a, 10, 999], mem)
+		expect(runFuncWithMem(instructions.getd, ["r0", a, 10], mem)).resolves.toBe(999)
+	})
 })

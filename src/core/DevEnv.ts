@@ -40,8 +40,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public errorCounter: number = 0
 	public devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
 	public devicesAttached: Map<string, string> = new Map<string, string>()
+	public devicesStack: Map<string, number[]> = new Map<string, number[]>()
 	public data: any = {}
-	public stack: number[] = new Array(512)
+	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
 
 	constructor(data: { [key: string]: number } = {}) {
@@ -118,6 +119,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.throw(new EnvError(`Device ${stringId} already exists`, "error"))
 		}
 		this.devices.set(stringId, device)
+		this.devicesStack.set(stringId, new Array(512).fill(0))
 		return stringId
 	}
 
@@ -246,24 +248,81 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	peek(): number {
+	ic_peek(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		const val = this.stack[sp - 1]
 		return z.number().parse(val)
 	}
 
-	pop(): number {
+	ic_pop(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		const val = this.stack[--sp]
 		this.set("sp", sp)
 		return z.number().parse(val)
 	}
 
-	push(name: string | number): this {
+	ic_push(name: string | number): this {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		this.stack[sp++] = this.get(name)
 		this.set("sp", sp)
 		return this
+	}
+
+	ic_putd(id: string, index: number, value: number): this {
+		if (index < 0 || index >= 512) {
+			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
+			return this
+		}
+		if (!this.devicesStack.has(id)) {
+			this.devicesStack.set(id, Array(512).fill(0))
+		}
+		//@ts-ignore  TODO: да блять ну здесь ну никак undefined не будет
+		this.devicesStack.get(id)[index] = value
+		return this
+	}
+
+	ic_put(port: string, index: number, value: number): this {
+		port = Device.parse(port)
+		if (index < 0 || index >= 512) {
+			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
+			return this
+		}
+		if (port !== "db") {
+			const id = this.devicesAttached.get(port)
+			if (id === undefined) {
+				this.throw(new SyntaxError(`Device ${port} not found`, "error", this.line))
+				return this
+			}
+			this.ic_putd(id, index, value)
+			return this
+		}
+		this.stack[index] = value
+		return this
+	}
+
+	ic_getd(id: string, index: number): number {
+		if (index < 0 || index >= 512) {
+			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
+			return 0
+		}
+		return this.devicesStack.get(id)?.[index] ?? 0
+	}
+
+	ic_get(port: Device, index: number): number {
+		port = Device.parse(port)
+		if (index < 0 || index >= 512) {
+			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
+			return 0
+		}
+		if (port !== "db") {
+			const id = this.devicesAttached.get(port)
+			if (id === undefined) {
+				this.throw(new SyntaxError(`Device ${port} not found`, "error", this.line))
+				return 0
+			}
+			return this.ic_getd(id, index)
+		}
+		return this.stack[index] ?? 0
 	}
 
 	getAlias(alias: string): string {
@@ -362,8 +421,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		err.lineStart = err.lineStart ?? this.getPosition()
 		this.errors.push(err)
 		if (err.level === "error") this.errorCounter++
-		err.level
-		//   ^?
 		// @ts-ignore Type 'string' is not assignable to type...
 		this.emit(err.level, err)
 		return this

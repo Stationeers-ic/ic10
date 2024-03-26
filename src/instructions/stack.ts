@@ -3,17 +3,17 @@ import type { StackInstructionName } from "../ZodTypes"
 
 const push: icPartialInstruction = async (env, data) => {
 	const d = push.validate.parse(data)
-	await env.push(d[0])
+	await env.ic_push(d[0])
 }
 push.validate = tupleRV
 const pop: icPartialInstruction = async (env, data) => {
 	const d = pop.validate.parse(data)
-	await env.set(d[0], await env.pop())
+	await env.set(d[0], await env.ic_pop())
 }
 pop.validate = tupleR
 const peek: icPartialInstruction = async (env, data) => {
 	const d = peek.validate.parse(data)
-	await env.set(d[0], await env.peek())
+	await env.set(d[0], await env.ic_peek())
 }
 peek.validate = tupleR
 

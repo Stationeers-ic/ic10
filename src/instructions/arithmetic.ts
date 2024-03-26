@@ -215,6 +215,14 @@ const nor: icPartialInstruction = async (env, data) => {
 	)
 }
 nor.validate = tupleR_RV_RV
+const not: icPartialInstruction = async (env, data) => {
+	const d = not.validate.parse(data)
+	await env.set(d[0], jsThing(~(await env.get(d[1]))))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
+}
+not.validate = tupleR_RV
 
 export const arithmetic: Record<ArithmeticInstructionName, icPartialInstruction> = {
 	add,
@@ -248,5 +256,6 @@ export const arithmetic: Record<ArithmeticInstructionName, icPartialInstruction>
 	or,
 	xor,
 	nor,
+	not,
 }
 export default arithmetic

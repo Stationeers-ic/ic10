@@ -101,6 +101,36 @@ const ss: icPartialInstruction = async (env, data) => {
 }
 ss.validate = z.tuple([DeviceOrAlias, SlotIndex, Logic, RaliasOrValue])
 
+const get: icPartialInstruction = async (env, data) => {
+	const [reg, device, index] = get.validate.parse(data)
+	if (!(await env.hasDevice(await env.getAlias(device)))) {
+		throw new SyntaxError(`Device ${await env.getAlias(device)} not found`, "error", await env.getPosition())
+	}
+	await env.set(await env.getAlias(reg), await env.ic_get(device, index))
+}
+get.validate = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue])
+
+const put: icPartialInstruction = async (env, data) => {
+	const [device, index, value] = put.validate.parse(data)
+	if (!(await env.hasDevice(await env.getAlias(device)))) {
+		throw new SyntaxError(`Device ${await env.getAlias(device)} not found`, "error", await env.getPosition())
+	}
+	await env.ic_put(device, index, value)
+}
+put.validate = z.tuple([DeviceOrAlias, RaliasOrValue, RaliasOrValue])
+
+const getd: icPartialInstruction = async (env, data) => {
+	const [reg, deviceId, index] = get.validate.parse(data)
+	await env.set(await env.getAlias(reg), await env.ic_getd(deviceId, index))
+}
+getd.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+
+const putd: icPartialInstruction = async (env, data) => {
+	const [deviceId, index, value] = put.validate.parse(data)
+	await env.ic_putd(deviceId, index, value)
+}
+putd.validate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue])
+
 const device: Record<DeviceInstructionName, icPartialInstruction> = {
 	l,
 	lb,
@@ -114,6 +144,10 @@ const device: Record<DeviceInstructionName, icPartialInstruction> = {
 	sbn,
 	sbs,
 	ss,
+	put,
+	get,
+	getd,
+	putd,
 }
 
 export default device

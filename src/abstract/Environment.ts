@@ -62,12 +62,19 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 
 	abstract set(name: string, value: number): Promise<this> | this
 
-	abstract push(name: string | number): Promise<this> | this
+	abstract ic_push(name: string | number): Promise<this> | this
 
-	abstract pop(): Promise<number> | number
+	abstract ic_pop(): Promise<number> | number
 
-	abstract peek(): Promise<number> | number
+	abstract ic_peek(): Promise<number> | number
 
+	abstract ic_putd(id: string, index: number, value: number): Promise<this> | this
+
+	abstract ic_put(port: string, index: number, value: number): Promise<this> | this
+
+	abstract ic_getd(id: string, index: number): Promise<number> | number
+
+	abstract ic_get(port: string, index: number): Promise<number> | number
 	/**
 	 * создать alias, если alias существует, то перезаписать его
 	 * @param alias
