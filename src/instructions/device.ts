@@ -141,7 +141,7 @@ const ld: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, Logic] = ld.validate.parse(data)
 	await env.set(reg, await env.getDeviceProp(deviceId, Logic))
 }
-ld.validate = z.tuple([RaliasOrValue, RaliasOrValue, Logic])
+ld.validate = z.tuple([Ralias, RaliasOrValue, Logic])
 
 const sd: icPartialInstruction = async (env, data) => {
 	const [deviceId, Logic, value] = sd.validate.parse(data)
