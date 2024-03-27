@@ -323,7 +323,12 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	getAlias(alias: string): string {
-		if (this.aliases.has(alias)) return z.string().parse(this.aliases.get(alias))
+		if (this.aliases.has(alias)) {
+			const val = this.aliases.get(alias)
+			if (z.string().safeParse(val).success) {
+				return val as string
+			}
+		}
 		return alias
 	}
 
