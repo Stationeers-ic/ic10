@@ -16,11 +16,11 @@ describe("jump", () => {
 	test("jal", () => {
 		expect(runJal(jump.jal, [5], 10)).resolves.toEqual({
 			line: 5,
-			r17: 10,
+			r17: 11,
 		})
 		expect(runJal(jump.jal, ["r0"], 10, { r0: 1 })).resolves.toEqual({
 			line: 1,
-			r17: 10,
+			r17: 11,
 		})
 		expect(runJal(jump.jal, [-1], 10, { r0: 1 })).rejects.toThrow()
 	})

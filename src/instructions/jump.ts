@@ -43,7 +43,7 @@ async function short(f: "j" | "jr" | "jal", env: Environment, d: number): Promis
 			line = Value.min(0)
 				.int()
 				.parse(await to)
-			await env.set("r17", await now)
+			await env.set("r17", (await now) + 1)
 		}
 	}
 	if (line < 0) throw new Error("invalid jump")
