@@ -120,7 +120,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			return stringId
 		}
 		this.devices.set(stringId, device)
-		this.devicesStack.set(stringId, [])
+		this.devicesStack.set(stringId, new Array(512).fill(0))
 		return stringId
 	}
 
