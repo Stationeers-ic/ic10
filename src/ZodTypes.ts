@@ -12,14 +12,14 @@ export type NumberOrNan = z.infer<typeof NumberOrNan>
  *
  * nested registers (rrr?) also
  */
-export const Register = z.union([z.literal("sp"), z.string().regex(/r+[0-9]+/)])
+export const Register = z.union([z.literal("sp"), z.string().regex(/^(?:r+[0-9]|r+1[0-7])?$/)])
 export type Register = z.infer<typeof Register>
 /**
  * d0 - d5, db,
  *
  * nested registers (drr?) also
  */
-export const Device = z.union([z.literal("db"), z.string().regex(/(dr*[0-9]+)|:([0-9]+)/)])
+export const Device = z.union([z.literal("db"), z.string().regex(/^(?:d[0-5b]|dr+[0-9]|dr+1[0-7])(?::[0-7])?$/)])
 export type Device = z.infer<typeof Device>
 /**
  * Register | Device
