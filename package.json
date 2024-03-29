@@ -1,7 +1,7 @@
 {
   "name": "ic10",
   "type": "module",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "ic10 interpreter",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,13 +11,9 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./dist": {
-      "import": "./dist/esm/",
-      "require": "./dist/cjs/"
-    },
     "./zodTypes": {
-      "import": "./dist/esm/zodTypes.js",
-      "require": "./dist/cjs/zodTypes.js"
+      "import": "./dist/esm/ZodTypes.js",
+      "require": "./dist/cjs/ZodTypes.js"
     }
   },
   "engines": {
