@@ -7,8 +7,22 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./dist": {
+      "import": "./dist/esm/",
+      "require": "./dist/cjs/"
+    },
+    "./**": {
+      "import": "./dist/esm/",
+      "require": "./dist/cjs/"
+    },
+    "./zodTypes": {
+      "import": "./dist/esm/zodTypes.js",
+      "require": "./dist/cjs/zodTypes.js"
+    }
   },
   "engines": {
     "bun": ">=1.0.20",
