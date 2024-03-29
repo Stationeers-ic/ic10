@@ -1,6 +1,7 @@
 export { InterpreterIc10 } from "./InterpreterIc10"
 export { DevEnv } from "./core/DevEnv"
 export { Err } from "./abstract/Err"
+export { Line } from "./core/Line"
 export { Environment } from "./abstract/Environment"
 export { BitWarn } from "./errors/BitWarn"
 export { InfiniteLoop } from "./errors/InfiniteLoop"

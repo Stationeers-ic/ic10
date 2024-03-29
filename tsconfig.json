@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"declarationDir": "./dist/types",
 		//		"sourceMap": true,
 		//"inlineSourceMap": true /* Include sourcemap files inside the emitted JavaScript. */,
 		/* Visit https://aka.ms/tsconfig to read more about this file */
