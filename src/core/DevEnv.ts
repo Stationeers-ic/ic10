@@ -117,6 +117,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		if (this.devices.has(stringId)) {
 			this.throw(new EnvError(`Device ${stringId} already exists`, "error"))
+			return stringId
 		}
 		this.devices.set(stringId, device)
 		this.devicesStack.set(stringId, new Array(512).fill(0))

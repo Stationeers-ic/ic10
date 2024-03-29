@@ -1,10 +1,15 @@
 {
   "name": "ic10",
   "type": "module",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "ic10 interpreter",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
   "engines": {
     "bun": ">=1.0.20",
     "node": ">=20.10.0"
@@ -16,7 +21,7 @@
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
     "build:browser": "bun build ./src/index.ts --outdir ./build --minify",
-    "build": "npm test && tsc",
+    "build": "npm test && tsc --project tsconfig.json && tsc --project tsconfig.cjs.json",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
@@ -51,13 +56,13 @@
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/bun": "^1.0.8",
+    "@types/bun": "^1.0.11",
     "@types/crc": "^3.8.3",
     "@types/uuid": "^9.0.8",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "dependencies": {
     "crc-32": "^1.2.2",
