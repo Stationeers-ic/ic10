@@ -3,7 +3,7 @@
   "type": "module",
   "version": "4.1.4",
   "description": "ic10 interpreter",
-  "main": "dist/cjs/index.js",
+  "main": "dist/cjs/index.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "exports": {
@@ -27,7 +27,7 @@
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
     "build:browser": "bun build ./src/index.ts --outdir ./build --minify",
-    "build": "npm test && tsc --project tsconfig.json && tsc --project tsconfig.cjs.json",
+    "build": "npm test && tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && bun build.ts",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
