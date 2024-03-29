@@ -11,13 +11,9 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./dist": {
-      "import": "./dist/esm/",
-      "require": "./dist/cjs/"
-    },
     "./zodTypes": {
-      "import": "./dist/esm/zodTypes.js",
-      "require": "./dist/cjs/zodTypes.js"
+      "import": "./dist/esm/ZodTypes.js",
+      "require": "./dist/cjs/ZodTypes.js"
     }
   },
   "engines": {
