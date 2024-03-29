@@ -68,7 +68,8 @@
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "esbuild": "^0.20.2"
   },
   "dependencies": {
     "crc-32": "^1.2.2",
