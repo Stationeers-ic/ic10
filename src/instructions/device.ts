@@ -10,6 +10,7 @@ import {
 	Ralias,
 	RaliasOrValue,
 	SlotIndex,
+	CoerceValue,
 } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
 
@@ -120,16 +121,16 @@ const put: icPartialInstruction = async (env, data) => {
 put.validate = z.tuple([DeviceOrAlias, RaliasOrValue, RaliasOrValue])
 
 const getd: icPartialInstruction = async (env, data) => {
-	const [reg, deviceId, index] = get.validate.parse(data)
-	await env.set(await env.getAlias(reg), await env.ic_getd(deviceId, index))
+	const [reg, deviceId, index] = getd.validate.parse(data)
+	await env.set(await env.getAlias(reg), await env.ic_getd(env.get(deviceId).toString(), index))
 }
-getd.validate = z.tuple([Ralias, RaliasOrValue, RaliasOrValue])
+getd.validate = z.tuple([Ralias, RaliasOrValue.or(CoerceValue), RaliasOrValue])
 
 const putd: icPartialInstruction = async (env, data) => {
-	const [deviceId, index, value] = put.validate.parse(data)
-	await env.ic_putd(deviceId, index, value)
+	const [deviceId, index, value] = putd.validate.parse(data)
+	await env.ic_putd(env.get(deviceId).toString(), index, value)
 }
-putd.validate = z.tuple([RaliasOrValue, RaliasOrValue, RaliasOrValue])
+putd.validate = z.tuple([RaliasOrValue.or(CoerceValue), RaliasOrValue, RaliasOrValue])
 
 const poke: icPartialInstruction = async (env, data) => {
 	const [index, value] = poke.validate.parse(data)
@@ -139,15 +140,15 @@ poke.validate = z.tuple([RaliasOrValue, RaliasOrValue])
 
 const ld: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, Logic] = ld.validate.parse(data)
-	await env.set(reg, await env.getDeviceProp(deviceId, Logic))
+	await env.set(reg, await env.getDeviceProp(env.get(deviceId).toString(), Logic))
 }
-ld.validate = z.tuple([Ralias, RaliasOrValue, Logic])
+ld.validate = z.tuple([Ralias, RaliasOrValue.or(CoerceValue), Logic])
 
 const sd: icPartialInstruction = async (env, data) => {
 	const [deviceId, Logic, value] = sd.validate.parse(data)
-	await env.setDeviceProp(deviceId, Logic, value)
+	await env.setDeviceProp(env.get(deviceId).toString(), Logic, value)
 }
-sd.validate = z.tuple([RaliasOrValue, Logic, RaliasOrValue])
+sd.validate = z.tuple([RaliasOrValue.or(CoerceValue), Logic, RaliasOrValue])
 
 const device: Record<DeviceInstructionName, icPartialInstruction> = {
 	l,

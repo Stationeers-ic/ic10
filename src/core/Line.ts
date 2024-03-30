@@ -6,29 +6,6 @@ import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 import { AnyInstructionName } from "../ZodTypes"
 
-const LineTest = z
-	.tuple([
-		z.string(),
-		z.string().optional(),
-		z
-			.string()
-			.optional()
-			.transform((args) =>
-				args
-					?.split(" ")
-					.filter((i) => i)
-					.map((i): number | string => {
-						if (!isNaN(parseFloat(i))) return parseFloat(i)
-						const h = Line.parseHash(i)
-						if (h) return h.toString()
-						return i
-					}),
-			)
-			.pipe(z.array(z.union([z.string(), z.number()])).optional()),
-		z.string().optional(),
-	])
-	.nullable()
-
 export class Line {
 	fn: string = ""
 	args: (string | number)[] = []
@@ -54,17 +31,16 @@ export class Line {
 
 		this.fn = this.tokens.fn.value
 		this.args = this.tokens.args.map((i) => {
-			if (!isNaN(parseFloat(i.value))) return parseFloat(i.value)
+			if (!isNaN(Number(i.value))) return Number(i.value)
 			const h = Line.parseHash(i.value)
-			if (h) return h.toString()
-			return i.value
+			return h ?? i.value
 		})
 		this.comment = this.tokens.comment.value
 	}
 
 	// parse str HASH("SOME_STRING") to crc32(SOME_STRING)
 	static parseHash(str: string) {
-		const matches = hash.exec(str) as [string, string] | null
+		const matches = hash.exec(str)
 		if (matches) {
 			return CRC32.str(matches[1])
 		}
