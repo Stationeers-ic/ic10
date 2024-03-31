@@ -9,19 +9,10 @@ import { getProperty, setProperty } from "dot-prop"
 import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
 import { hash as Hash } from "../index"
-import {
-	pathFor_DynamicDevicePort,
-	pathFor_DynamicRegister,
-	pathFor_PortWithConnection,
-	PortWithConnection,
-} from "./Helpers"
+import { pathFor_DynamicDevicePort, pathFor_DynamicRegister, pathFor_PortWithConnection, PortWithConnection } from "./Helpers"
 import EnvError from "../errors/EnvError"
 
-const ZodDevice = z.union([
-	z.record(z.number()),
-	z.record(z.record(z.number())),
-	z.record(z.record(z.record(z.number()))),
-])
+const ZodDevice = z.union([z.record(z.number()), z.record(z.record(z.number())), z.record(z.record(z.record(z.number())))])
 type ZodDevice = z.infer<typeof ZodDevice>
 
 /**

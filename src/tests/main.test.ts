@@ -69,8 +69,6 @@ describe("main", () => {
 	})
 
 	test("SemlerPDX", async () => {
-		expect((await run(`move r0 HASH("Cable Analyzer MAIN OUT")`)).get("r0")).toBe(
-			CRC32.str("Cable Analyzer MAIN OUT"),
-		)
+		expect((await run(`move r0 HASH("Cable Analyzer MAIN OUT")`)).get("r0")).toBe(CRC32.str("Cable Analyzer MAIN OUT"))
 	})
 })

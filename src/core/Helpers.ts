@@ -77,11 +77,4 @@ const PortWithConnection = (port: any): { port: string; connection: null | strin
 /**
  * Функция преобразующие аргумент в путь в памяти
  */
-export {
-	pathFor_DynamicDevicePort,
-	pathFor_DynamicRegister,
-	pathFor_DynamicDevicePortAsync,
-	pathFor_DynamicRegisterAsync,
-	PortWithConnection,
-	pathFor_PortWithConnection,
-}
+export { pathFor_DynamicDevicePort, pathFor_DynamicRegister, pathFor_DynamicDevicePortAsync, pathFor_DynamicRegisterAsync, PortWithConnection, pathFor_PortWithConnection }

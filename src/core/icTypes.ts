@@ -1,22 +1,6 @@
-export const valuesSlotParameter = [
-	"ChargeRatio",
-	"Class",
-	"Damage",
-	"Efficiency",
-	"Growth",
-	"Health",
-	"Mature",
-	"MaxQuantity",
-	"OccupantHash",
-	"Occupied",
-	"Quantity",
-	"Seeding",
-	"SortingClass",
-	"x",
-] as const
+export const valuesSlotParameter = ["ChargeRatio", "Class", "Damage", "Efficiency", "Growth", "Health", "Mature", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "Seeding", "SortingClass", "x"] as const
 export type TypeSlotParameter = (typeof valuesSlotParameter)[number]
-export const isSlotParameter = (val: string): val is TypeSlotParameter =>
-	valuesSlotParameter.includes(val as TypeSlotParameter)
+export const isSlotParameter = (val: string): val is TypeSlotParameter => valuesSlotParameter.includes(val as TypeSlotParameter)
 export const valuesDeviceParameter = [
 	"Activate",
 	"AirRelease",
@@ -154,8 +138,7 @@ export const valuesDeviceParameter = [
 	"WattsReachingContact",
 ] as const
 export type TypeDeviceParameter = (typeof valuesDeviceParameter)[number]
-export const isDeviceParameter = (val: string): val is TypeDeviceParameter =>
-	valuesDeviceParameter.includes(val as TypeDeviceParameter)
+export const isDeviceParameter = (val: string): val is TypeDeviceParameter => valuesDeviceParameter.includes(val as TypeDeviceParameter)
 export const valuesFunction = [
 	"abs",
 	"acos",
@@ -295,29 +278,10 @@ export const valuesFunction = [
 ] as const
 export type TypeFunction = (typeof valuesFunction)[number]
 export const isFunction = (val: string): val is TypeFunction => valuesFunction.includes(val as TypeFunction)
-export const valuesConst = [
-	"Contents",
-	"Recipe",
-	"Required",
-	"deg2rad",
-	"nan",
-	"ninf",
-	"pi",
-	"pinf",
-	"rad2deg",
-] as const
+export const valuesConst = ["Contents", "Recipe", "Required", "deg2rad", "nan", "ninf", "pi", "pinf", "rad2deg"] as const
 export type TypeConst = (typeof valuesConst)[number]
 export const isConst = (val: string): val is TypeConst => valuesConst.includes(val as TypeConst)
-export const valuesChannel = [
-	"Channel0",
-	"Channel1",
-	"Channel2",
-	"Channel3",
-	"Channel4",
-	"Channel5",
-	"Channel6",
-	"Channel7",
-] as const
+export const valuesChannel = ["Channel0", "Channel1", "Channel2", "Channel3", "Channel4", "Channel5", "Channel6", "Channel7"] as const
 export type TypeChannel = (typeof valuesChannel)[number]
 export const isChannel = (val: string): val is TypeChannel => valuesChannel.includes(val as TypeChannel)
 export const valuesBM = ["Average", "Maximum", "Minimum", "Sum"] as const

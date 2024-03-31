@@ -12,8 +12,7 @@ export const allInstructions: {
 	{
 		name: "lb",
 		preview: "lb r? deviceHash logicType batchMode",
-		description:
-			"Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		description: "Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
 	},
 	{
 		name: "s",
@@ -33,14 +32,12 @@ export const allInstructions: {
 	{
 		name: "lr",
 		preview: "lr r? d? reagentMode int",
-		description:
-			"Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
+		description: "Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
 	},
 	{
 		name: "alias",
 		preview: "alias str r?|d?",
-		description:
-			"Labels register or device reference with name, device references also affect what shows on the screws on the IC base.",
+		description: "Labels register or device reference with name, device references also affect what shows on the screws on the IC base.",
 	},
 	{
 		name: "define",
@@ -155,14 +152,12 @@ export const allInstructions: {
 	{
 		name: "and",
 		preview: "and r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise logical AND operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 1, the resulting bit is set to 1. Otherwise the resulting bit is set to 0.",
+		description: "Performs a bitwise logical AND operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 1, the resulting bit is set to 1. Otherwise the resulting bit is set to 0.",
 	},
 	{
 		name: "or",
 		preview: "or r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise logical OR operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If either bit is 1, the resulting bit is set to 1. If both bits are 0, the resulting bit is set to 0.",
+		description: "Performs a bitwise logical OR operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If either bit is 1, the resulting bit is set to 1. If both bits are 0, the resulting bit is set to 0.",
 	},
 	{
 		name: "xor",
@@ -173,8 +168,7 @@ export const allInstructions: {
 	{
 		name: "nor",
 		preview: "nor r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise logical NOR (NOT OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 0, the resulting bit is set to 1. Otherwise, if at least one bit is 1, the resulting bit is set to 0.",
+		description: "Performs a bitwise logical NOR (NOT OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 0, the resulting bit is set to 1. Otherwise, if at least one bit is 1, the resulting bit is set to 0.",
 	},
 	{
 		name: "mul",
@@ -434,8 +428,7 @@ export const allInstructions: {
 	{
 		name: "bnaal",
 		preview: "bnaal a(r?|num) b(r?|num) c(r?|num) d(r?|num)",
-		description:
-			"Branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8) and store next line number in ra",
+		description: "Branch to line d if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8) and store next line number in ra",
 	},
 	{
 		name: "bltzal",
@@ -606,8 +599,7 @@ export const allInstructions: {
 	{
 		name: "atan2",
 		preview: "atan2 r? a(r?|num) b(r?|num)",
-		description:
-			"Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)",
+		description: "Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)",
 	},
 	{
 		name: "ld",
@@ -617,20 +609,17 @@ export const allInstructions: {
 	{
 		name: "lbn",
 		preview: "lbn r? deviceHash nameHash logicType batchMode",
-		description:
-			"Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		description: "Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
 	},
 	{
 		name: "lbs",
 		preview: "lbs r? deviceHash slotIndex logicSlotType batchMode",
-		description:
-			"Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		description: "Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
 	},
 	{
 		name: "lbns",
 		preview: "lbns r? deviceHash nameHash slotIndex logicSlotType batchMode",
-		description:
-			"Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		description: "Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
 	},
 	{
 		name: "sd",
@@ -645,8 +634,7 @@ export const allInstructions: {
 	{
 		name: "sbs",
 		preview: "sbs deviceHash slotIndex logicSlotType r?",
-		description:
-			"Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.",
+		description: "Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.",
 	},
 	{
 		name: "snan",
@@ -671,20 +659,17 @@ export const allInstructions: {
 	{
 		name: "get",
 		preview: "get r? d? address(r?|num)",
-		description:
-			"Using the provided device, attempts to read the stack value at the provided address, and places it in the register.",
+		description: "Using the provided device, attempts to read the stack value at the provided address, and places it in the register.",
 	},
 	{
 		name: "getd",
 		preview: "getd r? id(r?|num) address(r?|num)",
-		description:
-			"Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register.",
+		description: "Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register.",
 	},
 	{
 		name: "not",
 		preview: "not r? a(r?|num)",
-		description:
-			"Performs a bitwise logical NOT operation flipping each bit of the input value, resulting in a binary complement. If a bit is 1, it becomes 0, and if a bit is 0, it becomes 1.",
+		description: "Performs a bitwise logical NOT operation flipping each bit of the input value, resulting in a binary complement. If a bit is 1, it becomes 0, and if a bit is 0, it becomes 1.",
 	},
 	{
 		name: "poke",
@@ -694,44 +679,37 @@ export const allInstructions: {
 	{
 		name: "put",
 		preview: "put d? address(r?|num) value(r?|num)",
-		description:
-			"Using the provided device, attempts to write the provided value to the stack at the provided address.",
+		description: "Using the provided device, attempts to write the provided value to the stack at the provided address.",
 	},
 	{
 		name: "putd",
 		preview: "putd id(r?|num) address(r?|num) value(r?|num)",
-		description:
-			"Seeks directly for the provided device id, attempts to write the provided value to the stack at the provided address.",
+		description: "Seeks directly for the provided device id, attempts to write the provided value to the stack at the provided address.",
 	},
 	{
 		name: "sbn",
 		preview: "sbn deviceHash nameHash logicType r?",
-		description:
-			"Stores register value to LogicType on all output network devices with provided type hash and name.",
+		description: "Stores register value to LogicType on all output network devices with provided type hash and name.",
 	},
 	{
 		name: "sla",
 		preview: "sla r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise arithmetic left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with a copy of the sign bit (the most significant bit).",
+		description: "Performs a bitwise arithmetic left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with a copy of the sign bit (the most significant bit).",
 	},
 	{
 		name: "sll",
 		preview: "sll r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise logical left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with zeros.",
+		description: "Performs a bitwise logical left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with zeros.",
 	},
 	{
 		name: "sra",
 		preview: "sra r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise arithmetic right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with a copy of the sign bit (the most significant bit).",
+		description: "Performs a bitwise arithmetic right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with a copy of the sign bit (the most significant bit).",
 	},
 	{
 		name: "srl",
 		preview: "srl r? a(r?|num) b(r?|num)",
-		description:
-			"Performs a bitwise logical right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with zeros",
+		description: "Performs a bitwise logical right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with zeros",
 	},
 ]
 
