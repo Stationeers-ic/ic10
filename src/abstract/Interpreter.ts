@@ -2,7 +2,7 @@ import type Environment from "./Environment"
 import { z } from "zod"
 
 const stop = z.union([
-	// eбаный притер
+	//!
 	z.literal("ERR"),
 	z.literal("safeGuard"),
 	z.literal("STOP"),
