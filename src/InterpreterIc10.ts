@@ -2,13 +2,15 @@ import type Environment from "./abstract/Environment"
 import Line from "./core/Line"
 import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
+import Interpreter, { isStop } from "./abstract/Interpreter"
 
-export class InterpreterIc10 {
+export class InterpreterIc10 extends Interpreter {
 	code: string
-	stopRun: boolean = false
 	env: Environment
+	stopRun: boolean = false
 
 	constructor(env: Environment, code: string) {
+		super()
 		this.env = env
 		this.code = code
 		this.parseCode()
@@ -16,8 +18,11 @@ export class InterpreterIc10 {
 
 	public setCode(code: string): this {
 		this.code = code
-		this.parseCode()
 		return this
+	}
+
+	public getCode(): string {
+		return this.code
 	}
 
 	public setEnv(env: Environment): this {
@@ -26,8 +31,12 @@ export class InterpreterIc10 {
 		return this
 	}
 
+	public getEnv(): Environment<{}> {
+		return this.env
+	}
+
 	public parseCode(): this {
-		this.code
+		this.getCode()
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
 			.map((str) => (str.trim() === "" ? null : str))
@@ -55,7 +64,7 @@ export class InterpreterIc10 {
 		}
 	}
 
-	public async step(): Promise<string | boolean> {
+	public async step() {
 		try {
 			const old = await this.env.getPosition()
 			const line = await this.env.getCurrentLine()
@@ -93,7 +102,7 @@ export class InterpreterIc10 {
 		return true
 	}
 
-	public async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
+	public async run(codeLines: number = 10_000, dryRun: number = 100_000) {
 		codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
@@ -103,7 +112,7 @@ export class InterpreterIc10 {
 		while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
 			result = await this.step()
 			// exit with code
-			if (typeof result === "string") return result
+			if (isStop(result)) return result
 			if ((await this.env.getErrorCount()) !== 0) return "ERR"
 			// on code lines
 			if (result) codeLines--
@@ -118,6 +127,7 @@ export class InterpreterIc10 {
 
 	public stop() {
 		this.stopRun = true
+		return this
 	}
 }
 
