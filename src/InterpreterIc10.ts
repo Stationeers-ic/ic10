@@ -2,22 +2,24 @@ import type Environment from "./abstract/Environment"
 import Line from "./core/Line"
 import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
+import Interpreter, { isStop } from "./abstract/Interpreter"
 
-export class InterpreterIc10 {
-	code: string
+export class InterpreterIc10 extends Interpreter {
+	code!: string
+	env!: Environment
 	stopRun: boolean = false
-	env: Environment
-
 	constructor(env: Environment, code: string) {
-		this.env = env
-		this.code = code
-		this.parseCode()
+		super(env, code)
+		console.log(this.getCode())
 	}
-
 	public setCode(code: string): this {
 		this.code = code
 		this.parseCode()
 		return this
+	}
+
+	public getCode(): string {
+		return this.code
 	}
 
 	public setEnv(env: Environment): this {
@@ -26,8 +28,12 @@ export class InterpreterIc10 {
 		return this
 	}
 
+	public getEnv(): Environment<{}> {
+		return this.env
+	}
+
 	public parseCode(): this {
-		this.code
+		this.getCode()
 			.split("\n")
 			// .map((str) => str.trim().replace(/\s+/g, " "))
 			.map((str) => (str.trim() === "" ? null : str))
@@ -55,7 +61,7 @@ export class InterpreterIc10 {
 		}
 	}
 
-	public async step(): Promise<string | boolean> {
+	public async step() {
 		try {
 			const old = await this.env.getPosition()
 			const line = await this.env.getCurrentLine()
@@ -72,9 +78,7 @@ export class InterpreterIc10 {
 
 			// Проверка на бесконечный цикл
 			if (line.runCounter > this.env.InfiniteLoopLimit) {
-				await this.env.throw(
-					new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
-				)
+				await this.env.throw(new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex))
 			}
 
 			// Проверка не прыжок
@@ -93,7 +97,7 @@ export class InterpreterIc10 {
 		return true
 	}
 
-	public async run(codeLines: number = 10_000, dryRun: number = 100_000): Promise<string> {
+	public async run(codeLines: number = 10_000, dryRun: number = 100_000) {
 		codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
@@ -103,7 +107,7 @@ export class InterpreterIc10 {
 		while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
 			result = await this.step()
 			// exit with code
-			if (typeof result === "string") return result
+			if (isStop(result)) return result
 			if ((await this.env.getErrorCount()) !== 0) return "ERR"
 			// on code lines
 			if (result) codeLines--
@@ -118,6 +122,7 @@ export class InterpreterIc10 {
 
 	public stop() {
 		this.stopRun = true
+		return this
 	}
 }
 
