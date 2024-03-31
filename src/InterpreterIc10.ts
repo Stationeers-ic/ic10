@@ -5,8 +5,8 @@ import Err from "./abstract/Err"
 import Interpreter, { isStop } from "./abstract/Interpreter"
 
 export class InterpreterIc10 extends Interpreter {
-	code!: string
-	env!: Environment
+	code: string
+	env: Environment
 	stopRun: boolean = false
 
 	constructor(env: Environment, code: string) {
