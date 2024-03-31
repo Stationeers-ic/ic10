@@ -14,11 +14,6 @@ export function isStop(key: any): key is StopType {
 }
 
 export abstract class Interpreter {
-	constructor(env: Environment, code: string) {
-		this.setEnv(env)
-		this.setCode(code)
-	}
-
 	public abstract setCode(code: string): this
 
 	public abstract getCode(): string

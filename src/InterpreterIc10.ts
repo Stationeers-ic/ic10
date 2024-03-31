@@ -8,13 +8,16 @@ export class InterpreterIc10 extends Interpreter {
 	code!: string
 	env!: Environment
 	stopRun: boolean = false
+
 	constructor(env: Environment, code: string) {
-		super(env, code)
-		console.log(this.getCode())
-	}
-	public setCode(code: string): this {
+		super()
+		this.env = env
 		this.code = code
 		this.parseCode()
+	}
+
+	public setCode(code: string): this {
+		this.code = code
 		return this
 	}
 
