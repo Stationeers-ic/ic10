@@ -81,7 +81,9 @@ export class InterpreterIc10 extends Interpreter {
 
 			// Проверка на бесконечный цикл
 			if (line.runCounter > this.env.InfiniteLoopLimit) {
-				await this.env.throw(new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex))
+				await this.env.throw(
+					new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
+				)
 			}
 
 			// Проверка не прыжок

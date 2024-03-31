@@ -74,7 +74,10 @@ describe("device", () => {
 		const a = mem.appendDevice(336213101, hash("Autolathe"))
 
 		// mem.attachDevice(a, "d0")
-		await runWithMen(`alias Machine r7\nalias MachineHash r10\ndefine Autolathe 336213101\nmove Machine HASH("Autolathe")\nlbn MachineHash Autolathe Machine PrefabHash 1`, mem)
+		await runWithMen(
+			`alias Machine r7\nalias MachineHash r10\ndefine Autolathe 336213101\nmove Machine HASH("Autolathe")\nlbn MachineHash Autolathe Machine PrefabHash 1`,
+			mem,
+		)
 		expect(mem.get("r10")).toBe(336213101)
 	})
 

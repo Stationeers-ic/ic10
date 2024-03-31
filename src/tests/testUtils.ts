@@ -22,7 +22,12 @@ export async function runWithMen(code: string, mem: Environment): Promise<Enviro
 	return mem
 }
 
-export async function runFuncJump(fn: icPartialInstruction, args: (string | number)[], line: number = 0, data: { [key: string]: number } = {}): Promise<number> {
+export async function runFuncJump(
+	fn: icPartialInstruction,
+	args: (string | number)[],
+	line: number = 0,
+	data: { [key: string]: number } = {},
+): Promise<number> {
 	const mem = new DevEnv(data)
 	mem.setPosition(line)
 	await fn(mem, args)
@@ -36,18 +41,31 @@ export async function runThrow(code: string, data: { [key: string]: number } = {
 	return mem.getErrors()
 }
 
-export async function runFunc(fn: icPartialInstruction, args: (string | number)[], data: { [key: string]: number } = {}): Promise<number> {
+export async function runFunc(
+	fn: icPartialInstruction,
+	args: (string | number)[],
+	data: { [key: string]: number } = {},
+): Promise<number> {
 	const mem = new DevEnv(data)
 	await fn(mem, args)
 	return mem.get("r0")
 }
 
-export async function runFuncWithMem(fn: icPartialInstruction, args: (string | number)[], mem: Environment): Promise<number> {
+export async function runFuncWithMem(
+	fn: icPartialInstruction,
+	args: (string | number)[],
+	mem: Environment,
+): Promise<number> {
 	await fn(mem, args)
 	return mem.get("r0")
 }
 
-export async function runJal(fn: icPartialInstruction, args: (string | number)[], line: number = 0, data: { [key: string]: number } = {}) {
+export async function runJal(
+	fn: icPartialInstruction,
+	args: (string | number)[],
+	line: number = 0,
+	data: { [key: string]: number } = {},
+) {
 	const mem = new DevEnv(data)
 	mem.setPosition(line)
 	await fn(mem, args)

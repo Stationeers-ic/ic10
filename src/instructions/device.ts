@@ -1,7 +1,16 @@
 import type { Environment } from "../abstract/Environment"
 import type { icPartialInstruction } from "./types"
 import { z } from "zod"
-import { type DeviceInstructionName, DeviceOrAlias, Hash, Logic, Mode, Ralias, RaliasOrValue, SlotIndex } from "../ZodTypes"
+import {
+	type DeviceInstructionName,
+	DeviceOrAlias,
+	Hash,
+	Logic,
+	Mode,
+	Ralias,
+	RaliasOrValue,
+	SlotIndex,
+} from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
 
 async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
@@ -72,7 +81,12 @@ const lbs: icPartialInstruction = async (env, data) => {
 lbs.validate = z.tuple([Ralias, Hash, RaliasOrValue, Logic, Mode])
 const lbns: icPartialInstruction = async (env, data) => {
 	const [register, hash, name, slot, logic, mode] = lbns.validate.parse(data)
-	const values: number[] = await env.getSlotDeviceByHashAndName(await env.get(hash), await env.get(name), await env.get(slot), logic)
+	const values: number[] = await env.getSlotDeviceByHashAndName(
+		await env.get(hash),
+		await env.get(name),
+		await env.get(slot),
+		logic,
+	)
 	await action(env, register, mode, values)
 }
 lbns.validate = z.tuple([Ralias, Hash, RaliasOrValue, RaliasOrValue, Logic, Mode])

@@ -1,5 +1,14 @@
 import { z } from "zod"
-import { Alias, AliasOrValue, DeviceOrAlias, LineIndex, Ralias, RaliasOrValue, RegisterOrDevice, RelativeLineIndex } from "../ZodTypes"
+import {
+	Alias,
+	AliasOrValue,
+	DeviceOrAlias,
+	LineIndex,
+	Ralias,
+	RaliasOrValue,
+	RegisterOrDevice,
+	RelativeLineIndex,
+} from "../ZodTypes"
 import type Environment from "../abstract/Environment"
 
 export type InstructionData = (string | number)[]

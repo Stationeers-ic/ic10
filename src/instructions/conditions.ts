@@ -27,11 +27,17 @@ const lt: icCondition = async (env, data) => {
 const ne: icCondition = async (env, data) => !(await conditions.eq(env, data))
 const na: icCondition = async (env, data) => {
 	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	return Math.abs((await env.get(x)) - (await env.get(y))) > Math.max((await env.get(c)) * Math.max(Math.abs(await env.get(x)), Math.abs(await env.get(y))), epsilon)
+	return (
+		Math.abs((await env.get(x)) - (await env.get(y))) >
+		Math.max((await env.get(c)) * Math.max(Math.abs(await env.get(x)), Math.abs(await env.get(y))), epsilon)
+	)
 }
 const ap: icCondition = async (env, data) => {
 	const [x, y, c] = z.tuple([StringOrNumberOrNaN, StringOrNumberOrNaN, StringOrNumberOrNaN]).parse(data)
-	return Math.abs((await env.get(x)) - (await env.get(y))) <= Math.max((await env.get(c)) * Math.max(Math.abs(await env.get(x)), Math.abs(await env.get(y))), epsilon)
+	return (
+		Math.abs((await env.get(x)) - (await env.get(y))) <=
+		Math.max((await env.get(c)) * Math.max(Math.abs(await env.get(x)), Math.abs(await env.get(y))), epsilon)
+	)
 }
 const dse: icCondition = async (env, data) => {
 	const [d] = z.tuple([z.string()]).parse(data)

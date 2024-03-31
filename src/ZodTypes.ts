@@ -120,7 +120,14 @@ export type Logic = z.infer<typeof Logic>
 /**
  * TODO: add jsdoc
  */
-export const Mode = z.union([z.literal("Average"), z.literal("Sum"), z.literal("Minimum"), z.literal("Maximum"), z.number().min(0).max(3).int(), Ralias])
+export const Mode = z.union([
+	z.literal("Average"),
+	z.literal("Sum"),
+	z.literal("Minimum"),
+	z.literal("Maximum"),
+	z.number().min(0).max(3).int(),
+	Ralias,
+])
 export type Mode = z.infer<typeof Mode>
 /*
 export const RegisterOrAlias = Register.or(z.string())
@@ -129,11 +136,26 @@ export const DeviceOrAlias = Device.or(z.string())
 /*
  *TODO: Add list reserved words
  */
-export const NotReservedWord = z.string().refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {
-	message: "Reserved word",
-})
+export const NotReservedWord = z
+	.string()
+	.refine((val) => !["NaN", "Average", "Sum", "Minimum", "Maximum"].includes(val), {
+		message: "Reserved word",
+	})
 
-export const ConditionName = z.union([z.literal("eq"), z.literal("ge"), z.literal("gt"), z.literal("le"), z.literal("lt"), z.literal("ne"), z.literal("na"), z.literal("ap"), z.literal("dse"), z.literal("dns"), z.literal("nan"), z.literal("nanz")])
+export const ConditionName = z.union([
+	z.literal("eq"),
+	z.literal("ge"),
+	z.literal("gt"),
+	z.literal("le"),
+	z.literal("lt"),
+	z.literal("ne"),
+	z.literal("na"),
+	z.literal("ap"),
+	z.literal("dse"),
+	z.literal("dns"),
+	z.literal("nan"),
+	z.literal("nanz"),
+])
 export type ConditionName = z.infer<typeof ConditionName>
 
 export const ArithmeticInstructionName = z.union([
@@ -283,7 +305,15 @@ export const DeviceInstructionName = z.union([
 ])
 export type DeviceInstructionName = z.infer<typeof DeviceInstructionName>
 
-export const MiscInstructionName = z.union([z.literal("alias"), z.literal("label"), z.literal("define"), z.literal("move"), z.literal("yield"), z.literal("sleep"), z.literal("hcf")])
+export const MiscInstructionName = z.union([
+	z.literal("alias"),
+	z.literal("label"),
+	z.literal("define"),
+	z.literal("move"),
+	z.literal("yield"),
+	z.literal("sleep"),
+	z.literal("hcf"),
+])
 export type MiscInstructionName = z.infer<typeof MiscInstructionName>
 
 export const StackInstructionName = z.union([
@@ -294,7 +324,14 @@ export const StackInstructionName = z.union([
 ])
 export type StackInstructionName = z.infer<typeof StackInstructionName>
 
-export const AnyInstructionName = z.union([ArithmeticInstructionName, SelectInstructionName, JumpInstructionName, DeviceInstructionName, MiscInstructionName, StackInstructionName])
+export const AnyInstructionName = z.union([
+	ArithmeticInstructionName,
+	SelectInstructionName,
+	JumpInstructionName,
+	DeviceInstructionName,
+	MiscInstructionName,
+	StackInstructionName,
+])
 export type AnyInstructionName = z.infer<typeof AnyInstructionName>
 
 export function isKeyOfObject<T extends object>(key: string | number | symbol, obj: T): key is keyof T {

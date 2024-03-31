@@ -88,7 +88,16 @@ export class Line {
 					}
 				}
 			} else {
-				this.scope.env.throw(new SyntaxError(`Function ${this.fn} not found`, "error", this.lineIndex, this.lineIndex, this.tokens?.fn.start, this.tokens?.fn.end))
+				this.scope.env.throw(
+					new SyntaxError(
+						`Function ${this.fn} not found`,
+						"error",
+						this.lineIndex,
+						this.lineIndex,
+						this.tokens?.fn.start,
+						this.tokens?.fn.end,
+					),
+				)
 			}
 			return true
 		}

@@ -29,5 +29,8 @@ allInstructions.forEach(({ name, preview, description, deprecated }) => {
 })
 
 //						validated in tests									validated in tests
-export const instructions: Record<AnyInstructionName, icInstruction> = instructionsPartial as Record<AnyInstructionName, icInstruction>
+export const instructions: Record<AnyInstructionName, icInstruction> = instructionsPartial as Record<
+	AnyInstructionName,
+	icInstruction
+>
 export default instructions

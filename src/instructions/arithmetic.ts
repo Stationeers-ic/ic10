@@ -98,7 +98,9 @@ const sll: icPartialInstruction = async (env, data) => {
 	} else {
 		await env.set(d[0], jsThing((await env.get(d[1])) << l))
 	}
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 sll.validate = tupleR_RV_RV
 const srl: icPartialInstruction = async (env, data) => {
@@ -109,7 +111,9 @@ const srl: icPartialInstruction = async (env, data) => {
 	} else {
 		await env.set(d[0], jsThing((await env.get(d[1])) >>> (await env.get(d[2]))))
 	}
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 srl.validate = tupleR_RV_RV
 const sla: icPartialInstruction = async (env, data) => {
@@ -118,9 +122,17 @@ const sla: icPartialInstruction = async (env, data) => {
 	if (l < 0) {
 		await env.set(d[0], 0)
 	} else {
-		await env.set(d[0], jsThing(((await env.get(d[1])) << (await env.get(d[2]))) + Number((await env.get(d[1])) < 0) * ((2 << (await env.get(d[2]))) - 1)))
+		await env.set(
+			d[0],
+			jsThing(
+				((await env.get(d[1])) << (await env.get(d[2]))) +
+					Number((await env.get(d[1])) < 0) * ((2 << (await env.get(d[2]))) - 1),
+			),
+		)
 	}
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 sla.validate = tupleR_RV_RV
 const sra: icPartialInstruction = async (env, data) => {
@@ -131,7 +143,9 @@ const sra: icPartialInstruction = async (env, data) => {
 	} else {
 		await env.set(d[0], jsThing((await env.get(d[1])) >> (await env.get(d[2]))))
 	}
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 sra.validate = tupleR_RV_RV
 const sin: icPartialInstruction = async (env, data) => {
@@ -172,31 +186,41 @@ atan2.validate = tupleR_RV_RV
 const and: icPartialInstruction = async (env, data) => {
 	const d = and.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) & (await env.get(d[2]))))
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 and.validate = tupleR_RV_RV
 const or: icPartialInstruction = async (env, data) => {
 	const d = or.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) | (await env.get(d[2]))))
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 or.validate = tupleR_RV_RV
 const xor: icPartialInstruction = async (env, data) => {
 	const d = xor.validate.parse(data)
 	await env.set(d[0], jsThing((await env.get(d[1])) ^ (await env.get(d[2]))))
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 xor.validate = tupleR_RV_RV
 const nor: icPartialInstruction = async (env, data) => {
 	const d = nor.validate.parse(data)
 	await env.set(d[0], jsThing(~((await env.get(d[1])) | (await env.get(d[2])))))
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 nor.validate = tupleR_RV_RV
 const not: icPartialInstruction = async (env, data) => {
 	const d = not.validate.parse(data)
 	await env.set(d[0], jsThing(~(await env.get(d[1]))))
-	await env.throw(new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"))
+	await env.throw(
+		new BitWarn("JavaScript use 32bit number, But game use 64 BIT. Can cause problems with big numbers", "warn"),
+	)
 }
 not.validate = tupleR_RV
 

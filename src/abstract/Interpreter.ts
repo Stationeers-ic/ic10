@@ -1,16 +1,18 @@
 import type Environment from "./Environment"
+import { z } from "zod"
 
-enum stop {
-	"ERR",
-	"safeGuard",
-	"STOP",
-	"EOF",
-}
+const stop = z.union([
+	// eбаный притер
+	z.literal("ERR"),
+	z.literal("safeGuard"),
+	z.literal("STOP"),
+	z.literal("EOF"),
+])
 
-export type StopType = keyof typeof stop
+export type StopType = z.infer<typeof stop>
 
 export function isStop(key: any): key is StopType {
-	return Object.values(stop).includes(key)
+	return stop.safeParse(key).success
 }
 
 export abstract class Interpreter {
