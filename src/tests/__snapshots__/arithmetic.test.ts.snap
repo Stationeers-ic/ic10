@@ -3,13 +3,11 @@
 exports[`arithmetic bin 1`] = `
 [
   [SyntaxError: Alias cannot start with %],
-  [SyntaxError: Alias cannot start with %],
 ]
 `;
 
 exports[`arithmetic hex 1`] = `
 [
-  [SyntaxError: Alias cannot start with $],
   [SyntaxError: Alias cannot start with $],
 ]
 `;

@@ -148,23 +148,6 @@ describe("types", () => {
 			}
 		})
 	})
-	test("CoerceValue", () => {
-		;[
-			{ a: "0x2", expected: false },
-			{ a: "$2", expected: true },
-			{ a: "%101", expected: true },
-			{ a: "0b101", expected: false },
-			{ a: "$ff", expected: true },
-			{ a: "$123456789abcdef", expected: true },
-			{ a: "0b1010101", expected: false },
-		].forEach(({ a, expected }) => {
-			try {
-				expect(types.CoerceValue.safeParse(a).success).toBe(expected)
-			} catch (e) {
-				throw new Error(`CoerceValue: "${a}" is ${!expected} expected ${expected}`)
-			}
-		})
-	})
 	test("Alias", () => {
 		;[
 			{ a: "hello", expected: true },

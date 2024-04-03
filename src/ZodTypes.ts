@@ -33,11 +33,8 @@ export const Value = z.number()
 export type Value = z.infer<typeof Value>
 export const CoerceValue = z.preprocess((val) => {
 	if (typeof val === "number") return val
-	if (typeof val !== "string") return
-	if (val === "" || val.startsWith("0x") || val.startsWith("0b")) return
-	if (val.startsWith("$") || val.startsWith("%")) val = val.replaceAll("_", "")
-	if (typeof val !== "string") return
-	const x = Number(val.replace("$", "0x").replace("%", "0b"))
+	if (val === "") return
+	const x = Number(val)
 	if (isNaN(x)) return
 	return x
 }, z.number())
@@ -49,7 +46,7 @@ export type CoerceValue = z.infer<typeof Value>
  */
 export const Alias = z
 	.string()
-	.regex(/^[^\-0-9\s\.][^\s]*$/)
+	.regex(/^[^\-0-9\s\.\%\$][^\s]*$/)
 	.refine((val: string) => {
 		return !RegisterOrDevice.safeParse(val).success
 	}, "Alias can be only string and not a register or device name.")
