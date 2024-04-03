@@ -1,7 +1,7 @@
 import type { InterpreterIc10 } from "../InterpreterIc10"
 import { hash, type Positions, tokenize } from "../regexps"
 import { instructions } from "../instructions"
-import { z, ZodError } from "zod"
+import { ZodError } from "zod"
 import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 import { AnyInstructionName } from "../ZodTypes"
@@ -31,9 +31,19 @@ export class Line {
 
 		this.fn = this.tokens.fn.value
 		this.args = this.tokens.args.map((i) => {
-			if (!isNaN(Number(i.value))) return Number(i.value)
-			const h = Line.parseHash(i.value)
-			return h ?? i.value
+			const val = Line.parseNumber(i.value) ?? Line.parseHash(i.value) ?? i.value
+			if (typeof val === "string" && (val.startsWith("$") || val.startsWith("%"))) {
+				this.scope
+					.getEnv()
+					.throw(
+						new SyntaxError(
+							`Alias cannot start with ${val.startsWith("$") ? "$" : "%"}`,
+							"error",
+							this.lineIndex,
+						),
+					)
+			}
+			return val
 		})
 		this.comment = this.tokens.comment.value
 	}
@@ -44,6 +54,21 @@ export class Line {
 		if (matches) {
 			return CRC32.str(matches[1])
 		}
+		return null
+	}
+
+	static parseNumber(str: string | number) {
+		if (typeof str === "number") {
+			return str
+		}
+		if (str.startsWith("0x") || str.startsWith("0b")) {
+			return str
+		}
+		if (str.startsWith("$") || str.startsWith("%")) {
+			str = str.replaceAll("_", "").replace("$", "0x").replace("%", "0b")
+		}
+		if (!isNaN(Number(str))) return Number(str)
+		return null
 	}
 
 	public async run(): Promise<Boolean> {

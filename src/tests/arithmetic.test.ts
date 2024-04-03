@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { runFunc } from "./testUtils"
+import { init, runFunc } from "./testUtils"
 import { instructions } from "../instructions"
 
 describe("arithmetic", () => {
@@ -303,5 +303,23 @@ describe("arithmetic", () => {
 	test("not", () => {
 		expect(runFunc(instructions.not, ["r0", NaN], { r0: 1 })).rejects.toThrow()
 		expect(runFunc(instructions.not, ["r0", 3], { r0: 1 })).resolves.toBe(-4)
+	})
+	test("bin", () => {
+		const ic = init(["move r0 %1_1", "move r0 %101", "move r0 %141"])
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(3)
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(5)
+		ic.step()
+		expect(ic.env.getErrors()).toMatchSnapshot()
+	})
+	test("hex", () => {
+		const ic = init(["move r0 $f", "move r0 $f_f", "move r0 $fLf"])
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(15)
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(255)
+		ic.step()
+		expect(ic.env.getErrors()).toMatchSnapshot()
 	})
 })

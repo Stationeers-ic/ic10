@@ -74,3 +74,7 @@ export async function runJal(
 		r17: mem.get("r17"),
 	}
 }
+
+export const init = (code: string[]): InterpreterIc10 => {
+	return new InterpreterIc10(new DevEnv(), code.join("\n"))
+}

@@ -46,7 +46,7 @@ export type CoerceValue = z.infer<typeof Value>
  */
 export const Alias = z
 	.string()
-	.regex(/^[^\-0-9\s\.][^\s]*$/)
+	.regex(/^[^\-0-9\s\.\%\$][^\s]*$/)
 	.refine((val: string) => {
 		return !RegisterOrDevice.safeParse(val).success
 	}, "Alias can be only string and not a register or device name.")
