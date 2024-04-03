@@ -163,6 +163,13 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		if (this.aliases.has(name)) {
 			return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))))
 		}
+		if (name.startsWith("$") || name.startsWith("%")) {
+			this.throw(
+				new SyntaxError(`Alias cannot start with ${name.startsWith("$") ? "$" : "%"}`, "error", this.line),
+			)
+			// TODO
+			throw new SyntaxError(`Alias cannot start with ${name.startsWith("$") ? "$" : "%"}`)
+		}
 		name = pathFor_DynamicRegister(this, name)
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)

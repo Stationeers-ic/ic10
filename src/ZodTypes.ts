@@ -33,8 +33,9 @@ export const Value = z.number()
 export type Value = z.infer<typeof Value>
 export const CoerceValue = z.preprocess((val) => {
 	if (typeof val === "number") return val
-	if (val === "") return
-	const x = Number(val)
+	if (typeof val !== "string") return
+	if (val === "" || val.startsWith("0x") || val.startsWith("0b")) return
+	const x = Number(val.replace("$", "0x").replace("%", "0b"))
 	if (isNaN(x)) return
 	return x
 }, z.number())
