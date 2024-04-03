@@ -11,7 +11,9 @@ describe("arithmetic", () => {
 	test("bin", () => {
 		expect(runFunc(instructions.add, ["r0", "r0", "%101"], { r0: 1 })).resolves.toBe(6)
 		expect(runFunc(instructions.add, ["r0", "r0", "%011"], { r0: 1 })).resolves.toBe(4)
-		const ic = init(["move r0 %101", "move r0 %121"])
+		const ic = init(["move r0 %1_1", "move r0 %101", "move r0 %121"])
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(3)
 		expect(ic.step()).resolves.toBe(true)
 		expect(ic.env.get("r0")).toBe(5)
 		expect(ic.step()).resolves.toBe("ERR")
@@ -20,7 +22,9 @@ describe("arithmetic", () => {
 	test("hex", () => {
 		expect(runFunc(instructions.add, ["r0", "r0", "$ff"], { r0: 1 })).resolves.toBe(256)
 		expect(runFunc(instructions.add, ["r0", "r0", "$AF"], { r0: 1 })).resolves.toBe(176)
-		const ic = init(["move r0 $ff", "move r0 $fhf"])
+		const ic = init(["move r0 $f", "move r0 $f_f", "move r0 $fhf"])
+		expect(ic.step()).resolves.toBe(true)
+		expect(ic.env.get("r0")).toBe(15)
 		expect(ic.step()).resolves.toBe(true)
 		expect(ic.env.get("r0")).toBe(255)
 		expect(ic.step()).resolves.toBe("ERR")

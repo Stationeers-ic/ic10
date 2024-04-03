@@ -1,7 +1,7 @@
 {
   "name": "ic10",
   "type": "module",
-  "version": "4.1.9",
+  "version": "4.1.10",
   "description": "ic10 interpreter",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
