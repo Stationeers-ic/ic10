@@ -6,7 +6,7 @@ import Environment from "../abstract/Environment"
 import { z } from "zod"
 import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
-import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
+import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, CoerceValue } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
 import { hash as Hash } from "../index"
 import {
@@ -38,9 +38,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public lines: Array<Line | null> = []
 	public errors: Err[] = []
 	public errorCounter: number = 0
-	public devices: Map<string, ZodDevice> = new Map<string, ZodDevice>()
-	public devicesAttached: Map<string, string> = new Map<string, string>()
-	public devicesStack: Map<string, number[]> = new Map<string, number[]>()
+	public devices: Map<string, ZodDevice> = new Map()
+	public devicesAttached: Map<string, string> = new Map()
+	public devicesStack: Map<string, number[]> = new Map()
 	public data: any = {}
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
@@ -158,10 +158,17 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	get(name: string | number): number {
 		if (typeof name === "number") return name
-		let x = parseFloat(name)
-		if (!isNaN(x)) return x
+		const x = CoerceValue.safeParse(name)
+		if (x.success) return x.data
 		if (this.aliases.has(name)) {
 			return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))))
+		}
+		if (name.startsWith("$") || name.startsWith("%")) {
+			this.throw(
+				new SyntaxError(`Alias cannot start with ${name.startsWith("$") ? "$" : "%"}`, "error", this.line),
+			)
+			// TODO
+			throw new SyntaxError(`Alias cannot start with ${name.startsWith("$") ? "$" : "%"}`)
 		}
 		name = pathFor_DynamicRegister(this, name)
 		name = pathFor_DynamicDevicePort(this, name)

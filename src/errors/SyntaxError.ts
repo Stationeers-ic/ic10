@@ -32,11 +32,9 @@ export class SyntaxError extends Err {
 				if (!tokens) {
 					return defaultError(e, line)
 				}
-				const op = parseInt(opIndex.toString())
-				if (isNaN(op)) {
-					return defaultError(e, line)
-				}
-				const p: Position | undefined = tokens.args[op]
+				const op = Number(opIndex.toString())
+				if (isNaN(op)) return defaultError(e, line)
+				const p: Position | undefined = tokens.args[op % 1]
 				if (typeof p === "undefined") {
 					return defaultError(e, line)
 				}
