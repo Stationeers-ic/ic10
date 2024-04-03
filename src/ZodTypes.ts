@@ -35,6 +35,8 @@ export const CoerceValue = z.preprocess((val) => {
 	if (typeof val === "number") return val
 	if (typeof val !== "string") return
 	if (val === "" || val.startsWith("0x") || val.startsWith("0b")) return
+	if (val.startsWith("$") || val.startsWith("%")) val = val.replaceAll("_", "")
+	if (typeof val !== "string") return
 	const x = Number(val.replace("$", "0x").replace("%", "0b"))
 	if (isNaN(x)) return
 	return x
