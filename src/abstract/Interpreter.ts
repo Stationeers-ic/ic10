@@ -15,14 +15,14 @@ export function isStop(key: any): key is StopType {
 	return stop.safeParse(key).success
 }
 
-export abstract class Interpreter {
+export abstract class Interpreter<env extends Environment = Environment> {
 	public abstract setCode(code: string): this
 
 	public abstract getCode(): string
 
-	public abstract setEnv(env: Environment): this
+	public abstract setEnv(env: env): this
 
-	public abstract getEnv(): Environment
+	public abstract getEnv(): env
 
 	public abstract parseCode(): this
 
