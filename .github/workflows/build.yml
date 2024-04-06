@@ -57,11 +57,11 @@ jobs:
       - name: Publish
         run: npm publish --tag latest --commit-hooks false
 
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.build.outputs.OUTPUT }}
-          retention-days: 60
+#      - name: 'Upload Artifact'
+#        uses: actions/upload-artifact@v4
+#        with:
+#          path: ${{ steps.build.outputs.OUTPUT }}
+#          retention-days: 60
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
