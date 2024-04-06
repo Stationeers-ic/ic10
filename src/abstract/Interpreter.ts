@@ -1,4 +1,5 @@
 import { z } from "zod"
+import type Environment from "./Environment"
 
 const stop = z.union([
 	//!
@@ -14,7 +15,7 @@ export function isStop(key: any): key is StopType {
 	return stop.safeParse(key).success
 }
 
-export abstract class Interpreter<env> {
+export abstract class Interpreter<env extends Environment<any>> {
 	public abstract setCode(code: string): this
 
 	public abstract getCode(): string
