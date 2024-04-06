@@ -4,12 +4,12 @@ import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
 import Interpreter, { isStop } from "./abstract/Interpreter"
 
-export class InterpreterIc10 extends Interpreter {
+export class InterpreterIc10<env extends Environment = Environment> extends Interpreter<env> {
 	code: string
-	env: Environment
+	env: env
 	stopRun: boolean = false
 
-	constructor(env: Environment, code: string) {
+	constructor(env: env, code: string) {
 		super()
 		this.env = env
 		this.code = code
@@ -25,13 +25,13 @@ export class InterpreterIc10 extends Interpreter {
 		return this.code
 	}
 
-	public setEnv(env: Environment): this {
+	public setEnv(env: env): this {
 		this.env = env
 		this.parseCode()
 		return this
 	}
 
-	public getEnv(): Environment<{}> {
+	public getEnv(): env {
 		return this.env
 	}
 
