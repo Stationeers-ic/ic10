@@ -591,7 +591,7 @@ export const allInstructions: {
 	{
 		name: "asin",
 		preview: "asin r? a(r?|num)",
-		description: "Returns the angle (radians) whos sine is the specified value",
+		description: "Returns the angle (radians) who's sine is the specified value",
 	},
 	{
 		name: "acos",
@@ -601,7 +601,7 @@ export const allInstructions: {
 	{
 		name: "atan",
 		preview: "atan r? a(r?|num)",
-		description: "Returns the angle (radians) whos tan is the specified value",
+		description: "Returns the angle (radians) who's tan is the specified value",
 	},
 	{
 		name: "atan2",

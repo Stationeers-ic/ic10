@@ -2,6 +2,7 @@ import type { Environment } from "../abstract/Environment"
 import type { icPartialInstruction } from "./types"
 import { z } from "zod"
 import {
+	CoerceValue,
 	type DeviceInstructionName,
 	DeviceOrAlias,
 	Hash,
@@ -10,7 +11,6 @@ import {
 	Ralias,
 	RaliasOrValue,
 	SlotIndex,
-	CoerceValue,
 } from "../ZodTypes"
 import SyntaxError from "../errors/SyntaxError"
 

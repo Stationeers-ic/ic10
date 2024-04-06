@@ -1,19 +1,26 @@
 <component name="ProjectDictionaryState">
   <dictionary name="kirill">
     <words>
+      <w>&quot;eof&quot;</w>
+      <w>aaaaa</w>
       <w>abs</w>
       <w>acos</w>
       <w>add</w>
       <w>alias</w>
       <w>and</w>
+      <w>animateonscroll</w>
       <w>ap</w>
+      <w>artelamp</w>
+      <w>artelampru</w>
       <w>asin</w>
       <w>atan</w>
       <w>atan2</w>
+      <w>autolathe</w>
       <w>bap</w>
       <w>bapal</w>
       <w>bapz</w>
       <w>bapzal</w>
+      <w>batchmode</w>
       <w>bdns</w>
       <w>bdnsal</w>
       <w>bdse</w>
@@ -67,47 +74,79 @@
       <w>brne</w>
       <w>brnez</w>
       <w>ceil</w>
+      <w>clickmap</w>
       <w>cos</w>
       <w>define</w>
       <w>div</w>
       <w>dns</w>
+      <w>drrrrrrr</w>
+      <w>drrrrrrrrrrrrr</w>
       <w>dse</w>
       <w>eq</w>
       <w>exp</w>
+      <w>eбаный</w>
+      <w>fandeco</w>
       <w>floor</w>
+      <w>focustrap</w>
+      <w>gallary</w>
       <w>ge</w>
+      <w>getd</w>
+      <w>getmeili</w>
       <w>gt</w>
       <w>hcf</w>
+      <w>inplace</w>
+      <w>interpretator</w>
       <w>j</w>
       <w>jal</w>
       <w>jr</w>
+      <w>jsdelivr</w>
       <w>l</w>
       <w>label</w>
+      <w>labeller</w>
       <w>lb</w>
       <w>lbn</w>
       <w>lbns</w>
       <w>lbs</w>
       <w>le</w>
+      <w>linuxserver</w>
+      <w>listbox</w>
       <w>log</w>
       <w>lr</w>
       <w>ls</w>
       <w>lt</w>
+      <w>mailhog</w>
       <w>max</w>
+      <w>maxlifetime</w>
+      <w>meilisearch</w>
+      <w>metrika</w>
       <w>min</w>
+      <w>mineables</w>
       <w>mod</w>
       <w>move</w>
+      <w>msapplication</w>
       <w>mul</w>
       <w>na</w>
       <w>nan</w>
       <w>nanz</w>
       <w>ne</w>
+      <w>ninf</w>
       <w>nor</w>
       <w>or</w>
       <w>peek</w>
+      <w>phptype</w>
+      <w>pinf</w>
       <w>pop</w>
+      <w>powerblocks</w>
+      <w>profi</w>
       <w>push</w>
+      <w>putd</w>
+      <w>ralias</w>
       <w>rand</w>
       <w>round</w>
+      <w>rrrr</w>
+      <w>rrrrrr</w>
+      <w>rrrrrrr</w>
+      <w>rrrrrrrrrrrrr</w>
       <w>s</w>
       <w>sap</w>
       <w>sapz</w>
@@ -117,12 +156,15 @@
       <w>sdns</w>
       <w>sdse</w>
       <w>select</w>
+      <w>semibold</w>
+      <w>semler</w>
       <w>seq</w>
       <w>seqz</w>
       <w>sge</w>
       <w>sgez</w>
       <w>sgt</w>
       <w>sgtz</w>
+      <w>shnura</w>
       <w>sin</w>
       <w>sla</w>
       <w>sle</w>
@@ -141,11 +183,25 @@
       <w>sra</w>
       <w>srl</w>
       <w>ss</w>
+      <w>stateoniring</w>
+      <w>stationeering</w>
+      <w>stationeers</w>
+      <w>styleclass</w>
       <w>sub</w>
       <w>tan</w>
+      <w>technolight</w>
+      <w>traefik</w>
       <w>trunc</w>
+      <w>upravleniya</w>
+      <w>webvisor</w>
+      <w>widgetbot</w>
       <w>xor</w>
       <w>yield</w>
+      <w>блять</w>
+      <w>логирует</w>
+      <w>пылевлагозащиты</w>
+      <w>стак</w>
+      <w>ёбаный</w>
     </words>
   </dictionary>
 </component>

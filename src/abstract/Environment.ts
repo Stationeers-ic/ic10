@@ -2,7 +2,8 @@ import type Line from "../core/Line"
 import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
 import type { InstructionData } from "../instructions/types"
-import EventEmitter from "eventemitter3" // {
+import EventEmitter from "eventemitter3"
+import Interpreter from "./Interpreter" // {
 
 // {
 // error: (err: Err) => void
@@ -31,9 +32,9 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	public isTest: boolean = false
 	public InfiniteLoopLimit: number = 500
 
-	abstract addLine(line: Line | null): Promise<this> | this
+	abstract addLine(line: Line<Interpreter<Environment>> | null): Promise<this> | this
 
-	abstract setLine(index: number, line: Line): Promise<this> | this
+	abstract setLine(index: number, line: Line<Interpreter<Environment>>): Promise<this> | this
 
 	/**
 	 * Get Line by index

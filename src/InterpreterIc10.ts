@@ -3,8 +3,9 @@ import Line from "./core/Line"
 import InfiniteLoop from "./errors/InfiniteLoop"
 import Err from "./abstract/Err"
 import Interpreter, { isStop } from "./abstract/Interpreter"
+import DevEnv from "./core/DevEnv"
 
-export class InterpreterIc10<env extends Environment = Environment> extends Interpreter<env> {
+export class InterpreterIc10<env extends Environment = DevEnv> extends Interpreter<env> {
 	code: string
 	env: env
 	stopRun: boolean = false
@@ -42,23 +43,23 @@ export class InterpreterIc10<env extends Environment = Environment> extends Inte
 			.map((str) => (str.trim() === "" ? null : str))
 			.map((str, i) => {
 				if (str === null) return null
-				const line = new Line(this, str, i)
+				const line = new Line<typeof this>(this, str, i)
 				// add alias for goto
 				if (line.fn?.endsWith(":")) {
 					const label = line.fn?.split(":")[0]
-					this.env.label(label, i)
+					this.getEnv().label(label, i)
 				}
 				return line
 			})
 			.forEach((line) => {
-				this.env.addLine(line)
+				this.getEnv().addLine(line)
 			})
 		return this
 	}
 
 	public async testCode() {
-		this.env.isTest = true
-		const lines = await this.env.getLines()
+		this.getEnv().isTest = true
+		const lines = await this.getEnv().getLines()
 		for (const line in lines) {
 			lines[line]?.run()
 		}
@@ -66,34 +67,34 @@ export class InterpreterIc10<env extends Environment = Environment> extends Inte
 
 	public async step() {
 		try {
-			const old = await this.env.getPosition()
-			const line = await this.env.getCurrentLine()
+			const old = await this.getEnv().getPosition()
+			const line = await this.getEnv().getCurrentLine()
 			if (line === null) {
-				await this.env.addPosition(1)
-				await this.env.afterLineRun()
+				await this.getEnv().addPosition(1)
+				await this.getEnv().afterLineRun()
 				return false
 			}
 			if (line === undefined) return "EOF"
 
-			await this.env.beforeLineRun(line)
+			await this.getEnv().beforeLineRun(line)
 			// Запуск строки
 			await line.run()
 
 			// Проверка на бесконечный цикл
-			if (line.runCounter > this.env.InfiniteLoopLimit) {
-				await this.env.throw(
+			if (line.runCounter > this.getEnv().InfiniteLoopLimit) {
+				await this.getEnv().throw(
 					new InfiniteLoop(`Infinite loop detected at line ${line.lineIndex}`, "error", line.lineIndex),
 				)
 			}
 
 			// Проверка не прыжок
-			if (old === (await this.env.getPosition())) {
-				await this.env.addPosition(1)
+			if (old === (await this.getEnv().getPosition())) {
+				await this.getEnv().addPosition(1)
 			}
-			await this.env.afterLineRun(line)
+			await this.getEnv().afterLineRun(line)
 		} catch (e: Err | unknown) {
 			if (e instanceof Err) {
-				this.env.throw(e)
+				this.getEnv().throw(e)
 			} else {
 				throw e
 			}
@@ -106,14 +107,14 @@ export class InterpreterIc10<env extends Environment = Environment> extends Inte
 		codeLines = Math.min(codeLines, Number.MAX_SAFE_INTEGER)
 		dryRun = Math.min(dryRun, Number.MAX_SAFE_INTEGER)
 		this.stopRun = false
-		if ((await this.env.getErrorCount()) !== 0) return "ERR"
+		if ((await this.getEnv().getErrorCount()) !== 0) return "ERR"
 
 		let result: string | boolean = false
 		while (codeLines > 0 && dryRun > 0 && !this.stopRun) {
 			result = await this.step()
 			// exit with code
 			if (isStop(result)) return result
-			if ((await this.env.getErrorCount()) !== 0) return "ERR"
+			if ((await this.getEnv().getErrorCount()) !== 0) return "ERR"
 			// on code lines
 			if (result) codeLines--
 			// on empty lines
