@@ -15,7 +15,7 @@ export class Line {
 	tokens: Positions | null = null
 
 	constructor(
-		private scope: InterpreterIc10,
+		private scope: InterpreterIc10<any>,
 		public readonly line: string,
 		public lineIndex: number,
 	) {
