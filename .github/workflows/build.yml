@@ -50,9 +50,9 @@ jobs:
       - name: Create .npmrc
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
 
-#      - name: Pack
-#        id: build
-#        run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
+      - name: Pack
+        id: build
+        run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
 
       - name: Publish
         run: npm publish --tag latest --commit-hooks false
