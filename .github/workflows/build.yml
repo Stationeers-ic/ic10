@@ -51,6 +51,9 @@ jobs:
       - name: Create .npmrc
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
 
+      - name: Test
+        run: bun test
+
       - name: Pack
         id: build
         run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
