@@ -18,7 +18,7 @@ export class SyntaxError extends Err {
 		this.name = "SyntaxError"
 	}
 
-	static fromZod(zodError: ZodError, line: Line): SyntaxError[] {
+	static fromZod(zodError: ZodError, line: Line<any>): SyntaxError[] {
 		const errors: SyntaxError[] = []
 		const defaultError = (e: ZodIssue, line: Line) => {
 			errors.push(new SyntaxError(e.message, "error", line.lineIndex, line.lineIndex, 0, line.line.length))

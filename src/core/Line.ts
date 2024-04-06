@@ -1,12 +1,13 @@
-import type { InterpreterIc10 } from "../InterpreterIc10"
 import { hash, type Positions, tokenize } from "../regexps"
 import { instructions } from "../instructions"
 import { ZodError } from "zod"
 import CRC32 from "crc-32"
 import { SyntaxError } from "../errors/SyntaxError"
 import { AnyInstructionName } from "../ZodTypes"
+import Interpreter from "../abstract/Interpreter"
+import InterpreterIc10 from "../InterpreterIc10"
 
-export class Line {
+export class Line<scope extends Interpreter<any> = InterpreterIc10> {
 	fn: string = ""
 	args: (string | number)[] = []
 	comment: string = ""
@@ -15,7 +16,7 @@ export class Line {
 	tokens: Positions | null = null
 
 	constructor(
-		private scope: InterpreterIc10<any>,
+		private scope: scope,
 		public readonly line: string,
 		public lineIndex: number,
 	) {
@@ -77,28 +78,30 @@ export class Line {
 			const fn = AnyInstructionName.safeParse(this.fn)
 			if (fn.success) {
 				try {
-					this.scope.env.emit(`before_${fn.data}`, this.args ?? [], this)
-					await instructions[fn.data](this.scope.env, this.args ?? [])
-					this.scope.env.emit(`after_${fn.data}`, this.args ?? [], this)
+					this.scope.getEnv().emit(`before_${fn.data}`, this.args ?? [], this)
+					await instructions[fn.data](this.scope.getEnv(), this.args ?? [])
+					this.scope.getEnv().emit(`after_${fn.data}`, this.args ?? [], this)
 				} catch (e: ZodError | unknown) {
 					if (e instanceof ZodError) {
 						// this.scope.env.throw(new SyntaxError(e.errors[0].message, "error"))
-						SyntaxError.fromZod(e, this).forEach((e) => this.scope.env.throw(e))
+						SyntaxError.fromZod(e, this).forEach((e) => this.scope.getEnv().throw(e))
 					} else {
 						throw e
 					}
 				}
 			} else {
-				this.scope.env.throw(
-					new SyntaxError(
-						`Function ${this.fn} not found`,
-						"error",
-						this.lineIndex,
-						this.lineIndex,
-						this.tokens?.fn.start,
-						this.tokens?.fn.end,
-					),
-				)
+				this.scope
+					.getEnv()
+					.throw(
+						new SyntaxError(
+							`Function ${this.fn} not found`,
+							"error",
+							this.lineIndex,
+							this.lineIndex,
+							this.tokens?.fn.start,
+							this.tokens?.fn.end,
+						),
+					)
 			}
 			return true
 		}

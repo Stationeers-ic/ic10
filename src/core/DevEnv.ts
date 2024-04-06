@@ -6,7 +6,7 @@ import Environment from "../abstract/Environment"
 import { z } from "zod"
 import SyntaxError from "../errors/SyntaxError"
 import { getProperty, setProperty } from "dot-prop"
-import { Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, CoerceValue } from "../ZodTypes"
+import { CoerceValue, Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
 import { hash as Hash } from "../index"
 import {
