@@ -5,7 +5,7 @@ import Err from "./abstract/Err"
 import Interpreter, { isStop } from "./abstract/Interpreter"
 import DevEnv from "./core/DevEnv"
 
-export class InterpreterIc10<env extends Environment = DevEnv> extends Interpreter<env> {
+export class InterpreterIc10<env extends Environment<any> = DevEnv> extends Interpreter<env> {
 	code: string
 	env: env
 	stopRun: boolean = false
