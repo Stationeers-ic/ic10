@@ -54,23 +54,23 @@ jobs:
       - name: Test
         run: bun test
 
-      - name: Pack
-        id: build
-        run:  echo "OUTPUT=$(npm pack)" >> "$GITHUB_OUTPUT"
+    #   - name: Pack
+    #     id: build
+    #     run:  echo "OUTPUT=$(npm pack)" 1> "$GITHUB_OUTPUT"
 
       - name: Publish
         run: npm publish --tag latest --commit-hooks false
 
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.build.outputs.OUTPUT }}
-          retention-days: 60
+    #   - name: 'Upload Artifact'
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #       path: ${{ steps.build.outputs.OUTPUT }}
+    #       retention-days: 60
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: dev
-          file_pattern: package.json
+    #   - uses: stefanzweifel/git-auto-commit-action@v5
+    #     with:
+    #       branch: dev
+    #       file_pattern: package.json
       - name: Discord notification
         if: success()
         env:
