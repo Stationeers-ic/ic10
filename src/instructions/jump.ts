@@ -204,12 +204,12 @@ const brna: icPartialInstruction = async (env, data) => {
 brna.validate = jrApValidate
 const brdse: icPartialInstruction = async (env, data) => {
 	const [d, offset] = brdse.validate.parse(data)
-	if (await conditions.dse(env, [d])) await short("jal", env, offset)
+	if (await conditions.dse(env, [d])) await short("jr", env, offset)
 }
 brdse.validate = tupleDA_RLI
 const brdns: icPartialInstruction = async (env, data) => {
 	const [d, offset] = brdns.validate.parse(data)
-	if (await conditions.dns(env, [d])) await short("jal", env, offset)
+	if (await conditions.dns(env, [d])) await short("jr", env, offset)
 }
 brdns.validate = tupleDA_RLI
 const brnan: icPartialInstruction = async (env, data) => {
