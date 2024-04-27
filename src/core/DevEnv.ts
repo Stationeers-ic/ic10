@@ -68,6 +68,18 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		this.define("pi", 3.1415926535897931)
 		this.define("epsilon", 4.94065645841247e-324)
 		this.define("nan", NaN)
+		this.define("Color.Blue", 0)
+		this.define("Color.Gray", 1)
+		this.define("Color.Green", 2)
+		this.define("Color.Orange", 3)
+		this.define("Color.Red", 4)
+		this.define("Color.Yellow", 5)
+		this.define("Color.White", 6)
+		this.define("Color.Black", 7)
+		this.define("Color.Brown", 8)
+		this.define("Color.Khaki", 9)
+		this.define("Color.Pink", 10)
+		this.define("Color.Purple", 11)
 	}
 
 	getDevices() {
