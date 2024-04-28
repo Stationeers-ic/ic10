@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test"
 import DevEnv from "../core/DevEnv"
 import { runWithMen } from "./testUtils"
 
-describe.only("stack in housing", () => {
+describe("stack in housing", () => {
 	test("put", async () => {
 		const mem = new DevEnv()
 		await runWithMen(`move r1 3`, mem)
@@ -27,7 +27,7 @@ describe.only("stack in housing", () => {
 	})
 })
 
-describe.only("stack in external devices", () => {
+describe("stack in external devices", () => {
 	test("putd", async () => {
 		const mem = new DevEnv()
 		mem.appendDevice(123, 123, 123)
