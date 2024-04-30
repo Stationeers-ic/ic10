@@ -1,5 +1,6 @@
 import type { icInstruction, icPartialInstruction } from "./types"
 import arithmetic from "./arithmetic"
+import bitwise from "./bitwise"
 import jump from "./jump"
 import select from "./select"
 import misc from "./misc"
@@ -12,6 +13,7 @@ export type { icInstruction } from "./types"
 
 const instructionsPartial: Record<AnyInstructionName, icPartialInstruction> = {
 	...arithmetic,
+	...bitwise,
 	...misc,
 	...jump,
 	...select,

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { init, runFunc } from "./testUtils"
-import { instructions } from "../instructions"
+import { init, runFunc } from "../testUtils"
+import { instructions } from "../../instructions"
 
 describe("arithmetic", () => {
 	test("add", () => {
@@ -167,42 +167,6 @@ describe("arithmetic", () => {
 		expect(runFunc(instructions.rand, ["r0"])).resolves.toBeGreaterThanOrEqual(0)
 		expect(runFunc(instructions.rand, ["r0"])).resolves.toBeLessThanOrEqual(1)
 	})
-	test("sll", () => {
-		expect(runFunc(instructions.sll, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.sll, ["r0", "r0", 1], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sll, ["r0", 1, 1], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sll, ["r0", "r0", "r0"], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sll, ["r0", 1, "r0"], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sll, ["r0", "r0", -1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sll, ["r0", 1, -1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sll, ["r0", "r0", "r0"], { r0: -1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sll, ["r0", -1, "r0"])).resolves.toBe(-1)
-		expect(runFunc(instructions.sll, ["r0", 1, 30])).resolves.toBe(1073741824)
-	})
-	test("srl", () => {
-		expect(runFunc(instructions.srl, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.srl, ["r0", "r0", 1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", 1, 1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", "r0", "r0"], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", 1, "r0"], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", "r0", -1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", 1, -1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.srl, ["r0", "r0", "r0"], { r0: -1 })).resolves.toBe(0)
-	})
-	test("sla", () => {
-		expect(runFunc(instructions.sla, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.sla, ["r0", "r0", 1], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sla, ["r0", 1, 1], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sla, ["r0", "r0", "r0"], { r0: 1 })).resolves.toBe(2)
-		expect(runFunc(instructions.sla, ["r0", 1, "r0"], { r0: 1 })).resolves.toBe(2)
-	})
-	test("sra", () => {
-		expect(runFunc(instructions.sra, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.sra, ["r0", "r0", 1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sra, ["r0", 1, 1], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sra, ["r0", "r0", "r0"], { r0: 1 })).resolves.toBe(0)
-		expect(runFunc(instructions.sra, ["r0", 1, "r0"], { r0: 1 })).resolves.toBe(0)
-	})
 	test("sin", () => {
 		expect(runFunc(instructions.sin, ["r0", "r1"], { r1: NaN })).resolves.toBeNaN()
 		expect(runFunc(instructions.sin, ["r0", NaN])).rejects.toThrow()
@@ -255,54 +219,6 @@ describe("arithmetic", () => {
 		expect(runFunc(instructions.atan2, ["r0", 1, -1])).resolves.toBe((3 * Math.PI) / 4)
 		expect(runFunc(instructions.atan2, ["r0", -1, 1])).resolves.toBe(-Math.PI / 4)
 		expect(runFunc(instructions.atan2, ["r0", -1, -1])).resolves.toBe((-3 * Math.PI) / 4)
-	})
-	test("and", () => {
-		expect(runFunc(instructions.and, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.and, ["r0", "r0", 2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", 2, 2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", "r0", "r0"], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", 2, "r0"], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", "r0", -2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", 2, -2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.and, ["r0", "r0", "r0"], { r0: -2 })).resolves.toBe(-2)
-		expect(runFunc(instructions.and, ["r0", -2, "r0"])).resolves.toBe(0)
-	})
-	test("or", () => {
-		expect(runFunc(instructions.or, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.or, ["r0", "r0", 2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.or, ["r0", 2, 2], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.or, ["r0", "r0", "r0"], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.or, ["r0", 2, "r0"], { r0: 2 })).resolves.toBe(2)
-		expect(runFunc(instructions.or, ["r0", "r0", -2], { r0: 2 })).resolves.toBe(-2)
-		expect(runFunc(instructions.or, ["r0", 2, -2], { r0: 2 })).resolves.toBe(-2)
-		expect(runFunc(instructions.or, ["r0", "r0", "r0"], { r0: -2 })).resolves.toBe(-2)
-		expect(runFunc(instructions.or, ["r0", -2, "r0"])).resolves.toBe(-2)
-	})
-	test("xor", () => {
-		expect(runFunc(instructions.xor, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.xor, ["r0", "r0", 2], { r0: 2 })).resolves.toBe(0)
-		expect(runFunc(instructions.xor, ["r0", 2, 2], { r0: 2 })).resolves.toBe(0)
-		expect(runFunc(instructions.xor, ["r0", "r0", "r0"], { r0: 2 })).resolves.toBe(0)
-		expect(runFunc(instructions.xor, ["r0", 2, "r0"], { r0: 2 })).resolves.toBe(0)
-		expect(runFunc(instructions.xor, ["r0", "r0", -2], { r0: 2 })).resolves.toBe(-4)
-		expect(runFunc(instructions.xor, ["r0", 2, -2], { r0: 2 })).resolves.toBe(-4)
-		expect(runFunc(instructions.xor, ["r0", "r0", "r0"], { r0: -2 })).resolves.toBe(0)
-		expect(runFunc(instructions.xor, ["r0", -2, "r0"])).resolves.toBe(-2)
-	})
-	test("nor", () => {
-		expect(runFunc(instructions.nor, ["r0", "r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.nor, ["r0", "r0", 2], { r0: 2 })).resolves.toBe(-3)
-		expect(runFunc(instructions.nor, ["r0", 2, 2], { r0: 2 })).resolves.toBe(-3)
-		expect(runFunc(instructions.nor, ["r0", "r0", "r0"], { r0: 2 })).resolves.toBe(-3)
-		expect(runFunc(instructions.nor, ["r0", 2, "r0"], { r0: 2 })).resolves.toBe(-3)
-		expect(runFunc(instructions.nor, ["r0", "r0", -2], { r0: 2 })).resolves.toBe(1)
-		expect(runFunc(instructions.nor, ["r0", 2, -2], { r0: 2 })).resolves.toBe(1)
-		expect(runFunc(instructions.nor, ["r0", "r0", "r0"], { r0: -2 })).resolves.toBe(1)
-		expect(runFunc(instructions.nor, ["r0", -2, "r0"])).resolves.toBe(1)
-	})
-	test("not", () => {
-		expect(runFunc(instructions.not, ["r0", NaN], { r0: 1 })).rejects.toThrow()
-		expect(runFunc(instructions.not, ["r0", 3], { r0: 1 })).resolves.toBe(-4)
 	})
 	test("bin", () => {
 		const ic = init(["move r0 %1_1", "move r0 %101", "move r0 %141"])

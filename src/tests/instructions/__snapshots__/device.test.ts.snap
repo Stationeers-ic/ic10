@@ -1,0 +1,7 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`device s 1`] = `
+[
+  [SyntaxError: Device d0 not found],
+]
+`;
