@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { runFunc } from "./testUtils"
-import { instructions } from "../instructions"
+import { runFunc } from "../testUtils"
+import { instructions } from "../../instructions"
 
 describe("select", () => {
 	test("seq", () => {

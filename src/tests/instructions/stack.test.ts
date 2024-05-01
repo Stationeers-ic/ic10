@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import DevEnv from "../core/DevEnv"
-import { runWithMen } from "./testUtils"
+import DevEnv from "../../core/DevEnv"
+import { runWithMen } from "../testUtils"
 
 describe("stack in housing", () => {
 	test("put", async () => {

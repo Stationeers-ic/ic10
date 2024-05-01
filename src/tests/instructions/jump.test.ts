@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { runFuncJump, runJal } from "./testUtils"
-import { jump } from "../instructions/jump"
+import { runFuncJump, runJal } from "../testUtils"
+import { jump } from "../../instructions/jump"
 
 describe("jump", () => {
 	test("j", () => {

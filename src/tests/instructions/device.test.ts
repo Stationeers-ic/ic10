@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
-import { runFuncWithMem, runThrow, runWithMen } from "./testUtils"
-import DevEnv from "../core/DevEnv"
-import { instructions } from "../instructions"
-import { hash } from "../index"
+import { runFuncWithMem, runThrow, runWithMen } from "../testUtils"
+import DevEnv from "../../core/DevEnv"
+import { instructions } from "../../instructions"
+import { hash } from "../../index"
 
 describe("device", () => {
 	test("s", async () => {

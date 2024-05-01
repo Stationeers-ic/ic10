@@ -185,10 +185,6 @@ export const ArithmeticInstructionName = z.union([
 	z.literal("log"),
 	z.literal("exp"),
 	z.literal("rand"),
-	z.literal("sll"),
-	z.literal("srl"),
-	z.literal("sla"),
-	z.literal("sra"),
 	z.literal("sin"),
 	z.literal("cos"),
 	z.literal("tan"),
@@ -196,13 +192,20 @@ export const ArithmeticInstructionName = z.union([
 	z.literal("acos"),
 	z.literal("atan"),
 	z.literal("atan2"),
+])
+export type ArithmeticInstructionName = z.infer<typeof ArithmeticInstructionName>
+export const BitwiseInstructionName = z.union([
+	z.literal("sll"),
+	z.literal("srl"),
+	z.literal("sla"),
+	z.literal("sra"),
 	z.literal("and"),
 	z.literal("or"),
 	z.literal("xor"),
 	z.literal("nor"),
 	z.literal("not"),
 ])
-export type ArithmeticInstructionName = z.infer<typeof ArithmeticInstructionName>
+export type BitwiseInstructionName = z.infer<typeof BitwiseInstructionName>
 
 export const SelectInstructionName = z.union([
 	z.literal("seq"),
@@ -336,6 +339,7 @@ export type StackInstructionName = z.infer<typeof StackInstructionName>
 
 export const AnyInstructionName = z.union([
 	ArithmeticInstructionName,
+	BitwiseInstructionName,
 	SelectInstructionName,
 	JumpInstructionName,
 	DeviceInstructionName,
