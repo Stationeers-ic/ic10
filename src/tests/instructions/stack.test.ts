@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import DevEnv from "../../core/DevEnv"
-import { runWithMen } from "../testUtils"
+import { runFuncWithMem, runWithMen } from "../testUtils"
+import instructions from "../../instructions"
 
 describe("stack in housing", () => {
 	test("put", async () => {
@@ -24,6 +25,18 @@ describe("stack in housing", () => {
 		await runWithMen(`peek r0`, mem)
 		expect(mem.get("r0")).toBe(3)
 		expect(mem.get("sp")).toBe(1)
+	})
+
+	test("get db", async () => {
+		const mem = new DevEnv()
+		const a = mem.appendDevice(123)
+		mem.attachDevice(a, "db")
+		await runWithMen(`move r1 8`, mem)
+		await runWithMen(`poke r1 3`, mem)
+		await runFuncWithMem(instructions.get, ["r0", "db", "r1"], mem)
+		await runFuncWithMem(instructions.get, ["r2", "db", 8], mem)
+		expect(mem.get("r0")).toBe(3)
+		expect(mem.get("r2")).toBe(3)
 	})
 })
 

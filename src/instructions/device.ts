@@ -107,7 +107,7 @@ const get: icPartialInstruction = async (env, data) => {
 	if (!(await env.isPortConnected(await env.getAlias(device)))) {
 		throw new SyntaxError(`Device ${await env.getAlias(device)} not found`, "error", await env.getPosition())
 	}
-	await env.set(await env.getAlias(reg), await env.ic_get(device, index))
+	await env.set(await env.getAlias(reg), await env.ic_get(device, await env.get(index)))
 }
 get.validate = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue])
 
@@ -122,7 +122,7 @@ put.validate = z.tuple([DeviceOrAlias, RaliasOrValue, RaliasOrValue])
 
 const getd: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, index] = getd.validate.parse(data)
-	await env.set(await env.getAlias(reg), await env.ic_getd(env.get(deviceId).toString(), index))
+	await env.set(await env.getAlias(reg), await env.ic_getd(env.get(deviceId).toString(), await env.get(index)))
 }
 getd.validate = z.tuple([Ralias, RaliasOrValue.or(CoerceValue), RaliasOrValue])
 
