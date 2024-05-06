@@ -73,4 +73,10 @@ describe("main", () => {
 			CRC32.str("Cable Analyzer MAIN OUT"),
 		)
 	})
+
+	test("const", async () => {
+		expect((await run(`move r0 Color.Pink`)).get("r0")).toBe(10)
+		expect((await run(`move r0 Sound.Alarm2`)).get("r0")).toBe(1)
+		expect((await run(`move r0 nan`)).get("r0")).toBeNaN()
+	})
 })

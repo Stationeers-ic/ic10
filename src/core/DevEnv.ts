@@ -16,6 +16,7 @@ import {
 	PortWithConnection,
 } from "./Helpers"
 import EnvError from "../errors/EnvError"
+import consts from "./../data/consts.json"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -44,6 +45,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public data: any = {}
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
+	public constants = new Map<string, number>()
 
 	constructor(data: { [key: string]: number } = {}) {
 		super()
@@ -61,25 +63,18 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		this.define("Sum", 1)
 		this.define("Minimum", 2)
 
-		this.define("rad2deg", 57.295780181884766)
-		this.define("deg2rad", 0.01745329238474369)
-		this.define("ninf", -Infinity)
-		this.define("pinf", Infinity)
-		this.define("pi", 3.1415926535897931)
-		this.define("epsilon", 4.94065645841247e-324)
-		this.define("nan", NaN)
-		this.define("Color.Blue", 0)
-		this.define("Color.Gray", 1)
-		this.define("Color.Green", 2)
-		this.define("Color.Orange", 3)
-		this.define("Color.Red", 4)
-		this.define("Color.Yellow", 5)
-		this.define("Color.White", 6)
-		this.define("Color.Black", 7)
-		this.define("Color.Brown", 8)
-		this.define("Color.Khaki", 9)
-		this.define("Color.Pink", 10)
-		this.define("Color.Purple", 11)
+		this.shadowDefine("rad2deg", 57.295780181884766)
+		this.shadowDefine("deg2rad", 0.01745329238474369)
+		this.shadowDefine("ninf", -Infinity)
+		this.shadowDefine("pinf", Infinity)
+		this.shadowDefine("pi", 3.1415926535897931)
+		this.shadowDefine("epsilon", 4.94065645841247e-324)
+		this.shadowDefine("nan", NaN)
+		Object.entries(consts).forEach(([key, value]) => {
+			if (typeof value === "number") {
+				this.shadowDefine(key, value)
+			}
+		})
 	}
 
 	getDevices() {
@@ -170,6 +165,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	get(name: string | number): number {
 		if (typeof name === "number") return name
+		if (this.constants.has(name)) return NumberOrNan.parse(this.constants.get(name))
 		const x = CoerceValue.safeParse(name)
 		if (x.success) return x.data
 		if (this.aliases.has(name)) {
@@ -229,6 +225,13 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.aliases.set(name, value)
 		} else {
 			this.throw(new SyntaxError(`Constant ${name} already exists`, "error", this.line))
+		}
+		return this
+	}
+
+	shadowDefine(name: string, value: number): this {
+		if (!this.constants.has(name)) {
+			this.constants.set(name, value)
 		}
 		return this
 	}
