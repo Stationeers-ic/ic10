@@ -59,9 +59,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		this.alias("sp", "r16")
 		this.alias("ra", "r17")
 
-		this.define("Average", 0)
-		this.define("Sum", 1)
-		this.define("Minimum", 2)
+		this.shadowDefine("Average", 0)
+		this.shadowDefine("Sum", 1)
+		this.shadowDefine("Minimum", 2)
 
 		this.shadowDefine("rad2deg", 57.295780181884766)
 		this.shadowDefine("deg2rad", 0.01745329238474369)
