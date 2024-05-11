@@ -2,6 +2,8 @@
 	"extends": "./tsconfig",
 	"compilerOptions": {
 		"module": "CommonJS",
-		"outDir": "./dist/cjs"
+		"outDir": "./dist/cjs",
+		"target": "ES2021",
+		"lib": ["ES2021"]
 	}
 }

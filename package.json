@@ -27,7 +27,7 @@
     "build:node": "bun build ./src/index.ts --outdir ./build --target node --minify",
     "build:bun": "bun build ./src/index.ts --outdir ./build --target bun --minify",
     "build:browser": "bun build ./src/index.ts --outdir ./build --minify",
-    "build": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json",
+    "build": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && bun ./tools/build.ts",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
     "devTest": "ts-node tests/dev.ts"
