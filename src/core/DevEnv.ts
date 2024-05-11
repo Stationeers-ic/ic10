@@ -5,7 +5,7 @@ import type Err from "../abstract/Err"
 import Environment from "../abstract/Environment"
 import { z } from "zod"
 import SyntaxError from "../errors/SyntaxError"
-import { getProperty, setProperty } from "dot-prop"
+import { getProperty, setProperty } from "../property"
 import { CoerceValue, Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
 import { v4 as uuid } from "uuid"
 import { hash as Hash } from "../index"
@@ -42,7 +42,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public devices: Map<string, ZodDevice> = new Map()
 	public devicesAttached: Map<string, string> = new Map()
 	public devicesStack: Map<string, number[]> = new Map()
-	public data: any = {}
+	public data: Record<string, any> = {}
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
 	public constants = new Map<string, number>()
