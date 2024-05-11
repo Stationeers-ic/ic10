@@ -1,7 +1,7 @@
 {
   "name": "ic10",
   "type": "module",
-  "version": "4.2.14",
+  "version": "4.2.15",
   "description": "ic10 interpreter",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -30,7 +30,7 @@
     "build": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && bun ./tools/build.ts",
     "test": "bun test",
     "nodemon": "nodemon src/tests/dev.ts",
-    "devTest": "ts-node tests/dev.ts"
+    "devTest": "bun tests/dev.ts"
   },
   "files": [
     "dist"
@@ -52,30 +52,17 @@
     ".ic10"
   ],
   "homepage": "https://github.com/Stationeers-ic/ic10#readme",
-  "nodemonConfig": {
-    "execMap": {
-      "ts": "bun"
-    },
-    "watch": [
-      "src"
-    ]
-  },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/bun": "^1.1.0",
-    "@types/crc": "^3.8.3",
+    "@types/bun": "^1.1.1",
     "@types/uuid": "^9.0.8",
-    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5",
-    "esbuild": "^0.20.2"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "crc-32": "^1.2.2",
-    "dot-prop": "^8.0.2",
     "eventemitter3": "^5.0.1",
     "uuid": "^9.0.1",
-    "zod": "^3.22.4"
+    "zod": "^3.23.8"
   }
 }
