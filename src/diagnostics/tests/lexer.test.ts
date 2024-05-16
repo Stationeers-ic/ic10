@@ -3,49 +3,6 @@ import { getNextToken, parse } from "../lexer"
 import { TOKEN_TYPES, TOKENS } from "../lexerTokens"
 import { instructionsNames } from "../../instructions"
 
-/*
-export function getNextToken(
-	index: number,
-	text: string,
-): [length: number, Omit<Token, "start" | "end" | "length">] | undefined {
-	for (const token of TOKENS) {
-		if (token.patternType === "string") {
-			if (token.pattern.length === 1 && text[index] === token.pattern) {
-				return [1, { type: token.token }]
-			} else if (text.startsWith(token.pattern, index)) {
-				if (/^\W/.test(token.pattern)) return [token.pattern.length, { type: token.token }]
-				if (/^\W/.test(text.slice(index + token.pattern.length)))
-					return [token.pattern.length, { type: token.token }]
-			}
-		} else if (token.patternType === "range") {
-			const [len, error] = extractTextBetween(index, text, token.open, token.close, token.ignore, token.errorOn)
-			if (error === true) continue
-			if (typeof error === "string") {
-				return [
-					len,
-					{
-						type: token.token,
-						value: text.slice(index + token.open.length, index + len),
-					},
-				]
-			}
-			if (error === false) {
-				return [
-					len,
-					{
-						type: token.token,
-						value: text.slice(index + token.open.length, index + len - token.close.length),
-					},
-				]
-			}
-		} else if (token.patternType === "function") {
-			const result = token.pattern(index, text)
-			if (result === null) continue
-			return [result[0], { type: token.token, value: result[1] }]
-		}
-	}
-}
-*/
 test("getNextToken", async () => {
 	expect(getNextToken(0, "a")).toEqual([1, { type: TOKEN_TYPES.ALIAS, value: "a" }])
 	expect(getNextToken(0, "a b")).toEqual([1, { type: TOKEN_TYPES.ALIAS, value: "a" }])
