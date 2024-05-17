@@ -1,4 +1,4 @@
-import { parse, Token } from "./lexer"
+import { Token } from "./lexer"
 
 export type Line = {
 	tokens: Token[]

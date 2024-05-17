@@ -1,4 +1,4 @@
-import { describe, expect, test } from "bun:test"
+import { expect, test } from "bun:test"
 import { TOKEN_TYPES, TOKENS } from "../lexerTokens"
 
 test("TOKEN_TYPES", () => {
