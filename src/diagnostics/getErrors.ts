@@ -1,13 +1,12 @@
-import { parse, Token } from "./lexer"
-import { getLines, Line } from "./lines"
-import { record, ZodTypeAny } from "zod"
+import type { Token } from "./lexer"
+import type { Line } from "./lines"
+import type { ZodTypeAny } from "zod"
 import instructions, { instructionsNames } from "../instructions"
 import {
 	Alias,
 	AliasOrValue,
 	AliasOrValueOrNaN,
 	AnyInstructionName,
-	CoerceValue,
 	Device,
 	DeviceOrAlias,
 	Hash,
@@ -27,8 +26,6 @@ import {
 } from "../ZodTypes"
 import { TOKEN_TYPES } from "./lexerTokens"
 import { findBestMatch } from "../tools/stringSimilarity"
-import { expect } from "bun:test"
-import { findErrorsInCode } from "."
 
 type lexerInstruction = {
 	name: keyof typeof instructions
