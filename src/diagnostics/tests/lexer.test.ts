@@ -77,6 +77,7 @@ describe("parse", () => {
 			["dsfh", 2, "dsfh"],
 			["dsfh\n33", 4, "dsfh"],
 			["adhd1fgh", 2, "adhd1fgh"],
+			["hello.world", 2, "hello.world"],
 		]
 		testCases[TOKEN_TYPES.UNKNOWN] = [
 			["222dsfh", 2, "222dsfh"],
