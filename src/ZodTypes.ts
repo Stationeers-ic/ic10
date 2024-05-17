@@ -39,6 +39,9 @@ export const CoerceValue = z.preprocess((val) => {
 	return x
 }, z.number())
 export type CoerceValue = z.infer<typeof Value>
+
+export const RaliasOrCoerceValue = CoerceValue
+export type RaliasOrCoerceValue = z.infer<typeof RaliasOrCoerceValue>
 /**
  * Alias
  *
