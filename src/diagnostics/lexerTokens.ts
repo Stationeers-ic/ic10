@@ -120,7 +120,7 @@ export const TOKENS: Array<
 		token: TOKEN_TYPES.ALIAS,
 		patternType: "function",
 		pattern: (position, total) => {
-			const reg = /^[a-zA-Z][a-zA-Z0-9]*\b/
+			const reg = /^[a-zA-Z][a-zA-Z0-9.]*\b/
 			const match = reg.exec(total.slice(position))
 			// if start position is 0 return 0
 			// else return length of match
