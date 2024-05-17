@@ -153,9 +153,6 @@ function getExpectedTokens(token: AnyInstructionName): (TOKEN_TYPES | "VALUE")[]
 			case RaliasOrCoerceValue:
 				result.push([TOKEN_TYPES.REGISTER, TOKEN_TYPES.ALIAS, "VALUE"])
 				break
-			case RaliasOrValue:
-				result.push([TOKEN_TYPES.REGISTER, TOKEN_TYPES.ALIAS, "VALUE"])
-				break
 			default:
 				result.push([])
 		}
@@ -164,7 +161,7 @@ function getExpectedTokens(token: AnyInstructionName): (TOKEN_TYPES | "VALUE")[]
 }
 export function getErrors(lines: Line[]) {
 	const errors: Error[] = []
-	lines.forEach((line, i) => {
+	lines.forEach((line) => {
 		if (line.tokens.length === 0) return
 		const firstToken = line.tokens[0]
 		if (firstToken.type === TOKEN_TYPES.ALIAS && line.tokens.length === 1) {
@@ -206,7 +203,7 @@ export function getErrors(lines: Line[]) {
 		const expected = getExpectedTokens(firstToken.value as AnyInstructionName)
 		line.tokens.forEach((token, j) => {
 			if (token === firstToken) return
-			const { type, start, end, length, value } = token
+			const { type } = token
 			if (expected[j - 1] === undefined) {
 				errors.push(getErrorFromToken(lines, ErrorTypes.UNEXPECTED_TOKEN, token, ["NONE"]))
 				return
