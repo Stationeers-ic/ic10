@@ -13,6 +13,7 @@ export { instructions, instructionsNames } from "./instructions"
 export {
 	parse as lexerParse,
 	ErrorTypes as lexerErrorTypes,
+	findErrorsInCode,
 	getErrors,
 	getLines as lexerGetLines,
 	TOKEN_TYPES as LexerTOKEN_TYPES,
