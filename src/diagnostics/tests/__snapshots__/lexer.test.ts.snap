@@ -1,0 +1,89 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse general 1`] = `
+[
+  {
+    "end": 1,
+    "length": 1,
+    "start": 0,
+    "type": "ALIAS",
+    "value": "a",
+  },
+  {
+    "end": 1,
+    "length": 0,
+    "start": 1,
+    "type": "EOF",
+  },
+]
+`;
+
+exports[`parse general 2`] = `
+[
+  {
+    "end": 3,
+    "length": 3,
+    "start": 0,
+    "type": "INSTRUCTION",
+    "value": "sll",
+  },
+  {
+    "end": 3,
+    "length": 0,
+    "start": 3,
+    "type": "EOF",
+  },
+]
+`;
+
+exports[`parse general 3`] = `
+[
+  {
+    "end": 8,
+    "length": 8,
+    "start": 0,
+    "type": "BINARY",
+    "value": "1010101",
+  },
+  {
+    "end": 9,
+    "length": 1,
+    "start": 8,
+    "type": "ENDOFLINE",
+  },
+  {
+    "end": 14,
+    "length": 5,
+    "start": 9,
+    "type": "INSTRUCTION",
+    "value": "alias",
+  },
+  {
+    "end": 17,
+    "length": 2,
+    "start": 15,
+    "type": "REGISTER",
+    "value": "r0",
+  },
+  {
+    "end": 20,
+    "length": 2,
+    "start": 18,
+    "type": "NUMBER",
+    "value": "10",
+  },
+  {
+    "end": 23,
+    "length": 2,
+    "start": 21,
+    "type": "PORT",
+    "value": "d2",
+  },
+  {
+    "end": 23,
+    "length": 0,
+    "start": 23,
+    "type": "EOF",
+  },
+]
+`;

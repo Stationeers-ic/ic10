@@ -35,4 +35,6 @@ export const instructions: Record<AnyInstructionName, icInstruction> = instructi
 	AnyInstructionName,
 	icInstruction
 >
+export const instructionsNames = Object.keys(instructions) as unknown as (keyof typeof instructions)[]
+
 export default instructions
