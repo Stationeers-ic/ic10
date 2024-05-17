@@ -8,8 +8,18 @@ export { BitWarn } from "./errors/BitWarn"
 export { InfiniteLoop } from "./errors/InfiniteLoop"
 export { SyntaxError } from "./errors/SyntaxError"
 export { EnvError } from "./errors/EnvError"
-export { instructions } from "./instructions"
+export { instructions, instructionsNames } from "./instructions"
+
+export {
+	parse as lexerParse,
+	ErrorTypes as lexerErrorTypes,
+	getErrors,
+	getLines as lexerGetLines,
+	TOKEN_TYPES as LexerTOKEN_TYPES,
+} from "./diagnostics"
+
 export { str as hash } from "crc-32"
 //types
+export type { Line as LexerLine, Error as LexerError } from "./diagnostics"
 export type { icInstruction } from "./instructions"
 export type { StopType } from "./abstract/Interpreter"

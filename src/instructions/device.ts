@@ -9,6 +9,7 @@ import {
 	Logic,
 	Mode,
 	Ralias,
+	RaliasOrCoerceValue,
 	RaliasOrValue,
 	SlotIndex,
 } from "../ZodTypes"
@@ -124,13 +125,13 @@ const getd: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, index] = getd.validate.parse(data)
 	await env.set(await env.getAlias(reg), await env.ic_getd(env.get(deviceId).toString(), await env.get(index)))
 }
-getd.validate = z.tuple([Ralias, RaliasOrValue.or(CoerceValue), RaliasOrValue])
+getd.validate = z.tuple([Ralias, RaliasOrCoerceValue, RaliasOrValue])
 
 const putd: icPartialInstruction = async (env, data) => {
 	const [deviceId, index, value] = putd.validate.parse(data)
 	await env.ic_putd((await env.get(deviceId)).toString(), await env.get(index), await env.get(value))
 }
-putd.validate = z.tuple([RaliasOrValue.or(CoerceValue), RaliasOrValue, RaliasOrValue])
+putd.validate = z.tuple([RaliasOrCoerceValue, RaliasOrValue, RaliasOrValue])
 
 const poke: icPartialInstruction = async (env, data) => {
 	const [index, value] = poke.validate.parse(data)
@@ -142,13 +143,13 @@ const ld: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, Logic] = ld.validate.parse(data)
 	await env.set(reg, await env.getDeviceProp(env.get(deviceId).toString(), Logic))
 }
-ld.validate = z.tuple([Ralias, RaliasOrValue.or(CoerceValue), Logic])
+ld.validate = z.tuple([Ralias, RaliasOrCoerceValue, Logic])
 
 const sd: icPartialInstruction = async (env, data) => {
 	const [deviceId, Logic, value] = sd.validate.parse(data)
 	await env.setDeviceProp(env.get(deviceId).toString(), Logic, value)
 }
-sd.validate = z.tuple([RaliasOrValue.or(CoerceValue), Logic, RaliasOrValue])
+sd.validate = z.tuple([RaliasOrCoerceValue, Logic, RaliasOrValue])
 
 const device: Record<DeviceInstructionName, icPartialInstruction> = {
 	l,
