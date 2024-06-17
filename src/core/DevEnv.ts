@@ -1,22 +1,24 @@
 // noinspection SuspiciousTypeOfGuard
 
-import type Line from "./Line"
-import type Err from "../abstract/Err"
-import Environment from "../abstract/Environment"
+import { v4 as uuid } from "uuid"
 import { z } from "zod"
+import { ChipHousing, IChipHousing } from "../abstract/ChipHousing"
+import Environment from "../abstract/Environment"
+import type Err from "../abstract/Err"
+import EnvError from "../errors/EnvError"
 import SyntaxError from "../errors/SyntaxError"
+import { hash as Hash } from "../index"
 import { getProperty, setProperty } from "../tools/property"
 import { CoerceValue, Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
-import { v4 as uuid } from "uuid"
-import { hash as Hash } from "../index"
+import consts from "./../data/consts.json"
+import { DevChipHousing } from "./DevChipHousing"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
 	pathFor_PortWithConnection,
 	PortWithConnection,
 } from "./Helpers"
-import EnvError from "../errors/EnvError"
-import consts from "./../data/consts.json"
+import type Line from "./Line"
 
 const ZodDevice = z.union([
 	z.record(z.number()),
@@ -46,13 +48,19 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
 	public constants = new Map<string, number>()
+	public chipHousing!: IChipHousing
 
-	constructor(data: { [key: string]: number } = {}) {
+	constructor(data: { [key: string]: number } | IChipHousing = {}) {
 		super()
 		this.setDefault()
-		Object.entries(data).forEach(([key, value]) => {
-			this.set(key, value)
-		})
+		if (ChipHousing.is(data)) {
+			this.chipHousing = data
+		} else {
+			this.chipHousing = new DevChipHousing(data.ReferenceId ?? Hash(uuid()))
+			Object.entries(data).forEach(([key, value]) => {
+				this.set(key, value)
+			})
+		}
 	}
 
 	setDefault() {
@@ -289,8 +297,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		if (!this.devicesStack.has(id)) {
 			this.devicesStack.set(id, Array(512).fill(0))
 		}
-		//@ts-ignore  TODO: да блять ну здесь ну никак undefined не будет
-		this.devicesStack.get(id)[index] = value
+		this.devicesStack.get(id)![index] = value
 		return this
 	}
 

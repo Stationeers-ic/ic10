@@ -59,8 +59,13 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 
 	//Работа с памятью
 
+	/**
+	 * @deprecated //TODO: make description
+	 */
 	abstract get(name: string | number): Promise<number> | number
-
+	/**
+	 * @deprecated //TODO: make description
+	 */
 	abstract set(name: string, value: number): Promise<this> | this
 
 	abstract ic_push(name: string | number): Promise<this> | this

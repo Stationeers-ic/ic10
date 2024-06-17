@@ -65,7 +65,9 @@
 		"snan",
 		"snanz",
 		"snaz",
-		"snez"
+		"snez",
+		"putd",
+		"getd",
 	],
 	// The path to the `bun` executable.
 	"bun.runtime": "/home/kirill/.bun/bin/bun",

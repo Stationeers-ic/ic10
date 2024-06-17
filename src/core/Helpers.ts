@@ -79,9 +79,9 @@ const PortWithConnection = (port: any): { port: string; connection: null | strin
  */
 export {
 	pathFor_DynamicDevicePort,
-	pathFor_DynamicRegister,
 	pathFor_DynamicDevicePortAsync,
+	pathFor_DynamicRegister,
 	pathFor_DynamicRegisterAsync,
-	PortWithConnection,
 	pathFor_PortWithConnection,
+	PortWithConnection,
 }
