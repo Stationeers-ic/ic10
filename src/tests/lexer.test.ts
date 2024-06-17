@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
-import { getNextToken, parse } from "../lexer"
-import { TOKEN_TYPES, TOKENS } from "../lexerTokens"
-import { instructionsNames } from "../../instructions"
+import { getNextToken, parse } from "../diagnostics/lexer"
+import { TOKEN_TYPES, TOKENS } from "../diagnostics/lexerTokens"
+import { instructionsNames } from "../instructions"
 
 test("getNextToken", async () => {
 	expect(getNextToken(0, "a")).toEqual([1, { type: TOKEN_TYPES.ALIAS, value: "a" }])

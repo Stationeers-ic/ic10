@@ -76,9 +76,3 @@ exports[`throw stack 2`] = `
   [SyntaxError: Required],
 ]
 `;
-
-exports[`throw alias 7`] = `
-[
-  [SyntaxError: Invalid input],
-]
-`;
