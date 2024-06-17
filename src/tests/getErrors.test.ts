@@ -1,8 +1,8 @@
 import { expect, test, describe } from "bun:test"
-import { getLines } from "../lines"
-import { parse } from "../lexer"
-import { ErrorTypes, getErrors } from "../getErrors"
-import { TOKEN_TYPES } from "../lexerTokens"
+import { getLines } from "../diagnostics/lines"
+import { parse } from "../diagnostics/lexer"
+import { ErrorTypes, getErrors } from "../diagnostics/getErrors"
+import { TOKEN_TYPES } from "../diagnostics/lexerTokens"
 describe("getErrors", () => {
 	test("slll: hello", () => {
 		const errors = getErrors(getLines(parse(`slll: hello`)))

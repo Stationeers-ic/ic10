@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import { TOKEN_TYPES, TOKENS } from "../lexerTokens"
+import { TOKEN_TYPES, TOKENS } from "../diagnostics/lexerTokens"
 
 test("TOKEN_TYPES", () => {
 	expect(TOKEN_TYPES).toBeTypeOf("object")
