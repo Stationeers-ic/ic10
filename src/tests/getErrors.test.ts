@@ -5,7 +5,7 @@ import { ErrorTypes, getErrors } from "../diagnostics/getErrors"
 import { TOKEN_TYPES } from "../diagnostics/lexerTokens"
 describe("getErrors", () => {
 	test("sll: hello", () => {
-		const errors = getErrors(getLines(parse(`sll: hello`)))
+		const errors = getErrors(getLines(parse(`xxx: hello`)))
 		expect(errors.length).toBe(1)
 		expect(errors[0].type).toBe(ErrorTypes.UNEXPECTED_TOKEN)
 		expect(errors[0].token?.value).toBe("hello")
@@ -13,15 +13,15 @@ describe("getErrors", () => {
 		expect(errors[0].received).toBe(TOKEN_TYPES.ALIAS)
 		expect(errors[0].expected).toEqual(["NONE"])
 	})
-	test("sll", () => {
-		const errors = getErrors(getLines(parse(`sll`)))
+	test("xxx", () => {
+		const errors = getErrors(getLines(parse(`xxx`)))
 		expect(errors.length).toBe(1)
 		expect(errors[0].type).toBe(ErrorTypes.UNEXPECTED_TOKEN)
-		expect(errors[0].token?.value).toBe("sll")
+		expect(errors[0].token?.value).toBe("xxx")
 		expect(errors[0].line.index).toBe(0)
 		expect(errors[0].received).toBe(TOKEN_TYPES.ALIAS)
 		expect(errors[0].expected).toEqual([TOKEN_TYPES.INSTRUCTION, TOKEN_TYPES.LABEL])
-		expect(errors[0].suggested).toBe("sll:")
+		expect(errors[0].suggested).toBe("xxx:")
 	})
 	test("sl r0", () => {
 		const errors = getErrors(getLines(parse(`sl r0`)))
