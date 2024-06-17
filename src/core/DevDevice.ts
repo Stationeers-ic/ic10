@@ -1,4 +1,4 @@
-import { Device, Stack } from "../abstract/Device"
+import { Device } from "../abstract/Device"
 import { DevStack } from "./DevStack"
 
 export class DevDevice extends Device {
@@ -6,25 +6,11 @@ export class DevDevice extends Device {
 	public properties!: Record<string, number>
 	public reagents!: Record<number, number>
 	public slots!: Record<number, Record<string, number>>
-	#stack: Stack
+	public readonly stack: DevStack
 
 	constructor(ReferenceId: number) {
 		super(ReferenceId)
-		this.#stack = new DevStack()
-	}
-
-	public static is(obj: any): obj is DevDevice {
-		return (
-			obj.channel !== undefined &&
-			obj.properties !== undefined &&
-			obj.reagents !== undefined &&
-			obj.slots !== undefined &&
-			Stack.is(obj.#stack)
-		)
-	}
-
-	stack() {
-		return this.#stack
+		this.stack = new DevStack()
 	}
 
 	setChannel(channel: number, value: number) {
@@ -34,7 +20,7 @@ export class DevDevice extends Device {
 	}
 
 	getChannel(channel: number) {
-		return this.channel[channel] || 0
+		return this.channel?.[channel] || 0
 	}
 
 	setProperty(property: string, value: number) {
@@ -44,7 +30,7 @@ export class DevDevice extends Device {
 	}
 
 	getProperty(property: string) {
-		return this.properties[property] || 0
+		return this.properties?.[property] ?? 0
 	}
 
 	setSlotProperty(slot: number, property: string, value: number) {
@@ -55,7 +41,7 @@ export class DevDevice extends Device {
 	}
 
 	getSlotProperty(slot: number, property: string) {
-		return this.slots[slot]?.[property] || 0
+		return this.slots?.[slot]?.[property] || 0
 	}
 
 	setReagent(reagent: number, value: number) {
@@ -65,7 +51,7 @@ export class DevDevice extends Device {
 	}
 
 	getReagent(reagent: number) {
-		return this.reagents[reagent] || 0
+		return this.reagents?.[reagent] || 0
 	}
 }
 

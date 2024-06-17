@@ -1,14 +1,16 @@
-import { describe, expect, test } from "bun:test"
-import DevEnv from "../../core/DevEnv"
-import { runFuncWithMem, runWithMen } from "../testUtils"
-import instructions from "../../instructions"
+import { describe, expect, test } from "bun:test";
+import { DevChipHousing } from "../../core/DevChipHousing";
+import DevEnv from "../../core/DevEnv";
+import instructions from "../../instructions";
+import { runFuncWithMem, runWithMen } from "../testUtils";
 
 describe("stack in housing", () => {
 	test("put", async () => {
-		const mem = new DevEnv()
+		const chipHousing = new DevChipHousing(123)
+		const mem = new DevEnv(chipHousing)
 		await runWithMen(`move r1 3`, mem)
 		await runWithMen(`push r1`, mem)
-		expect(mem.stack[0]).toBe(3)
+		expect(chipHousing.stack.get(0)).toBe(3)
 	})
 	test("pop", async () => {
 		const mem = new DevEnv()

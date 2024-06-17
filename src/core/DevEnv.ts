@@ -2,16 +2,18 @@
 
 import { v4 as uuid } from "uuid"
 import { z } from "zod"
-import { ChipHousing, IChipHousing } from "../abstract/ChipHousing"
+import { ChipHousing, isChipHousing } from "../abstract/ChipHousing"
+import { Device, Name, PrefabHash } from "../abstract/Device"
 import Environment from "../abstract/Environment"
 import type Err from "../abstract/Err"
 import EnvError from "../errors/EnvError"
 import SyntaxError from "../errors/SyntaxError"
 import { hash as Hash } from "../index"
 import { getProperty, setProperty } from "../tools/property"
-import { CoerceValue, Device, NotReservedWord, NumberOrNan, StringOrNumberOrNaN } from "../ZodTypes"
+import { CoerceValue, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, Device as zodDevice } from "../ZodTypes"
 import consts from "./../data/consts.json"
 import { DevChipHousing } from "./DevChipHousing"
+import { DevDevice } from "./DevDevice"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
@@ -41,19 +43,22 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public lines: Array<Line | null> = []
 	public errors: Err[] = []
 	public errorCounter: number = 0
-	public devices: Map<string, ZodDevice> = new Map()
+	public devices: Map<string, Device> = new Map()
 	public devicesAttached: Map<string, string> = new Map()
+	/**
+	 * @deprecated
+	 */
 	public devicesStack: Map<string, number[]> = new Map()
 	public data: Record<string, any> = {}
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
 	public constants = new Map<string, number>()
-	public chipHousing!: IChipHousing
+	public chipHousing!: ChipHousing
 
-	constructor(data: { [key: string]: number } | IChipHousing = {}) {
+	constructor(data: { [key: string]: number } | ChipHousing = {}) {
 		super()
 		this.setDefault()
-		if (ChipHousing.is(data)) {
+		if (isChipHousing(data)) {
 			this.chipHousing = data
 		} else {
 			this.chipHousing = new DevChipHousing(data.ReferenceId ?? Hash(uuid()))
@@ -121,21 +126,22 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	appendDevice(hash: number, name?: number, id?: number): string {
-		id = id ?? Hash(uuid())
+	appendDevice(hash: number | Device, name?: number, id?: number): string {
+		let device: Device
+		if (Device.is(hash)) {
+			device = hash
+		} else {
+			device = new DevDevice(id ?? Hash(uuid()))
+			device.PrefabHash = PrefabHash.fromNumber(hash)
+			if (name) device.Name = Name.fromNumber(name)
+		}
+		id = id ?? device.ReferenceId ?? Hash(uuid())
 		const stringId = id.toString()
-		const device: ZodDevice = {
-			PrefabHash: hash,
-		}
-		if (name) {
-			device.Name = name
-		}
 		if (this.devices.has(stringId)) {
 			this.throw(new EnvError(`Device ${stringId} already exists`, "error"))
 			return stringId
 		}
 		this.devices.set(stringId, device)
-		this.devicesStack.set(stringId, new Array(512).fill(0))
 		return stringId
 	}
 
@@ -149,25 +155,21 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	attachDevice(id: string, port: string): this {
-		if (this.devicesAttached.has(port)) {
-			const old = this.devicesAttached.get(port)
-			if (old) {
-				this.detachDevice(old)
-			} else {
-				this.devicesAttached.delete(port)
-			}
+		const pin = ~~port.toLocaleLowerCase().replace("d", "")
+		if (this.chipHousing.isPinConnected(pin)) {
+			this.chipHousing.detachDevice(pin)
 		}
+		this.chipHousing.attachDevice(pin, this.devices.get(id)!)
 		this.devicesAttached.set(port, id)
-		this.devicesAttached.set(id, port)
 		return this
 	}
 
 	detachDevice(id: string): this {
-		const port = this.devicesAttached.get(id)
-		if (port) {
-			this.devicesAttached.delete(port)
+		const pin = this.chipHousing.getPin(this.devices.get(id)!)
+		if (pin && this.chipHousing.isPinConnected(pin)) {
+			this.chipHousing.detachDevice(pin)
+			this.devicesAttached.delete(`d${pin}`)
 		}
-		this.devicesAttached.delete(id)
 		return this
 	}
 
@@ -183,7 +185,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (Device.safeParse(name.split(".")[0]).success) {
+		if (zodDevice.safeParse(name.split(".")[0]).success) {
 			let [port, a, b, c, d] = name.split(".")
 			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
@@ -201,7 +203,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		name = pathFor_DynamicDevicePort(this, name)
 		name = pathFor_PortWithConnection(this, name)
 
-		if (Device.safeParse(name.split(".")[0]).success) {
+		if (zodDevice.safeParse(name.split(".")[0]).success) {
 			let [port, a, b, c, d] = name.split(".")
 			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
@@ -271,20 +273,21 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	ic_peek(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
-		const val = this.stack[sp - 1]
+		const val = this.chipHousing.stack.get(sp - 1)
 		return z.number().parse(val)
 	}
 
 	ic_pop(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
-		const val = this.stack[--sp]
+		const val = this.chipHousing.stack.get(--sp)
 		this.set("sp", sp)
 		return z.number().parse(val)
 	}
 
 	ic_push(name: string | number): this {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
-		this.stack[sp++] = this.get(name)
+		this.chipHousing.stack.put(sp++,this.get(name))
+
 		this.set("sp", sp)
 		return this
 	}
@@ -294,15 +297,12 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return this
 		}
-		if (!this.devicesStack.has(id)) {
-			this.devicesStack.set(id, Array(512).fill(0))
-		}
-		this.devicesStack.get(id)![index] = value
+		this.devices.get(id)?.stack.put(index, value)
 		return this
 	}
 
 	ic_put(port: string, index: number, value: number): this {
-		port = Device.parse(port)
+		port = zodDevice.parse(port)
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return this
@@ -316,7 +316,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.ic_putd(id, index, value)
 			return this
 		}
-		this.stack[index] = value
+		this.chipHousing.stack.put(index, value)
 		return this
 	}
 
@@ -325,11 +325,11 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return 0
 		}
-		return this.devicesStack.get(id)?.[index] ?? 0
+		return this.devices.get(id)?.stack.get(index) ?? 0
 	}
 
-	ic_get(port: Device, index: number): number {
-		port = Device.parse(port)
+	ic_get(port: zodDevice, index: number): number {
+		port = zodDevice.parse(port)
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return 0
@@ -342,7 +342,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			}
 			return this.ic_getd(id, index)
 		}
-		return this.stack[index] ?? 0
+		return this.chipHousing.stack.get(index) ?? 0
 	}
 
 	getAlias(alias: string): string {
