@@ -1,11 +1,20 @@
-import { DevChipHousing } from "./core/DevChipHousing";
-import DevEnv from "./core/DevEnv";
-import {  runWithMen } from "./tests/testUtils";
+import { hash } from "."
+import { PrefabHash,Name } from "./abstract/Device"
+import { DevDevice, DevChipHousing } from "./core/DevDevice"
+import DevEnv from "./core/DevEnv"
+import { runFuncWithMem, runWithMen } from "./tests/testUtils"
 
-
-const chipHousing = new DevChipHousing(123)
-const mem = new DevEnv(chipHousing)
-await runWithMen(`move r1 3`, mem)
-
-await runWithMen(`push r1`, mem)
-console.log(chipHousing.stack.get(0)) // 3
+const mem = new DevEnv()
+const device = new DevDevice(336213101)
+device.PrefabHash = PrefabHash.fromNumber(336213101)
+device.Name = Name.fromString("Autolathe")
+const a = mem.appendDevice(device, hash("Autolathe"))
+await runWithMen(
+	`alias Machine r7\n
+			alias MachineHash r10\n
+			define Autolathe 336213101\n
+			move Machine HASH("Autolathe")\n
+			lbn MachineHash Autolathe Machine PrefabHash 1`,
+	mem,
+)
+console.log(device.stack.get(0)) // 3

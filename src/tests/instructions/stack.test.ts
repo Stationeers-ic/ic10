@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { DevChipHousing } from "../../core/DevChipHousing";
+import { DevChipHousing, DevDevice } from "../../core/DevDevice";
 import DevEnv from "../../core/DevEnv";
 import instructions from "../../instructions";
 import { runFuncWithMem, runWithMen } from "../testUtils";
@@ -30,9 +30,8 @@ describe("stack in housing", () => {
 	})
 
 	test("get db", async () => {
-		const mem = new DevEnv()
-		const a = mem.appendDevice(123)
-		mem.attachDevice(a, "db")
+		const chipHousing = new DevChipHousing(123)
+		const mem = new DevEnv(chipHousing)
 		await runWithMen(`move r1 8`, mem)
 		await runWithMen(`poke r1 3`, mem)
 		await runFuncWithMem(instructions.get, ["r0", "db", "r1"], mem)
@@ -44,12 +43,13 @@ describe("stack in housing", () => {
 
 describe("stack in external devices", () => {
 	test("putd", async () => {
+		const device = new DevDevice(123)
 		const mem = new DevEnv()
-		mem.appendDevice(123, 123, 123)
+		mem.appendDevice(device)
 		await runWithMen(`move r2 0`, mem)
 		await runWithMen(`move r1 3`, mem)
 		await runWithMen(`putd 123 r2 r1`, mem)
-		expect(mem.devicesStack.get("123")?.[0]).toBe(3)
+		expect(device.stack.get(0)).toBe(3)
 	})
 	test("getd", async () => {
 		const mem = new DevEnv()

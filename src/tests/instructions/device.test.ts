@@ -3,6 +3,8 @@ import { runFuncWithMem, runThrow, runWithMen } from "../testUtils"
 import DevEnv from "../../core/DevEnv"
 import { instructions } from "../../instructions"
 import { hash } from "../../index"
+import { DevDevice, DevChipHousing } from "../../core/DevDevice"
+import { Name, PrefabHash } from '../../abstract/Device';
 
 describe("device", () => {
 	test("s", async () => {
@@ -71,11 +73,16 @@ describe("device", () => {
 
 	test("lbn", async () => {
 		const mem = new DevEnv()
-		const a = mem.appendDevice(336213101, hash("Autolathe"))
-
-		// mem.attachDevice(a, "d0")
+		const device = new DevDevice(336213101)
+		device.PrefabHash = PrefabHash.fromNumber(336213101)
+		device.Name = Name.fromString("Autolathe")
+		const a = mem.appendDevice(device, hash("Autolathe"))
 		await runWithMen(
-			`alias Machine r7\nalias MachineHash r10\ndefine Autolathe 336213101\nmove Machine HASH("Autolathe")\nlbn MachineHash Autolathe Machine PrefabHash 1`,
+			`alias Machine r7\n
+			alias MachineHash r10\n
+			define Autolathe 336213101\n
+			move Machine HASH("Autolathe")\n
+			lbn MachineHash Autolathe Machine PrefabHash 1`,
 			mem,
 		)
 		expect(mem.get("r10")).toBe(336213101)
@@ -90,18 +97,19 @@ describe("device", () => {
 		expect(mem.get("dr10.Setting")).toBe(999)
 	})
 	test("put", async () => {
-		const mem = new DevEnv()
-		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
-		mem.attachDevice(a, "db")
-		const b = mem.appendDevice(-128473777, hash("Circuit Housing 2"))
+		const chipHousing = new DevChipHousing(123)
+		const device = new DevDevice(1234)
+
+		const mem = new DevEnv(chipHousing)
+		const b = mem.appendDevice(device, hash("Circuit Housing 2"))
 		mem.attachDevice(b, "d2")
 
 		await runFuncWithMem(instructions.put, ["db", 10, 999], mem)
-		expect(mem.stack[10]).toBe(999)
+		expect(chipHousing.stack.get(10)).toBe(999)
 		expect(runFuncWithMem(instructions.put, ["d1", 10, 999], mem)).rejects.toThrow()
 
 		await runFuncWithMem(instructions.put, ["d2", 10, 999], mem)
-		expect(mem.devicesStack.get(b)?.[10]).toBe(999)
+		expect(device.stack.get(10)).toBe(999)
 	})
 	test("get", async () => {
 		const mem = new DevEnv()
@@ -118,11 +126,12 @@ describe("device", () => {
 	})
 
 	test("putd", async () => {
+		const device = new DevDevice(123)
 		const mem = new DevEnv()
-		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
+		const a = mem.appendDevice(device, hash("Circuit Housing"), -128473777)
 
 		await runFuncWithMem(instructions.putd, [a, 10, 999], mem)
-		expect(mem.devicesStack.get(a)?.[10]).toBe(999)
+		expect(device.stack.get(10)).toBe(999)
 	})
 	test("getd", async () => {
 		const mem = new DevEnv()
@@ -133,14 +142,10 @@ describe("device", () => {
 	})
 
 	test("poke", async () => {
-		const mem = new DevEnv()
-		const a = mem.appendDevice(-128473777, hash("Circuit Housing"))
-		mem.attachDevice(a, "db")
-		const b = mem.appendDevice(-128473777, hash("Circuit Housing 2"))
-		mem.attachDevice(b, "d2")
-
+		const chipHousing = new DevChipHousing(123)
+		const mem = new DevEnv(chipHousing)
 		await runFuncWithMem(instructions.poke, [10, 999], mem)
-		expect(mem.stack[10]).toBe(999)
+		expect(chipHousing.stack.get(10)).toBe(999)
 	})
 
 	test("ld", async () => {

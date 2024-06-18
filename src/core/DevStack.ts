@@ -7,7 +7,6 @@ export class DevStack extends Stack {
 	constructor() {
 		super()
 		this.data.fill(0, 0, 512)
-		console.log("NEW STACK")
 	}
 
 	push(value: number) {

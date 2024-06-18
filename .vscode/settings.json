@@ -1,5 +1,6 @@
 {
 	"cSpell.words": [
+		"Autolathe",
 		"bapal",
 		"bapz",
 		"bapzal",
@@ -48,11 +49,13 @@
 		"brnaz",
 		"brne",
 		"brnez",
+		"getd",
 		"lbns",
 		"Mineables",
 		"nanz",
 		"ninf",
 		"pinf",
+		"putd",
 		"Ralias",
 		"sapz",
 		"sdns",
@@ -65,9 +68,7 @@
 		"snan",
 		"snanz",
 		"snaz",
-		"snez",
-		"putd",
-		"getd",
+		"snez"
 	],
 	// The path to the `bun` executable.
 	"bun.runtime": "/home/kirill/.bun/bin/bun",

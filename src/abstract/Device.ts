@@ -13,16 +13,16 @@ export abstract class Device {
 	public prefabHash?: PrefabHash
 	public name?: Name
 
-	constructor(ReferenceId: number) {
-		this.ReferenceId = ReferenceId
-	}
 
+	constructor(ReferenceId: number){
+
+	}
 	get ReferenceId() {
-		return this.getProperty("PrefabHash")
+		return this.getProperty("ReferenceId")
 	}
 
 	set ReferenceId(value: number) {
-		this.setProperty("PrefabName", value)
+		this.setProperty("ReferenceId", value)
 	}
 
 	get PrefabHash(): PrefabHash | undefined {
@@ -31,7 +31,7 @@ export abstract class Device {
 
 	set PrefabHash(value: PrefabHash) {
 		this.prefabHash = value
-		this.setProperty("PrefabName", value.number)
+		this.setProperty("PrefabHash", value.number)
 	}
 
 	get Name(): Name | undefined {
@@ -40,6 +40,7 @@ export abstract class Device {
 
 	set Name(value: Name) {
 		this.name = value
+		this.setProperty("PrefabName", value.number)
 	}
 
 	abstract get stack(): Stack
@@ -65,7 +66,6 @@ export abstract class Stack {
 	abstract get(index: number): number
 
 	public static is(obj: any): obj is Stack {
-		console.log(obj)
 		return obj.push !== undefined && obj.pop !== undefined && obj.peek !== undefined
 	}
 }

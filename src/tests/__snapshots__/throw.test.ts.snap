@@ -65,14 +65,6 @@ exports[`throw jump 2`] = `
 ]
 `;
 
-exports[`throw stack 1`] = `
-[
-  [SyntaxError: Required],
-]
-`;
+exports[`throw stack 1`] = `[]`;
 
-exports[`throw stack 2`] = `
-[
-  [SyntaxError: Required],
-]
-`;
+exports[`throw stack 2`] = `[]`;

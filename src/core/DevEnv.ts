@@ -12,8 +12,7 @@ import { hash as Hash } from "../index"
 import { getProperty, setProperty } from "../tools/property"
 import { CoerceValue, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, Device as zodDevice } from "../ZodTypes"
 import consts from "./../data/consts.json"
-import { DevChipHousing } from "./DevChipHousing"
-import { DevDevice } from "./DevDevice"
+import { DevDevice, DevChipHousing } from "./DevDevice"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
@@ -66,6 +65,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 				this.set(key, value)
 			})
 		}
+		const id = this.appendDevice(this.chipHousing)
+		this.attachDevice(id, "db")
 	}
 
 	setDefault() {
@@ -135,7 +136,12 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			device.PrefabHash = PrefabHash.fromNumber(hash)
 			if (name) device.Name = Name.fromNumber(name)
 		}
-		id = id ?? device.ReferenceId ?? Hash(uuid())
+		if (!device.ReferenceId) {
+			id = id ?? Hash(uuid())
+			device.ReferenceId = id
+		} else {
+			id = device.ReferenceId
+		}
 		const stringId = id.toString()
 		if (this.devices.has(stringId)) {
 			this.throw(new EnvError(`Device ${stringId} already exists`, "error"))
@@ -286,7 +292,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	ic_push(name: string | number): this {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
-		this.chipHousing.stack.put(sp++,this.get(name))
+		this.chipHousing.stack.put(sp++, this.get(name))
 
 		this.set("sp", sp)
 		return this
@@ -374,7 +380,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getDeviceByHash(hash: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
-				return device.PrefabHash === hash
+				return device.PrefabHash?.number === hash
 			})
 			.map(([, device]) => getProperty(device, logic))
 			.filter((i) => typeof i === "number")
@@ -384,9 +390,11 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getDeviceByHashAndName(hash: number, name: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
-				return device.PrefabHash === hash && device.Name === name
+				return device.PrefabHash?.number === hash && device.Name?.number === name
 			})
-			.map(([, device]) => getProperty(device, logic))
+			.map(([, device]) =>
+				device.getProperty(logic)
+		)
 
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
@@ -395,7 +403,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getSlotDeviceByHash(hash: number, slot: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
-				return device.PrefabHash === hash
+				return device.PrefabHash?.number === hash
 			})
 			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			.filter((i) => typeof i === "number")
@@ -405,7 +413,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getSlotDeviceByHashAndName(hash: number, name: number, slot: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
-				return device.PrefabHash === hash && device.Name === name
+				return device.PrefabHash?.number === hash && device.Name?.number === name
 			})
 			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
 			.filter((i) => typeof i === "number")
@@ -414,7 +422,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	setDeviceByHash(hash: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
-			return device.PrefabHash === hash
+			return device.PrefabHash?.number === hash
 		})
 		devices.forEach(([, device]) => {
 			setProperty(device, logic, value)
@@ -424,7 +432,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
-			return device.PrefabHash === hash && device.Name === name
+			return device.PrefabHash?.number === hash && device.Name?.number === name
 		})
 		devices.forEach(([, device]) => {
 			setProperty(device, logic, value)
@@ -434,7 +442,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
-			return device.PrefabHash === hash
+			return device.PrefabHash?.number === hash
 		})
 		devices.forEach(([, device]) => {
 			setProperty(device, "Slots." + slot + "." + logic, value)
