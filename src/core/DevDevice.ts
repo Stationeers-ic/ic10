@@ -61,7 +61,7 @@ export class DevChipHousing extends DevDevice implements ChipHousing {
 	private ConnectedDevices: Map<string, Device> = new Map()
 
 	constructor(ReferenceId: number) {
-		super(ReferenceId); // Вызов конструктора родительского класса
+		super(ReferenceId) // Вызов конструктора родительского класса
 	}
 
 	attachDevice(port: string, device: Device): this {
@@ -75,6 +75,9 @@ export class DevChipHousing extends DevDevice implements ChipHousing {
 	}
 
 	getDevice(port: string): Device {
+		if (port === "db") {
+			return this
+		}
 		if (this.ConnectedDevices.has(port)) {
 			return this.ConnectedDevices.get(port)! // Утверждение, что результат не будет undefined
 		}
@@ -94,4 +97,3 @@ export class DevChipHousing extends DevDevice implements ChipHousing {
 		return this.ConnectedDevices.has(port)
 	}
 }
-

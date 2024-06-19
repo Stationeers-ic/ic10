@@ -12,7 +12,7 @@ import { hash as Hash } from "../index"
 import { getProperty, setProperty } from "../tools/property"
 import { CoerceValue, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, Device as zodDevice } from "../ZodTypes"
 import consts from "./../data/consts.json"
-import { DevDevice, DevChipHousing } from "./DevDevice"
+import { DevChipHousing, DevDevice } from "./DevDevice"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
@@ -311,16 +311,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return this
 		}
-		if (port !== "db") {
-			const id = this.devicesAttached.get(port)
-			if (id === undefined) {
-				this.throw(new SyntaxError(`Device ${port} not found`, "error", this.line))
-				return this
-			}
-			this.ic_putd(id, index, value)
-			return this
-		}
-		this.chipHousing.stack.put(index, value)
+		this.chipHousing.getDevice(port).stack.put(index, value) ?? 0
 		return this
 	}
 
@@ -338,15 +329,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return 0
 		}
-		if (port !== "db") {
-			const id = this.devicesAttached.get(port)
-			if (id === undefined) {
-				this.throw(new SyntaxError(`Device ${port} not found`, "error", this.line))
-				return 0
-			}
-			return this.ic_getd(id, index)
-		}
-		return this.chipHousing.stack.get(index) ?? 0
+		return this.chipHousing.getDevice(port).stack.get(index) ?? 0
 	}
 
 	getAlias(alias: string): string {
