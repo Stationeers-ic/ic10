@@ -1,5 +1,5 @@
 import { Device } from "./Device"
-import { Memory, isMemory } from "./Memory"
+import { Memory, isMemory } from './Memory';
 
 export interface ChipHousing extends Device {
 	// device
@@ -11,7 +11,7 @@ export interface ChipHousing extends Device {
 	// registers
 	setRegister(register: string, value: number): this
 	getRegister(register: string): number
-	memory: Memory
+	get memory(): Memory
 }
 
 export function isChipHousing(obj: any): obj is ChipHousing {
