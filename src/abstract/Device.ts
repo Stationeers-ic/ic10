@@ -17,6 +17,10 @@ export abstract class Device {
 	constructor(ReferenceId: number){
 
 	}
+	get id() {
+		return this.ReferenceId
+	}
+
 	get ReferenceId() {
 		return this.getProperty("ReferenceId")
 	}

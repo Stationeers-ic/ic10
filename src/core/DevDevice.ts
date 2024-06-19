@@ -58,40 +58,40 @@ export class DevDevice extends Device {
 }
 
 export class DevChipHousing extends DevDevice implements ChipHousing {
-	public devices: Map<number, Device> = new Map()
+	private ConnectedDevices: Map<string, Device> = new Map()
 
 	constructor(ReferenceId: number) {
 		super(ReferenceId); // Вызов конструктора родительского класса
 	}
 
-	attachDevice(pin: number, device: Device): this {
-		this.devices.set(pin, device)
+	attachDevice(port: string, device: Device): this {
+		this.ConnectedDevices.set(port, device)
 		return this
 	}
 
-	detachDevice(pin: number): this {
-		this.devices.delete(pin)
+	detachDevice(port: string): this {
+		this.ConnectedDevices.delete(port)
 		return this
 	}
 
-	getDevice(pin: number): Device {
-		if (this.devices.has(pin)) {
-			return this.devices.get(pin)! // Утверждение, что результат не будет undefined
+	getDevice(port: string): Device {
+		if (this.ConnectedDevices.has(port)) {
+			return this.ConnectedDevices.get(port)! // Утверждение, что результат не будет undefined
 		}
-		throw new Error(`No device connected to pin ${pin}`)
+		throw new Error(`No device connected to port ${port}`)
 	}
 
-	getPin(device: Device): number | undefined {
-		for (const [pin, dev] of this.devices) {
+	getPort(device: Device): string | undefined {
+		for (const [port, dev] of this.ConnectedDevices) {
 			if (dev === device) {
-				return pin
+				return port
 			}
 		}
 		return undefined
 	}
 
-	isPinConnected(pin: number): boolean {
-		return this.devices.has(pin)
+	isPortConnected(port: string): boolean {
+		return this.ConnectedDevices.has(port)
 	}
 }
 

@@ -1,11 +1,11 @@
 import { Device } from "./Device"
 
 export interface ChipHousing extends Device{
-	attachDevice(pin: number, device: Device): this
-	detachDevice(pin: number): this
-	getDevice(pin: number): Device
-	getPin(Device: Device): number | undefined
-	isPinConnected(pin: number): true | false
+	attachDevice(port: string, device: Device): this
+	detachDevice(port: string): this
+	getDevice(port: string): Device
+	getPort(Device: Device): string | undefined
+	isPortConnected(port: string): true | false
 }
 
 export function isChipHousing(obj: any): obj is ChipHousing {
@@ -13,7 +13,7 @@ export function isChipHousing(obj: any): obj is ChipHousing {
 		obj.attachDevice !== undefined &&
 		obj.detachDevice !== undefined &&
 		obj.getDevice !== undefined &&
-		obj.isPinConnected !== undefined &&
+		obj.isPortConnected !== undefined &&
 		Device.is(obj)
 	)
 }

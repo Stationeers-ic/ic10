@@ -43,11 +43,10 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	public errors: Err[] = []
 	public errorCounter: number = 0
 	public devices: Map<string, Device> = new Map()
-	public devicesAttached: Map<string, string> = new Map()
 	/**
 	 * @deprecated
 	 */
-	public devicesStack: Map<string, number[]> = new Map()
+	public devicesAttached: Map<string, string> = new Map()
 	public data: Record<string, any> = {}
 	public stack: number[] = new Array(512).fill(0)
 	public aliases = new Map<string, string | number>()
@@ -161,20 +160,19 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	attachDevice(id: string, port: string): this {
-		const pin = ~~port.toLocaleLowerCase().replace("d", "")
-		if (this.chipHousing.isPinConnected(pin)) {
-			this.chipHousing.detachDevice(pin)
+		if (this.chipHousing.isPortConnected(port)) {
+			this.chipHousing.detachDevice(port)
 		}
-		this.chipHousing.attachDevice(pin, this.devices.get(id)!)
+		this.chipHousing.attachDevice(port, this.devices.get(id)!)
 		this.devicesAttached.set(port, id)
 		return this
 	}
 
 	detachDevice(id: string): this {
-		const pin = this.chipHousing.getPin(this.devices.get(id)!)
-		if (pin && this.chipHousing.isPinConnected(pin)) {
-			this.chipHousing.detachDevice(pin)
-			this.devicesAttached.delete(`d${pin}`)
+		const port = this.chipHousing.getPort(this.devices.get(id)!)
+		if (port && this.chipHousing.isPortConnected(port)) {
+			this.chipHousing.detachDevice(port)
+			this.devicesAttached.delete(`d${port}`)
 		}
 		return this
 	}
@@ -392,9 +390,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter(([, device]) => {
 				return device.PrefabHash?.number === hash && device.Name?.number === name
 			})
-			.map(([, device]) =>
-				device.getProperty(logic)
-		)
+			.map(([, device]) => device.getProperty(logic))
 
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
