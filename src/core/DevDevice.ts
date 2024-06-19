@@ -1,5 +1,9 @@
+// noinspection JSAnnotator
+
 import { ChipHousing } from "../abstract/ChipHousing"
 import { Device } from "../abstract/Device"
+import { Memory } from "../abstract/Memory"
+import { DevMemory } from "./DevMemory"
 import { DevStack } from "./DevStack"
 
 export class DevDevice extends Device {
@@ -59,9 +63,17 @@ export class DevDevice extends Device {
 
 export class DevChipHousing extends DevDevice implements ChipHousing {
 	private ConnectedDevices: Map<string, Device> = new Map()
+	public memory: Memory = new DevMemory()
 
 	constructor(ReferenceId: number) {
 		super(ReferenceId) // Вызов конструктора родительского класса
+	}
+	setRegister(register: string, value: number): this {
+		this.properties[register] = value;
+		return this;
+	}
+	getRegister(register: string): number {
+		return this.properties[register] || 0;
 	}
 
 	attachDevice(port: string, device: Device): this {

@@ -1,4 +1,5 @@
-import { hash } from ".."
+import {hash} from ".."
+
 export abstract class Device {
 	public static is(obj: any): obj is Device {
 		return (
@@ -10,39 +11,40 @@ export abstract class Device {
 		)
 	}
 
-	public prefabHash?: PrefabHash
-	public name?: Name
+	private prefabHash?: PrefabHash
+	private name?: Name
 
 
-	constructor(ReferenceId: number){
+	protected constructor(ReferenceId: number) {
 
 	}
-	get id() {
+
+	public get id() {
 		return this.ReferenceId
 	}
 
-	get ReferenceId() {
+	public get ReferenceId() {
 		return this.getProperty("ReferenceId")
 	}
 
-	set ReferenceId(value: number) {
+	public set ReferenceId(value: number) {
 		this.setProperty("ReferenceId", value)
 	}
 
-	get PrefabHash(): PrefabHash | undefined {
+	public get PrefabHash(): PrefabHash | undefined {
 		return this.prefabHash
 	}
 
-	set PrefabHash(value: PrefabHash) {
+	public set PrefabHash(value: PrefabHash) {
 		this.prefabHash = value
 		this.setProperty("PrefabHash", value.number)
 	}
 
-	get Name(): Name | undefined {
+	public get Name(): Name | undefined {
 		return this.name
 	}
 
-	set Name(value: Name) {
+	public set Name(value: Name) {
 		this.name = value
 		this.setProperty("PrefabName", value.number)
 	}
@@ -50,23 +52,31 @@ export abstract class Device {
 	abstract get stack(): Stack
 
 	abstract setChannel(channel: number, value: number): this
+
 	abstract getChannel(channel: number): number
 
 	abstract setProperty(property: string, value: number): this
+
 	abstract getProperty(property: string): number
 
 	abstract setSlotProperty(slot: number, property: string, value: number): this
+
 	abstract getSlotProperty(slot: number, property: string): number
 
 	abstract setReagent(reagent: number, value: number | Reagent): this
+
 	abstract getReagent(reagent: number): number
 }
 
 export abstract class Stack {
 	abstract push(value: number): this
+
 	abstract pop(): number
+
 	abstract peek(): number
+
 	abstract put(index: number, value: number): this
+
 	abstract get(index: number): number
 
 	public static is(obj: any): obj is Stack {
@@ -78,7 +88,8 @@ export abstract class HashString {
 	constructor(
 		public number: number,
 		public name?: string,
-	) {}
+	) {
+	}
 }
 
 export class Name extends HashString {
@@ -87,8 +98,7 @@ export class Name extends HashString {
 	}
 
 	public static fromNumber(num: number): HashString {
-		const hash = new Name(num)
-		return hash
+		return new Name(num)
 	}
 }
 
@@ -98,8 +108,7 @@ export class PrefabHash extends HashString {
 	}
 
 	public static fromNumber(num: number): HashString {
-		const hash = new PrefabHash(num)
-		return hash
+		return new PrefabHash(num)
 	}
 }
 
@@ -109,7 +118,6 @@ export class Reagent extends HashString {
 	}
 
 	public static fromNumber(num: number): HashString {
-		const hash = new Reagent(num)
-		return hash
+		return new Reagent(num)
 	}
 }
