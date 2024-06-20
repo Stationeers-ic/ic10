@@ -176,7 +176,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return this
 	}
-
+	/**
+	 * @deprecated
+	 */
 	get(name: string | number): number {
 		if (typeof name === "number") return name
 		if (this.constants.has(name)) return NumberOrNan.parse(this.constants.get(name))
@@ -194,11 +196,14 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			port = pathFor_DynamicDevicePort(this, port)
 			const id = z.string().parse(this.devicesAttached.get(port))
 			const path = [a, b, c, d].filter((i) => i !== undefined).join(".")
+			console.log(path)
 			return this.getDeviceProp(id, path)
 		}
 		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	set(name: string, value: number): this {
 		if (this.aliases.has(name)) {
 			name = NotReservedWord.parse(this.aliases.get(name))
@@ -218,8 +223,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		setProperty(this.data, name, value)
 		return this
 	}
-
-	
 
 	alias(name: string, value: string): this {
 		let result = NotReservedWord.safeParse(name)
@@ -336,7 +339,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return this.chipHousing.getDevice(port).stack.get(index) ?? 0
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getAlias(alias: string): string {
 		if (this.aliases.has(alias)) {
 			const val = this.aliases.get(alias)
@@ -346,7 +351,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return alias
 	}
-
+	/**
+	 * @deprecated
+	 */
 	isPortConnected(port: string): boolean {
 		const p = PortWithConnection(port)
 		const p2 = pathFor_DynamicDevicePort(this, p.port)
@@ -362,7 +369,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getLines(): (Line | null)[] {
 		return this.lines
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getDeviceByHash(hash: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
@@ -372,7 +381,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getDeviceByHashAndName(hash: number, name: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
@@ -383,7 +394,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getSlotDeviceByHash(hash: number, slot: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
@@ -393,7 +406,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getSlotDeviceByHashAndName(hash: number, name: number, slot: number, logic: string): number[] {
 		const output = Array.from(this.devices)
 			.filter(([, device]) => {
@@ -403,7 +418,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	setDeviceByHash(hash: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
 			return device.PrefabHash?.number === hash
@@ -413,7 +430,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		})
 		return this
 	}
-
+	/**
+	 * @deprecated
+	 */
 	setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
 			return device.PrefabHash?.number === hash && device.Name?.number === name
@@ -423,7 +442,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		})
 		return this
 	}
-
+	/**
+	 * @deprecated
+	 */
 	setSlotDeviceByHash(hash: number, slot: number, logic: string, value: number): this {
 		const devices = Array.from(this.devices).filter(([, device]) => {
 			return device.PrefabHash?.number === hash
@@ -450,11 +471,15 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	getErrors(): Err[] {
 		return this.errors
 	}
-
+	/**
+	 * @deprecated
+	 */
 	hasDevice(id: string): boolean {
 		return this.devices.has(id)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	getDeviceProp(id: string, path: string): number {
 		const device = this.devices.get(id)
 		if (device === undefined) {
@@ -463,7 +488,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return NumberOrNan.parse(getProperty(device, path) ?? 0)
 	}
-
+	/**
+	 * @deprecated
+	 */
 	setDeviceProp(id: string, path: string, value: number): this {
 		const device = this.devices.get(id)
 		if (device === undefined) {
