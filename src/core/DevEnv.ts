@@ -55,7 +55,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	constructor(data: { [key: string]: number } | ChipHousing = {}) {
 		super()
-		this.setDefault()
 		if (isChipHousing(data)) {
 			this.chipHousing = data
 		} else {
@@ -64,6 +63,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 				this.set(key, value)
 			})
 		}
+		this.setDefault()
 		const id = this.appendDevice(this.chipHousing)
 		this.attachDevice(id, "db")
 	}
@@ -219,6 +219,8 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
+	
+
 	alias(name: string, value: string): this {
 		let result = NotReservedWord.safeParse(name)
 		if (result.success) {
@@ -228,6 +230,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		} else {
 			this.throw(new SyntaxError(`Alias ${name} already exists`, "error", this.line))
 		}
+		this.chipHousing.memory.setAlias(name, value)
 		return this
 	}
 
@@ -240,6 +243,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		} else {
 			this.throw(new SyntaxError(`Constant ${name} already exists`, "error", this.line))
 		}
+		this.chipHousing.memory.set("const", name, value)
 		return this
 	}
 
@@ -259,6 +263,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		} else {
 			this.throw(new SyntaxError(`Label ${name} already exists`, "error", this.line))
 		}
+		this.chipHousing.memory.set("label", name, value)
 		return this
 	}
 
