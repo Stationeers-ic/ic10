@@ -181,6 +181,12 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	 */
 	get(name: string | number): number {
 		if (typeof name === "number") return name
+		try{
+			return this.chipHousing.memory.get(name)
+		}catch(e){
+
+		}
+
 		if (this.constants.has(name)) return NumberOrNan.parse(this.constants.get(name))
 		const x = CoerceValue.safeParse(name)
 		if (x.success) return x.data
@@ -205,6 +211,11 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	 * @deprecated
 	 */
 	set(name: string, value: number): this {
+		try{
+			this.chipHousing.memory.set('ram', name, value)
+		}catch(e){
+
+		}
 		if (this.aliases.has(name)) {
 			name = NotReservedWord.parse(this.aliases.get(name))
 		}
@@ -502,10 +513,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this {
-		let PortOrPortWithChanel = aliasOrPortOrPortWithChanel
-		if (this.chipHousing.memory.hasAlias(aliasOrPortOrPortWithChanel)) {
-			PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		}
+		const PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
 		if (PortOrPortWithChanel.includes(":")) {
 			//chanel
 			const [device, chanel] = PortOrPortWithChanel.split(":")
@@ -517,10 +525,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 	getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number {
-		let PortOrPortWithChanel = aliasOrPortOrPortWithChanel
-		if (this.chipHousing.memory.hasAlias(aliasOrPortOrPortWithChanel)) {
-			PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		}
+		const PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
 		if (PortOrPortWithChanel.includes(":")) {
 			//chanel
 			const [device, chanel] = PortOrPortWithChanel.split(":")

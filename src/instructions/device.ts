@@ -13,6 +13,7 @@ import {
 import type { Environment } from "../abstract/Environment"
 import SyntaxError from "../errors/SyntaxError"
 import type { icPartialInstruction } from "./types"
+import { Memory } from '../abstract/Memory';
 
 async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
 	const m = env.get(mode)
@@ -27,19 +28,14 @@ async function action(env: Environment, register: string, mode: string, values: 
 }
 
 const s: icPartialInstruction = async (env, data) => {
-	const [op1, op2, op3] = s.validate.parse(data)
-	if (!(await env.isPortConnected(await env.getAlias(op1)))) {
-		throw new SyntaxError(`Device ${await env.getAlias(op1)} not found`, "error", await env.getPosition())
-	}
-	await env.set(`${await env.getAlias(op1)}.${await env.getAlias(op2)}`, await env.get(op3))
+	const [aliasOrPortOrPortWithChanel, logic, value] = s.validate.parse(data)
+	await env.setDevice(aliasOrPortOrPortWithChanel, logic, await env.get(value))
 }
 s.validate = z.tuple([DeviceOrAlias, Logic, RaliasOrValue])
 const l: icPartialInstruction = async (env, data) => {
-	const [op1, op2, op3] = l.validate.parse(data)
-	if (!(await env.isPortConnected(await env.getAlias(op2)))) {
-		throw new SyntaxError(`Device ${await env.getAlias(op2)} not found`, "error", await env.getPosition())
-	}
-	await env.set(op1, await env.get(`${await env.getAlias(op2)}.${await env.getAlias(op3)}`))
+	const [register, aliasOrPortOrPortWithChanel, logic] = l.validate.parse(data)
+	const value = await env.getDevice(aliasOrPortOrPortWithChanel, logic)
+	await env.set(register, value)
 }
 l.validate = z.tuple([Ralias, DeviceOrAlias, Logic])
 const ls: icPartialInstruction = async (env, data) => {

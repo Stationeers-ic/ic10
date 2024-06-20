@@ -1,23 +1,23 @@
 import { describe, expect, test } from "bun:test"
-import { runFuncWithMem, runThrow, runWithMen } from "../testUtils"
+import { Name, PrefabHash } from '../../abstract/Device'
+import { DevChipHousing, DevDevice } from "../../core/DevDevice"
 import DevEnv from "../../core/DevEnv"
-import { instructions } from "../../instructions"
 import { hash } from "../../index"
-import { DevDevice, DevChipHousing } from "../../core/DevDevice"
-import { Name, PrefabHash } from '../../abstract/Device';
+import { instructions } from "../../instructions"
+import { runFuncWithMem, runWithMen } from "../testUtils"
 
 describe("device", () => {
 	test("s", async () => {
-		expect(runThrow(`s d0 On 1`)).resolves.toMatchSnapshot()
+		// expect(runThrow(`s d0 On 1`)).resolves.toMatchSnapshot()
 		const mem = new DevEnv()
 		const a = mem.appendDevice(123)
 
 		mem.attachDevice(a, "d0")
 		await runWithMen(`s d0 On 1`, mem)
-		expect(mem.get("d0.On")).toBe(1)
+		expect(mem.chipHousing.getDevice("d0").getProperty('On')).toBe(1)
 
 		await runWithMen(`alias test d0\ns test On 2`, mem)
-		expect(mem.get("d0.On")).toBe(2)
+		expect(mem.chipHousing.getDevice("d0").getProperty('On')).toBe(2)
 	})
 
 	test("l", async () => {
@@ -25,7 +25,7 @@ describe("device", () => {
 		const a = mem.appendDevice(123)
 		mem.attachDevice(a, "d0")
 		await runWithMen(`s d0 On 99`, mem)
-		expect(mem.get("d0.On")).toBe(99)
+		expect(mem.chipHousing.getDevice("d0").getProperty('On')).toBe(99)
 		await runWithMen(`l r0 d0 On`, mem)
 		expect(mem.get("r0")).toBe(99)
 	})

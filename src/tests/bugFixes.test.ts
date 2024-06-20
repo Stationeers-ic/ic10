@@ -1,6 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import { runCode, runWithMen } from "./testUtils"
 import DevEnv from "../core/DevEnv"
+import { ChipHousing } from '../abstract/ChipHousing';
+import { getProperty } from '../tools/property';
 // находим баг пишем сюда тест и чиним 😁
 describe("bugFixes", () => {
 	test("Channels", async () => {
@@ -27,10 +29,8 @@ l r0 d1:1 Channel1
 
 	test("write db", async () => {
 		const mem = new DevEnv()
-		const id = mem.appendDevice(123)
-		mem.attachDevice(id, "db")
 		await runWithMen(`s db Setting 10\nl r0 db Setting`, mem)
 		expect(mem.get("r0")).toBe(10)
-		expect(mem.devices.get(id)?.Setting).toBe(10)
+		expect(mem.chipHousing.getProperty('Setting')).toBe(10)
 	})
 })

@@ -6,8 +6,6 @@ interface Alias {
 
 	getAlias(alias: string): string
 
-
-
 	getAliasesByKey(key: string): string[]
 
 	hasAlias(alias: string): boolean
