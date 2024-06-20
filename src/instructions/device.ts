@@ -1,19 +1,18 @@
-import type { Environment } from "../abstract/Environment"
-import type { icPartialInstruction } from "./types"
 import { z } from "zod"
 import {
-	CoerceValue,
-	type DeviceInstructionName,
-	DeviceOrAlias,
-	Hash,
-	Logic,
-	Mode,
-	Ralias,
-	RaliasOrCoerceValue,
-	RaliasOrValue,
-	SlotIndex,
+    type DeviceInstructionName,
+    DeviceOrAlias,
+    Hash,
+    Logic,
+    Mode,
+    Ralias,
+    RaliasOrCoerceValue,
+    RaliasOrValue,
+    SlotIndex
 } from "../ZodTypes"
+import type { Environment } from "../abstract/Environment"
 import SyntaxError from "../errors/SyntaxError"
+import type { icPartialInstruction } from "./types"
 
 async function action(env: Environment, register: string, mode: string, values: number[]): Promise<Environment | void> {
 	const m = env.get(mode)
@@ -108,7 +107,7 @@ const get: icPartialInstruction = async (env, data) => {
 	if (!(await env.isPortConnected(await env.getAlias(device)))) {
 		throw new SyntaxError(`Device ${await env.getAlias(device)} not found`, "error", await env.getPosition())
 	}
-	await env.set(await env.getAlias(reg), await env.ic_get(device, await env.get(index)))
+	await env.set(await env.getAlias(reg), await env.stackGet(device, await env.get(index)))
 }
 get.validate = z.tuple([Ralias, DeviceOrAlias, RaliasOrValue])
 
@@ -117,25 +116,25 @@ const put: icPartialInstruction = async (env, data) => {
 	if (!(await env.isPortConnected(await env.getAlias(device)))) {
 		throw new SyntaxError(`Device ${await env.getAlias(device)} not found`, "error", await env.getPosition())
 	}
-	await env.ic_put(device, await env.get(index), await env.get(value))
+	await env.stackPut(device, await env.get(index), await env.get(value))
 }
 put.validate = z.tuple([DeviceOrAlias, RaliasOrValue, RaliasOrValue])
 
 const getd: icPartialInstruction = async (env, data) => {
 	const [reg, deviceId, index] = getd.validate.parse(data)
-	await env.set(await env.getAlias(reg), await env.ic_getd(env.get(deviceId).toString(), await env.get(index)))
+	await env.set(await env.getAlias(reg), await env.stackDeviceGet(env.get(deviceId).toString(), await env.get(index)))
 }
 getd.validate = z.tuple([Ralias, RaliasOrCoerceValue, RaliasOrValue])
 
 const putd: icPartialInstruction = async (env, data) => {
 	const [deviceId, index, value] = putd.validate.parse(data)
-	await env.ic_putd((await env.get(deviceId)).toString(), await env.get(index), await env.get(value))
+	await env.stackDevicePut((await env.get(deviceId)).toString(), await env.get(index), await env.get(value))
 }
 putd.validate = z.tuple([RaliasOrCoerceValue, RaliasOrValue, RaliasOrValue])
 
 const poke: icPartialInstruction = async (env, data) => {
 	const [index, value] = poke.validate.parse(data)
-	await env.ic_put("db", await env.get(index), await env.get(value))
+	await env.stackPut("db", await env.get(index), await env.get(value))
 }
 poke.validate = z.tuple([RaliasOrValue, RaliasOrValue])
 

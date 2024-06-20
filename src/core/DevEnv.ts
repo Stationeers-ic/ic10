@@ -283,20 +283,20 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	ic_peek(): number {
+	stackPeek(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		const val = this.chipHousing.stack.get(sp - 1)
 		return z.number().parse(val)
 	}
 
-	ic_pop(): number {
+	stackPop(): number {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		const val = this.chipHousing.stack.get(--sp)
 		this.set("sp", sp)
 		return z.number().parse(val)
 	}
 
-	ic_push(name: string | number): this {
+	stackPush(name: string | number): this {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
 		this.chipHousing.stack.put(sp++, this.get(name))
 
@@ -304,7 +304,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	ic_putd(id: string, index: number, value: number): this {
+	stackDevicePut(id: string, index: number, value: number): this {
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return this
@@ -313,7 +313,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	ic_put(port: string, index: number, value: number): this {
+	stackPut(port: string, index: number, value: number): this {
 		port = zodDevice.parse(port)
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
@@ -323,7 +323,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	ic_getd(id: string, index: number): number {
+	stackDeviceGet(id: string, index: number): number {
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
 			return 0
@@ -331,7 +331,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this.devices.get(id)?.stack.get(index) ?? 0
 	}
 
-	ic_get(port: zodDevice, index: number): number {
+	stackGet(port: zodDevice, index: number): number {
 		port = zodDevice.parse(port)
 		if (index < 0 || index >= 512) {
 			this.throw(new SyntaxError(`Index ${index} out of bounds`, "error", this.line))
@@ -499,6 +499,36 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		setProperty(device, path, value)
 		return this
+	}
+
+	setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this {
+		let PortOrPortWithChanel = aliasOrPortOrPortWithChanel
+		if (this.chipHousing.memory.hasAlias(aliasOrPortOrPortWithChanel)) {
+			PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
+		}
+		if (PortOrPortWithChanel.includes(":")) {
+			//chanel
+			const [device, chanel] = PortOrPortWithChanel.split(":")
+			this.chipHousing.getDevice(device).setChannel(~~chanel, logic, value)
+		} else {
+			//device
+			this.chipHousing.getDevice(PortOrPortWithChanel).setProperty(logic, value)
+		}
+		return this
+	}
+	getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number {
+		let PortOrPortWithChanel = aliasOrPortOrPortWithChanel
+		if (this.chipHousing.memory.hasAlias(aliasOrPortOrPortWithChanel)) {
+			PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
+		}
+		if (PortOrPortWithChanel.includes(":")) {
+			//chanel
+			const [device, chanel] = PortOrPortWithChanel.split(":")
+			return this.chipHousing.getDevice(device).getChannel(~~chanel, logic)
+		} else {
+			//device
+			return this.chipHousing.getDevice(PortOrPortWithChanel).getProperty(logic)
+		}
 	}
 }
 

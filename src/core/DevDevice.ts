@@ -7,7 +7,7 @@ import { DevMemory } from "./DevMemory"
 import { DevStack } from "./DevStack"
 
 export class DevDevice extends Device {
-	public channel: Record<string, number> = {}
+	public channel: Record<number, Record<string, number>> = {}
 	public properties: Record<string, number> = {}
 	public reagents: Record<number, number> = {}
 	public slots: Record<number, Record<string, number>> = {}
@@ -23,13 +23,14 @@ export class DevDevice extends Device {
 		this.ReferenceId = ReferenceId
 	}
 
-	setChannel(channel: number, value: number) {
-		this.channel[channel] = value
+	setChannel(channel: number, logic:string, value: number) {
+		if (!this.channel[channel]) this.channel[channel] = {}
+		this.channel[channel][logic] = value
 		return this
 	}
 
-	getChannel(channel: number) {
-		return this.channel?.[channel] || 0
+	getChannel(channel: number, logic:string) {
+		return this.channel?.[channel]?.[logic] ?? 0
 	}
 
 	setProperty(property: string, value: number) {

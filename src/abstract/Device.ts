@@ -1,4 +1,4 @@
-import {hash} from ".."
+import { hash } from ".."
 
 export abstract class Device {
 	public static is(obj: any): obj is Device {
@@ -14,10 +14,7 @@ export abstract class Device {
 	private prefabHash?: PrefabHash
 	private name?: Name
 
-
-	protected constructor(ReferenceId: number) {
-
-	}
+	protected constructor(ReferenceId: number) {}
 
 	public get id() {
 		return this.ReferenceId
@@ -51,9 +48,9 @@ export abstract class Device {
 
 	abstract get stack(): Stack
 
-	abstract setChannel(channel: number, value: number): this
+	abstract setChannel(channel: number, logic: string, value: number): this
 
-	abstract getChannel(channel: number): number
+	abstract getChannel(channel: number, logic: string): number
 
 	abstract setProperty(property: string, value: number): this
 
@@ -88,8 +85,7 @@ export abstract class HashString {
 	constructor(
 		public number: number,
 		public name?: string,
-	) {
-	}
+	) {}
 }
 
 export class Name extends HashString {

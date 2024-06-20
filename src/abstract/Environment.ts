@@ -1,9 +1,9 @@
+import EventEmitter from "eventemitter3"
 import type Line from "../core/Line"
+import type { InstructionData } from "../instructions/types"
 import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
-import type { InstructionData } from "../instructions/types"
-import EventEmitter from "eventemitter3"
-import Interpreter from "./Interpreter" // {
+import Interpreter from "./Interpreter"; // {
 
 // {
 // error: (err: Err) => void
@@ -68,19 +68,24 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 */
 	abstract set(name: string, value: number): Promise<this> | this
 
-	abstract ic_push(name: string | number): Promise<this> | this
 
-	abstract ic_pop(): Promise<number> | number
+	//Работа со стеком
 
-	abstract ic_peek(): Promise<number> | number
+	abstract stackPush(name: string | number): Promise<this> | this
 
-	abstract ic_putd(id: string, index: number, value: number): Promise<this> | this
+	abstract stackPop(): Promise<number> | number
 
-	abstract ic_put(port: string, index: number, value: number): Promise<this> | this
+	abstract stackPeek(): Promise<number> | number
 
-	abstract ic_getd(id: string, index: number): Promise<number> | number
+	abstract stackDevicePut(id: string, index: number, value: number): Promise<this> | this
 
-	abstract ic_get(port: string, index: number): Promise<number> | number
+	abstract stackPut(port: string, index: number, value: number): Promise<this> | this
+
+	abstract stackDeviceGet(id: string, index: number): Promise<number> | number
+
+	abstract stackGet(port: string, index: number): Promise<number> | number
+
+	//Работа с псевдонимами
 
 	/**
 	 * создать alias, если alias существует, то перезаписать его
@@ -126,18 +131,6 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	abstract detachDevice(id: string): Promise<this> | this
 
 	/**
-	 *  Проверить подключено ли устройство к порту
-	 * @param port
-	 */
-	abstract isPortConnected(port: string): Promise<boolean> | boolean
-
-	abstract hasDevice(id: string): Promise<boolean> | boolean
-
-	abstract setDeviceProp(id: string, path: string, value: number): Promise<this> | this
-
-	abstract getDeviceProp(id: string, path: string): Promise<number> | number
-
-	/**
 	 * lb
 	 */
 	abstract getDeviceByHash(hash: number, logic: string): Promise<number[]> | number[]
@@ -176,6 +169,18 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 * sbn
 	 */
 	abstract setDeviceByHashAndName(hash: number, name: number, logic: string, value: number): Promise<this> | this
+
+	/**
+	 * запись в устройство или канал
+	 * S
+	 */
+	abstract setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this
+
+	/**
+	 * чтение из устройства или канала
+	 * L
+	 */
+	abstract getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number
 
 	/**
 	 * Самоуничтожение
