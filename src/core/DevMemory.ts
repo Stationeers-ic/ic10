@@ -1,120 +1,76 @@
-import { Memory } from "../abstract/Memory";
+import { Memory, MemType } from "../abstract/Memory"
 
 export class DevMemory implements Memory {
-	private readonly memory!: Map<string, number>
+	readonly aliases: Map<string, string> = new Map()
+	readonly memory: Map<string, { type: MemType; value: number }> = new Map()
 
-	private readonly aliases!: Map<string, string>
-
-	private readonly constants!: Map<string, { value: number; pre: boolean }>
-
-	constructor() {
-		this.memory = new Map()
-		this.aliases = new Map()
-		this.constants = new Map()
-		this.init()
+	get(keyOrAlias: string): number {
+		throw new Error("Method not implemented.")
 	}
-
-	public init() {
-		this.setAlias("sp", "r16")
-		this.setAlias("ra", "r17")
-	}
-
-	clear(): void {
-		this.memory.clear()
-		this.aliases.clear()
-		this.constants.clear()
-	}
-
-	public get(keyOrAlias: string): number {
-		if (this.memory.has(keyOrAlias)) {
-			return this.memory.get(keyOrAlias)!
-		}
+	set(type: MemType, keyOrAlias: string, value: number): void {
 		if (this.aliases.has(keyOrAlias)) {
-			keyOrAlias = this.aliases.get(keyOrAlias)!
-			if (this.memory.has(keyOrAlias)) {
-				return this.memory.get(keyOrAlias)!
-			}
+			const key = this.aliases.get(keyOrAlias)!
+			this.memory.set(key, { type, value })
+		} else {
+			this.memory.set(keyOrAlias, { type, value })
 		}
-		throw new Error(`Key or alias not found: ${keyOrAlias}`)
 	}
-
-	public set(keyOrAlias: string, value: number): void {
-		if (this.memory.has(keyOrAlias)) {
-			this.memory.set(keyOrAlias, value)
-		}
+	delete(keyOrAlias: string): void {
 		if (this.aliases.has(keyOrAlias)) {
-			this.memory.set(this.aliases.get(keyOrAlias)!, value)
+			const key = this.aliases.get(keyOrAlias)!
+			this.memory.delete(key)
+		} else {
+			this.memory.delete(keyOrAlias)
 		}
-		throw new Error(`Key or alias not found: ${keyOrAlias}`)
 	}
-
-	public has(keyOrAlias: string): boolean {
+	has(keyOrAlias: string): boolean {
 		return (
 			this.memory.has(keyOrAlias) ||
 			(this.aliases.has(keyOrAlias) && this.memory.has(this.aliases.get(keyOrAlias)!))
 		)
 	}
-
-	public delete(keyOrAlias: string): void {
-		if (this.memory.has(keyOrAlias)) {
-			this.memory.delete(keyOrAlias)
-		}
+	getType(keyOrAlias: string): MemType {
 		if (this.aliases.has(keyOrAlias)) {
-			this.memory.delete(this.aliases.get(keyOrAlias)!)
+			const key = this.aliases.get(keyOrAlias)!
+			return this.memory.get(key)!.type
 		}
-		throw new Error(`Key or alias not found: ${keyOrAlias}`)
+		if (!this.memory.has(keyOrAlias)) {
+			return this.memory.get(keyOrAlias)!.type
+		}
+		throw new Error("Key not found")
+	}
+	all(): Map<string, { type: MemType; value: number }> {
+		return this.memory
 	}
 
-	public setAlias(alias: string, key: string): void {
+	setAlias(alias: string, key: string): void {
 		this.aliases.set(alias, key)
 	}
-
-	public getAlias(alias: string): string {
-		return this.aliases.get(alias)!
+	getAlias(alias: string): string {
+		if (this.aliases.has(alias)) {
+			return this.aliases.get(alias)!
+		}
+		throw new Error("Alias not found")
 	}
-
-	public getAliasesByKey(key: string): string[] {
-		return Array.from(this.aliases)
-			.filter(([_, v]) => v === key)
-			.map(([k, _]) => k)
+	getAliasesByKey(key: string): string[] {
+		const aliases: string[] = []
+		this.aliases.forEach((value, alias) => {
+			if (value === key) {
+				aliases.push(alias)
+			}
+		})
+		return aliases
 	}
-
-	public hasAlias(alias: string): boolean {
+	hasAlias(alias: string): boolean {
 		return this.aliases.has(alias)
 	}
-
-	public countAliasesByKey(key: string): number {
+	countAliasesByKey(key: string): number {
 		return this.getAliasesByKey(key).length
 	}
-
-	public deleteAlias(alias: string): void {
+	deleteAlias(alias: string): void {
 		this.aliases.delete(alias)
 	}
-
-	public getAliases(): Map<string, string> {
+	getAliases(): Map<string, string> {
 		return this.aliases
-	}
-
-	public setConstant(key: string, value: number, pre: boolean): void {
-		this.constants.set(key, { value, pre })
-	}
-
-	public getConstant(key: string): number {
-		if (!this.hasConstant(key)) {
-			throw new Error(`Constant not found: ${key}`)
-		}
-		return this.constants.get(key)!.value
-	}
-
-	public hasConstant(key: string): boolean {
-		return this.constants.has(key)
-	}
-
-	public deleteConstant(key: string): void {
-		this.constants.delete(key)
-	}
-
-	public getConstants(all: boolean): Map<string, { value: number; pre: boolean }> {
-		return this.constants
 	}
 }
