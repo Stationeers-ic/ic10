@@ -10,14 +10,13 @@ import EnvError from "../errors/EnvError"
 import SyntaxError from "../errors/SyntaxError"
 import { hash as Hash } from "../index"
 import { getProperty, setProperty } from "../tools/property"
-import { CoerceValue, NotReservedWord, NumberOrNan, StringOrNumberOrNaN, Device as zodDevice } from "../ZodTypes"
+import { NotReservedWord, NumberOrNan, Device as zodDevice } from "../ZodTypes"
 import consts from "./../data/consts.json"
 import { DevChipHousing, DevDevice } from "./DevDevice"
 import {
 	pathFor_DynamicDevicePort,
 	pathFor_DynamicRegister,
-	pathFor_PortWithConnection,
-	PortWithConnection,
+	PortWithConnection
 } from "./Helpers"
 import type Line from "./Line"
 
@@ -48,8 +47,17 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	 */
 	public devicesAttached: Map<string, string> = new Map()
 	public data: Record<string, any> = {}
+	/**
+	 * @deprecated
+	 */
 	public stack: number[] = new Array(512).fill(0)
+	/**
+	 * @deprecated
+	 */
 	public aliases = new Map<string, string | number>()
+	/**
+	 * @deprecated
+	 */
 	public constants = new Map<string, number>()
 	public chipHousing!: ChipHousing
 
@@ -176,85 +184,57 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return this
 	}
-	/**
-	 * @deprecated
-	 */
+
 	get(name: string | number): number {
 		if (typeof name === "number") return name
-		try{
-			return this.chipHousing.memory.get(name)
-		}catch(e){
-
-		}
-
-		if (this.constants.has(name)) return NumberOrNan.parse(this.constants.get(name))
-		const x = CoerceValue.safeParse(name)
-		if (x.success) return x.data
-		if (this.aliases.has(name)) {
-			return NumberOrNan.parse(this.get(StringOrNumberOrNaN.parse(this.aliases.get(name))))
-		}
 		name = pathFor_DynamicRegister(this, name)
-		name = pathFor_DynamicDevicePort(this, name)
-		name = pathFor_PortWithConnection(this, name)
-
-		if (zodDevice.safeParse(name.split(".")[0]).success) {
-			let [port, a, b, c, d] = name.split(".")
-			port = pathFor_DynamicDevicePort(this, port)
-			const id = z.string().parse(this.devicesAttached.get(port))
-			const path = [a, b, c, d].filter((i) => i !== undefined).join(".")
-			console.log(path)
-			return this.getDeviceProp(id, path)
-		}
-		return NumberOrNan.parse(getProperty(this.data, name) ?? 0)
+		return this.chipHousing.memory.get(name)
 	}
-	/**
-	 * @deprecated
-	 */
+
 	set(name: string, value: number): this {
-		try{
-			this.chipHousing.memory.set('ram', name, value)
-		}catch(e){
-
-		}
-		if (this.aliases.has(name)) {
-			name = NotReservedWord.parse(this.aliases.get(name))
-		}
 		name = pathFor_DynamicRegister(this, name)
-		name = pathFor_DynamicDevicePort(this, name)
-		name = pathFor_PortWithConnection(this, name)
-
-		if (zodDevice.safeParse(name.split(".")[0]).success) {
-			let [port, a, b, c, d] = name.split(".")
-			port = pathFor_DynamicDevicePort(this, port)
-			const id = z.string().parse(this.devicesAttached.get(port))
-			const path = [a, b, c, d].filter((i) => i !== undefined).join(".")
-			this.setDeviceProp(id, path, value)
-			return this
-		}
-		setProperty(this.data, name, value)
+		this.chipHousing.memory.set("ram", name, value)
 		return this
+	}
+
+	setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this {
+		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
+		PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
+		if (PortOrPortWithChanel.includes(":")) {
+			//chanel
+			const [device, chanel] = PortOrPortWithChanel.split(":")
+			this.chipHousing.getDevice(device).setChannel(~~chanel, logic, value)
+		} else {
+			//device
+			this.chipHousing.getDevice(PortOrPortWithChanel).setProperty(logic, value)
+		}
+		return this
+	}
+	getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number {
+		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
+		PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
+		if (PortOrPortWithChanel.includes(":")) {
+			//chanel
+			const [device, chanel] = PortOrPortWithChanel.split(":")
+			return this.chipHousing.getDevice(device).getChannel(~~chanel, logic)
+		} else {
+			//device
+			return this.chipHousing.getDevice(PortOrPortWithChanel).getProperty(logic)
+		}
 	}
 
 	alias(name: string, value: string): this {
 		let result = NotReservedWord.safeParse(name)
 		if (result.success) {
-			this.aliases.set(name, value)
-		} else if (!this.aliases.has(name)) {
-			this.aliases.set(name, value)
-		} else {
+			this.chipHousing.memory.setAlias(name, value)
+		}else{
 			this.throw(new SyntaxError(`Alias ${name} already exists`, "error", this.line))
 		}
-		this.chipHousing.memory.setAlias(name, value)
 		return this
 	}
 
 	define(name: string, value: number): this {
-		let result = NotReservedWord.safeParse(name)
-		if (result.success) {
-			this.aliases.set(name, value)
-		} else if (!this.aliases.has(name)) {
-			this.aliases.set(name, value)
-		} else {
+		if(this.chipHousing.memory.getType(name) === 'const' && this.get(name) !== value){
 			this.throw(new SyntaxError(`Constant ${name} already exists`, "error", this.line))
 		}
 		this.chipHousing.memory.set("const", name, value)
@@ -262,9 +242,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	shadowDefine(name: string, value: number): this {
-		if (!this.constants.has(name)) {
-			this.constants.set(name, value)
-		}
+		this.chipHousing.memory.set("const", name, value)
 		return this
 	}
 
@@ -282,7 +260,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	}
 
 	jump(line: string | number): this {
-		const oldLine = this.line
+		const oldLine = this.getPosition()
 		if (typeof line === "number") {
 			this.setPosition(line)
 		} else {
@@ -307,9 +285,9 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return z.number().parse(val)
 	}
 
-	stackPush(name: string | number): this {
+	stackPush(value: string | number): this {
 		let sp = z.number().min(0).max(512).parse(this.get("sp"))
-		this.chipHousing.stack.put(sp++, this.get(name))
+		this.chipHousing.stack.put(sp++, this.get(value))
 
 		this.set("sp", sp)
 		return this
@@ -512,29 +490,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this {
-		const PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		if (PortOrPortWithChanel.includes(":")) {
-			//chanel
-			const [device, chanel] = PortOrPortWithChanel.split(":")
-			this.chipHousing.getDevice(device).setChannel(~~chanel, logic, value)
-		} else {
-			//device
-			this.chipHousing.getDevice(PortOrPortWithChanel).setProperty(logic, value)
-		}
-		return this
-	}
-	getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number {
-		const PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		if (PortOrPortWithChanel.includes(":")) {
-			//chanel
-			const [device, chanel] = PortOrPortWithChanel.split(":")
-			return this.chipHousing.getDevice(device).getChannel(~~chanel, logic)
-		} else {
-			//device
-			return this.chipHousing.getDevice(PortOrPortWithChanel).getProperty(logic)
-		}
-	}
+
 }
 
 export default DevEnv

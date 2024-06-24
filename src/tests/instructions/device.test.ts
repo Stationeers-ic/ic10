@@ -93,8 +93,8 @@ describe("device", () => {
 		const a = mem.appendDevice(336213101, hash("Autolathe"))
 		mem.attachDevice(a, "d2")
 		mem.set("r10", 2)
-		mem.set("d2.Setting", 999)
-		expect(mem.get("dr10.Setting")).toBe(999)
+		mem.setDevice("d2",'Setting', 999)
+		expect(mem.getDevice("dr10","Setting")).toBe(999)
 	})
 	test("put", async () => {
 		const chipHousing = new DevChipHousing(123)

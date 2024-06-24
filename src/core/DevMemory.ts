@@ -1,4 +1,4 @@
-import { Memory, MemType } from "../abstract/Memory";
+import { Memory, MemType } from "../abstract/Memory"
 
 export class DevMemory implements Memory {
 	readonly aliases: Map<string, string> = new Map()
@@ -7,14 +7,14 @@ export class DevMemory implements Memory {
 	get(keyOrAlias: string): number {
 		if (this.aliases.has(keyOrAlias)) {
 			const key = this.aliases.get(keyOrAlias)!
-			if (!this.memory.has(keyOrAlias)) {
-				return this.memory.get(keyOrAlias)!.value
+			if (this.memory.has(key)) {
+				return this.memory.get(key)!.value
 			}
 		}
-		if (!this.memory.has(keyOrAlias)) {
+		if (this.memory.has(keyOrAlias)) {
 			return this.memory.get(keyOrAlias)!.value
 		}
-		throw new Error("Key not found")
+		return 0
 	}
 
 	set(type: MemType, keyOrAlias: string, value: number): void {
@@ -42,15 +42,17 @@ export class DevMemory implements Memory {
 		)
 	}
 
-	getType(keyOrAlias: string): MemType {
+	getType(keyOrAlias: string): MemType|null {
 		if (this.aliases.has(keyOrAlias)) {
 			const key = this.aliases.get(keyOrAlias)!
-			return this.memory.get(key)!.type
+			if (this.memory.has(key)) {
+				return this.memory.get(key)!.type
+			}
 		}
-		if (!this.memory.has(keyOrAlias)) {
+		if (this.memory.has(keyOrAlias)) {
 			return this.memory.get(keyOrAlias)!.type
 		}
-		throw new Error("Key not found")
+		return null
 	}
 
 	all(): Map<string, { type: MemType; value: number }> {

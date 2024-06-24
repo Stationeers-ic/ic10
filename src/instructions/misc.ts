@@ -18,8 +18,8 @@ const define: icPartialInstruction = async (env, data) => {
 }
 define.validate = tupleA_AV
 const move: icPartialInstruction = async (env, data) => {
-	const d = move.validate.parse(data)
-	await env.set(d[0], await env.get(d[1]))
+	const [target, value] = move.validate.parse(data)
+	await env.set(target, await env.get(value))
 }
 move.validate = tupleR_RV
 const yield_: icPartialInstruction = async (env, data) => {}

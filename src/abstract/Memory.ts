@@ -27,7 +27,7 @@ export interface Memory extends Alias{
 
 	has(keyOrAlias: string): boolean
 
-	getType(keyOrAlias: string): MemType
+	getType(keyOrAlias: string): MemType|null
 
 	all(): Map<string, {type:MemType, value:number}>
 }

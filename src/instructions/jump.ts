@@ -25,7 +25,7 @@ const jrApValidate = tupleRV_RV_RV_RLI
 async function short(f: "j", env: Environment, line: number): Promise<void>
 async function short(f: "jr", env: Environment, offset: number): Promise<void>
 async function short(f: "jal", env: Environment, line: number): Promise<void>
-async function short(f: "j" | "jr" | "jal", env: Environment, d: number): Promise<void> {
+async function short(f: "j" | "jr" | "jal", env: Environment, d: number|string): Promise<void> {
 	const to = env.get(d)
 	let line = -1
 	if (f === "j") {
