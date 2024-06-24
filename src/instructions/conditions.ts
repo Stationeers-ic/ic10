@@ -1,6 +1,7 @@
 import type { icCondition } from "./types"
 import { z } from "zod"
 import { type ConditionName, StringOrNumberOrNaN } from "../ZodTypes"
+import { Memory } from '../abstract/Memory';
 
 export const epsilon = 1.1210387714598537e-44
 
@@ -41,7 +42,7 @@ const ap: icCondition = async (env, data) => {
 }
 const dse: icCondition = async (env, data) => {
 	const [d] = z.tuple([z.string()]).parse(data)
-	return env.isPortConnected(await env.getAlias(d))
+	return env.chipHousing.isPortConnected(env.chipHousing.memory.getAlias(d))
 }
 const dns: icCondition = async (env, data) => !(await conditions.dse(env, data))
 const nan: icCondition = async (env, data) => {

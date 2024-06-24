@@ -9,15 +9,11 @@ import type Err from "../abstract/Err"
 import EnvError from "../errors/EnvError"
 import SyntaxError from "../errors/SyntaxError"
 import { hash as Hash } from "../index"
-import { getProperty, setProperty } from "../tools/property"
+// import { getProperty, setProperty } from "../tools/property"
 import { NotReservedWord, NumberOrNan, Device as zodDevice } from "../ZodTypes"
 import consts from "./../data/consts.json"
 import { DevChipHousing, DevDevice } from "./DevDevice"
-import {
-	pathFor_DynamicDevicePort,
-	pathFor_DynamicRegister,
-	PortWithConnection
-} from "./Helpers"
+import { pathFor_DynamicDevicePort, pathFor_DynamicRegister } from "./Helpers"
 import type Line from "./Line"
 
 const ZodDevice = z.union([
@@ -172,7 +168,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			this.chipHousing.detachDevice(port)
 		}
 		this.chipHousing.attachDevice(port, this.devices.get(id)!)
-		this.devicesAttached.set(port, id)
 		return this
 	}
 
@@ -180,7 +175,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		const port = this.chipHousing.getPort(this.devices.get(id)!)
 		if (port && this.chipHousing.isPortConnected(port)) {
 			this.chipHousing.detachDevice(port)
-			this.devicesAttached.delete(`d${port}`)
 		}
 		return this
 	}
@@ -197,44 +191,55 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		return this
 	}
 
-	setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this {
-		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
+	setDevice(aliasOrPortOrPortWithChanelOrId: string, logic: string, value: number): Promise<this> | this {
+		if (this.devices.has(aliasOrPortOrPortWithChanelOrId)) {
+			this.devices.get(aliasOrPortOrPortWithChanelOrId)?.setProperty(logic, value)
+			return this
+		}
+
+		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanelOrId)
 		if (PortOrPortWithChanel.includes(":")) {
 			//chanel
 			const [device, chanel] = PortOrPortWithChanel.split(":")
 			this.chipHousing.getDevice(device).setChannel(~~chanel, logic, value)
 		} else {
 			//device
+			PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
 			this.chipHousing.getDevice(PortOrPortWithChanel).setProperty(logic, value)
 		}
 		return this
 	}
-	getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number {
-		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanel)
-		PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
+	getDevice(aliasOrPortOrPortWithChanelOrId: string, logic: string): Promise<number> | number {
+		if (this.devices.has(aliasOrPortOrPortWithChanelOrId)) {
+			return this.devices.get(aliasOrPortOrPortWithChanelOrId)?.getProperty(logic) ?? 0
+		}
+		let PortOrPortWithChanel = this.chipHousing.memory.getAlias(aliasOrPortOrPortWithChanelOrId)
 		if (PortOrPortWithChanel.includes(":")) {
 			//chanel
 			const [device, chanel] = PortOrPortWithChanel.split(":")
 			return this.chipHousing.getDevice(device).getChannel(~~chanel, logic)
 		} else {
 			//device
+			PortOrPortWithChanel = pathFor_DynamicDevicePort(this, PortOrPortWithChanel)
 			return this.chipHousing.getDevice(PortOrPortWithChanel).getProperty(logic)
 		}
 	}
 
 	alias(name: string, value: string): this {
 		let result = NotReservedWord.safeParse(name)
-		if (result.success) {
-			this.chipHousing.memory.setAlias(name, value)
-		}else{
-			this.throw(new SyntaxError(`Alias ${name} already exists`, "error", this.line))
+		if (!result.success) {
+			this.throw(new SyntaxError(`Label ${name} is a reserved word`, "error", this.line))
 		}
+		this.chipHousing.memory.setAlias(name, value)
 		return this
 	}
 
 	define(name: string, value: number): this {
-		if(this.chipHousing.memory.getType(name) === 'const' && this.get(name) !== value){
+		let result = NotReservedWord.safeParse(name)
+		if (!result.success) {
+			this.throw(new SyntaxError(`Label ${name} is a reserved word`, "error", this.line))
+		}
+		if (this.chipHousing.memory.getType(name) === "const" && this.get(name) !== value) {
 			this.throw(new SyntaxError(`Constant ${name} already exists`, "error", this.line))
 		}
 		this.chipHousing.memory.set("const", name, value)
@@ -248,11 +253,10 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 
 	label(name: string, value: number): this {
 		let result = NotReservedWord.safeParse(name)
-		if (result.success) {
-			this.aliases.set(name, value)
-		} else if (!this.aliases.has(name)) {
-			this.aliases.set(name, value)
-		} else {
+		if (!result.success) {
+			this.throw(new SyntaxError(`Label ${name} is a reserved word`, "error", this.line))
+		}
+		if (this.chipHousing.memory.getType(name) === "label" && this.get(name) !== value) {
 			this.throw(new SyntaxError(`Label ${name} already exists`, "error", this.line))
 		}
 		this.chipHousing.memory.set("label", name, value)
@@ -328,26 +332,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 		}
 		return this.chipHousing.getDevice(port).stack.get(index) ?? 0
 	}
-	/**
-	 * @deprecated
-	 */
-	getAlias(alias: string): string {
-		if (this.aliases.has(alias)) {
-			const val = this.aliases.get(alias)
-			if (z.string().safeParse(val).success) {
-				return val as string
-			}
-		}
-		return alias
-	}
-	/**
-	 * @deprecated
-	 */
-	isPortConnected(port: string): boolean {
-		const p = PortWithConnection(port)
-		const p2 = pathFor_DynamicDevicePort(this, p.port)
-		return this.devicesAttached.has(p2)
-	}
 
 	hcf(): this {
 		console.log("Died")
@@ -366,7 +350,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter(([, device]) => {
 				return device.PrefabHash?.number === hash
 			})
-			.map(([, device]) => getProperty(device, logic))
+			.map(([, device]) => device.getProperty(logic))
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -391,7 +375,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter(([, device]) => {
 				return device.PrefabHash?.number === hash
 			})
-			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
+			.map(([, device]) => device.getSlotProperty(slot, logic))
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -403,7 +387,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			.filter(([, device]) => {
 				return device.PrefabHash?.number === hash && device.Name?.number === name
 			})
-			.map(([, device]) => getProperty(device, "Slots." + slot + "." + logic))
+			.map(([, device]) => device.getSlotProperty(slot, logic))
 			.filter((i) => typeof i === "number")
 		return z.array(z.number()).parse(output)
 	}
@@ -415,7 +399,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			return device.PrefabHash?.number === hash
 		})
 		devices.forEach(([, device]) => {
-			setProperty(device, logic, value)
+			device.setProperty(logic, value)
 		})
 		return this
 	}
@@ -427,7 +411,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			return device.PrefabHash?.number === hash && device.Name?.number === name
 		})
 		devices.forEach(([, device]) => {
-			setProperty(device, logic, value)
+			device.setProperty(logic, value)
 		})
 		return this
 	}
@@ -439,7 +423,7 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 			return device.PrefabHash?.number === hash
 		})
 		devices.forEach(([, device]) => {
-			setProperty(device, "Slots." + slot + "." + logic, value)
+			device.setSlotProperty(slot, logic, value)
 		})
 		return this
 	}
@@ -466,31 +450,6 @@ export class DevEnv<E extends Record<string, Function> = {}> extends Environment
 	hasDevice(id: string): boolean {
 		return this.devices.has(id)
 	}
-	/**
-	 * @deprecated
-	 */
-	getDeviceProp(id: string, path: string): number {
-		const device = this.devices.get(id)
-		if (device === undefined) {
-			this.throw(new SyntaxError(`Device with id "${id}" not found`, "error", this.line))
-			return 0
-		}
-		return NumberOrNan.parse(getProperty(device, path) ?? 0)
-	}
-	/**
-	 * @deprecated
-	 */
-	setDeviceProp(id: string, path: string, value: number): this {
-		const device = this.devices.get(id)
-		if (device === undefined) {
-			this.throw(new SyntaxError(`Device with id "${id}" not found`, "error", this.line))
-			return this
-		}
-		setProperty(device, path, value)
-		return this
-	}
-
-
 }
 
 export default DevEnv

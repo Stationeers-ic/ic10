@@ -4,6 +4,7 @@ import type { InstructionData } from "../instructions/types"
 import type { AnyInstructionName } from "../ZodTypes"
 import type Err from "./Err"
 import Interpreter from "./Interpreter"; // {
+import { ChipHousing } from "./ChipHousing"
 
 // {
 // error: (err: Err) => void
@@ -31,6 +32,9 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 */
 	public isTest: boolean = false
 	public InfiniteLoopLimit: number = 500
+
+
+	abstract get chipHousing(): ChipHousing
 
 	abstract addLine(line: Line<Interpreter<Environment>> | null): Promise<this> | this
 
@@ -92,12 +96,6 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	abstract label(alias: string, value: number): Promise<this> | this
 
 	abstract define(alias: string, value: number): Promise<this> | this
-
-	/**
-	 * получить alias если существует иначе вернуть значение
-	 * @param alias
-	 */
-	abstract getAlias(alias: string): Promise<string> | string
 
 	//Работа с устройствами
 
@@ -168,14 +166,13 @@ export abstract class Environment<E extends Record<string, Function> = {}> exten
 	 * запись в устройство или канал
 	 * S
 	 */
-	abstract setDevice(aliasOrPortOrPortWithChanel: string, logic: string, value: number): Promise<this> | this
+	abstract setDevice(aliasOrPortOrPortWithChanelOrId: string, logic: string, value: number): Promise<this> | this
 
 	/**
 	 * чтение из устройства или канала
 	 * L
 	 */
-	abstract getDevice(aliasOrPortOrPortWithChanel: string, logic: string): Promise<number> | number
-
+	abstract getDevice(aliasOrPortOrPortWithChanelOrId: string, logic: string): Promise<number> | number
 	/**
 	 * Самоуничтожение
 	 */
