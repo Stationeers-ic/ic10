@@ -300,6 +300,22 @@ abstract class DevicesByIdBase extends DevicesByHashAndNameBase implements IDevi
 			}
 		}
 	}
+	override getDeviceParameterById(id: number, prop: number): number {
+		const device = this.getDeviceById(id);
+		if (device) {
+			if (device.props) {
+				return device.props.read(prop);
+			}
+		}
+	}
+	override setDeviceParameterById(id: number, prop: number, value: number): void {
+		const device = this.getDeviceById(id);
+		if (device) {
+			if (device.props) {
+				device.props.write(prop, value);
+			}
+		}
+	}
 }
 
 // =============================================

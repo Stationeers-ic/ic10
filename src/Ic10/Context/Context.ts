@@ -120,6 +120,8 @@ export interface IDevicesByIdContext {
 	clearDeviceStackById(id: number): void;
 	getDeviceStackById(id: number, index: number): number;
 	setDeviceStackById(id: number, index: number, value): void;
+	getDeviceParameterById(id: number, prop: number): number;
+	setDeviceParameterById(id: number, prop: number, value: number): void;
 }
 
 /**
@@ -289,6 +291,8 @@ export abstract class Context
 	abstract clearDeviceStackById(id: number): void;
 	abstract getDeviceStackById(id: number, index: number): number;
 	abstract setDeviceStackById(id: number, index: number, value): void;
+	abstract getDeviceParameterById(id: number, prop: number): number;
+	abstract setDeviceParameterById(id: number, prop: number, value: number): void;
 
 	// =============================================
 	// IDevicesByHashContext implementation

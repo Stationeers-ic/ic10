@@ -5,15 +5,6 @@ import { getDevicePin, getRegister, parseArgumentAnyNumber } from "@/Ic10/Helper
 import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
 import type { InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction";
 
-// Базовый интерфейс для конфигурации аргументов
-interface ArgumentConfig {
-	name?: string;
-	canBeLabel: boolean;
-	canBeDefine: boolean;
-	canBeConst: boolean;
-	canBeAlias: boolean;
-}
-
 // Вспомогательные функции для обработки ошибок и проверок
 const ErrorHandlers = {
 	handleError: (context: Context, argument: Argument, message: string) => {
@@ -71,6 +62,13 @@ const BaseConfigs = {
 	},
 };
 
+export type calculateDevicePinOrIdResult = {
+	pin?: number;
+	port?: number;
+	id?: number;
+	error?: number;
+};
+
 // Основные калькуляторы значений
 const ValueCalculators = {
 	calculateNumberLike: (context: Context, argument: Argument) => {
@@ -93,19 +91,32 @@ const ValueCalculators = {
 		return ErrorHandlers.validateDeviceConnection(context, pin, argument);
 	},
 
-	calculateDevicePinOrId: (context: Context, argument: Argument) => {
+	calculateDevicePinOrId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
 		const pin = getDevicePin(context, argument.text);
 
 		if (pin !== false) {
-			return ErrorHandlers.validateDeviceConnection(context, pin, argument);
+			const result = ErrorHandlers.validateDeviceConnection(context, pin, argument);
+			if (typeof result === "number") {
+				return {
+					pin: result,
+				};
+			}
+			if (Array.isArray(result)) {
+				return {
+					pin: result[0],
+					port: result[1],
+				};
+			}
 		}
 
 		const value = parseArgumentAnyNumber(context, argument);
 		if (value !== false && context.isConnectDeviceById(value)) {
-			return value;
+			return {
+				id: value,
+			};
 		}
 
-		return ErrorHandlers.handleError(context, argument, "Invalid argument must be device port or id");
+		return { error: ErrorHandlers.handleError(context, argument, "Invalid argument must be device port or id") };
 	},
 
 	calculateDeviceProp: (context: Context, argument: Argument) => {

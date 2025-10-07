@@ -33,25 +33,27 @@ export class DeviceProps extends DeviceScope {
 
 	public read(prop: prop): number {
 		const l = this.getLogic(prop);
-		if (!l.canRead) {
+		if (l?.canRead) {
+			return this.#propertiesRaw[l.code];
+		} else {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to read ${l.name}`,
+					message: `Device ${this.scope.hash} has not permission to read ${l?.name ?? prop}`,
 					severity: ErrorSeverity.Warning,
 				}),
 			);
+			return 0;
 		}
-		return this.#propertiesRaw[l.code];
 	}
 
 	public write(prop: prop, value: number): void {
 		const l = this.getLogic(prop);
-		if (l.canWrite) {
+		if (l?.canWrite) {
 			this.#propertiesRaw[l.code] = value;
 		} else {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to write ${l.name}`,
+					message: `Device ${this.scope.hash} has not permission to write ${l?.name ?? prop}`,
 					severity: ErrorSeverity.Strong,
 				}),
 			);

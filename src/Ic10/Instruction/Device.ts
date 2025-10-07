@@ -1,4 +1,4 @@
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
+import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
 	type InstructionArgument,
@@ -35,19 +35,25 @@ export class SInstruction extends Instruction {
 	}
 
 	override run(): void {
-		const pin = this.getArgumentValue<number | [number, number]>("device");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
 		const prop = this.getArgumentValue<number>("logic");
 		const value = this.getArgumentValue<number>("value");
-		if (Array.isArray(pin)) {
-			this.context.setDevicePortChanelByPin(pin[0], pin[1], prop, value);
-		} else {
-			this.context.setDeviceParameterByPin(pin, prop, value);
+		if (device.pin !== undefined && device.port !== undefined) {
+			this.context.setDevicePortChanelByPin(device.pin, device.port, prop, value);
+			return;
+		}
+		if (device.pin !== undefined) {
+			this.context.setDeviceParameterByPin(device.pin, prop, value);
+			return;
+		}
+		if (device.id !== undefined) {
+			this.context.setDeviceParameterById(device.id, prop, value);
 		}
 	}
 
 	public argumentList(): InstructionArgument[] {
 		return [
-			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.devicePinOrId("device"),
 			ArgumentCalculators.deviceProp("logic"),
 			ArgumentCalculators.anyNumber("value"),
 		];
@@ -76,21 +82,30 @@ export class LInstruction extends Instruction {
 
 	override run(): void {
 		const result = this.getArgumentValue<number>("result");
-		const pin = this.getArgumentValue<number | [number, number]>("device");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
 		const prop = this.getArgumentValue<number>("logic");
 		let v: number;
-		if (Array.isArray(pin)) {
-			v = this.context.getDevicePortChanelByPin(pin[0], pin[1], prop);
-		} else {
-			v = this.context.getDeviceParameterByPin(pin, prop);
+
+		if (device.pin !== undefined && device.port !== undefined) {
+			v = this.context.getDevicePortChanelByPin(device.pin, device.port, prop);
+			this.context.setRegister(result, v);
+			return;
 		}
-		this.context.setRegister(result, v);
+		if (device.pin !== undefined) {
+			v = this.context.getDeviceParameterByPin(device.pin, prop);
+			this.context.setRegister(result, v);
+			return;
+		}
+		if (device.id !== undefined) {
+			v = this.context.getDeviceParameterById(device.id, prop);
+			this.context.setRegister(result, v);
+		}
 	}
 
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.devicePinOrId("device"),
 			ArgumentCalculators.deviceProp("logic"),
 		];
 	}
