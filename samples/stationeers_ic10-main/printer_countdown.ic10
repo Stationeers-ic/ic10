@@ -1,0 +1,24 @@
+alias Dial d0
+# Logic Switch, Dial variant
+alias DisplayOrder d1
+# Kit (Console), some LED Display variant
+alias DisplayExport d2
+# Kit (Console), some LED Display variant
+alias Printer d3
+# One of the printer variants
+
+alias CountOrder r0
+alias CountExport r1
+
+start:
+yield
+l CountOrder Dial Setting
+s DisplayOrder Setting CountOrder
+l CountExport Printer ExportCount
+s DisplayExport Setting CountExport
+blt CountExport CountOrder start
+s Printer Activate 0
+s Printer ClearMemory 1
+sleep 1
+s Dial Setting 0
+j start

@@ -1,0 +1,6 @@
+# Применяем настройки Git для репозитория
+git config core.ignorecase false
+git config core.autocrlf false
+git config core.fileMode false
+
+echo "✓ Git настройки применены (ignorecase=false, autocrlf=false)"

@@ -1,0 +1,5 @@
+move r0 3
+alias test rr0
+move test 9999
+alias test r1
+move test 9999

@@ -1,0 +1,62 @@
+{
+	"name": "ic10",
+	"type": "module",
+	"version": "5.0.0",
+	"description": "",
+	"main": "dist/ic10.cjs.js",
+	"module": "dist/ic10.esm.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		"import": "./dist/ic10.esm.js",
+		"require": "./dist/ic10.cjs.js"
+	},
+	"scripts": {
+		"prepare": "husky",
+		"generate-index": "bun tools/generate-index.ts && bun run fix",
+		"generate-intruction-index": "bun tools/generate-intruction-index.ts && bun run fix",
+		"generate-device": "bun tools/generate-devices.ts  && bun run fix",
+		"generate-vscode": "bun tools/generate-vscode.ts  && bun run fix",
+		"download": "bun tools/download.ts && bun run fix",
+		"download-missing": "bun tools/download.ts --missing",
+		"generate": "bun run download-missing && bun run generate-device && bun run generate-intruction-index && bun run generate-index && bun run generate-vscode",
+		"upgrade": "bun run download && bun run generate && bun test",
+		"build": "bun run generate && vite build",
+		"prepack": "bun test && bun run build && bun test",
+		"test": "bun test",
+		"watch": "bun --watch test --bail",
+		"lint": "bunx --bun biome lint",
+		"fix": "bunx --bun biome check . --write --unsafe",
+		"format": "bunx --bun biome format --write",
+		"format:check": "bunx --bun biome format",
+		"dev": "bun run tools/whatch.ts",
+		"show": "bun test tests/ic10/complited.test.ts --todo --only"
+	},
+	"devDependencies": {
+		"@babel/generator": "^7.28.3",
+		"@babel/traverse": "^7.28.4",
+		"@biomejs/biome": "2.2.5",
+		"@types/babel__generator": "^7.27.0",
+		"@types/babel__traverse": "^7.28.0",
+		"@types/bun": "^1.2.23",
+		"@types/cli-progress": "^3.11.6",
+		"@types/node": "^24.7.0",
+		"axios": "^1.12.2",
+		"cli-progress": "^3.12.0",
+		"fast-glob": "^3.3.3",
+		"glob": "^11.0.3",
+		"globals": "^16.4.0",
+		"husky": "^9.1.7",
+		"js-convert-case": "^4.2.0",
+		"json5": "^2.2.3",
+		"vite": "^7.1.9",
+		"vite-plugin-dts": "^4.5.4"
+	},
+	"peerDependencies": {
+		"typescript": "^5.8.2"
+	},
+	"dependencies": {
+		"crc-32": "^1.2.2",
+		"exact-ic10-math": "^0.4.0",
+		"uuid": "^13.0.0"
+	}
+}

@@ -1,0 +1,5 @@
+j loop
+
+move r0 10
+loop:
+move r1 10

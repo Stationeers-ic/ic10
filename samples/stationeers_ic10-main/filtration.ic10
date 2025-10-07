@@ -1,0 +1,111 @@
+# Automated Filtration Control
+# Based on code by CowsAreEvil
+# Designed for use in filtration IC slot only
+# Designed for parallel filtration setups only
+# Will fill storage tank to MAXPRESSUE (set below)
+# Will detect filter cartridge and activate when
+# INPUTAMOUNT moles of gas is detected (set below)
+
+alias filtration db
+alias diode d0  # Optional
+
+alias FilterLeft r0
+alias FilterRight r1
+alias FilterMin r2
+alias FilterMax r3
+alias FilterRemain r4
+alias FilterLight r5
+alias FilterHash r6
+alias FilterMols r7
+alias FilterActive r8
+alias InTemperature r9
+alias InMolsCheck r10
+alias InMolsCompare r11
+alias TotalMols r12
+alias OutPressure r13
+
+define MAXPRESSURE 5800 # Storage pressure kPa
+define INPUTAMOUNT 2  # Moles to activate
+define MAXTEMPERATURE 313.15 # 40C
+
+start:
+yield
+
+# Check storage pressure
+l OutPressure filtration PressureOutput
+slt FilterActive OutPressure MAXPRESSURE
+# if pressure > MAX, skip to shutdown
+beqz FilterActive filteronoff
+
+# Check temperature
+l InTemperature filtration TemperatureInput
+slt FilterActive InTemperature MAXTEMPERATURE
+# if temperature > MAX, skip to shutdown
+beqz FilterActive filteronoff
+
+# Check filters and set diodes
+ls FilterLeft filtration 0 Quantity
+ls FilterRight filtration 1 Quantity
+or FilterActive FilterLeft FilterRight
+min FilterMin FilterLeft FilterRight
+seqz FilterLight FilterMin
+bdseal diode slideActivate
+max FilterMax FilterLeft FilterRight
+select FilterRemain FilterMin FilterMin FilterMax
+div FilterRemain FilterRemain 100
+bdseal diode slideSetting
+
+# Check filters and available gas
+l TotalMols filtration TotalMolesInput
+ls FilterHash filtration 0 PrefabHash
+jal checkfilter
+move InMolsCompare InMolsCheck
+ls FilterHash filtration 1 PrefabHash
+jal checkfilter
+max FilterMols InMolsCheck InMolsCompare
+mul TotalMols TotalMols FilterMols
+sgt FilterActive TotalMols INPUTAMOUNT
+
+filteronoff:
+s filtration Mode FilterActive
+j start
+
+slideActivate:
+s diode On FilterLight
+j ra
+
+slideSetting:
+s diode Setting FilterRemain
+j ra
+
+checkfilter:
+l InMolsCheck filtration RatioOxygenInput
+beq FilterHash -1067319543 ra
+beq FilterHash -1217998945 ra
+beq FilterHash -721824748 ra
+l InMolsCheck filtration RatioNitrogenInput
+beq FilterHash -632657357 ra
+beq FilterHash -1387439451 ra
+beq FilterHash 632853248 ra
+l InMolsCheck filtration RatioCarbonDioxideInput
+beq FilterHash 416897318 ra
+beq FilterHash 1876847024 ra
+beq FilterHash 1635000764 ra
+l InMolsCheck filtration RatioVolatilesInput
+beq FilterHash 1037507240 ra
+beq FilterHash 1255156286 ra
+beq FilterHash 15011598 ra
+l InMolsCheck filtration RatioPollutantInput
+beq FilterHash 63677771 ra
+beq FilterHash 1959564765 ra
+beq FilterHash 1915566057 ra
+l InMolsCheck filtration RatioNitrousOxideInput
+beq FilterHash 1824284061 ra
+beq FilterHash 465267979 ra
+beq FilterHash -1247674305 ra
+move InMolsCheck 0
+beqz FilterHash ra
+
+#if you are still here then it is an error so end
+s filtration On 0
+j start

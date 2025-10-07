@@ -1,0 +1,112 @@
+<mxfile host="65bd71144e">
+    <diagram id="N4B0mG_CqVoyd-KQqLSA" name="steps">
+        <mxGraphModel dx="974" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-2" value="Envirement" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="20" width="560" height="580" as="geometry">
+                        <mxRectangle x="50" y="20" width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-12" value="" style="edgeStyle=none;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" source="VMqmslvxnpSK_HTbR0jJ-8" target="VMqmslvxnpSK_HTbR0jJ-11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-5" value="" style="edgeStyle=none;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" source="VMqmslvxnpSK_HTbR0jJ-3" target="VMqmslvxnpSK_HTbR0jJ-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-3" value="raw ic10 code" style="rounded=1;whiteSpace=wrap;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" vertex="1">
+                    <mxGeometry x="220" y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-9" value="" style="edgeStyle=none;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" source="VMqmslvxnpSK_HTbR0jJ-4" target="VMqmslvxnpSK_HTbR0jJ-8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-4" value="splite by line" style="whiteSpace=wrap;html=1;rounded=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" vertex="1">
+                    <mxGeometry x="220" y="150" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-7" value="sandbox context" style="swimlane;whiteSpace=wrap;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" vertex="1">
+                    <mxGeometry x="180" y="260" width="200" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-8" value="run code" style="whiteSpace=wrap;html=1;rounded=1;" parent="VMqmslvxnpSK_HTbR0jJ-7" vertex="1">
+                    <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-10" value="Real conext" style="swimlane;whiteSpace=wrap;html=1;" parent="VMqmslvxnpSK_HTbR0jJ-2" vertex="1">
+                    <mxGeometry x="180" y="420" width="200" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="VMqmslvxnpSK_HTbR0jJ-11" value="run code" style="whiteSpace=wrap;html=1;rounded=1;" parent="VMqmslvxnpSK_HTbR0jJ-10" vertex="1">
+                    <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Страница — 1" id="V8KqElsHYLVdyvT8VotK">
+        <mxGraphModel dx="1412" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="oiibnv2EOFYBwpJB7q5H-8" target="oiibnv2EOFYBwpJB7q5H-23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-8" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;Инициализация проекта&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="94" y="40" width="640" height="400" as="geometry">
+                        <mxRectangle x="94" y="40" width="180" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="oiibnv2EOFYBwpJB7q5H-8" source="4rec9Dz1lcHQf-7zMOeP-2" target="oiibnv2EOFYBwpJB7q5H-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-17" value="Данные" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="oiibnv2EOFYBwpJB7q5H-16" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1055" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="Создание окружения" id="4rec9Dz1lcHQf-7zMOeP-2">
+                    <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="oiibnv2EOFYBwpJB7q5H-8" vertex="1">
+                        <mxGeometry x="30" y="50" width="140" height="120" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="4rec9Dz1lcHQf-7zMOeP-3" value="Создание сети" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="4rec9Dz1lcHQf-7zMOeP-2" vertex="1">
+                    <mxGeometry y="30" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4rec9Dz1lcHQf-7zMOeP-4" value="Создание&amp;nbsp; чипа" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="4rec9Dz1lcHQf-7zMOeP-2" vertex="1">
+                    <mxGeometry y="60" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4rec9Dz1lcHQf-7zMOeP-5" value="Создание&amp;nbsp; сокета" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="4rec9Dz1lcHQf-7zMOeP-2" vertex="1">
+                    <mxGeometry y="90" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-6" value="&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Аналог провода в игре.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Хранит список всех подключеных устрорйств.&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" vertex="1">
+                    <mxGeometry x="220" y="30" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" source="4rec9Dz1lcHQf-7zMOeP-3" target="oiibnv2EOFYBwpJB7q5H-6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-9" value="Аналог чипа ic10 и является оперативной памятью&lt;div&gt;Хранит код, регистры стак, список инструкций&lt;/div&gt;&lt;div&gt;Определяет ограничение памяти&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" vertex="1">
+                    <mxGeometry x="220" y="110" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" source="4rec9Dz1lcHQf-7zMOeP-4" target="oiibnv2EOFYBwpJB7q5H-9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-11" value="Аналог сокета в игре&lt;div&gt;Обеспечивает связь чипа с сетью&lt;/div&gt;&lt;div&gt;Является устройством&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" vertex="1">
+                    <mxGeometry x="220" y="190" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="oiibnv2EOFYBwpJB7q5H-8" source="4rec9Dz1lcHQf-7zMOeP-5" target="oiibnv2EOFYBwpJB7q5H-11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="oiibnv2EOFYBwpJB7q5H-8" source="oiibnv2EOFYBwpJB7q5H-15" target="oiibnv2EOFYBwpJB7q5H-8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-15" value="Создание&amp;nbsp;&lt;span style=&quot;color: rgb(169, 220, 118); font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; background-color: rgb(45, 42, 46);&quot;&gt;Ic10Runner&lt;/span&gt;&lt;div&gt;в&amp;nbsp;&lt;span style=&quot;color: rgb(169, 220, 118); font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; background-color: rgb(45, 42, 46);&quot;&gt;Ic10Runner&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;передаем все сокет в котором есть чип и который прандлежит сети&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="oiibnv2EOFYBwpJB7q5H-8" vertex="1">
+                    <mxGeometry x="40" y="280" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-23" value="Код" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="117.5" width="610" height="215" as="geometry">
+                        <mxRectangle x="780" y="117.5" width="60" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="oiibnv2EOFYBwpJB7q5H-25" value="&lt;div style=&quot;background-color:#2d2a2e;color:#fcfcfa&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:11,4pt;&quot;&gt;&lt;span style=&quot;color:#ff6188;font-style:italic;&quot;&gt;const &lt;/span&gt;&lt;span style=&quot;color:#9876aa;font-weight:bold;font-style:italic;&quot;&gt;code &lt;/span&gt;&lt;span style=&quot;color:#ff6188;&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;color:#ffd866;&quot;&gt;&quot;move r0 10&quot;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color:#ff6188;font-style:italic;&quot;&gt;const &lt;/span&gt;&lt;span style=&quot;color:#9876aa;font-weight:bold;font-style:italic;&quot;&gt;network &lt;/span&gt;&lt;span style=&quot;color:#ff6188;&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;color:#ff6188;font-style:italic;&quot;&gt;new &lt;/span&gt;Network&lt;span style=&quot;color:#939293;&quot;&gt;();&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color:#ff6188;font-style:italic;&quot;&gt;const &lt;/span&gt;&lt;span style=&quot;color:#9876aa;font-weight:bold;font-style:italic;&quot;&gt;chip &lt;/span&gt;&lt;span style=&quot;color:#ff6188;&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;color:#ff6188;font-style:italic;&quot;&gt;new &lt;/span&gt;Chip&lt;span style=&quot;color:#939293;&quot;&gt;({&lt;/span&gt;ic10Code&lt;span style=&quot;color:#ff6188;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9876aa;font-weight:bold;font-style:italic;&quot;&gt;code&lt;/span&gt;&lt;span style=&quot;color:#939293;&quot;&gt;, &lt;/span&gt;register_length&lt;span style=&quot;color:#ff6188;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#ab9df2;&quot;&gt;16&lt;/span&gt;&lt;span style=&quot;color:#939293;&quot;&gt;, &lt;/span&gt;stack_length&lt;span style=&quot;color:#ff6188;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#ab9df2;&quot;&gt;512&lt;/span&gt;&lt;span style=&quot;color:#939293;&quot;&gt;});&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136); font-style: italic;&quot;&gt;const &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(152, 118, 170); font-weight: bold; font-style: italic;&quot;&gt;socket &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136);&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136); font-style: italic;&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: rgb(252, 252, 250); white-space-collapse: collapse;&quot;&gt;Housing&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;({&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(152, 118, 170); font-weight: bold; font-style: italic;&quot;&gt;network&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;color: rgb(252, 252, 250); white-space-collapse: collapse;&quot;&gt;hash&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136);&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(171, 157, 242);&quot;&gt;125&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(152, 118, 170); font-weight: bold; font-style: italic;&quot;&gt;chip&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;});&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;span style=&quot;color:#939293;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136); font-style: italic;&quot;&gt;const &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(152, 118, 170); font-weight: bold; font-style: italic;&quot;&gt;cpu &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136);&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136); font-style: italic;&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: rgb(252, 252, 250); white-space-collapse: collapse;&quot;&gt;Ic10Runner&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;({&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 252, 250); white-space-collapse: collapse;&quot;&gt;housing&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(255, 97, 136);&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse; color: rgb(152, 118, 170); font-weight: bold; font-style: italic;&quot;&gt;socket&lt;/span&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;});&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="oiibnv2EOFYBwpJB7q5H-23" vertex="1">
+                    <mxGeometry x="30" y="35" width="550" height="110" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

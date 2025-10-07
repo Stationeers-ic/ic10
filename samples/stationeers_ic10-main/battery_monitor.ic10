@@ -1,0 +1,80 @@
+# Uses a Diode Slide to show battery-bank levels
+# You can add a Cable Analyzer between generators
+# and batteries so an LED light can show if system
+# is charging or discharging.
+# Works best if your batteries are connected in
+# series (battery output -> battery input).
+# FirstBattery is the battery that faces your base.
+
+# Kit (Light) > Diode Slide
+alias DiodeSlider d0
+# Battery closest to your base
+alias FirstBattery d1
+# Optional second battery type
+alias SecondBattery d2
+# Optional Cable Analyzer
+alias CableAnalyzer d3
+# Kit (Light) > LED Light,
+# required if you have Cable Analyzer
+alias LEDLight d4
+
+alias FirstBattCharge r0
+alias Type1Hash r1
+alias Type2Hash r2
+alias Type1Max r3
+alias Type2Max r4
+alias Type1Charge r5
+alias Type2Charge r6
+alias ChargeIn r7
+alias ChargeOut r8
+
+define RED 4
+define GREEN 2
+
+start:
+yield
+# Checks charge/discharge state if CA connected
+bdseal CableAnalyzer systemstate
+l Type1Hash FirstBattery PrefabHash
+# Sums current and max capacity of batteries of the
+# first type
+lb Type1Max Type1Hash Maximum Sum
+lb Type1Charge Type1Hash Charge Sum
+# Gets charge-ratio of FirstBattery
+l FirstBattCharge FirstBattery Ratio
+# Gets charges from second type of batteries
+bdseal SecondBattery t2getcharge
+# Creates a ratio from all batteries
+div Type1Charge Type1Charge Type1Max
+# Displays total charge ratio of battery-bank
+s DiodeSlider Setting Type1Charge
+# Turns on Diode Slide light if FirstBattery
+# is less than full (danger low power storage)
+slt FirstBattCharge FirstBattCharge 1
+s DiodeSlider On FirstBattCharge
+j start
+
+t2getcharge:
+# Sums current and max capacity of batteries of the
+# second type (if present)
+l Type2Hash SecondBattery PrefabHash
+lb Type2Max Type2Hash Maximum Sum
+lb Type2Charge Type2Hash Charge Sum
+add Type1Max Type1Max Type2Max
+add Type1Charge Type1Charge Type2Charge
+j ra
+
+systemstate:
+# Checks if system is generating more or less power
+# than it's consuming
+s LEDLight On 1
+l ChargeIn CableAnalyzer PowerPotential
+l ChargeOut FirstBattery PowerActual
+sub r9 ChargeIn ChargeOut
+bgtz r9 charging
+s LEDLight Color RED
+j ra
+
+charging:
+s LEDLight Color GREEN
+j ra

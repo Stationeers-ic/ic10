@@ -1,0 +1,57 @@
+# Automatic gas-canister filler.
+# !!! Remember to set volume pump to no more !!!
+# !!! than 10l! I have mine at 2l for safety !!! 
+
+alias CanisterStorage d0
+alias FillPump d1
+alias EvacPump d2
+alias Analyzer d4
+
+alias CanisterPresent r0
+alias CanisterHash r1
+alias StoragePressure r2
+alias GasToMove r3
+alias FillPressure r4
+alias PumpActive r5
+
+define CANISTER 42280099
+define SMARTCANISTER -668314371
+
+start:
+yield
+# check if canister is present
+ls CanisterPresent CanisterStorage 0 Occupied
+# identify canister
+ls CanisterHash CanisterStorage 0 OccupantHash
+# set safe fill-pressure
+beq CanisterHash CANISTER regular
+beq CanisterHash SMARTCANISTER smart
+
+regular:
+move FillPressure 8000000 # regular can safe max
+j fill # start filling
+
+smart:
+move FillPressure 18000000 # smart can safe max
+j fill # start filling
+
+fill: # fills canister if present and <8Mpa
+# get canister pressure in Pa
+ls StoragePressure CanisterStorage 0 Pressure
+# is there room in the canister for more gas?
+slt GasToMove StoragePressure FillPressure
+# is there a can in the slot that has room?
+and PumpActive GasToMove CanisterPresent
+# trigger fill pump
+s FillPump On PumpActive
+beqz CanisterPresent evac # break if no can
+j start
+
+evac: # evacuates pipe on can removed and >0Pa
+l StoragePressure Analyzer Pressure
+# is there gas in the pipe?
+sgt GasToMove StoragePressure 0
+# trigger evac pump
+s EvacPump On GasToMove
+bgtz GasToMove evac
+j start

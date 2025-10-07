@@ -1,0 +1,61 @@
+# Gas-mixing script. Needs two source-tanks and an
+# output tank, a gas-mixer, a (turbo) volume pump,
+# and a Kit (Button, moment type) to trigger purge.
+# Gas mixer ratio is manually set!
+
+alias TankA d0
+alias TankB d1
+alias TankOut d2
+alias Mixer d3
+alias Pump d4
+alias Button d5
+
+alias TankAPress r0
+alias TankBPress r1
+alias TankOutPress r2
+alias TankAOk r3
+alias TankBOk r4
+alias TankOutOk r5
+alias MixerRun r6
+alias PurgeActivate r7
+
+define PRESS_IN_MIN 500 # 500kPa
+define PRESS_OUT_MAX 2000 # 2MPa
+
+# Sets purge pump to max output
+l TankAPress Pump Maximum
+s Pump Setting TankAPress
+
+start:
+yield
+s Pump On 0 # Ensures purge pump is off
+# Checks is purge is activated
+l PurgeActivate Button Setting
+bgtz PurgeActivate purge
+
+# Loads tank pressures
+l TankAPress TankA Pressure
+l TankBPress TankB Pressure
+l TankOutPress TankOut Pressure
+
+# Checks if pressures are within tolerances
+sgt TankAOk TankAPress PRESS_IN_MIN
+sgt TankBOk TankBPress PRESS_IN_MIN
+slt TankOutOk TankOutPress PRESS_OUT_MAX
+
+and MixerRun TankAOk TankBOk
+and MixerRun TankOutOk MixerRun
+
+# Activates mixer if all is ok
+s Mixer On MixerRun
+j start
+
+purge:
+yield
+s Mixer On 0 # Turns mixer off
+# Gets output tank pressure
+l TankOutPress TankOut Pressure
+s Pump On 1 # Activates purge pump
+# Runs pump until tank is empty
+bgtz TankOutPress purge
+j start

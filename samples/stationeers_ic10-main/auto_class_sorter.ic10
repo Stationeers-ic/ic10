@@ -1,0 +1,36 @@
+# Runs up to six sorters that filter
+# throughput by ItemClass.
+# When looking at the outputs,
+# left = ITEMCLASS, right = everything else
+
+alias SlotOccupied r0
+alias InputClass r1
+alias IsClass r2
+alias SorterCounter r3
+
+move SorterCounter 0
+
+define ITEMCLASS 19 # 10=ores,19=ingots,33=wrekage
+define INPUTSLOT 0 # sorter input-slot
+
+start:
+bdseal dr3 sort
+add SorterCounter SorterCounter 1
+bgt SorterCounter 5 reset
+j start
+
+sort:
+s dr3 Mode 2 # set sorter to IC mode
+# check if anything to sort
+ls SlotOccupied dr3 INPUTSLOT Occupied 
+beqz SlotOccupied ra
+ls InputClass dr3 INPUTSLOT Class
+# change seq to sne to swap output ports
+seq IsClass InputClass ITEMCLASS
+s dr3 Output IsClass
+j ra
+
+reset:
+yield
+move SorterCounter 0
+j start

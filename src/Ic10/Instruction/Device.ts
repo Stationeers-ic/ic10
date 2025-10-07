@@ -1,0 +1,334 @@
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
+import {
+	Instruction,
+	type InstructionArgument,
+	type InstructionTestData,
+} from "@/Ic10/Instruction/Helpers/Instruction";
+
+export class SInstruction extends Instruction {
+	static tests(): InstructionTestData[] {
+		return [
+			{
+				code: "s db Setting 5",
+				expected: [
+					{
+						type: "device",
+						pin: -1,
+						prop: 12,
+						value: 5,
+					},
+				],
+			},
+			{
+				title: "alias",
+				code: "alias test db\ns test Setting 50",
+				expected: [
+					{
+						type: "device",
+						pin: -1,
+						prop: 12,
+						value: 50,
+					},
+				],
+			},
+		];
+	}
+
+	override run(): void {
+		const pin = this.getArgumentValue<number | [number, number]>("device");
+		const prop = this.getArgumentValue<number>("logic");
+		const value = this.getArgumentValue<number>("value");
+		if (Array.isArray(pin)) {
+			this.context.setDevicePortChanelByPin(pin[0], pin[1], prop, value);
+		} else {
+			this.context.setDeviceParameterByPin(pin, prop, value);
+		}
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.deviceProp("logic"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+}
+
+export class LInstruction extends Instruction {
+	static tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["s db Setting 5", "l r0 db Setting"],
+				expected: [{ type: "register", register: 0, value: 5 }],
+			},
+			{
+				title: "alias",
+				code: ["alias test db", "s test Setting 5", "l r0 test Setting"],
+				expected: [{ type: "register", register: 0, value: 5 }],
+			},
+			{
+				title: "Channel",
+				code: ["s db:0 Channel4 15", "l r1 db:0 Channel4"],
+				expected: [{ type: "register", register: 1, value: 15 }],
+			},
+		];
+	}
+
+	override run(): void {
+		const result = this.getArgumentValue<number>("result");
+		const pin = this.getArgumentValue<number | [number, number]>("device");
+		const prop = this.getArgumentValue<number>("logic");
+		let v: number;
+		if (Array.isArray(pin)) {
+			v = this.context.getDevicePortChanelByPin(pin[0], pin[1], prop);
+		} else {
+			v = this.context.getDeviceParameterByPin(pin, prop);
+		}
+		this.context.setRegister(result, v);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.deviceProp("logic"),
+		];
+	}
+}
+
+export class ClrInstruction extends Instruction {
+	static tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["push 1", "clr db"],
+				expected: [{ type: "stack", index: 0, value: 0 }],
+			},
+		];
+	}
+
+	override run(): void {
+		const r = this.getArgumentValue<number>("device");
+		this.context.clearDeviceStackByPin(r);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [ArgumentCalculators.devicePin("device")];
+	}
+}
+
+export class GetInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["push 99", "get r0 db 0"],
+				iterations_count: 2,
+				expected: [
+					{
+						type: "register",
+						register: 0,
+						value: 99,
+					},
+				],
+			},
+		];
+	}
+
+	override run(): void {
+		const pin = this.getArgumentValue<number>("device");
+		const address = this.getArgumentValue<number>("address");
+		const value = this.context.getDeviceStackByPin(pin, address);
+		this.context.setRegister(this.getArgumentValue<number>("result"), value);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.anyNumber("address"),
+		];
+	}
+}
+
+export class PutInstruction extends Instruction {
+	static tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["push 99", "put db 0 50"],
+				expected: [
+					{
+						type: "stack",
+						index: 0,
+						value: 50,
+					},
+				],
+			},
+		];
+	}
+
+	public run(): void | Promise<void> {
+		const pin = this.getArgumentValue<number>("device");
+		const address = this.getArgumentValue<number>("address");
+		const value = this.getArgumentValue<number>("value");
+		this.context.setDeviceStackByPin(pin, address, value);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.anyNumber("address"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+}
+
+export class GetdInstruction extends Instruction {
+	override run(): void {
+		const id = this.getArgumentValue<number>("deviceid");
+		const prop = this.getArgumentValue<number>("logic");
+		const result = this.getArgumentValue<number>("result");
+		this.context.setRegister(result, this.context.getDeviceStackById(id, prop));
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.anyNumber("deviceid"),
+			ArgumentCalculators.anyNumber("address"),
+		];
+	}
+}
+
+// export class PutdInstruction extends Instruction {}
+/**
+ * 
+putd:
+  Seeks directly for the provided device id, attempts to write the provided value to the stack at the provided address.  putd id(r?|id) address(r?|num) value(r?|num)
+
+getd:
+  Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register.  getd r? id(r?|id) address(r?|num)
+
+ */
+
+export class BdnvlInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: "bdnvl db Setting 4\n\n\n\n",
+				iterations_count: 2,
+				expected: [
+					{
+						type: "loop",
+						nextLineIndex: 2,
+					},
+				],
+			},
+			{
+				code: "bdnvl db Color 4\n\n\n\n",
+				iterations_count: 2,
+				expected: [
+					{
+						type: "loop",
+						nextLineIndex: 2,
+					},
+				],
+			},
+		];
+	}
+
+	override argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.anyNumber("logic"),
+			ArgumentCalculators.jumpTarget("target"),
+		];
+	}
+
+	override run(): void {
+		const devicePin = this.getArgumentValue<number>("device");
+		const logic = this.getArgumentValue<number>("logic");
+		const target = this.getArgumentValue<number>("target");
+		if (this.context.canLoadDeviceParameterByPin(devicePin, logic)) {
+			this.context.setNextLineIndex(target);
+		}
+	}
+}
+export class BdnvsInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: "bdnvs db Setting 4\n\n\n\n",
+				iterations_count: 2,
+				expected: [
+					{
+						type: "loop",
+						nextLineIndex: 5,
+					},
+				],
+			},
+			{
+				code: "bdnvs db Color 4\n\n\n\n",
+				iterations_count: 2,
+				expected: [
+					{
+						type: "loop",
+						nextLineIndex: 2,
+					},
+				],
+			},
+		];
+	}
+
+	override argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.deviceProp("logic"),
+			ArgumentCalculators.jumpTarget("target"),
+		];
+	}
+
+	override run(): void {
+		const devicePin = this.getArgumentValue<number>("device");
+		const logic = this.getArgumentValue<number>("logic");
+		const target = this.getArgumentValue<number>("target");
+		if (this.context.canStoreDeviceParameterByPin(devicePin, logic)) {
+			this.context.setNextLineIndex(target);
+		}
+	}
+}
+
+export class ClrdInstruction extends Instruction {
+	override run(): void {
+		const r = this.getArgumentValue<number>("deviceId");
+		this.context.clearDeviceStackById(r);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [ArgumentCalculators.anyNumber("deviceId")];
+	}
+}
+
+/**
+ * 	ls: {
+		name: "ls",
+		description: "Loads slot LogicSlotType on device to register.",
+		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
+	},
+	lr: {
+		name: "lr",
+		description:
+			"Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
+		example: "lr r? device(d?|r?|id) reagentMode int",
+	},
+	sb: {
+		name: "sb",
+		description:
+			"Stores register value to LogicType on all output network devices with provided type hash.",
+		example: "sb deviceHash logicType r?",
+	},
+	lb: {
+		name: "lb",
+		description:
+			"Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		example: "lb r? deviceHash logicType batchMode",
+	},
+ */

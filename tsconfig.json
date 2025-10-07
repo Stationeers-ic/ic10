@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@tests/*": ["tests/*"],
+			"@tools/*": ["tools/*"]
+		},
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"allowJs": false,
+		"skipLibCheck": true,
+		"moduleResolution": "bundler"
+	},
+	"exclude": ["dist"]
+}

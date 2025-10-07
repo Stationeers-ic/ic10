@@ -1,0 +1,15 @@
+[test]
+smol = true
+# always enable coverage
+coveragePathIgnorePatterns = [
+  "src/Devices/**",
+  "src/Defines/**",
+  "tests/**",
+  "tools/**",
+]
+coverageThreshold = { lines = 0.8, functions = 0.6, statements = 0.9 }
+[install]
+auto = "auto"
+[run]
+shell = "bun"
+bun = true

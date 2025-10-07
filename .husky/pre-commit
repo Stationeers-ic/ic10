@@ -1,0 +1,13 @@
+set -e
+bun run generate-index
+git add src/index.ts
+
+# автоматически поправить формат
+bun run format
+# добавить все исправления форматирования в индекс
+git add -A
+
+# проверить формат еще раз и выполнить линты/тесты
+bun run format:check
+bun run lint
+bun run test

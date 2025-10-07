@@ -1,0 +1,33 @@
+alias Weather d0 # Weather Station
+alias Readout d1 # Kit (Console)
+alias Announcer d2 # Kit (Speaker)
+alias Siren d3 # Kit (Speaker)
+
+alias StormMode r0
+alias Minutes r1
+alias SirenOn r2
+
+s Announcer Mode 18 # "StormIncoming"
+s Siren Mode 10 # "Alarm8"
+
+start:
+yield
+l StormMode Weather Mode # check weather
+s Announcer On 0 # reset Announcer
+beq StormMode 1 countdown # countdown if incoming
+j start # else return to start
+
+countdown:
+yield
+l StormMode Weather Mode # check weather
+s Announcer On 1 # announce storm
+# get countdown value
+l Minutes Weather NextWeatherEventTime
+div Minutes Minutes 60 # convert to minutes
+trunc Minutes Minutes # drop decimals
+s Readout Setting Minutes # send to display
+bgt Minutes 2 countdown # got more than 3m?
+sgt SirenOn Minutes 0 # got more than 60s?
+s Siren On SirenOn # start siren if 1<minutes<3
+beq StormMode 1 countdown # still waiting? go back
+j start # reset and start waiting again

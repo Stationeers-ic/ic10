@@ -1,0 +1,46 @@
+import path from "node:path";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
+
+export default defineConfig({
+	resolve: {
+		alias: {
+			"@": path.resolve(__dirname, "src"),
+			"@tests": path.resolve(__dirname, "tests"),
+			"@tools": path.resolve(__dirname, "tools"),
+		},
+	},
+	build: {
+		sourcemap: true,
+		lib: {
+			entry: path.resolve(__dirname, "src/index.ts"),
+			name: "ic10",
+			formats: ["es", "cjs", "umd", "iife", "system"],
+			fileName: (format) => {
+				switch (format) {
+					case "es":
+						return "ic10.esm.js";
+					case "cjs":
+						return "ic10.cjs.js";
+					case "umd":
+						return "ic10.umd.js";
+					case "iife":
+						return "ic10.iife.js";
+					case "system":
+						return "ic10.system.js";
+				}
+				return "ic10.js";
+			},
+		},
+		rollupOptions: {
+			external: [/^@tests\//, /^@tools\//],
+		},
+	},
+	plugins: [
+		dts({
+			entryRoot: "src",
+			outDir: "dist",
+			exclude: ["tests/**/*", "tools/**/*", "node_modules/**/*", "vite.config.ts"],
+		}),
+	],
+});
