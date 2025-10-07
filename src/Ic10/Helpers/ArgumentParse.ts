@@ -1,4 +1,4 @@
-import CONSTS from "@/Defines/consts";
+import CONSTS, { GROUPED_CONSTS } from "@/Defines/consts";
 import type { Context } from "@/Ic10/Context/Context";
 import { TypeIc10Error } from "@/Ic10/Errors/Errors";
 import { crc32, stringToCode } from "@/Ic10/Helpers/functions";
@@ -27,8 +27,10 @@ export function jsThing(value: number): number {
  * Получает константу по имени
  */
 export function getConst(argument: Argument, group?: string): number | false {
-	const key = group ? `${group}.${argument.text}` : argument.text;
-	return key in CONSTS ? CONSTS[key as keyof typeof CONSTS] : false;
+	if (group === undefined) {
+		return argument.text in CONSTS ? CONSTS[argument.text] : false;
+	}
+	return argument.text in GROUPED_CONSTS[group] ? GROUPED_CONSTS[group][argument.text] : false;
 }
 
 /**
@@ -47,7 +49,7 @@ export function parseArgumentAnyNumber(context: Context, argument: Argument): nu
 
 	for (const parser of parsers) {
 		const result = parser();
-		if (result !== false) return result;
+		if (result !== false) return jsThing(result);
 	}
 
 	return false;

@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { CONSTS, GROUPED_CONSTS } from "@/Defines/consts";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 import { Chip, codeToString, Housing, Ic10Runner, Network, RuntimeIc10Error, stringToCode } from "@/index";
 
@@ -112,6 +113,13 @@ move r1 1
 		test("codeToString", () => {
 			expect(codeToString(97)).toBe("a");
 			expect(codeToString(24930)).toBe("ab");
+		});
+	});
+
+	describe("Константы", () => {
+		test("nan", () => {
+			expect(CONSTS.nan).toBeNaN();
+			expect(GROUPED_CONSTS.nan).toBeNaN();
 		});
 	});
 });

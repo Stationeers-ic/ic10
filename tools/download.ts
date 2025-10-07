@@ -46,9 +46,9 @@ export async function downloadWithProgress(url: string, varName: string) {
 
 export function saveAsTsFile(json: any, outPath: string, varName: string, type = " as const") {
 	const tsContent = `export const ${varName} = ${JSON.stringify(json, null, 2)}${type};\nexport default ${varName};`
-		.replace(/"NaN"/g, "NaN")
-		.replace(/"Infinity"/g, "Infinity")
-		.replace(/"-Infinity"/g, "-Infinity");
+		.replace(/["']NaN["']/g, "NaN")
+		.replace(/["']Infinity["']/g, "Infinity")
+		.replace(/["']-Infinity["']/g, "-Infinity");
 
 	fs.writeFileSync(outPath, tsContent);
 	console.log(`Файл ${outPath} успешно создан!`);
@@ -112,9 +112,9 @@ async function downloadConsts() {
 	fs.writeFileSync(
 		outPath,
 		tsContent
-			.replace(/["']NaN["']/, "NaN")
-			.replace(/["']Infinity["']/, "Infinity")
-			.replace(/["']-Infinity["']/, "-Infinity"),
+			.replace(/["']NaN["']/g, "NaN")
+			.replace(/["']Infinity["']/g, "Infinity")
+			.replace(/["']-Infinity["']/g, "-Infinity"),
 	);
 	console.log(`Файл ${outPath} успешно создан!`);
 }

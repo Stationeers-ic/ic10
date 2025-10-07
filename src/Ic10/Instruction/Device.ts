@@ -1,3 +1,4 @@
+import { LogicBatchMethod, type LogicBatchMethodType, type LogicConstType } from "@/Defines/data";
 import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
@@ -54,7 +55,7 @@ export class SInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.devicePinOrId("device"),
-			ArgumentCalculators.deviceProp("logic"),
+			ArgumentCalculators.logic("logic"),
 			ArgumentCalculators.anyNumber("value"),
 		];
 	}
@@ -106,7 +107,44 @@ export class LInstruction extends Instruction {
 		return [
 			ArgumentCalculators.registerLink("result"),
 			ArgumentCalculators.devicePinOrId("device"),
-			ArgumentCalculators.deviceProp("logic"),
+			ArgumentCalculators.logic("logic"),
+		];
+	}
+}
+/**\
+ * lb:
+  Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number. 
+   lb r? deviceHash logicType batchMode
+
+ */
+
+export class LbInstruction extends Instruction {
+	public run(): void | Promise<void> {
+		const result = this.getArgumentValue<number>("result");
+		const device = this.getArgumentValue<number>("device_hash");
+		const prop = this.getArgumentValue<LogicConstType[keyof LogicConstType]>("logic");
+		const batchMode = this.getArgumentValue<LogicBatchMethodType[keyof LogicBatchMethodType]>("batchMode");
+		let v: number;
+		switch (LogicBatchMethod.getByValue(batchMode)) {
+			case "Average":
+				break;
+			case "Maximum":
+				break;
+			case "Minimum":
+				break;
+			case "Sum":
+				break;
+			default:
+				break;
+		}
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.anyNumber("device_hash"),
+			ArgumentCalculators.logic("logic"),
+			ArgumentCalculators.logicBatchMethod("batchMode"),
 		];
 	}
 }
@@ -345,7 +383,7 @@ export class BdnvsInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.devicePin("device"),
-			ArgumentCalculators.deviceProp("logic"),
+			ArgumentCalculators.logic("logic"),
 			ArgumentCalculators.jumpTarget("target"),
 		];
 	}

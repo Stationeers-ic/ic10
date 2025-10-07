@@ -1,4 +1,4 @@
-import { Logics } from "@/Defines/data";
+import { LogicBatchMethod, LogicSlot, Logics } from "@/Defines/data";
 import type { Context } from "@/Ic10/Context/Context";
 import { ErrorSeverity, TypeIc10Error } from "@/Ic10/Errors/Errors";
 import { getDevicePin, getRegister, parseArgumentAnyNumber } from "@/Ic10/Helpers/ArgumentParse";
@@ -54,7 +54,7 @@ const BaseConfigs = {
 		canBeConst: false,
 		canBeDefine: false,
 	},
-	deviceProp: {
+	Enum: {
 		canBeLabel: false,
 		canBeAlias: false,
 		canBeConst: true,
@@ -157,6 +157,32 @@ const ValueCalculators = {
 
 		return ErrorHandlers.handleError(context, argument, "Invalid argument must be valid device Property");
 	},
+
+	calculateLogicSlot: (context: Context, argument: Argument) => {
+		if (LogicSlot.hasKey(argument.text)) {
+			return LogicSlot.getByKey(argument.text);
+		}
+
+		const slot = parseInt(argument.text, 10);
+		if (!Number.isNaN(slot)) {
+			return slot;
+		}
+
+		return ErrorHandlers.handleError(context, argument, "Invalid argument must be valid logic slot");
+	},
+
+	calculateLogicBatchMethod: (context: Context, argument: Argument) => {
+		if (LogicBatchMethod.hasKey(argument.text)) {
+			return LogicBatchMethod.getByKey(argument.text);
+		}
+
+		const method = parseInt(argument.text, 10);
+		if (!Number.isNaN(method)) {
+			return method;
+		}
+
+		return ErrorHandlers.handleError(context, argument, "Invalid argument must be valid logic batch method");
+	},
 };
 
 /**
@@ -199,9 +225,21 @@ export const ArgumentCalculators = {
 		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDevicePinOrId(context, argument),
 	}),
 
-	deviceProp: (name?: string) => ({
+	logic: (name?: string) => ({
 		name,
-		...BaseConfigs.deviceProp,
+		...BaseConfigs.Enum,
 		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDeviceProp(context, argument),
+	}),
+
+	logicSlot: (name?: string) => ({
+		name,
+		...BaseConfigs.Enum,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicSlot(context, argument),
+	}),
+
+	logicBatchMethod: (name?: string) => ({
+		name,
+		...BaseConfigs.Enum,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicBatchMethod(context, argument),
 	}),
 } satisfies { [key: string]: (name?: string) => InstructionArgument };
