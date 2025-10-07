@@ -30,6 +30,11 @@ export function createRunner(ic10Code: string | string[], options?: Partial<Crea
 }
 
 export async function runInstructionTest(runner: Ic10Runner, testData: InstructionTestData) {
+	if (testData.devices !== undefined) {
+		for (const device of testData.devices) {
+			runner.realContext.network.apply(device.device);
+		}
+	}
 	await runner.run(); // песочница
 	runner.switchContext("real");
 	if (testData.iterations_count) {

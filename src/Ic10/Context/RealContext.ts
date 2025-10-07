@@ -1,6 +1,6 @@
 import type { Device } from "@/Core/Device";
 import type { StackInterface } from "@/Core/Stack";
-import { Logics } from "@/Defines/data";
+import { LogicBatchMethod, Logics } from "@/Defines/data";
 import {
 	Context,
 	type IDefinesContext,
@@ -234,7 +234,41 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 
 abstract class DevicesByHashBase extends StackBase implements IDevicesByHashContext {
 	override deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number {
-		throw new Error("Method not implemented.");
+		if (!LogicBatchMethod.hasValue(mode)) {
+			this.addError(
+				new RuntimeIc10Error({
+					message: `Invalid mode ${mode}`,
+					line: this.getNextLineIndex(),
+					severity: ErrorSeverity.Strong,
+				}),
+			);
+			return;
+		}
+		const device = this.housing.network.devicesByHash(deviceHash);
+		const values = device.map((device) => device.props.read(prop));
+		switch (LogicBatchMethod.getByValue(mode)) {
+			case "Average":
+				if (values.length > 0) {
+					return values.reduce((a, b) => a + b) / values.length;
+				}
+				break;
+			case "Maximum":
+				if (values.length > 0) {
+					return Math.max(...values);
+				}
+				break;
+			case "Minimum":
+				if (values.length > 0) {
+					return Math.min(...values);
+				}
+				break;
+			case "Sum":
+				if (values.length > 0) {
+					return values.reduce((a, b) => a + b);
+				}
+				break;
+		}
+		return 0;
 	}
 
 	override deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void {

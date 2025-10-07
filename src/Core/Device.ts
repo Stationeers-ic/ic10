@@ -13,8 +13,8 @@ import { crc32 } from "@/Ic10/Helpers/functions";
 export type LogicType = LogicsType[number];
 
 export type DeviceConstructor = {
-	network: Network;
 	hash: number;
+	network?: Network;
 };
 
 /**
@@ -70,8 +70,9 @@ export abstract class Device {
 				}),
 			);
 		}
-
-		network.apply(this);
+		if (network) {
+			network.apply(this);
+		}
 	}
 
 	get network(): Network {

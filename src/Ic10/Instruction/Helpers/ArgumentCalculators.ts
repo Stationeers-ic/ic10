@@ -145,7 +145,7 @@ const ValueCalculators = {
 		};
 	},
 
-	calculateDeviceProp: (context: Context, argument: Argument) => {
+	calculateLogic: (context: Context, argument: Argument) => {
 		if (Logics.hasKey(argument.text)) {
 			return Logics.getByKey(argument.text);
 		}
@@ -228,7 +228,7 @@ export const ArgumentCalculators = {
 	logic: (name?: string) => ({
 		name,
 		...BaseConfigs.Enum,
-		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDeviceProp(context, argument),
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogic(context, argument),
 	}),
 
 	logicSlot: (name?: string) => ({

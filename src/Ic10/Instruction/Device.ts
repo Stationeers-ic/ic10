@@ -1,4 +1,5 @@
-import { LogicBatchMethod, type LogicBatchMethodType, type LogicConstType } from "@/Defines/data";
+import type { LogicBatchMethodType, LogicConstType } from "@/Defines/data";
+import { StructureConsole } from "@/Devices/StructureConsole";
 import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
@@ -111,6 +112,7 @@ export class LInstruction extends Instruction {
 		];
 	}
 }
+
 /**\
  * lb:
   Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number. 
@@ -119,24 +121,44 @@ export class LInstruction extends Instruction {
  */
 
 export class LbInstruction extends Instruction {
-	public run(): void | Promise<void> {
+	static tests(): InstructionTestData[] {
+		const d = new StructureConsole({});
+		d.props.forceWrite("Setting", 100);
+		const c = new StructureConsole({});
+		c.props.forceWrite("Setting", 80);
+
+		const devices = [
+			{ id: 1, device: d },
+			{ id: 2, device: c },
+		];
+
+		const values = [100, 80];
+		const sum = values[0] + values[1];
+		const max = Math.max(...values);
+		const min = Math.min(...values);
+		const avg = sum / values.length;
+
+		const makeTest = (register: number, operation: string, expectedValue: number): InstructionTestData => ({
+			devices,
+			code: [`lb r${register} 235638270 Setting ${operation}`],
+			expected: [{ type: "register", register, value: expectedValue }],
+		});
+
+		return [
+			makeTest(0, "Sum", sum),
+			makeTest(0, "Maximum", max),
+			makeTest(0, "Minimum", min),
+			makeTest(3, "Average", avg),
+		];
+	}
+
+	override run(): void {
 		const result = this.getArgumentValue<number>("result");
 		const device = this.getArgumentValue<number>("device_hash");
 		const prop = this.getArgumentValue<LogicConstType[keyof LogicConstType]>("logic");
 		const batchMode = this.getArgumentValue<LogicBatchMethodType[keyof LogicBatchMethodType]>("batchMode");
-		let v: number;
-		switch (LogicBatchMethod.getByValue(batchMode)) {
-			case "Average":
-				break;
-			case "Maximum":
-				break;
-			case "Minimum":
-				break;
-			case "Sum":
-				break;
-			default:
-				break;
-		}
+		const v = this.context.deviceBatchReadByHash(device, prop, batchMode);
+		this.context.setRegister(result, v);
 	}
 
 	public argumentList(): InstructionArgument[] {

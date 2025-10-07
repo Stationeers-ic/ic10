@@ -64,6 +64,7 @@
 				"jne",
 				"jr",
 				"l",
+				"lb",
 				"lerp",
 				"log",
 				"max",

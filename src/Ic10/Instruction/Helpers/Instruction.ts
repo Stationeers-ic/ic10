@@ -1,3 +1,4 @@
+import type { Device } from "@/Core/Device";
 import type { Context } from "@/Ic10/Context/Context";
 import { ArgumentIc10Error, ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors";
 import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
@@ -74,6 +75,21 @@ export type InstructionTestExpected =
 	| InstructionTestExpectedLoop;
 
 export type InstructionTestData = {
+	devices?: (
+		| {
+				pin: number;
+				id: number;
+				device: Device;
+		  }
+		| {
+				pin: number;
+				device: Device;
+		  }
+		| {
+				id: number;
+				device: Device;
+		  }
+	)[];
 	/** Заголовок/описание теста (опционально) */
 	title?: string;
 	/** Код IC10 для выполнения в тесте */
