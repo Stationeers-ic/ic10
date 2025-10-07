@@ -87,6 +87,7 @@ import {
 	GetdInstruction,
 	GetInstruction,
 	LInstruction,
+	PutdInstruction,
 	PutInstruction,
 	SInstruction,
 } from "@/Ic10/Instruction/Device";
@@ -260,6 +261,7 @@ export const instructions = {
 	pow: PowInstruction,
 	push: PushInstruction,
 	put: PutInstruction,
+	putd: PutdInstruction,
 	rand: RandInstruction,
 	round: RoundInstruction,
 	s: SInstruction,

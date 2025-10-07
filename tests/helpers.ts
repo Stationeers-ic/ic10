@@ -25,6 +25,7 @@ export function createRunner(ic10Code: string | string[], options?: Partial<Crea
 		network,
 		chip,
 	});
+	socket.id = 0;
 	return new Ic10Runner({ housing: socket });
 }
 

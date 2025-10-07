@@ -69,6 +69,27 @@ export type calculateDevicePinOrIdResult = {
 	error?: number;
 };
 
+// Вспомогательные функции для работы с результатами
+const ResultHelpers = {
+	isValidPinResult: (result: number | [number, number] | number): result is number | [number, number] => {
+		return typeof result === "number" || Array.isArray(result);
+	},
+
+	isValidIdResult: (result: calculateDevicePinOrIdResult): result is { id: number } => {
+		return result.id !== undefined;
+	},
+
+	formatPinResult: (pinResult: number | [number, number]): calculateDevicePinOrIdResult => {
+		if (Array.isArray(pinResult)) {
+			return {
+				pin: pinResult[0],
+				port: pinResult[1],
+			};
+		}
+		return { pin: pinResult };
+	},
+};
+
 // Основные калькуляторы значений
 const ValueCalculators = {
 	calculateNumberLike: (context: Context, argument: Argument) => {
@@ -91,32 +112,37 @@ const ValueCalculators = {
 		return ErrorHandlers.validateDeviceConnection(context, pin, argument);
 	},
 
-	calculateDevicePinOrId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
-		const pin = getDevicePin(context, argument.text);
-
-		if (pin !== false) {
-			const result = ErrorHandlers.validateDeviceConnection(context, pin, argument);
-			if (typeof result === "number") {
-				return {
-					pin: result,
-				};
-			}
-			if (Array.isArray(result)) {
-				return {
-					pin: result[0],
-					port: result[1],
-				};
-			}
-		}
-
+	calculateDeviceId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
 		const value = parseArgumentAnyNumber(context, argument);
 		if (value !== false && context.isConnectDeviceById(value)) {
 			return {
 				id: value,
 			};
 		}
+		return { error: ErrorHandlers.handleError(context, argument, "Invalid argument must be device id") };
+	},
 
-		return { error: ErrorHandlers.handleError(context, argument, "Invalid argument must be device port or id") };
+	calculateDevicePinOrId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
+		// Сначала пробуем обработать как пин устройства
+		const pinResult = ValueCalculators.calculateDevicePin(context, argument);
+
+		// Если получили валидный результат для пина (не число с ошибкой)
+		if (ResultHelpers.isValidPinResult(pinResult)) {
+			return ResultHelpers.formatPinResult(pinResult);
+		}
+
+		// Если не сработало как пин, пробуем как ID устройства
+		const idResult = ValueCalculators.calculateDeviceId(context, argument);
+
+		// Если получили ID без ошибки
+		if (ResultHelpers.isValidIdResult(idResult)) {
+			return idResult;
+		}
+
+		// Если оба варианта не сработали, возвращаем ошибку
+		return {
+			error: ErrorHandlers.handleError(context, argument, "Invalid argument must be device port or id"),
+		};
 	},
 
 	calculateDeviceProp: (context: Context, argument: Argument) => {
@@ -159,6 +185,12 @@ export const ArgumentCalculators = {
 		name,
 		...BaseConfigs.device,
 		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDevicePin(context, argument),
+	}),
+
+	deviceId: (name?: string) => ({
+		name,
+		...BaseConfigs.device,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDeviceId(context, argument),
 	}),
 
 	devicePinOrId: (name?: string) => ({

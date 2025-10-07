@@ -197,18 +197,67 @@ export class PutInstruction extends Instruction {
 }
 
 export class GetdInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["push 99", "getd r0 0 0"],
+				iterations_count: 2,
+				expected: [
+					{
+						type: "register",
+						register: 0,
+						value: 99,
+					},
+				],
+			},
+		];
+	}
+
 	override run(): void {
-		const id = this.getArgumentValue<number>("deviceid");
-		const prop = this.getArgumentValue<number>("logic");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("deviceid");
+		const address = this.getArgumentValue<number>("address");
 		const result = this.getArgumentValue<number>("result");
-		this.context.setRegister(result, this.context.getDeviceStackById(id, prop));
+		this.context.setRegister(result, this.context.getDeviceStackById(device.id, address));
 	}
 
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.anyNumber("deviceid"),
+			ArgumentCalculators.deviceId("deviceid"),
 			ArgumentCalculators.anyNumber("address"),
+		];
+	}
+}
+
+export class PutdInstruction extends Instruction {
+	//"putd id(r?|id) address(r?|num) value(r?|num)
+	static tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["putd 0 0 100"],
+				expected: [
+					{
+						type: "stack",
+						index: 0,
+						value: 100,
+					},
+				],
+			},
+		];
+	}
+
+	override run(): void {
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("deviceid");
+		const address = this.getArgumentValue<number>("address");
+		const value = this.getArgumentValue<number>("value");
+		this.context.setDeviceStackById(device.id, address, value);
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.deviceId("deviceid"),
+			ArgumentCalculators.anyNumber("address"),
+			ArgumentCalculators.anyNumber("value"),
 		];
 	}
 }
