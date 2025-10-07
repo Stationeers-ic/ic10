@@ -4,6 +4,7 @@ import { DeviceError } from "@/Core/Device/DeviceError";
 import { DeviceMemory } from "@/Core/Device/DeviceMemory";
 import { DeviceProps } from "@/Core/Device/DeviceProps";
 import { DeviceReagent } from "@/Core/Device/DeviceReagent";
+import { DeviceSlots } from "@/Core/Device/DeviceSlots";
 import type { Network } from "@/Core/Network";
 import type { StackInterface } from "@/Core/Stack";
 import DEVICES, { type LogicsType } from "@/Defines/devices";
@@ -35,6 +36,7 @@ export abstract class Device {
 	protected readonly $props?: DeviceProps = undefined;
 	protected readonly $reagents?: DeviceReagent = undefined;
 	protected readonly $memory?: StackInterface = undefined;
+	protected readonly $slots?: DeviceSlots = undefined;
 
 	/**
 	 * Конструктор устройства.
@@ -58,6 +60,7 @@ export abstract class Device {
 			this.$memory = new DeviceMemory({ device: this, stack_length: this.rawData?.memorySize ?? 512 });
 		}
 		if (this.rawData === undefined || this.rawData.tags.includes("HasSlot")) {
+			this.$slots = new DeviceSlots({ device: this });
 		}
 
 		this.reset(); // Инициализация свойств и ошибок
@@ -99,7 +102,8 @@ export abstract class Device {
 		);
 		return undefined;
 	}
-	public get hasProps(): boolean {
+
+	get hasProps(): boolean {
 		return this.$props !== undefined;
 	}
 
@@ -115,7 +119,7 @@ export abstract class Device {
 		);
 		return undefined;
 	}
-	public get hasReagents(): boolean {
+	get hasReagents(): boolean {
 		return this.$reagents !== undefined;
 	}
 
@@ -131,8 +135,28 @@ export abstract class Device {
 		);
 		return undefined;
 	}
-	public get hasMemory(): boolean {
+	get hasMemory(): boolean {
 		return this.$memory !== undefined;
+	}
+
+	get slots(): DeviceSlots | undefined {
+		if (this.$slots) {
+			return this.$slots;
+		}
+		this.$errors.add(
+			new Ic10Error({
+				message: `Device has no memory`,
+				severity: ErrorSeverity.Weak,
+			}),
+		);
+		return undefined;
+	}
+
+	get hasSlots(): boolean {
+		if (this.$slots) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

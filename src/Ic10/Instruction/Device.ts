@@ -113,13 +113,6 @@ export class LInstruction extends Instruction {
 	}
 }
 
-/**\
- * lb:
-  Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number. 
-   lb r? deviceHash logicType batchMode
-
- */
-
 export class LbInstruction extends Instruction {
 	static tests(): InstructionTestData[] {
 		const d = new StructureConsole({});
@@ -432,16 +425,17 @@ export class ClrdInstruction extends Instruction {
 }
 
 /**
- * 	ls: {
-		name: "ls",
-		description: "Loads slot LogicSlotType on device to register.",
-		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
-	},
+
 	lr: {
 		name: "lr",
 		description:
 			"Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
 		example: "lr r? device(d?|r?|id) reagentMode int",
+	},
+	 * 	ls: {
+		name: "ls",
+		description: "Loads slot LogicSlotType on device to register.",
+		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
 	},
 	sb: {
 		name: "sb",
