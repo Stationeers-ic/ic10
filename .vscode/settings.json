@@ -29,6 +29,10 @@
 	"javascript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"yaml.schemas": {
-		"./src/Schemas/env.schema.json": "*.ic.env"
+		"file:///home/kirill/.vscode/extensions/continue.continue-1.2.4-linux-x64/config-yaml-schema.json": [
+			".continue/**/*.yaml"
+		],
+		"./src/Schemas/env.schema.json": "*.ic.env",
+		"file:///c%3A/Users/Kirill/PhpstormProjects/ic10-project/ic10/src/Schemas/env.schema.json": "file:///c%3A/Users/Kirill/PhpstormProjects/ic10-project/ic10/tests/envierment/test.ic.env"
 	}
 }

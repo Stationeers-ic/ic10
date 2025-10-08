@@ -70,6 +70,7 @@ export class ParserV1 extends Parser {
 			this.builer.Networks.set(network.id, net);
 		});
 	}
+
 	parseDevices(data: EnvSchema) {
 		for (const device of data.devices) {
 			if (typeof DevicesByPrefabName[device.PrefabName] === "undefined") {

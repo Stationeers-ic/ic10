@@ -10,6 +10,9 @@
 		"import": "./dist/ic10.esm.js",
 		"require": "./dist/ic10.cjs.js"
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"prepare": "husky",
 		"generate-index": "bun tools/generate-index.ts && bun run fix",
@@ -56,9 +59,9 @@
 	},
 	"dependencies": {
 		"crc-32": "^1.2.2",
-		"valibot": "^1.1.0",
 		"exact-ic10-math": "^0.4.0",
 		"uuid": "^13.0.0",
+		"valibot": "^1.1.0",
 		"yaml": "^2.8.1"
 	}
 }
