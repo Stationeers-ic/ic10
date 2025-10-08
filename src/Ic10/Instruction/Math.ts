@@ -50,7 +50,7 @@ export class AddInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a + b;
+		return icMath.add(a, b);
 	}
 }
 
@@ -65,7 +65,7 @@ export class SubInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a - b;
+		return icMath.sub(a, b);
 	}
 }
 
@@ -80,7 +80,7 @@ export class MulInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a * b;
+		return icMath.mul(a, b);
 	}
 }
 
@@ -95,7 +95,7 @@ export class DivInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a / b;
+		return icMath.div(a, b);
 	}
 }
 
@@ -110,7 +110,7 @@ export class ModInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a % b;
+		return icMath.mod(a, b);
 	}
 }
 
@@ -125,7 +125,20 @@ export class AbsInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.abs(a);
+		return icMath.abs(a);
+	}
+}
+export class NotInstruction extends UnaryMathInstruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: "not r1 5",
+				expected: [{ type: "register", register: 1, value: ~5 }],
+			},
+		];
+	}
+	public operation(a: number): number {
+		return icMath.not(a);
 	}
 }
 
@@ -140,7 +153,7 @@ export class SqrtInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.sqrt(a);
+		return icMath.sqrt(a);
 	}
 }
 
@@ -155,7 +168,7 @@ export class RoundInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.round(a);
+		return icMath.round(a);
 	}
 }
 
@@ -170,7 +183,7 @@ export class TruncInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.trunc(a);
+		return icMath.trunc(a);
 	}
 }
 
@@ -185,7 +198,7 @@ export class CeilInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.ceil(a);
+		return icMath.ceil(a);
 	}
 }
 
@@ -200,7 +213,7 @@ export class FloorInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.floor(a);
+		return icMath.floor(a);
 	}
 }
 
@@ -215,7 +228,7 @@ export class MaxInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return Math.max(a, b);
+		return icMath.max(a, b);
 	}
 }
 
@@ -230,7 +243,7 @@ export class MinInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return Math.min(a, b);
+		return icMath.min(a, b);
 	}
 }
 
@@ -245,7 +258,7 @@ export class LogInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.log(a);
+		return icMath.log(a);
 	}
 }
 
@@ -260,7 +273,7 @@ export class ExpInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.exp(a);
+		return icMath.exp(a);
 	}
 }
 
@@ -275,7 +288,7 @@ export class SinInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.sin(a);
+		return icMath.sin(a);
 	}
 }
 
@@ -290,7 +303,7 @@ export class AsinInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.asin(a);
+		return icMath.asin(a);
 	}
 }
 
@@ -305,7 +318,7 @@ export class TanInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.tan(a);
+		return icMath.tan(a);
 	}
 }
 
@@ -320,7 +333,7 @@ export class AtanInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.atan(a);
+		return icMath.atan(a);
 	}
 }
 
@@ -335,7 +348,7 @@ export class CosInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.cos(a);
+		return icMath.cos(a);
 	}
 }
 
@@ -350,7 +363,7 @@ export class AcosInstruction extends UnaryMathInstruction {
 	}
 
 	public operation(a: number): number {
-		return Math.acos(a);
+		return icMath.acos(a);
 	}
 }
 
@@ -365,18 +378,38 @@ export class Atan2Instruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return Math.atan2(a, b);
+		return icMath.atan2(a, b);
 	}
 }
 
 export class RandInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				title: "Random with linenumber Seed",
+				code: "rand r0",
+				expected: [{ type: "register", register: 0, value: 0.7262432699679598 }],
+			},
+			{
+				title: "Random with custom seed #1",
+				code: "rand r1 #seed:999",
+				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
+			},
+			{
+				title: "Random with custom seed #2",
+				code: "rand r1 # any comment seed:999",
+				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
+			},
+		];
+	}
+
 	override argumentList(): InstructionArgument[] {
 		return [ArgumentCalculators.registerLink()];
 	}
 
 	override run(): void {
 		const r = this.getArgumentValue<number>(0);
-		this.context.setRegister(r, Math.random());
+		this.context.setRegister(r, this.line.randomGenerator.nextDouble());
 	}
 }
 export class SllInstruction extends BinaryMathInstruction {
@@ -574,10 +607,9 @@ export class PowInstruction extends BinaryMathInstruction {
 	}
 
 	public operation(a: number, b: number): number {
-		return a ** b;
+		return icMath.pow(a, b);
 	}
 }
-// TODO: протестировать в игре
 
 export class ExtInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
@@ -635,13 +667,9 @@ export class LerpInstruction extends Instruction {
 		const r = this.getArgumentValue<number>("result");
 		const start = this.getArgumentValue<number>("start");
 		const end = this.getArgumentValue<number>("end");
-		let ratio = this.getArgumentValue<number>("ratio");
+		const ratio = this.getArgumentValue<number>("ratio");
 
-		// Clamp ratio between 0 and 1
-		ratio = Math.max(0, Math.min(1, ratio));
-
-		// Linear interpolation: start + ratio * (end - start)
-		const result = start + ratio * (end - start);
+		const result = icMath.lerp(start, end, ratio);
 
 		this.context.setRegister(r, result);
 	}
