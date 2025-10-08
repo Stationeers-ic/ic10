@@ -1,27 +1,43 @@
-import type * as v from "valibot";
-import { parse, stringify } from "yaml";
+import { parse } from "yaml";
 import type { Device } from "@/Core/Device";
 import type { Network } from "@/Core/Network";
+import { type Parser, ParserV1 } from "@/Envierment/ParserV1";
 import type { Ic10Runner } from "@/Ic10/Ic10Runner";
 import type { EnvSchema } from "@/Schemas/EnvSchema";
 
-type EnvConfig = v.InferOutput<typeof EnvSchema>;
-
 export class Builer {
-	public readonly devices = new Map<string, Device>();
+	private readonly lattestParser = ParserV1;
+
+	public readonly Devices = new Map<string, Device>();
 	public readonly Networks = new Map<string, Network>();
 	public readonly Runners = new Map<string, Ic10Runner>();
 
-	static from(yml: string): Builer {
-		const data = parse(yml) as EnvConfig;
+	public reset(): void {
+		this.Devices.clear();
+		this.Networks.clear();
+		this.Runners.clear();
+	}
 
+	static from(yml: string): Builer {
+		const BUILDER = new Builer();
+		const data = parse(yml) as EnvSchema;
+		let Parser: Parser;
+		switch (data.version) {
+			case 1:
+				Parser = new ParserV1({ builer: BUILDER });
+				break;
+
+			default:
+				break;
+		}
 		console.log(data);
-		return new Builer();
+		Parser.parse(data);
+		return BUILDER;
 	}
 
 	public toYaml(): string {
 		try {
-			return stringify(this);
+			return new this.lattestParser({ builer: this }).stringify();
 		} catch (error) {
 			throw new Error("Failed to serialize to YAML");
 		}

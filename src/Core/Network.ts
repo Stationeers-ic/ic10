@@ -10,10 +10,10 @@ export type NetworkConstructor = {
 };
 
 export class Network {
-	public devices: Set<Device> = new Set();
-	public chanels = new Map<number, number>();
-	public $id: string;
-	public type: NetworkConstructor["networkType"];
+	public readonly devices: Set<Device> = new Set();
+	public readonly chanels = new Map<number, number>();
+	public readonly $id: string;
+	public readonly type: NetworkType;
 
 	constructor(
 		{ networkType, id }: NetworkConstructor = {

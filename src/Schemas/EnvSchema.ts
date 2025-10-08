@@ -31,10 +31,13 @@ export const NetworkTypeSchema = v.union([
 export const NetworkSchema = v.object({
 	id: v.string(),
 	type: NetworkTypeSchema,
+	props: v.optional(v.record(v.string(), v.number())),
 });
 
 export const EnvSchema = v.object({
-	version: v.string(),
+	version: v.number(),
 	devices: v.array(DeviceSchema),
 	networks: v.array(NetworkSchema),
 });
+
+export type EnvSchema = v.InferOutput<typeof EnvSchema>;

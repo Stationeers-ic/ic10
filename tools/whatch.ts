@@ -43,7 +43,7 @@ const CONFIG: {
 	],
 
 	// Игнорируемые файлы
-	ignoreFiles: [new Glob("**/index.ts"), new Glob("Defines/data.ts")],
+	ignoreFiles: [new Glob("**/index.ts"), new Glob("Defines/data.ts"), new Glob("**/*.json")],
 };
 // === КОНЕЦ НАСТРОЕК ===
 

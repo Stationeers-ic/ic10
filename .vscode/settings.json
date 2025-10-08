@@ -29,6 +29,6 @@
 	"javascript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"yaml.schemas": {
-		"./src/schemas/env.schema.json": "ic.env.yml"
+		"./src/Schemas/env.schema.json": "*.ic.env"
 	}
 }
