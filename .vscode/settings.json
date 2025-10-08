@@ -27,5 +27,8 @@
 	},
 	"typescript.preferences.importModuleSpecifier": "non-relative",
 	"javascript.preferences.importModuleSpecifier": "non-relative",
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"yaml.schemas": {
+		"./src/schemas/env.schema.json": "ic.env.yml"
+	}
 }

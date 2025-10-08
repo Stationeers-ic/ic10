@@ -6,6 +6,7 @@ export type NetworkType = "data" | "power" | "chute" | "pipe" | "wireless" | "la
 
 export type NetworkConstructor = {
 	networkType: NetworkType;
+	id?: string;
 };
 
 export class Network {
@@ -15,12 +16,12 @@ export class Network {
 	public type: NetworkConstructor["networkType"];
 
 	constructor(
-		{ networkType }: NetworkConstructor = {
+		{ networkType, id }: NetworkConstructor = {
 			networkType: "data",
 		},
 	) {
 		this.type = networkType;
-		this.$id = uuidv4();
+		this.$id = id ?? uuidv4();
 	}
 
 	get id() {

@@ -33,6 +33,10 @@ const CONFIG: {
 			command: "bun run generate-device",
 		},
 		{
+			pattern: new Glob("Schemas/**"),
+			command: "bun run generate-schema",
+		},
+		{
 			pattern: new Glob("**"),
 			command: "bun run generate-index",
 		},
