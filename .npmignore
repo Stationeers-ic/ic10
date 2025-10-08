@@ -17,3 +17,4 @@ docs/*.drawio
 index.html
 bunfig.toml
 eslint.config.js
+src/Schemas/env.schema.json
