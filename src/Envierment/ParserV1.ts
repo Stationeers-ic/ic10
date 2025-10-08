@@ -1,5 +1,7 @@
 import { stringify } from "yaml";
 import { Network } from "@/Core/Network";
+import { Logics } from "@/Defines/data";
+import { DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import type { EnvSchema } from "@/Schemas/EnvSchema";
 
@@ -26,9 +28,19 @@ export class ParserV1 extends Parser {
 	public stringify() {
 		const networks = this.builer.Networks.values()
 			.map((item: Network) => {
+				const props = {};
+				console.table(props);
+				for (const [key, value] of item.chanels) {
+					if (!Logics.hasValue(key)) {
+						throw new Error("todo");
+					}
+					props[Logics.getByValue(key)] = value;
+				}
+				console.table(props);
 				return {
 					id: item.id,
 					type: item.type,
+					props: props,
 				};
 			})
 			.toArray();
@@ -43,17 +55,26 @@ export class ParserV1 extends Parser {
 
 	parseNetworks(data: EnvSchema) {
 		data.networks.forEach((network) => {
-			this.builer.Networks.set(
-				network.id,
-				new Network({
-					id: network.id,
-					networkType: network.type,
-				}),
-			);
+			const net = new Network({
+				id: network.id,
+				networkType: network.type,
+			});
+			if (network.props) {
+				for (const [key, value] of Object.entries(network.props)) {
+					if (!Logics.hasKey(key)) {
+						throw new Error("todo");
+					}
+					net.chanels.set(Logics.getByKey(key), value);
+				}
+			}
+			this.builer.Networks.set(network.id, net);
 		});
 	}
 	parseDevices(data: EnvSchema) {
 		for (const device of data.devices) {
+			if (typeof DevicesByPrefabName[device.PrefabName] === "undefined") {
+				throw new Error("test");
+			}
 		}
 	}
 }
