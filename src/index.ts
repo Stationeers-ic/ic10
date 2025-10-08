@@ -14,7 +14,6 @@ export * from "@/Core/Device/DeviceScope";
 export * from "@/Core/Device/DeviceSlots";
 export * from "@/Core/Housing";
 export * from "@/Core/Network";
-export * from "@/Core/Slot";
 export * from "@/Core/Stack";
 export * from "@/Defines/consts";
 export * from "@/Defines/data";
