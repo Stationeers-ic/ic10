@@ -2,32 +2,34 @@ import { array, type InferOutput, literal, number, object, optional, string, uni
 import { GROUPED_CONSTS } from "@/Defines/consts";
 import { DevicesByPrefabName } from "@/Devices";
 
-export const PrefabNameSchema = union(Object.keys(DevicesByPrefabName).map((l) => literal(l)));
+// --- Вспомогательные функции для создания union из ключей ---
+function unionFromKeys<T extends Record<string, unknown>>(obj: T, filter?: (key: string) => boolean) {
+	const keys = Object.keys(obj).filter(filter ?? (() => true));
+	return union(keys.map((k) => literal(k)));
+}
 
+// --- PrefabName ---
+export const PrefabNameSchema = unionFromKeys(DevicesByPrefabName);
+
+// --- Props ---
 export const PropsSchema = object({
-	name: union(
-		Object.keys(GROUPED_CONSTS.LogicType)
-			.filter((l) => !l.startsWith("Channel"))
-			.map((l) => literal(l)),
-	),
+	name: unionFromKeys(GROUPED_CONSTS.LogicType, (l) => !l.startsWith("Channel")),
 	value: number(),
 });
 
+// --- ChannelProps ---
 export const ChannelPropsSchema = object({
-	name: union(
-		Object.keys(GROUPED_CONSTS.LogicType)
-			.filter((l) => l.startsWith("Channel"))
-			.map((l) => literal(l)),
-	),
+	name: unionFromKeys(GROUPED_CONSTS.LogicType, (l) => l.startsWith("Channel")),
 	value: number(),
 });
 
-// Определяем схемы
+// --- Port ---
 export const PortSchema = object({
 	port: string(),
 	network: string(),
 });
 
+// --- Device ---
 export const DeviceSchema = object({
 	id: string(),
 	PrefabName: PrefabNameSchema,
@@ -36,26 +38,23 @@ export const DeviceSchema = object({
 	props: optional(array(PropsSchema)),
 });
 
-// Перечисление сетей через union
-export const NetworkTypeSchema = union([
-	literal("data"),
-	literal("power"),
-	literal("chute"),
-	literal("pipe"),
-	literal("wireless"),
-	literal("landing"),
-]);
+// --- NetworkType ---
+const networkTypes = ["data", "power", "chute", "pipe", "wireless", "landing"] as const;
+export const NetworkTypeSchema = union(networkTypes.map(literal));
 
+// --- Network ---
 export const NetworkSchema = object({
 	id: string(),
 	type: NetworkTypeSchema,
 	props: optional(array(ChannelPropsSchema)),
 });
 
+// --- Env ---
 export const EnvSchema = object({
 	version: number(),
 	devices: array(DeviceSchema),
 	networks: array(NetworkSchema),
 });
 
-export type EnvSchema = InferOutput<typeof EnvSchema>;
+// --- Тип вывода ---
+export type Env = InferOutput<typeof EnvSchema>;
