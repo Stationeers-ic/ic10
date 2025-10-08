@@ -41,7 +41,7 @@ export abstract class Line {
 			return new Random(seedFromComment);
 		}
 
-		return new Random(this.position);
+		return new Random();
 	}
 
 	/**

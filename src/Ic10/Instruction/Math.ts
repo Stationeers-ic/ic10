@@ -1,4 +1,4 @@
-import icMath from "exact-ic10-math";
+import icMath, { Random } from "exact-ic10-math";
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
@@ -384,11 +384,12 @@ export class Atan2Instruction extends BinaryMathInstruction {
 
 export class RandInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		Random.resetGlobalRandom(0);
 		return [
 			{
-				title: "Random with linenumber Seed",
+				title: "Random with linenumber Seed #1",
 				code: "rand r0",
-				expected: [{ type: "register", register: 0, value: 0.7262432699679598 }],
+				expected: [{ type: "register", register: 0, value: 0.11109568602922172 }],
 			},
 			{
 				title: "Random with custom seed #1",
@@ -396,9 +397,14 @@ export class RandInstruction extends Instruction {
 				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
 			},
 			{
+				title: "Random with linenumber Seed #2",
+				code: "rand r2",
+				expected: [{ type: "register", register: 2, value: 0.4913920841605366 }],
+			},
+			{
 				title: "Random with custom seed #2",
-				code: "rand r1 # any comment seed:999",
-				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
+				code: "rand r3 # any comment seed:999",
+				expected: [{ type: "register", register: 3, value: 0.6291321449117419 }],
 			},
 		];
 	}
