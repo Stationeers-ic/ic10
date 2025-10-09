@@ -8,9 +8,9 @@ import type { EnvSchema } from "@/Schemas/EnvSchema";
 export class Builer {
 	private readonly lattestParser = ParserV1;
 
-	public readonly Devices = new Map<string, Device>();
 	public readonly Networks = new Map<string, Network>();
-	public readonly Runners = new Map<string, Ic10Runner>();
+	public readonly Devices = new Map<number, Device>();
+	public readonly Runners = new Map<number, Ic10Runner>();
 
 	public reset(): void {
 		this.Devices.clear();

@@ -1,7 +1,7 @@
 version: 1
 
 devices:
-  - id: "1"
+  - id: 1
     PrefabName: "StructureCircuitHousingCompact"
     code: |
       move r0 99

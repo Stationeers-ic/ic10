@@ -70,7 +70,7 @@ export class ParserV1 extends Parser {
 		return stringify(data);
 	}
 
-	parseNetworks(data: EnvSchema) {
+	private parseNetworks(data: EnvSchema) {
 		data.networks.forEach((network) => {
 			const net = new Network({
 				id: network.id,
@@ -88,14 +88,14 @@ export class ParserV1 extends Parser {
 		});
 	}
 
-	parseDevices(data: EnvSchema) {
+	private parseDevices(data: EnvSchema) {
 		for (const device of data.devices) {
 			if (this.isHousing(device.PrefabName)) {
 				this.parseHousing(device);
 			}
 		}
 	}
-	parseHousing(device: DeviceSchema) {
+	private parseHousing(device: DeviceSchema) {
 		const housingClass = this.findHousing(device.PrefabName);
 		const code = device!.code;
 		const chip = new Chip({ ic10Code: code });
@@ -126,14 +126,7 @@ export class ParserV1 extends Parser {
 	private isHousing(device: any): device is HousingClass {
 		return typeof DeviceClassesByBase.Housing[device] !== "undefined";
 	}
-
-	findDevice(device: string): DeviceClass {
-		if (this.isDevice(device)) {
-			return DevicesByPrefabName[device];
-		}
-		throw new Error("test");
-	}
-	findHousing(device: string): HousingClass {
+	private findHousing(device: string): HousingClass {
 		if (this.isDevice(device)) {
 			return DeviceClassesByBase.Housing[device];
 		}

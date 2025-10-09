@@ -53,7 +53,7 @@ export const PortSchema = object({
 
 // --- Device ---
 export const DeviceSchema = object({
-	id: string(),
+	id: number(),
 	PrefabName: PrefabNameSchema,
 	code: optional(string()),
 	ports: array(PortSchema),
@@ -73,7 +73,7 @@ export const NetworkSchema = object({
 
 // --- Env ---
 export const EnvSchema = object({
-	version: number(),
+	version: union([literal(1)]),
 	devices: array(DeviceSchema),
 	networks: array(NetworkSchema),
 });

@@ -349,7 +349,7 @@ function buildIndexContent(devices: ExtendedDeviceType[]): string {
 		]),
 	);
 
-	// DeviceClassesByBase
+	// DeviceClassesByBase (изменено: теперь объект baseName -> { PrefabName: Class })
 	const byBase = new Map<string, Entry[]>();
 	for (const e of entries) {
 		if (!byBase.has(e.baseName)) byBase.set(e.baseName, []);
@@ -358,10 +358,15 @@ function buildIndexContent(devices: ExtendedDeviceType[]): string {
 
 	const baseNames = Array.from(byBase.keys()).sort();
 	const classesByBaseProps: t.ObjectProperty[] = baseNames.map((baseName) => {
-		const classes = byBase.get(baseName)!.map((e) => t.identifier(e.className));
+		const entriesForBase = byBase.get(baseName)!;
+		// Формируем объект: ключи PrefabName, значения - классы
+		const prefabNameProps: t.ObjectProperty[] = entriesForBase
+			.filter((e) => e.device.PrefabName != null)
+			.map((e) => t.objectProperty(t.stringLiteral(String(e.device.PrefabName)), t.identifier(e.className)));
+
 		return t.objectProperty(
 			t.stringLiteral(baseName),
-			t.tsAsExpression(t.arrayExpression(classes), t.tsTypeReference(t.identifier("const"))),
+			t.tsAsExpression(t.objectExpression(prefabNameProps), t.tsTypeReference(t.identifier("const"))),
 		);
 	});
 
