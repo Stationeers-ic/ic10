@@ -160,4 +160,36 @@ export class DevicePorts extends DeviceScope {
 		}
 		return -1;
 	}
+
+	[Symbol.iterator](): IterableIterator<{
+		port: PortType;
+		index: number;
+		network: Network;
+	}> {
+		const entries = Array.from(this.portIndices.entries());
+		let i = 0;
+		const self = this;
+		return {
+			[Symbol.iterator]() {
+				return this;
+			},
+			next(): IteratorResult<{ port: PortType; index: number; network: Network }> {
+				while (i < entries.length) {
+					const [port, index] = entries[i++];
+					if (self.portNetworks.has(port)) {
+						return {
+							done: false,
+							value: {
+								port,
+								index,
+								network: self.portNetworks.get(port)!,
+							},
+						};
+					}
+					// если нет сети для порта, пропускаем
+				}
+				return { done: true, value: undefined as any };
+			},
+		};
+	}
 }

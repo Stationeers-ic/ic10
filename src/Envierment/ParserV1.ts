@@ -1,11 +1,13 @@
 import { stringify } from "yaml";
 import { Chip } from "@/Core/Chip";
+import type { Device } from "@/Core/Device";
+import { Housing } from "@/Core/Housing";
 import { Network } from "@/Core/Network";
 import { Logics } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
-import type { DeviceSchema, EnvSchema } from "@/Schemas/EnvSchema";
+import type { DeviceSchema, EnvSchema, NetworkSchema } from "@/Schemas/EnvSchema";
 
 export type ParserConstructorType = {
 	builer: Builer;
@@ -42,7 +44,19 @@ export class ParserV1 extends Parser {
 		this.parseDevices(data);
 	}
 	public stringify() {
-		const networks = this.builer.Networks.values()
+		const networks = this.stringifyNetwork();
+		const device = this.stringifyDevices();
+
+		const data = {
+			version: 1,
+			devices: device,
+			networks: networks,
+		} satisfies EnvSchema;
+		return stringify(data);
+	}
+
+	private stringifyNetwork(): NetworkSchema[] {
+		return this.builer.Networks.values()
 			.map((item: Network) => {
 				const props = [];
 				for (const [key, value] of item.chanels) {
@@ -61,13 +75,28 @@ export class ParserV1 extends Parser {
 				};
 			})
 			.toArray();
+	}
 
-		const data = {
-			version: 1,
-			devices: [],
-			networks: networks,
-		} satisfies EnvSchema;
-		return stringify(data);
+	private stringifyDevices(): DeviceSchema[] {
+		const result = this.builer.Devices.values()
+			.map((item: Device) => {
+				const data: any = {};
+				data.id = item.id;
+				data.PrefabName = item.rawData.PrefabName;
+				if (item instanceof Housing) {
+					data.code = item.chip.getIc10Code();
+				}
+				data.ports = [];
+				for (const element of item.ports) {
+					data.ports.push({
+						port: element.port,
+						network: element.network.id,
+					});
+				}
+				return data as DeviceSchema;
+			})
+			.toArray();
+		return result;
 	}
 
 	private parseNetworks(data: EnvSchema) {
