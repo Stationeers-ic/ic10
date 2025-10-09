@@ -179,7 +179,7 @@ class SerializerV1 {
 	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = [];
 		for (const element of device.props) {
-			if (element.value && element.logicName !== "PrefabHash") {
+			if (element.value && !(element.canRead && !element.canWrite) && element.logicName !== "LineNumber") {
 				data.push({
 					name: element.logicName,
 					value: element.value,

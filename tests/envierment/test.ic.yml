@@ -14,6 +14,7 @@ devices:
       move r0 99
       move r1 85
       l r2 db Setting
+      s db Setting 82
   - id: 2
     PrefabName: StructureAutolathe
     ports:

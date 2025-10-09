@@ -60,7 +60,7 @@ export class Ic10Runner {
 		if (context) {
 			if (this.contextSwitcher.name !== context) {
 				this.contextSwitcher.switchContext(context);
-				this.init();
+				this.init(false);
 			}
 		} else {
 			if (this.context instanceof RealContext) {
@@ -68,15 +68,17 @@ export class Ic10Runner {
 			} else if (this.context instanceof SandboxContext) {
 				this.contextSwitcher.switchContext("real");
 			}
-			this.init();
+			this.init(false);
 		}
 		return this;
 	}
 
-	public init() {
+	public init(reset: boolean = true) {
 		this.lines = this.lexer(this.context.getIc10Code());
 		this.executionStopped = false;
-		this.context.reset(); // Добавить метод reset() в Context
+		if (reset) {
+			this.context.reset(); // Добавить метод reset() в Context
+		}
 		this.lines.filter((l) => l instanceof LabelLine).forEach((l) => l.run());
 		return this;
 	}
