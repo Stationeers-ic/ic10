@@ -52,20 +52,15 @@ type HousingClass = {
 	[K in HousingName]: DeviceClassesByBaseHousingType[K] extends Constructor ? DeviceClassesByBaseHousingType[K] : never;
 }[HousingName];
 
+// ============================================================================
+// SERIALIZER - Сериализация окружения в схему
+// ============================================================================
+
 /**
- * Парсер версии 1 для загрузки и сохранения окружения
- * Поддерживает устройства, сети и IC10 код для Housing устройств
+ * Сериализатор версии 1 - преобразует окружение в YAML схему
  */
-export class ParserV1 extends Parser {
-	/**
-	 * Парсит схему окружения и загружает её в builder
-	 * @param data - Схема окружения для загрузки
-	 */
-	public parse(data: EnvSchema): void {
-		this.builer.reset();
-		this.parseNetworks(data);
-		this.parseDevices(data);
-	}
+class SerializerV1 {
+	constructor(private readonly builer: Builer) {}
 
 	/**
 	 * Сериализует текущее состояние окружения в YAML строку
@@ -107,7 +102,7 @@ export class ParserV1 extends Parser {
 	 * @param network - Сеть для сериализации
 	 * @returns Массив свойств каналов
 	 */
-	private serializeNetworkChannels(network: Network): Array<{ name: string; value: any }> {
+	private serializeNetworkChannels(network: Network): Array<{ name: string; value: any }> | undefined {
 		const props: Array<{ name: string; value: any }> = [];
 
 		for (const [key, value] of network.chanels) {
@@ -120,7 +115,9 @@ export class ParserV1 extends Parser {
 				value,
 			});
 		}
-
+		if (props.length === 0) {
+			return undefined;
+		}
 		return props;
 	}
 
@@ -160,7 +157,7 @@ export class ParserV1 extends Parser {
 	 * @param device - Устройство с портами
 	 * @returns Массив описаний портов
 	 */
-	private serializeDevicePorts(device: Device): PortSchema[] {
+	private serializeDevicePorts(device: Device): PortSchema[] | undefined {
 		const data: PortSchema[] = [];
 		for (const element of device.ports) {
 			data.push({
@@ -168,11 +165,19 @@ export class ParserV1 extends Parser {
 				network: element.network.id,
 			} satisfies PortSchema);
 		}
+		if (data.length === 0) {
+			return undefined;
+		}
 		return data;
 	}
-	private serializeDeviceProps(device: Device): PropsSchema[] {
+
+	/**
+	 * Сериализует свойства устройства
+	 * @param device - Устройство со свойствами
+	 * @returns Массив свойств
+	 */
+	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = [];
-		console.table(device.props.getRaw());
 		for (const element of device.props) {
 			if (element.value && element.logicName !== "PrefabHash") {
 				data.push({
@@ -181,7 +186,31 @@ export class ParserV1 extends Parser {
 				} satisfies PropsSchema);
 			}
 		}
+		if (data.length === 0) {
+			return undefined;
+		}
 		return data;
+	}
+}
+
+// ============================================================================
+// DESERIALIZER - Парсинг схемы в окружение
+// ============================================================================
+
+/**
+ * Десериализатор версии 1 - загружает схему в окружение
+ */
+class DeserializerV1 {
+	constructor(private readonly builer: Builer) {}
+
+	/**
+	 * Парсит схему окружения и загружает её в builder
+	 * @param data - Схема окружения для загрузки
+	 */
+	public parse(data: EnvSchema): void {
+		this.builer.reset();
+		this.parseNetworks(data);
+		this.parseDevices(data);
 	}
 
 	/**
@@ -297,8 +326,13 @@ export class ParserV1 extends Parser {
 		}
 	}
 
+	/**
+	 * Подключает свойства устройства согласно схеме
+	 * @param device - Устройство для настройки
+	 * @param deviceSchema - Схема со свойствами
+	 */
 	private connectDeviceProps(device: Device, deviceSchema: DeviceSchema): void {
-		if (!deviceSchema.ports) {
+		if (!deviceSchema.props) {
 			return;
 		}
 
@@ -392,5 +426,40 @@ export class ParserV1 extends Parser {
 		}
 
 		return deviceClass;
+	}
+}
+
+// ============================================================================
+// PARSER V1 - Объединяет сериализацию и десериализацию
+// ============================================================================
+
+/**
+ * Парсер версии 1 для загрузки и сохранения окружения
+ * Поддерживает устройства, сети и IC10 код для Housing устройств
+ */
+export class ParserV1 extends Parser {
+	private readonly serializer: SerializerV1;
+	private readonly deserializer: DeserializerV1;
+
+	constructor(params: ParserConstructorType) {
+		super(params);
+		this.serializer = new SerializerV1(this.builer);
+		this.deserializer = new DeserializerV1(this.builer);
+	}
+
+	/**
+	 * Парсит схему окружения и загружает её в builder
+	 * @param data - Схема окружения для загрузки
+	 */
+	public parse(data: EnvSchema): void {
+		this.deserializer.parse(data);
+	}
+
+	/**
+	 * Сериализует текущее состояние окружения в YAML строку
+	 * @returns YAML строка с полной схемой окружения
+	 */
+	public stringify(): string {
+		return this.serializer.stringify();
 	}
 }

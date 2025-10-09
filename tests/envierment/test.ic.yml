@@ -1,24 +1,31 @@
 version: 1
-
 devices:
   - id: 1
-    PrefabName: "StructureCircuitHousingCompact"
+    PrefabName: StructureCircuitHousingCompact
+    ports:
+      - port: default
+        network: base
+    props:
+      - name: Setting
+        value: 10
+      - name: Mode
+        value: 12
     code: |
       move r0 99
       move r1 85
       l r2 db Setting
+  - id: 2
+    PrefabName: StructureAutolathe
     ports:
-      - port: "default"
-        network: "base"
-    props:
-      - name: "Setting"
-        value: 10
-
+      - port: default
+        network: base
 networks:
-  - id: "base"
-    type: "data"
+  - id: base
+    type: data
     props:
-      - name: "Channel0"
+      - name: Channel0
         value: 10
-      - name: "Channel1"
+      - name: Channel1
         value: 1
+  - id: power
+    type: power

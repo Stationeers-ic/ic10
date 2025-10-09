@@ -26,19 +26,22 @@ export class Builer {
 			case 1:
 				Parser = new ParserV1({ builer: BUILDER });
 				break;
-
-			default:
-				break;
 		}
 		Parser.parse(data);
 		return BUILDER;
 	}
 
 	public toYaml(): string {
-		try {
-			return new this.lattestParser({ builer: this }).stringify();
-		} catch (error) {
-			throw new Error("Failed to serialize to YAML");
-		}
+		return new this.lattestParser({ builer: this }).stringify();
+	}
+
+	[Symbol.toPrimitive](hint: string): string {
+		return this.toYaml();
+	}
+	valueOf(): string {
+		return this.toYaml();
+	}
+	toString(): string {
+		return this.toYaml();
 	}
 }
