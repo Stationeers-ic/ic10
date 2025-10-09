@@ -57,4 +57,4 @@ export const EnvSchema = object({
 });
 
 // --- Тип вывода ---
-export type Env = InferOutput<typeof EnvSchema>;
+export type EnvSchema = InferOutput<typeof EnvSchema>;

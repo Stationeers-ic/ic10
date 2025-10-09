@@ -28,13 +28,16 @@ export class ParserV1 extends Parser {
 	public stringify() {
 		const networks = this.builer.Networks.values()
 			.map((item: Network) => {
-				const props = {};
+				const props = [];
 				console.table(props);
 				for (const [key, value] of item.chanels) {
 					if (!Logics.hasValue(key)) {
 						throw new Error("todo");
 					}
-					props[Logics.getByValue(key)] = value;
+					props.push({
+						name: Logics.getByValue(key),
+						value,
+					});
 				}
 				console.table(props);
 				return {
@@ -57,14 +60,14 @@ export class ParserV1 extends Parser {
 		data.networks.forEach((network) => {
 			const net = new Network({
 				id: network.id,
-				networkType: network.type,
+				networkType: network.type as any,
 			});
 			if (network.props) {
-				for (const [key, value] of Object.entries(network.props)) {
-					if (!Logics.hasKey(key)) {
+				for (const { name, value } of network.props) {
+					if (!Logics.hasKey(name)) {
 						throw new Error("todo");
 					}
-					net.chanels.set(Logics.getByKey(key), value);
+					net.chanels.set(Logics.getByKey(name), value);
 				}
 			}
 			this.builer.Networks.set(network.id, net);
