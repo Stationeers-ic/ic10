@@ -16,6 +16,7 @@ export type LogicType = LogicsType[number];
 export type DeviceConstructor = {
 	hash: number;
 	network?: Network;
+	id?: number;
 };
 
 /**
@@ -43,8 +44,8 @@ export abstract class Device {
 	 * @param network - сеть, к которой принадлежит устройство
 	 * @param hash - хэш типа устройства
 	 */
-	public constructor({ network, hash }: DeviceConstructor) {
-		this._id = crc32(uuidv4()); // Генерация уникального ID
+	public constructor({ network, hash, id }: DeviceConstructor) {
+		this._id = id ?? crc32(uuidv4()); // Генерация уникального ID
 		this.hash = hash;
 		this.rawData = DEVICES[this.hash]; // Получение данных устройства по хэшу
 

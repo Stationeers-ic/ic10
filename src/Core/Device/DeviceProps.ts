@@ -1,9 +1,21 @@
 import type { LogicType } from "@/Core/Device";
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
 import { Logics } from "@/Defines/data";
+import { BiMap } from "@/helpers";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 
 type prop = number | string;
+
+interface PropIterator
+	extends Iterator<{
+		logicName: string;
+		logicCode: number;
+		canRead: boolean;
+		canWrite: boolean;
+		value: number;
+	}> {
+	[Symbol.iterator](): PropIterator;
+}
 
 export class DeviceProps extends DeviceScope {
 	constructor(props: DeviceScopeConstructor) {
@@ -12,19 +24,19 @@ export class DeviceProps extends DeviceScope {
 	}
 	// Сырые свойства устройства, хранящиеся по числовым кодам
 	#propertiesRaw: Map<number, number> = new Map();
-	// Прокси-свойства устройства, доступные по имени или коду
-	public logic: Map<
-		prop,
+	// BiMap для связи имени логики с кодом
+	private logicNameToCode = new BiMap<string, number>();
+	// Метаданные логики (права доступа)
+	private logicMeta: Map<
+		number,
 		{
-			name: string;
-			code: number;
 			canWrite: boolean;
 			canRead: boolean;
 		}
 	> = new Map();
 
 	public getRaw() {
-		return { ...this.#propertiesRaw };
+		return Object.fromEntries(this.#propertiesRaw);
 	}
 
 	public reset() {
@@ -32,13 +44,25 @@ export class DeviceProps extends DeviceScope {
 	}
 
 	public read(prop: prop): number {
-		const l = this.getLogic(prop);
-		if (l?.canRead) {
-			return this.#propertiesRaw[l.code];
-		} else {
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to read ${l?.name ?? prop}`,
+					message: `Device ${this.scope.hash} property ${prop} not found`,
+					severity: ErrorSeverity.Warning,
+				}),
+			);
+			return 0;
+		}
+
+		const meta = this.logicMeta.get(logicCode);
+		if (meta?.canRead) {
+			return this.#propertiesRaw.get(logicCode) ?? 0;
+		} else {
+			const logicName = this.logicNameToCode.getByValue(logicCode) ?? String(prop);
+			this.scope.errors.add(
+				new Ic10Error({
+					message: `Device ${this.scope.hash} has not permission to read ${logicName}`,
 					severity: ErrorSeverity.Warning,
 				}),
 			);
@@ -47,31 +71,39 @@ export class DeviceProps extends DeviceScope {
 	}
 
 	public write(prop: prop, value: number): void {
-		const l = this.getLogic(prop);
-		if (l?.canWrite) {
-			this.#propertiesRaw[l.code] = value;
-		} else {
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to write ${l?.name ?? prop}`,
+					message: `Device ${this.scope.hash} property ${prop} not found`,
+					severity: ErrorSeverity.Strong,
+				}),
+			);
+			return;
+		}
+
+		const meta = this.logicMeta.get(logicCode);
+		if (meta?.canWrite) {
+			this.#propertiesRaw.set(logicCode, value);
+		} else {
+			const logicName = this.logicNameToCode.getByValue(logicCode) ?? String(prop);
+			this.scope.errors.add(
+				new Ic10Error({
+					message: `Device ${this.scope.hash} has not permission to write ${logicName}`,
 					severity: ErrorSeverity.Strong,
 				}),
 			);
 		}
 	}
 
-	private getLogic(prop: prop) {
-		const l = this.logic.get(prop);
-		if (typeof l === "undefined") {
-			const a = this.findLogic(prop);
-			this.scope.errors.add(
-				new Ic10Error({
-					message: `Device ${this.scope.hash} has not logic ${a.name}`,
-					severity: ErrorSeverity.Warning,
-				}),
-			);
+	/**
+	 * Разрешает prop (имя или код) в код логики
+	 */
+	private resolveLogicCode(prop: prop): number | undefined {
+		if (typeof prop === "number") {
+			return this.logicNameToCode.hasValue(prop) ? prop : undefined;
 		}
-		return l;
+		return this.logicNameToCode.getByKey(prop);
 	}
 
 	/**
@@ -80,8 +112,11 @@ export class DeviceProps extends DeviceScope {
 	 * @param value - значение свойства
 	 */
 	public forceWrite(prop: prop, value: number) {
-		const l = this.getLogic(prop);
-		this.#propertiesRaw[l.code] = value;
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) {
+			throw new Error(`Logic ${prop} not found`);
+		}
+		this.#propertiesRaw.set(logicCode, value);
 	}
 
 	/**
@@ -115,39 +150,32 @@ export class DeviceProps extends DeviceScope {
 		}
 	}
 
-	private findLogic(prop: prop): {
-		name: string;
-		code: number;
-	} {
-		try {
-			if (typeof prop === "string") {
-				if (!Logics.hasKey(prop)) {
-					throw new Error(`Logic ${prop} not found`);
-				}
-				return {
-					name: prop,
-					code: Logics.getByKey(prop),
-				};
+	/**
+	 * Находит код логики по имени или коду из глобального Logics
+	 */
+	private findLogicCode(prop: prop): number | undefined {
+		if (typeof prop === "string") {
+			if (!Logics.hasKey(prop)) {
+				this.scope.errors.add(
+					new Ic10Error({
+						message: `Logic ${prop} not found in global Logics`,
+						severity: ErrorSeverity.Critical,
+					}),
+				);
+				return undefined;
 			}
-			if (!Logics.hasValue(prop)) {
-				throw new Error(`Logic ${prop} not found`);
-			}
-			return {
-				name: Logics.getByValue(prop), // ключ из найденной записи
-				code: prop,
-			};
-		} catch (e) {
+			return Logics.getByKey(prop);
+		}
+		if (!Logics.hasValue(prop)) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Property ${prop} not found`,
+					message: `Logic code ${prop} not found in global Logics`,
 					severity: ErrorSeverity.Critical,
 				}),
 			);
-			return {
-				name: "",
-				code: 0,
-			};
+			return undefined;
 		}
+		return prop;
 	}
 
 	/**
@@ -155,35 +183,63 @@ export class DeviceProps extends DeviceScope {
 	 * @param logic - объект логики с именем и разрешениями
 	 */
 	private addLogic(logic: LogicType) {
-		const code = this.findLogic(logic.name).code;
-		if (typeof code !== "undefined") {
-			const data = {
-				name: logic.name,
-				code: code,
+		const code = this.findLogicCode(logic.name);
+		if (code !== undefined) {
+			this.logicNameToCode.set(logic.name, code);
+			this.logicMeta.set(code, {
 				canRead: logic.permissions.includes("Read"),
 				canWrite: logic.permissions.includes("Write"),
-			};
-			// Добавляем логику по имени и по коду для удобства доступа
-			this.logic.set(logic.name, data);
-			this.logic.set(code, data);
+			});
 		}
 	}
 
-	public canLoad(prop: prop) {
-		try {
-			const l = this.getLogic(prop);
-			return l.canRead;
-		} catch (e) {
-			return false;
-		}
+	public canLoad(prop: prop): boolean {
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) return false;
+		return this.logicMeta.get(logicCode)?.canRead ?? false;
 	}
 
-	public canStore(prop: prop) {
-		try {
-			const l = this.getLogic(prop);
-			return l.canWrite;
-		} catch (e) {
-			return false;
-		}
+	public canStore(prop: prop): boolean {
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) return false;
+		return this.logicMeta.get(logicCode)?.canWrite ?? false;
+	}
+
+	[Symbol.iterator](): PropIterator {
+		const entries = Array.from(this.#propertiesRaw);
+		let i = 0;
+
+		return {
+			[Symbol.iterator]() {
+				return this;
+			},
+			next: (): IteratorResult<{
+				logicName: string;
+				logicCode: number;
+				canRead: boolean;
+				canWrite: boolean;
+				value: number;
+			}> => {
+				while (i < entries.length) {
+					const [logicCode, value] = entries[i++];
+					const logicName = this.logicNameToCode.getByValue(logicCode);
+					const meta = this.logicMeta.get(logicCode);
+
+					if (logicName && meta) {
+						return {
+							done: false,
+							value: {
+								logicName,
+								logicCode,
+								canRead: meta.canRead,
+								canWrite: meta.canWrite,
+								value,
+							},
+						};
+					}
+				}
+				return { value: undefined, done: true };
+			},
+		};
 	}
 }

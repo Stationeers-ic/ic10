@@ -3,7 +3,13 @@ import type { Network, NetworkType } from "@/Core/Network";
 import type { ConnectionsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
 export type PortType = Extract<ConnectionsType[keyof ConnectionsType], string>;
-
+export type PortEntry = {
+	port: PortType;
+	index: number;
+	network: Network;
+	isDefault: boolean;
+};
+export type PortIterator = IterableIterator<PortEntry>;
 export class DevicePorts extends DeviceScope {
 	private portIndices: BiMap<PortType, number>;
 	private portNetworks: Map<PortType, Network> = new Map();
@@ -161,11 +167,7 @@ export class DevicePorts extends DeviceScope {
 		return -1;
 	}
 
-	[Symbol.iterator](): IterableIterator<{
-		port: PortType;
-		index: number;
-		network: Network;
-	}> {
+	[Symbol.iterator](): PortIterator {
 		const entries = Array.from(this.portIndices.entries());
 		let i = 0;
 		const self = this;
@@ -173,7 +175,7 @@ export class DevicePorts extends DeviceScope {
 			[Symbol.iterator]() {
 				return this;
 			},
-			next(): IteratorResult<{ port: PortType; index: number; network: Network }> {
+			next(): IteratorResult<PortEntry> {
 				while (i < entries.length) {
 					const [port, index] = entries[i++];
 					if (self.portNetworks.has(port)) {
@@ -183,6 +185,7 @@ export class DevicePorts extends DeviceScope {
 								port,
 								index,
 								network: self.portNetworks.get(port)!,
+								isDefault: self.getDefaultPortIndex() === index,
 							},
 						};
 					}

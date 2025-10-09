@@ -14,10 +14,10 @@ export class Housing extends Device {
 	public readonly connectedDevices: Map<number, Device> = new Map();
 	public declare $memory: StackInterface;
 
-	constructor({ network, hash, chip, pin_count = 6 }: SocketDeviceConstructor) {
-		super({ network, hash });
-		this.chip = chip;
-		this.pin_count = pin_count ?? 6;
+	constructor(args: SocketDeviceConstructor) {
+		super(args);
+		this.chip = args?.chip;
+		this.pin_count = args?.pin_count ?? 6;
 		delete this.$memory;
 		this.$memory = this.chip.memory;
 	}

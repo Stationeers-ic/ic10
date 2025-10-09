@@ -81,5 +81,6 @@ export const EnvSchema = object({
 // --- Тип вывода ---
 export type EnvSchema = InferOutput<typeof EnvSchema>;
 export type PortSchema = InferOutput<typeof PortSchema>;
+export type PropsSchema = InferOutput<typeof PropsSchema>;
 export type DeviceSchema = InferOutput<typeof DeviceSchema>;
 export type NetworkSchema = InferOutput<typeof NetworkSchema>;
