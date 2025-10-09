@@ -25,7 +25,29 @@ export const ChannelPropsSchema = object({
 
 // --- Port ---
 export const PortSchema = object({
-	port: string(),
+	port: union([
+		literal("default"),
+		literal("Chute Input"),
+		literal("Chute Output"),
+		literal("Chute Output 2"),
+		literal("Connection"),
+		literal("Data Input"),
+		literal("Data Output"),
+		literal("Landing Pad Input"),
+		literal("Pipe Input"),
+		literal("Pipe Input 2"),
+		literal("Pipe Liquid Input"),
+		literal("Pipe Liquid Input 2"),
+		literal("Pipe Liquid Output"),
+		literal("Pipe Liquid Output 2"),
+		literal("Pipe Output"),
+		literal("Pipe Output 2"),
+		literal("Pipe Waste"),
+		literal("Power Input"),
+		literal("Power Output"),
+		literal("Power and Data Input"),
+		literal("Power and Data Output"),
+	]),
 	network: string(),
 });
 
@@ -58,3 +80,5 @@ export const EnvSchema = object({
 
 // --- Тип вывода ---
 export type EnvSchema = InferOutput<typeof EnvSchema>;
+export type DeviceSchema = InferOutput<typeof DeviceSchema>;
+export type PortSchema = InferOutput<typeof PortSchema>;

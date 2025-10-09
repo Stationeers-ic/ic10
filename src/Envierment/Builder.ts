@@ -30,7 +30,6 @@ export class Builer {
 			default:
 				break;
 		}
-		console.log(data);
 		Parser.parse(data);
 		return BUILDER;
 	}

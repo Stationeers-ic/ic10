@@ -1,6 +1,7 @@
 import { Builer } from "@/Envierment/Builder";
 
-const f = await Bun.file(`${__dirname}/test.ic.env`).text();
+const f = await Bun.file(`${__dirname}/test.ic.yml`).text();
 
 const builder = Builer.from(f);
+console.log(builder.Runners);
 console.log(builder.toYaml());

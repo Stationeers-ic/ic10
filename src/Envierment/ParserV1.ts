@@ -1,9 +1,11 @@
 import { stringify } from "yaml";
+import { Chip } from "@/Core/Chip";
 import { Network } from "@/Core/Network";
 import { Logics } from "@/Defines/data";
-import { DevicesByPrefabName } from "@/Devices";
+import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
-import type { EnvSchema } from "@/Schemas/EnvSchema";
+import { Ic10Runner } from "@/Ic10/Ic10Runner";
+import type { DeviceSchema, EnvSchema } from "@/Schemas/EnvSchema";
 
 export type ParserConstructorType = {
 	builer: Builer;
@@ -18,18 +20,31 @@ export abstract class Parser {
 	abstract stringify(): string;
 }
 
+type Constructor<T = any> = new (...args: any[]) => T;
+
+type PrefabName = Extract<keyof typeof DevicesByPrefabName, string>;
+type HousingName = Extract<keyof typeof DeviceClassesByBase.Housing, string>;
+
+type DevicesByPrefabNameType = typeof DevicesByPrefabName;
+type DeviceClass = {
+	[K in PrefabName]: DevicesByPrefabNameType[K] extends Constructor ? DevicesByPrefabNameType[K] : never;
+}[PrefabName];
+
+type DeviceClassesByBaseHousingType = typeof DeviceClassesByBase.Housing;
+type HousingClass = {
+	[K in HousingName]: DeviceClassesByBaseHousingType[K] extends Constructor ? DeviceClassesByBaseHousingType[K] : never;
+}[HousingName];
+
 export class ParserV1 extends Parser {
 	public parse(data: EnvSchema) {
 		this.builer.reset();
 		this.parseNetworks(data);
 		this.parseDevices(data);
-		console.log(data);
 	}
 	public stringify() {
 		const networks = this.builer.Networks.values()
 			.map((item: Network) => {
 				const props = [];
-				console.table(props);
 				for (const [key, value] of item.chanels) {
 					if (!Logics.hasValue(key)) {
 						throw new Error("todo");
@@ -39,7 +54,6 @@ export class ParserV1 extends Parser {
 						value,
 					});
 				}
-				console.table(props);
 				return {
 					id: item.id,
 					type: item.type,
@@ -76,9 +90,53 @@ export class ParserV1 extends Parser {
 
 	parseDevices(data: EnvSchema) {
 		for (const device of data.devices) {
-			if (typeof DevicesByPrefabName[device.PrefabName] === "undefined") {
-				throw new Error("test");
+			if (this.isHousing(device.PrefabName)) {
+				this.parseHousing(device);
 			}
 		}
+	}
+	parseHousing(device: DeviceSchema) {
+		const housingClass = this.findHousing(device.PrefabName);
+		const code = device!.code;
+		const chip = new Chip({ ic10Code: code });
+		const housing = new housingClass({ chip: chip });
+		if (device.ports) {
+			for (const { port, network } of device.ports) {
+				if (!this.builer.Networks.has(network)) {
+					throw new Error(`Network ${network} not found`);
+				}
+				const net = this.builer.Networks.get(network);
+				if (port !== "default") {
+					if (!housing.ports.canConnect(net.type, port)) {
+						throw new Error(`Port ${port} not found in housing ${housingClass.name}`);
+					}
+					net.apply(housing, port);
+				} else {
+					net.apply(housing);
+				}
+			}
+		}
+		this.builer.Devices.set(device.id, housing);
+		this.builer.Runners.set(device.id, new Ic10Runner({ housing: housing }));
+	}
+
+	private isDevice(device: any): device is PrefabName {
+		return typeof DevicesByPrefabName[device] !== "undefined";
+	}
+	private isHousing(device: any): device is HousingClass {
+		return typeof DeviceClassesByBase.Housing[device] !== "undefined";
+	}
+
+	findDevice(device: string): DeviceClass {
+		if (this.isDevice(device)) {
+			return DevicesByPrefabName[device];
+		}
+		throw new Error("test");
+	}
+	findHousing(device: string): HousingClass {
+		if (this.isDevice(device)) {
+			return DeviceClassesByBase.Housing[device];
+		}
+		throw new Error("test");
 	}
 }
