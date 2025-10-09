@@ -4,5 +4,5 @@ import { toJsonSchema } from "@valibot/to-json-schema";
 import { EnvSchema } from "@/Schemas/EnvSchema";
 
 const target = path.join(__dirname, "..", "src", "Schemas", "env.schema.json");
-const schema = JSON.stringify(toJsonSchema(EnvSchema, { typeMode: "input" }), null, 2);
+const schema = JSON.stringify(toJsonSchema(EnvSchema), null, 2);
 await writeFile(target, schema);
