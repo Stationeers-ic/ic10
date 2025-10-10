@@ -92,8 +92,8 @@ export class HashString {
 	}
 
 	[Symbol.toPrimitive](hint: string) {
-		if (hint === "number") this.hash;
-		if (hint === "string") this.value;
+		if (hint === "number") return this.hash;
+		if (hint === "string") return this.value;
 	}
 
 	toString() {
