@@ -425,7 +425,24 @@ export class ClrdInstruction extends Instruction {
 }
 
 /**
-
+lbn: {
+		description:
+			"Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		example: "lbn r? deviceHash nameHash logicType batchMode",
+		name: "lbn",
+	},
+	lbns: {
+		description:
+			"Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		example: "lbns r? deviceHash nameHash slotIndex logicSlotType batchMode",
+		name: "lbns",
+	},
+	lbs: {
+		description:
+			"Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
+		example: "lbs r? deviceHash slotIndex logicSlotType batchMode",
+		name: "lbs",
+	},
 	lr: {
 		name: "lr",
 		description:

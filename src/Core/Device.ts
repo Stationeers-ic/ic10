@@ -8,12 +8,14 @@ import { DeviceSlots } from "@/Core/Device/DeviceSlots";
 import type { Network } from "@/Core/Network";
 import type { StackInterface } from "@/Core/Stack";
 import DEVICES, { type LogicsType } from "@/Defines/devices";
+import { HashString } from "@/helpers";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 import { crc32 } from "@/Ic10/Helpers/functions";
 
 export type LogicType = LogicsType[number];
 
 export type DeviceConstructor = {
+	name?: string;
 	hash: number;
 	network?: Network;
 	id?: number;
@@ -27,6 +29,8 @@ export abstract class Device {
 	// Ссылка на сеть, к которой принадлежит устройство
 	// Уникальный хэш устройства (идентификатор типа устройства)
 	public readonly hash: number;
+	public readonly prefabName?: HashString;
+	private _name: HashString;
 	// Сырые данные устройства из DEVICES по хэшу
 	public readonly rawData: (typeof DEVICES)[keyof typeof DEVICES];
 
@@ -44,10 +48,15 @@ export abstract class Device {
 	 * @param network - сеть, к которой принадлежит устройство
 	 * @param hash - хэш типа устройства
 	 */
-	public constructor({ network, hash, id }: DeviceConstructor) {
+	public constructor({ network, hash, id, name }: DeviceConstructor) {
 		this._id = id ?? crc32(uuidv4()); // Генерация уникального ID
 		this.hash = hash;
 		this.rawData = DEVICES[this.hash]; // Получение данных устройства по хэшу
+
+		this.name = name ?? this?.rawData?.PrefabName ?? "";
+		if (this?.rawData?.PrefabName) {
+			this.prefabName = new HashString(this.rawData.PrefabName);
+		}
 
 		this.$errors = new DeviceError({ device: this });
 		this.$ports = new DevicePorts({ device: this });
@@ -77,6 +86,18 @@ export abstract class Device {
 		if (network) {
 			network.apply(this);
 		}
+	}
+
+	get name(): HashString {
+		return this._name;
+	}
+
+	set name(name: string) {
+		this._name = new HashString(name);
+	}
+
+	setName(name: HashString) {
+		this._name = name;
 	}
 
 	get network(): Network {

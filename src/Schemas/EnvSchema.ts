@@ -55,6 +55,7 @@ export const PortSchema = object({
 export const DeviceSchema = object({
 	id: number(),
 	PrefabName: PrefabNameSchema,
+	name: optional(string()),
 	code: optional(string()),
 	ports: array(PortSchema),
 	props: optional(array(PropsSchema)),

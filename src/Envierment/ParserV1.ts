@@ -140,6 +140,7 @@ class SerializerV1 {
 		const data: DeviceSchema = {
 			id: device.id,
 			PrefabName: device.rawData.PrefabName,
+			name: device.name.toString(),
 			ports: this.serializeDevicePorts(device),
 			props: this.serializeDeviceProps(device),
 		};
@@ -280,7 +281,9 @@ class DeserializerV1 {
 		this.connectDevicePorts(device, deviceSchema);
 		this.connectDeviceProps(device, deviceSchema);
 		this.builer.Devices.set(deviceSchema.id, device);
-
+		if (deviceSchema.name) {
+			device.name = deviceSchema.name;
+		}
 		// Для Housing устройств создаём runner для выполнения IC10 кода
 		if (device instanceof Housing) {
 			this.builer.Runners.set(deviceSchema.id, new Ic10Runner({ housing: device }));

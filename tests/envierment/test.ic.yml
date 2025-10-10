@@ -2,6 +2,7 @@ version: 1
 devices:
   - id: 1
     PrefabName: StructureCircuitHousingCompact
+    name: MyDevice
     ports:
       - port: default
         network: base

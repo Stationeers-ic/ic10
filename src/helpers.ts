@@ -1,3 +1,5 @@
+import { crc32 } from "@/Ic10/Helpers/functions";
+
 export class BiMap<K extends string | number, V extends string | number> {
 	private keyToValue = new Map<K, V>();
 	private valueToKey = new Map<V, K>();
@@ -78,5 +80,27 @@ export class BiMap<K extends string | number, V extends string | number> {
 
 	[Symbol.iterator](): IterableIterator<[K, V]> {
 		return this.keyToValue.entries();
+	}
+}
+
+export class HashString {
+	public readonly value: string;
+	public readonly hash: number;
+	constructor(name: string) {
+		this.value = name;
+		this.hash = crc32(name);
+	}
+
+	[Symbol.toPrimitive](hint: string) {
+		if (hint === "number") this.hash;
+		if (hint === "string") this.value;
+	}
+
+	toString() {
+		return this.value;
+	}
+
+	valueOf() {
+		this.hash;
 	}
 }

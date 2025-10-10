@@ -34,8 +34,8 @@ export class MoveInstruction extends Instruction {
 			},
 			{
 				title: "set bin",
-				code: "move r5 %101",
-				expected: [{ type: "register", register: 5, value: 5 }],
+				code: "move r6 %101",
+				expected: [{ type: "register", register: 6, value: 5 }],
 			},
 		];
 	}
