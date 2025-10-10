@@ -1,5 +1,6 @@
 import type { LogicBatchMethodType, LogicConstType } from "@/Defines/data";
 import { StructureConsole } from "@/Devices/StructureConsole";
+import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
 import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
@@ -424,7 +425,66 @@ export class ClrdInstruction extends Instruction {
 	}
 }
 
+export class LsInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		return [
+			{
+				code: ["ls r0 db 0 Quantity"],
+				expected: [
+					{
+						type: "register",
+						register: 0,
+						value: 1,
+					},
+				],
+			},
+		];
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePinOrId("deviceId"),
+			ArgumentCalculators.anyNumber("slotIndex"),
+			ArgumentCalculators.logicSlot("logicSlotType"),
+		];
+	}
+
+	override run(): void {
+		const result = this.getArgumentValue<number>("result");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("deviceId");
+		const slotIndex = this.getArgumentValue<number>("slotIndex");
+		const logicSlotType = this.getArgumentValue<number>("logicSlotType");
+
+		let output = 0;
+		if (device.pin !== undefined && device.port !== undefined) {
+			this.context.addError(
+				new ArgumentIc10Error({
+					message: `Cannot load device slot ${slotIndex} from port ${device.port} with pin ${device.pin}`,
+				}).setArgument(this.args[1]),
+			);
+			return;
+		}
+		if (device.pin !== undefined) {
+			output = this.context.getDeviceSlotParameterByPin(device.pin, slotIndex, logicSlotType);
+			this.context.setRegister(result, output);
+			return;
+		}
+		if (device.id !== undefined) {
+			output = this.context.getDeviceSlotParameterById(device.id, slotIndex, logicSlotType);
+			this.context.setRegister(result, output);
+			return;
+		}
+	}
+}
+
 /**
+ * 
+ 	ls: {
+		name: "ls",
+		description: "Loads slot LogicSlotType on device to register.",
+		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
+	},
 lbn: {
 		description:
 			"Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
@@ -449,11 +509,7 @@ lbn: {
 			"Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
 		example: "lr r? device(d?|r?|id) reagentMode int",
 	},
-	 * 	ls: {
-		name: "ls",
-		description: "Loads slot LogicSlotType on device to register.",
-		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
-	},
+
 	sb: {
 		name: "sb",
 		description:

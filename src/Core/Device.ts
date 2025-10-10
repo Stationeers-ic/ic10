@@ -41,7 +41,7 @@ export abstract class Device {
 	protected readonly $props?: DeviceProps = undefined;
 	protected readonly $reagents?: DeviceReagent = undefined;
 	protected readonly $memory?: StackInterface = undefined;
-	protected readonly $slots?: DeviceSlots = undefined;
+	protected $slots?: DeviceSlots = undefined;
 
 	/**
 	 * Конструктор устройства.

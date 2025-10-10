@@ -8,6 +8,7 @@ import {
 	type IDevicesByHashContext,
 	type IDevicesByIdContext,
 	type IDevicesByPinContext,
+	type IDevicesSlotContext,
 	type IExecutionContext,
 	type IMemoryContext,
 } from "@/Ic10/Context/Context";
@@ -188,11 +189,20 @@ abstract class SandboxDevicesByIdBase extends SandboxStackBase implements IDevic
 	override setDeviceParameterById(id: number, prop: number, value: number): void {}
 }
 
+abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements IDevicesSlotContext {
+	override getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number {
+		return 0;
+	}
+	override getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number {
+		return 0;
+	}
+}
+
 // =============================================
 // Финальный класс SandboxContext
 // =============================================
 
-export class SandboxContext extends SandboxDevicesByIdBase {
+export class SandboxContext extends SandboxDevicesSlotBase {
 	override reset(): void {
 		this.$housing.reset();
 	}

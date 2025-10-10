@@ -1,8 +1,10 @@
+import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { Stack, type StackInterface } from "@/Core/Stack";
 import CONSTS from "@/Defines/consts";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
 
 export type ChipConstructorType = {
+	chipHash?: number;
 	ic10Code?: string;
 	register_length?: number;
 	stack_length?: number;
@@ -10,7 +12,7 @@ export type ChipConstructorType = {
 	RA?: number;
 };
 
-export class Chip {
+export class Chip extends ItemEntity {
 	public registers: Map<number, number> = new Map();
 	public readonly memory: StackInterface;
 	public defines: Map<string, Define> = new Map();
@@ -19,7 +21,15 @@ export class Chip {
 	private readonly SP: number;
 	private readonly RA: number;
 
-	constructor({ ic10Code = "", register_length = 18, stack_length = 512, SP = 16, RA = 17 }: ChipConstructorType) {
+	constructor({
+		chipHash,
+		ic10Code = "",
+		register_length = 18,
+		stack_length = 512,
+		SP = 16,
+		RA = 17,
+	}: ChipConstructorType) {
+		super(chipHash ?? -744098481, 1);
 		this.ic10Code = ic10Code ?? "";
 		this.register_length = register_length ?? 18;
 		this.SP = SP ?? 16;

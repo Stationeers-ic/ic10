@@ -8,6 +8,7 @@ import {
 	type IDevicesByHashContext,
 	type IDevicesByIdContext,
 	type IDevicesByPinContext,
+	type IDevicesSlotContext,
 	type IExecutionContext,
 	type IMemoryContext,
 	type IStackContext,
@@ -352,11 +353,44 @@ abstract class DevicesByIdBase extends DevicesByHashAndNameBase implements IDevi
 	}
 }
 
+abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotContext {
+	override getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number {
+		const deivice = this.getDeviceById(deviceId);
+		if (deivice) {
+			if (!deivice.hasSlots) {
+				this.addError(
+					new RuntimeIc10Error({
+						message: `Device with id ${deviceId} has no slots`,
+						line: this.getNextLineIndex(),
+						severity: ErrorSeverity.Strong,
+					}),
+				);
+			}
+			return deivice.slots.getSlot(slot).getProp(prop);
+		}
+	}
+	override getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number {
+		const deivice = this.getDeviceByPin(devicePin);
+		if (deivice) {
+			if (!deivice.hasSlots) {
+				this.addError(
+					new RuntimeIc10Error({
+						message: `Device on pin ${devicePin} has no slots`,
+						line: this.getNextLineIndex(),
+						severity: ErrorSeverity.Strong,
+					}),
+				);
+			}
+			return deivice.slots.getSlot(slot).getProp(prop);
+		}
+	}
+}
+
 // =============================================
 // Финальный класс RealContext
 // =============================================
 
-export class RealContext extends DevicesByIdBase {
+export class RealContext extends DevicesSlotBase {
 	override reset(): void {
 		this.$housing.reset();
 	}

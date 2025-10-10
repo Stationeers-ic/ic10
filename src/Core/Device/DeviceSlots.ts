@@ -4,12 +4,24 @@ import type { SlotsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
 
 export class ItemEntity {
-	#propertiesRaw: Map<number, number> = new Map();
-
+	private _propertiesRaw: Map<number, number> = new Map();
+	private _count: number = 0;
 	constructor(
 		public readonly hash: number,
-		public count: number = 1,
-	) {}
+		count: number = 1,
+	) {
+		this._count = count;
+	}
+
+	get count(): number {
+		return this._count;
+	}
+	set count(value: number) {
+		if (value >= 0) {
+			this._count = value;
+			this.setProp("Quantity", value);
+		}
+	}
 
 	public setProp(prop: number | string, value: number): void {
 		// Тройная проверка: распознаём по ключу, либо по значению
@@ -21,7 +33,7 @@ export class ItemEntity {
 			propCode = prop as number;
 		}
 		if (propCode !== undefined) {
-			this.#propertiesRaw.set(propCode, value);
+			this._propertiesRaw.set(propCode, value);
 		}
 		// иначе игнорируем неизвестную пропертy (или можно выбросить исключение)
 	}
@@ -35,7 +47,7 @@ export class ItemEntity {
 			propCode = prop as number;
 		}
 		if (propCode !== undefined) {
-			return this.#propertiesRaw.get(propCode) ?? 0;
+			return this._propertiesRaw.get(propCode) ?? 0;
 		}
 		return 0;
 	}
@@ -114,12 +126,8 @@ export class Slot {
 		return this.ITEM !== null;
 	}
 
-	public getItem(): number | null {
-		return this.ITEM?.hash ?? null;
-	}
-
-	public getCount(): number | null {
-		return this.ITEM?.count ?? null;
+	public getItem(): ItemEntity | null {
+		return this.ITEM ?? null;
 	}
 }
 

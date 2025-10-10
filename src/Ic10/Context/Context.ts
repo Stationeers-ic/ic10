@@ -124,6 +124,11 @@ export interface IDevicesByIdContext {
 	setDeviceParameterById(id: number, prop: number, value: number): void;
 }
 
+export interface IDevicesSlotContext {
+	getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
+	getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number;
+}
+
 /**
  * Класс дает простое API для Инструкций с доступом к элементам Network, Housing ...
  */
@@ -137,7 +142,8 @@ export abstract class Context
 		IDevicesByHashContext,
 		IDevicesByHashAndNameContext,
 		IStackContext,
-		IDevicesByIdContext
+		IDevicesByIdContext,
+		IDevicesSlotContext
 {
 	/** Имя контекста (используется в отладке/логировании) */
 	public readonly name: string;
@@ -293,6 +299,12 @@ export abstract class Context
 	abstract setDeviceStackById(id: number, index: number, value): void;
 	abstract getDeviceParameterById(id: number, prop: number): number;
 	abstract setDeviceParameterById(id: number, prop: number, value: number): void;
+
+	// =============================================
+	// IDevicesSlotContext implementation
+	// =============================================
+	abstract getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
+	abstract getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number;
 
 	// =============================================
 	// IDevicesByHashContext implementation
