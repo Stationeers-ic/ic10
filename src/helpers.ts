@@ -96,11 +96,11 @@ export class HashString {
 		if (hint === "string") return this.value;
 	}
 
-	toString() {
+	public toString() {
 		return this.value;
 	}
 
-	valueOf() {
+	public valueOf() {
 		return this.hash;
 	}
 }
