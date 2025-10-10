@@ -215,6 +215,21 @@ abstract class DeviceHelpers extends MemoryBase {
 				return 0;
 		}
 	}
+
+	protected getDevicesByHashAndName(deviceHash: number, deviceName: number): Device[] {
+		return this.housing.network.devices
+			.entries()
+			.map(([, device]) => device)
+			.toArray()
+			.filter((device) => device.hash === deviceHash && device.name.valueOf() === deviceName);
+	}
+	protected getDevicesByHash(deviceHash: number): Device[] {
+		return this.housing.network.devices
+			.entries()
+			.map(([, device]) => device)
+			.toArray()
+			.filter((device) => device.hash === deviceHash);
+	}
 }
 
 // =============================================
@@ -328,14 +343,6 @@ abstract class DevicesByHashBase extends StackBase implements IDevicesByHashCont
 }
 
 abstract class DevicesByHashAndNameBase extends DevicesByHashBase implements IDevicesByHashAndNameContext {
-	protected getDevicesByHashAndName(deviceHash: number, deviceName: number): Device[] {
-		return this.housing.network.devices
-			.entries()
-			.map(([, device]) => device)
-			.toArray()
-			.filter((device) => device.hash === deviceHash && device.name.valueOf() === deviceName);
-	}
-
 	override deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number {
 		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
 		const values = devices.map((device) => device.props.read(param));
@@ -392,6 +399,11 @@ abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotCo
 	override getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number {
 		const device = this.getDeviceByPin(devicePin);
 		return this.getDeviceSlotParameter(device, slot, prop, devicePin, "on pin");
+	}
+	override getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number {
+		const devices = this.getDevicesByHash(deviceHash);
+		const values = devices.map((device) => this.getDeviceSlotParameter(device, slot, prop, device.hash, "on hash"));
+		return this.calculateBatchResult(values, mode);
 	}
 	override getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,

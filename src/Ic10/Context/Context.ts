@@ -127,6 +127,7 @@ export interface IDevicesByIdContext {
 export interface IDevicesSlotContext {
 	getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
 	getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number;
+	getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number;
 	getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,
 		deviceName: number,
@@ -312,6 +313,7 @@ export abstract class Context
 	// =============================================
 	abstract getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
 	abstract getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number;
+	abstract getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number;
 	abstract getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,
 		deviceName: number,

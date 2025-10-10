@@ -597,14 +597,63 @@ export class LbnsInstruction extends Instruction {
 		];
 	}
 }
+
+export class LbsInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		const item1 = new ItemEntity(1, 4);
+		const item2 = new ItemEntity(1, 6);
+		const d1 = new StructureConsole({});
+		d1.slots.getSlot(0).putItem(item1);
+		const d2 = new StructureConsole({});
+		d2.slots.getSlot(0).putItem(item2);
+
+		const devices = [
+			{ id: 1, device: d1 },
+			{ id: 2, device: d2 },
+		];
+
+		const values = [4, 6];
+		const sum = values[0] + values[1];
+		const max = Math.max(...values);
+		const min = Math.min(...values);
+		const avg = sum / values.length;
+
+		const makeTest = (register: number, operation: string, expectedValue: number): InstructionTestData => ({
+			devices,
+			code: [`lbs r${register} 235638270 0 Quantity ${operation}`],
+			expected: [{ type: "register", register, value: expectedValue }],
+		});
+
+		return [
+			makeTest(0, "Sum", sum),
+			makeTest(0, "Maximum", max),
+			makeTest(0, "Minimum", min),
+			makeTest(3, "Average", avg),
+		];
+	}
+
+	public run(): void | Promise<void> {
+		const result = this.getArgumentValue<number>("result");
+		const deviceHash = this.getArgumentValue<number>("deviceHash");
+		const slotIndex = this.getArgumentValue<number>("slotIndex");
+		const logic = this.getArgumentValue<number>("logic");
+		const mode = this.getArgumentValue<number>("mode");
+
+		const v = this.context.getBatchDeviceSlotParameterByHash(deviceHash, slotIndex, logic, mode);
+		this.context.setRegister(result, v);
+	}
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.anyNumber("deviceHash"),
+			ArgumentCalculators.anyNumber("slotIndex"),
+			ArgumentCalculators.logicSlot("logic"),
+			ArgumentCalculators.logicBatchMethod("mode"),
+		];
+	}
+}
 /**
  * 
-	lbns: {
-		description:
-			"Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
-		example: "lbns r? deviceHash nameHash slotIndex logicSlotType batchMode",
-		name: "lbns",
-	},
 	lbs: {
 		description:
 			"Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
