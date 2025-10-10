@@ -27,12 +27,12 @@ export class DevicePorts extends DeviceScope {
 		}
 	}
 
-	canConnect(networkType: NetworkType, portName: PortType): boolean {
+	public canConnect(networkType: NetworkType, portName: PortType): boolean {
 		const portTypes = DevicePorts.getPortTypes(portName);
 		return portTypes.includes(networkType);
 	}
 
-	static getPortTypes(portName: PortType): NetworkType[] {
+	public static getPortTypes(portName: PortType): NetworkType[] {
 		switch (portName) {
 			case "Data Input":
 			case "Data Output":
@@ -66,21 +66,21 @@ export class DevicePorts extends DeviceScope {
 		}
 	}
 
-	setPortChanel(port: PortType | number, Chanel: number, value: number): void {
+	public setPortChanel(port: PortType | number, Chanel: number, value: number): void {
 		if (typeof port === "number") {
 			port = this.portIndices.getByValue(port);
 		}
 		this.getNetwork(port).chanels.set(Chanel, value);
 	}
 
-	getPortChanel(port: PortType | number, Chanel: number): number {
+	public getPortChanel(port: PortType | number, Chanel: number): number {
 		if (typeof port === "number") {
 			port = this.portIndices.getByValue(port);
 		}
 		return this.getNetwork(port).chanels.get(Chanel);
 	}
 
-	setNetwork(port: number, network: Network): void {
+	public setNetwork(port: number, network: Network): void {
 		if (!this.portIndices.hasValue(port)) {
 			throw new Error("Port not found");
 		}
@@ -90,7 +90,7 @@ export class DevicePorts extends DeviceScope {
 		this.portNetworks.set(this.portIndices.getByValue(port), network);
 	}
 
-	getNetwork(portOrindex: PortType | number | undefined = undefined): Network {
+	public getNetwork(portOrindex: PortType | number | undefined = undefined): Network {
 		let port: PortType;
 		if (typeof portOrindex === "undefined") {
 			port = this.portIndices.getByValue(this.getDefaultPortIndex());
@@ -112,36 +112,36 @@ export class DevicePorts extends DeviceScope {
 	 * Получить индекс порта по его типу
 	 * @returns индекс порта или -1 если порт не найден
 	 */
-	getPortIndex(type: PortType): number {
+	public getPortIndex(type: PortType): number {
 		return this.portIndices.getByKey(type) ?? -1;
 	}
 
 	/**
 	 * Проверить существует ли порт указанного типа
 	 */
-	hasPort(type: PortType): boolean {
+	public hasPort(type: PortType): boolean {
 		return this.portIndices.hasKey(type);
 	}
 
 	/**
 	 * Получить все порты устройства в виде Map
 	 */
-	getAllPorts(): BiMap<PortType, number> {
+	public getAllPorts(): BiMap<PortType, number> {
 		return this.portIndices;
 	}
 
 	/**
 	 * Получить количество портов устройства
 	 */
-	getPortCount(): number {
+	public getPortCount(): number {
 		return this.portIndices.size;
 	}
 
-	getDefaultPortIndex(): number {
+	public getDefaultPortIndex(): number {
 		return this.getDataPortIndex();
 	}
 
-	getDataPortIndex(): number {
+	public getDataPortIndex(): number {
 		if (this.hasPort("Data Input")) {
 			return this.getPortIndex("Data Input");
 		}
@@ -154,7 +154,7 @@ export class DevicePorts extends DeviceScope {
 		return -1;
 	}
 
-	getPowerPortIndex(): number {
+	public getPowerPortIndex(): number {
 		if (this.hasPort("Power Input")) {
 			return this.getPortIndex("Power Input");
 		}

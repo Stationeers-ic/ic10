@@ -13,7 +13,7 @@ export class DeviceMemory extends DeviceScope implements StackInterface {
 		super(props);
 		this.stack_length = props.stack_length;
 	}
-	get length(): number {
+	public get length(): number {
 		return this.$stack.size;
 	}
 

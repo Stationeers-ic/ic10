@@ -11,7 +11,7 @@ export class Item {
 		public count: number = 1,
 	) {}
 
-	setProp(prop: number | string, value: number): void {
+	public setProp(prop: number | string, value: number): void {
 		// Тройная проверка: распознаём по ключу, либо по значению
 		let propCode: number | undefined;
 		if (LogicSlot.hasKey(prop)) {
@@ -26,7 +26,7 @@ export class Item {
 		// иначе игнорируем неизвестную пропертy (или можно выбросить исключение)
 	}
 
-	getProp(prop: number | string): number {
+	public getProp(prop: number | string): number {
 		let propCode: number | undefined;
 		if (LogicSlot.hasKey(prop)) {
 			const code = LogicSlot.getByKey(prop);
@@ -57,7 +57,7 @@ export class Slot {
 		});
 	}
 
-	getProp(prop: number | string): number {
+	public getProp(prop: number | string): number {
 		if (this.ITEM === null) {
 			return 0;
 		}
@@ -135,11 +135,11 @@ export class DeviceSlots extends DeviceScope {
 		});
 	}
 
-	hasSlot(slotIndex: number): boolean {
+	public hasSlot(slotIndex: number): boolean {
 		return this.slots.has(slotIndex);
 	}
 
-	getSlot(slotIndex: number): Slot | undefined {
+	public getSlot(slotIndex: number): Slot | undefined {
 		return this.slots.get(slotIndex);
 	}
 }
