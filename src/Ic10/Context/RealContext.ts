@@ -393,6 +393,19 @@ abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotCo
 		const device = this.getDeviceByPin(devicePin);
 		return this.getDeviceSlotParameter(device, slot, prop, devicePin, "on pin");
 	}
+	override getBatchDeviceSlotParameterByHashAndName(
+		deviceHash: number,
+		deviceName: number,
+		slot: number,
+		prop: number,
+		mode: number,
+	): number {
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
+		const values = devices.map((device) =>
+			this.getDeviceSlotParameter(device, slot, prop, device.id, "on hash and name"),
+		);
+		return this.calculateBatchResult(values, mode);
+	}
 }
 
 // =============================================

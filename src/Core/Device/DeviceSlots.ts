@@ -10,7 +10,7 @@ export class ItemEntity {
 		public readonly hash: number,
 		count: number = 1,
 	) {
-		this._count = count;
+		this.count = count;
 	}
 
 	public get count(): number {

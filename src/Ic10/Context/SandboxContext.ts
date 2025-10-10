@@ -196,6 +196,13 @@ abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements 
 	override getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number {
 		return 0;
 	}
+	getBatchDeviceSlotParameterByHashAndName(
+		deviceHash: number,
+		deviceName: number,
+		slot: number,
+		prop: number,
+		mode: number,
+	): number {}
 }
 
 // =============================================

@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import * as process from "node:process";
 import { createRunner, expectExpectation, type InstructionLike, runInstructionTest } from "@tests/helpers";
+import { Random } from "exact-ic10-math";
 import { Ic10Error } from "@/Ic10/Errors/Errors";
 import { instructions } from "@/Ic10/Instruction";
 import type { InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction";
@@ -24,6 +25,7 @@ describe("Проверка каждой инструкции", () => {
 	// Запускаем тесты последовательно
 	for (const [testName, _instruction, testData] of testCases) {
 		test(testName, async () => {
+			Random.resetGlobalRandom(0);
 			// console.time(`🚀 Запуск теста: ${testName}`);
 			// Предыдущие тесты использовали длину регистра 18 — сохраним это поведение
 			const runner = createRunner(testData.code, { register_length: 18 });
