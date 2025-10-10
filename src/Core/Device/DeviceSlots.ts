@@ -13,10 +13,10 @@ export class ItemEntity {
 		this._count = count;
 	}
 
-	get count(): number {
+	public get count(): number {
 		return this._count;
 	}
-	set count(value: number) {
+	public set count(value: number) {
 		if (value >= 0) {
 			this._count = value;
 			this.setProp("Quantity", value);
