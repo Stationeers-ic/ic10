@@ -1,5 +1,6 @@
 import type { LogicBatchMethodType, LogicConstType } from "@/Defines/data";
 import { StructureConsole } from "@/Devices/StructureConsole";
+import { HashString } from "@/helpers";
 import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
 import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
@@ -477,14 +478,68 @@ export class LsInstruction extends Instruction {
 		}
 	}
 }
+export class lbnInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		const name = new HashString("a1");
+
+		const d1 = new StructureConsole({ name: "a1" });
+		d1.props.forceWrite("Setting", 4);
+		const d2 = new StructureConsole({ name: "a1" });
+		d2.props.forceWrite("Setting", 6);
+		const d3 = new StructureConsole({ name: "a2" });
+		d3.props.forceWrite("Setting", 6);
+
+		const devices = [
+			{ id: 1, device: d1 },
+			{ id: 2, device: d2 },
+			{ id: 3, device: d3 },
+		];
+
+		const values = [4, 6];
+		const sum = values[0] + values[1];
+		const max = Math.max(...values);
+		const min = Math.min(...values);
+		const avg = sum / values.length;
+
+		const makeTest = (register: number, operation: string, expectedValue: number): InstructionTestData => ({
+			devices,
+			code: [`lbn r${register} 235638270 HASH("a1") Setting ${operation}`],
+			expected: [{ type: "register", register, value: expectedValue }],
+		});
+
+		return [
+			makeTest(0, "Sum", sum),
+			makeTest(0, "Maximum", max),
+			makeTest(0, "Minimum", min),
+			makeTest(3, "Average", avg),
+		];
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.anyNumber("deviceHash"),
+			ArgumentCalculators.anyNumber("deviceName"),
+			ArgumentCalculators.logic("logic"),
+			ArgumentCalculators.logicBatchMethod("mode"),
+		];
+	}
+
+	override run(): void {
+		const result = this.getArgumentValue<number>("result");
+		const deviceHash = this.getArgumentValue<number>("deviceHash");
+		const deviceName = this.getArgumentValue<number>("deviceName");
+		const logic = this.getArgumentValue<number>("logic");
+		const mode = this.getArgumentValue<number>("mode");
+
+		const value = this.context.deviceBatchReadByHashAndName(deviceHash, deviceName, logic, mode);
+
+		this.context.setRegister(result, value);
+	}
+}
 
 /**
  * 
- 	ls: {
-		name: "ls",
-		description: "Loads slot LogicSlotType on device to register.",
-		example: "ls r? device(d?|r?|id) slotIndex logicSlotType",
-	},
 lbn: {
 		description:
 			"Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",

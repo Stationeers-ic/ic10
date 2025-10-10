@@ -119,25 +119,118 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 }
 
 // =============================================
-// Класс для работы с устройствами по пинам
+// Вспомогательные методы для работы с устройствами
 // =============================================
 
-abstract class DevicesByPinBase extends MemoryBase implements IDevicesByPinContext {
-	protected getDeviceByPin(pin: number): Device | undefined {
-		if (pin < 0) {
-			return this.housing;
-		} else {
-			const deivice = this.housing.getConnectedDevices(pin);
-			if (deivice) {
-				return deivice;
+abstract class DeviceHelpers extends MemoryBase {
+	protected createDeviceNotFoundError(identifier: string | number, type: string): RuntimeIc10Error {
+		return new RuntimeIc10Error({
+			message: `Device ${type} ${identifier} not found`,
+			line: this.getNextLineIndex(),
+			severity: ErrorSeverity.Strong,
+		});
+	}
+
+	protected createNoSlotsError(identifier: string | number, type: string): RuntimeIc10Error {
+		return new RuntimeIc10Error({
+			message: `Device ${type} ${identifier} has no slots`,
+			line: this.getNextLineIndex(),
+			severity: ErrorSeverity.Strong,
+		});
+	}
+
+	protected clearDeviceStack(device: Device | undefined): void {
+		if (device?.memory) {
+			device.memory.reset();
+		}
+	}
+
+	protected getDeviceStack(device: Device | undefined, index: number): number {
+		if (device?.memory) {
+			return device.memory.get(index);
+		}
+		return 0;
+	}
+
+	protected setDeviceStack(device: Device | undefined, index: number, value: number): void {
+		if (device?.memory) {
+			device.memory.set(index, value);
+		}
+	}
+
+	protected getDeviceParameter(device: Device | undefined, prop: number): number {
+		if (device?.props) {
+			return device.props.read(prop);
+		}
+		return 0;
+	}
+
+	protected setDeviceParameter(device: Device | undefined, prop: number, value: number): void {
+		if (device?.props) {
+			device.props.write(prop, value);
+		}
+	}
+
+	protected getDeviceSlotParameter(
+		device: Device | undefined,
+		slot: number,
+		prop: number,
+		identifier: string | number,
+		type: string,
+	): number {
+		if (device) {
+			if (!device.hasSlots) {
+				this.addError(this.createNoSlotsError(identifier, type));
+				return 0;
 			}
+			return device.slots.getSlot(slot).getProp(prop);
+		}
+		return 0;
+	}
+
+	protected calculateBatchResult(values: number[], mode: number): number {
+		if (values.length === 0) return 0;
+
+		if (!LogicBatchMethod.hasValue(mode)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: `Device on pin ${pin} not found`,
+					message: `Invalid mode ${mode}`,
 					line: this.getNextLineIndex(),
 					severity: ErrorSeverity.Strong,
 				}),
 			);
+			return 0;
+		}
+
+		switch (LogicBatchMethod.getByValue(mode)) {
+			case "Average":
+				return values.reduce((a, b) => a + b) / values.length;
+			case "Maximum":
+				return Math.max(...values);
+			case "Minimum":
+				return Math.min(...values);
+			case "Sum":
+				return values.reduce((a, b) => a + b);
+			default:
+				return 0;
+		}
+	}
+}
+
+// =============================================
+// Класс для работы с устройствами по пинам
+// =============================================
+
+abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinContext {
+	protected getDeviceByPin(pin: number): Device | undefined {
+		if (pin < 0) {
+			return this.housing;
+		} else {
+			const device = this.housing.getConnectedDevices(pin);
+			if (device) {
+				return device;
+			}
+			this.addError(this.createDeviceNotFoundError(pin, "on pin"));
 		}
 	}
 
@@ -149,63 +242,43 @@ abstract class DevicesByPinBase extends MemoryBase implements IDevicesByPinConte
 	}
 
 	override getDeviceParameterByPin(pin: number, prop: number): number {
-		const device = this.getDeviceByPin(pin);
-		if (device) {
-			return device.props.read(prop);
-		}
-		return 0;
+		return this.getDeviceParameter(this.getDeviceByPin(pin), prop);
 	}
 
 	override setDeviceParameterByPin(pin: number, prop: number, value: number): void {
-		const device = this.getDeviceByPin(pin);
-		if (device) {
-			device.props.write(prop, value);
-		}
+		this.setDeviceParameter(this.getDeviceByPin(pin), prop, value);
 	}
 
 	override clearDeviceStackByPin(pin: number): void {
-		const device = this.getDeviceByPin(pin);
-		if (device) {
-			if (device.memory) {
-				device.memory.reset();
-			}
-		}
+		this.clearDeviceStack(this.getDeviceByPin(pin));
 	}
 
 	override getDeviceStackByPin(pin: number, index: number): number {
-		const device = this.getDeviceByPin(pin);
-		if (device) {
-			if (device.memory) {
-				return device.memory.get(index);
-			}
-		}
-		return 0;
+		return this.getDeviceStack(this.getDeviceByPin(pin), index);
 	}
 
 	override setDeviceStackByPin(pin: number, index: number, value: number): void {
-		const device = this.getDeviceByPin(pin);
-		if (device) {
-			if (device.memory) {
-				device.memory.set(index, value);
-			}
-		}
+		this.setDeviceStack(this.getDeviceByPin(pin), index, value);
 	}
+
 	override canLoadDeviceParameterByPin(pin: number, prop: number): boolean {
 		const device = this.getDeviceByPin(pin);
-		return device.props.canLoad(prop);
+		return device?.props.canLoad(prop) ?? false;
 	}
+
 	override canStoreDeviceParameterByPin(pin: number, prop: number): boolean {
 		const device = this.getDeviceByPin(pin);
-		return device.props.canStore(prop);
+		return device?.props.canStore(prop) ?? false;
 	}
 
 	override getDevicePortChanelByPin(pin: number, port: number, chanel: number): number {
 		const device = this.getDeviceByPin(pin);
-		return device.ports.getPortChanel(port, chanel);
+		return device?.ports.getPortChanel(port, chanel) ?? 0;
 	}
+
 	override setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void {
 		const device = this.getDeviceByPin(pin);
-		device.ports.setPortChanel(port, chanel, value);
+		device?.ports.setPortChanel(port, chanel, value);
 	}
 }
 
@@ -235,154 +308,90 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 
 abstract class DevicesByHashBase extends StackBase implements IDevicesByHashContext {
 	override deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number {
-		if (!LogicBatchMethod.hasValue(mode)) {
-			this.addError(
-				new RuntimeIc10Error({
-					message: `Invalid mode ${mode}`,
-					line: this.getNextLineIndex(),
-					severity: ErrorSeverity.Strong,
-				}),
-			);
-			return;
-		}
-		const device = this.housing.network.devicesByHash(deviceHash);
-		const values = device.map((device) => device.props.read(prop));
-		switch (LogicBatchMethod.getByValue(mode)) {
-			case "Average":
-				if (values.length > 0) {
-					return values.reduce((a, b) => a + b) / values.length;
-				}
-				break;
-			case "Maximum":
-				if (values.length > 0) {
-					return Math.max(...values);
-				}
-				break;
-			case "Minimum":
-				if (values.length > 0) {
-					return Math.min(...values);
-				}
-				break;
-			case "Sum":
-				if (values.length > 0) {
-					return values.reduce((a, b) => a + b);
-				}
-				break;
-		}
-		return 0;
+		const devices = this.housing.network.devicesByHash(deviceHash);
+		const values = devices.map((device) => device.props.read(prop));
+		return this.calculateBatchResult(values, mode);
 	}
 
 	override deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void {
-		throw new Error("Method not implemented.");
+		const devices = this.housing.network.devicesByHash(deviceHash);
+		devices.forEach((device) => device.props.write(prop, value));
 	}
 
 	override deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number {
-		throw new Error("Method not implemented.");
+		const devices = this.housing.network.devicesByHash(deviceHash);
+		const values = devices
+			.filter((device) => device.hasSlots)
+			.map((device) => device.slots.getSlot(slot).getProp(param));
+		return this.calculateBatchResult(values, mode);
 	}
 }
 
 abstract class DevicesByHashAndNameBase extends DevicesByHashBase implements IDevicesByHashAndNameContext {
+	protected getDevicesByHashAndName(deviceHash: number, deviceName: number): Device[] {
+		return this.housing.network.devices
+			.entries()
+			.map(([, device]) => device)
+			.toArray()
+			.filter((device) => device.hash === deviceHash && device.name.valueOf() === deviceName);
+	}
+
 	override deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number {
-		throw new Error("Method not implemented.");
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
+		const values = devices.map((device) => device.props.read(param));
+		return this.calculateBatchResult(values, mode);
 	}
 
 	override deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void {
-		throw new Error("Method not implemented.");
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
+		devices.forEach((device) => device.props.write(param, value));
 	}
 }
 
 abstract class DevicesByIdBase extends DevicesByHashAndNameBase implements IDevicesByIdContext {
 	override isConnectDeviceById(id: number): boolean {
-		const deivice = this.housing.network.deviceById(id);
-		return typeof deivice !== "undefined";
+		const device = this.housing.network.deviceById(id);
+		return typeof device !== "undefined";
 	}
 
 	protected getDeviceById(id: number): Device | undefined {
-		const deivice = this.housing.network.deviceById(id);
-		if (deivice) {
-			return deivice;
+		const device = this.housing.network.deviceById(id);
+		if (device) {
+			return device;
 		}
-		this.addError(
-			new RuntimeIc10Error({
-				message: `Device with id ${id} not found`,
-				line: this.getNextLineIndex(),
-				severity: ErrorSeverity.Strong,
-			}),
-		);
+		this.addError(this.createDeviceNotFoundError(id, "with id"));
 	}
 
 	override clearDeviceStackById(id: number): void {
-		const device = this.getDeviceById(id);
-		if (device) {
-			if (device.memory) {
-				device.memory.reset();
-			}
-		}
+		this.clearDeviceStack(this.getDeviceById(id));
 	}
+
 	override getDeviceStackById(id: number, index: number): number {
-		const device = this.getDeviceById(id);
-		if (device) {
-			if (device.memory) {
-				return device.memory.get(index);
-			}
-		}
+		return this.getDeviceStack(this.getDeviceById(id), index);
 	}
-	override setDeviceStackById(id: number, index: number, value): void {
-		const device = this.getDeviceById(id);
-		if (device) {
-			if (device.memory) {
-				device.memory.set(index, value);
-			}
-		}
+
+	override setDeviceStackById(id: number, index: number, value: number): void {
+		this.setDeviceStack(this.getDeviceById(id), index, value);
 	}
+
 	override getDeviceParameterById(id: number, prop: number): number {
-		const device = this.getDeviceById(id);
-		if (device) {
-			if (device.props) {
-				return device.props.read(prop);
-			}
-		}
+		return this.getDeviceParameter(this.getDeviceById(id), prop);
 	}
+
 	override setDeviceParameterById(id: number, prop: number, value: number): void {
-		const device = this.getDeviceById(id);
-		if (device) {
-			if (device.props) {
-				device.props.write(prop, value);
-			}
-		}
+		this.setDeviceParameter(this.getDeviceById(id), prop, value);
 	}
 }
 
 abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotContext {
 	override getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number {
-		const deivice = this.getDeviceById(deviceId);
-		if (deivice) {
-			if (!deivice.hasSlots) {
-				this.addError(
-					new RuntimeIc10Error({
-						message: `Device with id ${deviceId} has no slots`,
-						line: this.getNextLineIndex(),
-						severity: ErrorSeverity.Strong,
-					}),
-				);
-			}
-			return deivice.slots.getSlot(slot).getProp(prop);
-		}
+		const device = this.getDeviceById(deviceId);
+		return this.getDeviceSlotParameter(device, slot, prop, deviceId, "with id");
 	}
+
 	override getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number {
-		const deivice = this.getDeviceByPin(devicePin);
-		if (deivice) {
-			if (!deivice.hasSlots) {
-				this.addError(
-					new RuntimeIc10Error({
-						message: `Device on pin ${devicePin} has no slots`,
-						line: this.getNextLineIndex(),
-						severity: ErrorSeverity.Strong,
-					}),
-				);
-			}
-			return deivice.slots.getSlot(slot).getProp(prop);
-		}
+		const device = this.getDeviceByPin(devicePin);
+		return this.getDeviceSlotParameter(device, slot, prop, devicePin, "on pin");
 	}
 }
 

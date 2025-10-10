@@ -65,6 +65,7 @@
 				"jr",
 				"l",
 				"lb",
+				"lbn",
 				"lerp",
 				"log",
 				"ls",
