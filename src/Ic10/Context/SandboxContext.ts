@@ -202,7 +202,9 @@ abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements 
 		slot: number,
 		prop: number,
 		mode: number,
-	): number {}
+	): number {
+		return 0;
+	}
 }
 
 // =============================================
