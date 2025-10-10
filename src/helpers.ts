@@ -101,6 +101,6 @@ export class HashString {
 	}
 
 	valueOf() {
-		this.hash;
+		return this.hash;
 	}
 }
