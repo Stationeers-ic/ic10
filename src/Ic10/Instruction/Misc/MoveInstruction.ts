@@ -14,18 +14,28 @@ export class MoveInstruction extends Instruction {
 			},
 			{
 				title: "const",
-				code: "move r1 Color.Green",
-				expected: [{ type: "register", register: 1, value: 2 }],
+				code: "move r2 Color.Green",
+				expected: [{ type: "register", register: 2, value: 2 }],
 			},
 			{
 				title: "hash",
-				code: `move r1 HASH("test")`,
-				expected: [{ type: "register", register: 1, value: -662733300 }],
+				code: `move r3 HASH("test")`,
+				expected: [{ type: "register", register: 3, value: -662733300 }],
 			},
 			{
 				title: "set label",
-				code: "\nmove r0 label\n\nlabel:",
-				expected: [{ type: "register", register: 0, value: 3 }],
+				code: "\nmove r4 label\n\nlabel:",
+				expected: [{ type: "register", register: 4, value: 3 }],
+			},
+			{
+				title: "set hex",
+				code: "move r5 $f",
+				expected: [{ type: "register", register: 5, value: 15 }],
+			},
+			{
+				title: "set bin",
+				code: "move r5 %101",
+				expected: [{ type: "register", register: 5, value: 5 }],
 			},
 		];
 	}
