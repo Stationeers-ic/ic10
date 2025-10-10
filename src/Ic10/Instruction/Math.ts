@@ -386,21 +386,21 @@ export class RandInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		Random.resetGlobalRandom(0);
 		return [
-			// {
-			// 	title: "Random with linenumber Seed #1",
-			// 	code: "rand r0",
-			// 	expected: [{ type: "register", register: 0, value: 0.11109568602922172 }],
-			// },
+			{
+				title: "Random with linenumber Seed #1",
+				code: "rand r0",
+				expected: [{ type: "register", register: 0, value: 0.7009663971611142 }],
+			},
 			{
 				title: "Random with custom seed #1",
 				code: "rand r1 #seed:999",
 				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
 			},
-			// {
-			// 	title: "Random with linenumber Seed #2",
-			// 	code: "rand r2",
-			// 	expected: [{ type: "register", register: 2, value: 0.4913920841605366 }],
-			// },
+			{
+				title: "Random with linenumber Seed #2",
+				code: "rand r2",
+				expected: [{ type: "register", register: 2, value: 0.4445681979155951 }],
+			},
 			{
 				title: "Random with custom seed #2",
 				code: "rand r3 # any comment seed:999",
