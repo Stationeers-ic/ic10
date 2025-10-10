@@ -3,7 +3,7 @@ import { LogicSlot } from "@/Defines/data";
 import type { SlotsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
 
-export class Item {
+export class ItemEntity {
 	#propertiesRaw: Map<number, number> = new Map();
 
 	constructor(
@@ -42,7 +42,7 @@ export class Item {
 }
 
 export class Slot {
-	private ITEM: Item | null = null;
+	private ITEM: ItemEntity | null = null;
 	private logicNameToCode = new BiMap<string, number>();
 
 	constructor(public slot: SlotsType[number]) {
@@ -81,7 +81,7 @@ export class Slot {
 		}
 	}
 
-	public putItem(item: Item): void {
+	public putItem(item: ItemEntity): void {
 		if (this.ITEM !== null) {
 			throw new Error("Slot is not empty");
 		}
