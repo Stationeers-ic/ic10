@@ -14,7 +14,7 @@
 		"dist"
 	],
 	"scripts": {
-		"prepare": "husky",
+		"prepare": "husky || exit 0",
 		"generate-index": "bun tools/generate-index.ts && bun run fix",
 		"generate-intruction-index": "bun tools/generate-intruction-index.ts && bun run fix",
 		"generate-device": "bun tools/generate-devices.ts && bun run fix",
@@ -41,9 +41,9 @@
 		"@biomejs/biome": "2.2.5",
 		"@types/babel__generator": "^7.27.0",
 		"@types/babel__traverse": "^7.28.0",
-		"@types/bun": "^1.2.23",
+		"@types/bun": "^1.3.0",
 		"@types/cli-progress": "^3.11.6",
-		"@types/node": "^24.7.1",
+		"@types/node": "^24.7.2",
 		"axios": "^1.12.2",
 		"cli-progress": "^3.12.0",
 		"glob": "^11.0.3",
@@ -55,7 +55,7 @@
 		"@valibot/to-json-schema": "^1.3.0"
 	},
 	"peerDependencies": {
-		"typescript": "^5.8.2"
+		"typescript": "^5.9.3"
 	},
 	"dependencies": {
 		"crc-32": "^1.2.2",
