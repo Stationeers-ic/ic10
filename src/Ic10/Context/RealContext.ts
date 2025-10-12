@@ -134,7 +134,7 @@ abstract class DeviceHelpers extends MemoryBase {
 
 	protected createNoSlotsError(identifier: string | number, type: string): RuntimeIc10Error {
 		return new RuntimeIc10Error({
-			message: i18next.t("error.device_no_slots", { identifier, type }),
+			message: i18next.t("error.device_no_slots"),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
 		});

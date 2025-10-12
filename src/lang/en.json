@@ -3,9 +3,13 @@
 		"ra_not_found": "RA not found",
 		"register_not_found": "Register {{reg}} not found",
 		"device_not_found": "Device {{type}} {{identifier}} not found",
-		"device_no_slots": "Device {{type}} {{identifier}} has no slots",
 		"invalid_mode": "Invalid mode {{mode}}",
 		"unknown_instruction": "Unknown instruction: {{instruction}}",
-		"math_operation_failed": "Math operation {{operation}} resulted in null"
+		"math_operation_failed": "Math operation {{operation}} resulted in null",
+		"device_not_found_by_hash": "Device with hash {{hash}} not found",
+		"device_no_props": "Device has no props",
+		"device_no_reagents": "Device has no reagents",
+		"device_no_memory": "Device has no memory",
+		"device_no_slots": "Device has no slots"
 	}
 }

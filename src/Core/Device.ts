@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { v4 as uuidv4 } from "uuid";
 import { DevicePorts } from "@/Core//Device/DevicePorts";
 import { DeviceError } from "@/Core/Device/DeviceError";
@@ -78,7 +79,7 @@ export abstract class Device {
 		if (this.rawData === undefined) {
 			this.$errors.add(
 				new Ic10Error({
-					message: `Device with hash ${hash} not found`,
+					message: i18next.t("error.device_not_found_by_hash", { hash }),
 					severity: ErrorSeverity.Weak,
 				}),
 			);
@@ -118,7 +119,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: `Device has no props`,
+				message: i18next.t("error.device_no_props"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
@@ -135,12 +136,13 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: `Device has no reagents`,
+				message: i18next.t("error.device_no_reagents"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
 		return undefined;
 	}
+
 	get hasReagents(): boolean {
 		return this.$reagents !== undefined;
 	}
@@ -151,12 +153,13 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: `Device has no memory`,
+				message: i18next.t("error.device_no_memory"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
 		return undefined;
 	}
+
 	get hasMemory(): boolean {
 		return this.$memory !== undefined;
 	}
@@ -167,7 +170,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: `Device has no memory`,
+				message: i18next.t("error.device_no_slots"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
