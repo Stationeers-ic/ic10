@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";
@@ -91,7 +92,7 @@ export class Ic10Runner {
 		if (this.context.getJumpsCount() > this.jumpLimit) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: "jump limit exceeded",
+					message: i18next.t("error.jump_limit_exceeded"),
 					line: currentLineIndex,
 					severity: ErrorSeverity.Critical,
 				}),
@@ -108,7 +109,7 @@ export class Ic10Runner {
 		if (typeof line === "undefined") {
 			this.addError(
 				new RuntimeIc10Error({
-					message: "Line not found",
+					message: i18next.t("error.line_not_found"),
 					line: currentLineIndex,
 					severity: ErrorSeverity.Critical,
 				}),
@@ -186,7 +187,7 @@ export class Ic10Runner {
 					}
 					this.addError(
 						new FatalIc10Error({
-							message: `Unknown line`,
+							message: i18next.t("error.unknown_line"),
 							severity: ErrorSeverity.Strong,
 							context: this.context,
 							line: position,

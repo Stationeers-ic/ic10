@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { Context } from "@/Ic10/Context/Context";
 import type { Ic10Error } from "@/Ic10/Errors/Errors";
 
@@ -44,7 +45,7 @@ export class ContextSwitcher<T extends string | number | symbol = contextNames> 
 		if (isContextTypeConstructor<T>(name, this.contexts)) {
 			return this.contexts[name];
 		}
-		throw new Error(`Context "${name.toString()}" not found`);
+		throw new Error(i18next.t("error.context_not_found", { name: name.toString() }));
 	}
 
 	switchContext(name: string) {
@@ -52,7 +53,7 @@ export class ContextSwitcher<T extends string | number | symbol = contextNames> 
 			this.currentContext = name;
 			return this;
 		}
-		throw new Error(`Context ${name} not found`);
+		throw new Error(i18next.t("error.context_not_found", { name: name.toString() }));
 	}
 
 	/**
