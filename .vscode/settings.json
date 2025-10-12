@@ -30,5 +30,11 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"yaml.schemas": {
 		"./src/Schemas/env.schema.json": "*.ic.yml"
+	},
+	"[js,ts,josn,jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
 	}
 }
