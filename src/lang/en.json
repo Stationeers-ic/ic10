@@ -32,6 +32,11 @@
 		"port_not_found": "Port not found",
 		"cannot_connect_network_to_port": "Cannot connect network {{networkType}} to port {{portName}}",
 		"port_index_not_found": "Port index {{index}} not found in device {{hash}}",
-		"no_network_for_port": "No network for port {{port}} in device {{hash}}"
+		"no_network_for_port": "No network for port {{port}} in device {{hash}}",
+		"alias_already_defined": "{{alias}} is already defined",
+		"argument_must_be_register_or_device": "Argument 1 must be a register or device",
+		"register_not_found_in_context": "{{register}} register not found",
+		"constant_already_defined": "{{constant}} is already defined",
+		"value_must_be_number": "Must be number"
 	}
 }

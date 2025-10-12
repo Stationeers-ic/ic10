@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { ErrorSeverity, RuntimeIc10Error, TypeIc10Error } from "@/Ic10/Errors/Errors";
 import {
 	getRegister,
@@ -25,7 +26,7 @@ export class AliasInstruction extends Instruction {
 						// если значение это строка значит это alias и его можно переопределить
 						this.addError(
 							new RuntimeIc10Error({
-								message: `${t} is already defined`,
+								message: i18next.t("error.alias_already_defined", { alias: t }),
 								severity:
 									v.type === "alias"
 										? ErrorSeverity.Weak
@@ -55,7 +56,7 @@ export class AliasInstruction extends Instruction {
 					) {
 						this.addError(
 							new TypeIc10Error({
-								message: `Argument 1 must be a register or device`,
+								message: i18next.t("error.argument_must_be_register_or_device"),
 							}),
 							argument,
 						);
@@ -65,7 +66,7 @@ export class AliasInstruction extends Instruction {
 						if (r === false) {
 							this.addError(
 								new RuntimeIc10Error({
-									message: `${t} register not found`,
+									message: i18next.t("error.register_not_found_in_context", { register: t }),
 								}),
 								argument,
 							);
