@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { Chip } from "@/Core/Chip";
 import { Device, type DeviceConstructor } from "@/Core/Device";
 import { Ic10Error } from "@/Ic10/Errors/Errors";
@@ -35,7 +36,7 @@ export class Housing extends Device {
 		if (device.network.id !== this.network.id) {
 			this.$errors.add(
 				new Ic10Error({
-					message: `Cannot connect device because they are not on the same network`,
+					message: i18next.t("error:cannot_connect_different_networks"),
 				}),
 			);
 			return;
@@ -43,7 +44,7 @@ export class Housing extends Device {
 		if (pin > this.pin_count) {
 			this.$errors.add(
 				new Ic10Error({
-					message: `Cannot connect device because pin ${pin} is out of range`,
+					message: i18next.t("error:pin_out_of_range", { pin }),
 				}),
 			);
 			return;

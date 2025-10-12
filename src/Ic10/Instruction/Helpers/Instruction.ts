@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { Device } from "@/Core/Device";
 import type { Context } from "@/Ic10/Context/Context";
 import { ArgumentIc10Error, ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors";
@@ -50,6 +51,7 @@ export type InstructionTestExpectedStack = {
 	/** Ожидаемое значение регистра после выполнения */
 	value: number;
 };
+
 /** Ожидание параметра устройства */
 export type InstructionTestExpectedDevice = {
 	type: "device";
@@ -60,6 +62,7 @@ export type InstructionTestExpectedDevice = {
 	/** Ожидаемое значение параметра после выполнения */
 	value: number;
 };
+
 /** Ожидание индекса следующей строки (поток выполнения) */
 export type InstructionTestExpectedLoop = {
 	type: "loop";
@@ -153,7 +156,10 @@ export abstract class Instruction {
 		if (this.args.length !== rules.length) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: `Invalid count of arguments: ${this.args.length} (expected: ${rules.length})`,
+					message: i18next.t("error:invalid_argument_count", {
+						actual: this.args.length,
+						expected: rules.length,
+					}),
 					severity: ErrorSeverity.Strong,
 				}).setLine(this.line),
 			);
@@ -219,7 +225,7 @@ export abstract class Instruction {
 			if (index === -1) {
 				this.context.addError(
 					new ArgumentIc10Error({
-						message: `Invalid argument name: ${indexOrName}`,
+						message: i18next.t("error:missing_argument", { name: indexOrName }),
 						severity: ErrorSeverity.Strong,
 					}).setLine(this.line),
 				);
@@ -232,7 +238,9 @@ export abstract class Instruction {
 		if (typeof this.args[index] === "undefined") {
 			// Сообщение адаптируем в зависимости от того, было ли передано имя или индекс
 			const msg =
-				typeof indexOrName === "string" ? `Missing argument: ${indexOrName}` : `Missing argument index: ${index}`;
+				typeof indexOrName === "string"
+					? i18next.t("error:missing_argument", { name: indexOrName })
+					: i18next.t("error:missing_argument_index", { index });
 			this.context.addError(
 				new ArgumentIc10Error({
 					message: msg,
@@ -248,8 +256,8 @@ export abstract class Instruction {
 				new ArgumentIc10Error({
 					message:
 						typeof indexOrName === "string"
-							? `Invalid argument name: ${indexOrName}`
-							: `Invalid argument index: ${index}`,
+							? i18next.t("error.missing_argument_name", { name: indexOrName })
+							: i18next.t("error.missing_argument_index", { index }),
 					severity: ErrorSeverity.Strong,
 				})
 					.setLine(this.line)

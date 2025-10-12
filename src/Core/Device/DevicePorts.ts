@@ -1,7 +1,9 @@
+import i18next from "i18next";
 import { DeviceScope } from "@/Core/Device/DeviceScope";
 import type { Network, NetworkType } from "@/Core/Network";
 import type { ConnectionsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
+
 export type PortType = Extract<ConnectionsType[keyof ConnectionsType], string>;
 export type PortEntry = {
 	port: PortType;
@@ -10,6 +12,7 @@ export type PortEntry = {
 	isDefault: boolean;
 };
 export type PortIterator = IterableIterator<PortEntry>;
+
 export class DevicePorts extends DeviceScope {
 	private portIndices: BiMap<PortType, number>;
 	private portNetworks: Map<PortType, Network> = new Map();
@@ -82,12 +85,18 @@ export class DevicePorts extends DeviceScope {
 
 	public setNetwork(port: number, network: Network): void {
 		if (!this.portIndices.hasValue(port)) {
-			throw new Error("Port not found");
+			throw new Error(i18next.t("error:port_not_found"));
 		}
-		if (!this.canConnect(network.type, this.portIndices.getByValue(port))) {
-			throw new Error(`Cannot connect network ${network.type} to port ${this.portIndices.getByValue(port)}`);
+		const portName = this.portIndices.getByValue(port);
+		if (!this.canConnect(network.type, portName)) {
+			throw new Error(
+				i18next.t("error:cannot_connect_network_to_port", {
+					networkType: network.type,
+					portName,
+				}),
+			);
 		}
-		this.portNetworks.set(this.portIndices.getByValue(port), network);
+		this.portNetworks.set(portName, network);
 	}
 
 	public getNetwork(portOrindex: PortType | number | undefined = undefined): Network {
@@ -96,7 +105,12 @@ export class DevicePorts extends DeviceScope {
 			port = this.portIndices.getByValue(this.getDefaultPortIndex());
 		} else if (typeof portOrindex === "number") {
 			if (!this.portIndices.hasValue(portOrindex)) {
-				throw new Error(`Port index ${portOrindex} not found in device ${this.scope.hash}`);
+				throw new Error(
+					i18next.t("error:port_index_not_found", {
+						index: portOrindex,
+						hash: this.scope.hash,
+					}),
+				);
 			}
 			port = this.portIndices.getByValue(portOrindex);
 		} else {
@@ -105,7 +119,12 @@ export class DevicePorts extends DeviceScope {
 		if (this.portNetworks.has(port)) {
 			return this.portNetworks.get(port);
 		}
-		throw new Error(`No network for port ${port} in device ${this.scope.hash}`);
+		throw new Error(
+			i18next.t("error:no_network_for_port", {
+				port,
+				hash: this.scope.hash,
+			}),
+		);
 	}
 
 	/**
