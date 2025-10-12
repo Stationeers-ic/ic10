@@ -462,7 +462,7 @@ export class LsInstruction extends Instruction {
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: `Cannot load device slot ${slotIndex} from port ${device.port} with pin ${device.pin}`,
+					message: "You can`t use chanels in this instruction",
 				}).setArgument(this.args[1]),
 			);
 			return;
@@ -645,21 +645,48 @@ export class LbsInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.anyNumber("deviceHash"),
+			ArgumentCalculators.deviceHash("deviceHash"),
 			ArgumentCalculators.anyNumber("slotIndex"),
 			ArgumentCalculators.logicSlot("logic"),
 			ArgumentCalculators.logicBatchMethod("mode"),
 		];
 	}
 }
+
+export class LrInstruction extends Instruction {
+	public run(): void | Promise<void> {
+		const result = this.getArgumentValue<number>("result");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
+		const reagentMode = this.getArgumentValue<number>("reagentMode");
+		const reagent = this.getArgumentValue<number>("reagent");
+
+		if (device.pin !== undefined && device.port !== undefined) {
+			this.context.addError(
+				new ArgumentIc10Error({
+					message: "You can`t use chanels in this instruction",
+				}).setArgument(this.args[1]),
+			);
+			return;
+		}
+		if (device.pin !== undefined) {
+			return;
+		}
+		if (device.id !== undefined) {
+		}
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePinOrId("device"),
+			ArgumentCalculators.logicReagentMode("reagentMode"),
+			ArgumentCalculators.reagentHash("reagent"),
+		];
+	}
+}
+
 /**
  * 
-	lbs: {
-		description:
-			"Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
-		example: "lbs r? deviceHash slotIndex logicSlotType batchMode",
-		name: "lbs",
-	},
 	lr: {
 		name: "lr",
 		description:

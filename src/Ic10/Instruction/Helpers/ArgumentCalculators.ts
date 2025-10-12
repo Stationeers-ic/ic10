@@ -1,4 +1,4 @@
-import { LogicBatchMethod, LogicSlot, Logics } from "@/Defines/data";
+import { Devices, LogicBatchMethod, LogicReagentMode, LogicSlot, Logics, Reagents } from "@/Defines/data";
 import type { Context } from "@/Ic10/Context/Context";
 import { ErrorSeverity, TypeIc10Error } from "@/Ic10/Errors/Errors";
 import { getDevicePin, getRegister, parseArgumentAnyNumber } from "@/Ic10/Helpers/ArgumentParse";
@@ -7,8 +7,13 @@ import type { InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction
 
 // Вспомогательные функции для обработки ошибок и проверок
 const ErrorHandlers = {
-	handleError: (context: Context, argument: Argument, message: string) => {
-		context.addError(new TypeIc10Error({ message }).setArgument(argument));
+	handleError: (
+		context: Context,
+		argument: Argument,
+		message: string,
+		severity: ErrorSeverity = ErrorSeverity.Strong,
+	) => {
+		context.addError(new TypeIc10Error({ message, severity }).setArgument(argument));
 		return 0;
 	},
 
@@ -16,6 +21,7 @@ const ErrorHandlers = {
 		context: Context,
 		pin: number | [number, number],
 		argument: Argument,
+		severity: ErrorSeverity = ErrorSeverity.Strong,
 	): number | [number, number] => {
 		const pins = Array.isArray(pin) ? pin : [pin];
 
@@ -24,7 +30,7 @@ const ErrorHandlers = {
 				context.addError(
 					new TypeIc10Error({
 						message: `Device port ${pin} is not connected`,
-						severity: ErrorSeverity.Strong,
+						severity: severity,
 					}).setArgument(argument),
 				);
 				break;
@@ -183,6 +189,42 @@ const ValueCalculators = {
 
 		return ErrorHandlers.handleError(context, argument, "Invalid argument must be valid logic batch method");
 	},
+	calculateLogicReagentMode: (context: Context, argument: Argument) => {
+		if (LogicReagentMode.hasKey(argument.text)) {
+			return LogicReagentMode.getByKey(argument.text);
+		}
+
+		const method = parseInt(argument.text, 10);
+		if (!Number.isNaN(method)) {
+			return method;
+		}
+
+		return ErrorHandlers.handleError(context, argument, "Invalid argument must be valid logic reaagent mode");
+	},
+	calculateReagentHash: (context: Context, argument: Argument) => {
+		const value = parseArgumentAnyNumber(context, argument);
+		if (Reagents.hasKey(value)) {
+			return value;
+		}
+		return ErrorHandlers.handleError(
+			context,
+			argument,
+			"Invalid argument must be valid reagent Hash",
+			ErrorSeverity.Weak,
+		);
+	},
+	calculateDeviceHash: (context: Context, argument: Argument) => {
+		const value = parseArgumentAnyNumber(context, argument);
+		if (Devices.hasKey(value)) {
+			return value;
+		}
+		return ErrorHandlers.handleError(
+			context,
+			argument,
+			"Invalid argument must be valid device Hash",
+			ErrorSeverity.Weak,
+		);
+	},
 };
 
 /**
@@ -241,5 +283,21 @@ export const ArgumentCalculators = {
 		name,
 		...BaseConfigs.Enum,
 		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicBatchMethod(context, argument),
+	}),
+
+	logicReagentMode: (name?: string) => ({
+		name,
+		...BaseConfigs.Enum,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicReagentMode(context, argument),
+	}),
+	reagentHash: (name?: string) => ({
+		name,
+		...BaseConfigs.numberLike,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateReagentHash(context, argument),
+	}),
+	deviceHash: (name?: string) => ({
+		name,
+		...BaseConfigs.numberLike,
+		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDeviceHash(context, argument),
 	}),
 } satisfies { [key: string]: (name?: string) => InstructionArgument };
