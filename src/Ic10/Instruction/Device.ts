@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import type { LogicBatchMethodType, LogicConstType } from "@/Defines/data";
 import { StructureConsole } from "@/Devices/StructureConsole";
@@ -462,7 +463,7 @@ export class LsInstruction extends Instruction {
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: "You can`t use chanels in this instruction",
+					message: i18next.t("error.channels_not_allowed_in_instruction"),
 				}).setArgument(this.args[1]),
 			);
 			return;
@@ -663,7 +664,7 @@ export class LrInstruction extends Instruction {
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: "You can`t use chanels in this instruction",
+					message: i18next.t("error.channels_not_allowed_in_instruction"),
 				}).setArgument(this.args[1]),
 			);
 			return;
@@ -684,26 +685,3 @@ export class LrInstruction extends Instruction {
 		];
 	}
 }
-
-/**
- * 
-	lr: {
-		name: "lr",
-		description:
-			"Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number.",
-		example: "lr r? device(d?|r?|id) reagentMode int",
-	},
-
-	sb: {
-		name: "sb",
-		description:
-			"Stores register value to LogicType on all output network devices with provided type hash.",
-		example: "sb deviceHash logicType r?",
-	},
-	lb: {
-		name: "lb",
-		description:
-			"Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number.",
-		example: "lb r? deviceHash logicType batchMode",
-	},
- */
