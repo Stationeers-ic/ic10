@@ -36,5 +36,9 @@
 	},
 	"[html]": {
 		"editor.defaultFormatter": "vscode.html-language-features"
-	}
+	},
+	"i18n-ally.localesPaths": ["src/lang"],
+	"i18n-ally.keystyle": "nested",
+	"i18n-ally.namespace": true,
+	"i18n-ally.functions": ["_", "i18next.t"]
 }
