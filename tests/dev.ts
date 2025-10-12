@@ -1,5 +1,9 @@
 import { createRunner } from "@tests/helpers";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
+import { setLanguage } from "@/i18n";
+import { en } from "@/lang";
+
+await setLanguage("en", en);
 
 const code = `
 move r0 99

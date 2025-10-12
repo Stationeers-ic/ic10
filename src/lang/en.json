@@ -1,1 +1,7 @@
-{}
+{
+	"Device_not_found": "Device {type} {identifier} not found",
+	"Device_has_no_slots": "Device {type} {identifier} has no slots",
+	"Register_not_found": "Register {reg} not found",
+	"RA_not_found": "RA not found",
+	"Invalid_mode": "Invalid mode {mode}"
+}

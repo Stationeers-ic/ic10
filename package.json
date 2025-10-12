@@ -60,6 +60,7 @@
 	"dependencies": {
 		"crc-32": "^1.2.2",
 		"exact-ic10-math": "^0.4.0",
+		"i18next": "^25.6.0",
 		"uuid": "^13.0.0",
 		"valibot": "^1.1.0",
 		"yaml": "^2.8.1"
