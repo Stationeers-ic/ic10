@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { LogicType } from "@/Core/Device";
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
 import { Logics } from "@/Defines/data";
@@ -48,7 +49,7 @@ export class DeviceProps extends DeviceScope {
 		if (logicCode === undefined) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} property ${prop} not found`,
+					message: i18next.t("error.device_property_not_found", { hash: this.scope.hash, prop }),
 					severity: ErrorSeverity.Warning,
 				}),
 			);
@@ -62,7 +63,10 @@ export class DeviceProps extends DeviceScope {
 			const logicName = this.logicNameToCode.getByValue(logicCode) ?? String(prop);
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to read ${logicName}`,
+					message: i18next.t("error.device_no_permission_to_read", {
+						hash: this.scope.hash,
+						logicName,
+					}),
 					severity: ErrorSeverity.Warning,
 				}),
 			);
@@ -75,7 +79,7 @@ export class DeviceProps extends DeviceScope {
 		if (logicCode === undefined) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} property ${prop} not found`,
+					message: i18next.t("error.device_property_not_found", { hash: this.scope.hash, prop }),
 					severity: ErrorSeverity.Strong,
 				}),
 			);
@@ -89,7 +93,10 @@ export class DeviceProps extends DeviceScope {
 			const logicName = this.logicNameToCode.getByValue(logicCode) ?? String(prop);
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} has not permission to write ${logicName}`,
+					message: i18next.t("error.device_no_permission_to_write", {
+						hash: this.scope.hash,
+						logicName,
+					}),
 					severity: ErrorSeverity.Strong,
 				}),
 			);
@@ -114,7 +121,7 @@ export class DeviceProps extends DeviceScope {
 	public forceWrite(prop: prop, value: number) {
 		const logicCode = this.resolveLogicCode(prop);
 		if (logicCode === undefined) {
-			throw new Error(`Logic ${prop} not found`);
+			throw new Error(i18next.t("error.logic_not_found_in_global", { prop }));
 		}
 		this.#propertiesRaw.set(logicCode, value);
 	}
@@ -128,7 +135,7 @@ export class DeviceProps extends DeviceScope {
 			// Устройство не найдено
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Device ${this.scope.hash} not found`,
+					message: i18next.t("error.device_not_found_in_init", { hash: this.scope.hash }),
 					severity: ErrorSeverity.Warning,
 				}),
 			);
@@ -158,7 +165,7 @@ export class DeviceProps extends DeviceScope {
 			if (!Logics.hasKey(prop)) {
 				this.scope.errors.add(
 					new Ic10Error({
-						message: `Logic ${prop} not found in global Logics`,
+						message: i18next.t("error.logic_not_found_in_global", { prop }),
 						severity: ErrorSeverity.Critical,
 					}),
 				);
@@ -169,7 +176,7 @@ export class DeviceProps extends DeviceScope {
 		if (!Logics.hasValue(prop)) {
 			this.scope.errors.add(
 				new Ic10Error({
-					message: `Logic code ${prop} not found in global Logics`,
+					message: i18next.t("error.logic_code_not_found_in_global", { prop }),
 					severity: ErrorSeverity.Critical,
 				}),
 			);

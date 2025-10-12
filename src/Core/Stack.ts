@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 
 export interface StackInterface {
@@ -18,7 +19,7 @@ export class Stack implements StackInterface {
 	public get(index: number): number {
 		if (index >= this.$stack_length) {
 			throw new Ic10Error({
-				message: `Stack can\`t access index ${index}`,
+				message: i18next.t("error.stack_access_out_of_bounds", { index }),
 				severity: ErrorSeverity.Strong,
 			});
 		}
@@ -28,7 +29,7 @@ export class Stack implements StackInterface {
 	public set(index: number, value: number): void {
 		if (this.$stack.size >= this.$stack_length) {
 			throw new Ic10Error({
-				message: `Stack overflow`,
+				message: i18next.t("error.stack_overflow"),
 				severity: ErrorSeverity.Strong,
 			});
 		}
@@ -44,7 +45,7 @@ export class Stack implements StackInterface {
 	public push(value: number): void {
 		if (this.$stack.size >= this.$stack_length) {
 			throw new Ic10Error({
-				message: `Stack overflow`,
+				message: i18next.t("error.stack_overflow"),
 				severity: ErrorSeverity.Strong,
 			});
 		}

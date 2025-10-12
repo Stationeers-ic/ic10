@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { parse } from "yaml";
 import type { Device } from "@/Core/Device";
 import type { Network } from "@/Core/Network";
@@ -48,7 +49,7 @@ export class Builer {
 
 			const err = runner.context.errors.filter((error) => error.severity === ErrorSeverity.Strong);
 			if (err.length > 0) {
-				throw new Error("errors");
+				throw new Error(i18next.t("error.builder_init_errors_found"));
 			}
 
 			runner.switchContext("real");

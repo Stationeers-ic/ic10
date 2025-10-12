@@ -50,6 +50,17 @@
 		"line_not_found": "Line not found",
 		"unknown_line": "Unknown line",
 		"label_already_defined": "Label {{label}} is already defined",
-		"context_not_found": "Context {{name}} not found"
+		"context_not_found": "Context {{name}} not found",
+		"builder_init_errors_found": "errors",
+		"stack_access_out_of_bounds": "Stack can't access index {{index}}",
+		"stack_overflow": "Stack overflow",
+		"device_property_not_found": "Device {{hash}} property {{prop}} not found",
+		"device_no_permission_to_read": "Device {{hash}} has not permission to read {{logicName}}",
+		"device_no_permission_to_write": "Device {{hash}} has not permission to write {{logicName}}",
+		"device_not_found_in_init": "Device {{hash}} not found",
+		"logic_not_found_in_global": "Logic {{prop}} not found in global Logics",
+		"logic_code_not_found_in_global": "Logic code {{prop}} not found in global Logics",
+		"slot_not_empty": "Slot is not empty",
+		"cannot_add_item_empty_slot": "Cannot add item: slot is empty"
 	}
 }

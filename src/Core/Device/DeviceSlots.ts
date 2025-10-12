@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
 import { LogicSlot } from "@/Defines/data";
 import type { SlotsType } from "@/Defines/devices";
@@ -6,6 +7,7 @@ import { BiMap } from "@/helpers";
 export class ItemEntity {
 	private _propertiesRaw: Map<number, number> = new Map();
 	private _count: number = 0;
+
 	constructor(
 		public readonly hash: number,
 		count: number = 1,
@@ -16,6 +18,7 @@ export class ItemEntity {
 	public get count(): number {
 		return this._count;
 	}
+
 	public set count(value: number) {
 		if (value >= 0) {
 			this._count = value;
@@ -95,14 +98,14 @@ export class Slot {
 
 	public putItem(item: ItemEntity): void {
 		if (this.ITEM !== null) {
-			throw new Error("Slot is not empty");
+			throw new Error(i18next.t("error.slot_not_empty"));
 		}
 		this.ITEM = item;
 	}
 
 	public addItem(count: number = 1): void {
 		if (this.ITEM === null) {
-			throw new Error("Cannot add item: slot is empty");
+			throw new Error(i18next.t("error.cannot_add_item_empty_slot"));
 		}
 		this.ITEM.count += count;
 	}
