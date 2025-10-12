@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { ErrorSeverity, FatalIc10Error } from "@/Ic10/Errors/Errors";
 import { type InstructionName, instructions, isInstructionName } from "@/Ic10/Instruction";
 import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
@@ -20,7 +21,7 @@ export class InstructionLine extends CommentLine {
 		if (!isInstructionName(instruction)) {
 			this.context.addError(
 				new FatalIc10Error({
-					message: `Unknown instruction: ${instruction}`,
+					message: i18next.t("error.unknown_instruction", { instruction }),
 					severity: ErrorSeverity.Strong,
 				}).setLine(this),
 			);

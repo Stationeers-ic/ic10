@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import type { Device } from "@/Core/Device";
 import type { StackInterface } from "@/Core/Stack";
 import { LogicBatchMethod, Logics } from "@/Defines/data";
@@ -44,7 +45,7 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 				this.setRegister(RA, originalLine);
 			} else {
 				throw new RuntimeIc10Error({
-					message: `RA not found`,
+					message: i18next.t("error.ra_not_found"),
 					line: originalLine,
 				});
 			}
@@ -96,7 +97,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 		if (!this.hasRegister(reg)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: `Register ${reg} not found`,
+					message: i18next.t("error.register_not_found", { reg }),
 				}),
 			);
 			return 0;
@@ -109,7 +110,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 		if (!this.hasRegister(reg)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: `Register ${reg} not found`,
+					message: i18next.t("error.register_not_found", { reg }),
 				}),
 			);
 			return;
@@ -125,7 +126,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 abstract class DeviceHelpers extends MemoryBase {
 	protected createDeviceNotFoundError(identifier: string | number, type: string): RuntimeIc10Error {
 		return new RuntimeIc10Error({
-			message: `Device ${type} ${identifier} not found`,
+			message: i18next.t("error.device_not_found", { identifier, type }),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
 		});
@@ -133,7 +134,7 @@ abstract class DeviceHelpers extends MemoryBase {
 
 	protected createNoSlotsError(identifier: string | number, type: string): RuntimeIc10Error {
 		return new RuntimeIc10Error({
-			message: `Device ${type} ${identifier} has no slots`,
+			message: i18next.t("error.device_no_slots", { identifier, type }),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
 		});
@@ -194,7 +195,7 @@ abstract class DeviceHelpers extends MemoryBase {
 		if (!LogicBatchMethod.hasValue(mode)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: `Invalid mode ${mode}`,
+					message: i18next.t("error.invalid_mode", { mode }),
 					line: this.getNextLineIndex(),
 					severity: ErrorSeverity.Strong,
 				}),
@@ -223,6 +224,7 @@ abstract class DeviceHelpers extends MemoryBase {
 			.toArray()
 			.filter((device) => device.hash === deviceHash && device.name.valueOf() === deviceName);
 	}
+
 	protected getDevicesByHash(deviceHash: number): Device[] {
 		return this.housing.network.devices
 			.entries()
@@ -400,11 +402,13 @@ abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotCo
 		const device = this.getDeviceByPin(devicePin);
 		return this.getDeviceSlotParameter(device, slot, prop, devicePin, "on pin");
 	}
+
 	override getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number {
 		const devices = this.getDevicesByHash(deviceHash);
 		const values = devices.map((device) => this.getDeviceSlotParameter(device, slot, prop, device.hash, "on hash"));
 		return this.calculateBatchResult(values, mode);
 	}
+
 	override getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,
 		deviceName: number,

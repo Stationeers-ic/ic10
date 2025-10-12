@@ -1,9 +1,11 @@
 {
-	"errors": {
+	"error": {
 		"ra_not_found": "RA not found",
 		"register_not_found": "Register {{reg}} not found",
 		"device_not_found": "Device {{type}} {{identifier}} not found",
-		"no_slots": "Device {{type}} {{identifier}} has no slots",
-		"invalid_mode": "Invalid mode {{mode}}"
+		"device_no_slots": "Device {{type}} {{identifier}} has no slots",
+		"invalid_mode": "Invalid mode {{mode}}",
+		"unknown_instruction": "Unknown instruction: {{instruction}}",
+		"math_operation_failed": "Math operation {{operation}} resulted in null"
 	}
 }

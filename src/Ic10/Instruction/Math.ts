@@ -1,4 +1,5 @@
 import icMath from "exact-ic10-math";
+import i18next from "i18next";
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
@@ -128,6 +129,7 @@ export class AbsInstruction extends UnaryMathInstruction {
 		return icMath.abs(a);
 	}
 }
+
 export class NotInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
@@ -412,19 +414,20 @@ export class RandInstruction extends Instruction {
 		this.context.setRegister(r, this.line.randomGenerator.nextDouble());
 	}
 }
+
 export class SllInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "sll r1 5 1", // 5 = 0b101, shifted left by 1 = 0b1010 = 10
+				code: "sll r1 5 1",
 				expected: [{ type: "register", register: 1, value: 10 }],
 			},
 			{
-				code: "sll r2 1 3", // 1 << 3 = 8
+				code: "sll r2 1 3",
 				expected: [{ type: "register", register: 2, value: 8 }],
 			},
 			{
-				code: "sll r3 -1 1", // -1 << 1 = -2 (in signed 32-bit)
+				code: "sll r3 -1 1",
 				expected: [{ type: "register", register: 3, value: -2 }],
 			},
 		];
@@ -433,7 +436,7 @@ export class SllInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.sll(a, b);
 		if (result === null) {
-			throw new Error("SLL operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "SLL" }));
 		}
 		return result;
 	}
@@ -445,15 +448,15 @@ export class SrlInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "srl r1 8 1", // 8 = 0b1000, shifted right logically by 1 = 0b100 = 4
+				code: "srl r1 8 1",
 				expected: [{ type: "register", register: 1, value: 4 }],
 			},
 			{
-				code: "srl r2 15 2", // 15 = 0b1111, shifted right by 2 = 0b11 = 3
+				code: "srl r2 15 2",
 				expected: [{ type: "register", register: 2, value: 3 }],
 			},
 			{
-				code: "srl r3 -1 1", // -1 (0xFFFFFFFF) >>> 1 = 0x7FFFFFFF = 2147483647
+				code: "srl r3 -1 1",
 				expected: [{ type: "register", register: 3, value: 0x1fffffffffffff }],
 			},
 		];
@@ -462,7 +465,7 @@ export class SrlInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.srl(a, b);
 		if (result === null) {
-			throw new Error("SRL operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "SRL" }));
 		}
 		return result;
 	}
@@ -472,15 +475,15 @@ export class SraInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "sra r1 8 1", // 8 = 0b1000, shifted right arithmetically by 1 = 0b100 = 4
+				code: "sra r1 8 1",
 				expected: [{ type: "register", register: 1, value: 4 }],
 			},
 			{
-				code: "sra r2 -8 1", // -8 >> 1 = -4 (sign bit preserved)
+				code: "sra r2 -8 1",
 				expected: [{ type: "register", register: 2, value: -4 }],
 			},
 			{
-				code: "sra r3 -1 1", // -1 >> 1 = -1 (sign bit preserved)
+				code: "sra r3 -1 1",
 				expected: [{ type: "register", register: 3, value: -1 }],
 			},
 		];
@@ -489,23 +492,21 @@ export class SraInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.sra(a, b);
 		if (result === null) {
-			throw new Error("SRA operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "SRA" }));
 		}
 		return result;
 	}
 }
 
-// Update existing bitwise instructions to handle null return values
-
 export class AndInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "and r1 5 3", // 5 = 0b101, 3 = 0b011 → 0b001 = 1
+				code: "and r1 5 3",
 				expected: [{ type: "register", register: 1, value: 1 }],
 			},
 			{
-				code: "and r2 15 9", // 15 = 0b1111, 9 = 0b1001 → 0b1001 = 9
+				code: "and r2 15 9",
 				expected: [{ type: "register", register: 2, value: 9 }],
 			},
 		];
@@ -514,7 +515,7 @@ export class AndInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.and(a, b);
 		if (result === null) {
-			throw new Error("AND operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "AND" }));
 		}
 		return result;
 	}
@@ -524,11 +525,11 @@ export class OrInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "or r1 5 3", // 5 = 0b101, 3 = 0b011 → 0b111 = 7
+				code: "or r1 5 3",
 				expected: [{ type: "register", register: 1, value: 7 }],
 			},
 			{
-				code: "or r2 8 1", // 8 = 0b1000, 1 = 0b0001 → 0b1001 = 9
+				code: "or r2 8 1",
 				expected: [{ type: "register", register: 2, value: 9 }],
 			},
 		];
@@ -537,7 +538,7 @@ export class OrInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.or(a, b);
 		if (result === null) {
-			throw new Error("OR operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "OR" }));
 		}
 		return result;
 	}
@@ -547,11 +548,11 @@ export class XorInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "xor r1 5 3", // 5 = 0b101, 3 = 0b011 → 0b110 = 6
+				code: "xor r1 5 3",
 				expected: [{ type: "register", register: 1, value: 6 }],
 			},
 			{
-				code: "xor r2 15 15", // 15 XOR 15 = 0
+				code: "xor r2 15 15",
 				expected: [{ type: "register", register: 2, value: 0 }],
 			},
 		];
@@ -560,7 +561,7 @@ export class XorInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.xor(a, b);
 		if (result === null) {
-			throw new Error("XOR operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "XOR" }));
 		}
 		return result;
 	}
@@ -570,11 +571,11 @@ export class NorInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
 			{
-				code: "nor r1 5 3", // 5 = 0b101, 3 = 0b011 → OR = 0b111 → NOT = ...1111111111111000 (in 32-bit) → -8 in JS
+				code: "nor r1 5 3",
 				expected: [{ type: "register", register: 1, value: ~(5 | 3) }],
 			},
 			{
-				code: "nor r2 0 0", // OR = 0, NOT = -1 (all bits set in 32-bit signed)
+				code: "nor r2 0 0",
 				expected: [{ type: "register", register: 2, value: -1 }],
 			},
 		];
@@ -583,11 +584,12 @@ export class NorInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.nor(a, b);
 		if (result === null) {
-			throw new Error("NOR operation resulted in null");
+			throw new Error(i18next.t("error.math_operation_failed", { operation: "NOR" }));
 		}
 		return result;
 	}
 }
+
 export class PowInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
 		return [
@@ -685,11 +687,11 @@ export class LerpInstruction extends Instruction {
 				expected: [{ type: "register", register: 2, value: 12.5 }],
 			},
 			{
-				code: "lerp r3 100 200 2.0", // ratio clamped to 1
+				code: "lerp r3 100 200 2.0",
 				expected: [{ type: "register", register: 3, value: 200 }],
 			},
 			{
-				code: "lerp r4 50 100 -1.0", // ratio clamped to 0
+				code: "lerp r4 50 100 -1.0",
 				expected: [{ type: "register", register: 4, value: 50 }],
 			},
 		];
