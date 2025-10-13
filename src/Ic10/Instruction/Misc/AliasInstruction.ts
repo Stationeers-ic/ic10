@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import { ErrorSeverity, RuntimeIc10Error, TypeIc10Error } from "@/Ic10/Errors/Errors";
 import {
 	getRegister,
@@ -9,6 +8,7 @@ import {
 } from "@/Ic10/Helpers/ArgumentParse";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
 import { Instruction, type InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction";
+import i18n from "@/Languages/lang";
 
 export class AliasInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
@@ -26,7 +26,7 @@ export class AliasInstruction extends Instruction {
 						// если значение это строка значит это alias и его можно переопределить
 						this.addError(
 							new RuntimeIc10Error({
-								message: i18next.t("error.alias_already_defined", { alias: t }),
+								message: i18n.t("error.alias_already_defined", { alias: t }),
 								severity:
 									v.type === "alias"
 										? ErrorSeverity.Weak
@@ -56,7 +56,7 @@ export class AliasInstruction extends Instruction {
 					) {
 						this.addError(
 							new TypeIc10Error({
-								message: i18next.t("error.argument_must_be_register_or_device"),
+								message: i18n.t("error.argument_must_be_register_or_device"),
 							}),
 							argument,
 						);
@@ -66,7 +66,7 @@ export class AliasInstruction extends Instruction {
 						if (r === false) {
 							this.addError(
 								new RuntimeIc10Error({
-									message: i18next.t("error.register_not_found_in_context", { register: t }),
+									message: i18n.t("error.register_not_found_in_context", { register: t }),
 								}),
 								argument,
 							);

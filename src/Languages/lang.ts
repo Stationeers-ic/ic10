@@ -1,35 +1,58 @@
-import i18next from "i18next";
+import i18next, { type i18n as I18nInstance } from "i18next";
 import resources from "@/Languages";
 
 // Тип для доступных языков
 export type Language = keyof typeof resources;
 
-// Инициализация i18next
-i18next
-	.init({
-		lng: "en", // язык по умолчанию
-		fallbackLng: "en",
-		debug: true,
-		resources,
-	})
-	.catch(console.error);
+class Lang {
+	private static _instance: Lang;
+	private instanse: I18nInstance;
 
-export const lang = {
-	// Получить текущий язык
-	get current(): Language {
-		return i18next.language as Language;
-	},
+	private constructor() {
+		this.instanse = i18next.createInstance();
+	}
 
-	// Сменить язык
-	set: async (lng: Language): Promise<void> => {
-		if (typeof resources[lng] === "undefined") {
-			throw new Error(`${lng} is not supported`);
+	async init() {
+		await this.instanse.init({
+			lng: "en", // язык по умолчанию
+			fallbackLng: "en",
+			debug: typeof __VITE_ENV !== "undefined" && __VITE_ENV === "development",
+			resources,
+		});
+		return this;
+	}
+
+	// Singleton instance getter
+	public static getInstance(): Lang {
+		if (!Lang._instance) {
+			Lang._instance = new Lang();
 		}
-		await i18next.changeLanguage(lng);
-	},
+		return Lang._instance;
+	}
 
-	// Доступ к переводам (опционально)
-	t: i18next.t,
-};
+	// Применить язык
+	async setLanguage(lang: Language) {
+		await this.instanse.changeLanguage(lang);
+	}
 
-export default lang;
+	/**
+	 * Автоматически применяет язык.
+	 * @param userLang - язык пользователя (например, из параметров приложения)
+	 */
+	async detectLanguage(userLang?: string) {
+		let lang: Language = "en";
+		if (userLang && resources[userLang as Language]) {
+			lang = userLang as Language;
+		}
+		await this.setLanguage(lang);
+	}
+
+	t(...args: Parameters<I18nInstance["t"]>): ReturnType<I18nInstance["t"]> {
+		return this.instanse.t(...args);
+	}
+}
+
+// Экспорт singleton
+export const i18n = Lang.getInstance();
+
+export default i18n;

@@ -1,11 +1,11 @@
 import icMath from "exact-ic10-math";
-import i18next from "i18next";
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
 	type InstructionArgument,
 	type InstructionTestData,
 } from "@/Ic10/Instruction/Helpers/Instruction";
+import i18n from "@/Languages/lang";
 
 abstract class BinaryMathInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
@@ -436,7 +436,7 @@ export class SllInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.sll(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "SLL" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "SLL" }));
 		}
 		return result;
 	}
@@ -465,7 +465,7 @@ export class SrlInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.srl(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "SRL" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "SRL" }));
 		}
 		return result;
 	}
@@ -492,7 +492,7 @@ export class SraInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.sra(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "SRA" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "SRA" }));
 		}
 		return result;
 	}
@@ -515,7 +515,7 @@ export class AndInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.and(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "AND" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "AND" }));
 		}
 		return result;
 	}
@@ -538,7 +538,7 @@ export class OrInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.or(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "OR" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "OR" }));
 		}
 		return result;
 	}
@@ -561,7 +561,7 @@ export class XorInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.xor(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "XOR" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "XOR" }));
 		}
 		return result;
 	}
@@ -584,7 +584,7 @@ export class NorInstruction extends BinaryMathInstruction {
 	public operation(a: number, b: number): number {
 		const result = icMath.nor(a, b);
 		if (result === null) {
-			throw new Error(i18next.t("error.math_operation_failed", { operation: "NOR" }));
+			throw new Error(i18n.t("error.math_operation_failed", { operation: "NOR" }));
 		}
 		return result;
 	}

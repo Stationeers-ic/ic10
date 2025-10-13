@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import type { Device } from "@/Core/Device";
 import type { StackInterface } from "@/Core/Stack";
 import { LogicBatchMethod, LogicReagentMode, Logics } from "@/Defines/data";
@@ -17,6 +16,7 @@ import {
 } from "@/Ic10/Context/Context";
 import { ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors";
 import type { Define } from "@/Ic10/Instruction/Helpers/Define";
+import i18n from "@/Languages/lang";
 
 // =============================================
 // Базовый класс с основной логикой выполнения
@@ -46,7 +46,7 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 				this.setRegister(RA, originalLine);
 			} else {
 				throw new RuntimeIc10Error({
-					message: i18next.t("error.ra_not_found"),
+					message: i18n.t("error.ra_not_found"),
 					line: originalLine,
 				});
 			}
@@ -98,7 +98,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 		if (!this.hasRegister(reg)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: i18next.t("error.register_not_found", { reg }),
+					message: i18n.t("error.register_not_found", { reg }),
 				}),
 			);
 			return 0;
@@ -111,7 +111,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 		if (!this.hasRegister(reg)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: i18next.t("error.register_not_found", { reg }),
+					message: i18n.t("error.register_not_found", { reg }),
 				}),
 			);
 			return;
@@ -127,7 +127,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 abstract class DeviceHelpers extends MemoryBase {
 	protected createDeviceNotFoundError(identifier: string | number, type: string): RuntimeIc10Error {
 		return new RuntimeIc10Error({
-			message: i18next.t("error.device_not_found", { identifier, type }),
+			message: i18n.t("error.device_not_found", { identifier, type }),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
 		});
@@ -135,7 +135,7 @@ abstract class DeviceHelpers extends MemoryBase {
 
 	protected createNoSlotsError(identifier: string | number, type: string): RuntimeIc10Error {
 		return new RuntimeIc10Error({
-			message: i18next.t("error.device_no_slots"),
+			message: i18n.t("error.device_no_slots"),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
 		});
@@ -196,7 +196,7 @@ abstract class DeviceHelpers extends MemoryBase {
 		if (!LogicBatchMethod.hasValue(mode)) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: i18next.t("error.invalid_mode", { mode }),
+					message: i18n.t("error.invalid_mode", { mode }),
 					line: this.getNextLineIndex(),
 					severity: ErrorSeverity.Strong,
 				}),

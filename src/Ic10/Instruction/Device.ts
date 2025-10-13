@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { type LogicBatchMethodType, type LogicConstType, Reagents } from "@/Defines/data";
 import { StructureAutolathe } from "@/Devices/StructureAutolathe";
@@ -11,6 +10,7 @@ import {
 	type InstructionArgument,
 	type InstructionTestData,
 } from "@/Ic10/Instruction/Helpers/Instruction";
+import i18n from "@/Languages/lang";
 
 export class SInstruction extends Instruction {
 	static tests(): InstructionTestData[] {
@@ -125,12 +125,12 @@ export class SdInstruction extends Instruction {
 		const value = this.getArgumentValue<number>("value");
 		if (device.pin !== undefined && device.port !== undefined) {
 			throw new ArgumentIc10Error({
-				message: i18next.t("error.channels_not_allowed_in_instruction"),
+				message: i18n.t("error.channels_not_allowed_in_instruction"),
 			}).setArgument(this.args[1]);
 		}
 		if (device.pin !== undefined) {
 			throw new ArgumentIc10Error({
-				message: i18next.t("error.pin_not_allowed_in_instruction"),
+				message: i18n.t("error.pin_not_allowed_in_instruction"),
 			}).setArgument(this.args[1]);
 		}
 		if (device.id !== undefined) {
@@ -156,12 +156,12 @@ export class LdInstruction extends Instruction {
 
 		if (device.pin !== undefined && device.port !== undefined) {
 			throw new ArgumentIc10Error({
-				message: i18next.t("error.channels_not_allowed_in_instruction"),
+				message: i18n.t("error.channels_not_allowed_in_instruction"),
 			}).setArgument(this.args[1]);
 		}
 		if (device.pin !== undefined) {
 			throw new ArgumentIc10Error({
-				message: i18next.t("error.pin_not_allowed_in_instruction"),
+				message: i18n.t("error.pin_not_allowed_in_instruction"),
 			}).setArgument(this.args[1]);
 		}
 		if (device.id !== undefined) {
@@ -463,7 +463,7 @@ export class LsInstruction extends Instruction {
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: i18next.t("error.channels_not_allowed_in_instruction"),
+					message: i18n.t("error.channels_not_allowed_in_instruction"),
 				}).setArgument(this.args[1]),
 			);
 			return;
@@ -712,7 +712,7 @@ export class LrInstruction extends Instruction {
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: i18next.t("error.channels_not_allowed_in_instruction"),
+					message: i18n.t("error.channels_not_allowed_in_instruction"),
 				}).setArgument(this.args[1]),
 			);
 			return;

@@ -1,10 +1,10 @@
-import i18next from "i18next";
 import { parse } from "yaml";
 import type { Device } from "@/Core/Device";
 import type { Network } from "@/Core/Network";
 import { type Parser, ParserV1 } from "@/Envierment/ParserV1";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 import type { Ic10Runner } from "@/Ic10/Ic10Runner";
+import i18n from "@/Languages/lang";
 import type { EnvSchema } from "@/Schemas/EnvSchema";
 
 export class Builer {
@@ -49,7 +49,7 @@ export class Builer {
 
 			const err = runner.context.errors.filter((error) => error.severity === ErrorSeverity.Strong);
 			if (err.length > 0) {
-				throw new Error(i18next.t("error.builder_init_errors_found"));
+				throw new Error(i18n.t("error.builder_init_errors_found"));
 			}
 
 			runner.switchContext("real");

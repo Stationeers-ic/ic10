@@ -1,8 +1,8 @@
-import i18next from "i18next";
 import { DeviceScope } from "@/Core/Device/DeviceScope";
 import type { Network, NetworkType } from "@/Core/Network";
 import type { ConnectionsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
+import i18n from "@/Languages/lang";
 
 export type PortType = Extract<ConnectionsType[keyof ConnectionsType], string>;
 export type PortEntry = {
@@ -85,12 +85,12 @@ export class DevicePorts extends DeviceScope {
 
 	public setNetwork(port: number, network: Network): void {
 		if (!this.portIndices.hasValue(port)) {
-			throw new Error(i18next.t("error.port_not_found"));
+			throw new Error(i18n.t("error.port_not_found"));
 		}
 		const portName = this.portIndices.getByValue(port);
 		if (!this.canConnect(network.type, portName)) {
 			throw new Error(
-				i18next.t("error.cannot_connect_network_to_port", {
+				i18n.t("error.cannot_connect_network_to_port", {
 					networkType: network.type,
 					portName,
 				}),
@@ -106,7 +106,7 @@ export class DevicePorts extends DeviceScope {
 		} else if (typeof portOrindex === "number") {
 			if (!this.portIndices.hasValue(portOrindex)) {
 				throw new Error(
-					i18next.t("error.port_index_not_found", {
+					i18n.t("error.port_index_not_found", {
 						index: portOrindex,
 						hash: this.scope.hash,
 					}),
@@ -120,7 +120,7 @@ export class DevicePorts extends DeviceScope {
 			return this.portNetworks.get(port);
 		}
 		throw new Error(
-			i18next.t("error.no_network_for_port", {
+			i18n.t("error.no_network_for_port", {
 				port,
 				hash: this.scope.hash,
 			}),

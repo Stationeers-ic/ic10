@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";
@@ -10,6 +9,7 @@ import { EmptyLine } from "@/Ic10/Lines/EmptyLine";
 import { InstructionLine } from "@/Ic10/Lines/InstructionLine";
 import { LabelLine } from "@/Ic10/Lines/LabelLine";
 import type { Line } from "@/Ic10/Lines/Line";
+import i18n from "@/Languages/lang";
 
 export const RegExpLabelLine = /((?<label>\w+):)\s*(?<comment>#.*)?/im;
 export const RegExpInstructionLine = /^(?<instruction>\w+)(?:\s+(?<arguments>.+?))?(?:\s*#(?<comment>.*))?$/im;
@@ -92,7 +92,7 @@ export class Ic10Runner {
 		if (this.context.getJumpsCount() > this.jumpLimit) {
 			this.addError(
 				new RuntimeIc10Error({
-					message: i18next.t("error.jump_limit_exceeded"),
+					message: i18n.t("error.jump_limit_exceeded"),
 					line: currentLineIndex,
 					severity: ErrorSeverity.Critical,
 				}),
@@ -109,7 +109,7 @@ export class Ic10Runner {
 		if (typeof line === "undefined") {
 			this.addError(
 				new RuntimeIc10Error({
-					message: i18next.t("error.line_not_found"),
+					message: i18n.t("error.line_not_found"),
 					line: currentLineIndex,
 					severity: ErrorSeverity.Critical,
 				}),
@@ -187,7 +187,7 @@ export class Ic10Runner {
 					}
 					this.addError(
 						new FatalIc10Error({
-							message: i18next.t("error.unknown_line"),
+							message: i18n.t("error.unknown_line"),
 							severity: ErrorSeverity.Strong,
 							context: this.context,
 							line: position,

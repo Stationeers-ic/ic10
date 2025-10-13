@@ -1,10 +1,10 @@
-import i18next from "i18next";
 import type { Device } from "@/Core/Device";
 import type { Context } from "@/Ic10/Context/Context";
 import { ArgumentIc10Error, ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors";
 import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
 import type { InstructionLine } from "@/Ic10/Lines/InstructionLine";
 import type { Line } from "@/Ic10/Lines/Line";
+import i18n from "@/Languages/lang";
 
 export type InstructionConstructorType = {
 	/** Контекст исполнения инструкции (доступ к регистрам, устройствам, define и т.д.) */
@@ -146,7 +146,7 @@ export abstract class Instruction {
 		if (this.args.length !== rules.length) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: i18next.t("error.invalid_argument_count", {
+					message: i18n.t("error.invalid_argument_count", {
 						actual: this.args.length,
 						expected: rules.length,
 					}),
@@ -215,7 +215,7 @@ export abstract class Instruction {
 			if (index === -1) {
 				this.context.addError(
 					new ArgumentIc10Error({
-						message: i18next.t("error.missing_argument", { name: indexOrName }),
+						message: i18n.t("error.missing_argument", { name: indexOrName }),
 						severity: ErrorSeverity.Strong,
 					}).setLine(this.line),
 				);
@@ -229,8 +229,8 @@ export abstract class Instruction {
 			// Сообщение адаптируем в зависимости от того, было ли передано имя или индекс
 			const msg =
 				typeof indexOrName === "string"
-					? i18next.t("error.missing_argument", { name: indexOrName })
-					: i18next.t("error.missing_argument_index", { index });
+					? i18n.t("error.missing_argument", { name: indexOrName })
+					: i18n.t("error.missing_argument_index", { index });
 			this.context.addError(
 				new ArgumentIc10Error({
 					message: msg,
@@ -246,8 +246,8 @@ export abstract class Instruction {
 				new ArgumentIc10Error({
 					message:
 						typeof indexOrName === "string"
-							? i18next.t("error.missing_argument_name", { name: indexOrName })
-							: i18next.t("error.missing_argument_index", { index }),
+							? i18n.t("error.missing_argument_name", { name: indexOrName })
+							: i18n.t("error.missing_argument_index", { index }),
 					severity: ErrorSeverity.Strong,
 				})
 					.setLine(this.line)

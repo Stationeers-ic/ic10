@@ -1,5 +1,5 @@
-import i18next from "i18next";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
+import i18n from "@/Languages/lang";
 
 export interface StackInterface {
 	get(index: number): number;
@@ -19,7 +19,7 @@ export class Stack implements StackInterface {
 	public get(index: number): number {
 		if (index >= this.$stack_length) {
 			throw new Ic10Error({
-				message: i18next.t("error.stack_access_out_of_bounds", { index }),
+				message: i18n.t("error.stack_access_out_of_bounds", { index }),
 				severity: ErrorSeverity.Strong,
 			});
 		}
@@ -29,7 +29,7 @@ export class Stack implements StackInterface {
 	public set(index: number, value: number): void {
 		if (this.$stack.size >= this.$stack_length) {
 			throw new Ic10Error({
-				message: i18next.t("error.stack_overflow"),
+				message: i18n.t("error.stack_overflow"),
 				severity: ErrorSeverity.Strong,
 			});
 		}
@@ -45,7 +45,7 @@ export class Stack implements StackInterface {
 	public push(value: number): void {
 		if (this.$stack.size >= this.$stack_length) {
 			throw new Ic10Error({
-				message: i18next.t("error.stack_overflow"),
+				message: i18n.t("error.stack_overflow"),
 				severity: ErrorSeverity.Strong,
 			});
 		}

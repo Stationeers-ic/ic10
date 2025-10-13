@@ -1,207 +1,222 @@
 <!doctype html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta content="width=device-width, initial-scale=1" name="viewport" />
-		<title>ic10 runner</title>
-		<script src="/dist/ic10.umd.js"></script>
-		<style>
-			body {
-				font-family:
-					system-ui,
-					-apple-system,
-					Segoe UI,
-					Roboto,
-					Arial,
-					sans-serif;
-				margin: 16px;
-			}
-			.row {
-				display: flex;
-				gap: 12px;
-				align-items: center;
-				margin-bottom: 8px;
-			}
-			textarea {
-				width: 100%;
-				height: 160px;
-				font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-				font-size: 14px;
-			}
-			button {
-				padding: 8px 12px;
-				font-size: 14px;
-			}
-			#console {
-				border: 1px solid #ddd;
-				background: #0b0f14;
-				color: #e6eef8;
-				padding: 10px;
-				height: 320px;
-				overflow: auto;
-				border-radius: 6px;
-			}
-			#console .line {
-				white-space: pre-wrap;
-				word-break: break-word;
-				margin: 2px 0;
-			}
-			#console .log {
-				color: #e6eef8;
-			}
-			#console .warn {
-				color: #ffcc66;
-			}
-			#console .error {
-				color: #ff6b6b;
-			}
-			#console table {
-				border-collapse: collapse;
-				margin: 4px 0;
-			}
-			#console th,
-			#console td {
-				border: 1px solid #3a3f45;
-				padding: 2px 6px;
-				font-size: 12px;
-			}
-			#console th {
-				background: #19212a;
-			}
-		</style>
-	</head>
-	<body>
-		<h1>ic10 Runner</h1>
 
-		<div class="row">
-			<button id="runBtn">Запустить</button>
-			<span id="status" aria-live="polite"></span>
-		</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>ic10 runner</title>
+	<script src="/dist/ic10.umd.js"></script>
+	<style>
+		body {
+			font-family:
+				system-ui,
+				-apple-system,
+				Segoe UI,
+				Roboto,
+				Arial,
+				sans-serif;
+			margin: 16px;
+		}
 
-		<textarea id="code" spellcheck="false">
+		.row {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			margin-bottom: 8px;
+		}
+
+		textarea {
+			width: 100%;
+			height: 160px;
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			font-size: 14px;
+		}
+
+		button {
+			padding: 8px 12px;
+			font-size: 14px;
+		}
+
+		#console {
+			border: 1px solid #ddd;
+			background: #0b0f14;
+			color: #e6eef8;
+			padding: 10px;
+			height: 320px;
+			overflow: auto;
+			border-radius: 6px;
+		}
+
+		#console .line {
+			white-space: pre-wrap;
+			word-break: break-word;
+			margin: 2px 0;
+		}
+
+		#console .log {
+			color: #e6eef8;
+		}
+
+		#console .warn {
+			color: #ffcc66;
+		}
+
+		#console .error {
+			color: #ff6b6b;
+		}
+
+		#console table {
+			border-collapse: collapse;
+			margin: 4px 0;
+		}
+
+		#console th,
+		#console td {
+			border: 1px solid #3a3f45;
+			padding: 2px 6px;
+			font-size: 12px;
+		}
+
+		#console th {
+			background: #19212a;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>ic10 Runner</h1>
+
+	<div class="row">
+		<button id="runBtn">Запустить</button>
+		<span id="status" aria-live="polite"></span>
+	</div>
+
+	<textarea id="code" spellcheck="false">
 s db Mode 1
-s db Setting STR("TEST")</textarea
-		>
+s db Setting STR("TEST")</textarea>
 
-		<h3>Консоль</h3>
-		<div id="console" role="log" aria-live="polite"></div>
+	<h3>Консоль</h3>
+	<div id="console" role="log" aria-live="polite"></div>
 
-		<script>
-			// Вывод в блок "Консоль"
-			(function setupUiConsole() {
-				const el = document.getElementById('console');
-				const native = {
-					log: console.log.bind(console),
-					warn: console.warn.bind(console),
-					error: console.error.bind(console),
-					table: console.table ? console.table.bind(console) : null,
-				};
+	<script>
+		// Вывод в блок "Консоль"
+		(function setupUiConsole() {
+			const el = document.getElementById('console');
+			const native = {
+				log: console.log.bind(console),
+				warn: console.warn.bind(console),
+				error: console.error.bind(console),
+				table: console.table ? console.table.bind(console) : null,
+			};
 
-				function renderValue(v) {
-					const span = document.createElement('span');
-					try {
-						if (typeof v === 'string') {
-							span.textContent = v;
-						} else if (v instanceof Error) {
-							span.textContent = v.stack || v.message || String(v);
-						} else if (typeof v === 'object') {
-							span.textContent = JSON.stringify(v, null, 2);
-						} else {
-							span.textContent = String(v);
-						}
-					} catch {
+			function renderValue(v) {
+				const span = document.createElement('span');
+				try {
+					if (typeof v === 'string') {
+						span.textContent = v;
+					} else if (v instanceof Error) {
+						span.textContent = v.stack || v.message || String(v);
+					} else if (typeof v === 'object') {
+						span.textContent = JSON.stringify(v, null, 2);
+					} else {
 						span.textContent = String(v);
 					}
-					return span;
+				} catch {
+					span.textContent = String(v);
 				}
+				return span;
+			}
 
-				function appendLine(type, args) {
-					const line = document.createElement('div');
-					line.className = 'line ' + type;
-					for (let i = 0; i < args.length; i++) {
-						if (i > 0) line.appendChild(document.createTextNode(' '));
-						line.appendChild(renderValue(args[i]));
-					}
-					el.appendChild(line);
-					el.scrollTop = el.scrollHeight;
+			function appendLine(type, args) {
+				const line = document.createElement('div');
+				line.className = 'line ' + type;
+				for (let i = 0; i < args.length; i++) {
+					if (i > 0) line.appendChild(document.createTextNode(' '));
+					line.appendChild(renderValue(args[i]));
 				}
+				el.appendChild(line);
+				el.scrollTop = el.scrollHeight;
+			}
 
-				function appendTable(data, columns) {
-					try {
-						const table = document.createElement('table');
-						const thead = document.createElement('thead');
-						const tbody = document.createElement('tbody');
+			function appendTable(data, columns) {
+				try {
+					const table = document.createElement('table');
+					const thead = document.createElement('thead');
+					const tbody = document.createElement('tbody');
 
-						let rows = [];
-						let headers = [];
+					let rows = [];
+					let headers = [];
 
-						if (Array.isArray(data)) {
-							rows = data;
-							if (rows.length) {
-								headers = columns && columns.length ? columns : Object.keys(rows[0]);
-							}
-						} else if (typeof data === 'object' && data) {
-							headers = ['(index)', 'value'];
-							rows = Object.keys(data).map((k) => ({ '(index)': k, value: data[k] }));
-						} else {
-							appendLine('log', [data]);
-							return;
+					if (Array.isArray(data)) {
+						rows = data;
+						if (rows.length) {
+							headers = columns && columns.length ? columns : Object.keys(rows[0]);
 						}
-
-						const trh = document.createElement('tr');
-						headers.forEach((h) => {
-							const th = document.createElement('th');
-							th.textContent = String(h);
-							trh.appendChild(th);
-						});
-						thead.appendChild(trh);
-
-						rows.forEach((r) => {
-							const tr = document.createElement('tr');
-							headers.forEach((h) => {
-								const td = document.createElement('td');
-								const v = r[h];
-								td.textContent = typeof v === 'object' ? JSON.stringify(v) : String(v);
-								tr.appendChild(td);
-							});
-							tbody.appendChild(tr);
-						});
-
-						table.appendChild(thead);
-						table.appendChild(tbody);
-
-						const container = document.createElement('div');
-						container.className = 'line log';
-						container.appendChild(table);
-						el.appendChild(container);
-						el.scrollTop = el.scrollHeight;
-					} catch (err) {
-						appendLine('error', ['Ошибка вывода таблицы:', err]);
+					} else if (typeof data === 'object' && data) {
+						headers = ['(index)', 'value'];
+						rows = Object.keys(data).map((k) => ({ '(index)': k, value: data[k] }));
+					} else {
+						appendLine('log', [data]);
+						return;
 					}
+
+					const trh = document.createElement('tr');
+					headers.forEach((h) => {
+						const th = document.createElement('th');
+						th.textContent = String(h);
+						trh.appendChild(th);
+					});
+					thead.appendChild(trh);
+
+					rows.forEach((r) => {
+						const tr = document.createElement('tr');
+						headers.forEach((h) => {
+							const td = document.createElement('td');
+							const v = r[h];
+							td.textContent = typeof v === 'object' ? JSON.stringify(v) : String(v);
+							tr.appendChild(td);
+						});
+						tbody.appendChild(tr);
+					});
+
+					table.appendChild(thead);
+					table.appendChild(tbody);
+
+					const container = document.createElement('div');
+					container.className = 'line log';
+					container.appendChild(table);
+					el.appendChild(container);
+					el.scrollTop = el.scrollHeight;
+				} catch (err) {
+					appendLine('error', ['Ошибка вывода таблицы:', err]);
 				}
+			}
 
-				console.log = (...args) => {
-					appendLine('log', args);
-					native.log(...args);
-				};
-				console.warn = (...args) => {
-					appendLine('warn', args);
-					native.warn(...args);
-				};
-				console.error = (...args) => {
-					appendLine('error', args);
-					native.error(...args);
-				};
-				console.table = (data, columns) => {
-					appendTable(data, columns);
-					native.table && native.table(data, columns);
-				};
+			console.log = (...args) => {
+				appendLine('log', args);
+				native.log(...args);
+			};
+			console.warn = (...args) => {
+				appendLine('warn', args);
+				native.warn(...args);
+			};
+			console.error = (...args) => {
+				appendLine('error', args);
+				native.error(...args);
+			};
+			console.table = (data, columns) => {
+				appendTable(data, columns);
+				native.table && native.table(data, columns);
+			};
 
-				window.clearUiConsole = function () {
-					el.textContent = '';
-				};
-			})();
+			window.clearUiConsole = function () {
+				el.textContent = '';
+			};
+		})();
 
+
+		ic10.i18n.init().then((lang) => {
+			lang.setLanguage('ru');
 			const statusEl = document.getElementById('status');
 			const runBtn = document.getElementById('runBtn');
 			const codeEl = document.getElementById('code');
@@ -348,6 +363,9 @@ s db Setting STR("TEST")</textarea
 			}
 
 			runBtn.addEventListener('click', run);
-		</script>
-	</body>
+		})
+
+	</script>
+</body>
+
 </html>

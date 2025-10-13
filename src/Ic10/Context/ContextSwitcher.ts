@@ -1,6 +1,6 @@
-import i18next from "i18next";
 import type { Context } from "@/Ic10/Context/Context";
 import type { Ic10Error } from "@/Ic10/Errors/Errors";
+import i18n from "@/Languages/lang";
 
 export type contextNames = "real" | "sandbox";
 export type contextList<T extends string | number | symbol = contextNames> = {
@@ -45,7 +45,7 @@ export class ContextSwitcher<T extends string | number | symbol = contextNames> 
 		if (isContextTypeConstructor<T>(name, this.contexts)) {
 			return this.contexts[name];
 		}
-		throw new Error(i18next.t("error.context_not_found", { name: name.toString() }));
+		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }));
 	}
 
 	switchContext(name: string) {
@@ -53,7 +53,7 @@ export class ContextSwitcher<T extends string | number | symbol = contextNames> 
 			this.currentContext = name;
 			return this;
 		}
-		throw new Error(i18next.t("error.context_not_found", { name: name.toString() }));
+		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }));
 	}
 
 	/**

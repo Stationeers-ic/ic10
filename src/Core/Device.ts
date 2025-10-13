@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import { v4 as uuidv4 } from "uuid";
 import { DevicePorts } from "@/Core//Device/DevicePorts";
 import { DeviceError } from "@/Core/Device/DeviceError";
@@ -12,6 +11,7 @@ import DEVICES, { type LogicsType } from "@/Defines/devices";
 import { HashString } from "@/helpers";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 import { crc32 } from "@/Ic10/Helpers/functions";
+import i18n from "@/Languages/lang";
 
 export type LogicType = LogicsType[number];
 
@@ -79,7 +79,7 @@ export abstract class Device {
 		if (this.rawData === undefined) {
 			this.$errors.add(
 				new Ic10Error({
-					message: i18next.t("error.device_not_found_by_hash", { hash }),
+					message: i18n.t("error.device_not_found_by_hash", { hash }),
 					severity: ErrorSeverity.Weak,
 				}),
 			);
@@ -119,7 +119,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: i18next.t("error.device_no_props"),
+				message: i18n.t("error.device_no_props"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
@@ -136,7 +136,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: i18next.t("error.device_no_reagents"),
+				message: i18n.t("error.device_no_reagents"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
@@ -153,7 +153,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: i18next.t("error.device_no_memory"),
+				message: i18n.t("error.device_no_memory"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);
@@ -170,7 +170,7 @@ export abstract class Device {
 		}
 		this.$errors.add(
 			new Ic10Error({
-				message: i18next.t("error.device_no_slots"),
+				message: i18n.t("error.device_no_slots"),
 				severity: ErrorSeverity.Weak,
 			}),
 		);

@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import { ErrorSeverity, RuntimeIc10Error, TypeIc10Error } from "@/Ic10/Errors/Errors";
 import { parseArgumentAnyNumber } from "@/Ic10/Helpers/ArgumentParse";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
@@ -7,6 +6,7 @@ import {
 	type InstructionArgument,
 	type InstructionTestData,
 } from "@/Ic10/Instruction/Helpers/Instruction";
+import i18n from "@/Languages/lang";
 
 export class DefineInstruction extends Instruction {
 	static tests(): InstructionTestData[] {
@@ -72,7 +72,7 @@ export class DefineInstruction extends Instruction {
 						// если значение это строка значит это alias и его можно переопределить
 						this.addError(
 							new RuntimeIc10Error({
-								message: i18next.t("error.constant_already_defined", { constant: t }),
+								message: i18n.t("error.constant_already_defined", { constant: t }),
 								severity: old.type === "const" ? ErrorSeverity.Warning : ErrorSeverity.Strong,
 							}),
 							argument,
@@ -94,7 +94,7 @@ export class DefineInstruction extends Instruction {
 					}
 					this.addError(
 						new TypeIc10Error({
-							message: i18next.t("error.value_must_be_number"),
+							message: i18n.t("error.value_must_be_number"),
 							severity: ErrorSeverity.Strong,
 						}),
 					);

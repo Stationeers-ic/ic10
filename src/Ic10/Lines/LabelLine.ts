@@ -1,7 +1,7 @@
-import i18next from "i18next";
 import { ErrorSeverity, ReferenceIc10Error } from "@/Ic10/Errors/Errors";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
 import { CommentLine, type CommentLineConstructorType } from "@/Ic10/Lines/CommentLine";
+import i18n from "@/Languages/lang";
 
 export type LabelLineConstructorType = {
 	label: string;
@@ -20,7 +20,7 @@ export class LabelLine extends CommentLine {
 			const old = this.context.getDefines(this.label)!;
 			this.context.addError(
 				new ReferenceIc10Error({
-					message: i18next.t("error.label_already_defined", { label: this.label }),
+					message: i18n.t("error.label_already_defined", { label: this.label }),
 					severity: old.type === "const" ? ErrorSeverity.Warning : ErrorSeverity.Strong,
 				}).setLine(this),
 			);

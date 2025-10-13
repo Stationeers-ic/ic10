@@ -1,7 +1,7 @@
-import i18next from "i18next";
 import type { Chip } from "@/Core/Chip";
 import { Device, type DeviceConstructor } from "@/Core/Device";
 import { Ic10Error } from "@/Ic10/Errors/Errors";
+import i18n from "@/Languages/lang";
 import type { StackInterface } from "./Stack";
 
 export type SocketDeviceConstructor = {
@@ -36,7 +36,7 @@ export class Housing extends Device {
 		if (device.network.id !== this.network.id) {
 			this.$errors.add(
 				new Ic10Error({
-					message: i18next.t("error.cannot_connect_different_networks"),
+					message: i18n.t("error.cannot_connect_different_networks"),
 				}),
 			);
 			return;
@@ -44,7 +44,7 @@ export class Housing extends Device {
 		if (pin > this.pin_count) {
 			this.$errors.add(
 				new Ic10Error({
-					message: i18next.t("error.pin_out_of_range", { pin }),
+					message: i18n.t("error.pin_out_of_range", { pin }),
 				}),
 			);
 			return;
