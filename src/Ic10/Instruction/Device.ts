@@ -702,3 +702,43 @@ export class LrInstruction extends Instruction {
 		];
 	}
 }
+
+export class LdInstruction extends Instruction {
+	override run(): void {
+		const result = this.getArgumentValue<number>("result");
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
+		const prop = this.getArgumentValue<number>("logic");
+		let v: number;
+
+		if (device.pin !== undefined && device.port !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.channels_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.pin !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.pin_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.id !== undefined) {
+			v = this.context.getDeviceParameterById(device.id, prop);
+			this.context.setRegister(result, v);
+		}
+	}
+
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePinOrId("device"),
+			ArgumentCalculators.logic("logic"),
+		];
+	}
+}
+
+/*
+ld:
+  Loads device LogicType to register by direct ID reference.  
+  ld r? id(r?|id) logicType
+
+
+*/

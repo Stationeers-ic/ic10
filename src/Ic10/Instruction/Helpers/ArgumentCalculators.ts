@@ -30,7 +30,7 @@ const ErrorHandlers = {
 			if (!context.isConnectDeviceByPin(singlePin.valueOf())) {
 				context.addError(
 					new TypeIc10Error({
-						message: i18next.t("error.device_port_not_connected", { pin }),
+						message: i18next.t("error.device_pin_not_connected", { pin }),
 						severity: severity,
 					}).setArgument(argument),
 				);
@@ -116,7 +116,7 @@ const ValueCalculators = {
 	calculateDevicePin: (context: Context, argument: Argument) => {
 		const pin = getDevicePin(context, argument.text);
 		if (pin === false) {
-			return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_port"));
+			return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_pin"));
 		}
 		return ErrorHandlers.validateDeviceConnection(context, pin, argument);
 	},
@@ -152,7 +152,7 @@ const ValueCalculators = {
 
 		// Если оба варианта не сработали, возвращаем ошибку
 		return {
-			error: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_port_or_id")),
+			error: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_pin_or_id")),
 		};
 	},
 
