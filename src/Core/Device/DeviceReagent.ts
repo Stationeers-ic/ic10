@@ -1,4 +1,11 @@
 import { DeviceScope } from "@/Core/Device/DeviceScope";
+import { Reagents } from "@/Defines/data";
+
+export type ReagentIterator = {
+	hash: number;
+	name: string;
+	count: number;
+};
 
 export class DeviceReagent extends DeviceScope {
 	#reagents: Map<number, number> = new Map();
@@ -24,5 +31,15 @@ export class DeviceReagent extends DeviceScope {
 	}
 	public getReagents(): Map<number, number> {
 		return { ...this.#reagents };
+	}
+
+	[Symbol.iterator](): IterableIterator<ReagentIterator> {
+		const entries = Array.from(this.#reagents.entries()).map(([hash, count]) => {
+			if (Reagents.hasKey(hash)) {
+				const name = Reagents.getByKey(hash) ?? "";
+				return { hash, count, name } satisfies ReagentIterator;
+			}
+		});
+		return entries[Symbol.iterator]();
 	}
 }

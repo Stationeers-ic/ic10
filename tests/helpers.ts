@@ -33,6 +33,9 @@ export async function runInstructionTest(runner: Ic10Runner, testData: Instructi
 	if (testData.devices !== undefined) {
 		for (const device of testData.devices) {
 			runner.realContext.network.apply(device.device);
+			if (typeof device.pin !== "undefined") {
+				runner.realContext.housing.connectDevices(device.pin, device.device);
+			}
 		}
 	}
 	await runner.run(); // песочница

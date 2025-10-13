@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import type { Device } from "@/Core/Device";
 import type { StackInterface } from "@/Core/Stack";
-import { LogicBatchMethod, Logics } from "@/Defines/data";
+import { LogicBatchMethod, LogicReagentMode, Logics } from "@/Defines/data";
 import {
 	Context,
 	type IDefinesContext,
@@ -9,6 +9,7 @@ import {
 	type IDevicesByHashContext,
 	type IDevicesByIdContext,
 	type IDevicesByPinContext,
+	type IDevicesReagentContext,
 	type IDevicesSlotContext,
 	type IExecutionContext,
 	type IMemoryContext,
@@ -424,11 +425,48 @@ abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotCo
 	}
 }
 
+abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesReagentContext {
+	getDeviceReagentByPin(devicePin: number, mode: number, reagent: number): number {
+		const device = this.getDeviceByPin(devicePin);
+		if (device && LogicReagentMode.hasValue(mode)) {
+			return this.getReagent(device, reagent, mode);
+		}
+		return 0;
+	}
+	getDeviceReagentById(deviceId: number, mode: number, reagent: number): number {
+		const device = this.getDeviceById(deviceId);
+		if (device && LogicReagentMode.hasValue(mode)) {
+			return this.getReagent(device, reagent, mode);
+		}
+		return 0;
+	}
+	private getReagent(device: Device, reagent: number, mode): number {
+		switch (LogicReagentMode.getByValue(mode)) {
+			case "Contents":
+				return device.reagents.get(reagent);
+			case "Recipe":
+				//TODO: implement
+				break;
+			case "Required":
+				//TODO: implement
+				break;
+			case "TotalContents": {
+				let c = 0;
+				for (const reagent of device.reagents) {
+					c += reagent.count;
+				}
+				return c;
+			}
+		}
+		return 0;
+	}
+}
+
 // =============================================
 // Финальный класс RealContext
 // =============================================
 
-export class RealContext extends DevicesSlotBase {
+export class RealContext extends DevicesReagentBase {
 	override reset(): void {
 		this.$housing.reset();
 	}

@@ -1,6 +1,7 @@
 import i18next from "i18next";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
-import type { LogicBatchMethodType, LogicConstType } from "@/Defines/data";
+import { type LogicBatchMethodType, type LogicConstType, Reagents } from "@/Defines/data";
+import { StructureAutolathe } from "@/Devices/StructureAutolathe";
 import { StructureConsole } from "@/Devices/StructureConsole";
 import { HashString } from "@/helpers";
 import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
@@ -318,17 +319,6 @@ export class PutdInstruction extends Instruction {
 		];
 	}
 }
-
-// export class PutdInstruction extends Instruction {}
-/**
- * 
-putd:
-  Seeks directly for the provided device id, attempts to write the provided value to the stack at the provided address.  putd id(r?|id) address(r?|num) value(r?|num)
-
-getd:
-  Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register.  getd r? id(r?|id) address(r?|num)
-
- */
 
 export class BdnvlInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
@@ -655,6 +645,28 @@ export class LbsInstruction extends Instruction {
 }
 
 export class LrInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		const name = new HashString("a1");
+		const d1 = new StructureAutolathe({ name: "a1" });
+		const rh = Reagents.getByValue("Copper");
+		d1.reagents.set(rh, 200);
+		const devices = [{ id: 1, pin: 2, device: d1 }];
+
+		return [
+			{
+				devices,
+				code: [`lr r0 d2 Contents ${rh}`],
+				expected: [
+					{
+						type: "register",
+						register: 0,
+						value: 200,
+					},
+				],
+			},
+		];
+	}
+
 	public run(): void | Promise<void> {
 		const result = this.getArgumentValue<number>("result");
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
@@ -670,9 +682,14 @@ export class LrInstruction extends Instruction {
 			return;
 		}
 		if (device.pin !== undefined) {
+			const v = this.context.getDeviceReagentByPin(device.pin, reagentMode, reagent);
+			this.context.setRegister(result, v);
 			return;
 		}
 		if (device.id !== undefined) {
+			const v = this.context.getDeviceReagentById(device.id, reagentMode, reagent);
+			this.context.setRegister(result, v);
+			return;
 		}
 	}
 

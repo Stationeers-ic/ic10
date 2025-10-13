@@ -20,8 +20,19 @@ export const LogicBatchMethod = new BiMap<
 	LogicBatchMethodType[keyof LogicBatchMethodType]
 >();
 
-export const Reagents = new BiMap<number, string>();
-export const Devices = new BiMap<number, string>();
+// Если хотите получить точные union types всех возможных значений
+type ReagentHash = (typeof REAGENTS)[number] extends { hash: infer H } ? H : never;
+type ReagentName = (typeof REAGENTS)[number]["name"];
+
+type DeviceHash = {
+	[K in keyof typeof DEVICES]: (typeof DEVICES)[K] extends { PrefabHash: infer H } ? H : never;
+}[keyof typeof DEVICES];
+
+type DeviceName = (typeof DEVICES)[keyof typeof DEVICES]["PrefabName"];
+
+// Использование
+export const Reagents = new BiMap<ReagentHash, ReagentName>();
+export const Devices = new BiMap<DeviceHash, DeviceName>();
 REAGENTS.forEach((reagent) => {
 	if (reagent.hash) {
 		Reagents.set(reagent.hash, reagent.name);

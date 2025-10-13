@@ -137,6 +137,11 @@ export interface IDevicesSlotContext {
 	): number;
 }
 
+export interface IDevicesReagentContext {
+	getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number;
+	getDeviceReagentById(devicePin: number, mode: number, reagent: number): number;
+}
+
 /**
  * Класс дает простое API для Инструкций с доступом к элементам Network, Housing ...
  */
@@ -151,7 +156,8 @@ export abstract class Context
 		IDevicesByHashAndNameContext,
 		IStackContext,
 		IDevicesByIdContext,
-		IDevicesSlotContext
+		IDevicesSlotContext,
+		IDevicesReagentContext
 {
 	/** Имя контекста (используется в отладке/логировании) */
 	public readonly name: string;
@@ -297,6 +303,7 @@ export abstract class Context
 	abstract canStoreDeviceParameterByPin(pin: number, prop: number): boolean;
 	abstract getDevicePortChanelByPin(pin: number, port: number, chanel: number): number;
 	abstract setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void;
+
 	// =============================================
 	// IDevicesByIDContext implementation
 	// =============================================
@@ -345,4 +352,10 @@ export abstract class Context
 	abstract pop(): number;
 	abstract peek(): number;
 	abstract stack(): StackInterface;
+
+	// =============================================
+	// IDevicesReagentContext implementation
+	// =============================================
+	abstract getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number;
+	abstract getDeviceReagentById(devicePin: number, mode: number, reagent: number): number;
 }

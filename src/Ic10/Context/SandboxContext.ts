@@ -215,6 +215,12 @@ abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements 
 // =============================================
 
 export class SandboxContext extends SandboxDevicesSlotBase {
+	getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number {
+		return 0;
+	}
+	getDeviceReagentById(devicePin: number, mode: number, reagent: number): number {
+		return 0;
+	}
 	override reset(): void {
 		this.$housing.reset();
 	}

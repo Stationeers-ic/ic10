@@ -161,8 +161,8 @@ const ValueCalculators = {
 			return Logics.getByKey(argument.text);
 		}
 
-		const prop = parseInt(argument.text, 10);
-		if (!Number.isNaN(prop)) {
+		const prop = parseArgumentAnyNumber(context, argument);
+		if (Logics.hasValue(prop)) {
 			return prop;
 		}
 
@@ -174,8 +174,8 @@ const ValueCalculators = {
 			return LogicSlot.getByKey(argument.text);
 		}
 
-		const slot = parseInt(argument.text, 10);
-		if (!Number.isNaN(slot)) {
+		const slot = parseArgumentAnyNumber(context, argument);
+		if (LogicSlot.hasValue(slot)) {
 			return slot;
 		}
 
@@ -187,8 +187,8 @@ const ValueCalculators = {
 			return LogicBatchMethod.getByKey(argument.text);
 		}
 
-		const method = parseInt(argument.text, 10);
-		if (!Number.isNaN(method)) {
+		const method = parseArgumentAnyNumber(context, argument);
+		if (LogicBatchMethod.hasValue(method)) {
 			return method;
 		}
 
@@ -199,9 +199,9 @@ const ValueCalculators = {
 			return LogicReagentMode.getByKey(argument.text);
 		}
 
-		const method = parseInt(argument.text, 10);
-		if (!Number.isNaN(method)) {
-			return method;
+		const mode = parseArgumentAnyNumber(context, argument);
+		if (LogicReagentMode.hasValue(mode)) {
+			return mode;
 		}
 
 		return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_valid_logic_reagent_mode"));

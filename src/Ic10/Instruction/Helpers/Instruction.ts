@@ -78,21 +78,11 @@ export type InstructionTestExpected =
 	| InstructionTestExpectedLoop;
 
 export type InstructionTestData = {
-	devices?: (
-		| {
-				pin: number;
-				id: number;
-				device: Device;
-		  }
-		| {
-				pin: number;
-				device: Device;
-		  }
-		| {
-				id: number;
-				device: Device;
-		  }
-	)[];
+	devices?: {
+		pin?: number;
+		id?: number;
+		device: Device;
+	}[];
 	/** Заголовок/описание теста (опционально) */
 	title?: string;
 	/** Код IC10 для выполнения в тесте */
