@@ -118,53 +118,63 @@ export class LInstruction extends Instruction {
 	}
 }
 
-export class LbInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
-		const d = new StructureConsole({});
-		d.props.forceWrite("Setting", 100);
-		const c = new StructureConsole({});
-		c.props.forceWrite("Setting", 80);
-
-		const devices = [
-			{ id: 1, device: d },
-			{ id: 2, device: c },
-		];
-
-		const values = [100, 80];
-		const sum = values[0] + values[1];
-		const max = Math.max(...values);
-		const min = Math.min(...values);
-		const avg = sum / values.length;
-
-		const makeTest = (register: number, operation: string, expectedValue: number): InstructionTestData => ({
-			devices,
-			code: [`lb r${register} 235638270 Setting ${operation}`],
-			expected: [{ type: "register", register, value: expectedValue }],
-		});
-
-		return [
-			makeTest(0, "Sum", sum),
-			makeTest(0, "Maximum", max),
-			makeTest(0, "Minimum", min),
-			makeTest(3, "Average", avg),
-		];
+export class SdInstruction extends Instruction {
+	override run(): void {
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
+		const prop = this.getArgumentValue<number>("logic");
+		const value = this.getArgumentValue<number>("value");
+		if (device.pin !== undefined && device.port !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.channels_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.pin !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.pin_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.id !== undefined) {
+			this.context.setDeviceParameterById(device.id, prop, value);
+		}
 	}
 
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePinOrId("device"),
+			ArgumentCalculators.logic("logic"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+}
+
+export class LdInstruction extends Instruction {
 	override run(): void {
 		const result = this.getArgumentValue<number>("result");
-		const device = this.getArgumentValue<number>("device_hash");
-		const prop = this.getArgumentValue<LogicConstType[keyof LogicConstType]>("logic");
-		const batchMode = this.getArgumentValue<LogicBatchMethodType[keyof LogicBatchMethodType]>("batchMode");
-		const v = this.context.deviceBatchReadByHash(device, prop, batchMode);
-		this.context.setRegister(result, v);
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
+		const prop = this.getArgumentValue<number>("logic");
+		let v: number;
+
+		if (device.pin !== undefined && device.port !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.channels_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.pin !== undefined) {
+			throw new ArgumentIc10Error({
+				message: i18next.t("error.pin_not_allowed_in_instruction"),
+			}).setArgument(this.args[1]);
+		}
+		if (device.id !== undefined) {
+			v = this.context.getDeviceParameterById(device.id, prop);
+			this.context.setRegister(result, v);
+		}
 	}
 
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.anyNumber("device_hash"),
+			ArgumentCalculators.devicePinOrId("device"),
 			ArgumentCalculators.logic("logic"),
-			ArgumentCalculators.logicBatchMethod("batchMode"),
 		];
 	}
 }
@@ -510,7 +520,7 @@ export class lbnInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.anyNumber("deviceHash"),
+			ArgumentCalculators.deviceHash("deviceHash"),
 			ArgumentCalculators.anyNumber("deviceName"),
 			ArgumentCalculators.logic("logic"),
 			ArgumentCalculators.logicBatchMethod("mode"),
@@ -527,6 +537,32 @@ export class lbnInstruction extends Instruction {
 		const value = this.context.deviceBatchReadByHashAndName(deviceHash, deviceName, logic, mode);
 
 		this.context.setRegister(result, value);
+	}
+}
+/*
+sbn:
+  Stores register value to LogicType on all output network devices with provided type hash and name.  
+  
+  sbn deviceHash nameHash logicType r?
+*/
+
+export class SbnInstruction extends Instruction {
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.deviceHash("deviceHash"),
+			ArgumentCalculators.anyNumber("deviceName"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+
+	override run(): void {
+		const deviceHash = this.getArgumentValue<number>("deviceHash");
+		const deviceName = this.getArgumentValue<number>("deviceName");
+		const logic = this.getArgumentValue<number>("logic");
+		const value = this.getArgumentValue<number>("value");
+
+		//TODO: implement
 	}
 }
 
@@ -703,42 +739,81 @@ export class LrInstruction extends Instruction {
 	}
 }
 
-export class LdInstruction extends Instruction {
+export class LbInstruction extends Instruction {
+	static tests(): InstructionTestData[] {
+		const d = new StructureConsole({});
+		d.props.forceWrite("Setting", 100);
+		const c = new StructureConsole({});
+		c.props.forceWrite("Setting", 80);
+
+		const devices = [
+			{ id: 1, device: d },
+			{ id: 2, device: c },
+		];
+
+		const values = [100, 80];
+		const sum = values[0] + values[1];
+		const max = Math.max(...values);
+		const min = Math.min(...values);
+		const avg = sum / values.length;
+
+		const makeTest = (register: number, operation: string, expectedValue: number): InstructionTestData => ({
+			devices,
+			code: [`lb r${register} 235638270 Setting ${operation}`],
+			expected: [{ type: "register", register, value: expectedValue }],
+		});
+
+		return [
+			makeTest(0, "Sum", sum),
+			makeTest(0, "Maximum", max),
+			makeTest(0, "Minimum", min),
+			makeTest(3, "Average", avg),
+		];
+	}
+
 	override run(): void {
 		const result = this.getArgumentValue<number>("result");
-		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
-		const prop = this.getArgumentValue<number>("logic");
-		let v: number;
-
-		if (device.pin !== undefined && device.port !== undefined) {
-			throw new ArgumentIc10Error({
-				message: i18next.t("error.channels_not_allowed_in_instruction"),
-			}).setArgument(this.args[1]);
-		}
-		if (device.pin !== undefined) {
-			throw new ArgumentIc10Error({
-				message: i18next.t("error.pin_not_allowed_in_instruction"),
-			}).setArgument(this.args[1]);
-		}
-		if (device.id !== undefined) {
-			v = this.context.getDeviceParameterById(device.id, prop);
-			this.context.setRegister(result, v);
-		}
+		const device = this.getArgumentValue<number>("deviceHash");
+		const prop = this.getArgumentValue<LogicConstType[keyof LogicConstType]>("logic");
+		const batchMode = this.getArgumentValue<LogicBatchMethodType[keyof LogicBatchMethodType]>("batchMode");
+		const v = this.context.deviceBatchReadByHash(device, prop, batchMode);
+		this.context.setRegister(result, v);
 	}
 
 	public argumentList(): InstructionArgument[] {
 		return [
 			ArgumentCalculators.registerLink("result"),
-			ArgumentCalculators.devicePinOrId("device"),
+			ArgumentCalculators.deviceHash("deviceHash"),
 			ArgumentCalculators.logic("logic"),
+			ArgumentCalculators.logicBatchMethod("batchMode"),
 		];
 	}
 }
 
 /*
-ld:
-  Loads device LogicType to register by direct ID reference.  
-  ld r? id(r?|id) logicType
+TODO: implement
+rmap:
+  Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot.  
+  
+  rmap r? d? reagentHash(r?|num)
 
+sbn:
+  Stores register value to LogicType on all output network devices with provided type hash and name.  
+  
+  sbn deviceHash nameHash logicType r?
 
+sbs:
+  Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.  
+  
+  sbs deviceHash slotIndex logicSlotType r?
+
+sd:
+  Stores register value to LogicType on device by direct ID reference. 
+   
+  sd id(r?|id) logicType r?
+
+ss:
+  Stores register value to device stored in a slot LogicSlotType on device.  s
+  
+  s device(d?|r?|id) slotIndex logicSlotType r?
 */
