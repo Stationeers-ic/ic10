@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import resources from "@/lang";
+import resources from "@/Languages";
 
 // Тип для доступных языков
 export type Language = keyof typeof resources;
@@ -14,7 +14,7 @@ i18next
 	})
 	.catch(console.error);
 
-export const langs = {
+export const lang = {
 	// Получить текущий язык
 	get current(): Language {
 		return i18next.language as Language;
@@ -32,4 +32,4 @@ export const langs = {
 	t: i18next.t,
 };
 
-export default langs;
+export default lang;

@@ -13,12 +13,13 @@ interface GenerateLangIndexOptions {
 export async function generateLangIndex({
 	langDir,
 	outputFile = "index.ts",
-	alias = "@/lang",
+	alias = "@/Languages",
 }: GenerateLangIndexOptions): Promise<void> {
 	// Находим все JSON файлы в директории
-	const pattern = path.join(langDir, "*.json");
-	const files = await glob(pattern);
-
+	const files = await glob("*.json", {
+		cwd: langDir,
+	});
+	console.table(files);
 	if (files.length === 0) {
 		throw new Error(`No JSON files found in ${langDir}`);
 	}
@@ -64,7 +65,7 @@ export async function generateLangIndex({
 
 // Пример использования
 generateLangIndex({
-	langDir: "./src/lang",
-	outputFile: "./src/lang/index.ts",
-	alias: "@/lang",
+	langDir: path.join(path.dirname(__dirname), "src", "Languages"),
+	outputFile: path.join(path.dirname(__dirname), "src", "Languages", "index.ts"),
+	alias: "@/Languages",
 }).catch(console.error);
