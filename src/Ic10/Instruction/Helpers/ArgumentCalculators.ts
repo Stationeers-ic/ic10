@@ -30,7 +30,7 @@ const ErrorHandlers = {
 			if (!context.isConnectDeviceByPin(singlePin.valueOf())) {
 				context.addError(
 					new TypeIc10Error({
-						message: i18next.t("error:device_port_not_connected", { pin }),
+						message: i18next.t("error.device_port_not_connected", { pin }),
 						severity: severity,
 					}).setArgument(argument),
 				);
@@ -103,20 +103,20 @@ const ValueCalculators = {
 		const value = parseArgumentAnyNumber(context, argument);
 		return value !== false
 			? value
-			: ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_number_or_register_or_const"));
+			: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_number_or_register_or_const"));
 	},
 
 	calculateRegister: (context: Context, argument: Argument) => {
 		const reg = getRegister(context, argument.text);
 		return reg !== false
 			? reg
-			: ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_register"));
+			: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_register"));
 	},
 
 	calculateDevicePin: (context: Context, argument: Argument) => {
 		const pin = getDevicePin(context, argument.text);
 		if (pin === false) {
-			return ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_device_port"));
+			return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_port"));
 		}
 		return ErrorHandlers.validateDeviceConnection(context, pin, argument);
 	},
@@ -129,7 +129,7 @@ const ValueCalculators = {
 			};
 		}
 		return {
-			error: ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_device_id")),
+			error: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_id")),
 		};
 	},
 
@@ -152,7 +152,7 @@ const ValueCalculators = {
 
 		// Если оба варианта не сработали, возвращаем ошибку
 		return {
-			error: ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_device_port_or_id")),
+			error: ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_device_port_or_id")),
 		};
 	},
 
@@ -166,7 +166,7 @@ const ValueCalculators = {
 			return prop;
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_valid_device_property"));
+		return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_valid_device_property"));
 	},
 
 	calculateLogicSlot: (context: Context, argument: Argument) => {
@@ -179,7 +179,7 @@ const ValueCalculators = {
 			return slot;
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_valid_logic_slot"));
+		return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_valid_logic_slot"));
 	},
 
 	calculateLogicBatchMethod: (context: Context, argument: Argument) => {
@@ -192,7 +192,7 @@ const ValueCalculators = {
 			return method;
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_valid_logic_batch_method"));
+		return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_valid_logic_batch_method"));
 	},
 	calculateLogicReagentMode: (context: Context, argument: Argument) => {
 		if (LogicReagentMode.hasKey(argument.text)) {
@@ -204,7 +204,7 @@ const ValueCalculators = {
 			return method;
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18next.t("error:invalid_argument_valid_logic_reagent_mode"));
+		return ErrorHandlers.handleError(context, argument, i18next.t("error.invalid_argument_valid_logic_reagent_mode"));
 	},
 	calculateReagentHash: (context: Context, argument: Argument) => {
 		const value = parseArgumentAnyNumber(context, argument);
@@ -226,7 +226,7 @@ const ValueCalculators = {
 		return ErrorHandlers.handleError(
 			context,
 			argument,
-			i18next.t("error:invalid_argument_valid_device_hash"),
+			i18next.t("error.invalid_argument_valid_device_hash"),
 			ErrorSeverity.Weak,
 		);
 	},

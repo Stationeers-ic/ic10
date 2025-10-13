@@ -156,7 +156,7 @@ export abstract class Instruction {
 		if (this.args.length !== rules.length) {
 			this.context.addError(
 				new ArgumentIc10Error({
-					message: i18next.t("error:invalid_argument_count", {
+					message: i18next.t("error.invalid_argument_count", {
 						actual: this.args.length,
 						expected: rules.length,
 					}),
@@ -225,7 +225,7 @@ export abstract class Instruction {
 			if (index === -1) {
 				this.context.addError(
 					new ArgumentIc10Error({
-						message: i18next.t("error:missing_argument", { name: indexOrName }),
+						message: i18next.t("error.missing_argument", { name: indexOrName }),
 						severity: ErrorSeverity.Strong,
 					}).setLine(this.line),
 				);
@@ -239,8 +239,8 @@ export abstract class Instruction {
 			// Сообщение адаптируем в зависимости от того, было ли передано имя или индекс
 			const msg =
 				typeof indexOrName === "string"
-					? i18next.t("error:missing_argument", { name: indexOrName })
-					: i18next.t("error:missing_argument_index", { index });
+					? i18next.t("error.missing_argument", { name: indexOrName })
+					: i18next.t("error.missing_argument_index", { index });
 			this.context.addError(
 				new ArgumentIc10Error({
 					message: msg,

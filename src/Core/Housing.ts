@@ -36,7 +36,7 @@ export class Housing extends Device {
 		if (device.network.id !== this.network.id) {
 			this.$errors.add(
 				new Ic10Error({
-					message: i18next.t("error:cannot_connect_different_networks"),
+					message: i18next.t("error.cannot_connect_different_networks"),
 				}),
 			);
 			return;
@@ -44,7 +44,7 @@ export class Housing extends Device {
 		if (pin > this.pin_count) {
 			this.$errors.add(
 				new Ic10Error({
-					message: i18next.t("error:pin_out_of_range", { pin }),
+					message: i18next.t("error.pin_out_of_range", { pin }),
 				}),
 			);
 			return;

@@ -419,15 +419,4 @@ export * from "@/Ic10/SandBox";
 export * from "@/Schemas/EnvSchema";
 export * from "@/helpers";
 export * from "@/lang/index";
-// Loading i18next
-import i18next from "i18next";
-import { en } from "@/lang/index";
-
-i18next.init({
-	lng: "en",
-	resources: {
-		en: {
-			translation: en,
-		},
-	},
-});
+export * from "@/lang/langs";
