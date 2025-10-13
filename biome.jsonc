@@ -6,7 +6,6 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"includes": ["src/**/*.ts", "tests/**/*.ts", "tests/**/*.yml", "tools/**/*.ts"],
 		"maxSize": 999999999999999,
 		"ignoreUnknown": true
 	},
