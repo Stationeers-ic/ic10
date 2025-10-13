@@ -43,4 +43,7 @@ export default defineConfig({
 			exclude: ["tests/**/*", "tools/**/*", "node_modules/**/*", "vite.config.ts"],
 		}),
 	],
+	define: {
+		__VITE_ENV: JSON.stringify(process.env.NODE_ENV || "production"),
+	},
 });

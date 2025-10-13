@@ -1,5 +1,5 @@
 set -e
-bun run generate-index
+bun run generate:index
 git add src/index.ts
 
 # автоматически поправить формат
