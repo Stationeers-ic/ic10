@@ -1,15 +1,21 @@
 import { array, type InferOutput, literal, number, object, optional, string, union } from "valibot";
 import { GROUPED_CONSTS } from "@/Defines/consts";
-import { Items, Reagents } from "@/Defines/data";
+import { type ItemName, Items, type ReagentName, Reagents } from "@/Defines/data";
 import { DevicesByPrefabName } from "@/Devices";
 
 // --- Вспомогательные функции для создания union из ключей ---
-function unionLiterals(array: (string | number)[]) {
-	return union(array.map((k) => literal(k)));
+function unionLiterals<T extends string | number | symbol>(array: IterableIterator<T> | T[]) {
+	const un: T[] = [];
+	for (const k of array) {
+		if (!un.includes(k)) {
+			un.push(k);
+		}
+	}
+	return union(un.map((k) => literal(k)));
 }
 function unionFromKeys<T extends Record<string, unknown>>(obj: T, filter?: (key: string) => boolean) {
 	const keys = Object.keys(obj).filter(filter ?? (() => true));
-	return unionLiterals(keys);
+	return union(keys.map((k) => literal(k)));
 }
 
 // --- PrefabName ---
@@ -58,13 +64,13 @@ export const PortSchema = object({
 // --- Slot ---
 export const SlotSchema = object({
 	index: number(),
-	item: unionLiterals(Items.values()),
+	item: unionLiterals<ItemName>(Items.values()),
 	amount: number(),
 });
 
 // --- Reagent ---
 export const ReagentSchema = object({
-	name: unionLiterals(Reagents.values()),
+	name: unionLiterals<ReagentName>(Reagents.values()),
 	amount: number(),
 });
 

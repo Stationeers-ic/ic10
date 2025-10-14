@@ -4,11 +4,19 @@ import type { Device } from "@/Core/Device";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { Housing } from "@/Core/Housing";
 import { Network } from "@/Core/Network";
-import { Items, Logics, Reagents } from "@/Defines/data";
+import { type ItemHash, type ItemName, Items, Logics, Reagents } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
-import type { DeviceSchema, EnvSchema, NetworkSchema, PortSchema, PropsSchema } from "@/Schemas/EnvSchema";
+import type {
+	DeviceSchema,
+	EnvSchema,
+	NetworkSchema,
+	PortSchema,
+	PropsSchema,
+	ReagentSchema,
+	SlotSchema,
+} from "@/Schemas/EnvSchema";
 
 /**
  * Параметры конструктора парсера
@@ -177,18 +185,22 @@ class SerializerV1 {
 	/**
 	 * Сериализует слоты устройства
 	 */
-	private serializeDeviceSlots(device: Device): Array<{ index: number; item: string; amount: number }> | undefined {
+	private serializeDeviceSlots(device: Device): SlotSchema[] | undefined {
 		if (!device.hasSlots) return undefined;
 
-		const slotsData: Array<{ index: number; item: string; amount: number }> = [];
+		const slotsData: SlotSchema[] = [];
 
 		for (const [slotIndex, slot] of device.slots) {
 			if (slot.hasItem()) {
 				const item = slot.getItem();
 				if (item) {
-					// Здесь нужно преобразовать hash в имя предмета
-					// Предполагается, что есть какой-то mapping для этого
-					const itemName = this.getItemNameByHash(item.hash);
+					let itemName: ItemName;
+					if (Items.hasValue(item.hash)) {
+						itemName = item.hash;
+					}
+					if (Items.hasKey(item.hash)) {
+						itemName = Items.getByKey(item.hash);
+					}
 					slotsData.push({
 						index: slotIndex,
 						item: itemName,
@@ -204,31 +216,25 @@ class SerializerV1 {
 	/**
 	 * Сериализует реагенты устройства
 	 */
-	private serializeDeviceReagents(device: Device): Array<{ name: string; amount: number }> | undefined {
+	private serializeDeviceReagents(device: Device): ReagentSchema[] | undefined {
 		if (!device.hasReagents) return undefined;
 
-		const reagentsData: Array<{ name: string; amount: number }> = [];
+		const reagentsData: ReagentSchema[] = [];
 
 		for (const reagent of device.reagents) {
 			if (reagent.count > 0) {
-				reagentsData.push({
-					name: reagent.name,
-					amount: reagent.count,
-				});
+				if (Reagents.hasValue(reagent.name)) {
+					reagentsData.push({
+						name: reagent.name,
+						amount: reagent.count,
+					});
+				} else {
+					throw new Error(`Unknown reagent name: ${reagent.name}`);
+				}
 			}
 		}
 
 		return reagentsData.length > 0 ? reagentsData : undefined;
-	}
-
-	/**
-	 * Вспомогательный метод для получения имени предмета по hash
-	 */
-	private getItemNameByHash(hash: number): string {
-		if (Items.hasKey(hash)) {
-			return Items.getByKey(hash);
-		}
-		throw new Error(`Unknown item hash: ${hash}`);
 	}
 }
 
@@ -348,7 +354,13 @@ class DeserializerV1 {
 		for (const slotData of deviceSchema.slots) {
 			const slot = device.slots.getSlot(slotData.index);
 			if (slot) {
-				const itemHash = this.getItemHashByName(slotData.item);
+				let itemHash: ItemHash;
+				if (Items.hasKey(slotData.item)) {
+					itemHash = slotData.item;
+				}
+				if (Items.hasValue(slotData.item)) {
+					itemHash = Items.getByValue(slotData.item);
+				}
 				const item = new ItemEntity(itemHash, slotData.amount);
 				slot.putItem(item);
 			}
@@ -364,9 +376,11 @@ class DeserializerV1 {
 		}
 
 		for (const reagentData of deviceSchema.reagents) {
-			if (Reagents.hasKey(reagentData.name)) {
-				const reagentHash = Reagents.getByKey(reagentData.name);
+			if (Reagents.hasValue(reagentData.name)) {
+				const reagentHash = Reagents.getByValue(reagentData.name);
 				device.reagents.set(reagentHash, reagentData.amount);
+			} else {
+				throw new Error(`Unknown reagent name: ${reagentData.name}`);
 			}
 		}
 	}
@@ -424,16 +438,6 @@ class DeserializerV1 {
 		}
 
 		return deviceClass;
-	}
-
-	/**
-	 * Вспомогательный метод для получения hash предмета по имени
-	 */
-	private getItemHashByName(itemName: string): number {
-		if (Items.hasKey(itemName)) {
-			return Items.getByValue(itemName);
-		}
-		throw new Error(`Item ${itemName} not found`);
 	}
 }
 // ============================================================================

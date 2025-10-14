@@ -22,13 +22,13 @@ export const LogicBatchMethod = new BiMap<
 >();
 
 // Если хотите получить точные union types всех возможных значений
-type ReagentHash = (typeof REAGENTS)[number] extends { hash: infer H } ? H : never;
-type ReagentName = (typeof REAGENTS)[number]["name"];
+export type ReagentHash = (typeof REAGENTS)[number] extends { hash: infer H } ? H : never;
+export type ReagentName = (typeof REAGENTS)[number]["name"];
 
-type ItemHash = (typeof ITEMS)[number] extends { PrefabHash: infer H } ? H : never;
-type ItemName = (typeof ITEMS)[number]["PrefabName"];
+export type ItemHash = (typeof ITEMS)[number] extends { PrefabHash: infer H } ? H : never;
+export type ItemName = (typeof ITEMS)[number]["PrefabName"];
 
-type DeviceHash = {
+export type DeviceHash = {
 	[K in keyof typeof DEVICES]: (typeof DEVICES)[K] extends { PrefabHash: infer H } ? H : never;
 }[keyof typeof DEVICES];
 
