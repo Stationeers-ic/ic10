@@ -135,6 +135,10 @@ export interface IDevicesSlotContext {
 		prop: number,
 		mode: number,
 	): number;
+
+	setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void;
+	setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void;
+	setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void;
 }
 
 export interface IDevicesReagentContext {
@@ -328,6 +332,9 @@ export abstract class Context
 		prop: number,
 		mode: number,
 	): number;
+	abstract setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void;
+	abstract setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void;
+	abstract setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void;
 
 	// =============================================
 	// IDevicesByHashContext implementation

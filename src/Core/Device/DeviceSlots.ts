@@ -1,7 +1,9 @@
+import type { Device } from "@/Core/Device";
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
 import { LogicSlot } from "@/Defines/data";
 import type { SlotsType } from "@/Defines/devices";
 import { BiMap } from "@/helpers";
+import { ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors";
 import i18n from "@/Languages/lang";
 
 export class ItemEntity {
@@ -37,7 +39,9 @@ export class ItemEntity {
 		}
 		if (propCode !== undefined) {
 			this._propertiesRaw.set(propCode, value);
+			return;
 		}
+		throw "unknown_prop";
 		// иначе игнорируем неизвестную пропертy (или можно выбросить исключение)
 	}
 
@@ -56,11 +60,15 @@ export class ItemEntity {
 	}
 }
 
-export class Slot {
+export class Slot extends DeviceScope {
 	private ITEM: ItemEntity | null = null;
 	private logicNameToCode = new BiMap<string, number>();
 
-	constructor(public slot: SlotsType[number]) {
+	constructor(
+		device: Device,
+		public slot: SlotsType[number],
+	) {
+		super({ device });
 		// Заполняем двунаправленный мэппинг только валидные коды
 		slot.logic.forEach((l) => {
 			if (LogicSlot.hasKey(l)) {
@@ -87,6 +95,34 @@ export class Slot {
 			return this.ITEM.getProp(propCode);
 		}
 		return 0;
+	}
+
+	public setProp(prop: number | string, value: number): void {
+		if (this.ITEM === null) {
+			this.scope.errors.add(
+				new RuntimeIc10Error({
+					message: i18n.t("error.cannot_set_prop_empty_slot"),
+					severity: ErrorSeverity.Strong,
+				}),
+			);
+			return;
+		}
+		try {
+			this.ITEM.setProp(prop, value);
+			this.scope.errors.add(
+				new RuntimeIc10Error({
+					message: i18n.t("error.unknown_set_prop_result"),
+					severity: ErrorSeverity.Weak,
+				}),
+			);
+		} catch (e) {
+			this.scope.errors.add(
+				new RuntimeIc10Error({
+					message: i18n.t("error.unknown_slot_prop"),
+					severity: ErrorSeverity.Strong,
+				}),
+			);
+		}
 	}
 
 	public moveItem(newSlot: Slot): void {
@@ -141,7 +177,7 @@ export class DeviceSlots extends DeviceScope {
 		super({ device });
 		device?.rawData?.slots?.forEach((slot) => {
 			if (slot) {
-				this.slots.set(slot.SlotIndex, new Slot(slot));
+				this.slots.set(slot.SlotIndex, new Slot(device, slot));
 			}
 		});
 	}

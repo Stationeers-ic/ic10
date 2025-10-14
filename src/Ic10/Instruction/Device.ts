@@ -5,7 +5,11 @@ import { StructureConsole } from "@/Devices/StructureConsole";
 import { StructureConsoleLed1x2 } from "@/Devices/StructureConsoleLed1x2";
 import { HashString } from "@/helpers";
 import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
-import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
+import {
+	ArgumentCalculators,
+	type calculateDevicePinOrIdResult,
+	type ValueCalculators,
+} from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
 	type InstructionArgument,
@@ -47,7 +51,7 @@ export class SInstruction extends Instruction {
 
 	override run(): void {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
-		const prop = this.getArgumentValue<number>("logic");
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const value = this.getArgumentValue<number>("value");
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.setDevicePortChanelByPin(device.pin, device.port, prop, value);
@@ -97,7 +101,7 @@ export class LInstruction extends Instruction {
 	override run(): void {
 		const result = this.getArgumentValue<number>("result");
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
-		const prop = this.getArgumentValue<number>("logic");
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		let v: number;
 
 		if (device.pin !== undefined && device.port !== undefined) {
@@ -128,7 +132,7 @@ export class LInstruction extends Instruction {
 export class SdInstruction extends Instruction {
 	override run(): void {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
-		const prop = this.getArgumentValue<number>("logic");
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const value = this.getArgumentValue<number>("value");
 		if (device.pin !== undefined && device.port !== undefined) {
 			throw new ArgumentIc10Error({
@@ -158,7 +162,7 @@ export class LdInstruction extends Instruction {
 	override run(): void {
 		const result = this.getArgumentValue<number>("result");
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
-		const prop = this.getArgumentValue<number>("logic");
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		let v: number;
 
 		if (device.pin !== undefined && device.port !== undefined) {
@@ -391,7 +395,7 @@ export class BdnvlInstruction extends Instruction {
 
 	override run(): void {
 		const devicePin = this.getArgumentValue<number>("device");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const target = this.getArgumentValue<number>("target");
 		if (this.context.canLoadDeviceParameterByPin(devicePin, logic)) {
 			this.context.setNextLineIndex(target);
@@ -437,7 +441,7 @@ export class BdnvsInstruction extends Instruction {
 
 	override run(): void {
 		const devicePin = this.getArgumentValue<number>("device");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const target = this.getArgumentValue<number>("target");
 		if (this.context.canStoreDeviceParameterByPin(devicePin, logic)) {
 			this.context.setNextLineIndex(target);
@@ -565,7 +569,7 @@ export class lbnInstruction extends Instruction {
 		const result = this.getArgumentValue<number>("result");
 		const deviceHash = this.getArgumentValue<number>("deviceHash");
 		const deviceName = this.getArgumentValue<number>("deviceName");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const mode = this.getArgumentValue<number>("mode");
 
 		const value = this.context.deviceBatchReadByHashAndName(deviceHash, deviceName, logic, mode);
@@ -632,7 +636,7 @@ export class SbnInstruction extends Instruction {
 	override run(): void {
 		const deviceHash = this.getArgumentValue<number>("deviceHash");
 		const deviceName = this.getArgumentValue<number>("deviceName");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const value = this.getArgumentValue<number>("value");
 
 		this.context.deviceBatchWriteByHashAndName(deviceHash, deviceName, logic, value);
@@ -682,7 +686,7 @@ export class LbnsInstruction extends Instruction {
 		const deviceHash = this.getArgumentValue<number>("deviceHash");
 		const deviceName = this.getArgumentValue<number>("deviceName");
 		const slotIndex = this.getArgumentValue<number>("slotIndex");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const mode = this.getArgumentValue<number>("mode");
 
 		const v = this.context.getBatchDeviceSlotParameterByHashAndName(deviceHash, deviceName, slotIndex, logic, mode);
@@ -742,7 +746,7 @@ export class LbsInstruction extends Instruction {
 		const result = this.getArgumentValue<number>("result");
 		const deviceHash = this.getArgumentValue<number>("deviceHash");
 		const slotIndex = this.getArgumentValue<number>("slotIndex");
-		const logic = this.getArgumentValue<number>("logic");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
 		const mode = this.getArgumentValue<number>("mode");
 
 		const v = this.context.getBatchDeviceSlotParameterByHash(deviceHash, slotIndex, logic, mode);
@@ -881,7 +885,54 @@ rmap:
   Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot.  
   
   rmap r? d? reagentHash(r?|num)
+*/
 
+/*
+ss:
+  Stores register value to device stored in a slot LogicSlotType on device.  s
+  
+  s device(d?|r?|id) slotIndex logicSlotType r?
+  */
+export class SsInstruction extends Instruction {
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.devicePinOrId("device"),
+			ArgumentCalculators.anyNumber("slot"),
+			ArgumentCalculators.logicSlot("slotType"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+
+	public run(): void {
+		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device");
+		const slot = this.getArgumentValue<number>("slot");
+		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType");
+		const value = this.getArgumentValue<number>("value");
+
+		if (device.pin !== undefined && device.port !== undefined) {
+			this.context.addError(
+				new ArgumentIc10Error({
+					message: i18n.t("error.channels_not_allowed_in_instruction"),
+				}).setArgument(this.args[1]),
+			);
+		}
+		if (device.pin !== undefined) {
+			this.context.setDeviceSlotParameterByPin(device.pin, slot, slotType, value);
+		}
+		if (device.id !== undefined) {
+			this.context.setDeviceSlotParameterById(device.id, slot, slotType, value);
+		}
+	}
+}
+
+// export class SdInstruction extends Instruction {
+
+// }
+
+// export class SbsInstruction extends Instruction {
+
+// }
+/*
 sbs:
   Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.  
   

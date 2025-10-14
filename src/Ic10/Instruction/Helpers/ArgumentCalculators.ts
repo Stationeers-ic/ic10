@@ -13,7 +13,7 @@ const ErrorHandlers = {
 		argument: Argument,
 		message: string,
 		severity: ErrorSeverity = ErrorSeverity.Strong,
-	) => {
+	): 0 => {
 		context.addError(new TypeIc10Error({ message, severity }).setArgument(argument));
 		return 0;
 	},
@@ -98,7 +98,7 @@ const ResultHelpers = {
 };
 
 // Основные калькуляторы значений
-const ValueCalculators = {
+export const ValueCalculators = {
 	calculateNumberLike: (context: Context, argument: Argument) => {
 		const value = parseArgumentAnyNumber(context, argument);
 		return value !== false
@@ -156,7 +156,7 @@ const ValueCalculators = {
 		};
 	},
 
-	calculateLogic: (context: Context, argument: Argument) => {
+	calculateLogic: (context: Context, argument: Argument): ReturnType<typeof Logics.getByKey> | 0 => {
 		if (Logics.hasKey(argument.text)) {
 			return Logics.getByKey(argument.text);
 		}
@@ -169,7 +169,7 @@ const ValueCalculators = {
 		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_device_property"));
 	},
 
-	calculateLogicSlot: (context: Context, argument: Argument) => {
+	calculateLogicSlot: (context: Context, argument: Argument): ReturnType<typeof LogicSlot.getByKey> | 0 => {
 		if (LogicSlot.hasKey(argument.text)) {
 			return LogicSlot.getByKey(argument.text);
 		}
@@ -182,7 +182,10 @@ const ValueCalculators = {
 		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_slot"));
 	},
 
-	calculateLogicBatchMethod: (context: Context, argument: Argument) => {
+	calculateLogicBatchMethod: (
+		context: Context,
+		argument: Argument,
+	): ReturnType<typeof LogicBatchMethod.getByKey> | 0 => {
 		if (LogicBatchMethod.hasKey(argument.text)) {
 			return LogicBatchMethod.getByKey(argument.text);
 		}
@@ -194,7 +197,10 @@ const ValueCalculators = {
 
 		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_batch_method"));
 	},
-	calculateLogicReagentMode: (context: Context, argument: Argument) => {
+	calculateLogicReagentMode: (
+		context: Context,
+		argument: Argument,
+	): ReturnType<typeof LogicReagentMode.getByKey> | 0 => {
 		if (LogicReagentMode.hasKey(argument.text)) {
 			return LogicReagentMode.getByKey(argument.text);
 		}
@@ -206,7 +212,7 @@ const ValueCalculators = {
 
 		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_reagent_mode"));
 	},
-	calculateReagentHash: (context: Context, argument: Argument) => {
+	calculateReagentHash: (context: Context, argument: Argument): ReturnType<typeof Reagents.getByValue> | 0 => {
 		const value = parseArgumentAnyNumber(context, argument);
 		if (Reagents.hasKey(value)) {
 			return value;
@@ -218,7 +224,7 @@ const ValueCalculators = {
 			ErrorSeverity.Weak,
 		);
 	},
-	calculateDeviceHash: (context: Context, argument: Argument) => {
+	calculateDeviceHash: (context: Context, argument: Argument): ReturnType<typeof Devices.getByValue> | 0 => {
 		const value = parseArgumentAnyNumber(context, argument);
 		if (Devices.hasKey(value)) {
 			return value;

@@ -208,6 +208,9 @@ abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements 
 	): number {
 		return 0;
 	}
+	override setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void {}
+	override setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void {}
+	override setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void {}
 }
 
 // =============================================
