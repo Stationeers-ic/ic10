@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import INSTRUCTIONS from "@/Defines/instructions";
 import { instructions } from "@/Ic10/Instruction";
 
-describe.only("Выполнено", () => {
+describe("Выполнено", () => {
 	test("Процент реализованных инструкций", () => {
 		const implemented = Object.keys(instructions);
 		const required = Object.keys(INSTRUCTIONS).filter((i) => i !== "label");
