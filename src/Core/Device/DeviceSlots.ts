@@ -189,4 +189,8 @@ export class DeviceSlots extends DeviceScope {
 	public getSlot(slotIndex: number): Slot | undefined {
 		return this.slots.get(slotIndex);
 	}
+
+	[Symbol.iterator](): IterableIterator<[number, Slot]> {
+		return this.slots[Symbol.iterator]();
+	}
 }

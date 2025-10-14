@@ -19,6 +19,7 @@ export * from "@/Defines/consts";
 export * from "@/Defines/data";
 export * from "@/Defines/devices";
 export * from "@/Defines/instructions";
+export * from "@/Defines/items";
 export * from "@/Defines/reagents";
 export * from "@/Devices/H2combustor";
 export * from "@/Devices/ItemAdvancedTablet";

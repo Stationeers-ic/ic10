@@ -140,9 +140,22 @@ async function downloadReagents() {
 		return;
 	}
 
-	const data = await downloadWithProgress("https://assets.ic10.dev/languages/EN/reagents.json", "INSTRUCTIONS");
+	const data = await downloadWithProgress("https://assets.ic10.dev/languages/EN/reagents.json", "REAGENTS");
 	const json = JSON5.parse(data).data;
 	saveAsTsFile(json, outPath, "REAGENTS");
+}
+
+async function downloadItems() {
+	const outPath = "src/Defines/items.ts";
+
+	if (missingMode && fs.existsSync(outPath)) {
+		console.log(`Файл ${outPath} уже существует, пропускаем...`);
+		return;
+	}
+
+	const data = await downloadWithProgress("https://assets.ic10.dev/languages/EN/items.json", "ITEMS");
+	const json = JSON5.parse(data).data;
+	saveAsTsFile(json, outPath, "ITEMS");
 }
 
 async function downloadDevices() {
@@ -538,3 +551,4 @@ await downloadConsts();
 await downloadInstructions();
 await downloadDevices();
 await downloadReagents();
+await downloadItems();

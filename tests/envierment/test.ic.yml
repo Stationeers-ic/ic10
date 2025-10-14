@@ -21,6 +21,13 @@ devices:
     ports:
       - port: default
         network: base
+    slots:
+      - index: 1
+        item: ItemIronOre
+        amount: 25
+    reagents:
+      - name: Iron
+        amount: 100
 networks:
   - id: base
     type: data

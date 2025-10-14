@@ -1,9 +1,10 @@
 import { stringify } from "yaml";
 import { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
+import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { Housing } from "@/Core/Housing";
 import { Network } from "@/Core/Network";
-import { Logics } from "@/Defines/data";
+import { Items, Logics, Reagents } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
@@ -56,16 +57,12 @@ type HousingClass = {
 // SERIALIZER - Сериализация окружения в схему
 // ============================================================================
 
-/**
- * Сериализатор версии 1 - преобразует окружение в YAML схему
- */
+// ============================================================================
+// SERIALIZER - Дополненная версия с поддержкой слотов и реагентов
+// ============================================================================
 class SerializerV1 {
 	constructor(private readonly builer: Builer) {}
 
-	/**
-	 * Сериализует текущее состояние окружения в YAML строку
-	 * @returns YAML строка с полной схемой окружения
-	 */
 	public stringify(): string {
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
@@ -79,10 +76,6 @@ class SerializerV1 {
 		return stringify(data);
 	}
 
-	/**
-	 * Сериализует все сети в массив схем
-	 * @returns Массив схем сетей
-	 */
 	private stringifyNetworks(): NetworkSchema[] {
 		return this.builer.Networks.values()
 			.map((network: Network) => {
@@ -97,11 +90,6 @@ class SerializerV1 {
 			.toArray();
 	}
 
-	/**
-	 * Сериализует каналы сети в массив пар имя-значение
-	 * @param network - Сеть для сериализации
-	 * @returns Массив свойств каналов
-	 */
 	private serializeNetworkChannels(network: Network): Array<{ name: string; value: any }> | undefined {
 		const props: Array<{ name: string; value: any }> = [];
 
@@ -121,21 +109,12 @@ class SerializerV1 {
 		return props;
 	}
 
-	/**
-	 * Сериализует все устройства в массив схем
-	 * @returns Массив схем устройств
-	 */
 	private stringifyDevices(): DeviceSchema[] {
 		return this.builer.Devices.values()
 			.map((device: Device) => this.serializeDevice(device))
 			.toArray();
 	}
 
-	/**
-	 * Сериализует одно устройство в схему
-	 * @param device - Устройство для сериализации
-	 * @returns Схема устройства
-	 */
 	private serializeDevice(device: Device): DeviceSchema {
 		const data: DeviceSchema = {
 			id: device.id,
@@ -150,14 +129,21 @@ class SerializerV1 {
 			data.code = device.chip.getIc10Code();
 		}
 
+		// Сериализация слотов
+		const slots = this.serializeDeviceSlots(device);
+		if (slots && slots.length > 0) {
+			data.slots = slots;
+		}
+
+		// Сериализация реагентов
+		const reagents = this.serializeDeviceReagents(device);
+		if (reagents && reagents.length > 0) {
+			data.reagents = reagents;
+		}
+
 		return data;
 	}
 
-	/**
-	 * Сериализует порты устройства
-	 * @param device - Устройство с портами
-	 * @returns Массив описаний портов
-	 */
 	private serializeDevicePorts(device: Device): PortSchema[] | undefined {
 		const data: PortSchema[] = [];
 		for (const element of device.ports) {
@@ -172,11 +158,6 @@ class SerializerV1 {
 		return data;
 	}
 
-	/**
-	 * Сериализует свойства устройства
-	 * @param device - Устройство со свойствами
-	 * @returns Массив свойств
-	 */
 	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = [];
 		for (const element of device.props) {
@@ -192,32 +173,78 @@ class SerializerV1 {
 		}
 		return data;
 	}
+
+	/**
+	 * Сериализует слоты устройства
+	 */
+	private serializeDeviceSlots(device: Device): Array<{ index: number; item: string; amount: number }> | undefined {
+		if (!device.hasSlots) return undefined;
+
+		const slotsData: Array<{ index: number; item: string; amount: number }> = [];
+
+		for (const [slotIndex, slot] of device.slots) {
+			if (slot.hasItem()) {
+				const item = slot.getItem();
+				if (item) {
+					// Здесь нужно преобразовать hash в имя предмета
+					// Предполагается, что есть какой-то mapping для этого
+					const itemName = this.getItemNameByHash(item.hash);
+					slotsData.push({
+						index: slotIndex,
+						item: itemName,
+						amount: item.count,
+					});
+				}
+			}
+		}
+
+		return slotsData.length > 0 ? slotsData : undefined;
+	}
+
+	/**
+	 * Сериализует реагенты устройства
+	 */
+	private serializeDeviceReagents(device: Device): Array<{ name: string; amount: number }> | undefined {
+		if (!device.hasReagents) return undefined;
+
+		const reagentsData: Array<{ name: string; amount: number }> = [];
+
+		for (const reagent of device.reagents) {
+			if (reagent.count > 0) {
+				reagentsData.push({
+					name: reagent.name,
+					amount: reagent.count,
+				});
+			}
+		}
+
+		return reagentsData.length > 0 ? reagentsData : undefined;
+	}
+
+	/**
+	 * Вспомогательный метод для получения имени предмета по hash
+	 */
+	private getItemNameByHash(hash: number): string {
+		if (Items.hasKey(hash)) {
+			return Items.getByKey(hash);
+		}
+		throw new Error(`Unknown item hash: ${hash}`);
+	}
 }
 
 // ============================================================================
-// DESERIALIZER - Парсинг схемы в окружение
+// DESERIALIZER - Дополненная версия с поддержкой слотов и реагентов
 // ============================================================================
 
-/**
- * Десериализатор версии 1 - загружает схему в окружение
- */
 class DeserializerV1 {
 	constructor(private readonly builer: Builer) {}
 
-	/**
-	 * Парсит схему окружения и загружает её в builder
-	 * @param data - Схема окружения для загрузки
-	 */
 	public parse(data: EnvSchema): void {
 		this.builer.reset();
 		this.parseNetworks(data);
 		this.parseDevices(data);
 	}
 
-	/**
-	 * Парсит и создаёт все сети из схемы
-	 * @param data - Схема окружения
-	 */
 	private parseNetworks(data: EnvSchema): void {
 		data.networks.forEach((networkSchema) => {
 			const network = this.createNetwork(networkSchema);
@@ -225,11 +252,6 @@ class DeserializerV1 {
 		});
 	}
 
-	/**
-	 * Создаёт сеть из схемы
-	 * @param networkSchema - Схема сети
-	 * @returns Созданная сеть
-	 */
 	private createNetwork(networkSchema: NetworkSchema): Network {
 		const network = new Network({
 			id: networkSchema.id,
@@ -243,11 +265,6 @@ class DeserializerV1 {
 		return network;
 	}
 
-	/**
-	 * Применяет значения каналов к сети
-	 * @param network - Сеть для настройки
-	 * @param props - Массив свойств каналов
-	 */
 	private applyNetworkChannels(network: Network, props: Array<{ name: string; value: any }>): void {
 		for (const { name, value } of props) {
 			if (!Logics.hasKey(name)) {
@@ -258,21 +275,12 @@ class DeserializerV1 {
 		}
 	}
 
-	/**
-	 * Парсит и создаёт все устройства из схемы
-	 * @param data - Схема окружения
-	 */
 	private parseDevices(data: EnvSchema): void {
 		for (const deviceSchema of data.devices) {
 			this.parseDevice(deviceSchema);
 		}
 	}
 
-	/**
-	 * Парсит и создаёт одно устройство
-	 * Housing устройства обрабатываются особым образом (с IC10 кодом)
-	 * @param deviceSchema - Схема устройства
-	 */
 	private parseDevice(deviceSchema: DeviceSchema): void {
 		const device = this.isHousing(deviceSchema.PrefabName)
 			? this.createHousingDevice(deviceSchema)
@@ -280,31 +288,26 @@ class DeserializerV1 {
 
 		this.connectDevicePorts(device, deviceSchema);
 		this.connectDeviceProps(device, deviceSchema);
+		this.connectDeviceSlots(device, deviceSchema);
+		this.connectDeviceReagents(device, deviceSchema);
+
 		this.builer.Devices.set(deviceSchema.id, device);
+
 		if (deviceSchema.name) {
 			device.name = deviceSchema.name;
 		}
+
 		// Для Housing устройств создаём runner для выполнения IC10 кода
 		if (device instanceof Housing) {
 			this.builer.Runners.set(deviceSchema.id, new Ic10Runner({ housing: device }));
 		}
 	}
 
-	/**
-	 * Создаёт обычное устройство (не Housing)
-	 * @param deviceSchema - Схема устройства
-	 * @returns Созданное устройство
-	 */
 	private createRegularDevice(deviceSchema: DeviceSchema): Device {
 		const DeviceClass = this.findDeviceClass(deviceSchema.PrefabName);
 		return new DeviceClass({ id: deviceSchema.id });
 	}
 
-	/**
-	 * Создаёт Housing устройство с IC10 кодом
-	 * @param deviceSchema - Схема устройства
-	 * @returns Созданное Housing устройство
-	 */
 	private createHousingDevice(deviceSchema: DeviceSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
 		const code = deviceSchema.code || "";
@@ -313,11 +316,6 @@ class DeserializerV1 {
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 
-	/**
-	 * Подключает порты устройства к сетям согласно схеме
-	 * @param device - Устройство для подключения
-	 * @param deviceSchema - Схема с описанием портов
-	 */
 	private connectDevicePorts(device: Device, deviceSchema: DeviceSchema): void {
 		if (!deviceSchema.ports) {
 			return;
@@ -329,11 +327,6 @@ class DeserializerV1 {
 		}
 	}
 
-	/**
-	 * Подключает свойства устройства согласно схеме
-	 * @param device - Устройство для настройки
-	 * @param deviceSchema - Схема со свойствами
-	 */
 	private connectDeviceProps(device: Device, deviceSchema: DeviceSchema): void {
 		if (!deviceSchema.props) {
 			return;
@@ -345,10 +338,39 @@ class DeserializerV1 {
 	}
 
 	/**
-	 * Получает сеть по ID или выбрасывает ошибку
-	 * @param networkId - ID сети
-	 * @returns Найденная сеть
+	 * Подключает слоты устройства согласно схеме
 	 */
+	private connectDeviceSlots(device: Device, deviceSchema: DeviceSchema): void {
+		if (!deviceSchema.slots || !device.hasSlots) {
+			return;
+		}
+
+		for (const slotData of deviceSchema.slots) {
+			const slot = device.slots.getSlot(slotData.index);
+			if (slot) {
+				const itemHash = this.getItemHashByName(slotData.item);
+				const item = new ItemEntity(itemHash, slotData.amount);
+				slot.putItem(item);
+			}
+		}
+	}
+
+	/**
+	 * Подключает реагенты устройства согласно схеме
+	 */
+	private connectDeviceReagents(device: Device, deviceSchema: DeviceSchema): void {
+		if (!deviceSchema.reagents || !device.hasReagents) {
+			return;
+		}
+
+		for (const reagentData of deviceSchema.reagents) {
+			if (Reagents.hasKey(reagentData.name)) {
+				const reagentHash = Reagents.getByKey(reagentData.name);
+				device.reagents.set(reagentHash, reagentData.amount);
+			}
+		}
+	}
+
 	private getNetwork(networkId: string): Network {
 		if (!this.builer.Networks.has(networkId)) {
 			throw new Error(`Network ${networkId} not found`);
@@ -357,14 +379,7 @@ class DeserializerV1 {
 		return this.builer.Networks.get(networkId);
 	}
 
-	/**
-	 * Подключает порт устройства к сети
-	 * @param device - Устройство
-	 * @param network - Сеть для подключения
-	 * @param port - Имя порта или "default"
-	 */
 	private connectPort(device: Device, network: Network, port: PortSchema["port"]): void {
-		// Если порт не "default", проверяем возможность подключения
 		if (port !== "default") {
 			if (!device.ports.canConnect(network.type, port)) {
 				throw new Error(
@@ -377,29 +392,14 @@ class DeserializerV1 {
 		}
 	}
 
-	/**
-	 * Проверяет, является ли prefab name валидным именем устройства
-	 * @param prefabName - Имя для проверки
-	 * @returns true если это валидное имя устройства
-	 */
 	private isDevice(prefabName: any): prefabName is PrefabName {
 		return typeof DevicesByPrefabName[prefabName] !== "undefined";
 	}
 
-	/**
-	 * Проверяет, является ли устройство Housing устройством
-	 * @param prefabName - Имя устройства
-	 * @returns true если это Housing устройство
-	 */
 	private isHousing(prefabName: any): prefabName is HousingName {
 		return typeof DeviceClassesByBase.Housing[prefabName] !== "undefined";
 	}
 
-	/**
-	 * Находит класс Housing устройства по имени
-	 * @param prefabName - Имя устройства
-	 * @returns Класс Housing устройства
-	 */
 	private findHousingClass(prefabName: string): HousingClass {
 		if (!this.isDevice(prefabName)) {
 			throw new Error(`Unknown device prefab name: ${prefabName}`);
@@ -413,11 +413,6 @@ class DeserializerV1 {
 		return housingClass;
 	}
 
-	/**
-	 * Находит класс устройства по имени
-	 * @param prefabName - Имя устройства
-	 * @returns Класс устройства
-	 */
 	private findDeviceClass(prefabName: string): DeviceClass {
 		if (!this.isDevice(prefabName)) {
 			throw new Error(`Unknown device prefab name: ${prefabName}`);
@@ -430,8 +425,17 @@ class DeserializerV1 {
 
 		return deviceClass;
 	}
-}
 
+	/**
+	 * Вспомогательный метод для получения hash предмета по имени
+	 */
+	private getItemHashByName(itemName: string): number {
+		if (Items.hasKey(itemName)) {
+			return Items.getByValue(itemName);
+		}
+		throw new Error(`Item ${itemName} not found`);
+	}
+}
 // ============================================================================
 // PARSER V1 - Объединяет сериализацию и десериализацию
 // ============================================================================

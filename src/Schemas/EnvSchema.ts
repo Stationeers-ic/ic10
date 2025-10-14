@@ -1,11 +1,15 @@
 import { array, type InferOutput, literal, number, object, optional, string, union } from "valibot";
 import { GROUPED_CONSTS } from "@/Defines/consts";
+import { Items, Reagents } from "@/Defines/data";
 import { DevicesByPrefabName } from "@/Devices";
 
 // --- Вспомогательные функции для создания union из ключей ---
+function unionLiterals(array: (string | number)[]) {
+	return union(array.map((k) => literal(k)));
+}
 function unionFromKeys<T extends Record<string, unknown>>(obj: T, filter?: (key: string) => boolean) {
 	const keys = Object.keys(obj).filter(filter ?? (() => true));
-	return union(keys.map((k) => literal(k)));
+	return unionLiterals(keys);
 }
 
 // --- PrefabName ---
@@ -51,14 +55,29 @@ export const PortSchema = object({
 	network: string(),
 });
 
+// --- Slot ---
+export const SlotSchema = object({
+	index: number(),
+	item: unionLiterals(Items.values()),
+	amount: number(),
+});
+
+// --- Reagent ---
+export const ReagentSchema = object({
+	name: unionLiterals(Reagents.values()),
+	amount: number(),
+});
+
 // --- Device ---
 export const DeviceSchema = object({
 	id: number(),
 	PrefabName: PrefabNameSchema,
 	name: optional(string()),
 	code: optional(string()),
-	ports: array(PortSchema),
+	ports: optional(array(PortSchema)),
 	props: optional(array(PropsSchema)),
+	slots: optional(array(SlotSchema)),
+	reagents: optional(array(ReagentSchema)),
 });
 
 // --- NetworkType ---
@@ -83,5 +102,7 @@ export const EnvSchema = object({
 export type EnvSchema = InferOutput<typeof EnvSchema>;
 export type PortSchema = InferOutput<typeof PortSchema>;
 export type PropsSchema = InferOutput<typeof PropsSchema>;
+export type SlotSchema = InferOutput<typeof SlotSchema>;
+export type ReagentSchema = InferOutput<typeof ReagentSchema>;
 export type DeviceSchema = InferOutput<typeof DeviceSchema>;
 export type NetworkSchema = InferOutput<typeof NetworkSchema>;

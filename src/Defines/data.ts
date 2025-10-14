@@ -1,5 +1,6 @@
 import { GROUPED_CONSTS } from "@/Defines/consts";
 import DEVICES from "@/Defines/devices";
+import ITEMS from "@/Defines/items";
 import REAGENTS from "@/Defines/reagents";
 import { BiMap } from "@/helpers";
 
@@ -24,6 +25,9 @@ export const LogicBatchMethod = new BiMap<
 type ReagentHash = (typeof REAGENTS)[number] extends { hash: infer H } ? H : never;
 type ReagentName = (typeof REAGENTS)[number]["name"];
 
+type ItemHash = (typeof ITEMS)[number] extends { PrefabHash: infer H } ? H : never;
+type ItemName = (typeof ITEMS)[number]["PrefabName"];
+
 type DeviceHash = {
 	[K in keyof typeof DEVICES]: (typeof DEVICES)[K] extends { PrefabHash: infer H } ? H : never;
 }[keyof typeof DEVICES];
@@ -33,9 +37,15 @@ type DeviceName = (typeof DEVICES)[keyof typeof DEVICES]["PrefabName"];
 // Использование
 export const Reagents = new BiMap<ReagentHash, ReagentName>();
 export const Devices = new BiMap<DeviceHash, DeviceName>();
+export const Items = new BiMap<ItemHash, ItemName>();
 REAGENTS.forEach((reagent) => {
 	if (reagent.hash) {
 		Reagents.set(reagent.hash, reagent.name);
+	}
+});
+ITEMS.forEach((item) => {
+	if (item.PrefabHash) {
+		Items.set(item.PrefabHash, item.PrefabName);
 	}
 });
 Object.entries(DEVICES).forEach(([_, device]) => {
