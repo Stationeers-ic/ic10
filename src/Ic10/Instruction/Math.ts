@@ -42,6 +42,9 @@ abstract class UnaryMathInstruction extends Instruction {
 
 export class AddInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "add r2 5 5",
@@ -57,6 +60,9 @@ export class AddInstruction extends BinaryMathInstruction {
 
 export class SubInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "sub r4 20 10",
@@ -72,6 +78,9 @@ export class SubInstruction extends BinaryMathInstruction {
 
 export class MulInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "mul r3 5 2",
@@ -87,6 +96,9 @@ export class MulInstruction extends BinaryMathInstruction {
 
 export class DivInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "div r5 20 2",
@@ -102,6 +114,9 @@ export class DivInstruction extends BinaryMathInstruction {
 
 export class ModInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "mod r7 20 3",
@@ -117,6 +132,9 @@ export class ModInstruction extends BinaryMathInstruction {
 
 export class AbsInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "abs r6 -1",
@@ -132,6 +150,9 @@ export class AbsInstruction extends UnaryMathInstruction {
 
 export class NotInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "not r1 5",
@@ -146,6 +167,9 @@ export class NotInstruction extends UnaryMathInstruction {
 
 export class SqrtInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "sqrt r1 9",
@@ -161,6 +185,9 @@ export class SqrtInstruction extends UnaryMathInstruction {
 
 export class RoundInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "round r2 2.7",
@@ -176,6 +203,9 @@ export class RoundInstruction extends UnaryMathInstruction {
 
 export class TruncInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "trunc r3 2.9",
@@ -191,6 +221,9 @@ export class TruncInstruction extends UnaryMathInstruction {
 
 export class CeilInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "ceil r4 2.1",
@@ -206,6 +239,9 @@ export class CeilInstruction extends UnaryMathInstruction {
 
 export class FloorInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "floor r5 2.9",
@@ -221,6 +257,9 @@ export class FloorInstruction extends UnaryMathInstruction {
 
 export class MaxInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "max r6 5 10",
@@ -236,6 +275,9 @@ export class MaxInstruction extends BinaryMathInstruction {
 
 export class MinInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "min r7 5 10",
@@ -251,6 +293,9 @@ export class MinInstruction extends BinaryMathInstruction {
 
 export class LogInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "log r8 1",
@@ -266,6 +311,9 @@ export class LogInstruction extends UnaryMathInstruction {
 
 export class ExpInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "exp r9 1",
@@ -281,6 +329,9 @@ export class ExpInstruction extends UnaryMathInstruction {
 
 export class SinInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "sin r10 0",
@@ -296,6 +347,9 @@ export class SinInstruction extends UnaryMathInstruction {
 
 export class AsinInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "asin r11 0",
@@ -311,6 +365,9 @@ export class AsinInstruction extends UnaryMathInstruction {
 
 export class TanInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "tan r12 0",
@@ -326,6 +383,9 @@ export class TanInstruction extends UnaryMathInstruction {
 
 export class AtanInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "atan r1 0",
@@ -341,6 +401,9 @@ export class AtanInstruction extends UnaryMathInstruction {
 
 export class CosInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "cos r1 0",
@@ -356,6 +419,9 @@ export class CosInstruction extends UnaryMathInstruction {
 
 export class AcosInstruction extends UnaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "acos r1 1",
@@ -371,6 +437,9 @@ export class AcosInstruction extends UnaryMathInstruction {
 
 export class Atan2Instruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "atan2 r1 0 1",
@@ -386,6 +455,9 @@ export class Atan2Instruction extends BinaryMathInstruction {
 
 export class RandInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				title: "Random with linenumber Seed #1",
@@ -417,6 +489,9 @@ export class RandInstruction extends Instruction {
 
 export class SllInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "sll r1 5 1",
@@ -446,6 +521,9 @@ export class SlaInstruction extends SllInstruction {}
 
 export class SrlInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "srl r1 8 1",
@@ -473,6 +551,9 @@ export class SrlInstruction extends BinaryMathInstruction {
 
 export class SraInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "sra r1 8 1",
@@ -500,6 +581,9 @@ export class SraInstruction extends BinaryMathInstruction {
 
 export class AndInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "and r1 5 3",
@@ -523,6 +607,9 @@ export class AndInstruction extends BinaryMathInstruction {
 
 export class OrInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "or r1 5 3",
@@ -546,6 +633,9 @@ export class OrInstruction extends BinaryMathInstruction {
 
 export class XorInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "xor r1 5 3",
@@ -569,6 +659,9 @@ export class XorInstruction extends BinaryMathInstruction {
 
 export class NorInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "nor r1 5 3",
@@ -592,6 +685,9 @@ export class NorInstruction extends BinaryMathInstruction {
 
 export class PowInstruction extends BinaryMathInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "pow r1 2 3",
@@ -677,6 +773,9 @@ export class LerpInstruction extends Instruction {
 	}
 
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "lerp r1 0 10 0.5",

@@ -7,6 +7,9 @@ import {
 } from "@/Ic10/Instruction/Helpers/Instruction";
 export class PushInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "push 10\npeek r0",
@@ -49,6 +52,9 @@ export class PushInstruction extends Instruction {
 }
 export class PopInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "push 10\npop r0",
@@ -88,6 +94,9 @@ export class PopInstruction extends Instruction {
 
 export class PeekInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "push 10\npeek r0",
@@ -138,7 +147,10 @@ export class PeekInstruction extends Instruction {
 }
 
 export class PokeInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["push 99", "poke 0 50"],

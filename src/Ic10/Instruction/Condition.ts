@@ -366,6 +366,9 @@ function makeTernarySet<TBase extends abstract new (...args: any[]) => Instructi
 // ===== Реализации S* (запись 1/0) =====
 export class SltInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.lt) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("slt", [
 			[1, 2, true],
 			[2, 1, false],
@@ -374,6 +377,9 @@ export class SltInstruction extends makeBinarySet(BinarySetConditionInstruction,
 }
 export class SgtInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.gt) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("sgt", [
 			[2, 1, true],
 			[1, 2, false],
@@ -382,6 +388,9 @@ export class SgtInstruction extends makeBinarySet(BinarySetConditionInstruction,
 }
 export class SleInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.le) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("sle", [
 			[2, 2, true],
 			[3, 2, false],
@@ -390,6 +399,9 @@ export class SleInstruction extends makeBinarySet(BinarySetConditionInstruction,
 }
 export class SgeInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.ge) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("sge", [
 			[2, 2, true],
 			[1, 2, false],
@@ -398,6 +410,9 @@ export class SgeInstruction extends makeBinarySet(BinarySetConditionInstruction,
 }
 export class SeqInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("seq", [
 			[5, 5, true],
 			[5, 4, false],
@@ -406,6 +421,9 @@ export class SeqInstruction extends makeBinarySet(BinarySetConditionInstruction,
 }
 export class SneInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.ne) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetBinary("sne", [
 			[5, 4, true],
 			[5, 5, false],
@@ -416,6 +434,9 @@ export class SneInstruction extends makeBinarySet(BinarySetConditionInstruction,
 // Приближенные
 export class SapInstruction extends makeTernarySet(TernarySetConditionInstruction, approxEqual) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetTernary("sap", [
 			[100, 101, 0.02, true],
 			[100, 104, 0.02, false],
@@ -424,6 +445,9 @@ export class SapInstruction extends makeTernarySet(TernarySetConditionInstructio
 }
 export class SnaInstruction extends makeTernarySet(TernarySetConditionInstruction, (a, b, c) => !approxEqual(a, b, c)) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetTernary("sna", [
 			[100, 101, 0.02, false],
 			[100, 104, 0.02, true],
@@ -434,6 +458,9 @@ export class SnaInstruction extends makeTernarySet(TernarySetConditionInstructio
 // Относительно 0
 export class SltzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.lt0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("sltz", [
 			[-1, true],
 			[0, false],
@@ -442,6 +469,9 @@ export class SltzInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SgtzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.gt0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("sgtz", [
 			[1, true],
 			[0, false],
@@ -450,6 +480,9 @@ export class SgtzInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SlezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.le0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("slez", [
 			[0, true],
 			[1, false],
@@ -458,6 +491,9 @@ export class SlezInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SgezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ge0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("sgez", [
 			[0, true],
 			[-1, false],
@@ -466,6 +502,9 @@ export class SgezInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SeqzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.eq0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("seqz", [
 			[0, true],
 			[1, false],
@@ -474,6 +513,9 @@ export class SeqzInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SnezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ne0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("snez", [
 			[1, true],
 			[0, false],
@@ -484,6 +526,9 @@ export class SnezInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 // |a| сравнение с eps*8
 export class SapzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ap0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("sapz", [
 			[0, true],
 			[1, false],
@@ -492,6 +537,9 @@ export class SapzInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 }
 export class SnazInstruction extends makeUnarySet(UnarySetConditionInstruction, un.na0) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tSetUnary("snaz", [
 			[1, true],
 			[0, false],
@@ -502,6 +550,9 @@ export class SnazInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 // NaN проверки
 export class SnanInstruction extends makeUnarySet(UnarySetConditionInstruction, un.nan) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "div r0 0 0\nsnan r1 r0\nsnanz r2 r0",
@@ -532,6 +583,9 @@ export class BgeInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.g
 
 export class BeqInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tAbsBinBranch("beq", [
 			[1, 1, true],
 			[1, 2, false],
@@ -540,6 +594,9 @@ export class BeqInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.e
 }
 export class BneInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.ne) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tAbsBinBranch("bne", [
 			[1, 2, true],
 			[1, 1, false],
@@ -550,6 +607,9 @@ export class BneInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.n
 // Абсолютные ветвления с приближенным сравнением
 export class BapInstruction extends makeTernarySet(TernaryBranchInstruction, approxEqual) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tAbsTernaryBranch("bap", [
 			[100, 101, 0.02, true],
 			[100, 104, 0.02, false],
@@ -581,6 +641,9 @@ export class BdnsInstruction extends DeviceBranchInstruction {
 export class BrltInstruction extends makeBinarySet(RelativeBinaryBranchInstruction, cmp.lt) {}
 export class BrgtInstruction extends makeBinarySet(RelativeBinaryBranchInstruction, cmp.gt) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return tRelBinBranch("brgt", [
 			[2, 1, true],
 			[0, 1, false],
@@ -612,6 +675,9 @@ export class BgealInstruction extends makeBinarySet(BinaryBranchAndLinkInstructi
 
 export class BeqalInstruction extends makeBinarySet(BinaryBranchAndLinkInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		// Оставляем как в оригинале из-за специфики RA/nextLineIndex
 		return [
 			{
@@ -641,6 +707,9 @@ export class BnazalInstruction extends makeUnarySet(UnaryBranchAndLinkInstructio
 // ===== Relative device branches (с тестами) =====
 export class BrdseInstruction extends RelativeDeviceBranchInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "brdse db 2\nmove r0 1\nmove r1 1",
@@ -658,6 +727,9 @@ export class BrdseInstruction extends RelativeDeviceBranchInstruction {
 }
 export class BrdnsInstruction extends RelativeDeviceBranchInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "brdns db 2\nmove r0 1\nmove r1 1",
@@ -725,6 +797,9 @@ export class SelectInstruction extends Instruction {
 	}
 
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "select r2 1 10 20",

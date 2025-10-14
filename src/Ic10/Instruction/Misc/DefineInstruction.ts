@@ -9,7 +9,10 @@ import {
 import i18n from "@/Languages/lang";
 
 export class DefineInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "define pi 3.14\nmove r0 pi",

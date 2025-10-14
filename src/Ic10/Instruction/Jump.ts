@@ -27,6 +27,9 @@ abstract class ConditionalJumpInstruction extends Instruction {
 
 export class JInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `j 2\nmove r0 1\nmove r1 1`,
@@ -62,6 +65,9 @@ export class JInstruction extends Instruction {
 }
 export class JalInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `jal 2\nmove r0 1\nmove r1 1`,
@@ -98,6 +104,9 @@ export class JalInstruction extends Instruction {
 
 export class jrInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				title: "-1",
@@ -223,6 +232,9 @@ export class jrInstruction extends Instruction {
 
 export class JeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 1\nmove r1 1\nje r0 r1 4\nmove r2 1\nmove r3 1`,
@@ -248,6 +260,9 @@ export class JeInstruction extends ConditionalJumpInstruction {
 
 export class JneInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 1\nmove r1 2\njne r0 r1 4\nmove r2 1\nmove r3 1`,
@@ -273,6 +288,9 @@ export class JneInstruction extends ConditionalJumpInstruction {
 
 export class JgtInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 3\nmove r1 2\njgt r0 r1 4\nmove r2 1\nmove r3 1`,
@@ -298,6 +316,9 @@ export class JgtInstruction extends ConditionalJumpInstruction {
 
 export class JltInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 1\nmove r1 2\njlt r0 r1 4\nmove r2 1\nmove r3 1`,
@@ -323,6 +344,9 @@ export class JltInstruction extends ConditionalJumpInstruction {
 
 export class JgeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 2\nmove r1 2\njge r0 r1 4\nmove r2 1\nmove r3 1`,
@@ -348,6 +372,9 @@ export class JgeInstruction extends ConditionalJumpInstruction {
 
 export class JleInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: `move r0 1\nmove r1 2\njle r0 r1 4\nmove r2 1\nmove r3 1`,

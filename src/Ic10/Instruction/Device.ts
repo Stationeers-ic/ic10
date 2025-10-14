@@ -14,7 +14,10 @@ import {
 import i18n from "@/Languages/lang";
 
 export class SInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "s db Setting 5",
@@ -69,7 +72,10 @@ export class SInstruction extends Instruction {
 }
 
 export class LInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["s db Setting 5", "l r0 db Setting"],
@@ -181,7 +187,10 @@ export class LdInstruction extends Instruction {
 }
 
 export class ClrInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["push 1", "clr db"],
@@ -202,6 +211,9 @@ export class ClrInstruction extends Instruction {
 
 export class GetInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["push 99", "get r0 db 0"],
@@ -234,7 +246,10 @@ export class GetInstruction extends Instruction {
 }
 
 export class PutInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["push 99", "put db 0 50"],
@@ -267,6 +282,9 @@ export class PutInstruction extends Instruction {
 
 export class GetdInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["push 99", "getd r0 0 0"],
@@ -300,7 +318,10 @@ export class GetdInstruction extends Instruction {
 
 export class PutdInstruction extends Instruction {
 	//"putd id(r?|id) address(r?|num) value(r?|num)
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["putd 0 0 100"],
@@ -333,6 +354,9 @@ export class PutdInstruction extends Instruction {
 
 export class BdnvlInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "bdnvl db Setting 4\n\n\n\n",
@@ -376,6 +400,9 @@ export class BdnvlInstruction extends Instruction {
 }
 export class BdnvsInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "bdnvs db Setting 4\n\n\n\n",
@@ -431,6 +458,9 @@ export class ClrdInstruction extends Instruction {
 
 export class LsInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: ["ls r0 db 0 Quantity"],
@@ -483,6 +513,9 @@ export class LsInstruction extends Instruction {
 }
 export class lbnInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const name = new HashString("a1");
 
 		const d1 = new StructureConsole({ name: "a1" });
@@ -543,6 +576,9 @@ export class lbnInstruction extends Instruction {
 
 export class SbnInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const d1 = new StructureConsoleLed1x2({ name: "a1" });
 		d1.props.forceWrite("Setting", 4);
 		const d2 = new StructureConsoleLed1x2({ name: "a1" });
@@ -605,6 +641,9 @@ export class SbnInstruction extends Instruction {
 
 export class LbnsInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const name = new HashString("a1");
 		const item1 = new ItemEntity(1, 4);
 		const item2 = new ItemEntity(1, 6);
@@ -664,6 +703,9 @@ export class LbnsInstruction extends Instruction {
 
 export class LbsInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const item1 = new ItemEntity(1, 4);
 		const item2 = new ItemEntity(1, 6);
 		const d1 = new StructureConsole({});
@@ -719,6 +761,9 @@ export class LbsInstruction extends Instruction {
 
 export class LrInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const name = new HashString("a1");
 		const d1 = new StructureAutolathe({ name: "a1" });
 		const rh = Reagents.getByValue("Copper");
@@ -777,7 +822,10 @@ export class LrInstruction extends Instruction {
 }
 
 export class LbInstruction extends Instruction {
-	static tests(): InstructionTestData[] {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		const d = new StructureConsole({});
 		d.props.forceWrite("Setting", 100);
 		const c = new StructureConsole({});

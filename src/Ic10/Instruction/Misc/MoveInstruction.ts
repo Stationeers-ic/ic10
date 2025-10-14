@@ -7,6 +7,9 @@ import {
 
 export class MoveInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
 		return [
 			{
 				code: "move r1 10",

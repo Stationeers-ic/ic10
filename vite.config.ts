@@ -45,5 +45,6 @@ export default defineConfig({
 	],
 	define: {
 		__VITE_ENV: JSON.stringify(process.env.NODE_ENV || "production"),
+		isProd: process.env.NODE_ENV === "production",
 	},
 });
