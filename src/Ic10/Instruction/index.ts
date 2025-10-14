@@ -96,9 +96,11 @@ import {
 	lbnInstruction,
 	PutdInstruction,
 	PutInstruction,
+	SbInstruction,
 	SbnInstruction,
 	SdInstruction,
 	SInstruction,
+	SsInstruction,
 } from "@/Ic10/Instruction/Device";
 import {
 	JalInstruction,
@@ -285,6 +287,7 @@ export const instructions = {
 	s: SInstruction,
 	sap: SapInstruction,
 	sapz: SapzInstruction,
+	sb: SbInstruction,
 	sbn: SbnInstruction,
 	sd: SdInstruction,
 	sdns: SdnsInstruction,
@@ -313,6 +316,7 @@ export const instructions = {
 	sqrt: SqrtInstruction,
 	sra: SraInstruction,
 	srl: SrlInstruction,
+	ss: SsInstruction,
 	sub: SubInstruction,
 	tan: TanInstruction,
 	trunc: TruncInstruction,

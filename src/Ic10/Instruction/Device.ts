@@ -925,26 +925,70 @@ export class SsInstruction extends Instruction {
 	}
 }
 
-// export class SdInstruction extends Instruction {
+/*
+sb:
+  Stores register value to LogicType on all output network devices with provided type hash.  sb deviceHash logicType r?
 
-// }
+*/
+export class SbInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
+		const s = Logics.getByKey("On");
+		const d1 = new StructureAutolathe({ name: "a1" });
+		const d2 = new StructureAutolathe({ name: "a2" });
+		const devices = [
+			{ id: 1, pin: 2, device: d1 },
+			{ id: 2, pin: 3, device: d2 },
+		];
 
-// export class SbsInstruction extends Instruction {
+		return [
+			{
+				devices,
+				code: [`sb 336213101 On 1`],
+				expected: [
+					{
+						type: "device",
+						pin: 2,
+						prop: s,
+						value: 1,
+					},
+					{
+						type: "device",
+						pin: 3,
+						prop: s,
+						value: 1,
+					},
+				],
+			},
+		];
+	}
 
-// }
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.deviceHash("device"),
+			ArgumentCalculators.logic("logic"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
+
+	public run(): void {
+		const device = this.getArgumentValue<number>("device");
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic");
+		const value = this.getArgumentValue<number>("value");
+
+		this.context.deviceBatchWriteByHash(device, logic, value);
+	}
+}
+
 /*
 sbs:
   Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.  
   
   sbs deviceHash slotIndex logicSlotType r?
 
-sd:
-  Stores register value to LogicType on device by direct ID reference. 
-   
-  sd id(r?|id) logicType r?
-
-ss:
-  Stores register value to device stored in a slot LogicSlotType on device.  s
-  
-  s device(d?|r?|id) slotIndex logicSlotType r?
 */
+// export class SbsInstruction extends Instruction {
+
+// }
