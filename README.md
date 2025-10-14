@@ -1,219 +1,220 @@
 # IC10 Emulator & Development Toolkit
 
-Проект представляет собой эмулятор IC10 (язык программирования для игры Stationeers) с полным набором инструментов для разработки, тестирования и генерации кода.
+[![Translation status](https://weblate.traineratwot.site/widget/ic10/ic10-lib/svg-badge.svg)](https://weblate.traineratwot.site/engage/ic10/)
 
-## 🚀 Возможности
+This project is an IC10 emulator (programming language for the game Stationeers) with a complete toolkit for development, testing, and code generation.
 
-- **Полная эмуляция IC10** - выполнение кода IC10 с поддержкой всех инструкций
-- **Генерация TypeScript типов** - автоматическое создание типов для устройств, инструкций и констант
-- **Система устройств** - типизированные классы для всех игровых устройств
-- **Инструменты разработки** - автоматическая генерация кода, индексных файлов и конфигураций
-- **Тестирование** - комплексная система тестов с поддержкой VSCode
-- **Режим наблюдения** - автоматическая пересборка при изменениях исходного кода
+## 🚀 Features
 
-## 🏗️ Структура проекта
+- **Full IC10 Emulation** - Execute IC10 code with support for all instructions
+- **TypeScript Type Generation** - Automatic generation of types for devices, instructions, and constants
+- **Device System** - Typed classes for all in-game devices
+- **Development Tools** - Automatic code generation, index files, and configurations
+- **Testing** - Comprehensive test system with VSCode support
+- **Watch Mode** - Automatic rebuild on source code changes
+
+## 🏗️ Project Structure
 
 ```tree
 src/
-├── Core/                 # Базовые классы (Device, Housing, Network, Slot, Stack)
-├── Defines/             # Сгенерированные константы и определения
-├── Devices/             # Автогенерируемые классы устройств
-├── Ic10/                # Ядро эмулятора IC10
-│   ├── Context/         # Контексты выполнения (Real, Sandbox)
-│   ├── Instruction/     # Реализации инструкций IC10
-│   ├── Lines/           # Обработка строк кода
-│   └── SandBox.ts       # Песочница для выполнения
-tests/                   # Тесты
-tools/                   # Скрипты генерации и утилиты
-samples/                 # Примеры кода IC10
+├── Core/                 # Base classes (Device, Housing, Network, Slot, Stack)
+├── Defines/             # Generated constants and definitions
+├── Devices/             # Auto-generated device classes
+├── Ic10/                # IC10 emulator core
+│   ├── Context/         # Execution contexts (Real, Sandbox)
+│   ├── Instruction/     # IC10 instruction implementations
+│   ├── Lines/           # Code line processing
+│   └── SandBox.ts       # Execution sandbox
+tests/                   # Tests
+tools/                   # Generation scripts and utilities
+samples/                 # IC10 code examples
 ```
 
-## 🛠️ Установка и запуск
+## 🛠️ Installation & Setup
 
-### Предварительные требования
-- [Bun](https://bun.sh) (обязательно) 
-- IDE с поддержкой TypeScript (VSCode рекомендуется)
+### Prerequisites
+- [Bun](https://bun.sh) (required)
+- IDE with TypeScript support (VSCode recommended)
 
-### Установка
+### Installation
 ```bash
 git clone <repository-url>
 cd ic10
 bun install
 ```
 
-### Разработка
+### Development
 ```bash
-# Запуск в режиме разработки с отслеживанием изменений
+# Run in development mode with file watching
 bun run dev
 
-# Запуск тестов
+# Run tests
 bun test
 
-# Полная пересборка проекта
+# Full project rebuild
 bun run upgrade
 ```
 
-## 📋 Скрипты package.json
+## 📋 package.json Scripts
 
-### Основные команды
-- `dev` - режим разработки с отслеживанием изменений
-- `build` - полная сборка проекта
-- `test` - запуск тестов
-- `upgrade` - полное обновление данных и перегенерация
+### Main Commands
+- `dev` - Development mode with file watching
+- `build` - Full project build
+- `test` - Run tests
+- `upgrade` - Full data update and regeneration
 
-### Генерация кода
-- `download` - загрузка актуальных данных с сервера
-- `generate-device` - генерация классов устройств
-- `generate:index` - обновление индексных файлов
-- `generate-intruction-index` - генерация индекса инструкций
-- `generate-vscode` - обновление конфигурации VSCode
+### Code Generation
+- `download` - Download latest data from server
+- `generate-device` - Generate device classes
+- `generate:index` - Update index files
+- `generate-intruction-index` - Generate instruction index
+- `generate-vscode` - Update VSCode configuration
 
 ### Code Quality
-- `lint` - проверка кода с Biome
-- `fix` - автоматическое исправление проблем
-- `format` - форматирование кода
+- `lint` - Code checking with Biome
+- `fix` - Automatic problem fixing
+- `format` - Code formatting
 
-## 🔧 Процесс разработки
+## 🔧 Development Process
 
-### 1. Инициализация проекта
+### 1. Project Initialization
 ```bash
 bun run upgrade
 ```
 
-Этот скрипт выполняет:
-- Загрузку актуальных данных об устройствах, инструкциях и константах
-- Генерацию TypeScript типов и классов
-- Создание индексных файлов
-- Обновление конфигурации VSCode
+This script performs:
+- Downloading current device, instruction, and constant data
+- Generating TypeScript types and classes
+- Creating index files
+- Updating VSCode configuration
 
-### 2. Режим разработки
+### 2. Development Mode
 ```bash
 bun run dev
 ```
 
-Скрипт `whatch.ts` отслеживает изменения и автоматически:
-- Перегенерирует индексные файлы при изменении исходников
-- Обновляет устройства при изменении определений
-- Перестраивает индекс инструкций при изменении классов инструкций
+The `whatch.ts` script monitors changes and automatically:
+- Regenerates index files when sources change
+- Updates devices when definitions change
+- Rebuilds instruction index when instruction classes change
 
-### 3. Создание новой инструкции
+### 3. Creating a New Instruction
 
-1. Создайте класс в `src/Ic10/Instruction/`
-2. Наследуйтесь от базового класса Instruction
-3. Реализуйте метод `tests()` для тестирования
-4. Система автоматически обнаружит и добавит инструкцию
+1. Create a class in `src/Ic10/Instruction/`
+2. Inherit from the base Instruction class
+3. Implement the `tests()` method for testing
+4. The system will automatically detect and add the instruction
 
-### 4. Тестирование
+### 4. Testing
 ```bash
-# Запуск всех тестов
+# Run all tests
 bun test
 
-# Запуск конкретного теста
+# Run specific test
 bun test tests/ic10/main.test.ts
 
-# Показ выполненных тестов
+# Show executed tests
 bun run show
 ```
 
-## 🎯 Использование эмулятора
- comming soon
+## 🎯 Using the Emulator
+comming soon
 
-## 🔄 Система генерации кода
+## 🔄 Code Generation System
 
-### Генерация устройств (`generate-devices.ts`)
-- Анализирует данные устройств из API
-- Создает типизированные TypeScript классы
-- Группирует устройства по базовым типам (Housing, Structure, Item)
-- Генерирует индексные файлы для экспорта
+### Device Generation (`generate-devices.ts`)
+- Analyzes device data from API
+- Creates typed TypeScript classes
+- Groups devices by base types (Housing, Structure, Item)
+- Generates index files for export
 
-### Генерация инструкций (`generate-intruction-index.ts`)
-- Автоматически обнаруживает классы инструкций
-- Создает карту инструкций для быстрого доступа
-- Генерирует TypeScript типы для имен инструкций
+### Instruction Generation (`generate-intruction-index.ts`)
+- Automatically discovers instruction classes
+- Creates instruction map for quick access
+- Generates TypeScript types for instruction names
 
-### Обновление VSCode (`generate-vscode.ts`)
-- Собирает информацию о тестах инструкций
-- Обновляет launch.json для отладки
-- Предоставляет автодополнение для имен инструкций
+### VSCode Update (`generate-vscode.ts`)
+- Collects instruction test information
+- Updates launch.json for debugging
+- Provides autocompletion for instruction names
 
-## 📊 Мониторинг изменений
+## 📊 Change Monitoring
 
-Система `whatch.ts` обеспечивает:
-- **Debounce механизм** - избегает множественных пересборок
-- **Избирательную перегенерацию** - только необходимые части при изменении
-- **Поддержка шаблонов** - разные скрипты для разных типов файлов
-- **Игнорирование ненужных файлов** - предотвращает циклические пересборки
+The `whatch.ts` system provides:
+- **Debounce mechanism** - Prevents multiple rebuilds
+- **Selective regeneration** - Only necessary parts on change
+- **Template support** - Different scripts for different file types
+- **Unnecessary file ignoring** - Prevents cyclic rebuilds
 
-## 🧪 Тестирование
+## 🧪 Testing
 
-Проект использует комплексную систему тестирования:
-- Модульные тесты для отдельных компонентов
-- Интеграционные тесты для эмулятора IC10
-- Тесты инструкций с автоматическим обнаружением
-- Генерация отчетов в JUnit формате
+The project uses a comprehensive testing system:
+- Unit tests for individual components
+- Integration tests for the IC10 emulator
+- Instruction tests with automatic discovery
+- JUnit format report generation
 
-## 🔧 Конфигурация
+## 🔧 Configuration
 
 ### VSCode
-- Автодополнение для инструкций IC10
-- Отладочная конфигурация для тестов
-- Интеграция с Biome для линтинга
+- Autocompletion for IC10 instructions
+- Debug configuration for tests
+- Biome integration for linting
 
 ### Biome
-- Форматирование кода
-- Линтинг TypeScript
-- Автоматическое исправление проблем
+- Code formatting
+- TypeScript linting
+- Automatic problem fixing
 
 ### Vite
-- Сборка библиотеки
-- Генерация типов TypeScript
-- Поддержка ESM и CommonJS
+- Library building
+- TypeScript type generation
+- ESM and CommonJS support
 
-## 🏛 Используемые библиотеки
+## 🏛 Used Libraries
 
-### exact-ic10-math (от Aidan647)
-- Портирование математических и битовых функций из Игры (C#) в Typescript
-- **Благодарность**: Aidan647 за создание точной математической библиотеки, которая обеспечивает полную совместимость вычислений с игрой Stationeers
+### exact-ic10-math (by Aidan647)
+- Porting mathematical and bitwise functions from the Game (C#) to Typescript
+- **Acknowledgments**: Aidan647 for creating the exact math library that provides full calculation compatibility with Stationeers game
 
-### Другие ключевые библиотеки
-- **crc-32** - вычисление контрольных сумм для работы с устройствами
-- **uuid** - генерация уникальных идентификаторов для сущностей эмулятора
-- **axios** - HTTP-клиент для загрузки данных
-- **vite** - современная система сборки проекта
-- **biome** - форматирование и линтинг кода
+### Other Key Libraries
+- **crc-32** - Checksum calculation for device operations
+- **uuid** - Unique identifier generation for emulator entities
+- **axios** - HTTP client for data downloading
+- **vite** - Modern project build system
+- **biome** - Code formatting and linting
 
+## 🤝 Contributing
 
-## 🤝 Вклад в проект
+1. Fork the repository
+2. Create a feature branch
+3. Implement changes
+4. Add tests
+5. Ensure all tests pass
+6. Create a Pull Request
 
-1. Форкните репозиторий
-2. Создайте feature ветку
-3. Реализуйте изменения
-4. Добавьте тесты
-5. Убедитесь, что все тесты проходят
-6. Создайте Pull Request
+### Code Standards
+- Use `bun run fix` before commit
+- Follow Biome code style
+- Add tests for new functionality
+- Update documentation when necessary
 
-### Стандарты кода
-- Используйте `bun run fix` перед коммитом
-- Следуйте стилю кода от Biome
-- Добавляйте тесты для новой функциональности
-- Обновляйте документацию при необходимости
-
-## 📝 Полезные команды
+## 📝 Useful Commands
 
 ```bash
-# Быстрая проверка проекта
+# Quick project check
 bun run fix
 
-# Только форматирование
+# Formatting only
 bun run format
 
-# Проверка форматирования
+# Formatting check
 bun run format:check
 
-# Запуск конкретного скрипта генерации
+# Run specific generation script
 bun run generate-device
 ```
 
-<!-- ## 📄 Лицензия
+<!-- ## 📄 License
 
-Проект распространяется под [указанной в package.json лицензией]. -->
+Project distributed under [license specified in package.json]. -->
