@@ -2,7 +2,7 @@ import { Chip } from "@/Core/Chip";
 import { Network } from "@/Core/Network";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
 import type { InstructionTestData, InstructionTestExpected } from "@/Ic10/Instruction/Helpers/Instruction";
-import { StructureCircuitHousing } from "@/index";
+import { Ic10Error, StructureCircuitHousing } from "@/index";
 
 export type CreateRunnerOptions = {
 	register_length: number;
@@ -47,6 +47,11 @@ export async function runInstructionTest(runner: Ic10Runner, testData: Instructi
 	} else {
 		await runner.run();
 	}
+	runner.contextSwitcher.getErrors().forEach((err) => {
+		if (err instanceof Ic10Error) {
+			console.log("🟥", err.formated_message);
+		}
+	});
 	return runner;
 }
 

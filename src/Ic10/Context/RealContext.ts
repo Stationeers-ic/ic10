@@ -354,7 +354,9 @@ abstract class DevicesByHashAndNameBase extends DevicesByHashBase implements IDe
 
 	override deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void {
 		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
-		devices.forEach((device) => device.props.write(param, value));
+		for (const device of devices) {
+			device.props.write(param, value);
+		}
 	}
 }
 

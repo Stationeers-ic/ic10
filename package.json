@@ -28,7 +28,7 @@
 		"build": "NODE_ENV=production bun run generate && vite build",
 		"build:dev": "NODE_ENV=development bun run generate && vite build",
 		"prepack": "bun run build && bun test",
-		"test": "bun test --randomize",
+		"test": "bun test $ bun test --reporter=junit --reporter-outfile=./tests/reports/report.xml",
 		"watch": "bun --watch test --bail",
 		"lint": "bunx --bun biome lint",
 		"fix": "bunx --bun biome check . --write --unsafe",

@@ -1,7 +1,8 @@
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
-import { type LogicBatchMethodType, type LogicConstType, Reagents } from "@/Defines/data";
+import { type LogicBatchMethodType, type LogicConstType, Logics, Reagents } from "@/Defines/data";
 import { StructureAutolathe } from "@/Devices/StructureAutolathe";
 import { StructureConsole } from "@/Devices/StructureConsole";
+import { StructureConsoleLed1x2 } from "@/Devices/StructureConsoleLed1x2";
 import { HashString } from "@/helpers";
 import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
 import { ArgumentCalculators, type calculateDevicePinOrIdResult } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
@@ -539,19 +540,55 @@ export class lbnInstruction extends Instruction {
 		this.context.setRegister(result, value);
 	}
 }
-/*
-sbn:
-  Stores register value to LogicType on all output network devices with provided type hash and name.  
-  
-  sbn deviceHash nameHash logicType r?
-*/
 
 export class SbnInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		const d1 = new StructureConsoleLed1x2({ name: "a1" });
+		d1.props.forceWrite("Setting", 4);
+		const d2 = new StructureConsoleLed1x2({ name: "a1" });
+		d2.props.forceWrite("Setting", 5);
+		const d3 = new StructureConsole({ name: "a2" });
+		d3.props.forceWrite("Setting", 6);
+
+		const devices = [
+			{ id: 1, device: d1, pin: 1 },
+			{ id: 2, device: d2, pin: 2 },
+			{ id: 3, device: d3, pin: 3 },
+		];
+		const s = Logics.getByKey("Setting");
+		return [
+			{
+				devices,
+				code: ['sbn -53151617 HASH("a1") Setting 10'],
+				expected: [
+					{
+						type: "device",
+						pin: 1,
+						prop: s,
+						value: 10,
+					},
+					{
+						type: "device",
+						pin: 2,
+						prop: s,
+						value: 10,
+					},
+					{
+						type: "device",
+						pin: 3,
+						prop: s,
+						value: 6,
+					},
+				],
+			},
+		];
+	}
+
 	public argumentList(): InstructionArgument[] {
 		return [
-			ArgumentCalculators.registerLink("result"),
 			ArgumentCalculators.deviceHash("deviceHash"),
 			ArgumentCalculators.anyNumber("deviceName"),
+			ArgumentCalculators.logic("logic"),
 			ArgumentCalculators.anyNumber("value"),
 		];
 	}
@@ -562,7 +599,7 @@ export class SbnInstruction extends Instruction {
 		const logic = this.getArgumentValue<number>("logic");
 		const value = this.getArgumentValue<number>("value");
 
-		//TODO: implement
+		this.context.deviceBatchWriteByHashAndName(deviceHash, deviceName, logic, value);
 	}
 }
 
@@ -796,11 +833,6 @@ rmap:
   Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot.  
   
   rmap r? d? reagentHash(r?|num)
-
-sbn:
-  Stores register value to LogicType on all output network devices with provided type hash and name.  
-  
-  sbn deviceHash nameHash logicType r?
 
 sbs:
   Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.  
