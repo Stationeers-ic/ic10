@@ -879,20 +879,6 @@ export class LbInstruction extends Instruction {
 	}
 }
 
-/*
-TODO: implement
-rmap:
-  Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot.  
-  
-  rmap r? d? reagentHash(r?|num)
-*/
-
-/*
-ss:
-  Stores register value to device stored in a slot LogicSlotType on device.  s
-  
-  s device(d?|r?|id) slotIndex logicSlotType r?
-  */
 export class SsInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
 		return [
@@ -925,11 +911,6 @@ export class SsInstruction extends Instruction {
 	}
 }
 
-/*
-sb:
-  Stores register value to LogicType on all output network devices with provided type hash.  sb deviceHash logicType r?
-
-*/
 export class SbInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
@@ -982,13 +963,22 @@ export class SbInstruction extends Instruction {
 	}
 }
 
-/*
-sbs:
-  Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot.  
-  
-  sbs deviceHash slotIndex logicSlotType r?
+export class SbsInstruction extends Instruction {
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.deviceHash("device"),
+			ArgumentCalculators.anyNumber("slot"),
+			ArgumentCalculators.logicSlot("slotType"),
+			ArgumentCalculators.anyNumber("value"),
+		];
+	}
 
-*/
-// export class SbsInstruction extends Instruction {
+	public run(): void {
+		const device = this.getArgumentValue<number>("device");
+		const slot = this.getArgumentValue<number>("slot");
+		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType");
+		const value = this.getArgumentValue<number>("value");
 
-// }
+		this.context.setBatchDeviceSlotParameterByHash(device, slot, slotType, value);
+	}
+}
