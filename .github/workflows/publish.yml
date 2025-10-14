@@ -3,6 +3,12 @@ name: CI and Release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
 
 jobs:
   test:
@@ -88,7 +94,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           git add package.json
-          git commit -m "chore: bump version to ${{ env.new_version }}"
+          git commit -m "chore: bump version to ${{ steps.check_version.outputs.NEW_VERSION }}"
           git push
           echo "Pushed version bump to main"
 
