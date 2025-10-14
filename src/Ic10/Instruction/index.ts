@@ -104,17 +104,7 @@ import {
 	SInstruction,
 	SsInstruction,
 } from "@/Ic10/Instruction/Device";
-import {
-	JalInstruction,
-	JeInstruction,
-	JgeInstruction,
-	JgtInstruction,
-	JInstruction,
-	JleInstruction,
-	JltInstruction,
-	JneInstruction,
-	jrInstruction,
-} from "@/Ic10/Instruction/Jump";
+import { JalInstruction, JInstruction, jrInstruction } from "@/Ic10/Instruction/Jump";
 import {
 	AbsInstruction,
 	AcosInstruction,
@@ -252,12 +242,6 @@ export const instructions = {
 	ins: InsInstruction,
 	j: JInstruction,
 	jal: JalInstruction,
-	je: JeInstruction,
-	jge: JgeInstruction,
-	jgt: JgtInstruction,
-	jle: JleInstruction,
-	jlt: JltInstruction,
-	jne: JneInstruction,
 	jr: jrInstruction,
 	l: LInstruction,
 	lb: LbInstruction,

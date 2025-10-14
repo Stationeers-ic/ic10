@@ -230,7 +230,7 @@ export class jrInstruction extends Instruction {
 	}
 }
 
-export class JeInstruction extends ConditionalJumpInstruction {
+export abstract class JeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
@@ -258,7 +258,7 @@ export class JeInstruction extends ConditionalJumpInstruction {
 	}
 }
 
-export class JneInstruction extends ConditionalJumpInstruction {
+export abstract class JneInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
@@ -286,7 +286,7 @@ export class JneInstruction extends ConditionalJumpInstruction {
 	}
 }
 
-export class JgtInstruction extends ConditionalJumpInstruction {
+export abstract class JgtInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
@@ -314,7 +314,7 @@ export class JgtInstruction extends ConditionalJumpInstruction {
 	}
 }
 
-export class JltInstruction extends ConditionalJumpInstruction {
+export abstract class JltInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
@@ -342,7 +342,7 @@ export class JltInstruction extends ConditionalJumpInstruction {
 	}
 }
 
-export class JgeInstruction extends ConditionalJumpInstruction {
+export abstract class JgeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
@@ -370,7 +370,7 @@ export class JgeInstruction extends ConditionalJumpInstruction {
 	}
 }
 
-export class JleInstruction extends ConditionalJumpInstruction {
+export abstract class JleInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
 			return [];
