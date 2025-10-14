@@ -67,6 +67,7 @@
 		"cannot_set_prop_empty_slot": "Cannot set property: slot is empty.",
 		"unknown_slot_prop": "Unknown slot property",
 		"slot_not_found": "Slot {{slot}} not found",
-		"unimplemented_mode": "this action {{mode}} is not implemented"
+		"unimplemented_mode": "this action {{mode}} is not implemented",
+		"bad_impliment": "this instruction is bad implement"
 	}
 }

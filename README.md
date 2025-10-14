@@ -64,7 +64,7 @@ bun run upgrade
 ### Генерация кода
 - `download` - загрузка актуальных данных с сервера
 - `generate-device` - генерация классов устройств
-- `generate-index` - обновление индексных файлов
+- `generate:index` - обновление индексных файлов
 - `generate-intruction-index` - генерация индекса инструкций
 - `generate-vscode` - обновление конфигурации VSCode
 

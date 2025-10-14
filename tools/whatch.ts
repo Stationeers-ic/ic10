@@ -26,19 +26,19 @@ const CONFIG: {
 	scripts: [
 		{
 			pattern: new Glob("Ic10/Instruction/**"),
-			command: "bun run generate-intruction-index && bun run generate-vscode",
+			command: "bun run generate:intruction && bun run generate:vscode",
 		},
 		{
 			pattern: new Glob("Defines/**"),
-			command: "bun run generate-device",
+			command: "bun run generate:device",
 		},
 		{
 			pattern: new Glob("Schemas/**"),
-			command: "bun run generate-schema",
+			command: "bun run generate:schema",
 		},
 		{
 			pattern: new Glob("**"),
-			command: "bun run generate-index",
+			command: "bun run generate:index",
 		},
 	],
 

@@ -1,10 +1,11 @@
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { type LogicBatchMethodType, type LogicConstType, Logics, Reagents } from "@/Defines/data";
+import REAGENTS from "@/Defines/reagents";
 import { StructureAutolathe } from "@/Devices/StructureAutolathe";
 import { StructureConsole } from "@/Devices/StructureConsole";
 import { StructureConsoleLed1x2 } from "@/Devices/StructureConsoleLed1x2";
 import { HashString } from "@/helpers";
-import { ArgumentIc10Error } from "@/Ic10/Errors/Errors";
+import { ArgumentIc10Error, ErrorSeverity } from "@/Ic10/Errors/Errors";
 import {
 	ArgumentCalculators,
 	type calculateDevicePinOrIdResult,
@@ -980,5 +981,37 @@ export class SbsInstruction extends Instruction {
 		const value = this.getArgumentValue<number>("value");
 
 		this.context.setBatchDeviceSlotParameterByHash(device, slot, slotType, value);
+	}
+}
+
+/*
+rmap:
+  Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot. 
+  
+ 
+  rmap r? d? reagentHash(r?|num)
+*/
+export class RmapInstruction extends Instruction {
+	public argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.devicePin("device"),
+			ArgumentCalculators.reagentHash("reagentHash"),
+		];
+	}
+
+	public run(): void | Promise<void> {
+		const result = this.getArgumentValue<number>("result");
+		const reagent = this.getArgumentValue<number>("reagentHash");
+
+		const data = Object.entries(REAGENTS).filter(([_, r]) => r.hash === reagent)[1][1];
+
+		this.context.setRegister(result, data.items[0].hash);
+		this.addError(
+			new ArgumentIc10Error({
+				message: i18n.t("error.bad_impliment"),
+				severity: ErrorSeverity.Weak,
+			}).setArgument(this.args[2]),
+		);
 	}
 }
