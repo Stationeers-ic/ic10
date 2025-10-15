@@ -10,6 +10,7 @@ chips:
         value: 10
     stack: []
     code: |
+      move r2 r1
       push 0 
       push 80
       push 0

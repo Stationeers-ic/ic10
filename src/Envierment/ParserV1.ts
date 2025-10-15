@@ -302,7 +302,7 @@ class DeserializerV1 {
 				for (const reg of chipSchema.stack) {
 					chip.memory.push(reg);
 				}
-				chip.registers.set(chip.RA, chip.memory.length);
+				chip.registers.set(chip.SP, chip.memory.length);
 			}
 
 			this.builer.Chips.set(chipSchema.id, chip);

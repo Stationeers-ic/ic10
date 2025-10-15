@@ -54,8 +54,8 @@ export class Chip extends ItemEntity {
 		Object.entries(CONSTS).forEach(([key, val]) => {
 			this.defines.set(key, new Define("const", val));
 		});
-		this.defines.set("SP", new Define("alias", this.SP));
-		this.defines.set("RA", new Define("alias", this.RA));
+		this.defines.set("sp", new Define("alias", this.SP));
+		this.defines.set("ra", new Define("alias", this.RA));
 	}
 
 	getIc10Code() {

@@ -68,6 +68,7 @@
 		"unknown_line": "Unknown line",
 		"unknown_set_prop_result": "Perhaps this action cannot be performed.",
 		"unknown_slot_prop": "Unknown slot property",
-		"value_must_be_number": "Must be number"
+		"value_must_be_number": "Must be number",
+		"sp_not_found": "SP not found"
 	}
 }
