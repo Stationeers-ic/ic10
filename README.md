@@ -8,7 +8,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/issues)
 [![GitHub license](https://img.shields.io/github/license/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Stationeers-ic/ic10/publish.yml)](https://github.com/Stationeers-ic/ic10/actions)
-<!-- [![Coverage](https://img.shields.io/codecov/c/github/Stationeers-ic/ic10.svg)](https://codecov.io/gh/Stationeers-ic/ic10) -->
+[![Coverage](https://img.shields.io/codecov/c/github/Stationeers-ic/ic10.svg)](https://codecov.io/gh/Stationeers-ic/ic10)
 [![Last Commit](https://img.shields.io/github/last-commit/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/commits/main)
 [![Translation status](https://weblate.traineratwot.site/widget/ic10/ic10-lib/svg-badge.svg)](https://weblate.traineratwot.site/engage/ic10/)
 [![Stationeers](https://img.shields.io/badge/Stationeers-IC10-blue.svg)](https://store.steampowered.com/app/544550/Stationeers/)
