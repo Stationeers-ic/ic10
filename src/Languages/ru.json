@@ -2,7 +2,7 @@
 	"error":{
 		"alias_already_defined":"{{alias}} уже определен",
 		"argument_must_be_register_or_device":"Аргумент 1 должен быть регистром или устройством",
-		"bad_impliment":"эта инструкция плохо реализована",
+		"bad_impliment":"Эта инструкция плохо реализована",
 		"batch_operation_not_supported":"Операция партии не поддерживается",
 		"builder_init_errors_found":"ошибки",
 		"cannot_add_item_empty_slot":"Не могу добавить предмет: слот пуст",
@@ -63,7 +63,7 @@
 		"slot_not_found":"Слот {{slot}} не найден",
 		"stack_access_out_of_bounds":"Индекс {{index}} не существует в стеке",
 		"stack_overflow":"Переполнение стека",
-		"unimplemented_mode":"это действие {{mode}} не выполняется",
+		"unimplemented_mode":"Это действие {{mode}} не за программировано",
 		"unknown_instruction":"Неизвестная инструкция: {{instruction}}",
 		"unknown_line":"Неизвестная строка",
 		"unknown_set_prop_result":"Возможно, это действие не может быть выполнено.",
