@@ -3,12 +3,20 @@
 	"type": "module",
 	"version": "5.1.0",
 	"description": "",
-	"main": "dist/ic10.cjs.js",
-	"module": "dist/ic10.esm.js",
-	"types": "dist/index.d.ts",
+	"main": "./dist/ic10.cjs.js",
+	"module": "./dist/ic10.esm.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
-		"import": "./dist/ic10.esm.js",
-		"require": "./dist/ic10.cjs.js"
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/ic10.esm.js"
+			},
+			"require": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/ic10.cjs.js"
+			}
+		}
 	},
 	"files": [
 		"dist"
