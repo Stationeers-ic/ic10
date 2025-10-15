@@ -421,7 +421,7 @@ class DeserializerV1 {
 					itemHash = Items.getByValue(slotData.item);
 				}
 				const item = new ItemEntity(itemHash, slotData.amount);
-				slot.putItem(item);
+				slot.putItem(item, true);
 			}
 		}
 	}

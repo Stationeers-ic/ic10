@@ -132,8 +132,8 @@ export class Slot extends DeviceScope {
 		}
 	}
 
-	public putItem(item: ItemEntity): void {
-		if (this.ITEM !== null) {
+	public putItem(item: ItemEntity, force: boolean = false): void {
+		if (this.ITEM !== null && !force) {
 			throw new Error(i18n.t("error.slot_not_empty"));
 		}
 		this.ITEM = item;

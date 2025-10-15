@@ -36,8 +36,6 @@ export class Builer {
 				break;
 		}
 		Parser.parse(data);
-		// При желании можно сразу инициализировать:
-		// BUILDER.init();
 		return BUILDER;
 	}
 
@@ -63,8 +61,9 @@ export class Builer {
 
 	// Один тик исполнения без sandbox-прогона
 	public async step(): Promise<boolean> {
-		// Если нужно, можно принудительно требовать init перед step:
-		// if (!this.initialized) throw new Error("Call init() before step()");
+		if (!this.initialized) {
+			this.init();
+		}
 
 		const promises: Promise<{ key: any; result: boolean }>[] = [];
 
