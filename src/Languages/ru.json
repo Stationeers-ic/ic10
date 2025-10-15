@@ -63,7 +63,7 @@
 		"slot_not_found":"Слот {{slot}} не найден",
 		"stack_access_out_of_bounds":"Индекс {{index}} не существует в стеке",
 		"stack_overflow":"Переполнение стека",
-		"unimplemented_mode":"это действие {{mode}} не запрограммировано :(",
+		"unimplemented_mode":"это действие {{mode}} не выполняется",
 		"unknown_instruction":"Неизвестная инструкция: {{instruction}}",
 		"unknown_line":"Неизвестная строка",
 		"unknown_set_prop_result":"Возможно, это действие не может быть выполнено.",
