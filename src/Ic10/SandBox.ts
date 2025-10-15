@@ -20,6 +20,7 @@ export class SandBoxDevice extends Device {}
 export class SandBoxChip extends Chip {
 	constructor({ ic10Code }: ChipConstructorType) {
 		super({
+			id: 0,
 			ic10Code,
 		});
 	}

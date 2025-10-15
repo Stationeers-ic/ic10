@@ -35,6 +35,7 @@ export class Ic10Runner {
 			contexts: {
 				real: new RealContext({ housing, name: "real" }),
 				sandbox: new SandboxContext({
+					id: 0,
 					name: "sandbox",
 					ic10Code: housing.chip?.getIc10Code() ?? "",
 					stack_length: housing.chip?.memory.length,
