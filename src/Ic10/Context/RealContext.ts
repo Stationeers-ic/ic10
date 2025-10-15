@@ -24,8 +24,8 @@ import i18n from "@/Languages/lang";
 // =============================================
 
 abstract class ExecutionBase extends Context implements IExecutionContext {
-	private line = 0;
-	private jumps_count = 0;
+	protected line = 0;
+	protected jumps_count = 0;
 
 	override getJumpsCount(): number {
 		return this.jumps_count;
@@ -582,6 +582,8 @@ abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesRea
 export class RealContext extends DevicesReagentBase {
 	override reset(): void {
 		this.$housing.reset();
+		this.line = 0;
+		this.jumps_count = 0;
 	}
 
 	override validChip(): boolean {

@@ -17,6 +17,7 @@ export function createRunner(ic10Code: string | string[], options?: Partial<Crea
 		ic10Code = ic10Code.join("\n");
 	}
 	const chip = new Chip({
+		id: 0,
 		ic10Code,
 		register_length: options?.register_length ?? 16,
 		stack_length: options?.stack_length ?? 512,
