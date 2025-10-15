@@ -5,7 +5,7 @@ chips:
     stack_length: 512
     SP: 16
     RA: 17
-    register:
+    registers:
       - name: r1
         value: 10
     stack: [0, 1, 80, 0, -50]

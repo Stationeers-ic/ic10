@@ -4,6 +4,7 @@ import CONSTS from "@/Defines/consts";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
 
 export type ChipConstructorType = {
+	id: number;
 	chipHash?: number;
 	ic10Code?: string;
 	register_length?: number;
@@ -14,6 +15,7 @@ export type ChipConstructorType = {
 
 export class Chip extends ItemEntity {
 	public registers: Map<number, number> = new Map();
+	public readonly id: number;
 	public readonly memory: StackInterface;
 	public defines: Map<string, Define> = new Map();
 	private ic10Code: string;
@@ -22,6 +24,7 @@ export class Chip extends ItemEntity {
 	private readonly RA: number;
 
 	constructor({
+		id,
 		chipHash,
 		ic10Code = "",
 		register_length = 18,
@@ -30,6 +33,7 @@ export class Chip extends ItemEntity {
 		RA = 17,
 	}: ChipConstructorType) {
 		super(chipHash ?? -744098481, 1);
+		this.id = id;
 		this.ic10Code = ic10Code ?? "";
 		this.register_length = register_length ?? 18;
 		this.SP = SP ?? 16;

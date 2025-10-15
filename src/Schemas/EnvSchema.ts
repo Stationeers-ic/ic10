@@ -87,7 +87,7 @@ export const ChipSchema = object({
 	stack_length: number(),
 	SP: number(),
 	RA: number(),
-	register: optional(array(RegisterSchema)),
+	registers: optional(array(RegisterSchema)),
 	stack: optional(array(number())),
 	code: optional(string()),
 });

@@ -9,6 +9,7 @@ import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
 import type {
+	ChipSchema,
 	DeviceSchema,
 	EnvSchema,
 	NetworkSchema,
@@ -74,14 +75,19 @@ class SerializerV1 {
 	public stringify(): string {
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
+		const chips = this.stringifyChips();
 
 		const data: EnvSchema = {
 			version: 1,
 			devices: devices,
 			networks: networks,
+			chips: chips,
 		};
 
 		return stringify(data);
+	}
+	private stringifyChips(): ChipSchema[] {
+		return [];
 	}
 
 	private stringifyNetworks(): NetworkSchema[] {
@@ -134,7 +140,7 @@ class SerializerV1 {
 
 		// Housing устройства содержат IC10 код
 		if (device instanceof Housing) {
-			data.code = device.chip.getIc10Code();
+			data.chip = device.chip.id;
 		}
 
 		// Сериализация слотов
@@ -247,8 +253,28 @@ class DeserializerV1 {
 
 	public parse(data: EnvSchema): void {
 		this.builer.reset();
+		this.parseChips(data);
 		this.parseNetworks(data);
 		this.parseDevices(data);
+	}
+
+	private parseChips(data: EnvSchema) {
+		data.chips.forEach((chipSchema) => {
+			const chip = new Chip({
+				id: chipSchema.id,
+				ic10Code: chipSchema.code || undefined,
+				register_length: chipSchema.register_length || undefined,
+				stack_length: chipSchema.stack_length || undefined,
+				SP: chipSchema.SP || undefined,
+				RA: chipSchema.RA || undefined,
+			});
+			if (typeof chipSchema.registers !== "undefined") {
+				for (const reg of chipSchema.registers) {
+					chip.registers.set(parseInt(reg.name.slice(1), 10), reg.value);
+				}
+			}
+			this.builer.Chips.set(chipSchema.id, chip);
+		});
 	}
 
 	private parseNetworks(data: EnvSchema): void {
@@ -316,9 +342,10 @@ class DeserializerV1 {
 
 	private createHousingDevice(deviceSchema: DeviceSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
-		const code = deviceSchema.code || "";
-		const chip = new Chip({ ic10Code: code });
-
+		const chip = this.builer.Chips.get(deviceSchema.chip);
+		if (!chip) {
+			throw new Error(`Chip ${deviceSchema.chip} not found for housing device ${deviceSchema.PrefabName}`);
+		}
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 

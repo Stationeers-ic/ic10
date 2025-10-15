@@ -13,5 +13,5 @@
 		"skipLibCheck": true,
 		"moduleResolution": "bundler"
 	},
-	"exclude": ["dist"]
+	"exclude": ["dist", "node_modules", "src/Defines", "src/Devices", "src/Schemas"]
 }
