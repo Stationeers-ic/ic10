@@ -16,6 +16,7 @@ import type {
 	PortSchema,
 	PropsSchema,
 	ReagentSchema,
+	RegisterSchema,
 	SlotSchema,
 } from "@/Schemas/EnvSchema";
 
@@ -79,15 +80,39 @@ class SerializerV1 {
 
 		const data: EnvSchema = {
 			version: 1,
+			chips: chips,
 			devices: devices,
 			networks: networks,
-			chips: chips,
 		};
 
 		return stringify(data);
 	}
 	private stringifyChips(): ChipSchema[] {
-		return [];
+		const chips: ChipSchema[] = [];
+		this.builer.Chips.forEach((chip: Chip) => {
+			const registers: RegisterSchema[] = [];
+			for (const register of chip.registers) {
+				if (register[1] !== 0) {
+					registers.push({
+						name: `r${register[0]}`,
+						value: register[1],
+					} satisfies RegisterSchema);
+				}
+			}
+			const data = {
+				id: chip.id,
+				RA: chip.RA === 17 ? undefined : chip.RA,
+				SP: chip.SP === 16 ? undefined : chip.SP,
+				register_length: chip.register_length === 18 ? undefined : chip.register_length,
+				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
+				registers: registers.length > 0 ? registers : undefined,
+				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
+				code: chip.getIc10Code(),
+			} satisfies ChipSchema;
+
+			chips.push(data);
+		});
+		return chips;
 	}
 
 	private stringifyNetworks(): NetworkSchema[] {
@@ -273,6 +298,13 @@ class DeserializerV1 {
 					chip.registers.set(parseInt(reg.name.slice(1), 10), reg.value);
 				}
 			}
+			if (typeof chipSchema.stack !== "undefined") {
+				for (const reg of chipSchema.stack) {
+					chip.memory.push(reg);
+				}
+				chip.registers.set(chip.RA, chip.memory.length);
+			}
+
 			this.builer.Chips.set(chipSchema.id, chip);
 		});
 	}

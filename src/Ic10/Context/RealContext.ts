@@ -341,17 +341,23 @@ abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinCo
 
 abstract class StackBase extends DevicesByPinBase implements IStackContext {
 	override push(value: number): void {
-		this.stack().push(value);
+		const index = this.getRegister(this.housing.chip.RA);
+		this.stack().set(index, value);
+		this.setRegister(this.housing.chip.RA, index + 1);
 	}
 
 	override pop(): number {
-		const stack = this.stack();
-		return stack.length > 0 ? stack.pop()! : 0;
+		const index = this.getRegister(this.housing.chip.RA) - 1;
+		if (index < 0) return 0;
+		const value = this.stack().get(index);
+		this.setRegister(this.housing.chip.RA, index);
+		return value;
 	}
 
 	override peek(): number {
-		const stack = this.stack();
-		return stack.length > 0 ? stack.get(stack.length - 1) : 0;
+		const index = this.getRegister(this.housing.chip.RA) - 1;
+		if (index < 0) return 0;
+		return this.stack().get(index);
 	}
 
 	override stack(): StackInterface {

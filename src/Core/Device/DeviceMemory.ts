@@ -48,4 +48,17 @@ export class DeviceMemory extends DeviceScope implements StackInterface {
 	public reset(): void {
 		this.$stack.clear();
 	}
+
+	toArray(): number[] {
+		const arr: number[] = [];
+		for (let i = 0; i < this.$stack.size; i++) {
+			arr.push(this.$stack.get(i) ?? 0);
+		}
+		// Удаляем хвостовые нули
+		let lastNonZero = arr.length - 1;
+		while (lastNonZero >= 0 && arr[lastNonZero] === 0) {
+			lastNonZero--;
+		}
+		return arr.slice(0, lastNonZero + 1);
+	}
 }

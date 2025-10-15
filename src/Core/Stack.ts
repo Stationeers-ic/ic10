@@ -9,6 +9,7 @@ export interface StackInterface {
 	pop(): number;
 	reset(): void;
 	get length(): number;
+	toArray(): number[];
 }
 
 export class Stack implements StackInterface {
@@ -68,5 +69,24 @@ export class Stack implements StackInterface {
 
 	get length(): number {
 		return this.$stack.size;
+	}
+
+	toArray(): number[] {
+		// Найти максимальный индекс, который был записан
+		const maxIndex = Math.max(...this.$stack.keys(), 0);
+
+		// Собрать значения от 0 до maxIndex
+		const arr: number[] = [];
+		for (let i = 0; i <= maxIndex; i++) {
+			arr.push(this.$stack.get(i) ?? 0);
+		}
+
+		// Удалить хвостовые нули
+		let lastNonZero = arr.length - 1;
+		while (lastNonZero >= 0 && arr[lastNonZero] === 0) {
+			lastNonZero--;
+		}
+
+		return arr.slice(0, lastNonZero + 1);
 	}
 }

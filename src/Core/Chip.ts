@@ -19,9 +19,10 @@ export class Chip extends ItemEntity {
 	public readonly memory: StackInterface;
 	public defines: Map<string, Define> = new Map();
 	private ic10Code: string;
-	private readonly register_length: number;
-	private readonly SP: number;
-	private readonly RA: number;
+	public readonly register_length: number;
+	public readonly stack_length: number;
+	public readonly SP: number;
+	public readonly RA: number;
 
 	constructor({
 		id,
@@ -36,9 +37,10 @@ export class Chip extends ItemEntity {
 		this.id = id;
 		this.ic10Code = ic10Code ?? "";
 		this.register_length = register_length ?? 18;
+		this.stack_length = stack_length ?? 512;
 		this.SP = SP ?? 16;
 		this.RA = RA ?? 17;
-		this.memory = new Stack(stack_length);
+		this.memory = new Stack(this.stack_length);
 		this.reset();
 	}
 
