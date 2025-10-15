@@ -19,7 +19,7 @@ const CONFIG: {
 	watchPath: join(dirname(import.meta.dir), "src"),
 
 	// Задержка для debounce (мс)
-	debounceDelay: 600,
+	debounceDelay: 1500,
 
 	// Скрипты для разных шаблонов (в порядке специфичности)
 	// Более специфичные шаблоны должны быть выше

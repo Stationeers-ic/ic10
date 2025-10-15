@@ -1,8 +1,25 @@
 version: 1
+chips:
+  - id: 1
+    register_length: 18
+    stack_length: 512
+    SP: 16
+    RA: 17
+    register:
+      - name: r1
+        value: 10
+    stack: [0, 1, 80, 0, -50]
+    code: |
+      move r0 99
+      move r1 85
+      l r2 db Setting
+      s db Setting 82
+
 devices:
   - id: 1
     PrefabName: StructureCircuitHousingCompact
     name: MyDevice
+    chip: 1
     ports:
       - port: default
         network: base
@@ -11,11 +28,7 @@ devices:
         value: 10
       - name: Mode
         value: 12
-    code: |
-      move r0 99
-      move r1 85
-      l r2 db Setting
-      s db Setting 82
+
   - id: 2
     PrefabName: StructureAutolathe
     ports:

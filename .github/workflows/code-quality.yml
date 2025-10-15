@@ -28,4 +28,9 @@ jobs:
         run: bun run format:check
 
       - name: Run tests
-        run: bun test
+        run: bun test --coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
