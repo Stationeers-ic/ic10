@@ -27,7 +27,7 @@
         "husky": "^9.1.7",
         "js-convert-case": "^4.2.0",
         "json5": "^2.2.3",
-        "vite": "^7.1.9",
+        "vite": "^7.1.10",
         "vite-plugin-dts": "^4.5.4",
       },
       "peerDependencies": {

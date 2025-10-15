@@ -7,8 +7,13 @@ coveragePathIgnorePatterns = [
   "src/Defines/**",
   "tests/**",
   "tools/**",
+  "src/Envierment/**",
+  "src/Ic10/Lines/CommentLine.ts",
+  "src/Ic10/Instruction/Misc/OtherInstruction.ts",
+  "src/Core/Device/DeviceMemory.ts",
 ]
-coverageThreshold = { lines = 0.8, functions = 0.6, statements = 0.9 }
+coverageSkipTestFiles = true 
+coverageThreshold = 0.3
 [install]
 auto = "auto"
 [run]

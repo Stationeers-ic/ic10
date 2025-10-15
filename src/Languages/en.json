@@ -2,11 +2,13 @@
 	"error": {
 		"alias_already_defined": "{{alias}} is already defined",
 		"argument_must_be_register_or_device": "Argument 1 must be a register or device",
+		"bad_impliment": "This instruction is bad implement",
 		"batch_operation_not_supported": "Batch operation {{operation}} is not supported",
 		"builder_init_errors_found": "errors",
 		"cannot_add_item_empty_slot": "Cannot add item: slot is empty",
 		"cannot_connect_different_networks": "Cannot connect device because they are not on the same network",
 		"cannot_connect_network_to_port": "Cannot connect network {{networkType}} to port {{portName}}",
+		"cannot_set_prop_empty_slot": "Cannot set property: slot is empty.",
 		"channels_not_allowed_in_instruction": "You can't use channels in this instruction",
 		"constant_already_defined": "{{constant}} is already defined",
 		"context_not_found": "Context {{name}} not found",
@@ -58,16 +60,15 @@
 		"register_not_found_in_context": "{{register}} register not found",
 		"slot_index_out_of_range": "Slot index {{index}} is out of range for device",
 		"slot_not_empty": "Slot is not empty",
+		"slot_not_found": "Slot {{slot}} not found",
 		"stack_access_out_of_bounds": "Stack can't access index {{index}}",
 		"stack_overflow": "Stack overflow",
+		"unimplemented_mode": "This action {{mode}} is not implemented :(",
 		"unknown_instruction": "Unknown instruction: {{instruction}}",
 		"unknown_line": "Unknown line",
-		"value_must_be_number": "Must be number",
 		"unknown_set_prop_result": "Perhaps this action cannot be performed.",
-		"cannot_set_prop_empty_slot": "Cannot set property: slot is empty.",
 		"unknown_slot_prop": "Unknown slot property",
-		"slot_not_found": "Slot {{slot}} not found",
-		"unimplemented_mode": "this action {{mode}} is not implemented",
-		"bad_impliment": "this instruction is bad implement"
+		"value_must_be_number": "Must be number",
+		"sp_not_found": "SP not found"
 	}
 }

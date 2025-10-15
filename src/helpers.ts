@@ -104,3 +104,15 @@ export class HashString {
 		return this.hash;
 	}
 }
+
+export function trimZerosFromEnd(arr: number[]): number[] {
+	let lastNonZeroIndex = arr.length - 1;
+
+	// Находим индекс последнего ненулевого элемента
+	while (lastNonZeroIndex >= 0 && arr[lastNonZeroIndex] === 0) {
+		lastNonZeroIndex--;
+	}
+
+	// Возвращаем массив до этого индекса включительно
+	return arr.slice(0, lastNonZeroIndex + 1);
+}

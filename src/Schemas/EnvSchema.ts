@@ -74,12 +74,30 @@ export const ReagentSchema = object({
 	amount: number(),
 });
 
+// --- Register ---
+export const RegisterSchema = object({
+	name: string(),
+	value: number(),
+});
+
+// --- Chip ---
+export const ChipSchema = object({
+	id: number(),
+	register_length: number(),
+	stack_length: number(),
+	SP: number(),
+	RA: number(),
+	registers: optional(array(RegisterSchema)),
+	stack: optional(array(number())),
+	code: optional(string()),
+});
+
 // --- Device ---
 export const DeviceSchema = object({
 	id: number(),
 	PrefabName: PrefabNameSchema,
 	name: optional(string()),
-	code: optional(string()),
+	chip: optional(number()),
 	ports: optional(array(PortSchema)),
 	props: optional(array(PropsSchema)),
 	slots: optional(array(SlotSchema)),
@@ -100,6 +118,7 @@ export const NetworkSchema = object({
 // --- Env ---
 export const EnvSchema = object({
 	version: union([literal(1)]),
+	chips: array(ChipSchema),
 	devices: array(DeviceSchema),
 	networks: array(NetworkSchema),
 });
@@ -110,5 +129,7 @@ export type PortSchema = InferOutput<typeof PortSchema>;
 export type PropsSchema = InferOutput<typeof PropsSchema>;
 export type SlotSchema = InferOutput<typeof SlotSchema>;
 export type ReagentSchema = InferOutput<typeof ReagentSchema>;
+export type RegisterSchema = InferOutput<typeof RegisterSchema>;
+export type ChipSchema = InferOutput<typeof ChipSchema>;
 export type DeviceSchema = InferOutput<typeof DeviceSchema>;
 export type NetworkSchema = InferOutput<typeof NetworkSchema>;

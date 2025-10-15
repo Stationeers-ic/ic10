@@ -9,12 +9,14 @@ import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
 import type {
+	ChipSchema,
 	DeviceSchema,
 	EnvSchema,
 	NetworkSchema,
 	PortSchema,
 	PropsSchema,
 	ReagentSchema,
+	RegisterSchema,
 	SlotSchema,
 } from "@/Schemas/EnvSchema";
 
@@ -74,14 +76,43 @@ class SerializerV1 {
 	public stringify(): string {
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
+		const chips = this.stringifyChips();
 
 		const data: EnvSchema = {
 			version: 1,
+			chips: chips,
 			devices: devices,
 			networks: networks,
 		};
 
 		return stringify(data);
+	}
+	private stringifyChips(): ChipSchema[] {
+		const chips: ChipSchema[] = [];
+		this.builer.Chips.forEach((chip: Chip) => {
+			const registers: RegisterSchema[] = [];
+			for (const register of chip.registers) {
+				if (register[1] !== 0) {
+					registers.push({
+						name: `r${register[0]}`,
+						value: register[1],
+					} satisfies RegisterSchema);
+				}
+			}
+			const data = {
+				id: chip.id,
+				RA: chip.RA === 17 ? undefined : chip.RA,
+				SP: chip.SP === 16 ? undefined : chip.SP,
+				register_length: chip.register_length === 18 ? undefined : chip.register_length,
+				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
+				registers: registers.length > 0 ? registers : undefined,
+				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
+				code: chip.getIc10Code(),
+			} satisfies ChipSchema;
+
+			chips.push(data);
+		});
+		return chips;
 	}
 
 	private stringifyNetworks(): NetworkSchema[] {
@@ -134,7 +165,7 @@ class SerializerV1 {
 
 		// Housing устройства содержат IC10 код
 		if (device instanceof Housing) {
-			data.code = device.chip.getIc10Code();
+			data.chip = device.chip.id;
 		}
 
 		// Сериализация слотов
@@ -247,8 +278,35 @@ class DeserializerV1 {
 
 	public parse(data: EnvSchema): void {
 		this.builer.reset();
+		this.parseChips(data);
 		this.parseNetworks(data);
 		this.parseDevices(data);
+	}
+
+	private parseChips(data: EnvSchema) {
+		data.chips.forEach((chipSchema) => {
+			const chip = new Chip({
+				id: chipSchema.id,
+				ic10Code: chipSchema.code || undefined,
+				register_length: chipSchema.register_length || undefined,
+				stack_length: chipSchema.stack_length || undefined,
+				SP: chipSchema.SP || undefined,
+				RA: chipSchema.RA || undefined,
+			});
+			if (typeof chipSchema.registers !== "undefined") {
+				for (const reg of chipSchema.registers) {
+					chip.registers.set(parseInt(reg.name.slice(1), 10), reg.value);
+				}
+			}
+			if (typeof chipSchema.stack !== "undefined") {
+				for (const reg of chipSchema.stack) {
+					chip.memory.push(reg);
+				}
+				chip.registers.set(chip.SP, chip.memory.length);
+			}
+
+			this.builer.Chips.set(chipSchema.id, chip);
+		});
 	}
 
 	private parseNetworks(data: EnvSchema): void {
@@ -316,9 +374,10 @@ class DeserializerV1 {
 
 	private createHousingDevice(deviceSchema: DeviceSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
-		const code = deviceSchema.code || "";
-		const chip = new Chip({ ic10Code: code });
-
+		const chip = this.builer.Chips.get(deviceSchema.chip);
+		if (!chip) {
+			throw new Error(`Chip ${deviceSchema.chip} not found for housing device ${deviceSchema.PrefabName}`);
+		}
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 

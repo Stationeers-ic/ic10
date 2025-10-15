@@ -12,12 +12,12 @@ export class PushInstruction extends Instruction {
 		}
 		return [
 			{
-				code: "push 10\npeek r0",
+				code: ["push 10", "peek r0"],
 				expected: [{ type: "register", register: 0, value: 10 }],
 			},
 			{
 				title: "multiple values",
-				code: "push 20\npush 30\npeek r0\npeek r1",
+				code: ["push 20", "push 30", "peek r0", "peek r1"],
 				expected: [
 					{ type: "register", register: 0, value: 30 },
 					{ type: "register", register: 1, value: 30 },
@@ -25,18 +25,28 @@ export class PushInstruction extends Instruction {
 			},
 			{
 				title: "from register",
-				code: "move r2 42\npush r2\npeek r3",
+				code: ["move r2 42", "push r2", "peek r3"],
 				expected: [{ type: "register", register: 3, value: 42 }],
 			},
 			{
 				title: "negative value",
-				code: "push -5\npeek r0",
+				code: ["push -5", "peek r0"],
 				expected: [{ type: "register", register: 0, value: -5 }],
 			},
 			{
 				title: "zero value",
-				code: "push 0\npeek r0",
+				code: ["push 0", "peek r0"],
 				expected: [{ type: "register", register: 0, value: 0 }],
+			},
+			{
+				title: "SP 1",
+				code: ["push 0", "push 0", "push 0"],
+				expected: [{ type: "register", register: 16, value: 3 }],
+			},
+			{
+				title: "SP 2",
+				code: ["push 0", "push 0", "push 0", "pop r1"],
+				expected: [{ type: "register", register: 16, value: 2 }],
 			},
 		];
 	}

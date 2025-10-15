@@ -1,3 +1,4 @@
+import { trimZerosFromEnd } from "@/helpers";
 import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 import i18n from "@/Languages/lang";
 
@@ -9,6 +10,7 @@ export interface StackInterface {
 	pop(): number;
 	reset(): void;
 	get length(): number;
+	toArray(): number[];
 }
 
 export class Stack implements StackInterface {
@@ -68,5 +70,15 @@ export class Stack implements StackInterface {
 
 	get length(): number {
 		return this.$stack.size;
+	}
+
+	toArray(): number[] {
+		const arr = [].fill(this.$stack_length, 0);
+		this.$stack.forEach((value, index) => {
+			if (index < this.$stack_length) {
+				arr[index] = value;
+			}
+		});
+		return trimZerosFromEnd(arr);
 	}
 }

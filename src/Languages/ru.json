@@ -2,11 +2,13 @@
 	"error": {
 		"alias_already_defined": "{{alias}} уже определен",
 		"argument_must_be_register_or_device": "Аргумент 1 должен быть регистром или устройством",
+		"bad_impliment": "Эта инструкция плохо реализована",
 		"batch_operation_not_supported": "Операция партии не поддерживается",
 		"builder_init_errors_found": "ошибки",
 		"cannot_add_item_empty_slot": "Не могу добавить предмет: слот пуст",
 		"cannot_connect_different_networks": "Невозможно подключить устройство, потому что оно не находится в одной сети",
 		"cannot_connect_network_to_port": "Не удается соединить сеть {{network}} Тип: порт {{portName}}",
+		"cannot_set_prop_empty_slot": "Невозможно установить свойство: слот пуст.",
 		"channels_not_allowed_in_instruction": "Вы не можете использовать каналы в этой инструкции",
 		"constant_already_defined": "{{constant}} уже определено",
 		"context_not_found": "Контекст не найден",
@@ -58,10 +60,15 @@
 		"register_not_found_in_context": "регистр не найден",
 		"slot_index_out_of_range": "Слот-индекс {{index}} находится вне зоны действия устройства",
 		"slot_not_empty": "Слот не пустой",
+		"slot_not_found": "Слот {{slot}} не найден",
 		"stack_access_out_of_bounds": "Индекс {{index}} не существует в стеке",
 		"stack_overflow": "Переполнение стека",
+		"unimplemented_mode": "Это действие {{mode}} не за программировано",
 		"unknown_instruction": "Неизвестная инструкция: {{instruction}}",
 		"unknown_line": "Неизвестная строка",
-		"value_must_be_number": "Должно быть число"
+		"unknown_set_prop_result": "Возможно, это действие не может быть выполнено.",
+		"unknown_slot_prop": "Неизвестные свойства слота",
+		"value_must_be_number": "Должно быть число",
+		"sp_not_found": "SP не найден"
 	}
 }

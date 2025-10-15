@@ -3,6 +3,23 @@ name: CI and Release
 on:
   push:
     branches: [main]
+    paths:
+      # Включить только файлы, влияющие на сборку
+      - '**.js'
+      - '**.ts'
+      - '**.jsx'
+      - '**.tsx'
+      - '**.json'
+      - '**.yml'
+      - '**.yaml'
+      - 'package.json'
+      - 'bun.lockb'
+      - 'tsconfig.json'
+      # Исключить документацию и другие нефункциональные файлы
+      - '!**.md'
+      - '!**.txt'
+      - '!**.doc'
+      - '!**.docx'
   workflow_dispatch:
 
 permissions:
@@ -70,23 +87,18 @@ jobs:
         id: check_version
         run: |
           VERSION=${{ steps.version.outputs.current_version }}
-          # Check if tag exists
           if git rev-parse "v$VERSION" >/dev/null 2>&1; then
             echo "version_exists=true" >> $GITHUB_OUTPUT
-            echo "Version v$VERSION already exists"
           else
             echo "version_exists=false" >> $GITHUB_OUTPUT
-            echo "Version v$VERSION does not exist"
           fi
 
       - name: Bump version if exists
         if: steps.check_version.outputs.version_exists == 'true'
         run: |
-          # Bump patch version
           bun pm version patch --no-git-tag-version
           NEW_VERSION=$(bun -p "require('./package.json').version")
-          echo "New version: $NEW_VERSION"
-          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Commit version bump
         if: steps.check_version.outputs.version_exists == 'true'
@@ -94,7 +106,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           git add package.json
-          git commit -m "chore: bump version to ${{ steps.check_version.outputs.NEW_VERSION }}"
+          git commit -m "chore: bump version to ${{ steps.check_version.outputs.NEW_VERSION }} [skip ci]"
           git push
           echo "Pushed version bump to main"
 

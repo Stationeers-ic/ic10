@@ -1,4 +1,5 @@
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
+import { trimZerosFromEnd } from "@/helpers";
 import type { StackInterface } from "../Stack";
 
 export type DeviceMemoryConstructor = {
@@ -47,5 +48,15 @@ export class DeviceMemory extends DeviceScope implements StackInterface {
 
 	public reset(): void {
 		this.$stack.clear();
+	}
+
+	toArray(): number[] {
+		const arr = [].fill(this.stack_length, 0);
+		this.$stack.forEach((value, index) => {
+			if (index < this.stack_length) {
+				arr[index] = value;
+			}
+		});
+		return trimZerosFromEnd(arr);
 	}
 }

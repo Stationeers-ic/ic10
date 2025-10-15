@@ -50,7 +50,7 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 
 	private writeReturnAddress(): void {
 		const originalLine = this.line;
-		const raDefine = this.getDefines("RA");
+		const raDefine = this.getDefines("ra");
 
 		if (!raDefine?.value) {
 			throw new RuntimeIc10Error({
@@ -340,22 +340,54 @@ abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinCo
 // =============================================
 
 abstract class StackBase extends DevicesByPinBase implements IStackContext {
+	private spValue?: number = undefined;
 	override push(value: number): void {
-		this.stack().push(value);
+		const spRegister = this.getSpRegister();
+		const index = this.getRegister(spRegister);
+		this.stack().set(index, value);
+		this.setRegister(spRegister, index + 1);
 	}
 
 	override pop(): number {
-		const stack = this.stack();
-		return stack.length > 0 ? stack.pop()! : 0;
+		const spRegister = this.getSpRegister();
+		const index = this.getRegister(spRegister) - 1;
+		if (index < 0) return 0;
+		const value = this.stack().get(index);
+		this.setRegister(spRegister, index);
+		return value;
 	}
 
 	override peek(): number {
-		const stack = this.stack();
-		return stack.length > 0 ? stack.get(stack.length - 1) : 0;
+		const spRegister = this.getSpRegister();
+		const index = this.getRegister(spRegister) - 1;
+		if (index < 0) return 0;
+		return this.stack().get(index);
 	}
 
 	override stack(): StackInterface {
 		return this.housing.$memory;
+	}
+
+	private getSpRegister(): number {
+		if (typeof this.spValue !== "undefined") {
+			return this.spValue;
+		}
+		const spDefine = this.getDefines("sp");
+
+		if (!spDefine?.value) {
+			throw new RuntimeIc10Error({
+				message: i18n.t("error.sp_not_found"),
+			});
+		}
+
+		const spValue = parseInt(spDefine.value, 10);
+		if (Number.isNaN(spValue)) {
+			throw new RuntimeIc10Error({
+				message: i18n.t("error.sp_not_found"),
+			});
+		}
+		this.spValue = spValue;
+		return this.spValue;
 	}
 }
 
