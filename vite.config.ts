@@ -15,9 +15,11 @@ export default defineConfig({
 		lib: {
 			entry: path.resolve(__dirname, "src/index.ts"),
 			name: "ic10",
-			formats: ["cjs"],
+			formats: ["cjs", "umd"],
 			fileName: (format) => {
 				switch (format) {
+					case "umd":
+						return "ic10.umd.js";
 					case "cjs":
 						return "ic10.cjs.js";
 				}
