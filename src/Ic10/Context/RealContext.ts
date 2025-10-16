@@ -53,18 +53,24 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 		const raDefine = this.getDefines("ra");
 
 		if (!raDefine?.value) {
-			throw new RuntimeIc10Error({
-				message: i18n.t("error.ra_not_found"),
-				line: originalLine,
-			});
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.ra_not_found"),
+					line: originalLine,
+				}),
+			);
+			return;
 		}
 
 		const raValue = parseInt(raDefine.value, 10);
 		if (Number.isNaN(raValue)) {
-			throw new RuntimeIc10Error({
-				message: i18n.t("error.ra_not_found"),
-				line: originalLine,
-			});
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.ra_not_found"),
+					line: originalLine,
+				}),
+			);
+			return;
 		}
 
 		this.setRegister(raValue, originalLine);
@@ -375,16 +381,22 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 		const spDefine = this.getDefines("sp");
 
 		if (!spDefine?.value) {
-			throw new RuntimeIc10Error({
-				message: i18n.t("error.sp_not_found"),
-			});
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.sp_not_found"),
+				}),
+			);
+			return 0;
 		}
 
 		const spValue = parseInt(spDefine.value, 10);
 		if (Number.isNaN(spValue)) {
-			throw new RuntimeIc10Error({
-				message: i18n.t("error.sp_not_found"),
-			});
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.sp_not_found"),
+				}),
+			);
+			return 0;
 		}
 		this.spValue = spValue;
 		return this.spValue;
@@ -596,5 +608,13 @@ export class RealContext extends DevicesReagentBase {
 	}
 	async yield() {
 		return Bun.sleep(50);
+	}
+	hcf() {
+		this.addError(
+			new RuntimeIc10Error({
+				message: i18n.t("error.hcf"),
+				severity: ErrorSeverity.Strong,
+			}),
+		);
 	}
 }

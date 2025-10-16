@@ -125,6 +125,10 @@ export class Ic10Runner {
 		}
 		line.end();
 		this.context.collectErrors();
+		if (this.context.criticalError !== false) {
+			this.executionStopped = true;
+			return false;
+		}
 		return true;
 	}
 

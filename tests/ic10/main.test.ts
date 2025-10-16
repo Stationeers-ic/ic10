@@ -9,7 +9,7 @@ describe("Ic10Runner", () => {
 
 	function createRunner(ic10Code: string) {
 		const network = new Network();
-		const chip = new Chip({ ic10Code, register_length: 16, stack_length: 512 });
+		const chip = new Chip({ id: 0, ic10Code, register_length: 16, stack_length: 512 });
 		const socket = new Housing({ hash: 125, network, chip });
 		runner = new Ic10Runner({ housing: socket });
 	}
@@ -93,12 +93,8 @@ j label
 move r1 1
         `;
 			createRunner(code);
-			try {
-				await run();
-				expect(false).toBeTrue();
-			} catch (e) {
-				expect(e).toBeInstanceOf(RuntimeIc10Error);
-			}
+			await run();
+			expect(runner.realContext.$criticalError).toBeInstanceOf(RuntimeIc10Error);
 			const registers = runner.realContext.chip.registers;
 			expect(registers.get(0)).toBe(1);
 			expect(registers.get(1)).toBe(0);

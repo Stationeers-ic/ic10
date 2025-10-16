@@ -15,6 +15,7 @@ export class Builer {
 	public readonly Networks = new Map<string, Network>();
 	public readonly Devices = new Map<number, Device>();
 	public readonly Runners = new Map<number, Ic10Runner>();
+	public readonly FinishedRunners = new Set<number>();
 
 	private initialized = false;
 
@@ -23,6 +24,7 @@ export class Builer {
 		this.Devices.clear();
 		this.Networks.clear();
 		this.Runners.clear();
+		this.FinishedRunners.clear();
 		this.initialized = false;
 	}
 
@@ -65,6 +67,9 @@ export class Builer {
 		const promises: Promise<{ key: any; result: boolean }>[] = [];
 
 		for (const [key, runner] of this.Runners.entries()) {
+			if (this.FinishedRunners.has(key)) {
+				continue;
+			}
 			promises.push(runner.step().then((result) => ({ key, result })));
 		}
 
@@ -73,12 +78,12 @@ export class Builer {
 		// Удаляем завершённые runners
 		for (const { key, result } of results) {
 			if (!result) {
-				this.Runners.delete(key);
+				this.FinishedRunners.add(key);
 			}
 		}
 
 		// true — если остались активные runners
-		return this.Runners.size > 0;
+		return this.Runners.size > this.FinishedRunners.size;
 	}
 
 	public toYaml(): string {
