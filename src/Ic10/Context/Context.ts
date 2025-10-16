@@ -113,6 +113,9 @@ export interface IBaseContext {
 	collectErrors(): void;
 	/** Добавить ошибку */
 	addError(error: Ic10Error): this;
+
+	sleep(seconds: number): Promise<void>;
+	yield(): Promise<void>;
 }
 
 export interface IDevicesByIdContext {
@@ -182,6 +185,8 @@ export abstract class Context
 		this.name = name;
 		this.$housing = housing;
 	}
+	abstract sleep(seconds: number): Promise<void>;
+	abstract yield(): Promise<void>;
 
 	get executeLine(): Line {
 		return this.$executeLine!;

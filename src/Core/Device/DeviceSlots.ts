@@ -66,7 +66,7 @@ export class Slot extends DeviceScope {
 
 	constructor(
 		device: Device,
-		public slot: SlotsType[number],
+		public slot: NonNullable<SlotsType>[number],
 	) {
 		super({ device });
 		// Заполняем двунаправленный мэппинг только валидные коды

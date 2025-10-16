@@ -35,6 +35,11 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			external: [/^@tests\//, /^@tools\//],
+			output: {
+				globals: {
+					ic10: "ic10",
+				},
+			},
 		},
 	},
 	plugins: [
@@ -42,6 +47,8 @@ export default defineConfig({
 			entryRoot: "src",
 			outDir: "dist",
 			exclude: ["tests/**/*", "tools/**/*", "node_modules/**/*", "vite.config.ts"],
+			rollupTypes: true,
+			insertTypesEntry: true,
 		}),
 	],
 	define: {

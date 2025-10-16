@@ -13,7 +13,7 @@ import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 import { crc32 } from "@/Ic10/Helpers/functions";
 import i18n from "@/Languages/lang";
 
-export type LogicType = LogicsType[number];
+export type LogicType = NonNullable<LogicsType>[number];
 
 export type DeviceConstructor = {
 	name?: string;

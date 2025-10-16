@@ -10,10 +10,16 @@ chips:
         value: 10
     stack: []
     code: |
-      move r2 r1
-      push 0 
-      push 80
-      push 0
+      move r1 1
+      move r2 1
+      move r3 1
+      move r4 1
+      move r5 1
+      move r6 1
+      move r7 1
+      move r8 1
+      move r9 1
+      move r10 1
 
 devices:
   - id: 1
