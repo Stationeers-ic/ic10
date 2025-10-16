@@ -9,7 +9,7 @@ export class SleepInstruction extends Instruction {
 	public run(): void | Promise<void> {
 		const second = this.getArgumentValue("second") * 1000;
 		if (second > 0) {
-			return new Promise((resolve) => setTimeout(resolve, second));
+			return this.context.sleep(second);
 		}
 	}
 }
@@ -18,7 +18,7 @@ export class YieldInstruction extends Instruction {
 		return [];
 	}
 	public run(): void | Promise<void> {
-		return new Promise((resolve) => setTimeout(resolve, 50));
+		return this.context.yield();
 	}
 }
 
