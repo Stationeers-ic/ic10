@@ -83,7 +83,7 @@ export class Builer {
 		}
 
 		// true — если остались активные runners
-		return this.Runners.size > this.FinishedRunners.size;
+		return this.Runners.size < this.FinishedRunners.size;
 	}
 
 	public toYaml(): string {
