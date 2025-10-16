@@ -590,4 +590,11 @@ export class RealContext extends DevicesReagentBase {
 		const codeLength = this.$housing.chip?.getIc10Code()?.length;
 		return typeof codeLength === "number" && codeLength > 0;
 	}
+
+	async sleep(seconds: number) {
+		return Bun.sleep(seconds * 1000);
+	}
+	async yield() {
+		return Bun.sleep(50);
+	}
 }

@@ -40,12 +40,12 @@ export class Builer {
 	}
 
 	// Одноразовая инициализация: прогнать sandbox и проверить ошибки
-	public init(): void {
+	public async init() {
 		if (this.initialized) return;
 
 		for (const [, runner] of this.Runners.entries()) {
 			runner.switchContext("sandbox");
-			runner.run();
+			await runner.run();
 			runner.init();
 
 			const err = runner.context.errors.filter((error) => error.severity === ErrorSeverity.Strong);
@@ -54,6 +54,7 @@ export class Builer {
 			}
 
 			runner.switchContext("real");
+			runner.init();
 		}
 
 		this.initialized = true;
@@ -61,10 +62,6 @@ export class Builer {
 
 	// Один тик исполнения без sandbox-прогона
 	public async step(): Promise<boolean> {
-		if (!this.initialized) {
-			this.init();
-		}
-
 		const promises: Promise<{ key: any; result: boolean }>[] = [];
 
 		for (const [key, runner] of this.Runners.entries()) {

@@ -218,6 +218,8 @@ abstract class SandboxDevicesSlotBase extends SandboxDevicesByIdBase implements 
 // =============================================
 
 export class SandboxContext extends SandboxDevicesSlotBase {
+	async sleep(seconds: number): Promise<void> {}
+	async yield(): Promise<void> {}
 	getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number {
 		return 0;
 	}

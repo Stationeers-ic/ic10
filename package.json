@@ -4,19 +4,20 @@
 	"version": "5.1.1",
 	"description": "",
 	"main": "./dist/ic10.cjs.js",
-	"module": "./dist/ic10.esm.js",
+	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": {
 				"types": "./dist/index.d.ts",
-				"default": "./dist/ic10.esm.js"
+				"default": "./dist/index.js"
 			},
 			"require": {
 				"types": "./dist/index.d.ts",
 				"default": "./dist/ic10.cjs.js"
 			}
-		}
+		},
+		"./package.json": "./package.json"
 	},
 	"files": [
 		"dist"
@@ -33,8 +34,8 @@
 		"download:missing": "bun tools/download.ts --missing",
 		"generate": "bun run download:missing && bun run generate:device && bun run generate:intruction && bun run generate:index && bun run generate:schema && bun run generate:vscode && bun run generate:langs",
 		"upgrade": "bun run download && bun run generate && bun test",
-		"build": "NODE_ENV=production bun run generate && vite build",
-		"build:dev": "NODE_ENV=development bun run generate && vite build",
+		"build": "NODE_ENV=production bun run generate && vite build && bunx tsc -p tsconfig.node.json && bunx tsc-alias -p tsconfig.node.json",
+		"build:dev": "NODE_ENV=development bun run generate && vite build && bunx tsc -p tsconfig.node.json && bunx tsc-alias -p tsconfig.node.json",
 		"prepack": "bun run build && bun test",
 		"test": "bun test $ bun test --reporter=junit --reporter-outfile=./tests/reports/report.xml",
 		"watch": "bun --watch test --bail",
@@ -54,15 +55,16 @@
 		"@types/bun": "^1.3.0",
 		"@types/cli-progress": "^3.11.6",
 		"@types/node": "^24.7.2",
+		"@valibot/to-json-schema": "^1.3.0",
 		"axios": "^1.12.2",
 		"cli-progress": "^3.12.0",
 		"glob": "^11.0.3",
 		"husky": "^9.1.7",
 		"js-convert-case": "^4.2.0",
 		"json5": "^2.2.3",
+		"tsc-alias": "^1.8.16",
 		"vite": "^7.1.10",
-		"vite-plugin-dts": "^4.5.4",
-		"@valibot/to-json-schema": "^1.3.0"
+		"vite-plugin-dts": "^4.5.4"
 	},
 	"peerDependencies": {
 		"typescript": "^5.8.2"
