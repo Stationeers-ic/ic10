@@ -8,42 +8,19 @@
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": {
-				"require": "./dist/index.d.cts",
-				"default": "./dist/index.d.ts"
-			},
-			"react-native": {
-				"require": "./dist/ic10.cjs.js",
+			"import": {
+				"types": "./dist/index.d.ts",
 				"default": "./dist/ic10.esm.js"
 			},
-			"browser": {
-				"require": "./dist/ic10.cjs.js",
-				"default": "./dist/ic10.umd.js"
-			},
-			"node": {
-				"require": "./dist/ic10.cjs.js",
-				"import": "./dist/ic10.esm.js",
+			"require": {
+				"types": "./dist/index.d.ts",
 				"default": "./dist/ic10.cjs.js"
-			},
-			"default": {
-				"require": "./dist/ic10.cjs.js",
-				"import": "./dist/ic10.esm.js",
-				"default": "./dist/ic10.umd.js"
 			}
 		},
-		"./esm": "./dist/ic10.esm.js",
-		"./cjs": "./dist/ic10.cjs.js",
-		"./umd": "./dist/ic10.umd.js",
-		"./iife": "./dist/ic10.iife.js",
-		"./system": "./dist/ic10.system.js",
-		"./types": "./dist/index.d.ts",
-		"./unsafe/*": "./src/*",
 		"./package.json": "./package.json"
 	},
 	"files": [
-		"dist",
-		"README.md",
-		"LICENSE"
+		"dist"
 	],
 	"scripts": {
 		"prepare": "husky || exit 0",
@@ -60,7 +37,7 @@
 		"build": "NODE_ENV=production bun run generate && vite build",
 		"build:dev": "NODE_ENV=development bun run generate && vite build",
 		"prepack": "bun run build && bun test",
-		"test": "bun test --reporter=junit --reporter-outfile=./tests/reports/report.xml",
+		"test": "bun test $ bun test --reporter=junit --reporter-outfile=./tests/reports/report.xml",
 		"watch": "bun --watch test --bail",
 		"lint": "bunx --bun biome lint",
 		"fix": "bunx --bun biome check . --write --unsafe",
