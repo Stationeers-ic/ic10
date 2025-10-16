@@ -116,3 +116,7 @@ export function trimZerosFromEnd(arr: number[]): number[] {
 	// Возвращаем массив до этого индекса включительно
 	return arr.slice(0, lastNonZeroIndex + 1);
 }
+
+export function delay(ms: number) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}

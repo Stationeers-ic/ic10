@@ -56,6 +56,7 @@ export class Builer {
 			}
 
 			runner.switchContext("real");
+			runner.init();
 		}
 
 		this.initialized = true;
@@ -65,7 +66,6 @@ export class Builer {
 	public async step(): Promise<boolean> {
 		// Если нужно, можно принудительно требовать init перед step:
 		// if (!this.initialized) throw new Error("Call init() before step()");
-
 		const promises: Promise<{ key: any; result: boolean }>[] = [];
 
 		for (const [key, runner] of this.Runners.entries()) {
