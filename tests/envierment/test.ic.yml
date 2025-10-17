@@ -1,59 +1,26 @@
 version: 1
 chips:
   - id: 1
-    register_length: 18
-    stack_length: 512
-    SP: 16
-    RA: 17
-    registers:
-      - name: r1
-        value: 10
-    stack: []
     code: |
-      move r1 1
-      move r2 1
-      move r3 1
-      move r4 1
-      move r5 1
-      move r6 1
-      move r7 1
-      move r8 1
-      move r9 1
-      move r10 1
+      s db:0 Channel4 15
+  - id: 2
+    code: |
+      yield
+      l r1 db:0 Channel4
 
 devices:
   - id: 1
     PrefabName: StructureCircuitHousingCompact
-    name: MyDevice
     chip: 1
     ports:
       - port: default
         network: base
-    props:
-      - name: Setting
-        value: 10
-      - name: Mode
-        value: 12
-
   - id: 2
-    PrefabName: StructureAutolathe
+    PrefabName: StructureCircuitHousingCompact
+    chip: 2
     ports:
       - port: default
         network: base
-    slots:
-      - index: 1
-        item: ItemIronOre
-        amount: 25
-    reagents:
-      - name: Iron
-        amount: 100
 networks:
   - id: base
     type: data
-    props:
-      - name: Channel0
-        value: 10
-      - name: Channel1
-        value: 1
-  - id: power
-    type: power

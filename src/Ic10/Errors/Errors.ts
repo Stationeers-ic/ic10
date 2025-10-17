@@ -104,7 +104,7 @@ export class Ic10Error extends Error {
 		parts.push(`${this.code}:`);
 
 		// Основное сообщение (обязательное поле)
-		parts.push(this.message);
+		parts.push(`"${this.message}"`);
 		parts.push(this.id.toString(16));
 
 		return parts.join(" ");

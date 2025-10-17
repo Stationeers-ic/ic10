@@ -604,10 +604,14 @@ export class RealContext extends DevicesReagentBase {
 	}
 
 	async sleep(seconds: number) {
-		return Bun.sleep(seconds * 1000);
+		return new Promise<void>((resolve) => {
+			setTimeout(resolve, seconds * 1000);
+		});
 	}
 	async yield() {
-		return Bun.sleep(50);
+		return new Promise<void>((resolve) => {
+			setTimeout(resolve, 50);
+		});
 	}
 	hcf() {
 		this.addError(
