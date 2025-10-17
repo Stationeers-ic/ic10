@@ -115,7 +115,7 @@ export interface IBaseContext {
 	addError(error: Ic10Error): this;
 
 	sleep(seconds: number): Promise<void>;
-	yield(): Promise<void>;
+	yield(): void;
 	hcf(): void;
 }
 
@@ -188,7 +188,7 @@ export abstract class Context
 		this.$housing = housing;
 	}
 	abstract sleep(seconds: number): Promise<void>;
-	abstract yield(): Promise<void>;
+	abstract yield(): void;
 	abstract hcf(): void;
 
 	get executeLine(): Line {

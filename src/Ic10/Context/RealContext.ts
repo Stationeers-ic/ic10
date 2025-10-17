@@ -608,11 +608,7 @@ export class RealContext extends DevicesReagentBase {
 			setTimeout(resolve, seconds * 1000);
 		});
 	}
-	async yield() {
-		return new Promise<void>((resolve) => {
-			setTimeout(resolve, 50);
-		});
-	}
+	yield(): void {}
 	hcf() {
 		this.addError(
 			new RuntimeIc10Error({
