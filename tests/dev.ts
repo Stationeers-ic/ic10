@@ -2,9 +2,8 @@ import { createRunner } from "@tests/helpers";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 
 const code = `
-move r0 99
-s db Mode 1
-s db Setting STR("TEST")
+move r99 99
+move r2 1
 `;
 const runner = createRunner(code, {
 	register_length: 16,

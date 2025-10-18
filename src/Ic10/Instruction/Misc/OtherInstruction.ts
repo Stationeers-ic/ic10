@@ -1,4 +1,3 @@
-import { Ic10Error } from "@/Ic10/Errors/Errors";
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import { Instruction, type InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction";
 
@@ -27,6 +26,6 @@ export class HcfInstruction extends Instruction {
 		return [];
 	}
 	public run(): void | Promise<void> {
-		throw new Ic10Error({ message: "Hcf" });
+		this.context.hcf();
 	}
 }

@@ -1,7 +1,7 @@
-import CRC32 from "crc-32";
+import { hashString } from "exact-ic10-math";
 
 export function crc32(str: string) {
-	return CRC32.str(str);
+	return hashString(str);
 }
 
 // Преобразование строки (до 6 ASCII-символов) в числовой код (база 256)

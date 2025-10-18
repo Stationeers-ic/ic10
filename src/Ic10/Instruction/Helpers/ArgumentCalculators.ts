@@ -135,8 +135,10 @@ export const ValueCalculators = {
 
 	calculateDevicePinOrId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
 		// Сначала пробуем обработать как пин устройства
-		const pinResult = ValueCalculators.calculateDevicePin(context, argument);
-
+		let pinResult = getDevicePin(context, argument.text);
+		if (pinResult === false) {
+			pinResult = ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin"));
+		}
 		// Если получили валидный результат для пина (не число с ошибкой)
 		if (ResultHelpers.isValidPinResult(pinResult)) {
 			return ResultHelpers.formatPinResult(pinResult);

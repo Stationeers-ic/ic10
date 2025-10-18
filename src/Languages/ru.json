@@ -69,6 +69,7 @@
 		"unknown_set_prop_result": "Возможно, это действие не может быть выполнено.",
 		"unknown_slot_prop": "Неизвестные свойства слота",
 		"value_must_be_number": "Должно быть число",
-		"sp_not_found": "SP не найден"
+		"sp_not_found": "SP не найден",
+		"hcf": "Самоуничтожение"
 	}
 }

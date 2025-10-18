@@ -115,7 +115,8 @@ export interface IBaseContext {
 	addError(error: Ic10Error): this;
 
 	sleep(seconds: number): Promise<void>;
-	yield(): Promise<void>;
+	yield(): void;
+	hcf(): void;
 }
 
 export interface IDevicesByIdContext {
@@ -175,6 +176,7 @@ export abstract class Context
 	/** Ссылка на устройство-владелец, через которое доступны чип, сеть и т.п. */
 	public readonly $housing: Housing;
 	public $executeLine?: Line;
+	public $criticalError?: Ic10Error = undefined;
 
 	/**
 	 * Создает новый контекст.
@@ -186,7 +188,8 @@ export abstract class Context
 		this.$housing = housing;
 	}
 	abstract sleep(seconds: number): Promise<void>;
-	abstract yield(): Promise<void>;
+	abstract yield(): void;
+	abstract hcf(): void;
 
 	get executeLine(): Line {
 		return this.$executeLine!;
@@ -223,6 +226,14 @@ export abstract class Context
 		return this.$housing.network;
 	}
 
+	public get criticalError(): Ic10Error | false {
+		if (this.$criticalError) {
+			return this.$criticalError;
+		} else {
+			return false;
+		}
+	}
+
 	// =============================================
 	// IBaseContext implementation
 	// =============================================
@@ -247,8 +258,11 @@ export abstract class Context
 		if (this.$executeLine) {
 			error.setLine(this.$executeLine);
 		}
+		if (error.device === undefined) {
+			error.setDevice(this.housing);
+		}
 		if (error.severity === ErrorSeverity.Critical) {
-			throw error;
+			this.$criticalError = error;
 		}
 		if (!this.$errors.has(error.id)) {
 			this.$errors.set(error.id, error);
