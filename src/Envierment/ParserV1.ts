@@ -46,6 +46,7 @@ export abstract class Parser {
 	 * Сериализует текущее состояние окружения в строку
 	 */
 	abstract stringify(): string;
+	abstract toData(): EnvSchema;
 }
 
 type Constructor<T = any> = new (...args: any[]) => T;
@@ -73,7 +74,7 @@ type HousingClass = {
 class SerializerV1 {
 	constructor(private readonly builer: Builer) {}
 
-	public stringify(): string {
+	public toData(): EnvSchema {
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
 		const chips = this.stringifyChips();
@@ -85,10 +86,33 @@ class SerializerV1 {
 			networks: networks,
 		};
 
-		return stringify(data, {
-			version: "next",
-			keepUndefined: false,
-		});
+		return this.removeUndefinedKeys(data);
+	}
+
+	private removeUndefinedKeys<T>(obj: T): T {
+		if (obj === null || typeof obj !== "object") {
+			return obj;
+		}
+
+		if (Array.isArray(obj)) {
+			return obj.map((item) => this.removeUndefinedKeys(item)) as any;
+		}
+
+		const cleanedObj = {} as T;
+
+		for (const [key, value] of Object.entries(obj)) {
+			if (value === undefined) {
+				continue;
+			}
+
+			(cleanedObj as any)[key] = this.removeUndefinedKeys(value);
+		}
+
+		return cleanedObj;
+	}
+
+	public stringify(): string {
+		return stringify(this.toData());
 	}
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];
@@ -534,5 +558,9 @@ export class ParserV1 extends Parser {
 	 */
 	public stringify(): string {
 		return this.serializer.stringify();
+	}
+
+	toData(): EnvSchema {
+		return this.serializer.toData();
 	}
 }

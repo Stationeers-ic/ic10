@@ -99,4 +99,11 @@ export class Builer {
 	toString(): string {
 		return this.toYaml();
 	}
+	toData(): EnvSchema {
+		try {
+			return new this.lattestParser({ builer: this }).toData();
+		} catch (e) {
+			return {} as EnvSchema;
+		}
+	}
 }
