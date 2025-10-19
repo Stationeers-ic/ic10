@@ -138,10 +138,8 @@ class SerializerV1 {
 				registers: registers.length > 0 ? registers : undefined,
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
 				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
+				lineNumber: this.debug ? (chip?.housing?.props?.read("LineNumber") ?? 0) : undefined,
 			} satisfies ChipSchema;
-			if (this.debug) {
-				data.lineNumber = chip?.housing?.props?.read("LineNumber") ?? 0;
-			}
 			chips.push(data);
 		});
 		return chips;
