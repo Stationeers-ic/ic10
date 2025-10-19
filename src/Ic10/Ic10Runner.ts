@@ -1,3 +1,4 @@
+import EventEmitter from "eventemitter3";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";
@@ -19,17 +20,43 @@ export type Ic10RunnerConstructor = {
 	jumpLimit?: number;
 };
 
+// Типы событий
+export interface Ic10RunnerEvents {
+	// Основные события выполнения
+	run: () => void;
+	runEnd: () => void;
+	step: (lineIndex: number, line: Line) => void;
+	stepEnd: (lineIndex: number, line: Line) => void;
+
+	// События контекста
+	contextSwitch: (toContext: string) => void;
+	contextInit: (contextName: string) => void;
+
+	// События ошибок
+	error: (error: Ic10Error) => void;
+	fatalError: (error: Ic10Error) => void;
+
+	// События выполнения строк
+	lineExecute: (line: Line) => void;
+	lineEnd: (line: Line) => void;
+
+	// События управления выполнением
+	stop: () => void;
+	reset: () => void;
+}
+
 /**
  * Контекст запуска
  * Класс эмулирующий работу CPU и RAM для ic10
  */
-export class Ic10Runner {
+export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 	public readonly contextSwitcher: ContextSwitcher;
 	public lines: Line[] = [];
 	private readonly jumpLimit: number;
 	private executionStopped: boolean = false;
 
 	constructor({ housing, jumpLimit = 1000 }: Ic10RunnerConstructor) {
+		super();
 		this.jumpLimit = jumpLimit;
 		this.contextSwitcher = new ContextSwitcher<contextNames>({
 			contexts: {
@@ -59,90 +86,113 @@ export class Ic10Runner {
 	}
 
 	public switchContext(context: "real" | "sandbox" | undefined = undefined) {
+		const previousContext = this.contextSwitcher.name;
+
 		if (context) {
 			if (this.contextSwitcher.name !== context) {
 				this.contextSwitcher.switchContext(context);
+				this.emit("contextSwitch", context);
 				this.init(false);
 			}
 		} else {
-			if (this.context instanceof RealContext) {
-				this.contextSwitcher.switchContext("sandbox");
-			} else if (this.context instanceof SandboxContext) {
-				this.contextSwitcher.switchContext("real");
-			}
+			const newContext = this.context instanceof RealContext ? "sandbox" : "real";
+			this.contextSwitcher.switchContext(newContext);
+			this.emit("contextSwitch", newContext);
 			this.init(false);
 		}
 		return this;
 	}
 
 	public init(reset: boolean = true) {
+		this.emit("reset");
 		this.lines = this.lexer(this.context.getIc10Code());
 		this.executionStopped = false;
 		if (reset) {
 			this.context.reset(); // Добавить метод reset() в Context
 		}
 		this.lines.filter((l) => l instanceof LabelLine).forEach((l) => l.run());
+		this.emit("contextInit", this.contextSwitcher.name);
 		return this;
 	}
 
 	public async step(): Promise<boolean> {
 		const currentLineIndex = this.context.getNextLineIndex();
+
 		if (this.executionStopped) {
 			return false;
 		}
+
 		if (this.context.getJumpsCount() > this.jumpLimit) {
-			this.addError(
-				new RuntimeIc10Error({
-					message: i18n.t("error.jump_limit_exceeded"),
-					line: currentLineIndex,
-					severity: ErrorSeverity.Critical,
-				}),
-			);
+			const error = new RuntimeIc10Error({
+				message: i18n.t("error.jump_limit_exceeded"),
+				line: currentLineIndex,
+				severity: ErrorSeverity.Critical,
+			});
+			this.addError(error);
+			this.emit("fatalError", error);
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
 
 		if (currentLineIndex >= this.lines.length) {
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
+
 		const line = this.lines[currentLineIndex];
 		if (typeof line === "undefined") {
-			this.addError(
-				new RuntimeIc10Error({
-					message: i18n.t("error.line_not_found"),
-					line: currentLineIndex,
-					severity: ErrorSeverity.Critical,
-				}),
-			);
+			const error = new RuntimeIc10Error({
+				message: i18n.t("error.line_not_found"),
+				line: currentLineIndex,
+				severity: ErrorSeverity.Critical,
+			});
+			this.addError(error);
+			this.emit("fatalError", error);
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
+
+		// Событие начала шага
+		this.emit("step", currentLineIndex, line);
+		this.emit("lineExecute", line);
+
 		this.context.setExecuteLine(line);
 		// Выполняем текущую строку
 		if (line instanceof InstructionLine) {
 			await line.run();
 		}
 		line.end();
+
+		// Событие завершения шага
+		this.emit("stepEnd", currentLineIndex, line);
+		this.emit("lineEnd", line);
+
 		this.context.collectErrors();
 		if (this.context.criticalError !== false) {
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
 		return true;
 	}
 
 	public async run() {
+		this.emit("run");
 		this.init();
 		let continueRun: boolean;
 		do {
 			continueRun = await this.step();
 		} while (continueRun && !this.executionStopped);
+		this.emit("runEnd");
 		return this;
 	}
 
 	public addError(error: Ic10Error): this {
 		this.context.addError(error);
+		this.emit("error", error);
 		return this;
 	}
 
@@ -265,5 +315,15 @@ export class Ic10Runner {
 		}
 
 		return result;
+	}
+
+	// Дополнительные методы для управления выполнением
+	public stopExecution(): void {
+		this.executionStopped = true;
+		this.emit("stop");
+	}
+
+	public isStopped(): boolean {
+		return this.executionStopped;
 	}
 }

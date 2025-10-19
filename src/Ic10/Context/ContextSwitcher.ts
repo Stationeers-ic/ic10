@@ -9,7 +9,7 @@ export type contextList<T extends string | number | symbol = contextNames> = {
 
 export type ContextTypeConstructor<T extends string | number | symbol = contextNames> = {
 	contexts: contextList<T>;
-	defaultContext: keyof contextList<T>;
+	defaultContext: Extract<keyof contextList<T>, string>;
 };
 
 function isContextTypeConstructor<T extends string | number | symbol = contextNames>(name: any, list: any): name is T {
@@ -24,7 +24,7 @@ function isContextTypeConstructor<T extends string | number | symbol = contextNa
  */
 export class ContextSwitcher<T extends string | number | symbol = contextNames> {
 	private readonly contexts: contextList<T>;
-	private readonly defaultContext: keyof contextList<T>;
+	private readonly defaultContext: Extract<keyof contextList<T>, string>;
 	private currentContext?: string;
 
 	constructor({ contexts, defaultContext }: ContextTypeConstructor<T>) {
@@ -32,7 +32,7 @@ export class ContextSwitcher<T extends string | number | symbol = contextNames> 
 		this.defaultContext = defaultContext;
 	}
 
-	get name() {
+	get name(): string {
 		return this.currentContext ?? this.defaultContext;
 	}
 
