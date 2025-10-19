@@ -153,9 +153,10 @@ class SerializerV1 {
 		}
 		for (const line of lines) {
 			if (!line.comment.includes("seed:") && this.debug) {
-				line.comment += `seed:${line.randomGenerator.seed}`;
+				code.push(line.toString(`seed:${line.randomGenerator.seed}`));
+			} else {
+				code.push(line.toString());
 			}
-			code.push(line.toString());
 		}
 		return code;
 	}

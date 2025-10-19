@@ -76,12 +76,13 @@ export abstract class Line {
 	 */
 	abstract end(): void;
 
-	toString(): string {
-		if (this.comment) {
+	toString(customComment?: string): string {
+		if (this.comment || customComment) {
+			const comment = `${this.comment} ${customComment}`.trim();
 			if (this.text) {
-				return `${this.text} #${this.comment}`;
+				return `${this.text} #${comment}`;
 			}
-			return `#${this.comment}`;
+			return `#${comment}`;
 		}
 		return this.originalText;
 	}
