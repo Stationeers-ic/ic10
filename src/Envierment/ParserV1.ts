@@ -85,7 +85,10 @@ class SerializerV1 {
 			networks: networks,
 		};
 
-		return stringify(data);
+		return stringify(data, {
+			version: "next",
+			keepUndefined: false,
+		});
 	}
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];

@@ -235,7 +235,7 @@ export abstract class Context
 	}
 
 	get currentLinePosition(): number {
-		return this.$executeLine!.position;
+		return this.$executeLine?.position || 0;
 	}
 
 	/**
