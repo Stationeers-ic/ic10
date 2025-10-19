@@ -29,7 +29,7 @@ export interface Ic10RunnerEvents {
 	stepEnd: (lineIndex: number, line: Line) => void;
 
 	// События контекста
-	contextSwitch: (toContext: string) => void;
+	contextSwitch: (fromContext: string, toContext: string) => void;
 	contextInit: (contextName: string) => void;
 
 	// События ошибок
@@ -91,13 +91,13 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 		if (context) {
 			if (this.contextSwitcher.name !== context) {
 				this.contextSwitcher.switchContext(context);
-				this.emit("contextSwitch", context);
+				this.emit("contextSwitch", previousContext, context);
 				this.init(false);
 			}
 		} else {
 			const newContext = this.context instanceof RealContext ? "sandbox" : "real";
 			this.contextSwitcher.switchContext(newContext);
-			this.emit("contextSwitch", newContext);
+			this.emit("contextSwitch", previousContext, newContext);
 			this.init(false);
 		}
 		return this;
