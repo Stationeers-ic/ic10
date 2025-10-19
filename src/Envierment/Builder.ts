@@ -91,13 +91,13 @@ export class Builer {
 	}
 
 	[Symbol.toPrimitive](hint: string): string {
-		return this.toYaml();
+		return this.toYaml(false);
 	}
 	valueOf(): string {
-		return this.toYaml();
+		return this.toYaml(false);
 	}
 	toString(): string {
-		return this.toYaml();
+		return this.toYaml(false);
 	}
 	toData(debug: boolean = false): EnvSchema {
 		try {

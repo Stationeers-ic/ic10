@@ -2,9 +2,9 @@ version: 1
 chips:
   - id: 1
     code: |
-      rand r0 #seed:1958197564
-      rand r1 #seed:62259794
-      rand r2 #seed:132046577
+      rand r0
+      rand r1
+      rand r2
 devices:
   - id: 1
     PrefabName: StructureCircuitHousingCompact

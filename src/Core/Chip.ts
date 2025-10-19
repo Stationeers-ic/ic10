@@ -2,6 +2,7 @@ import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import type { Housing } from "@/Core/Housing";
 import { Stack, type StackInterface } from "@/Core/Stack";
 import CONSTS from "@/Defines/consts";
+import type { Ic10Runner } from "@/Ic10/Ic10Runner";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
 
 export type ChipConstructorType = {
@@ -51,6 +52,14 @@ export class Chip extends ItemEntity {
 	}
 	get housing(): Housing | undefined {
 		return this.#housing;
+	}
+
+	getRunner(): Ic10Runner {
+		try {
+			return this.#housing?.runner;
+		} catch (e) {
+			throw new Error("Runner not found");
+		}
 	}
 
 	reset() {
