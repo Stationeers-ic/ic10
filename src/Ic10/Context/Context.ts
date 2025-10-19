@@ -1,3 +1,4 @@
+import EventEmitter from "eventemitter3";
 import type { Chip } from "@/Core/Chip";
 import type { Housing } from "@/Core/Housing";
 import type { StackInterface } from "@/Core/Stack";
@@ -11,6 +12,42 @@ export type ContextConstructor = {
 	/** Устройство-владелец (Housing), предоставляющее доступ к сети, чипу и пр. */
 	housing: Housing;
 };
+
+// Типы событий для Context
+export interface ContextEvents {
+	// События выполнения
+	lineChange: (line: Line | undefined) => void;
+	lineExecute: (line: Line) => void;
+	lineEnd: (line: Line) => void;
+
+	// События ошибок
+	error: (error: Ic10Error) => void;
+	criticalError: (error: Ic10Error) => void;
+
+	// События памяти
+	registerRead: (register: number, value: number) => void;
+	registerWrite: (register: number, oldValue: number, newValue: number) => void;
+
+	// События стека
+	stackPush: (value: number) => void;
+	stackPop: (value: number) => void;
+	stackPeek: (value: number) => void;
+
+	// События устройств
+	deviceParameterRead: (pin: number, property: number, value: number) => void;
+	deviceParameterWrite: (pin: number, property: number, oldValue: number, newValue: number) => void;
+	deviceStackClear: (pin: number) => void;
+	deviceStackRead: (pin: number, index: number, value: number) => void;
+	deviceStackWrite: (pin: number, index: number, oldValue: number, newValue: number) => void;
+
+	// События определений
+	defineSet: (name: string, value: Define) => void;
+	defineGet: (name: string, value: Define | undefined) => void;
+
+	// Общие события
+	reset: () => void;
+	jump: (fromLine: number, toLine: number) => void;
+}
 
 // =============================================
 // Интерфейсы для логических групп
@@ -154,6 +191,7 @@ export interface IDevicesReagentContext {
  * Класс дает простое API для Инструкций с доступом к элементам Network, Housing ...
  */
 export abstract class Context
+	extends EventEmitter<ContextEvents>
 	implements
 		IBaseContext,
 		IExecutionContext,
@@ -184,6 +222,7 @@ export abstract class Context
 	 * @param housing Устройство-владелец, предоставляющее доступ к чипу и сети
 	 */
 	constructor({ name, housing }: ContextConstructor) {
+		super();
 		this.name = name;
 		this.$housing = housing;
 	}
@@ -263,9 +302,11 @@ export abstract class Context
 		}
 		if (error.severity === ErrorSeverity.Critical) {
 			this.$criticalError = error;
+			this.emit("criticalError", error);
 		}
 		if (!this.$errors.has(error.id)) {
 			this.$errors.set(error.id, error);
+			this.emit("error", error);
 		}
 		return this;
 	}
@@ -293,7 +334,16 @@ export abstract class Context
 	abstract setNextLineIndex(index?: number, writeRA?: boolean): void;
 
 	public setExecuteLine(line: Line): void {
+		const previousLine = this.$executeLine;
 		this.$executeLine = line;
+		this.emit("lineChange", line);
+
+		if (previousLine !== line && previousLine) {
+			this.emit("lineEnd", previousLine);
+		}
+		if (line) {
+			this.emit("lineExecute", line);
+		}
 	}
 
 	// =============================================
