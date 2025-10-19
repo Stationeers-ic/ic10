@@ -139,7 +139,9 @@ class SerializerV1 {
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
 				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
 			} satisfies ChipSchema;
-
+			if (this.debug) {
+				data.lineNumber = chip?.housing?.props?.read("LineNumber") ?? 0;
+			}
 			chips.push(data);
 		});
 		return chips;

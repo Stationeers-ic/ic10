@@ -90,6 +90,7 @@ export const ChipSchema = object({
 	registers: optional(array(RegisterSchema)),
 	stack: optional(array(number())),
 	code: optional(string()),
+	lineNumber: optional(number()),
 });
 
 // --- Device ---
