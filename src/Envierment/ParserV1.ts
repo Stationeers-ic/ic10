@@ -74,7 +74,10 @@ type HousingClass = {
 class SerializerV1 {
 	constructor(private readonly builer: Builer) {}
 
-	public toData(): EnvSchema {
+	private debug = false;
+
+	public toData(debug: boolean = false): EnvSchema {
+		this.debug = debug;
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
 		const chips = this.stringifyChips();
@@ -111,8 +114,8 @@ class SerializerV1 {
 		return cleanedObj;
 	}
 
-	public stringify(): string {
-		return stringify(this.toData());
+	public stringify(debug: boolean = false): string {
+		return stringify(this.toData(debug));
 	}
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];
@@ -134,12 +137,27 @@ class SerializerV1 {
 				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
 				registers: registers.length > 0 ? registers : undefined,
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
-				code: chip.getIc10Code(),
+				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
 			} satisfies ChipSchema;
 
 			chips.push(data);
 		});
 		return chips;
+	}
+
+	private stringifyCode(runner: Ic10Runner): string[] {
+		const code: string[] = [];
+		let lines = runner.lines;
+		if (lines.length === 0) {
+			lines = runner.lexer(runner.context.getIc10Code());
+		}
+		for (const line of lines) {
+			if (!line.comment.includes("seed:") && this.debug) {
+				line.comment += `seed:${line.randomGenerator.seed}`;
+			}
+			code.push(line.toString());
+		}
+		return code;
 	}
 
 	private stringifyNetworks(): NetworkSchema[] {
@@ -226,8 +244,9 @@ class SerializerV1 {
 
 	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = [];
+		const ignoredProps = ["PrefabHash", "LineNumber"];
 		for (const element of device.props) {
-			if (element.value && !["PrefabHash", "LineNumber"].includes(element.logicName)) {
+			if (element.value && !ignoredProps.includes(element.logicName)) {
 				data.push({
 					name: element.logicName,
 					value: element.value,
@@ -556,11 +575,11 @@ export class ParserV1 extends Parser {
 	 * Сериализует текущее состояние окружения в YAML строку
 	 * @returns YAML строка с полной схемой окружения
 	 */
-	public stringify(): string {
-		return this.serializer.stringify();
+	public stringify(debug: boolean = false): string {
+		return this.serializer.stringify(debug);
 	}
 
-	toData(): EnvSchema {
-		return this.serializer.toData();
+	toData(debug: boolean = false): EnvSchema {
+		return this.serializer.toData(debug);
 	}
 }

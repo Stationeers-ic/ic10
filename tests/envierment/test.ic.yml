@@ -2,25 +2,21 @@ version: 1
 chips:
   - id: 1
     code: |
-      s db:0 Channel4 15
-  - id: 2
-    code: |
-      yield
-      l r1 db:0 Channel4
-
+      rand r0 #seed:1958197564
+      rand r1 #seed:62259794
+      rand r2 #seed:132046577
 devices:
   - id: 1
     PrefabName: StructureCircuitHousingCompact
+    name: StructureCircuitHousingCompact
+    ports:
+      - port: default
+        network: base
     chip: 1
-    ports:
-      - port: default
-        network: base
-  - id: 2
-    PrefabName: StructureCircuitHousingCompact
-    chip: 2
-    ports:
-      - port: default
-        network: base
+    slots:
+      - index: 0
+        item: ItemIntegratedCircuit10
+        amount: 1
 networks:
   - id: base
     type: data

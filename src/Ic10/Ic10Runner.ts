@@ -1,4 +1,5 @@
 import EventEmitter from "eventemitter3";
+import { Random } from "exact-ic10-math";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";
@@ -18,6 +19,7 @@ export const RegExpInstructionLine = /^(?<instruction>\w+)(?:\s+(?<arguments>.+?
 export type Ic10RunnerConstructor = {
 	housing: Housing;
 	jumpLimit?: number;
+	randomSeed?: number;
 };
 
 // Типы событий
@@ -54,9 +56,13 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 	public lines: Line[] = [];
 	private readonly jumpLimit: number;
 	private executionStopped: boolean = false;
+	public readonly randomSeed?: number;
+	public readonly random: Random;
 
-	constructor({ housing, jumpLimit = 1000 }: Ic10RunnerConstructor) {
+	constructor({ housing, jumpLimit = 1000, randomSeed }: Ic10RunnerConstructor) {
 		super();
+		this.randomSeed = randomSeed ?? new Random().next();
+
 		this.jumpLimit = jumpLimit;
 		this.contextSwitcher = new ContextSwitcher<contextNames>({
 			contexts: {
@@ -71,6 +77,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 			},
 			defaultContext: "sandbox",
 		});
+		housing.applyRunner(this);
 	}
 
 	get context() {
@@ -196,7 +203,8 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 		return this;
 	}
 
-	private lexer(code: string): Line[] {
+	public lexer(code: string): Line[] {
+		const random = new Random(this.randomSeed);
 		let position = -1;
 		return code
 			.split("\n")
@@ -206,6 +214,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 				if (trimLine) {
 					if (trimLine.startsWith("#")) {
 						return new CommentLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -222,6 +231,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 							);
 						}
 						return new InstructionLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -233,6 +243,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 					const labelMatches = RegExpLabelLine.exec(trimLine);
 					if (labelMatches && labelMatches.groups?.label) {
 						return new LabelLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -253,6 +264,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 					);
 				}
 				return new EmptyLine({
+					randomSeed: random.next(),
 					contextSwitcher: this.contextSwitcher,
 					position,
 					originalText: line,

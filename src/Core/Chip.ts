@@ -1,4 +1,5 @@
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
+import type { Housing } from "@/Core/Housing";
 import { Stack, type StackInterface } from "@/Core/Stack";
 import CONSTS from "@/Defines/consts";
 import { Define } from "@/Ic10/Instruction/Helpers/Define";
@@ -23,6 +24,7 @@ export class Chip extends ItemEntity {
 	public readonly stack_length: number;
 	public readonly SP: number;
 	public readonly RA: number;
+	#housing?: Housing = undefined;
 
 	constructor({
 		id,
@@ -42,6 +44,13 @@ export class Chip extends ItemEntity {
 		this.RA = RA ?? 17;
 		this.memory = new Stack(this.stack_length);
 		this.reset();
+	}
+
+	applyHousing(housing: Housing) {
+		this.#housing = housing;
+	}
+	get housing(): Housing | undefined {
+		return this.#housing;
 	}
 
 	reset() {
