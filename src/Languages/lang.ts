@@ -1,8 +1,4 @@
 import i18next, { type i18n as I18nInstance } from "i18next";
-import resources from "@/Languages";
-
-// Тип для доступных языков
-export type Language = keyof typeof resources;
 
 class Lang {
 	private static _instance: Lang;
