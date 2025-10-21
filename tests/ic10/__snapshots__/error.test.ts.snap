@@ -2,6 +2,6 @@
 
 exports[`Errors syntax 1`] = `
 [
-  [ArgumentIc10Error: Invalid count of arguments: {{actual} (expected: {expected}})],
+  [ArgumentIc10Error: Invalid count of arguments: 1 (expected: 2)],
 ]
 `;
