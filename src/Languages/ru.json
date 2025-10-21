@@ -13,6 +13,7 @@
 		"constant_already_defined":"{{constant}} уже определено",
 		"context_not_found":"Контекст не найден",
 		"device_has_no_reagents":"Устройство не имеет реагентов",
+		"device_must_not_have_chip_or_be_housing":"Устройство не должно иметь чипа, если оно не является устройством корпуса",
 		"device_no_memory":"Устройство не имеет стека",
 		"device_no_permission_to_read":"Устройство {{hash}} не имеет права читать {{logicName}}",
 		"device_no_permission_to_write":"Устройство {{hash}} не имеет разрешения на написание {{logicName}}",
@@ -49,6 +50,7 @@
 		"missing_argument":"Отсутствует аргумент: {{имя}}",
 		"missing_argument_index":"Отсутствует аргумент номер: {{index}}",
 		"missing_argument_name":"Отсутствует аргумент: {{name}}",
+		"network_not_found":"Сеть {id} не найдена",
 		"no_network_for_port":"Нет сети для порта {{port}} в устройстве {{hash}}",
 		"pin_not_allowed_in_instruction":"Вы не можете использовать PIN в этой инструкции",
 		"pin_out_of_range":"Невозможно подключить устройство, потому что pin {{pin}} находится вне зоны действия",
@@ -68,6 +70,7 @@
 		"unimplemented_mode":"Это действие {{mode}} не за программировано",
 		"unknown_instruction":"Неизвестная инструкция: {{instruction}}",
 		"unknown_line":"Неизвестная строка",
+		"unknown_logic_channel_value":"Неизвестный логический канал: {значение}",
 		"unknown_set_prop_result":"Возможно, это действие не может быть выполнено.",
 		"unknown_slot_prop":"Неизвестные свойства слота",
 		"value_must_be_number":"Должно быть число"
