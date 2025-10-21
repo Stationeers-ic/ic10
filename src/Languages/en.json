@@ -70,6 +70,16 @@
 		"unknown_slot_prop": "Unknown slot property",
 		"value_must_be_number": "Must be number",
 		"sp_not_found": "SP not found",
-		"hcf": "hcf"
+		"hcf": "hcf",
+		"unknown_logic_channel_value": "Unknown logic channel value: {value}",
+		"unknown_logic_channel_name": "Unknown logic channel name: {name}",
+		"device_must_not_have_chip_or_be_housing": "Device must not have a chip unless it is a housing device",
+		"chip_not_found_for_housing": "Chip {chip} not found for housing device {prefab}",
+		"unknown_reagent_name": "Unknown reagent name: {name}",
+		"network_not_found": "Network {id} not found",
+		"port_cannot_connect": "Port {port} cannot connect to network type {type} in device {device}",
+		"unknown_device_prefab_name": "Unknown device prefab name: {prefab}",
+		"device_not_housing": "Device {prefab} is not a Housing device",
+		"device_class_not_found": "Device class not found for prefab: {prefab}"
 	}
 }

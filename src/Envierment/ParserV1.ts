@@ -8,6 +8,7 @@ import { type ItemHash, type ItemName, Items, Logics, Reagents } from "@/Defines
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
+import i18n from "@/Languages/lang";
 import type {
 	ChipSchema,
 	DeviceSchema,
@@ -180,7 +181,7 @@ class SerializerV1 {
 
 		for (const [key, value] of network.chanels) {
 			if (!Logics.hasValue(key)) {
-				throw new Error(`Unknown logic channel value: ${key}`);
+				throw new Error(i18n.t("errors.unknown_logic_channel_value", { value: key }));
 			}
 
 			props.push({
@@ -307,7 +308,7 @@ class SerializerV1 {
 						amount: reagent.count,
 					});
 				} else {
-					throw new Error(`Unknown reagent name: ${reagent.name}`);
+					throw new Error(i18n.t("errors.unknown_reagent_name", { name: reagent.name }));
 				}
 			}
 		}
@@ -379,7 +380,7 @@ class DeserializerV1 {
 	private applyNetworkChannels(network: Network, props: Array<{ name: string; value: any }>): void {
 		for (const { name, value } of props) {
 			if (!Logics.hasKey(name)) {
-				throw new Error(`Unknown logic channel name: ${name}`);
+				throw new Error(i18n.t("errors.unknown_logic_channel_name", { name }));
 			}
 
 			network.chanels.set(Logics.getByKey(name), value);
@@ -411,6 +412,8 @@ class DeserializerV1 {
 		// Для Housing устройств создаём runner для выполнения IC10 кода
 		if (device instanceof Housing) {
 			this.builer.Runners.set(deviceSchema.id, new Ic10Runner({ housing: device }));
+		} else if (typeof deviceSchema.chip !== "undefined" && deviceSchema.chip > 0) {
+			throw new Error(i18n.t("errors.device_must_not_have_chip_or_be_housing"));
 		}
 	}
 
@@ -423,7 +426,12 @@ class DeserializerV1 {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
 		const chip = this.builer.Chips.get(deviceSchema.chip);
 		if (!chip) {
-			throw new Error(`Chip ${deviceSchema.chip} not found for housing device ${deviceSchema.PrefabName}`);
+			throw new Error(
+				i18n.t("errors.chip_not_found_for_housing", {
+					chip: String(deviceSchema.chip),
+					prefab: deviceSchema.PrefabName,
+				}),
+			);
 		}
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
@@ -486,14 +494,14 @@ class DeserializerV1 {
 				const reagentHash = Reagents.getByValue(reagentData.name);
 				device.reagents.set(reagentHash, reagentData.amount);
 			} else {
-				throw new Error(`Unknown reagent name: ${reagentData.name}`);
+				throw new Error(i18n.t("errors.unknown_reagent_name", { name: reagentData.name }));
 			}
 		}
 	}
 
 	private getNetwork(networkId: string): Network {
 		if (!this.builer.Networks.has(networkId)) {
-			throw new Error(`Network ${networkId} not found`);
+			throw new Error(i18n.t("errors.network_not_found", { id: networkId }));
 		}
 
 		return this.builer.Networks.get(networkId);
@@ -503,7 +511,11 @@ class DeserializerV1 {
 		if (port !== "default") {
 			if (!device.ports.canConnect(network.type, port)) {
 				throw new Error(
-					`Port ${port} cannot connect to network type ${network.type} in device ${device.constructor.name}`,
+					i18n.t("errors.port_cannot_connect", {
+						port,
+						type: String(network.type),
+						device: device.constructor.name,
+					}),
 				);
 			}
 			network.apply(device, port);
@@ -522,12 +534,12 @@ class DeserializerV1 {
 
 	private findHousingClass(prefabName: string): HousingClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(`Unknown device prefab name: ${prefabName}`);
+			throw new Error(i18n.t("errors.unknown_device_prefab_name", { prefab: prefabName }));
 		}
 
 		const housingClass = DeviceClassesByBase.Housing[prefabName];
 		if (!housingClass) {
-			throw new Error(`Device ${prefabName} is not a Housing device`);
+			throw new Error(i18n.t("errors.device_not_housing", { prefab: prefabName }));
 		}
 
 		return housingClass;
@@ -535,12 +547,12 @@ class DeserializerV1 {
 
 	private findDeviceClass(prefabName: string): DeviceClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(`Unknown device prefab name: ${prefabName}`);
+			throw new Error(i18n.t("errors.unknown_device_prefab_name", { prefab: prefabName }));
 		}
 
 		const deviceClass = DevicesByPrefabName[prefabName];
 		if (!deviceClass) {
-			throw new Error(`Device class not found for prefab: ${prefabName}`);
+			throw new Error(i18n.t("errors.device_class_not_found", { prefab: prefabName }));
 		}
 
 		return deviceClass;

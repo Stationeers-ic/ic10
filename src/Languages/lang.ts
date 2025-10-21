@@ -12,14 +12,8 @@ class Lang {
 		this.instanse = i18next.createInstance();
 	}
 
-	async init() {
-		await this.instanse.init({
-			lng: "en", // язык по умолчанию
-			fallbackLng: "en",
-			debug: typeof __VITE_ENV !== "undefined" && __VITE_ENV === "development",
-			resources,
-		});
-		return this;
+	async init(...args: Parameters<I18nInstance["init"]>): ReturnType<I18nInstance["init"]> {
+		return this.instanse.init(...args);
 	}
 
 	// Singleton instance getter
@@ -48,6 +42,9 @@ class Lang {
 	}
 
 	t(...args: Parameters<I18nInstance["t"]>): ReturnType<I18nInstance["t"]> {
+		if (!this.instanse.isInitialized) {
+			return `WARN: init i18n | ${args[0]}` as string;
+		}
 		return this.instanse.t(...args);
 	}
 }

@@ -92,9 +92,9 @@ chips:
     RA: 17
     registers:
       - name: "r0"
-        value: 0
-      - name: "r1"
         value: 100
+      - name: "r1"
+        value: 0
     stack: [0, 0, 0, 0, 0]
     code: "move r0 0\nmove r1 100"
     lineNumber: 0
