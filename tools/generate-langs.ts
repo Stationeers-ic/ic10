@@ -31,7 +31,7 @@ export async function generateLangIndex({
 		const filename = path.basename(file, ".json");
 		const importName = t.identifier(filename);
 
-		// Создаем импорт: import en from "@/lang/en.json"
+		// Создаем импорт: import en from "@/Languages/en.json"
 		const importDeclaration = t.importDeclaration(
 			[t.importDefaultSpecifier(importName)],
 			t.stringLiteral(`${alias}/${filename}.json`),
@@ -48,10 +48,12 @@ export async function generateLangIndex({
 		);
 	});
 
-	// Создаем export default { en: { translation: en }, ru: { translation: ru }, ... }
-	const exportDefault = t.exportDefaultDeclaration(t.objectExpression(properties));
+	// Создаем export const Languages = { ... }
+	const exportDeclaration = t.exportNamedDeclaration(
+		t.variableDeclaration("const", [t.variableDeclarator(t.identifier("Languages"), t.objectExpression(properties))]),
+	);
 
-	const program = t.program([...imports, exportDefault]);
+	const program = t.program([...imports, exportDeclaration]);
 	const { code } = generate(program);
 
 	// Создаем директорию если нужно
