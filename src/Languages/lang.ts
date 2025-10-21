@@ -21,20 +21,8 @@ class Lang {
 	}
 
 	// Применить язык
-	async setLanguage(lang: Language) {
+	async setLanguage(lang: string) {
 		await this.instanse.changeLanguage(lang);
-	}
-
-	/**
-	 * Автоматически применяет язык.
-	 * @param userLang - язык пользователя (например, из параметров приложения)
-	 */
-	async detectLanguage(userLang?: string) {
-		let lang: Language = "en";
-		if (userLang && resources[userLang as Language]) {
-			lang = userLang as Language;
-		}
-		await this.setLanguage(lang);
 	}
 
 	t(...args: Parameters<I18nInstance["t"]>): ReturnType<I18nInstance["t"]> {
