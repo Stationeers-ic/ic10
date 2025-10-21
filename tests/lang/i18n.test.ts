@@ -6,7 +6,7 @@ describe("переводы ", async () => {
 	await i18n.init({
 		lng: "en", // язык по умолчанию
 		fallbackLng: "en",
-		debug: true,
+		debug: false,
 		resources: Languages,
 	});
 
