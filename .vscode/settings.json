@@ -47,5 +47,6 @@
 		"linux-x64": "./tools/bin/linux-x64/biome",
 		"darwin-arm64": "./tools/bin/darwin-arm64/biome",
 		"win32-x64": "./tools/bin/win/biome.exe"
-	}
+	},
+	"i18n-ally.sourceLanguage": "ru"
 }
