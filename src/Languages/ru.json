@@ -53,7 +53,7 @@
 		"missing_argument":"Отсутствует аргумент: {{имя}}",
 		"missing_argument_index":"Отсутствует аргумент номер: {{index}}",
 		"missing_argument_name":"Отсутствует аргумент: {{name}}",
-		"network_not_found":"Сеть {{id}} не найдена",
+		"network_not_found":"Сеть {id} не найдена",
 		"no_network_for_port":"Нет сети для порта {{port}} в устройстве {{hash}}",
 		"pin_not_allowed_in_instruction":"Вы не можете использовать PIN в этой инструкции",
 		"pin_out_of_range":"Невозможно подключить устройство, потому что pin {{pin}} находится вне зоны действия",
