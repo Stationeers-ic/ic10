@@ -339,3 +339,57 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 		return this.executionStopped;
 	}
 }
+
+export type ValidateOptions = {
+	jumpLimit?: number;
+	randomSeed?: number;
+	stack_length?: number;
+	register_length?: number;
+};
+
+export class ValidateIc10Runner extends Ic10Runner {
+	private constructor(code: string, options?: ValidateOptions) {
+		const randomSeed = options?.randomSeed ?? new Random().next();
+		const jumpLimit = options?.jumpLimit ?? 1000;
+
+		// Создаем временный контекст песочницы
+		const sandboxContext = new SandboxContext({
+			id: 0,
+			name: "validation",
+			ic10Code: code,
+			stack_length: options?.stack_length ?? 512,
+			register_length: options?.register_length ?? 18,
+		});
+
+		// Создаем временный ContextSwitcher
+		const contextSwitcher = new ContextSwitcher<"validation">({
+			contexts: {
+				validation: sandboxContext,
+			},
+			defaultContext: "validation",
+		});
+
+		// Создаем фейковый housing (минимальная заглушка)
+		const fakeHousing = {
+			chip: null,
+			applyRunner: () => {},
+		} as any;
+
+		super({ housing: fakeHousing, jumpLimit, randomSeed });
+
+		// Подменяем contextSwitcher
+		(this as any).contextSwitcher = contextSwitcher;
+	}
+
+	public static async validate(code: string, options?: ValidateOptions): Promise<Ic10Error[]> {
+		const validator = new ValidateIc10Runner(code, options);
+
+		try {
+			await validator.run();
+		} catch (error) {
+			// Ошибки уже должны быть в контексте
+		}
+
+		return validator.context.errors;
+	}
+}
