@@ -1,4 +1,4 @@
-export const DEVICES = {
+export const DEVICES: DevicesType = {
 	"7274344": {
 		id: 7274344,
 		Title: "Autominer (Small)",
@@ -42177,7 +42177,7 @@ export const DEVICES = {
 			},
 		],
 	},
-} as DevicesType;
+} as any;
 export default DEVICES;
 export type IdType = number | null;
 export type TitleType = string | null;

@@ -56,14 +56,14 @@ type PrefabName = Extract<keyof typeof DevicesByPrefabName, string>;
 type HousingName = Extract<keyof typeof DeviceClassesByBase.Housing, string>;
 
 type DevicesByPrefabNameType = typeof DevicesByPrefabName;
-type DeviceClass = {
-	[K in PrefabName]: DevicesByPrefabNameType[K] extends Constructor ? DevicesByPrefabNameType[K] : never;
-}[PrefabName];
+type DeviceClass = DevicesByPrefabNameType[PrefabName] extends Constructor
+	? DevicesByPrefabNameType[PrefabName]
+	: never;
 
 type DeviceClassesByBaseHousingType = typeof DeviceClassesByBase.Housing;
-type HousingClass = {
-	[K in HousingName]: DeviceClassesByBaseHousingType[K] extends Constructor ? DeviceClassesByBaseHousingType[K] : never;
-}[HousingName];
+type HousingClass = DeviceClassesByBaseHousingType[HousingName] extends Constructor
+	? DeviceClassesByBaseHousingType[HousingName]
+	: never;
 
 // ============================================================================
 // SERIALIZER - Сериализация окружения в схему
@@ -469,9 +469,11 @@ class DeserializerV1 {
 			const slot = device.slots.getSlot(slotData.index);
 			if (slot) {
 				let itemHash: ItemHash;
-				if (Items.hasKey(slotData.item)) {
-					itemHash = slotData.item;
-				}
+				// if (Items.hasKey(slotData.item)) {
+
+				// 	// TODO CHECK: slotData.item: never
+				// 	itemHash = slotData.item;
+				// }
 				if (Items.hasValue(slotData.item)) {
 					itemHash = Items.getByValue(slotData.item);
 				}

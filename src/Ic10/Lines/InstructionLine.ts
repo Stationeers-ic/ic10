@@ -45,7 +45,7 @@ export class InstructionLine extends CommentLine {
 
 	private prepare() {
 		if (this.instructionName) {
-			const _instruction = instructions[this.instructionName];
+			const _instruction = instructions[this.instructionName] as InstructionConstructor;
 			if (_instruction) {
 				this.instruction = new _instruction({
 					line: this,
@@ -56,3 +56,5 @@ export class InstructionLine extends CommentLine {
 		}
 	}
 }
+
+type InstructionConstructor = new (params: { line: InstructionLine; context: any; args: Argument[] }) => Instruction;
