@@ -1,3 +1,5 @@
+import EventEmitter from "eventemitter3";
+import { Random } from "exact-ic10-math";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";
@@ -17,19 +19,50 @@ export const RegExpInstructionLine = /^(?<instruction>\w+)(?:\s+(?<arguments>.+?
 export type Ic10RunnerConstructor = {
 	housing: Housing;
 	jumpLimit?: number;
+	randomSeed?: number;
 };
+
+// Типы событий
+export interface Ic10RunnerEvents {
+	// Основные события выполнения
+	run: () => void;
+	runEnd: () => void;
+	step: (lineIndex: number, line: Line) => void;
+	stepEnd: (lineIndex: number, line: Line) => void;
+
+	// События контекста
+	contextSwitch: (fromContext: string, toContext: string) => void;
+	contextInit: (contextName: string) => void;
+
+	// События ошибок
+	error: (error: Ic10Error) => void;
+	fatalError: (error: Ic10Error) => void;
+
+	// События выполнения строк
+	lineExecute: (line: Line) => void;
+	lineEnd: (line: Line) => void;
+
+	// События управления выполнением
+	stop: () => void;
+	reset: () => void;
+}
 
 /**
  * Контекст запуска
  * Класс эмулирующий работу CPU и RAM для ic10
  */
-export class Ic10Runner {
+export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 	public readonly contextSwitcher: ContextSwitcher;
 	public lines: Line[] = [];
 	private readonly jumpLimit: number;
 	private executionStopped: boolean = false;
+	public readonly randomSeed?: number;
+	public readonly random: Random;
 
-	constructor({ housing, jumpLimit = 1000 }: Ic10RunnerConstructor) {
+	constructor({ housing, jumpLimit = 1000, randomSeed }: Ic10RunnerConstructor) {
+		super();
+		this.randomSeed = randomSeed ?? new Random().next();
+
 		this.jumpLimit = jumpLimit;
 		this.contextSwitcher = new ContextSwitcher<contextNames>({
 			contexts: {
@@ -44,6 +77,7 @@ export class Ic10Runner {
 			},
 			defaultContext: "sandbox",
 		});
+		housing.applyRunner(this);
 	}
 
 	get context() {
@@ -59,94 +93,118 @@ export class Ic10Runner {
 	}
 
 	public switchContext(context: "real" | "sandbox" | undefined = undefined) {
+		const previousContext = this.contextSwitcher.name;
+
 		if (context) {
 			if (this.contextSwitcher.name !== context) {
 				this.contextSwitcher.switchContext(context);
+				this.emit("contextSwitch", previousContext, context);
 				this.init(false);
 			}
 		} else {
-			if (this.context instanceof RealContext) {
-				this.contextSwitcher.switchContext("sandbox");
-			} else if (this.context instanceof SandboxContext) {
-				this.contextSwitcher.switchContext("real");
-			}
+			const newContext = this.context instanceof RealContext ? "sandbox" : "real";
+			this.contextSwitcher.switchContext(newContext);
+			this.emit("contextSwitch", previousContext, newContext);
 			this.init(false);
 		}
 		return this;
 	}
 
 	public init(reset: boolean = true) {
+		this.emit("reset");
 		this.lines = this.lexer(this.context.getIc10Code());
 		this.executionStopped = false;
 		if (reset) {
 			this.context.reset(); // Добавить метод reset() в Context
 		}
 		this.lines.filter((l) => l instanceof LabelLine).forEach((l) => l.run());
+		this.emit("contextInit", this.contextSwitcher.name);
 		return this;
 	}
 
 	public async step(): Promise<boolean> {
 		const currentLineIndex = this.context.getNextLineIndex();
+
 		if (this.executionStopped) {
 			return false;
 		}
+
 		if (this.context.getJumpsCount() > this.jumpLimit) {
-			this.addError(
-				new RuntimeIc10Error({
-					message: i18n.t("error.jump_limit_exceeded"),
-					line: currentLineIndex,
-					severity: ErrorSeverity.Critical,
-				}),
-			);
+			const error = new RuntimeIc10Error({
+				message: i18n.t("error.jump_limit_exceeded"),
+				line: currentLineIndex,
+				severity: ErrorSeverity.Critical,
+			});
+			this.addError(error);
+			this.emit("fatalError", error);
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
 
 		if (currentLineIndex >= this.lines.length) {
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
+
 		const line = this.lines[currentLineIndex];
 		if (typeof line === "undefined") {
-			this.addError(
-				new RuntimeIc10Error({
-					message: i18n.t("error.line_not_found"),
-					line: currentLineIndex,
-					severity: ErrorSeverity.Critical,
-				}),
-			);
+			const error = new RuntimeIc10Error({
+				message: i18n.t("error.line_not_found"),
+				line: currentLineIndex,
+				severity: ErrorSeverity.Critical,
+			});
+			this.addError(error);
+			this.emit("fatalError", error);
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
+
+		// Событие начала шага
+		this.emit("step", currentLineIndex, line);
+		this.emit("lineExecute", line);
+
 		this.context.setExecuteLine(line);
 		// Выполняем текущую строку
 		if (line instanceof InstructionLine) {
 			await line.run();
 		}
 		line.end();
+
+		// Событие завершения шага
+		this.emit("stepEnd", currentLineIndex, line);
+		this.emit("lineEnd", line);
+
 		this.context.collectErrors();
 		if (this.context.criticalError !== false) {
 			this.executionStopped = true;
+			this.emit("stop");
 			return false;
 		}
 		return true;
 	}
 
 	public async run() {
+		this.emit("run");
 		this.init();
 		let continueRun: boolean;
 		do {
 			continueRun = await this.step();
 		} while (continueRun && !this.executionStopped);
+		this.emit("runEnd");
 		return this;
 	}
 
 	public addError(error: Ic10Error): this {
 		this.context.addError(error);
+		this.emit("error", error);
 		return this;
 	}
 
-	private lexer(code: string): Line[] {
+	public lexer(code: string): Line[] {
+		const random = new Random(this.randomSeed);
 		let position = -1;
 		return code
 			.split("\n")
@@ -156,6 +214,7 @@ export class Ic10Runner {
 				if (trimLine) {
 					if (trimLine.startsWith("#")) {
 						return new CommentLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -172,6 +231,7 @@ export class Ic10Runner {
 							);
 						}
 						return new InstructionLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -183,6 +243,7 @@ export class Ic10Runner {
 					const labelMatches = RegExpLabelLine.exec(trimLine);
 					if (labelMatches && labelMatches.groups?.label) {
 						return new LabelLine({
+							randomSeed: random.next(),
 							contextSwitcher: this.contextSwitcher,
 							position,
 							originalText: line,
@@ -203,6 +264,7 @@ export class Ic10Runner {
 					);
 				}
 				return new EmptyLine({
+					randomSeed: random.next(),
 					contextSwitcher: this.contextSwitcher,
 					position,
 					originalText: line,
@@ -265,5 +327,69 @@ export class Ic10Runner {
 		}
 
 		return result;
+	}
+
+	// Дополнительные методы для управления выполнением
+	public stopExecution(): void {
+		this.executionStopped = true;
+		this.emit("stop");
+	}
+
+	public isStopped(): boolean {
+		return this.executionStopped;
+	}
+}
+
+export type ValidateOptions = {
+	jumpLimit?: number;
+	randomSeed?: number;
+	stack_length?: number;
+	register_length?: number;
+};
+
+export class ValidateIc10Runner extends Ic10Runner {
+	private constructor(code: string, options?: ValidateOptions) {
+		const randomSeed = options?.randomSeed ?? new Random().next();
+		const jumpLimit = options?.jumpLimit ?? 1000;
+
+		// Создаем временный контекст песочницы
+		const sandboxContext = new SandboxContext({
+			id: 0,
+			name: "validation",
+			ic10Code: code,
+			stack_length: options?.stack_length ?? 512,
+			register_length: options?.register_length ?? 18,
+		});
+
+		// Создаем временный ContextSwitcher
+		const contextSwitcher = new ContextSwitcher<"validation">({
+			contexts: {
+				validation: sandboxContext,
+			},
+			defaultContext: "validation",
+		});
+
+		// Создаем фейковый housing (минимальная заглушка)
+		const fakeHousing = {
+			chip: null,
+			applyRunner: () => {},
+		} as any;
+
+		super({ housing: fakeHousing, jumpLimit, randomSeed });
+
+		// Подменяем contextSwitcher
+		(this as any).contextSwitcher = contextSwitcher;
+	}
+
+	public static async validate(code: string, options?: ValidateOptions): Promise<Ic10Error[]> {
+		const validator = new ValidateIc10Runner(code, options);
+
+		try {
+			await validator.run();
+		} catch (error) {
+			// Ошибки уже должны быть в контексте
+		}
+
+		return validator.context.errors;
 	}
 }

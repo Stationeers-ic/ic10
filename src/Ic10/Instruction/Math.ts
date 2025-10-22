@@ -462,7 +462,7 @@ export class RandInstruction extends Instruction {
 			{
 				title: "Random with linenumber Seed #1",
 				code: "rand r0",
-				expected: [{ type: "register", register: 0, value: 0.9460093681449114 }],
+				expected: [{ type: "register", register: 0, value: 0.37171866529235553 }],
 			},
 			{
 				title: "Random with custom seed #1",

@@ -195,8 +195,11 @@ function generateDevicesAST(items: Record<string, any>, responseData: any, tagsD
 	// 1. Добавляем переменную DEVICES с правильным типом
 	const devicesVariable = t.variableDeclaration("const", [
 		t.variableDeclarator(
-			t.identifier("DEVICES"),
-			t.tsAsExpression(t.valueToNode(items), t.tsTypeReference(t.identifier("DevicesType"))),
+			// t.identifier("DEVICES"), // ← было так
+			Object.assign(t.identifier("DEVICES"), {
+				typeAnnotation: t.tsTypeAnnotation(t.tsTypeReference(t.identifier("DevicesType"))),
+			}),
+			t.tsAsExpression(t.valueToNode(items), t.tsTypeReference(t.identifier("any"))),
 		),
 	]);
 	declarations.push(t.exportNamedDeclaration(devicesVariable));

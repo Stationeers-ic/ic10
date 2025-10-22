@@ -1,26 +1,26 @@
 version: 1
+
 chips:
-  - id: 1
-    code: |
-      s db:0 Channel4 15
-  - id: 2
-    code: |
-      yield
-      l r1 db:0 Channel4
+  - id: 1 # На этот id ссылается устройство с chip: 1
+    code: "move r0 0\nmove r1 100"
 
 devices:
   - id: 1
-    PrefabName: StructureCircuitHousingCompact
-    chip: 1
+    PrefabName: "StructureCircuitHousingCompact"
+    name: "Main Solar"
+    chip: 1 # Ссылка на чип с id: 1 выше
     ports:
       - port: default
-        network: base
-  - id: 2
-    PrefabName: StructureCircuitHousingCompact
-    chip: 2
-    ports:
-      - port: default
-        network: base
+        network: "data_main" # Ссылка на сеть с id: "power_main"
+    props:
+      - name: "Setting"
+        value: 150
+    slots: []
+    reagents: []
+
 networks:
-  - id: base
-    type: data
+  - id: "data_main" # На этот id ссылаются устройства в ports[].network
+    type: "data"
+    props:
+      - name: "Channel0"
+        value: 150

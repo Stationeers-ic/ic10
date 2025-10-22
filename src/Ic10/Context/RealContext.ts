@@ -40,12 +40,19 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 	}
 
 	override setNextLineIndex(index?: number, writeRA: boolean = false): void {
+		const fromLine = this.line;
+
 		if (writeRA) {
 			this.writeReturnAddress();
 		}
 
 		this.updateLineIndex(index);
 		this.updateLineNumberParameter();
+
+		// Emit jump event when line changes explicitly
+		if (typeof index !== "undefined" && fromLine !== index) {
+			this.emit("jump", fromLine, index);
+		}
 	}
 
 	private writeReturnAddress(): void {
@@ -101,10 +108,13 @@ abstract class DefinesBase extends ExecutionBase implements IDefinesContext {
 
 	override setDefines(name: string, value: Define): void {
 		this.chip.defines.set(name, value);
+		this.emit("defineSet", name, value);
 	}
 
 	override getDefines(name: string): Define | undefined {
-		return this.chip.defines.get(name);
+		const value = this.chip.defines.get(name);
+		this.emit("defineGet", name, value);
+		return value;
 	}
 }
 
@@ -122,7 +132,9 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 			this.handleRegisterNotFound(reg);
 			return 0;
 		}
-		return this.chip.registers.get(reg) ?? 0;
+		const value = this.chip.registers.get(reg) ?? 0;
+		this.emit("registerRead", reg, value);
+		return value;
 	}
 
 	override setRegister(reg: number, value: number): void {
@@ -130,7 +142,9 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 			this.handleRegisterNotFound(reg);
 			return;
 		}
+		const oldValue = this.chip.registers.get(reg) ?? 0;
 		this.chip.registers.set(reg, value);
+		this.emit("registerWrite", reg, oldValue, value);
 	}
 
 	private handleRegisterNotFound(reg: number): void {
@@ -301,23 +315,36 @@ abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinCo
 	}
 
 	override getDeviceParameterByPin(pin: number, prop: number): number {
-		return this.getDeviceParameter(this.getDeviceByPin(pin), prop);
+		const device = this.getDeviceByPin(pin);
+		const value = this.getDeviceParameter(device, prop);
+		this.emit("deviceParameterRead", pin, prop, value);
+		return value;
 	}
 
 	override setDeviceParameterByPin(pin: number, prop: number, value: number): void {
-		this.setDeviceParameter(this.getDeviceByPin(pin), prop, value);
+		const device = this.getDeviceByPin(pin);
+		const oldValue = this.getDeviceParameter(device, prop);
+		this.setDeviceParameter(device, prop, value);
+		this.emit("deviceParameterWrite", pin, prop, oldValue, value);
 	}
 
 	override clearDeviceStackByPin(pin: number): void {
 		this.clearDeviceStack(this.getDeviceByPin(pin));
+		this.emit("deviceStackClear", pin);
 	}
 
 	override getDeviceStackByPin(pin: number, index: number): number {
-		return this.getDeviceStack(this.getDeviceByPin(pin), index);
+		const device = this.getDeviceByPin(pin);
+		const value = this.getDeviceStack(device, index);
+		this.emit("deviceStackRead", pin, index, value);
+		return value;
 	}
 
 	override setDeviceStackByPin(pin: number, index: number, value: number): void {
-		this.setDeviceStack(this.getDeviceByPin(pin), index, value);
+		const device = this.getDeviceByPin(pin);
+		const oldValue = this.getDeviceStack(device, index);
+		this.setDeviceStack(device, index, value);
+		this.emit("deviceStackWrite", pin, index, oldValue, value);
 	}
 
 	override canLoadDeviceParameterByPin(pin: number, prop: number): boolean {
@@ -347,11 +374,13 @@ abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinCo
 
 abstract class StackBase extends DevicesByPinBase implements IStackContext {
 	private spValue?: number = undefined;
+
 	override push(value: number): void {
 		const spRegister = this.getSpRegister();
 		const index = this.getRegister(spRegister);
 		this.stack().set(index, value);
 		this.setRegister(spRegister, index + 1);
+		this.emit("stackPush", value);
 	}
 
 	override pop(): number {
@@ -360,6 +389,7 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 		if (index < 0) return 0;
 		const value = this.stack().get(index);
 		this.setRegister(spRegister, index);
+		this.emit("stackPop", value);
 		return value;
 	}
 
@@ -367,7 +397,9 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 		const spRegister = this.getSpRegister();
 		const index = this.getRegister(spRegister) - 1;
 		if (index < 0) return 0;
-		return this.stack().get(index);
+		const value = this.stack().get(index);
+		this.emit("stackPeek", value);
+		return value;
 	}
 
 	override stack(): StackInterface {
@@ -596,6 +628,7 @@ export class RealContext extends DevicesReagentBase {
 		this.$housing.reset();
 		this.line = 0;
 		this.jumps_count = 0;
+		this.emit("reset");
 	}
 
 	override validChip(): boolean {
@@ -608,7 +641,9 @@ export class RealContext extends DevicesReagentBase {
 			setTimeout(resolve, seconds * 1000);
 		});
 	}
+
 	yield(): void {}
+
 	hcf() {
 		this.addError(
 			new RuntimeIc10Error({

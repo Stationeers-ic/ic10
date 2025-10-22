@@ -1,3 +1,4 @@
+import * as v from "valibot";
 import { stringify } from "yaml";
 import { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
@@ -8,16 +9,17 @@ import { type ItemHash, type ItemName, Items, Logics, Reagents } from "@/Defines
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
-import type {
-	ChipSchema,
-	DeviceSchema,
+import i18n from "@/Languages/lang";
+import {
+	type ChipSchema,
+	type DeviceSchema,
 	EnvSchema,
-	NetworkSchema,
-	PortSchema,
-	PropsSchema,
-	ReagentSchema,
-	RegisterSchema,
-	SlotSchema,
+	type NetworkSchema,
+	type PortSchema,
+	type PropsSchema,
+	type ReagentSchema,
+	type RegisterSchema,
+	type SlotSchema,
 } from "@/Schemas/EnvSchema";
 
 /**
@@ -46,6 +48,7 @@ export abstract class Parser {
 	 * Сериализует текущее состояние окружения в строку
 	 */
 	abstract stringify(): string;
+	abstract toData(): EnvSchema;
 }
 
 type Constructor<T = any> = new (...args: any[]) => T;
@@ -54,14 +57,14 @@ type PrefabName = Extract<keyof typeof DevicesByPrefabName, string>;
 type HousingName = Extract<keyof typeof DeviceClassesByBase.Housing, string>;
 
 type DevicesByPrefabNameType = typeof DevicesByPrefabName;
-type DeviceClass = {
-	[K in PrefabName]: DevicesByPrefabNameType[K] extends Constructor ? DevicesByPrefabNameType[K] : never;
-}[PrefabName];
+type DeviceClass = DevicesByPrefabNameType[PrefabName] extends Constructor
+	? DevicesByPrefabNameType[PrefabName]
+	: never;
 
 type DeviceClassesByBaseHousingType = typeof DeviceClassesByBase.Housing;
-type HousingClass = {
-	[K in HousingName]: DeviceClassesByBaseHousingType[K] extends Constructor ? DeviceClassesByBaseHousingType[K] : never;
-}[HousingName];
+type HousingClass = DeviceClassesByBaseHousingType[HousingName] extends Constructor
+	? DeviceClassesByBaseHousingType[HousingName]
+	: never;
 
 // ============================================================================
 // SERIALIZER - Сериализация окружения в схему
@@ -73,7 +76,10 @@ type HousingClass = {
 class SerializerV1 {
 	constructor(private readonly builer: Builer) {}
 
-	public stringify(): string {
+	private debug = false;
+
+	public toData(debug: boolean = false): EnvSchema {
+		this.debug = debug;
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
 		const chips = this.stringifyChips();
@@ -85,7 +91,33 @@ class SerializerV1 {
 			networks: networks,
 		};
 
-		return stringify(data);
+		return this.removeUndefinedKeys(data);
+	}
+
+	private removeUndefinedKeys<T>(obj: T): T {
+		if (obj === null || typeof obj !== "object") {
+			return obj;
+		}
+
+		if (Array.isArray(obj)) {
+			return obj.map((item) => this.removeUndefinedKeys(item)) as any;
+		}
+
+		const cleanedObj = {} as T;
+
+		for (const [key, value] of Object.entries(obj)) {
+			if (value === undefined) {
+				continue;
+			}
+
+			(cleanedObj as any)[key] = this.removeUndefinedKeys(value);
+		}
+
+		return cleanedObj;
+	}
+
+	public stringify(debug: boolean = false): string {
+		return stringify(this.toData(debug));
 	}
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];
@@ -107,12 +139,28 @@ class SerializerV1 {
 				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
 				registers: registers.length > 0 ? registers : undefined,
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
-				code: chip.getIc10Code(),
+				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
+				lineNumber: this.debug ? (chip?.housing?.props?.read("LineNumber") ?? 0) : undefined,
 			} satisfies ChipSchema;
-
 			chips.push(data);
 		});
 		return chips;
+	}
+
+	private stringifyCode(runner: Ic10Runner): string[] {
+		const code: string[] = [];
+		let lines = runner.lines;
+		if (lines.length === 0) {
+			lines = runner.lexer(runner.context.getIc10Code());
+		}
+		for (const line of lines) {
+			if (!line.comment.includes("seed:") && this.debug) {
+				code.push(line.toString(`seed:${line.randomGenerator.seed}`));
+			} else {
+				code.push(line.toString());
+			}
+		}
+		return code;
 	}
 
 	private stringifyNetworks(): NetworkSchema[] {
@@ -134,7 +182,7 @@ class SerializerV1 {
 
 		for (const [key, value] of network.chanels) {
 			if (!Logics.hasValue(key)) {
-				throw new Error(`Unknown logic channel value: ${key}`);
+				throw new Error(i18n.t("error.unknown_logic_channel_value", { value: key }));
 			}
 
 			props.push({
@@ -199,8 +247,9 @@ class SerializerV1 {
 
 	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = [];
+		const ignoredProps = ["PrefabHash", "LineNumber"];
 		for (const element of device.props) {
-			if (element.value && !["PrefabHash", "LineNumber"].includes(element.logicName)) {
+			if (element.value && !ignoredProps.includes(element.logicName)) {
 				data.push({
 					name: element.logicName,
 					value: element.value,
@@ -260,7 +309,7 @@ class SerializerV1 {
 						amount: reagent.count,
 					});
 				} else {
-					throw new Error(`Unknown reagent name: ${reagent.name}`);
+					throw new Error(i18n.t("error.unknown_reagent_name", { name: reagent.name }));
 				}
 			}
 		}
@@ -277,6 +326,15 @@ class DeserializerV1 {
 	constructor(private readonly builer: Builer) {}
 
 	public parse(data: EnvSchema): void {
+		const result = v.safeParse(EnvSchema, data);
+		if (!result.success) {
+			throw new Error(
+				i18n.t("error.invalid_yaml", {
+					error: `🔥 ${result.issues.map((e) => e.message).join("🔥")}`,
+				}),
+			);
+		}
+
 		this.builer.reset();
 		this.parseChips(data);
 		this.parseNetworks(data);
@@ -332,7 +390,7 @@ class DeserializerV1 {
 	private applyNetworkChannels(network: Network, props: Array<{ name: string; value: any }>): void {
 		for (const { name, value } of props) {
 			if (!Logics.hasKey(name)) {
-				throw new Error(`Unknown logic channel name: ${name}`);
+				throw new Error(i18n.t("error.unknown_logic_channel_name", { name }));
 			}
 
 			network.chanels.set(Logics.getByKey(name), value);
@@ -364,6 +422,8 @@ class DeserializerV1 {
 		// Для Housing устройств создаём runner для выполнения IC10 кода
 		if (device instanceof Housing) {
 			this.builer.Runners.set(deviceSchema.id, new Ic10Runner({ housing: device }));
+		} else if (typeof deviceSchema.chip !== "undefined" && deviceSchema.chip > 0) {
+			throw new Error(i18n.t("error.device_must_not_have_chip_or_be_housing"));
 		}
 	}
 
@@ -376,7 +436,12 @@ class DeserializerV1 {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
 		const chip = this.builer.Chips.get(deviceSchema.chip);
 		if (!chip) {
-			throw new Error(`Chip ${deviceSchema.chip} not found for housing device ${deviceSchema.PrefabName}`);
+			throw new Error(
+				i18n.t("error.chip_not_found_for_housing", {
+					chip: String(deviceSchema.chip),
+					prefab: deviceSchema.PrefabName,
+				}),
+			);
 		}
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
@@ -414,9 +479,6 @@ class DeserializerV1 {
 			const slot = device.slots.getSlot(slotData.index);
 			if (slot) {
 				let itemHash: ItemHash;
-				if (Items.hasKey(slotData.item)) {
-					itemHash = slotData.item;
-				}
 				if (Items.hasValue(slotData.item)) {
 					itemHash = Items.getByValue(slotData.item);
 				}
@@ -439,14 +501,14 @@ class DeserializerV1 {
 				const reagentHash = Reagents.getByValue(reagentData.name);
 				device.reagents.set(reagentHash, reagentData.amount);
 			} else {
-				throw new Error(`Unknown reagent name: ${reagentData.name}`);
+				throw new Error(i18n.t("error.unknown_reagent_name", { name: reagentData.name }));
 			}
 		}
 	}
 
 	private getNetwork(networkId: string): Network {
 		if (!this.builer.Networks.has(networkId)) {
-			throw new Error(`Network ${networkId} not found`);
+			throw new Error(i18n.t("error.network_not_found", { id: networkId }));
 		}
 
 		return this.builer.Networks.get(networkId);
@@ -456,7 +518,11 @@ class DeserializerV1 {
 		if (port !== "default") {
 			if (!device.ports.canConnect(network.type, port)) {
 				throw new Error(
-					`Port ${port} cannot connect to network type ${network.type} in device ${device.constructor.name}`,
+					i18n.t("error.port_cannot_connect", {
+						port,
+						type: String(network.type),
+						device: device.constructor.name,
+					}),
 				);
 			}
 			network.apply(device, port);
@@ -475,12 +541,12 @@ class DeserializerV1 {
 
 	private findHousingClass(prefabName: string): HousingClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(`Unknown device prefab name: ${prefabName}`);
+			throw new Error(i18n.t("error.unknown_device_prefab_name", { prefab: prefabName }));
 		}
 
 		const housingClass = DeviceClassesByBase.Housing[prefabName];
 		if (!housingClass) {
-			throw new Error(`Device ${prefabName} is not a Housing device`);
+			throw new Error(i18n.t("error.device_not_housing", { prefab: prefabName }));
 		}
 
 		return housingClass;
@@ -488,12 +554,12 @@ class DeserializerV1 {
 
 	private findDeviceClass(prefabName: string): DeviceClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(`Unknown device prefab name: ${prefabName}`);
+			throw new Error(i18n.t("error.unknown_device_prefab_name", { prefab: prefabName }));
 		}
 
 		const deviceClass = DevicesByPrefabName[prefabName];
 		if (!deviceClass) {
-			throw new Error(`Device class not found for prefab: ${prefabName}`);
+			throw new Error(i18n.t("error.device_class_not_found", { prefab: prefabName }));
 		}
 
 		return deviceClass;
@@ -529,7 +595,11 @@ export class ParserV1 extends Parser {
 	 * Сериализует текущее состояние окружения в YAML строку
 	 * @returns YAML строка с полной схемой окружения
 	 */
-	public stringify(): string {
-		return this.serializer.stringify();
+	public stringify(debug: boolean = false): string {
+		return this.serializer.stringify(debug);
+	}
+
+	toData(debug: boolean = false): EnvSchema {
+		return this.serializer.toData(debug);
 	}
 }

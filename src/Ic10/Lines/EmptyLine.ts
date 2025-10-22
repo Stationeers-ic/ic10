@@ -10,4 +10,7 @@ export class EmptyLine extends Line {
 	override end(): void {
 		this.context.setNextLineIndex();
 	}
+	override toString(): string {
+		return "";
+	}
 }

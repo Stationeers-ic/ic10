@@ -86,17 +86,24 @@ export class Builer {
 		return this.Runners.size - this.FinishedRunners.size > 0;
 	}
 
-	public toYaml(): string {
-		return new this.lattestParser({ builer: this }).stringify();
+	public toYaml(debug: boolean = false): string {
+		return new this.lattestParser({ builer: this }).stringify(debug);
 	}
 
 	[Symbol.toPrimitive](hint: string): string {
-		return this.toYaml();
+		return this.toYaml(false);
 	}
 	valueOf(): string {
-		return this.toYaml();
+		return this.toYaml(false);
 	}
 	toString(): string {
-		return this.toYaml();
+		return this.toYaml(false);
+	}
+	toData(debug: boolean = false): EnvSchema {
+		try {
+			return new this.lattestParser({ builer: this }).toData(debug);
+		} catch (e) {
+			return {} as EnvSchema;
+		}
 	}
 }

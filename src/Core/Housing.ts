@@ -1,6 +1,7 @@
 import type { Chip } from "@/Core/Chip";
 import { Device, type DeviceConstructor } from "@/Core/Device";
 import { Ic10Error } from "@/Ic10/Errors/Errors";
+import type { Ic10Runner } from "@/Ic10/Ic10Runner";
 import i18n from "@/Languages/lang";
 import type { StackInterface } from "./Stack";
 
@@ -14,6 +15,7 @@ export class Housing extends Device {
 	public readonly pin_count: number;
 	public readonly connectedDevices: Map<number, Device> = new Map();
 	public declare $memory: StackInterface;
+	#runer?: Ic10Runner;
 
 	constructor(args: SocketDeviceConstructor) {
 		super(args);
@@ -23,8 +25,17 @@ export class Housing extends Device {
 			delete this.$memory;
 			this.$memory = this.chip.memory;
 			this.chip.count = 1;
+			this.chip?.applyHousing(this);
 			this?.slots?.getSlot(0)?.putItem(this.chip);
 		}
+	}
+
+	applyRunner(runner: Ic10Runner) {
+		this.#runer = runner;
+	}
+
+	get runner(): Ic10Runner | undefined {
+		return this.#runer;
 	}
 
 	reset() {

@@ -12,13 +12,15 @@ export type LineConstructorType = {
 export abstract class Line {
 	public readonly position: number;
 	public readonly originalText: string;
+	public readonly text: string;
 	public readonly contextSwitcher: ContextSwitcher;
 	public readonly randomGenerator: Random;
-	public readonly comment: string;
+	public comment: string = "";
 
 	public constructor({ contextSwitcher, position, originalText, comment = "", randomSeed }: LineConstructorType) {
 		this.position = position;
 		this.originalText = originalText;
+		this.text = originalText.replace(/#.*$/, "").trim();
 		this.contextSwitcher = contextSwitcher;
 		this.comment = comment;
 
@@ -73,4 +75,15 @@ export abstract class Line {
 	 * действие после запуска строки. Обычно перевод каретки на следующий шаг
 	 */
 	abstract end(): void;
+
+	toString(customComment?: string): string {
+		if (this.comment || customComment) {
+			const comment = `${this.comment} ${customComment}`.trim();
+			if (this.text) {
+				return `${this.text} #${comment}`;
+			}
+			return `#${comment}`;
+		}
+		return this.originalText;
+	}
 }
