@@ -1,39 +1,19 @@
-import i18next, { type i18n as I18nInstance } from "i18next";
+import i18next from "i18next";
 
-class Lang {
-	private static _instance: Lang;
-	private instanse: I18nInstance;
+export const i18n = i18next.createInstance();
+const oldT = i18n.t;
 
-	private constructor() {
-		this.instanse = i18next.createInstance();
+const newT = (...args: Parameters<typeof i18n.t>): ReturnType<typeof i18n.t> => {
+	if (!i18n.isInitialized) {
+		return `WARN: init i18n | ${args[0]}` as string;
 	}
+	return oldT.call(i18n, ...args);
+};
 
-	async init(...args: Parameters<I18nInstance["init"]>): ReturnType<I18nInstance["init"]> {
-		return this.instanse.init(...args);
-	}
+// Копируем все свойства, включая бренд
+Object.assign(newT, oldT);
 
-	// Singleton instance getter
-	public static getInstance(): Lang {
-		if (!Lang._instance) {
-			Lang._instance = new Lang();
-		}
-		return Lang._instance;
-	}
-
-	// Применить язык
-	async setLanguage(lang: string) {
-		await this.instanse.changeLanguage(lang);
-	}
-
-	t(...args: Parameters<I18nInstance["t"]>): ReturnType<I18nInstance["t"]> {
-		if (!this.instanse.isInitialized) {
-			return `WARN: init i18n | ${args[0]}` as string;
-		}
-		return this.instanse.t(...args);
-	}
-}
+i18n.t = newT as typeof i18n.t;
 
 // Экспорт singleton
-export const i18n = Lang.getInstance();
-
 export default i18n;
