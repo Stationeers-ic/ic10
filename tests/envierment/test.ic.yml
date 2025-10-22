@@ -10,7 +10,7 @@ devices:
     name: "Main Solar"
     chip: 1 # Ссылка на чип с id: 1 выше
     ports:
-      - port: "defaul"
+      - port: default
         network: "data_main" # Ссылка на сеть с id: "power_main"
     props:
       - name: "Setting"
