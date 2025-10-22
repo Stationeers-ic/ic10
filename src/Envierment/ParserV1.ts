@@ -1,3 +1,4 @@
+import * as v from "valibot";
 import { stringify } from "yaml";
 import { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
@@ -9,16 +10,16 @@ import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 import type { Builer } from "@/Envierment/Builder";
 import { Ic10Runner } from "@/Ic10/Ic10Runner";
 import i18n from "@/Languages/lang";
-import type {
-	ChipSchema,
-	DeviceSchema,
+import {
+	type ChipSchema,
+	type DeviceSchema,
 	EnvSchema,
-	NetworkSchema,
-	PortSchema,
-	PropsSchema,
-	ReagentSchema,
-	RegisterSchema,
-	SlotSchema,
+	type NetworkSchema,
+	type PortSchema,
+	type PropsSchema,
+	type ReagentSchema,
+	type RegisterSchema,
+	type SlotSchema,
 } from "@/Schemas/EnvSchema";
 
 /**
@@ -325,6 +326,15 @@ class DeserializerV1 {
 	constructor(private readonly builer: Builer) {}
 
 	public parse(data: EnvSchema): void {
+		const result = v.safeParse(EnvSchema, data);
+		if (!result.success) {
+			throw new Error(
+				i18n.t("error.invalid_yaml", {
+					error: `🔥 ${result.issues.map((e) => e.message).join("🔥")}`,
+				}),
+			);
+		}
+
 		this.builer.reset();
 		this.parseChips(data);
 		this.parseNetworks(data);
@@ -469,11 +479,6 @@ class DeserializerV1 {
 			const slot = device.slots.getSlot(slotData.index);
 			if (slot) {
 				let itemHash: ItemHash;
-				// if (Items.hasKey(slotData.item)) {
-
-				// 	// TODO CHECK: slotData.item: never
-				// 	itemHash = slotData.item;
-				// }
 				if (Items.hasValue(slotData.item)) {
 					itemHash = Items.getByValue(slotData.item);
 				}

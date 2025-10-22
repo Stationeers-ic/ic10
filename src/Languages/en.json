@@ -72,6 +72,7 @@
 		"unknown_reagent_name": "Unknown reagent name: {{name}}",
 		"unknown_set_prop_result": "Perhaps this action cannot be performed.",
 		"unknown_slot_prop": "Unknown slot property",
-		"value_must_be_number": "Must be number"
+		"value_must_be_number": "Must be number",
+		"invalid_yaml": "Error in env {{error}}"
 	}
 }

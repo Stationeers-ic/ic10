@@ -12,7 +12,7 @@
 		"constant_already_defined": "{{constant}} уже определено",
 		"context_not_found": "Контекст не найден",
 		"device_class_not_found": "Класс устройства, не найденный для: {{prefab}}",
-		"device_must_not_have_chip_or_be_housing": "Устройство не должно иметь чипа, если оно не является устройством корпуса",
+		"device_must_not_have_chip_or_be_housing": "Устройство не должно иметь чипа, если оно не является устройством c чипом",
 		"device_no_memory": "Устройство не имеет стека",
 		"device_no_permission_to_read": "Устройство {{hash}} не имеет права читать {{logicName}}",
 		"device_no_permission_to_write": "Устройство {{hash}} не имеет разрешения на написание {{logicName}}",

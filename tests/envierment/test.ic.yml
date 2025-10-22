@@ -6,27 +6,15 @@ chips:
 
 devices:
   - id: 1
-    PrefabName: "StructureConsoleLED1x2"
+    PrefabName: "StructureCircuitHousingCompact"
     name: "Main Solar"
     chip: 1 # Ссылка на чип с id: 1 выше
     ports:
-      - port: "default"
+      - port: "defaul"
         network: "data_main" # Ссылка на сеть с id: "power_main"
     props:
       - name: "Setting"
         value: 150
-    slots: []
-    reagents: []
-
-  - id: 2
-    PrefabName: "StructureConsoleLED1x2"
-    name: "Backup Battery"
-    ports:
-      - port: "default"
-        network: "data_main" # Та же сеть - устройства соединены
-    props:
-      - name: "Setting"
-        value: 750
     slots: []
     reagents: []
 
