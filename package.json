@@ -1,7 +1,7 @@
 {
 	"name": "ic10",
 	"type": "module",
-	"version": "5.2.0",
+	"version": "5.2.1",
 	"description": "",
 	"main": "./dist/ic10.cjs.js",
 	"module": "./dist/index.js",
