@@ -1,4 +1,4 @@
-import { parse } from "yaml";
+import parse from "json5/lib/parse";
 import type { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
 import type { Network } from "@/Core/Network";
@@ -86,18 +86,22 @@ export class Builer {
 		return this.Runners.size - this.FinishedRunners.size > 0;
 	}
 
-	public toYaml(debug: boolean = false): string {
-		return new this.lattestParser({ builer: this }).stringify(debug);
+	public toYaml(): string {
+		throw new Error("ТЫ ЕБАННУТЫЙ?????");
+	}
+
+	public toJson(debug: boolean = false, minify: boolean = false): string {
+		return new this.lattestParser({ builer: this }).stringify(debug, minify);
 	}
 
 	[Symbol.toPrimitive](hint: string): string {
-		return this.toYaml(false);
+		return this.toJson(false);
 	}
 	valueOf(): string {
-		return this.toYaml(false);
+		return this.toJson(false);
 	}
 	toString(): string {
-		return this.toYaml(false);
+		return this.toJson(false);
 	}
 	toData(debug: boolean = false): EnvSchema {
 		try {

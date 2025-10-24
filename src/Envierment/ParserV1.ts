@@ -1,5 +1,4 @@
 import * as v from "valibot";
-import { stringify } from "yaml";
 import { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
@@ -116,8 +115,11 @@ class SerializerV1 {
 		return cleanedObj;
 	}
 
-	public stringify(debug: boolean = false): string {
-		return stringify(this.toData(debug));
+	public stringify(debug: boolean = false, minify: boolean = false): string {
+		if (minify) {
+			return JSON.stringify(this.toData(debug));
+		}
+		return JSON.stringify(this.toData(debug), null, 2);
 	}
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];
@@ -595,8 +597,8 @@ export class ParserV1 extends Parser {
 	 * Сериализует текущее состояние окружения в YAML строку
 	 * @returns YAML строка с полной схемой окружения
 	 */
-	public stringify(debug: boolean = false): string {
-		return this.serializer.stringify(debug);
+	public stringify(debug: boolean = false, minify: boolean = false): string {
+		return this.serializer.stringify(debug, minify);
 	}
 
 	toData(debug: boolean = false): EnvSchema {

@@ -129,7 +129,7 @@ s db Setting STR("TEST")</textarea>
 
 			function appendLine(type, args) {
 				const line = document.createElement('div');
-				line.className = 'line ' + type;
+				line.className = `line ${type}`;
 				for (let i = 0; i < args.length; i++) {
 					if (i > 0) line.appendChild(document.createTextNode(' '));
 					line.appendChild(renderValue(args[i]));
@@ -209,7 +209,7 @@ s db Setting STR("TEST")</textarea>
 				native.table && native.table(data, columns);
 			};
 
-			window.clearUiConsole = function () {
+			window.clearUiConsole = () => {
 				el.textContent = '';
 			};
 		})();
