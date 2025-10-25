@@ -1,8 +1,8 @@
 # IC10 Emulator & Development Toolkit
 
-[![npm version](https://img.shields.io/npm/v/ic10.svg)](https://www.npmjs.com/package/ic10)
-[![npm downloads](https://img.shields.io/npm/dm/ic10.svg)](https://www.npmjs.com/package/ic10)
-[![npm bundle size](https://badgen.net/bundlephobia/min/ic10)](https://www.npmjs.com/package/ic10)
+[![npm version](https://img.shields.io/npm/v/@stationeers-ic/ic10.svg)](https://www.npmjs.com/package/@stationeers-ic/ic10)
+[![npm downloads](https://img.shields.io/npm/dm/@stationeers-ic/ic10.svg)](https://www.npmjs.com/package/@stationeers-ic/ic10)
+[![npm bundle size](https://badgen.net/bundlephobia/min/@stationeers-ic/ic10)](https://www.npmjs.com/package/@stationeers-ic/ic10)
 [![GitHub stars](https://img.shields.io/github/stars/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/network/members)
 [![GitHub issues](https://img.shields.io/github/issues/Stationeers-ic/ic10.svg)](https://github.com/Stationeers-ic/ic10/issues)
