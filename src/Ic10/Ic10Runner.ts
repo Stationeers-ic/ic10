@@ -1,5 +1,5 @@
+import { Random } from "@stationeers-ic/exact-ic10-math";
 import EventEmitter from "eventemitter3";
-import { Random } from "exact-ic10-math";
 import type { Housing } from "@/Core/Housing";
 import { ContextSwitcher, type contextNames } from "@/Ic10/Context/ContextSwitcher";
 import { RealContext } from "@/Ic10/Context/RealContext";

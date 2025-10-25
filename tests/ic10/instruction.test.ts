@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import * as process from "node:process";
+import { Random } from "@stationeers-ic/exact-ic10-math";
 import { createRunner, expectExpectation, type InstructionLike, runInstructionTest } from "@tests/helpers";
-import { Random } from "exact-ic10-math";
 import { Ic10Error } from "@/Ic10/Errors/Errors";
 import { instructions } from "@/Ic10/Instruction";
 import type { InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction";
