@@ -65,7 +65,6 @@ export class Builer {
 	// Один тик исполнения без sandbox-прогона
 	public async step(): Promise<boolean> {
 		const promises: Promise<{ key: any; result: boolean }>[] = [];
-
 		for (const [key, runner] of this.Runners.entries()) {
 			if (this.FinishedRunners.has(key)) {
 				continue;
