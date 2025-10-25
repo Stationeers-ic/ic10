@@ -1,6 +1,9 @@
 {
 	"name": "@stationeers-ic/ic10",
 	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
 	"version": "0.1.0",
 	"description": "",
 	"main": "./dist/ic10.cjs.js",
