@@ -1,4 +1,4 @@
-import { Random } from "exact-ic10-math";
+import { Random } from "@stationeers-ic/exact-ic10-math";
 import type { ContextSwitcher } from "@/Ic10/Context/ContextSwitcher";
 
 export type LineConstructorType = {

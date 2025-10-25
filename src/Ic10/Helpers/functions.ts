@@ -1,4 +1,4 @@
-import { hashString } from "exact-ic10-math";
+import { hashString } from "@stationeers-ic/exact-ic10-math";
 
 export function crc32(str: string) {
 	return hashString(str);

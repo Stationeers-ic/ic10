@@ -1,4 +1,4 @@
-import icMath from "exact-ic10-math";
+import icMath from "@stationeers-ic/exact-ic10-math";
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
 import {
 	Instruction,
