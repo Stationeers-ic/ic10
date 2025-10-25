@@ -11,12 +11,11 @@ await i18n
 	})
 	.then(() => console.log("🟦🟦 Язык загружен 🟦🟦"));
 
-const f = await Bun.file(`${__dirname}/test.ic.yml`).text();
+const f = await Bun.file(`${__dirname}/test.ic.json`).text();
 
 const builder = Builer.from(f);
 await builder.init();
 while ((await builder.step()) === true) {}
-console.log(builder.toYaml(true));
-console.log(builder.toYaml(false));
+console.log(builder.toJson(true));
 
-console.table(builder.Runners.get(1).realContext.housing.chip.registers);
+// console.table(builder.Runners.get(1).realContext.housing.chip.registers);

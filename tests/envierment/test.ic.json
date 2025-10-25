@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Stationeers-ic/ic10/refs/heads/main/src/Schemas/env.schema.json",
+	"version": 1,
+	"chips": [
+		{
+			"id": 1,
+			"code": "move r0 1\r\nmove r0 2\r\nmove r0 1\r\nmove r0 3\r\nmove r0 1\r\nmove r0 4\r\nmove r0 1\r\nmove r0 5\r\nmove r0 1\r\nmove r0 6"
+		},
+		{
+			"id": 2,
+			"code": "move r0 1\r\nmove r0 2\r\nmove r0 1\r\nmove r0 3\r\nmove r0 1\r\nmove r0 4\r\nmove r0 1\r\nmove r0 5\r\nmove r0 1\r\nmove r0 6"
+		}
+	],
+	"devices": [
+		{
+			"id": 1,
+			"PrefabName": "StructureCircuitHousingCompact",
+			"chip": 1,
+			"ports": [
+				{
+					"port": "default",
+					"network": "base"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"PrefabName": "StructureCircuitHousingCompact",
+			"chip": 2,
+			"ports": [
+				{
+					"port": "default",
+					"network": "base"
+				}
+			]
+		}
+	],
+	"networks": [
+		{
+			"id": "base",
+			"type": "data"
+		}
+	]
+}
