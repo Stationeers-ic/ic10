@@ -320,6 +320,7 @@ export abstract class Context
 	public getIc10Code(): string {
 		if (!this.validChip()) {
 			this.addError(new FatalIc10Error({ message: "Chip not valid" }));
+			return "";
 		}
 		return this.chip.getIc10Code();
 	}

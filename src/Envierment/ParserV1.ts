@@ -142,7 +142,7 @@ class SerializerV1 {
 				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
 				registers: registers.length > 0 ? registers : undefined,
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
-				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
+				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : (chip?.getIc10Code() ?? ""),
 				lineNumber: this.debug ? (chip?.housing?.props?.read("LineNumber") ?? 0) : undefined,
 			} satisfies ChipSchema;
 			chips.push(data);
@@ -217,7 +217,7 @@ class SerializerV1 {
 		// Housing устройства содержат IC10 код
 		if (device instanceof Housing) {
 			//data is HousingSchema
-			data.chip = device.chip.id;
+			data.chip = device?.chip?.id;
 			if (device.connectedDevices.size > 0) {
 				data.pins = [];
 				device.connectedDevices.forEach((device, key) => {
@@ -526,7 +526,7 @@ class DeserializerV1 {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
 		let chip: Chip | undefined;
 		if (deviceSchema.chip) {
-			const chip = this.builer.Chips.get(deviceSchema.chip);
+			chip = this.builer.Chips.get(deviceSchema.chip);
 			if (!chip) {
 				throw new Error(
 					i18n.t("error.parser.chip_not_found_for_housing", {
