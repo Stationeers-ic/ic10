@@ -466,12 +466,12 @@ export class RandInstruction extends Instruction {
 			},
 			{
 				title: "Random with custom seed #1",
-				code: "rand r1 #seed:999",
+				code: "rand r1 #seed:999;",
 				expected: [{ type: "register", register: 1, value: 0.6291321449117419 }],
 			},
 			{
 				title: "Random with custom seed #2",
-				code: "rand r3 # any comment seed:999",
+				code: "rand r3 # any comment #seed:999;",
 				expected: [{ type: "register", register: 3, value: 0.6291321449117419 }],
 			},
 		];

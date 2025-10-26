@@ -1,6 +1,7 @@
 import * as v from "valibot";
 import { Chip } from "@/Core/Chip";
 import type { Device } from "@/Core/Device";
+import type { PortType } from "@/Core/Device/DevicePorts";
 import { ItemEntity } from "@/Core/Device/DeviceSlots";
 import { Housing } from "@/Core/Housing";
 import { Network } from "@/Core/Network";
@@ -324,7 +325,7 @@ class SerializerV1 {
 						amount: reagent.count,
 					});
 				} else {
-					throw new Error(i18n.t("error.unknown_reagent_name", { name: reagent.name }));
+					throw new Error(i18n.t("error.parser.unknown_reagent_name", { name: reagent.name }));
 				}
 			}
 		}
@@ -674,7 +675,7 @@ class DeserializerV1 {
 
 	private connectPort(device: Device, network: Network, port: PortSchema["port"]): void {
 		if (port !== "default") {
-			if (!device.ports.canConnect(network.type, port)) {
+			if (!device.ports.canConnect(network.type, port as PortType)) {
 				throw new Error(
 					i18n.t("error.parser.port_connection_failed", {
 						port: port,
@@ -684,7 +685,7 @@ class DeserializerV1 {
 					}),
 				);
 			}
-			network.apply(device, port);
+			network.apply(device, port as PortType);
 		} else {
 			network.apply(device);
 		}

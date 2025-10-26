@@ -1,6 +1,7 @@
 import {
 	array,
 	type InferOutput,
+	type Literal,
 	literal,
 	minLength,
 	minValue,
@@ -17,7 +18,7 @@ import { GROUPED_CONSTS } from "@/Defines/consts";
 import { type ItemName, Items, type ReagentName, Reagents } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 
-function picklist(values: (string | number)[]) {
+function picklist<T extends Literal>(values: T[]) {
 	return union(values.map((value) => literal(value)));
 }
 

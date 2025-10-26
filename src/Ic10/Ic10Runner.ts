@@ -167,16 +167,12 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 		this.emit("lineExecute", line);
 
 		this.context.setExecuteLine(line);
-		if (line instanceof CommentLine) {
-			await line.runCommentBeforeRun();
-		}
+		await line.runCommentBeforeRun();
 		// Выполняем текущую строку
 		if (line instanceof InstructionLine) {
 			await line.run();
 		}
-		if (line instanceof CommentLine) {
-			await line.runCommentAfterRun();
-		}
+		await line.runCommentAfterRun();
 		line.end();
 
 		// Событие завершения шага
