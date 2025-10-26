@@ -15,7 +15,7 @@ import {
 	type IMemoryContext,
 	type IStackContext,
 } from "@/Ic10/Context/Context";
-import { ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors";
+import { DebugInfo, ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors";
 import type { Define } from "@/Ic10/Instruction/Helpers/Define";
 import i18n from "@/Languages/lang";
 
@@ -651,6 +651,27 @@ export class RealContext extends DevicesReagentBase {
 			new RuntimeIc10Error({
 				message: i18n.t("error.hcf"),
 				severity: ErrorSeverity.Strong,
+			}),
+		);
+	}
+
+	debug(...args: any[]): void {
+		this.addError(
+			new DebugInfo({
+				message: args
+					.map((arg) => {
+						if (typeof arg === "string") {
+							if (arg.startsWith("r")) {
+								try {
+									const reg = parseInt(arg.slice(1), 10);
+									return `${arg}: ${this.getRegister(reg)}`;
+								} catch {
+									return "";
+								}
+							}
+						}
+					})
+					.join(", "),
 			}),
 		);
 	}

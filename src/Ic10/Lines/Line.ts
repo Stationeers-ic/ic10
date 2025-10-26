@@ -29,14 +29,23 @@ export abstract class Line {
 	}
 	private regex = /#(?<fn>\w+):(?<arg>[^;]+);/gm;
 
-	public runCommentBeforeRun(): void | Promise<void> {
+	public runCommentBeforeRun(): void | Promise<void> {}
+	public runCommentAfterRun(): void | Promise<void> {
 		for (const match of this.commnetFunctions) {
 			if (!match.groups) continue;
 
 			const { fn, arg } = match.groups;
+			const args = arg.split(",");
+			switch (fn) {
+				case "debug":
+					this.context.debug(...args);
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
-	public runCommentAfterRun(): void | Promise<void> {}
 
 	/**
 	 * Инициализирует генератор случайных чисел с учетом приоритета источников:
@@ -94,7 +103,7 @@ export abstract class Line {
 			if (this.text) {
 				return `${this.text} #${comment}`;
 			}
-			return `#${comment}`;
+			return `# ${comment}`;
 		}
 		return this.originalText;
 	}

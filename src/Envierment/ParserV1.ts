@@ -158,8 +158,8 @@ class SerializerV1 {
 			lines = runner.lexer(runner.context.getIc10Code());
 		}
 		for (const line of lines) {
-			if (!line.comment.includes("seed:") && this.debug) {
-				code.push(line.toString(`seed:${line.randomGenerator.seed}`));
+			if (!line.comment.includes("#seed:") && this.debug) {
+				code.push(line.toString(`#seed:${line.randomGenerator.seed};`));
 			} else {
 				code.push(line.toString());
 			}

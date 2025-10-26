@@ -205,6 +205,7 @@ export abstract class Context
 		IDevicesSlotContext,
 		IDevicesReagentContext
 {
+	debug(...args: any[]): void {}
 	/** Имя контекста (используется в отладке/логировании) */
 	public readonly name: string;
 

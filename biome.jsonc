@@ -6,6 +6,7 @@
 		"useIgnoreFile": true
 	},
 	"files": {
+		"includes": ["**", "!!**/src/Languages/*.json", "!!./docs", "!!./samples"],
 		"maxSize": 999999999999999,
 		"ignoreUnknown": true
 	},
