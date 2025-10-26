@@ -3,6 +3,22 @@ name: Code Quality
 on:
   pull_request:
     branches: [main]
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.jsx'
+      - '**.tsx'
+      - '**.json'
+      - '**.yml'
+      - '**.yaml'
+      - 'package.json'
+      - 'bun.lockb'
+      - 'tsconfig.json'
+      - '!**.md'
+      - '!**.txt'
+      - '!**.doc'
+      - '!**.docx'
+      - '!**.schema.json'
   workflow_dispatch:
 
 jobs:
