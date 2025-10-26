@@ -17,7 +17,7 @@ import { GROUPED_CONSTS } from "@/Defines/consts";
 import { type ItemName, Items, type ReagentName, Reagents } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
 
-function picklist(values: string[]) {
+function picklist(values: (string | number)[]) {
 	return union(values.map((value) => literal(value)));
 }
 
@@ -85,7 +85,7 @@ const PORT_TYPES = [
 	"Power Output",
 	"Power and Data Input",
 	"Power and Data Output",
-] as const;
+];
 
 export const PortSchema = strictObject({
 	port: picklist(PORT_TYPES),
@@ -94,7 +94,7 @@ export const PortSchema = strictObject({
 
 // --- Pin Schema ---
 
-const PIN_SHORTCUTS = ["d0", "d2", "d3", "d4", "d5"] as const;
+const PIN_SHORTCUTS = ["d0", "d2", "d3", "d4", "d5"];
 
 export const PinSchema = strictObject({
 	pin: pipe(union([picklist(PIN_SHORTCUTS), pipe(string(), regex(/^d\d+$/))])),
@@ -162,7 +162,7 @@ export const DeviceSchema = strictObject({
 
 // --- Network Schemas ---
 
-const NETWORK_TYPES = ["data", "power", "chute", "pipe", "wireless", "landing"] as const;
+const NETWORK_TYPES = ["data", "power", "chute", "pipe", "wireless", "landing"];
 
 export const NetworkTypeSchema = picklist(NETWORK_TYPES);
 
