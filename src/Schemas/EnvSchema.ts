@@ -190,6 +190,6 @@ export type ChipSchema = InferOutput<typeof ChipSchema>;
 export type DeviceSchema = InferOutput<typeof DeviceSchema>;
 export type HousingSchema = InferOutput<typeof HousingSchema>;
 export type NetworkSchema = InferOutput<typeof NetworkSchema>;
-export type NetworkType = InferOutput<typeof NetworkTypeSchema>;
+export type NetworkTypeSchema = InferOutput<typeof NetworkTypeSchema>;
 export type PinSchema = InferOutput<typeof PinSchema>;
 export type PrefabName = InferOutput<typeof PrefabNameSchema>;
