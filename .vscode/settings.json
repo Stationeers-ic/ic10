@@ -43,5 +43,5 @@
 	"biome.enabled": true,
 	"biome.lsp.trace.server": "messages",
 	"biome.requireConfiguration": true,
-	"i18n-ally.sourceLanguage": "ru"
+	"i18n-ally.sourceLanguage": "en"
 }

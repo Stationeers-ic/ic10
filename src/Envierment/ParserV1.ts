@@ -13,6 +13,7 @@ import {
 	type ChipSchema,
 	type DeviceSchema,
 	EnvSchema,
+	type HousingSchema,
 	type NetworkSchema,
 	type PortSchema,
 	type PropsSchema,
@@ -204,8 +205,8 @@ class SerializerV1 {
 			.toArray();
 	}
 
-	private serializeDevice(device: Device): DeviceSchema {
-		const data: DeviceSchema = {
+	private serializeDevice(device: Device): HousingSchema | DeviceSchema {
+		const data: any = {
 			id: device.id,
 			PrefabName: device.rawData.PrefabName,
 			name: device.name.toString(),
@@ -215,7 +216,19 @@ class SerializerV1 {
 
 		// Housing устройства содержат IC10 код
 		if (device instanceof Housing) {
+			//data is HousingSchema
 			data.chip = device.chip.id;
+			if (device.connectedDevices.size > 0) {
+				data.pins = [];
+				device.connectedDevices.forEach((device, key) => {
+					data.pins.push({
+						pin: `d${key}`,
+						device: device.id,
+					});
+				});
+			}
+		} else {
+			//data is DeviceSchema
 		}
 
 		// Сериализация слотов
@@ -230,7 +243,7 @@ class SerializerV1 {
 			data.reagents = reagents;
 		}
 
-		return data;
+		return data satisfies HousingSchema | DeviceSchema;
 	}
 
 	private serializeDevicePorts(device: Device): PortSchema[] | undefined {
@@ -328,15 +341,7 @@ class DeserializerV1 {
 	constructor(private readonly builer: Builer) {}
 
 	public parse(data: EnvSchema): void {
-		const result = v.safeParse(EnvSchema, data);
-		if (!result.success) {
-			throw new Error(
-				i18n.t("error.invalid_yaml", {
-					error: `🔥 ${result.issues.map((e) => e.message).join("🔥")}`,
-				}),
-			);
-		}
-
+		data = v.parse(EnvSchema, data);
 		this.builer.reset();
 		this.parseChips(data);
 		this.parseNetworks(data);
@@ -353,11 +358,22 @@ class DeserializerV1 {
 				SP: chipSchema.SP || undefined,
 				RA: chipSchema.RA || undefined,
 			});
+
 			if (typeof chipSchema.registers !== "undefined") {
 				for (const reg of chipSchema.registers) {
-					chip.registers.set(parseInt(reg.name.slice(1), 10), reg.value);
+					const registerNumber = parseInt(reg.name.slice(1), 10);
+					if (Number.isNaN(registerNumber)) {
+						throw new Error(
+							i18n.t("error.parser.invalid_register_name", {
+								register: reg.name,
+								chip: chipSchema.id,
+							}),
+						);
+					}
+					chip.registers.set(registerNumber, reg.value);
 				}
 			}
+
 			if (typeof chipSchema.stack !== "undefined") {
 				for (const reg of chipSchema.stack) {
 					chip.memory.push(reg);
@@ -392,7 +408,13 @@ class DeserializerV1 {
 	private applyNetworkChannels(network: Network, props: Array<{ name: string; value: any }>): void {
 		for (const { name, value } of props) {
 			if (!Logics.hasKey(name)) {
-				throw new Error(i18n.t("error.unknown_logic_channel_name", { name }));
+				throw new Error(
+					i18n.t("error.parser.unknown_logic_channel", {
+						channel: name,
+						network: network.id,
+						available_channels: Array.from(Logics.keys()).join(", "),
+					}),
+				);
 			}
 
 			network.chanels.set(Logics.getByKey(name), value);
@@ -400,15 +422,84 @@ class DeserializerV1 {
 	}
 
 	private parseDevices(data: EnvSchema): void {
+		// Первый проход - создание устройств
 		for (const deviceSchema of data.devices) {
 			this.parseDevice(deviceSchema);
 		}
+
+		// Второй проход - подключение пинов для Housing устройств
+		for (const deviceSchema of data.devices) {
+			if (this.isHousing(deviceSchema)) {
+				this.connectPins(deviceSchema);
+			}
+		}
 	}
 
-	private parseDevice(deviceSchema: DeviceSchema): void {
-		const device = this.isHousing(deviceSchema.PrefabName)
-			? this.createHousingDevice(deviceSchema)
-			: this.createRegularDevice(deviceSchema);
+	private connectPins(housingSchema: HousingSchema) {
+		if (housingSchema.pins?.length > 0) {
+			housingSchema.pins.forEach((pin) => this.connectPin(pin, housingSchema));
+		}
+	}
+
+	private connectPin(pin: HousingSchema["pins"][number], housingSchema: HousingSchema) {
+		if (!this.builer.Devices.has(pin.device)) {
+			throw new Error(
+				i18n.t("error.parser.device_not_found_for_pin", {
+					device_id: pin.device,
+					pin: pin.pin,
+					housing: housingSchema.id,
+				}),
+			);
+		}
+
+		if (!this.builer.Devices.has(housingSchema.id)) {
+			throw new Error(
+				i18n.t("error.parser.housing_not_found", {
+					housing_id: housingSchema.id,
+				}),
+			);
+		}
+
+		const housing = this.builer.Devices.get(housingSchema.id);
+		const device = this.builer.Devices.get(pin.device);
+
+		if (housing.network.id !== device.network.id) {
+			throw new Error(
+				i18n.t("error.parser.network_mismatch", {
+					housing_network: housing.network.id,
+					device_network: device.network.id,
+					housing: housingSchema.id,
+					device: pin.device,
+					pin: pin.pin,
+				}),
+			);
+		}
+
+		if (!(housing instanceof Housing)) {
+			throw new Error(
+				i18n.t("error.parser.device_not_housing", {
+					device_id: housingSchema.id,
+					device_type: housing.constructor.name,
+				}),
+			);
+		}
+
+		const pinNumber = parseInt(pin.pin.slice(1), 10);
+		if (Number.isNaN(pinNumber)) {
+			throw new Error(
+				i18n.t("error.parser.invalid_pin_format", {
+					pin: pin.pin,
+					housing: housingSchema.id,
+				}),
+			);
+		}
+
+		housing.connectDevices(pinNumber, device);
+	}
+
+	private parseDevice(deviceSchema: DeviceSchema | HousingSchema): void {
+		const isHousing = this.isHousing(deviceSchema);
+		const device = isHousing ? this.createHousingDevice(deviceSchema) : this.createRegularDevice(deviceSchema);
 
 		this.connectDevicePorts(device, deviceSchema);
 		this.connectDeviceProps(device, deviceSchema);
@@ -421,11 +512,8 @@ class DeserializerV1 {
 			device.name = deviceSchema.name;
 		}
 
-		// Для Housing устройств создаём runner для выполнения IC10 кода
 		if (device instanceof Housing) {
 			this.builer.Runners.set(deviceSchema.id, new Ic10Runner({ housing: device }));
-		} else if (typeof deviceSchema.chip !== "undefined" && deviceSchema.chip > 0) {
-			throw new Error(i18n.t("error.device_must_not_have_chip_or_be_housing"));
 		}
 	}
 
@@ -434,17 +522,30 @@ class DeserializerV1 {
 		return new DeviceClass({ id: deviceSchema.id });
 	}
 
-	private createHousingDevice(deviceSchema: DeviceSchema): Housing {
+	private createHousingDevice(deviceSchema: HousingSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
-		const chip = this.builer.Chips.get(deviceSchema.chip);
-		if (!chip) {
+
+		if (!deviceSchema.chip) {
 			throw new Error(
-				i18n.t("error.chip_not_found_for_housing", {
-					chip: String(deviceSchema.chip),
+				i18n.t("error.parser.missing_chip_for_housing", {
+					housing: deviceSchema.id,
 					prefab: deviceSchema.PrefabName,
 				}),
 			);
 		}
+
+		const chip = this.builer.Chips.get(deviceSchema.chip);
+		if (!chip) {
+			throw new Error(
+				i18n.t("error.parser.chip_not_found_for_housing", {
+					chip_id: String(deviceSchema.chip),
+					housing: deviceSchema.id,
+					prefab: deviceSchema.PrefabName,
+					available_chips: Array.from(this.builer.Chips.keys()).join(", "),
+				}),
+			);
+		}
+
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 
@@ -465,13 +566,21 @@ class DeserializerV1 {
 		}
 
 		for (const { name, value } of deviceSchema.props) {
-			device.props.forceWrite(name, value);
+			try {
+				device.props.forceWrite(name, value);
+			} catch (error) {
+				throw new Error(
+					i18n.t("error.parser.failed_to_set_property", {
+						property: name,
+						device: deviceSchema.id,
+						value: value,
+						error: error.message,
+					}),
+				);
+			}
 		}
 	}
 
-	/**
-	 * Подключает слоты устройства согласно схеме
-	 */
 	private connectDeviceSlots(device: Device, deviceSchema: DeviceSchema): void {
 		if (!deviceSchema.slots || !device.hasSlots) {
 			return;
@@ -479,38 +588,86 @@ class DeserializerV1 {
 
 		for (const slotData of deviceSchema.slots) {
 			const slot = device.slots.getSlot(slotData.index);
-			if (slot) {
-				let itemHash: ItemHash;
-				if (Items.hasValue(slotData.item)) {
-					itemHash = Items.getByValue(slotData.item);
-				}
+			if (!slot) {
+				throw new Error(
+					i18n.t("error.parser.slot_not_found", {
+						slot_index: slotData.index,
+						device: deviceSchema.id,
+						prefab: deviceSchema.PrefabName,
+					}),
+				);
+			}
+
+			let itemHash: ItemHash;
+			if (Items.hasValue(slotData.item)) {
+				itemHash = Items.getByValue(slotData.item);
+			} else {
+				throw new Error(
+					i18n.t("error.parser.unknown_item", {
+						item: slotData.item,
+						slot: slotData.index,
+						device: deviceSchema.id,
+						available_items: Array.from(Items.values()).join(", "),
+					}),
+				);
+			}
+
+			try {
 				const item = new ItemEntity(itemHash, slotData.amount);
 				slot.putItem(item, true);
+			} catch (error) {
+				throw new Error(
+					i18n.t("error.parser.failed_to_put_item_in_slot", {
+						item: slotData.item,
+						slot: slotData.index,
+						device: deviceSchema.id,
+						error: error.message,
+					}),
+				);
 			}
 		}
 	}
 
-	/**
-	 * Подключает реагенты устройства согласно схеме
-	 */
 	private connectDeviceReagents(device: Device, deviceSchema: DeviceSchema): void {
 		if (!deviceSchema.reagents || !device.hasReagents) {
 			return;
 		}
 
 		for (const reagentData of deviceSchema.reagents) {
-			if (Reagents.hasValue(reagentData.name)) {
+			if (!Reagents.hasValue(reagentData.name)) {
+				throw new Error(
+					i18n.t("error.parser.unknown_reagent", {
+						reagent: reagentData.name,
+						device: deviceSchema.id,
+						available_reagents: Array.from(Reagents.values()).join(", "),
+					}),
+				);
+			}
+
+			try {
 				const reagentHash = Reagents.getByValue(reagentData.name);
 				device.reagents.set(reagentHash, reagentData.amount);
-			} else {
-				throw new Error(i18n.t("error.unknown_reagent_name", { name: reagentData.name }));
+			} catch (error) {
+				throw new Error(
+					i18n.t("error.parser.failed_to_set_reagent", {
+						reagent: reagentData.name,
+						device: deviceSchema.id,
+						amount: reagentData.amount,
+						error: error.message,
+					}),
+				);
 			}
 		}
 	}
 
 	private getNetwork(networkId: string): Network {
 		if (!this.builer.Networks.has(networkId)) {
-			throw new Error(i18n.t("error.network_not_found", { id: networkId }));
+			throw new Error(
+				i18n.t("error.parser.network_not_found", {
+					network_id: networkId,
+					available_networks: Array.from(this.builer.Networks.keys()).join(", "),
+				}),
+			);
 		}
 
 		return this.builer.Networks.get(networkId);
@@ -520,10 +677,11 @@ class DeserializerV1 {
 		if (port !== "default") {
 			if (!device.ports.canConnect(network.type, port)) {
 				throw new Error(
-					i18n.t("error.port_cannot_connect", {
-						port,
-						type: String(network.type),
-						device: device.constructor.name,
+					i18n.t("error.parser.port_connection_failed", {
+						port: port,
+						network_type: String(network.type),
+						device: device.id,
+						device_type: device.constructor.name,
 					}),
 				);
 			}
@@ -537,18 +695,28 @@ class DeserializerV1 {
 		return typeof DevicesByPrefabName[prefabName] !== "undefined";
 	}
 
-	private isHousing(prefabName: any): prefabName is HousingName {
-		return typeof DeviceClassesByBase.Housing[prefabName] !== "undefined";
+	private isHousing(device: DeviceSchema): device is HousingSchema {
+		return typeof DeviceClassesByBase.Housing[device.PrefabName] !== "undefined";
 	}
 
 	private findHousingClass(prefabName: string): HousingClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(i18n.t("error.unknown_device_prefab_name", { prefab: prefabName }));
+			throw new Error(
+				i18n.t("error.parser.unknown_device_prefab", {
+					prefab: prefabName,
+					available_prefabs: Object.keys(DevicesByPrefabName).join(", "),
+				}),
+			);
 		}
 
 		const housingClass = DeviceClassesByBase.Housing[prefabName];
 		if (!housingClass) {
-			throw new Error(i18n.t("error.device_not_housing", { prefab: prefabName }));
+			throw new Error(
+				i18n.t("error.parser.device_not_housing_type", {
+					prefab: prefabName,
+					housing_prefabs: Object.keys(DeviceClassesByBase.Housing).join(", "),
+				}),
+			);
 		}
 
 		return housingClass;
@@ -556,12 +724,21 @@ class DeserializerV1 {
 
 	private findDeviceClass(prefabName: string): DeviceClass {
 		if (!this.isDevice(prefabName)) {
-			throw new Error(i18n.t("error.unknown_device_prefab_name", { prefab: prefabName }));
+			throw new Error(
+				i18n.t("error.parser.unknown_device_prefab", {
+					prefab: prefabName,
+					available_prefabs: Object.keys(DevicesByPrefabName).join(", "),
+				}),
+			);
 		}
 
 		const deviceClass = DevicesByPrefabName[prefabName];
 		if (!deviceClass) {
-			throw new Error(i18n.t("error.device_class_not_found", { prefab: prefabName }));
+			throw new Error(
+				i18n.t("error.parser.device_class_not_found", {
+					prefab: prefabName,
+				}),
+			);
 		}
 
 		return deviceClass;

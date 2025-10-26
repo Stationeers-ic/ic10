@@ -1,10 +1,10 @@
-# Инструкция по созданию JSON файла для Stationeers
+# Инструкция по созданию файла Окружения для Stationeers-ic10
 
 ## Общая структура файла
 
 Файл должен содержать следующие основные разделы:
 - `$schema` - ссылка на схему валидации (опционально)
-- `version` - версия схемы (всегда 1)
+- `version` - версия схемы (пока что 1)
 - `chips` - массив микросхем
 - `devices` - массив устройств
 - `networks` - массив сетей
@@ -25,10 +25,10 @@
   "chips": [
     {
       "id": 1,
-      "register_length": 10,
-      "stack_length": 20,
-      "SP": 0,
-      "RA": 0,
+      "register_length": 18,
+      "stack_length": 512, 
+      "SP": 16, 
+      "RA": 17, 
       "registers": [
         {"name": "r0", "value": 0},
         {"name": "r1", "value": 1}
@@ -43,7 +43,21 @@
 
 **Обязательные поля**: `id`
 
+**Опциональные поля**:
+- `register_length` - количество регистров (минимальное значение: 0)  (для поддержки модов)
+- `stack_length` - размер стека (минимальное значение: 0)  (для поддержки модов)
+- `SP` - указатель стека (для поддержки модов)
+- `RA` - регистр возврата (для поддержки модов)
+- `registers` - массив регистров (формат: `r0`, `r1`, ..., `rN`)
+- `stack` - массив значений стека
+- `code` - код программы (многострочный, используйте `\n`)
+- `lineNumber` - текущая строка выполнения (минимальное значение: 0)
+
 ### 3. Устройства (devices)
+
+#### Типы устройств:
+
+**Обычные устройства (DeviceSchema)**:
 ```json
 {
   "devices": [
@@ -51,7 +65,6 @@
       "id": 1,
       "PrefabName": "StructureSolarPanel",
       "name": "Main Solar Panel",
-      "chip": 1,
       "ports": [
         {
           "port": "Power Output",
@@ -79,11 +92,49 @@
 }
 ```
 
+**Устройства с микросхемой (HousingSchema)**:
+```json
+{
+  "devices": [
+    {
+      "id": 2,
+      "PrefabName": "StructureConsoleLED1x2",
+      "name": "Control Panel",
+      "chip": 1,
+      "pins": [
+        {
+          "pin": "d0",
+          "device": 1
+        }
+      ],
+      "ports": [
+        {
+          "port": "default",
+          "network": "data_network_1"
+        }
+      ],
+      "props": [
+        {"name": "Setting", "value": 150}
+      ]
+    }
+  ]
+}
+```
+
 **Обязательные поля**: `id`, `PrefabName`
 
-**Важные связи**:
-- `chip` - ссылается на `id` микросхемы из раздела `chips`
-- `ports[].network` - ссылается на `id` сети из раздела `networks`
+**Для Housing устройств обязательно**: `chip`
+
+**Допустимые типы портов**:
+- `"default"`, `"Chute Input"`, `"Chute Output"`, `"Chute Output 2"`
+- `"Connection"`, `"Data Input"`, `"Data Output"`
+- `"Landing Pad Input"`, `"Pipe Input"`, `"Pipe Input 2"`
+- `"Pipe Liquid Input"`, `"Pipe Liquid Input 2"`, `"Pipe Liquid Output"`, `"Pipe Liquid Output 2"`
+- `"Pipe Output"`, `"Pipe Output 2"`, `"Pipe Waste"`
+- `"Power Input"`, `"Power Output"`
+- `"Power and Data Input"`, `"Power and Data Output"`
+
+**Формат пинов**: `"d0"`, `"d1"`, ..., или `"dN"` для произвольных номеров
 
 ### 4. Сети (networks)
 ```json
@@ -102,6 +153,10 @@
 ```
 
 **Обязательные поля**: `id`, `type`
+
+**Допустимые типы сетей**: `"data"`, `"power"`, `"chute"`, `"pipe"`, `"wireless"`, `"landing"`
+
+**Свойства каналов**: имена должны начинаться с `"Channel"` (Channel0, Channel1, etc.)
 
 ## Полный пример файла
 
@@ -128,25 +183,42 @@
   "devices": [
     {
       "id": 1,
-      "PrefabName": "StructureConsoleLED1x2",
-      "name": "Main Solar",
-      "chip": 1,
+      "PrefabName": "StructureSolarPanel",
+      "name": "Main Solar Panel",
       "ports": [
         {
-          "port": "default",
-          "network": "data_main"
+          "port": "Power Output",
+          "network": "power_main"
         }
       ],
       "props": [
-        {"name": "Setting", "value": 150}
+        {"name": "PowerGeneration", "value": 150}
       ],
-      "slots": [],
-      "reagents": []
+      "slots": [
+        {
+          "index": 0,
+          "item": "ItemSolarPanel",
+          "amount": 1
+        }
+      ],
+      "reagents": [
+        {
+          "name": "Silicon",
+          "amount": 50
+        }
+      ]
     },
     {
       "id": 2,
-      "PrefabName": "StructureConsoleLED1x2",
-      "name": "Backup Battery",
+      "PrefabName": "StructureCircuitHousingCompact",
+      "name": "Housing",
+      "chip": 1,
+      "pins": [
+        {
+          "pin": "d0",
+          "device": 1
+        }
+      ],
       "ports": [
         {
           "port": "default",
@@ -155,9 +227,7 @@
       ],
       "props": [
         {"name": "Setting", "value": 750}
-      ],
-      "slots": [],
-      "reagents": []
+      ]
     }
   ],
   "networks": [
@@ -167,6 +237,10 @@
       "props": [
         {"name": "Channel0", "value": 150}
       ]
+    },
+    {
+      "id": "power_main",
+      "type": "power"
     }
   ]
 }
@@ -175,15 +249,33 @@
 ## Связи между разделами
 
 ```
-chips[id] ← devices[chip]
+chips[id] ← devices[chip] (только для Housing устройств)
 networks[id] ← devices[ports][network]
+devices[id] ← devices[pins][device] (только для Housing устройств)
 ```
 
 ## Важные замечания
 
-1. Все `id` должны быть уникальными в пределах своих категорий
+1. **Уникальность идентификаторов**:
+   - Все `id` в `chips` должны быть уникальными
+   - Все `id` в `devices` должны быть уникальными
+   - Все `id` в `networks` должны быть уникальными
+
 2. **Ссылочные связи**:
-   - `devices[].chip` ссылается на `chips[].id`
+   - `devices[].chip` ссылается на `chips[].id` (только для Housing)
    - `devices[].ports[].network` ссылается на `networks[].id`
-3. Значения `PrefabName`, `port`, `name` (в props) должны быть из предоставленных списков
-4. Для многострочного кода используйте символы `\n` или `\r\n` для переносов строк
+   - `devices[].pins[].device` ссылается на `devices[].id` (только для Housing)
+
+3. **Валидация значений**:
+   - Все числовые ID должны быть ≥ 0
+   - Количество предметов в слотах ≥ 1
+   - Количество реагентов ≥ 1
+   - Имена регистров должны соответствовать формату `r0`, `r1`, etc.
+
+4. **Поддерживаемые значения**:
+   - `PrefabName` должен быть из списка допустимых префабов
+   - `item` в слотах должен быть из списка допустимых предметов
+   - `name` в реагентах должен быть из списка допустимых реагентов
+   - `port` должен быть из списка допустимых типов портов
+
+5. **Форматирование кода**: Для многострочного кода в микросхемах используйте символы `\n` для переносов строк
