@@ -147,7 +147,7 @@ const BaseDeviceSchema = {
 export const HousingSchema = strictObject({
 	...BaseDeviceSchema,
 	PrefabName: PrefabNameHousingSchema,
-	chip: pipe(number(), minValue(0)),
+	chip: optional(pipe(number(), minValue(0))),
 	pins: optional(array(PinSchema)),
 });
 

@@ -524,28 +524,20 @@ class DeserializerV1 {
 
 	private createHousingDevice(deviceSchema: HousingSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
-
-		if (!deviceSchema.chip) {
-			throw new Error(
-				i18n.t("error.parser.missing_chip_for_housing", {
-					housing: deviceSchema.id,
-					prefab: deviceSchema.PrefabName,
-				}),
-			);
+		let chip: Chip | undefined;
+		if (deviceSchema.chip) {
+			const chip = this.builer.Chips.get(deviceSchema.chip);
+			if (!chip) {
+				throw new Error(
+					i18n.t("error.parser.chip_not_found_for_housing", {
+						chip_id: String(deviceSchema.chip),
+						housing: deviceSchema.id,
+						prefab: deviceSchema.PrefabName,
+						available_chips: Array.from(this.builer.Chips.keys()).join(", "),
+					}),
+				);
+			}
 		}
-
-		const chip = this.builer.Chips.get(deviceSchema.chip);
-		if (!chip) {
-			throw new Error(
-				i18n.t("error.parser.chip_not_found_for_housing", {
-					chip_id: String(deviceSchema.chip),
-					housing: deviceSchema.id,
-					prefab: deviceSchema.PrefabName,
-					available_chips: Array.from(this.builer.Chips.keys()).join(", "),
-				}),
-			);
-		}
-
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 
