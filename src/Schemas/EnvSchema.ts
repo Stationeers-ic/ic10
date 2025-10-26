@@ -1,12 +1,12 @@
 import {
 	array,
 	type InferOutput,
+	literal,
 	minLength,
 	minValue,
 	number,
 	object,
 	optional,
-	picklist,
 	pipe,
 	regex,
 	strictObject,
@@ -16,6 +16,10 @@ import {
 import { GROUPED_CONSTS } from "@/Defines/consts";
 import { type ItemName, Items, type ReagentName, Reagents } from "@/Defines/data";
 import { DeviceClassesByBase, DevicesByPrefabName } from "@/Devices";
+
+function picklist(values: string[]) {
+	return union(values.map((value) => literal(value)));
+}
 
 // --- Вспомогательные функции для создания union из ключей ---
 
