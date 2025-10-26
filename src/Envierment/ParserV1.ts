@@ -13,6 +13,7 @@ import {
 	type ChipSchema,
 	type DeviceSchema,
 	EnvSchema,
+	type HousingSchema,
 	type NetworkSchema,
 	type PortSchema,
 	type PropsSchema,
@@ -331,7 +332,7 @@ class DeserializerV1 {
 		const result = v.safeParse(EnvSchema, data);
 		if (!result.success) {
 			throw new Error(
-				i18n.t("error.invalid_yaml", {
+				i18n.t("error.parser.invalid_env", {
 					error: `🔥 ${result.issues.map((e) => e.message).join("🔥")}`,
 				}),
 			);
@@ -403,10 +404,16 @@ class DeserializerV1 {
 		for (const deviceSchema of data.devices) {
 			this.parseDevice(deviceSchema);
 		}
+		for (const deviceSchema of data.devices) {
+			if (this.isHousing(deviceSchema)) {
+				this.connectPins(deviceSchema);
+			}
+		}
 	}
+	private connectPins(housingSchema: HousingSchema) {}
 
 	private parseDevice(deviceSchema: DeviceSchema): void {
-		const device = this.isHousing(deviceSchema.PrefabName)
+		const device = this.isHousing(deviceSchema)
 			? this.createHousingDevice(deviceSchema)
 			: this.createRegularDevice(deviceSchema);
 
@@ -537,8 +544,8 @@ class DeserializerV1 {
 		return typeof DevicesByPrefabName[prefabName] !== "undefined";
 	}
 
-	private isHousing(prefabName: any): prefabName is HousingName {
-		return typeof DeviceClassesByBase.Housing[prefabName] !== "undefined";
+	private isHousing(device: DeviceSchema): device is HousingSchema {
+		return typeof DeviceClassesByBase.Housing[device.PrefabName] !== "undefined";
 	}
 
 	private findHousingClass(prefabName: string): HousingClass {

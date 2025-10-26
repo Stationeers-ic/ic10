@@ -31,8 +31,7 @@
 		},
 		{
 			"id": 2,
-			"PrefabName": "StructureCircuitHousingCompact",
-			"chip": 2,
+			"PrefabName": "StructureActiveVent",
 			"ports": [
 				{
 					"port": "default",
