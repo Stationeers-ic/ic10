@@ -16,16 +16,16 @@
 			"id": 1,
 			"PrefabName": "StructureCircuitHousingCompact",
 			"chip": 1,
+			"pins": [
+				{
+					"pin": "d3",
+					"device": 2
+				}
+			],
 			"ports": [
 				{
 					"port": "default",
 					"network": "base"
-				}
-			],
-			"pins": [
-				{
-					"pin": "d3",
-					"device": 1
 				}
 			]
 		},
