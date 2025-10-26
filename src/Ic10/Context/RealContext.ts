@@ -1,7 +1,7 @@
 // RealContext.ts
 import type { Device } from "@/Core/Device";
 import type { StackInterface } from "@/Core/Stack";
-import { LogicBatchMethod, LogicReagentMode, Logics } from "@/Defines/data";
+import { LogicBatchMethod, LogicReagentMode } from "@/Defines/data";
 import {
 	Context,
 	type IDefinesContext,
@@ -93,7 +93,9 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 	}
 
 	private updateLineNumberParameter(): void {
-		this.setDeviceParameterByPin(-1, Logics.getByKey("LineNumber"), this.line);
+		try {
+			this.housing.props.forceWrite("LineNumber", this.line);
+		} catch (e) {}
 	}
 }
 

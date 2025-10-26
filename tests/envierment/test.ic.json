@@ -1,14 +1,14 @@
 {
-	"$schema": "../../src/Schemas/env.schema.json",
+	"$schema": "https://raw.githubusercontent.com/Stationeers-ic/ic10/refs/heads/main/src/Schemas/env.schema.json",
 	"version": 1,
 	"chips": [
 		{
 			"id": 1,
-			"code": "move r0 1\r\nmove r0 2\r\nmove r0 1\r\nmove r0 3\r\nmove r0 1\r\nmove r0 4\r\nmove r0 1\r\nmove r0 5\r\nmove r0 1\r\nmove r0 6"
+			"code": "s d1 Setting 10"
 		},
 		{
 			"id": 2,
-			"code": "move r0 1\r\nmove r0 2\r\nmove r0 1\r\nmove r0 3\r\nmove r0 1\r\nmove r0 4\r\nmove r0 1\r\nmove r0 5\r\nmove r0 1\r\nmove r0 6"
+			"code": "651654"
 		}
 	],
 	"devices": [
@@ -18,7 +18,7 @@
 			"chip": 1,
 			"pins": [
 				{
-					"pin": "d3",
+					"pin": "d1",
 					"device": 2
 				}
 			],
@@ -31,7 +31,7 @@
 		},
 		{
 			"id": 2,
-			"PrefabName": "StructureActiveVent",
+			"PrefabName": "StructureAirConditioner",
 			"ports": [
 				{
 					"port": "default",

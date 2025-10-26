@@ -142,8 +142,8 @@ class SerializerV1 {
 				stack_length: chip.stack_length === 512 ? undefined : chip.stack_length,
 				registers: registers.length > 0 ? registers : undefined,
 				stack: chip.memory.length > 0 ? chip.memory.toArray() : undefined,
-				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : chip.getIc10Code(),
-				lineNumber: this.debug ? (chip?.housing?.props?.read("LineNumber") ?? 0) : undefined,
+				code: chip.housing?.runner ? this.stringifyCode(chip.housing.runner).join("\n") : (chip?.getIc10Code() ?? ""),
+				lineNumber: this.debug ? (chip?.housing?.props?.forceRead("LineNumber") ?? 0) : undefined,
 			} satisfies ChipSchema;
 			chips.push(data);
 		});
@@ -217,7 +217,7 @@ class SerializerV1 {
 		// Housing устройства содержат IC10 код
 		if (device instanceof Housing) {
 			//data is HousingSchema
-			data.chip = device.chip.id;
+			data.chip = device?.chip?.id;
 			if (device.connectedDevices.size > 0) {
 				data.pins = [];
 				device.connectedDevices.forEach((device, key) => {
@@ -524,28 +524,20 @@ class DeserializerV1 {
 
 	private createHousingDevice(deviceSchema: HousingSchema): Housing {
 		const HousingClass = this.findHousingClass(deviceSchema.PrefabName);
-
-		if (!deviceSchema.chip) {
-			throw new Error(
-				i18n.t("error.parser.missing_chip_for_housing", {
-					housing: deviceSchema.id,
-					prefab: deviceSchema.PrefabName,
-				}),
-			);
+		let chip: Chip | undefined;
+		if (deviceSchema.chip) {
+			chip = this.builer.Chips.get(deviceSchema.chip);
+			if (!chip) {
+				throw new Error(
+					i18n.t("error.parser.chip_not_found_for_housing", {
+						chip_id: String(deviceSchema.chip),
+						housing: deviceSchema.id,
+						prefab: deviceSchema.PrefabName,
+						available_chips: Array.from(this.builer.Chips.keys()).join(", "),
+					}),
+				);
+			}
 		}
-
-		const chip = this.builer.Chips.get(deviceSchema.chip);
-		if (!chip) {
-			throw new Error(
-				i18n.t("error.parser.chip_not_found_for_housing", {
-					chip_id: String(deviceSchema.chip),
-					housing: deviceSchema.id,
-					prefab: deviceSchema.PrefabName,
-					available_chips: Array.from(this.builer.Chips.keys()).join(", "),
-				}),
-			);
-		}
-
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
 
