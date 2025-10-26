@@ -48,6 +48,7 @@
 		"missing_argument_name":"Отсутствует аргумент: {{name}}",
 		"no_network_for_port":"Нет сети для порта {{port}} в устройстве {{hash}}",
 		"parser":{
+			"device_class_not_found":"Класс устройства, не найденный для: {{prefab}}",
 			"invalid_env":"Ошибка с вхеме значения окружения"
 		},
 		"pin_not_allowed_in_instruction":"Вы не можете использовать PIN в этой инструкции",
