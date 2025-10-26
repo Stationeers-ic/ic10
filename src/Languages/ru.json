@@ -68,7 +68,8 @@
 			"unknown_device_prefab": "Неизвестное устройство prefab «{{prefab}}». Доступные префабы: {{available_prefabs}}",
 			"unknown_item": "Неизвестный предмет «{{item}}» для слота {{slot}} в устройстве «{{device}}». Доступные элементы: {{available_items}}",
 			"unknown_logic_channel": "Неизвестный логический канал {{channel}} для сети {{network}}. Доступные каналы: {{available_channels}}",
-			"unknown_reagent": "Неизвестный реагент \"{{Реагент}}\" для устройства \"{{device}}\". Доступные реагенты: {{available_reagents}}"
+			"unknown_reagent": "Неизвестный реагент \"{{Реагент}}\" для устройства \"{{device}}\". Доступные реагенты: {{available_reagents}}",
+			"chip_already_connected_to_other_housing": "Этот чип '{{chip}}' уже используется"
 		},
 		"pin_not_allowed_in_instruction": "Вы не можете использовать PIN в этой инструкции",
 		"pin_out_of_range": "Невозможно подключить устройство, потому что pin {{pin}} находится вне зоны действия",

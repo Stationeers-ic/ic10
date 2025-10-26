@@ -537,6 +537,13 @@ class DeserializerV1 {
 					}),
 				);
 			}
+			if (chip.housing) {
+				throw new Error(
+					i18n.t("error.parser.chip_already_connected_to_other_housing", {
+						chip: String(deviceSchema.chip),
+					}),
+				);
+			}
 		}
 		return new HousingClass({ chip: chip, id: deviceSchema.id });
 	}
