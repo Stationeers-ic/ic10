@@ -2,7 +2,7 @@ import EventEmitter from "eventemitter3";
 import type { Chip } from "@/Core/Chip";
 import type { Housing } from "@/Core/Housing";
 import type { StackInterface } from "@/Core/Stack";
-import { ErrorSeverity, FatalIc10Error, type Ic10Error } from "@/Ic10/Errors/Errors";
+import { ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors";
 import type { Define } from "@/Ic10/Instruction/Helpers/Define";
 import type { Line } from "@/Ic10/Lines/Line";
 
@@ -319,7 +319,6 @@ export abstract class Context
 	 */
 	public getIc10Code(): string {
 		if (!this.validChip()) {
-			this.addError(new FatalIc10Error({ message: "Chip not valid" }));
 			return "";
 		}
 		return this.chip.getIc10Code();

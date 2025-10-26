@@ -127,6 +127,19 @@ export class DeviceProps extends DeviceScope {
 	}
 
 	/**
+	 * Принудительно получить значение без ошибок.
+	 * @param prop - имя или код свойства
+	 * @param value - значение свойства
+	 */
+	public forceRead(prop: prop): number | undefined {
+		const logicCode = this.resolveLogicCode(prop);
+		if (logicCode === undefined) {
+			return undefined;
+		}
+		return this.#propertiesRaw.get(logicCode);
+	}
+
+	/**
 	 * Инициализация свойств и логики устройства.
 	 * Если устройство не найдено в DEVICES, добавляется предупреждение.
 	 */
