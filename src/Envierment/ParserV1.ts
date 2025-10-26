@@ -341,16 +341,7 @@ class DeserializerV1 {
 	constructor(private readonly builer: Builer) {}
 
 	public parse(data: EnvSchema): void {
-		const result = v.safeParse(EnvSchema, data);
-		if (!result.success) {
-			throw new Error(
-				i18n.t("error.parser.invalid_env", {
-					error: `🔥 ${result.issues.map((e) => e.message).join("🔥")}`,
-					details: JSON.stringify(result.issues, null, 2),
-				}),
-			);
-		}
-
+		data = v.parse(EnvSchema, data);
 		this.builer.reset();
 		this.parseChips(data);
 		this.parseNetworks(data);
