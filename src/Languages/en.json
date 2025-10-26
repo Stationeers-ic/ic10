@@ -68,7 +68,8 @@
 			"unknown_device_prefab": "Unknown device prefab '{{prefab}}'. Available prefabs: {{available_prefabs}}",
 			"unknown_item": "Unknown item '{{item}}' for slot {{slot}} in device '{{device}}'. Available items: {{available_items}}",
 			"unknown_logic_channel": "Unknown logic channel '{{channel}}' for network '{{network}}'. Available channels: {{available_channels}}",
-			"unknown_reagent": "Unknown reagent '{{reagent}}' for device '{{device}}'. Available reagents: {{available_reagents}}"
+			"unknown_reagent": "Unknown reagent '{{reagent}}' for device '{{device}}'. Available reagents: {{available_reagents}}",
+			"chip_already_connected_to_other_housing": "This chip '{{chip}}' already used"
 		},
 		"pin_not_allowed_in_instruction": "You can't use pin in this instruction",
 		"pin_out_of_range": "Cannot connect device because pin {{pin}} is out of range",

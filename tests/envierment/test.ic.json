@@ -32,6 +32,7 @@
 		{
 			"id": 2,
 			"PrefabName": "StructureAirConditioner",
+			"chip": 2,
 			"ports": [
 				{
 					"port": "default",
