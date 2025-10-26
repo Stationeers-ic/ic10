@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/Stationeers-ic/ic10/refs/heads/main/src/Schemas/env.schema.json",
+	"$schema": "../../src/Schemas/env.schema.json",
 	"version": 1,
 	"chips": [
 		{
@@ -20,6 +20,12 @@
 				{
 					"port": "default",
 					"network": "base"
+				}
+			],
+			"pins": [
+				{
+					"pin": "d3",
+					"device": 1
 				}
 			]
 		},

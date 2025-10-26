@@ -1,82 +1,98 @@
-import { array, type InferOutput, literal, number, object, optional, string, union } from "valibot";
+import {
+	array,
+	type InferOutput,
+	number,
+	object,
+	optional,
+	picklist,
+	pipe,
+	regex,
+	strictObject,
+	string,
+	union,
+} from "valibot";
 import { GROUPED_CONSTS } from "@/Defines/consts";
 import { type ItemName, Items, type ReagentName, Reagents } from "@/Defines/data";
 import { DevicesByPrefabName } from "@/Devices";
 
 // --- Вспомогательные функции для создания union из ключей ---
-function unionLiterals<T extends string | number | symbol>(array: IterableIterator<T> | T[]) {
+function unionLiterals<T extends string>(array: IterableIterator<T> | T[]) {
 	const un: T[] = [];
 	for (const k of array) {
 		if (!un.includes(k)) {
 			un.push(k);
 		}
 	}
-	return union(un.map((k) => literal(k)));
+	return picklist(un);
 }
 function unionFromKeys<T extends Record<string, unknown>>(obj: T, filter?: (key: string) => boolean) {
 	const keys = Object.keys(obj).filter(filter ?? (() => true));
-	return union(keys.map((k) => literal(k)));
+	return picklist(keys);
 }
 
 // --- PrefabName ---
 export const PrefabNameSchema = unionFromKeys(DevicesByPrefabName);
 
 // --- Props ---
-export const PropsSchema = object({
+export const PropsSchema = strictObject({
 	name: unionFromKeys(GROUPED_CONSTS.LogicType, (l) => !l.startsWith("Channel")),
 	value: number(),
 });
 
 // --- ChannelProps ---
-export const ChannelPropsSchema = object({
+export const ChannelPropsSchema = strictObject({
 	name: unionFromKeys(GROUPED_CONSTS.LogicType, (l) => l.startsWith("Channel")),
 	value: number(),
 });
 
 // --- Port ---
 export const PortSchema = object({
-	port: union([
-		literal("default"),
-		literal("Chute Input"),
-		literal("Chute Output"),
-		literal("Chute Output 2"),
-		literal("Connection"),
-		literal("Data Input"),
-		literal("Data Output"),
-		literal("Landing Pad Input"),
-		literal("Pipe Input"),
-		literal("Pipe Input 2"),
-		literal("Pipe Liquid Input"),
-		literal("Pipe Liquid Input 2"),
-		literal("Pipe Liquid Output"),
-		literal("Pipe Liquid Output 2"),
-		literal("Pipe Output"),
-		literal("Pipe Output 2"),
-		literal("Pipe Waste"),
-		literal("Power Input"),
-		literal("Power Output"),
-		literal("Power and Data Input"),
-		literal("Power and Data Output"),
+	port: picklist([
+		"default",
+		"Chute Input",
+		"Chute Output",
+		"Chute Output 2",
+		"Connection",
+		"Data Input",
+		"Data Output",
+		"Landing Pad Input",
+		"Pipe Input",
+		"Pipe Input 2",
+		"Pipe Liquid Input",
+		"Pipe Liquid Input 2",
+		"Pipe Liquid Output",
+		"Pipe Liquid Output 2",
+		"Pipe Output",
+		"Pipe Output 2",
+		"Pipe Waste",
+		"Power Input",
+		"Power Output",
+		"Power and Data Input",
+		"Power and Data Output",
 	]),
 	network: string(),
 });
+export const PinSchema = strictObject({
+	pin: pipe(union([string(), picklist(["d0", "d2", "d3", "d4", "d5"])]), regex(/^d\d+$/)),
+	device: number(),
+});
 
 // --- Slot ---
-export const SlotSchema = object({
+export const SlotSchema = strictObject({
 	index: number(),
 	item: unionLiterals<ItemName>(Items.values()),
 	amount: number(),
 });
 
 // --- Reagent ---
-export const ReagentSchema = object({
+export const ReagentSchema = strictObject({
 	name: unionLiterals<ReagentName>(Reagents.values()),
 	amount: number(),
 });
 
 // --- Register ---
-export const RegisterSchema = object({
-	name: string(),
+export const RegisterSchema = strictObject({
+	name: pipe(string(), regex(/^r\d+$/)),
 	value: number(),
 });
 
@@ -100,6 +116,7 @@ export const DeviceSchema = object({
 	name: optional(string()),
 	chip: optional(number()),
 	ports: optional(array(PortSchema)),
+	pins: optional(array(PinSchema)),
 	props: optional(array(PropsSchema)),
 	slots: optional(array(SlotSchema)),
 	reagents: optional(array(ReagentSchema)),
@@ -107,10 +124,10 @@ export const DeviceSchema = object({
 
 // --- NetworkType ---
 const networkTypes = ["data", "power", "chute", "pipe", "wireless", "landing"] as const;
-export const NetworkTypeSchema = union(networkTypes.map(literal));
+export const NetworkTypeSchema = picklist(networkTypes);
 
 // --- Network ---
-export const NetworkSchema = object({
+export const NetworkSchema = strictObject({
 	id: string(),
 	type: NetworkTypeSchema,
 	props: optional(array(ChannelPropsSchema)),
@@ -118,7 +135,7 @@ export const NetworkSchema = object({
 
 // --- Env ---
 export const EnvSchema = object({
-	version: union([literal(1)]),
+	version: picklist([1]),
 	chips: array(ChipSchema),
 	devices: array(DeviceSchema),
 	networks: array(NetworkSchema),
