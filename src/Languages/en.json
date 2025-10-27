@@ -51,7 +51,7 @@
 			"chip_already_connected_to_other_housing":"This chip '{{chip}}' already used",
 			"chip_not_found_for_housing":"Chip '{{chip_id}}' not found for housing device '{{housing}}' (prefab: {{prefab}}). Available chips: {{available_chips}}",
 			"device_class_not_found":"Device class not found for prefab '{{prefab}}'",
-			"device_not_found_for_pin":"Device '{{device_id}}' not found for pin '{pin}' connection in housing '{housing}'",
+			"device_not_found_for_pin":"Device '{{device_id}}' not found for pin '{{pin}}' connection in housing '{{housing}}'",
 			"device_not_housing":"Device '{{device_id}}' is not a housing device (type: {{device_type}})",
 			"device_not_housing_type":"Device prefab '{{prefab}}' is not a housing device. Housing prefabs: {{housing_prefabs}}",
 			"failed_to_put_item_in_slot":"Failed to put item '{{item}}' in slot {{slot}} for device '{{device}}': {{error}}",
