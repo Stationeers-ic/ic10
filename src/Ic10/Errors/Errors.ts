@@ -190,6 +190,15 @@ export class RuntimeIc10Error extends ArgumentIc10Error {
 		});
 	}
 }
+export class DebugInfo extends ArgumentIc10Error {
+	constructor(params: GameLangErrorConstructorType) {
+		super({
+			...params,
+			code: params.code ?? "DEBUG_INFO",
+			severity: params.severity ?? ErrorSeverity.Weak,
+		});
+	}
+}
 
 // --- Прочие ошибки ---
 export class TypeIc10Error extends ArgumentIc10Error {

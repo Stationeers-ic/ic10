@@ -16,6 +16,7 @@ export abstract class Line {
 	public readonly contextSwitcher: ContextSwitcher;
 	public readonly randomGenerator: Random;
 	public comment: string = "";
+	public readonly commnetFunctions: RegExpExecArray[];
 
 	public constructor({ contextSwitcher, position, originalText, comment = "", randomSeed }: LineConstructorType) {
 		this.position = position;
@@ -23,8 +24,27 @@ export abstract class Line {
 		this.text = originalText.replace(/#.*$/, "").trim();
 		this.contextSwitcher = contextSwitcher;
 		this.comment = comment;
-
+		this.commnetFunctions = Array.from(originalText.matchAll(this.regex));
 		this.randomGenerator = this.initializeRandomGenerator(randomSeed);
+	}
+	private regex = /#(?<fn>\w+):(?<arg>[^;]+);/gm;
+
+	public runCommentBeforeRun(): void | Promise<void> {}
+	public runCommentAfterRun(): void | Promise<void> {
+		for (const match of this.commnetFunctions) {
+			if (!match.groups) continue;
+
+			const { fn, arg } = match.groups;
+			const args = arg.split(",");
+			switch (fn) {
+				case "debug":
+					this.context.debug(...args);
+					break;
+
+				default:
+					break;
+			}
+		}
 	}
 
 	/**
@@ -51,15 +71,16 @@ export abstract class Line {
 	 * Возвращает null если значение не найдено или невалидно.
 	 */
 	private extractSeedFromComment(comment: string): number | null {
-		const match = comment.match(/seed:(\d+)/);
-		const extractedValue = match?.[1];
+		for (const match of this.commnetFunctions) {
+			if (!match.groups) continue;
 
-		if (!extractedValue) {
-			return null;
+			const { fn, arg } = match.groups;
+			if (fn === "seed") {
+				const seed = parseInt(arg, 10);
+				return Number.isNaN(arg) ? null : seed;
+			}
 		}
-
-		const seed = parseInt(extractedValue, 10);
-		return Number.isNaN(seed) ? null : seed;
+		return null;
 	}
 
 	public get context() {
@@ -82,7 +103,7 @@ export abstract class Line {
 			if (this.text) {
 				return `${this.text} #${comment}`;
 			}
-			return `#${comment}`;
+			return `# ${comment}`;
 		}
 		return this.originalText;
 	}
