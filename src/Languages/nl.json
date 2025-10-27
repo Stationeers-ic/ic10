@@ -51,6 +51,7 @@
 			"chip_already_connected_to_other_housing":"",
 			"chip_not_found_for_housing":"",
 			"device_class_not_found":"",
+			"device_not_found_for_pin":"",
 			"device_not_housing":"",
 			"device_not_housing_type":"",
 			"failed_to_put_item_in_slot":"",
