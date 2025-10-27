@@ -59,7 +59,7 @@
 			"failed_to_set_reagent":"Не удалось установить реагент '{{reagent}}' в количестве {{amount}} для устройства '{{device}}: {{error}}",
 			"housing_not_found":"Сокет «{{housing_id}}» не найдено",
 			"invalid_env":"Ошибка в схеме значения окружения: {{error}}",
-			"invalid_pin_format":"Недействительный формат «{{pin}}» для сокета«{[housing}}». Pin должен быть в формате d<number>",
+			"invalid_pin_format":"Недействительный формат «{{pin}}» для сокета«{{housing}}». Pin должен быть в формате d<number>",
 			"invalid_register_name":"Недействительное имя регистра '{{register}}' для чипа '{{chip}}'. Имена регистров должны быть в формате r<number> пункт",
 			"missing_chip_for_housing":"Отсутствующая ссылка на чип для сокета '{{housing}}' (prefab: {{prefab}})",
 			"network_mismatch":"Сетевое несоответствие: сокет'{{housing}}' находится в сети '{{housing_network}}', но устройство '{{device}}' находится в сети '{{device_network}}' для pin '{{pin}} \"",
