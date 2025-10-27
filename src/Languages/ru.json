@@ -51,7 +51,7 @@
 			"chip_already_connected_to_other_housing":"Этот чип '{{chip}}' уже используется",
 			"chip_not_found_for_housing":"Чип '{{chip_id}}' не найден для сокета '{{housing}}' (prefab: {{prefab}}). Доступные чипы: {{available_chips}}",
 			"device_class_not_found":"Класс устройства, не найденный для: '{{prefab}}'",
-			"device_not_found_for_pin":"Устройство '{{device_id}}' не найдено для соединения pin '{pin}' в корпусе '{housing} \"",
+			"device_not_found_for_pin":"Устройство '{{device_id}}' не найдено для соединения pin '{{pin}}' в корпусе '{{housing}} \"",
 			"device_not_housing":"Устройство {{device_id}} не является сокетом (тип: {{device_type}})",
 			"device_not_housing_type":"Устройство prefab '{{prefab}} не является сокетом. Сокеты: {{housing_prefabs}}",
 			"failed_to_put_item_in_slot":"Не удалось поместить элемент {{item}} в слот {{slot}} для устройства {{device}}: {{error}}",
