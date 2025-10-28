@@ -48,7 +48,7 @@
 		"missing_argument_name":"Missing argument: {{name}}",
 		"no_network_for_port":"No network for port {{port}} in device {{hash}}",
 		"parser":{
-			"chip_already_connected_to_other_housing":"This chip '{{chip}}' already used",
+			"chip_already_connected_to_other_housing":"Chip '{{chip}}' already in use",
 			"chip_not_found_for_housing":"Chip '{{chip_id}}' not found for housing device '{{housing}}' (prefab: {{prefab}}). Available chips: {{available_chips}}",
 			"device_class_not_found":"Device class not found for prefab '{{prefab}}'",
 			"device_not_found_for_pin":"Device '{{device_id}}' not found for pin '{{pin}}' connection in housing '{{housing}}'",
