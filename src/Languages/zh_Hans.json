@@ -1,1 +1,7 @@
-{}
+{
+	"error":{
+		"parser":{
+			"chip_already_connected_to_other_housing":""
+		}
+	}
+}
