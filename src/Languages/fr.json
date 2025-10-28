@@ -2,6 +2,7 @@
 	"error":{
 		"alias_already_defined":"",
 		"argument_must_be_register_or_device":"",
+		"bad_impliment":"",
 		"cannot_add_item_empty_slot":"",
 		"cannot_connect_different_networks":"",
 		"cannot_connect_network_to_port":"",
@@ -11,6 +12,8 @@
 		"context_not_found":"",
 		"device_must_not_have_chip_or_be_housing":"",
 		"device_no_memory":"",
+		"device_no_permission_to_read":"",
+		"device_no_permission_to_write":"",
 		"device_no_props":"",
 		"device_no_reagents":"",
 		"device_no_slots":"",
@@ -45,8 +48,10 @@
 		"missing_argument_name":"",
 		"no_network_for_port":"",
 		"parser":{
+			"chip_already_connected_to_other_housing":"",
 			"chip_not_found_for_housing":"",
 			"device_class_not_found":"",
+			"device_not_found_for_pin":"",
 			"device_not_housing":"",
 			"device_not_housing_type":"",
 			"failed_to_put_item_in_slot":"",
