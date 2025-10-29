@@ -5,10 +5,14 @@ import type { Network } from "@/Core/Network";
 import { type Parser, ParserV1 } from "@/Envierment/ParserV1";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 import type { Ic10Runner } from "@/Ic10/Ic10Runner";
-import type { EnvSchema } from "@/Schemas/EnvSchema";
+import type { EnvSchema, ProjectSchema } from "@/Schemas/EnvSchema";
 
 export class Builer {
 	private readonly lattestParser = ParserV1;
+
+	public meta: {
+		project?: ProjectSchema;
+	} = {};
 
 	public readonly Chips = new Map<number, Chip>();
 	public readonly Networks = new Map<string, Network>();

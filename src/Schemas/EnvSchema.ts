@@ -174,9 +174,18 @@ export const NetworkSchema = strictObject({
 });
 
 // --- Environment Schema ---
-
+const semVerPattern =
+	/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+const ProjectSchema = object({
+	name: optional(pipe(string(), minLength(1))),
+	author: optional(pipe(string(), minLength(1))),
+	description: optional(pipe(string(), minLength(1))),
+	version: optional(pipe(string(), regex(semVerPattern, "Must be SemVer eg: (1.0.0)"))),
+	tags: optional(pipe(array(string()), minLength(1))),
+});
 export const EnvSchema = object({
 	version: picklist([1]),
+	project: optional(ProjectSchema),
 	chips: array(ChipSchema),
 	devices: array(union([DeviceSchema, HousingSchema])),
 	networks: array(NetworkSchema),
@@ -184,6 +193,7 @@ export const EnvSchema = object({
 
 // --- Exported Types ---
 
+export type ProjectSchema = InferOutput<typeof ProjectSchema>;
 export type EnvSchema = InferOutput<typeof EnvSchema>;
 export type PortSchema = InferOutput<typeof PortSchema>;
 export type PropsSchema = InferOutput<typeof PropsSchema>;

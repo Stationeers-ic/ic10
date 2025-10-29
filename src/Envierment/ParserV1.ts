@@ -17,6 +17,7 @@ import {
 	type HousingSchema,
 	type NetworkSchema,
 	type PortSchema,
+	type ProjectSchema,
 	type PropsSchema,
 	type ReagentSchema,
 	type RegisterSchema,
@@ -84,9 +85,11 @@ class SerializerV1 {
 		const networks = this.stringifyNetworks();
 		const devices = this.stringifyDevices();
 		const chips = this.stringifyChips();
+		const project = this.stringifyProject();
 
 		const data: EnvSchema = {
 			version: 1,
+			project: project,
 			chips: chips,
 			devices: devices,
 			networks: networks,
@@ -123,6 +126,10 @@ class SerializerV1 {
 		}
 		return JSON.stringify(this.toData(debug), null, 2);
 	}
+	private stringifyProject(): ProjectSchema | undefined {
+		return this.builer.meta.project;
+	}
+
 	private stringifyChips(): ChipSchema[] {
 		const chips: ChipSchema[] = [];
 		this.builer.Chips.forEach((chip: Chip) => {
@@ -344,6 +351,9 @@ class DeserializerV1 {
 	public parse(data: EnvSchema): void {
 		data = v.parse(EnvSchema, data);
 		this.builer.reset();
+		if (data.project) {
+			this.builer.meta.project = data.project;
+		}
 		this.parseChips(data);
 		this.parseNetworks(data);
 		this.parseDevices(data);

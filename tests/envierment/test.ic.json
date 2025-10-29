@@ -1,6 +1,13 @@
 {
-	"$schema": "https://raw.githubusercontent.com/Stationeers-ic/ic10/refs/heads/main/src/Schemas/env.schema.json",
+	"$schema": "../../src/Schemas/env.schema.json",
 	"version": 1,
+	"project": {
+		"version": "0.0.1-beta",
+		"author": "Долюоеб",
+		"name": "Говно",
+		"description": "Маму ебал",
+		"tags": ["poo", "pee"]
+	},
 	"chips": [
 		{
 			"id": 1,
