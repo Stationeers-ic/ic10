@@ -1,26 +1,22 @@
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
-import {
-	Instruction,
-	type InstructionArgument,
-	type InstructionTestData,
-} from "@/Ic10/Instruction/Helpers/Instruction";
-import type { InstructionLine } from "../Lines/InstructionLine";
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
+import { Instruction, type InstructionArgument, type InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction"
+import type { InstructionLine } from "../Lines/InstructionLine"
 
 // Базовый класс для условных переходов
 abstract class ConditionalJumpInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber(), ArgumentCalculators.anyNumber(), ArgumentCalculators.jumpTarget()];
+		return [ArgumentCalculators.anyNumber(), ArgumentCalculators.anyNumber(), ArgumentCalculators.jumpTarget()]
 	}
 
-	abstract compare(a: number, b: number): boolean;
+	abstract compare(a: number, b: number): boolean
 
 	override run(): void {
-		const a = this.getArgumentValue<number>(0);
-		const b = this.getArgumentValue<number>(1);
-		const target = this.getArgumentValue<number>(2);
+		const a = this.getArgumentValue<number>(0)
+		const b = this.getArgumentValue<number>(1)
+		const target = this.getArgumentValue<number>(2)
 
 		if (this.compare(a, b)) {
-			this.context.setNextLineIndex(target);
+			this.context.setNextLineIndex(target)
 		}
 	}
 }
@@ -28,7 +24,7 @@ abstract class ConditionalJumpInstruction extends Instruction {
 export class JInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -51,22 +47,22 @@ export class JInstruction extends Instruction {
 					},
 				],
 			},
-		];
+		]
 	}
 
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.jumpTarget()];
+		return [ArgumentCalculators.jumpTarget()]
 	}
 
 	override run(): void {
-		const r = this.getArgumentValue<number>(0);
-		this.context.setNextLineIndex(r);
+		const r = this.getArgumentValue<number>(0)
+		this.context.setNextLineIndex(r)
 	}
 }
 export class JalInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -89,23 +85,23 @@ export class JalInstruction extends Instruction {
 					},
 				],
 			},
-		];
+		]
 	}
 
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.jumpTarget()];
+		return [ArgumentCalculators.jumpTarget()]
 	}
 
 	override run(): void {
-		const r = this.getArgumentValue<number>(0);
-		this.context.setNextLineIndex(r, true);
+		const r = this.getArgumentValue<number>(0)
+		this.context.setNextLineIndex(r, true)
 	}
 }
 
 export class jrInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -205,35 +201,35 @@ export class jrInstruction extends Instruction {
 					},
 				],
 			},
-		];
+		]
 	}
 
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.jumpTarget()];
+		return [ArgumentCalculators.jumpTarget()]
 	}
 
 	override run(): void {
-		const r = this.getArgumentValue<number>(0);
+		const r = this.getArgumentValue<number>(0)
 		if (r === 0) {
-			this.context.setNextLineIndex(this.context.currentLinePosition);
+			this.context.setNextLineIndex(this.context.currentLinePosition)
 		}
 		if (r < 0) {
-			const t = Math.abs(r) + 1;
-			this.context.setNextLineIndex(this.context.currentLinePosition - t);
+			const t = Math.abs(r) + 1
+			this.context.setNextLineIndex(this.context.currentLinePosition - t)
 		} else {
-			this.context.setNextLineIndex(this.context.currentLinePosition + r);
+			this.context.setNextLineIndex(this.context.currentLinePosition + r)
 		}
 	}
 
 	public end(this: InstructionLine): boolean {
-		return true;
+		return true
 	}
 }
 
 export abstract class JeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -250,18 +246,18 @@ export abstract class JeInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a === b;
+		return a === b
 	}
 }
 
 export abstract class JneInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -278,18 +274,18 @@ export abstract class JneInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a !== b;
+		return a !== b
 	}
 }
 
 export abstract class JgtInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -306,18 +302,18 @@ export abstract class JgtInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a > b;
+		return a > b
 	}
 }
 
 export abstract class JltInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -334,18 +330,18 @@ export abstract class JltInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a < b;
+		return a < b
 	}
 }
 
 export abstract class JgeInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -362,18 +358,18 @@ export abstract class JgeInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a >= b;
+		return a >= b
 	}
 }
 
 export abstract class JleInstruction extends ConditionalJumpInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -390,10 +386,10 @@ export abstract class JleInstruction extends ConditionalJumpInstruction {
 					{ type: "register", register: 3, value: 1 },
 				],
 			},
-		];
+		]
 	}
 
 	compare(a: number, b: number): boolean {
-		return a <= b;
+		return a <= b
 	}
 }

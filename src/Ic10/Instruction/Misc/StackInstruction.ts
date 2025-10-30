@@ -1,14 +1,10 @@
 // PopInstruction.ts
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
-import {
-	Instruction,
-	type InstructionArgument,
-	type InstructionTestData,
-} from "@/Ic10/Instruction/Helpers/Instruction";
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
+import { Instruction, type InstructionArgument, type InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction"
 export class PushInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -48,22 +44,22 @@ export class PushInstruction extends Instruction {
 				code: ["push 0", "push 0", "push 0", "pop r1"],
 				expected: [{ type: "register", register: 16, value: 2 }],
 			},
-		];
+		]
 	}
 
 	public argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber("value")];
+		return [ArgumentCalculators.anyNumber("value")]
 	}
 
 	public run(): void | Promise<void> {
-		const value = this.getArgumentValue("value");
-		this.context.push(value);
+		const value = this.getArgumentValue("value")
+		this.context.push(value)
 	}
 }
 export class PopInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -88,24 +84,24 @@ export class PopInstruction extends Instruction {
 				code: "move r3 42\npush r3\npop r4",
 				expected: [{ type: "register", register: 4, value: 42 }],
 			},
-		];
+		]
 	}
 
 	public argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.registerLink("register")];
+		return [ArgumentCalculators.registerLink("register")]
 	}
 
 	public run(): void | Promise<void> {
-		const register = this.getArgumentValue("register");
-		const value = this.context.pop();
-		this.context.setRegister(register, value);
+		const register = this.getArgumentValue("register")
+		const value = this.context.pop()
+		this.context.setRegister(register, value)
 	}
 }
 
 export class PeekInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -142,40 +138,40 @@ export class PeekInstruction extends Instruction {
 					{ type: "register", register: 2, value: 50 },
 				],
 			},
-		];
+		]
 	}
 
 	public argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.registerLink("register")];
+		return [ArgumentCalculators.registerLink("register")]
 	}
 
 	public run(): void | Promise<void> {
-		const register = this.getArgumentValue("register");
-		const value = this.context.peek();
-		this.context.setRegister(register, value);
+		const register = this.getArgumentValue("register")
+		const value = this.context.peek()
+		this.context.setRegister(register, value)
 	}
 }
 
 export class PokeInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
 				code: ["push 99", "poke 0 50"],
 				expected: [{ type: "stack", index: 0, value: 50 }],
 			},
-		];
+		]
 	}
 
 	public run(): void | Promise<void> {
-		const address = this.getArgumentValue<number>("address");
-		const value = this.getArgumentValue<number>("value");
-		this.context.stack().set(address, value);
+		const address = this.getArgumentValue<number>("address")
+		const value = this.getArgumentValue<number>("value")
+		this.context.stack().set(address, value)
 	}
 
 	public argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber("address"), ArgumentCalculators.anyNumber("value")];
+		return [ArgumentCalculators.anyNumber("address"), ArgumentCalculators.anyNumber("value")]
 	}
 }

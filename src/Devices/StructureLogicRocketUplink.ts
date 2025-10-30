@@ -1,7 +1,7 @@
 /* Auto-generated. Do not edit. */
-import { type DeviceConstructor, Structure } from "@/Core/Device";
+import { type DeviceConstructor, Structure } from "@/Core/Device"
 export class StructureLogicRocketUplink extends Structure {
 	constructor({ ...args }: Omit<DeviceConstructor, "hash">) {
-		super({ ...args, hash: 546002924 });
+		super({ ...args, hash: 546002924 })
 	}
 }

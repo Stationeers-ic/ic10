@@ -15505,13 +15505,31 @@ export const DEVICES: DevicesType = {
 				SlotName: "Gas Filter",
 				SlotType: "Gas Filter",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "FilterType", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: [
+					"Class",
+					"Damage",
+					"FilterType",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+				],
 			},
 			{
 				SlotName: "Gas Filter",
 				SlotType: "Gas Filter",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "FilterType", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: [
+					"Class",
+					"Damage",
+					"FilterType",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+				],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "HasVolume", "Item", "Paintable"],
@@ -20889,25 +20907,61 @@ export const DEVICES: DevicesType = {
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 		],
 		tags: ["HasChip", "HasImage", "HasLogic", "HasMemory", "HasPrefab", "HasSlot", "HasVolume", "Item", "Suit"],
@@ -22443,7 +22497,13 @@ export const DEVICES: DevicesType = {
 		deviceConnectCount: 0,
 		image: "/images/6/e/6ed46a36da6aa3445db4fd6ce218d6b1.png",
 		mods: [],
-		connections: ["Landing Pad Input", "Landing Pad Input", "Landing Pad Input", "Connection", "Pipe Liquid Output"],
+		connections: [
+			"Landing Pad Input",
+			"Landing Pad Input",
+			"Landing Pad Input",
+			"Connection",
+			"Pipe Liquid Output",
+		],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
@@ -42177,16 +42237,16 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-} as any;
-export default DEVICES;
-export type IdType = number | null;
-export type TitleType = string | null;
-export type KeyType = string | null;
-export type PrefabNameType = string | null;
-export type PrefabHashType = number | null;
-export type HasChipType = boolean | null;
-export type DeviceConnectCountType = number | null;
-export type ImageType = string | null;
+} as any
+export default DEVICES
+export type IdType = number | null
+export type TitleType = string | null
+export type KeyType = string | null
+export type PrefabNameType = string | null
+export type PrefabHashType = number | null
+export type HasChipType = boolean | null
+export type DeviceConnectCountType = number | null
+export type ImageType = string | null
 export type ModsType = (
 	| "A#-1"
 	| "A#-2"
@@ -42475,8 +42535,8 @@ export type ModsType = (
 	| "Whole Note"
 	| "XNOR"
 	| "XOR"
-)[];
-export type HasMemoryType = boolean | null;
+)[]
+export type HasMemoryType = boolean | null
 export type TagsType = (
 	| "AccessCard"
 	| "Backpack"
@@ -42517,13 +42577,13 @@ export type TagsType = (
 	| "Stackable"
 	| "Structure"
 	| "Suit"
-)[];
+)[]
 export type LogicsType =
 	| {
-			name: string;
-			permissions: string[];
+			name: string
+			permissions: string[]
 	  }[]
-	| null;
+	| null
 export type ConnectionsType = (
 	| "Chute Input"
 	| "Chute Output"
@@ -42545,41 +42605,41 @@ export type ConnectionsType = (
 	| "Power Output"
 	| "Power and Data Input"
 	| "Power and Data Output"
-)[];
+)[]
 export type SlotsType =
 	| {
-			SlotName: string;
-			SlotType: string;
-			SlotIndex: number;
-			logic: string[];
+			SlotName: string
+			SlotType: string
+			SlotIndex: number
+			logic: string[]
 	  }[]
-	| null;
-export type MemoryAccessType = string | null;
-export type MemorySizeType = number | null;
+	| null
+export type MemoryAccessType = string | null
+export type MemorySizeType = number | null
 export type LogicInstructionsType =
 	| {
-			Index: number;
-			Info: string;
-			Text: string;
+			Index: number
+			Info: string
+			Text: string
 	  }[]
-	| null;
+	| null
 export interface DeviceType {
-	id: IdType;
-	Title: TitleType;
-	Key: KeyType;
-	PrefabName: PrefabNameType;
-	PrefabHash: PrefabHashType;
-	hasChip: HasChipType;
-	deviceConnectCount: DeviceConnectCountType;
-	image: ImageType;
-	mods: ModsType;
-	hasMemory: HasMemoryType;
-	tags: TagsType;
-	logics: LogicsType;
-	connections: ConnectionsType;
-	slots: SlotsType;
-	memoryAccess: MemoryAccessType;
-	memorySize: MemorySizeType;
-	logicInstructions: LogicInstructionsType;
+	id: IdType
+	Title: TitleType
+	Key: KeyType
+	PrefabName: PrefabNameType
+	PrefabHash: PrefabHashType
+	hasChip: HasChipType
+	deviceConnectCount: DeviceConnectCountType
+	image: ImageType
+	mods: ModsType
+	hasMemory: HasMemoryType
+	tags: TagsType
+	logics: LogicsType
+	connections: ConnectionsType
+	slots: SlotsType
+	memoryAccess: MemoryAccessType
+	memorySize: MemorySizeType
+	logicInstructions: LogicInstructionsType
 }
-export type DevicesType = Record<number, DeviceType>;
+export type DevicesType = Record<number, DeviceType>

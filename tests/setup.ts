@@ -1,6 +1,6 @@
-import { beforeAll } from "bun:test";
-import { Languages } from "@/Languages";
-import i18n from "@/Languages/lang";
+import { beforeAll } from "bun:test"
+import { Languages } from "@/Languages"
+import i18n from "@/Languages/lang"
 
 beforeAll(async () => {
 	await i18n
@@ -10,5 +10,5 @@ beforeAll(async () => {
 			debug: false,
 			resources: Languages,
 		})
-		.then(() => console.log("🟦🟦 Язык загружен 🟦🟦"));
-});
+		.then(() => console.log("🟦🟦 Язык загружен 🟦🟦"))
+})

@@ -1,7 +1,7 @@
 /* Auto-generated. Do not edit. */
-import { type DeviceConstructor, Structure } from "@/Core/Device";
+import { type DeviceConstructor, Structure } from "@/Core/Device"
 export class StructureSmallDirectHeatExchangeGastoGas extends Structure {
 	constructor({ ...args }: Omit<DeviceConstructor, "hash">) {
-		super({ ...args, hash: 1310303582 });
+		super({ ...args, hash: 1310303582 })
 	}
 }

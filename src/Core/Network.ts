@@ -1,59 +1,59 @@
-import { v4 as uuidv4 } from "uuid";
-import type { Device } from "@/Core/Device";
-import type { PortType } from "./Device/DevicePorts";
+import { v4 as uuidv4 } from "uuid"
+import type { Device } from "@/Core/Device"
+import type { PortType } from "./Device/DevicePorts"
 
-export type NetworkType = "data" | "power" | "chute" | "pipe" | "wireless" | "landing";
+export type NetworkType = "data" | "power" | "chute" | "pipe" | "wireless" | "landing"
 
 export type NetworkConstructor = {
-	networkType: NetworkType;
-	id?: string;
-};
+	networkType: NetworkType
+	id?: string
+}
 
 export class Network {
-	public readonly devices: Set<Device> = new Set();
-	public readonly chanels = new Map<number, number>();
-	public readonly $id: string;
-	public readonly type: NetworkType;
+	public readonly devices: Set<Device> = new Set()
+	public readonly chanels = new Map<number, number>()
+	public readonly $id: string
+	public readonly type: NetworkType
 
 	constructor(
 		{ networkType, id }: NetworkConstructor = {
 			networkType: "data",
 		},
 	) {
-		this.type = networkType;
-		this.$id = id ?? uuidv4();
+		this.type = networkType
+		this.$id = id ?? uuidv4()
 	}
 
 	get id() {
-		return this.$id;
+		return this.$id
 	}
 
 	public apply(device: Device, port: PortType | undefined = undefined) {
-		this.devices.add(device);
-		let portIndex: number = -1;
+		this.devices.add(device)
+		let portIndex: number = -1
 		if (typeof port === "undefined") {
-			portIndex = device.ports.getDefaultPortIndex();
+			portIndex = device.ports.getDefaultPortIndex()
 		} else {
-			portIndex = device.ports.getPortIndex(port);
+			portIndex = device.ports.getPortIndex(port)
 		}
 		if (portIndex >= 0) {
-			device.ports.setNetwork(portIndex, this);
+			device.ports.setNetwork(portIndex, this)
 		}
 	}
 
 	deviceById(id: number): Device | undefined {
 		for (const device of this.devices) {
 			if (device.id === id) {
-				return device;
+				return device
 			}
 		}
 	}
 
 	devicesByHash(hash: number): Device[] {
 		try {
-			return [...this.devices].filter((device) => device.hash === hash);
+			return [...this.devices].filter((device) => device.hash === hash)
 		} catch (e) {
-			return [];
+			return []
 		}
 	}
 }

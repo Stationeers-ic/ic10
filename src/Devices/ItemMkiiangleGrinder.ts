@@ -1,7 +1,7 @@
 /* Auto-generated. Do not edit. */
-import { type DeviceConstructor, Item } from "@/Core/Device";
+import { type DeviceConstructor, Item } from "@/Core/Device"
 export class ItemMkiiangleGrinder extends Item {
 	constructor({ ...args }: Omit<DeviceConstructor, "hash">) {
-		super({ ...args, hash: 240174650 });
+		super({ ...args, hash: 240174650 })
 	}
 }

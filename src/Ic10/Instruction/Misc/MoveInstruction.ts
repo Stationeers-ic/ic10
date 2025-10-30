@@ -1,14 +1,10 @@
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
-import {
-	Instruction,
-	type InstructionArgument,
-	type InstructionTestData,
-} from "@/Ic10/Instruction/Helpers/Instruction";
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
+import { Instruction, type InstructionArgument, type InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction"
 
 export class MoveInstruction extends Instruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -40,16 +36,16 @@ export class MoveInstruction extends Instruction {
 				code: "move r6 %101",
 				expected: [{ type: "register", register: 6, value: 5 }],
 			},
-		];
+		]
 	}
 
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.registerLink(), ArgumentCalculators.anyNumber()];
+		return [ArgumentCalculators.registerLink(), ArgumentCalculators.anyNumber()]
 	}
 
 	override run(): void {
-		const r = this.getArgumentValue<number>(0);
-		const v = this.getArgumentValue<number>(1);
-		this.context.setRegister(r, v);
+		const r = this.getArgumentValue<number>(0)
+		const v = this.getArgumentValue<number>(1)
+		this.context.setRegister(r, v)
 	}
 }

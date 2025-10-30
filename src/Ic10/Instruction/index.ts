@@ -78,7 +78,7 @@ import {
 	SnazInstruction,
 	SneInstruction,
 	SnezInstruction,
-} from "@/Ic10/Instruction/Condition";
+} from "@/Ic10/Instruction/Condition"
 import {
 	BdnvlInstruction,
 	BdnvsInstruction,
@@ -103,8 +103,8 @@ import {
 	SdInstruction,
 	SInstruction,
 	SsInstruction,
-} from "@/Ic10/Instruction/Device";
-import { JalInstruction, JInstruction, jrInstruction } from "@/Ic10/Instruction/Jump";
+} from "@/Ic10/Instruction/Device"
+import { JalInstruction, JInstruction, jrInstruction } from "@/Ic10/Instruction/Jump"
 import {
 	AbsInstruction,
 	AcosInstruction,
@@ -142,22 +142,22 @@ import {
 	TanInstruction,
 	TruncInstruction,
 	XorInstruction,
-} from "@/Ic10/Instruction/Math";
-import { AliasInstruction } from "@/Ic10/Instruction/Misc/AliasInstruction";
-import { DefineInstruction } from "@/Ic10/Instruction/Misc/DefineInstruction";
-import { MoveInstruction } from "@/Ic10/Instruction/Misc/MoveInstruction";
-import { HcfInstruction, SleepInstruction, YieldInstruction } from "@/Ic10/Instruction/Misc/OtherInstruction";
+} from "@/Ic10/Instruction/Math"
+import { AliasInstruction } from "@/Ic10/Instruction/Misc/AliasInstruction"
+import { DefineInstruction } from "@/Ic10/Instruction/Misc/DefineInstruction"
+import { MoveInstruction } from "@/Ic10/Instruction/Misc/MoveInstruction"
+import { HcfInstruction, SleepInstruction, YieldInstruction } from "@/Ic10/Instruction/Misc/OtherInstruction"
 import {
 	PeekInstruction,
 	PokeInstruction,
 	PopInstruction,
 	PushInstruction,
-} from "@/Ic10/Instruction/Misc/StackInstruction";
+} from "@/Ic10/Instruction/Misc/StackInstruction"
 
-export type InstructionName = keyof typeof instructions;
+export type InstructionName = keyof typeof instructions
 
 export function isInstructionName(name: string): name is InstructionName {
-	return name in instructions;
+	return name in instructions
 }
 
 export const instructions = {
@@ -310,4 +310,4 @@ export const instructions = {
 	trunc: TruncInstruction,
 	xor: XorInstruction,
 	yield: YieldInstruction,
-} as const;
+} as const

@@ -1,7 +1,7 @@
 /* Auto-generated. Do not edit. */
-import { type DeviceConstructor, Structure } from "@/Core/Device";
+import { type DeviceConstructor, Structure } from "@/Core/Device"
 export class StructureSleeperVertical extends Structure {
 	constructor({ ...args }: Omit<DeviceConstructor, "hash">) {
-		super({ ...args, hash: -1300059018 });
+		super({ ...args, hash: -1300059018 })
 	}
 }

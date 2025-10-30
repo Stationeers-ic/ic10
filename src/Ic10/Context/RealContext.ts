@@ -1,7 +1,7 @@
 // RealContext.ts
-import type { Device } from "@/Core/Device";
-import type { StackInterface } from "@/Core/Stack";
-import { LogicBatchMethod, LogicReagentMode } from "@/Defines/data";
+import type { Device } from "@/Core/Device"
+import type { StackInterface } from "@/Core/Stack"
+import { LogicBatchMethod, LogicReagentMode } from "@/Defines/data"
 import {
 	Context,
 	type IDefinesContext,
@@ -14,50 +14,50 @@ import {
 	type IExecutionContext,
 	type IMemoryContext,
 	type IStackContext,
-} from "@/Ic10/Context/Context";
-import { DebugInfo, ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors";
-import type { Define } from "@/Ic10/Instruction/Helpers/Define";
-import i18n from "@/Languages/lang";
+} from "@/Ic10/Context/Context"
+import { DebugInfo, ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors"
+import type { Define } from "@/Ic10/Instruction/Helpers/Define"
+import i18n from "@/Languages/lang"
 
 // =============================================
 // Базовый класс с основной логикой выполнения
 // =============================================
 
 abstract class ExecutionBase extends Context implements IExecutionContext {
-	protected line = 0;
-	protected jumps_count = 0;
+	protected line = 0
+	protected jumps_count = 0
 
 	override getJumpsCount(): number {
-		return this.jumps_count;
+		return this.jumps_count
 	}
 
 	override incrementJumpsCount(): void {
-		this.jumps_count += 1;
+		this.jumps_count += 1
 	}
 
 	override getNextLineIndex(): number {
-		return this.line;
+		return this.line
 	}
 
 	override setNextLineIndex(index?: number, writeRA: boolean = false): void {
-		const fromLine = this.line;
+		const fromLine = this.line
 
 		if (writeRA) {
-			this.writeReturnAddress();
+			this.writeReturnAddress()
 		}
 
-		this.updateLineIndex(index);
-		this.updateLineNumberParameter();
+		this.updateLineIndex(index)
+		this.updateLineNumberParameter()
 
 		// Emit jump event when line changes explicitly
 		if (typeof index !== "undefined" && fromLine !== index) {
-			this.emit("jump", fromLine, index);
+			this.emit("jump", fromLine, index)
 		}
 	}
 
 	private writeReturnAddress(): void {
-		const originalLine = this.line;
-		const raDefine = this.getDefines("ra");
+		const originalLine = this.line
+		const raDefine = this.getDefines("ra")
 
 		if (!raDefine?.value) {
 			this.addError(
@@ -65,36 +65,36 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 					message: i18n.t("error.ra_not_found"),
 					line: originalLine,
 				}),
-			);
-			return;
+			)
+			return
 		}
 
-		const raValue = parseInt(raDefine.value, 10);
+		const raValue = parseInt(raDefine.value, 10)
 		if (Number.isNaN(raValue)) {
 			this.addError(
 				new RuntimeIc10Error({
 					message: i18n.t("error.ra_not_found"),
 					line: originalLine,
 				}),
-			);
-			return;
+			)
+			return
 		}
 
-		this.setRegister(raValue, originalLine);
+		this.setRegister(raValue, originalLine)
 	}
 
 	private updateLineIndex(index?: number): void {
 		if (typeof index !== "undefined") {
-			this.line = Math.max(0, index);
-			this.incrementJumpsCount();
+			this.line = Math.max(0, index)
+			this.incrementJumpsCount()
 		} else {
-			this.line += 1;
+			this.line += 1
 		}
 	}
 
 	private updateLineNumberParameter(): void {
 		try {
-			this.housing.props.forceWrite("LineNumber", this.line);
+			this.housing.props.forceWrite("LineNumber", this.line)
 		} catch (e) {}
 	}
 }
@@ -105,18 +105,18 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 
 abstract class DefinesBase extends ExecutionBase implements IDefinesContext {
 	override hasDefines(name: string): boolean {
-		return this.chip.defines.has(name);
+		return this.chip.defines.has(name)
 	}
 
 	override setDefines(name: string, value: Define): void {
-		this.chip.defines.set(name, value);
-		this.emit("defineSet", name, value);
+		this.chip.defines.set(name, value)
+		this.emit("defineSet", name, value)
 	}
 
 	override getDefines(name: string): Define | undefined {
-		const value = this.chip.defines.get(name);
-		this.emit("defineGet", name, value);
-		return value;
+		const value = this.chip.defines.get(name)
+		this.emit("defineGet", name, value)
+		return value
 	}
 }
 
@@ -126,27 +126,27 @@ abstract class DefinesBase extends ExecutionBase implements IDefinesContext {
 
 abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 	override hasRegister(reg: number): boolean {
-		return this.chip.registers.has(reg);
+		return this.chip.registers.has(reg)
 	}
 
 	override getRegister(reg: number): number {
 		if (!this.hasRegister(reg)) {
-			this.handleRegisterNotFound(reg);
-			return 0;
+			this.handleRegisterNotFound(reg)
+			return 0
 		}
-		const value = this.chip.registers.get(reg) ?? 0;
-		this.emit("registerRead", reg, value);
-		return value;
+		const value = this.chip.registers.get(reg) ?? 0
+		this.emit("registerRead", reg, value)
+		return value
 	}
 
 	override setRegister(reg: number, value: number): void {
 		if (!this.hasRegister(reg)) {
-			this.handleRegisterNotFound(reg);
-			return;
+			this.handleRegisterNotFound(reg)
+			return
 		}
-		const oldValue = this.chip.registers.get(reg) ?? 0;
-		this.chip.registers.set(reg, value);
-		this.emit("registerWrite", reg, oldValue, value);
+		const oldValue = this.chip.registers.get(reg) ?? 0
+		this.chip.registers.set(reg, value)
+		this.emit("registerWrite", reg, oldValue, value)
 	}
 
 	private handleRegisterNotFound(reg: number): void {
@@ -154,7 +154,7 @@ abstract class MemoryBase extends DefinesBase implements IMemoryContext {
 			new RuntimeIc10Error({
 				message: i18n.t("error.register_not_found", { reg }),
 			}),
-		);
+		)
 	}
 }
 
@@ -168,7 +168,7 @@ abstract class DeviceHelpers extends MemoryBase {
 			message: i18n.t("error.device_not_found", { identifier, type }),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
-		});
+		})
 	}
 
 	protected createNoSlotsError(identifier: string | number, type: string): RuntimeIc10Error {
@@ -176,7 +176,7 @@ abstract class DeviceHelpers extends MemoryBase {
 			message: i18n.t("error.device_no_slots"),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
-		});
+		})
 	}
 
 	protected createSlotNotFoundError(slot: number): RuntimeIc10Error {
@@ -184,27 +184,27 @@ abstract class DeviceHelpers extends MemoryBase {
 			message: i18n.t("error.slot_not_found", { slot }),
 			line: this.getNextLineIndex(),
 			severity: ErrorSeverity.Strong,
-		});
+		})
 	}
 
 	protected clearDeviceStack(device: Device | undefined): void {
-		device?.memory?.reset();
+		device?.memory?.reset()
 	}
 
 	protected getDeviceStack(device: Device | undefined, index: number): number {
-		return device?.memory?.get(index) ?? 0;
+		return device?.memory?.get(index) ?? 0
 	}
 
 	protected setDeviceStack(device: Device | undefined, index: number, value: number): void {
-		device?.memory?.set(index, value);
+		device?.memory?.set(index, value)
 	}
 
 	protected getDeviceParameter(device: Device | undefined, prop: number): number {
-		return device?.props?.read(prop) ?? 0;
+		return device?.props?.read(prop) ?? 0
 	}
 
 	protected setDeviceParameter(device: Device | undefined, prop: number, value: number): void {
-		device?.props?.write(prop, value);
+		device?.props?.write(prop, value)
 	}
 
 	protected getDeviceSlotParameter(
@@ -214,20 +214,20 @@ abstract class DeviceHelpers extends MemoryBase {
 		identifier: string | number,
 		type: string,
 	): number {
-		if (!device) return 0;
+		if (!device) return 0
 
 		if (!device.hasSlots) {
-			this.addError(this.createNoSlotsError(identifier, type));
-			return 0;
+			this.addError(this.createNoSlotsError(identifier, type))
+			return 0
 		}
 
-		const slotDevice = device.slots?.getSlot(slot);
+		const slotDevice = device.slots?.getSlot(slot)
 		if (!slotDevice) {
-			this.addError(this.createSlotNotFoundError(slot));
-			return 0;
+			this.addError(this.createSlotNotFoundError(slot))
+			return 0
 		}
 
-		return slotDevice.getProp(prop);
+		return slotDevice.getProp(prop)
 	}
 
 	protected setDeviceSlotParameter(
@@ -238,24 +238,24 @@ abstract class DeviceHelpers extends MemoryBase {
 		identifier: string | number,
 		type: string,
 	): void {
-		if (!device) return;
+		if (!device) return
 
 		if (!device.hasSlots) {
-			this.addError(this.createNoSlotsError(identifier, type));
-			return;
+			this.addError(this.createNoSlotsError(identifier, type))
+			return
 		}
 
-		const slotDevice = device.slots?.getSlot(slot);
+		const slotDevice = device.slots?.getSlot(slot)
 		if (!slotDevice) {
-			this.addError(this.createSlotNotFoundError(slot));
-			return;
+			this.addError(this.createSlotNotFoundError(slot))
+			return
 		}
 
-		slotDevice.setProp(prop, value);
+		slotDevice.setProp(prop, value)
 	}
 
 	protected calculateBatchResult(values: number[], mode: number): number {
-		if (values.length === 0) return 0;
+		if (values.length === 0) return 0
 
 		if (!LogicBatchMethod.hasValue(mode)) {
 			this.addError(
@@ -264,33 +264,33 @@ abstract class DeviceHelpers extends MemoryBase {
 					line: this.getNextLineIndex(),
 					severity: ErrorSeverity.Strong,
 				}),
-			);
-			return 0;
+			)
+			return 0
 		}
 
-		const method = LogicBatchMethod.getByValue(mode);
+		const method = LogicBatchMethod.getByValue(mode)
 		switch (method) {
 			case "Average":
-				return values.reduce((sum, value) => sum + value, 0) / values.length;
+				return values.reduce((sum, value) => sum + value, 0) / values.length
 			case "Maximum":
-				return Math.max(...values);
+				return Math.max(...values)
 			case "Minimum":
-				return Math.min(...values);
+				return Math.min(...values)
 			case "Sum":
-				return values.reduce((sum, value) => sum + value, 0);
+				return values.reduce((sum, value) => sum + value, 0)
 			default:
-				return 0;
+				return 0
 		}
 	}
 
 	protected getDevicesByHashAndName(deviceHash: number, deviceName: number): Device[] {
 		return Array.from(this.housing.network.devices).filter(
 			(device) => device.hash === deviceHash && device.name.valueOf() === deviceName,
-		);
+		)
 	}
 
 	protected getDevicesByHash(deviceHash: number): Device[] {
-		return Array.from(this.housing.network.devices).filter((device) => device.hash === deviceHash);
+		return Array.from(this.housing.network.devices).filter((device) => device.hash === deviceHash)
 	}
 }
 
@@ -301,72 +301,72 @@ abstract class DeviceHelpers extends MemoryBase {
 abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinContext {
 	protected getDeviceByPin(pin: number): Device | undefined {
 		if (pin < 0) {
-			return this.housing;
+			return this.housing
 		}
 
-		const device = this.housing.getConnectedDevices(pin);
+		const device = this.housing.getConnectedDevices(pin)
 		if (!device) {
-			this.addError(this.createDeviceNotFoundError(pin, "on pin"));
+			this.addError(this.createDeviceNotFoundError(pin, "on pin"))
 		}
 
-		return device;
+		return device
 	}
 
 	override isConnectDeviceByPin(pin: number): boolean {
-		return pin < 0 ? true : Boolean(this.housing.getConnectedDevices(pin));
+		return pin < 0 ? true : Boolean(this.housing.getConnectedDevices(pin))
 	}
 
 	override getDeviceParameterByPin(pin: number, prop: number): number {
-		const device = this.getDeviceByPin(pin);
-		const value = this.getDeviceParameter(device, prop);
-		this.emit("deviceParameterRead", pin, prop, value);
-		return value;
+		const device = this.getDeviceByPin(pin)
+		const value = this.getDeviceParameter(device, prop)
+		this.emit("deviceParameterRead", pin, prop, value)
+		return value
 	}
 
 	override setDeviceParameterByPin(pin: number, prop: number, value: number): void {
-		const device = this.getDeviceByPin(pin);
-		const oldValue = this.getDeviceParameter(device, prop);
-		this.setDeviceParameter(device, prop, value);
-		this.emit("deviceParameterWrite", pin, prop, oldValue, value);
+		const device = this.getDeviceByPin(pin)
+		const oldValue = this.getDeviceParameter(device, prop)
+		this.setDeviceParameter(device, prop, value)
+		this.emit("deviceParameterWrite", pin, prop, oldValue, value)
 	}
 
 	override clearDeviceStackByPin(pin: number): void {
-		this.clearDeviceStack(this.getDeviceByPin(pin));
-		this.emit("deviceStackClear", pin);
+		this.clearDeviceStack(this.getDeviceByPin(pin))
+		this.emit("deviceStackClear", pin)
 	}
 
 	override getDeviceStackByPin(pin: number, index: number): number {
-		const device = this.getDeviceByPin(pin);
-		const value = this.getDeviceStack(device, index);
-		this.emit("deviceStackRead", pin, index, value);
-		return value;
+		const device = this.getDeviceByPin(pin)
+		const value = this.getDeviceStack(device, index)
+		this.emit("deviceStackRead", pin, index, value)
+		return value
 	}
 
 	override setDeviceStackByPin(pin: number, index: number, value: number): void {
-		const device = this.getDeviceByPin(pin);
-		const oldValue = this.getDeviceStack(device, index);
-		this.setDeviceStack(device, index, value);
-		this.emit("deviceStackWrite", pin, index, oldValue, value);
+		const device = this.getDeviceByPin(pin)
+		const oldValue = this.getDeviceStack(device, index)
+		this.setDeviceStack(device, index, value)
+		this.emit("deviceStackWrite", pin, index, oldValue, value)
 	}
 
 	override canLoadDeviceParameterByPin(pin: number, prop: number): boolean {
-		const device = this.getDeviceByPin(pin);
-		return device?.props?.canLoad(prop) ?? false;
+		const device = this.getDeviceByPin(pin)
+		return device?.props?.canLoad(prop) ?? false
 	}
 
 	override canStoreDeviceParameterByPin(pin: number, prop: number): boolean {
-		const device = this.getDeviceByPin(pin);
-		return device?.props?.canStore(prop) ?? false;
+		const device = this.getDeviceByPin(pin)
+		return device?.props?.canStore(prop) ?? false
 	}
 
 	override getDevicePortChanelByPin(pin: number, port: number, chanel: number): number {
-		const device = this.getDeviceByPin(pin);
-		return device?.ports.getPortChanel(port, chanel) ?? 0;
+		const device = this.getDeviceByPin(pin)
+		return device?.ports.getPortChanel(port, chanel) ?? 0
 	}
 
 	override setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void {
-		const device = this.getDeviceByPin(pin);
-		device?.ports.setPortChanel(port, chanel, value);
+		const device = this.getDeviceByPin(pin)
+		device?.ports.setPortChanel(port, chanel, value)
 	}
 }
 
@@ -375,65 +375,65 @@ abstract class DevicesByPinBase extends DeviceHelpers implements IDevicesByPinCo
 // =============================================
 
 abstract class StackBase extends DevicesByPinBase implements IStackContext {
-	private spValue?: number = undefined;
+	private spValue?: number = undefined
 
 	override push(value: number): void {
-		const spRegister = this.getSpRegister();
-		const index = this.getRegister(spRegister);
-		this.stack().set(index, value);
-		this.setRegister(spRegister, index + 1);
-		this.emit("stackPush", value);
+		const spRegister = this.getSpRegister()
+		const index = this.getRegister(spRegister)
+		this.stack().set(index, value)
+		this.setRegister(spRegister, index + 1)
+		this.emit("stackPush", value)
 	}
 
 	override pop(): number {
-		const spRegister = this.getSpRegister();
-		const index = this.getRegister(spRegister) - 1;
-		if (index < 0) return 0;
-		const value = this.stack().get(index);
-		this.setRegister(spRegister, index);
-		this.emit("stackPop", value);
-		return value;
+		const spRegister = this.getSpRegister()
+		const index = this.getRegister(spRegister) - 1
+		if (index < 0) return 0
+		const value = this.stack().get(index)
+		this.setRegister(spRegister, index)
+		this.emit("stackPop", value)
+		return value
 	}
 
 	override peek(): number {
-		const spRegister = this.getSpRegister();
-		const index = this.getRegister(spRegister) - 1;
-		if (index < 0) return 0;
-		const value = this.stack().get(index);
-		this.emit("stackPeek", value);
-		return value;
+		const spRegister = this.getSpRegister()
+		const index = this.getRegister(spRegister) - 1
+		if (index < 0) return 0
+		const value = this.stack().get(index)
+		this.emit("stackPeek", value)
+		return value
 	}
 
 	override stack(): StackInterface {
-		return this.housing.$memory;
+		return this.housing.$memory
 	}
 
 	private getSpRegister(): number {
 		if (typeof this.spValue !== "undefined") {
-			return this.spValue;
+			return this.spValue
 		}
-		const spDefine = this.getDefines("sp");
+		const spDefine = this.getDefines("sp")
 
 		if (!spDefine?.value) {
 			this.addError(
 				new RuntimeIc10Error({
 					message: i18n.t("error.sp_not_found"),
 				}),
-			);
-			return 0;
+			)
+			return 0
 		}
 
-		const spValue = parseInt(spDefine.value, 10);
+		const spValue = parseInt(spDefine.value, 10)
 		if (Number.isNaN(spValue)) {
 			this.addError(
 				new RuntimeIc10Error({
 					message: i18n.t("error.sp_not_found"),
 				}),
-			);
-			return 0;
+			)
+			return 0
 		}
-		this.spValue = spValue;
-		return this.spValue;
+		this.spValue = spValue
+		return this.spValue
 	}
 }
 
@@ -443,104 +443,104 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 
 abstract class DevicesByHashBase extends StackBase implements IDevicesByHashContext {
 	override deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number {
-		const devices = this.housing.network.devicesByHash(deviceHash);
-		const values = devices.map((device) => this.getDeviceParameter(device, prop));
-		return this.calculateBatchResult(values, mode);
+		const devices = this.housing.network.devicesByHash(deviceHash)
+		const values = devices.map((device) => this.getDeviceParameter(device, prop))
+		return this.calculateBatchResult(values, mode)
 	}
 
 	override deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void {
-		const devices = this.housing.network.devicesByHash(deviceHash);
+		const devices = this.housing.network.devicesByHash(deviceHash)
 		for (const device of devices) {
-			this.setDeviceParameter(device, prop, value);
+			this.setDeviceParameter(device, prop, value)
 		}
 	}
 
 	override deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number {
-		const devices = this.housing.network.devicesByHash(deviceHash);
+		const devices = this.housing.network.devicesByHash(deviceHash)
 		const values = devices
 			.filter((device) => device.hasSlots)
-			.map((device) => this.getDeviceSlotParameter(device, slot, param, device.hash, "on hash"));
-		return this.calculateBatchResult(values, mode);
+			.map((device) => this.getDeviceSlotParameter(device, slot, param, device.hash, "on hash"))
+		return this.calculateBatchResult(values, mode)
 	}
 }
 
 abstract class DevicesByHashAndNameBase extends DevicesByHashBase implements IDevicesByHashAndNameContext {
 	override deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number {
-		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
-		const values = devices.map((device) => this.getDeviceParameter(device, param));
-		return this.calculateBatchResult(values, mode);
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName)
+		const values = devices.map((device) => this.getDeviceParameter(device, param))
+		return this.calculateBatchResult(values, mode)
 	}
 
 	override deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void {
-		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName)
 		for (const device of devices) {
-			this.setDeviceParameter(device, param, value);
+			this.setDeviceParameter(device, param, value)
 		}
 	}
 }
 
 abstract class DevicesByIdBase extends DevicesByHashAndNameBase implements IDevicesByIdContext {
 	protected getDeviceById(id: number): Device | undefined {
-		const device = this.housing.network.deviceById(id);
+		const device = this.housing.network.deviceById(id)
 		if (!device) {
-			this.addError(this.createDeviceNotFoundError(id, "with id"));
+			this.addError(this.createDeviceNotFoundError(id, "with id"))
 		}
-		return device;
+		return device
 	}
 
 	override isConnectDeviceById(id: number): boolean {
-		return Boolean(this.housing.network.deviceById(id));
+		return Boolean(this.housing.network.deviceById(id))
 	}
 
 	override clearDeviceStackById(id: number): void {
-		this.clearDeviceStack(this.getDeviceById(id));
+		this.clearDeviceStack(this.getDeviceById(id))
 	}
 
 	override getDeviceStackById(id: number, index: number): number {
-		return this.getDeviceStack(this.getDeviceById(id), index);
+		return this.getDeviceStack(this.getDeviceById(id), index)
 	}
 
 	override setDeviceStackById(id: number, index: number, value: number): void {
-		this.setDeviceStack(this.getDeviceById(id), index, value);
+		this.setDeviceStack(this.getDeviceById(id), index, value)
 	}
 
 	override getDeviceParameterById(id: number, prop: number): number {
-		return this.getDeviceParameter(this.getDeviceById(id), prop);
+		return this.getDeviceParameter(this.getDeviceById(id), prop)
 	}
 
 	override setDeviceParameterById(id: number, prop: number, value: number): void {
-		this.setDeviceParameter(this.getDeviceById(id), prop, value);
+		this.setDeviceParameter(this.getDeviceById(id), prop, value)
 	}
 }
 
 abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotContext {
 	override setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void {
-		this.setDeviceSlotParameter(this.getDeviceById(deviceId), slot, prop, value, deviceId, "with id");
+		this.setDeviceSlotParameter(this.getDeviceById(deviceId), slot, prop, value, deviceId, "with id")
 	}
 
 	override setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void {
-		this.setDeviceSlotParameter(this.getDeviceByPin(devicePin), slot, prop, value, devicePin, "on pin");
+		this.setDeviceSlotParameter(this.getDeviceByPin(devicePin), slot, prop, value, devicePin, "on pin")
 	}
 
 	override setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void {
-		const devices = this.housing.network.devicesByHash(deviceHash);
+		const devices = this.housing.network.devicesByHash(deviceHash)
 		for (const device of devices) {
-			this.setDeviceSlotParameter(device, slot, prop, value, device.hash, "on hash");
+			this.setDeviceSlotParameter(device, slot, prop, value, device.hash, "on hash")
 		}
 	}
 
 	override getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number {
-		return this.getDeviceSlotParameter(this.getDeviceById(deviceId), slot, prop, deviceId, "with id");
+		return this.getDeviceSlotParameter(this.getDeviceById(deviceId), slot, prop, deviceId, "with id")
 	}
 
 	override getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number {
-		return this.getDeviceSlotParameter(this.getDeviceByPin(devicePin), slot, prop, devicePin, "on pin");
+		return this.getDeviceSlotParameter(this.getDeviceByPin(devicePin), slot, prop, devicePin, "on pin")
 	}
 
 	override getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number {
-		const devices = this.getDevicesByHash(deviceHash);
-		const values = devices.map((device) => this.getDeviceSlotParameter(device, slot, prop, device.hash, "on hash"));
-		return this.calculateBatchResult(values, mode);
+		const devices = this.getDevicesByHash(deviceHash)
+		const values = devices.map((device) => this.getDeviceSlotParameter(device, slot, prop, device.hash, "on hash"))
+		return this.calculateBatchResult(values, mode)
 	}
 
 	override getBatchDeviceSlotParameterByHashAndName(
@@ -550,23 +550,23 @@ abstract class DevicesSlotBase extends DevicesByIdBase implements IDevicesSlotCo
 		prop: number,
 		mode: number,
 	): number {
-		const devices = this.getDevicesByHashAndName(deviceHash, deviceName);
+		const devices = this.getDevicesByHashAndName(deviceHash, deviceName)
 		const values = devices.map((device) =>
 			this.getDeviceSlotParameter(device, slot, prop, device.id, "on hash and name"),
-		);
-		return this.calculateBatchResult(values, mode);
+		)
+		return this.calculateBatchResult(values, mode)
 	}
 }
 
 abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesReagentContext {
 	override getDeviceReagentByPin(devicePin: number, mode: number, reagent: number): number {
-		const device = this.getDeviceByPin(devicePin);
-		return device ? this.getReagent(device, reagent, mode) : 0;
+		const device = this.getDeviceByPin(devicePin)
+		return device ? this.getReagent(device, reagent, mode) : 0
 	}
 
 	override getDeviceReagentById(deviceId: number, mode: number, reagent: number): number {
-		const device = this.getDeviceById(deviceId);
-		return device ? this.getReagent(device, reagent, mode) : 0;
+		const device = this.getDeviceById(deviceId)
+		return device ? this.getReagent(device, reagent, mode) : 0
 	}
 
 	private getReagent(device: Device, reagent: number, mode: number): number {
@@ -577,26 +577,26 @@ abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesRea
 					line: this.getNextLineIndex(),
 					severity: ErrorSeverity.Strong,
 				}),
-			);
-			return 0;
+			)
+			return 0
 		}
 
-		const modeType = LogicReagentMode.getByValue(mode);
+		const modeType = LogicReagentMode.getByValue(mode)
 		switch (modeType) {
 			case "Contents":
-				return device.reagents?.get(reagent) ?? 0;
+				return device.reagents?.get(reagent) ?? 0
 			case "Recipe":
 				//TODO: implement
-				this.logUnimplementedMode("Recipe");
-				return 0;
+				this.logUnimplementedMode("Recipe")
+				return 0
 			case "Required":
 				//TODO: implement
-				this.logUnimplementedMode("Required");
-				return 0;
+				this.logUnimplementedMode("Required")
+				return 0
 			case "TotalContents":
-				return this.getTotalContents(device);
+				return this.getTotalContents(device)
 			default:
-				return 0;
+				return 0
 		}
 	}
 
@@ -607,17 +607,17 @@ abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesRea
 				line: this.getNextLineIndex(),
 				severity: ErrorSeverity.Warning,
 			}),
-		);
+		)
 	}
 
 	private getTotalContents(device: Device): number {
-		if (!device.reagents) return 0;
+		if (!device.reagents) return 0
 
-		let total = 0;
+		let total = 0
 		for (const reagent of device.reagents) {
-			total += reagent.count;
+			total += reagent.count
 		}
-		return total;
+		return total
 	}
 }
 
@@ -627,21 +627,21 @@ abstract class DevicesReagentBase extends DevicesSlotBase implements IDevicesRea
 
 export class RealContext extends DevicesReagentBase {
 	override reset(): void {
-		this.$housing.reset();
-		this.line = 0;
-		this.jumps_count = 0;
-		this.emit("reset");
+		this.$housing.reset()
+		this.line = 0
+		this.jumps_count = 0
+		this.emit("reset")
 	}
 
 	override validChip(): boolean {
-		const codeLength = this.$housing.chip?.getIc10Code()?.length;
-		return typeof codeLength === "number" && codeLength > 0;
+		const codeLength = this.$housing.chip?.getIc10Code()?.length
+		return typeof codeLength === "number" && codeLength > 0
 	}
 
 	async sleep(seconds: number) {
 		return new Promise<void>((resolve) => {
-			setTimeout(resolve, seconds * 1000);
-		});
+			setTimeout(resolve, seconds * 1000)
+		})
 	}
 
 	yield(): void {}
@@ -652,7 +652,7 @@ export class RealContext extends DevicesReagentBase {
 				message: i18n.t("error.hcf"),
 				severity: ErrorSeverity.Strong,
 			}),
-		);
+		)
 	}
 
 	debug(...args: any[]): void {
@@ -663,16 +663,16 @@ export class RealContext extends DevicesReagentBase {
 						if (typeof arg === "string") {
 							if (arg.startsWith("r")) {
 								try {
-									const reg = parseInt(arg.slice(1), 10);
-									return `${arg}: ${this.getRegister(reg)}`;
+									const reg = parseInt(arg.slice(1), 10)
+									return `${arg}: ${this.getRegister(reg)}`
 								} catch {
-									return "";
+									return ""
 								}
 							}
 						}
 					})
 					.join(", "),
 			}),
-		);
+		)
 	}
 }

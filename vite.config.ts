@@ -1,5 +1,5 @@
-import path from "node:path";
-import { defineConfig } from "vite";
+import path from "node:path"
+import { defineConfig } from "vite"
 
 export default defineConfig({
 	resolve: {
@@ -19,11 +19,11 @@ export default defineConfig({
 			fileName: (format) => {
 				switch (format) {
 					case "umd":
-						return "ic10.umd.js";
+						return "ic10.umd.js"
 					case "cjs":
-						return "ic10.cjs.js";
+						return "ic10.cjs.js"
 				}
-				return "ic10.js";
+				return "ic10.js"
 			},
 		},
 		rollupOptions: {
@@ -48,4 +48,4 @@ export default defineConfig({
 		__VITE_ENV: JSON.stringify(process.env.NODE_ENV || "production"),
 		isProd: process.env.NODE_ENV === "production",
 	},
-});
+})

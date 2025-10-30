@@ -1,13 +1,13 @@
-import type { Device } from "@/Core/Device";
+import type { Device } from "@/Core/Device"
 
 export type DeviceScopeConstructor = {
-	device: Device;
-};
+	device: Device
+}
 
 export abstract class DeviceScope {
-	protected scope: Device;
+	protected scope: Device
 
 	constructor({ device }: DeviceScopeConstructor) {
-		this.scope = device;
+		this.scope = device
 	}
 }

@@ -1,10 +1,10 @@
-import { Devices, LogicBatchMethod, LogicReagentMode, LogicSlot, Logics, Reagents } from "@/Defines/data";
-import type { Context } from "@/Ic10/Context/Context";
-import { ErrorSeverity, TypeIc10Error } from "@/Ic10/Errors/Errors";
-import { getDevicePin, getRegister, parseArgumentAnyNumber } from "@/Ic10/Helpers/ArgumentParse";
-import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
-import type { InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction";
-import i18n from "@/Languages/lang";
+import { Devices, LogicBatchMethod, LogicReagentMode, LogicSlot, Logics, Reagents } from "@/Defines/data"
+import type { Context } from "@/Ic10/Context/Context"
+import { ErrorSeverity, TypeIc10Error } from "@/Ic10/Errors/Errors"
+import { getDevicePin, getRegister, parseArgumentAnyNumber } from "@/Ic10/Helpers/ArgumentParse"
+import type { Argument } from "@/Ic10/Instruction/Helpers/Argument"
+import type { InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction"
+import i18n from "@/Languages/lang"
 
 // Вспомогательные функции для обработки ошибок и проверок
 const ErrorHandlers = {
@@ -14,8 +14,8 @@ const ErrorHandlers = {
 		message: string,
 		severity: ErrorSeverity = ErrorSeverity.Strong,
 	): 0 => {
-		context.addError(new TypeIc10Error({ message, severity }).setArgument(argument));
-		return 0;
+		context.addError(new TypeIc10Error({ message, severity }).setArgument(argument))
+		return 0
 	},
 
 	validateDeviceConnection: (
@@ -24,7 +24,7 @@ const ErrorHandlers = {
 		argument: Argument,
 		severity: ErrorSeverity = ErrorSeverity.Strong,
 	): number | [number, number] => {
-		const pins = Array.isArray(pin) ? pin : [pin];
+		const pins = Array.isArray(pin) ? pin : [pin]
 
 		for (const singlePin of pins) {
 			if (!context.isConnectDeviceByPin(singlePin.valueOf())) {
@@ -33,13 +33,13 @@ const ErrorHandlers = {
 						message: i18n.t("error.device_pin_not_connected", { pin }),
 						severity: severity,
 					}).setArgument(argument),
-				);
-				break;
+				)
+				break
 			}
 		}
-		return pin;
+		return pin
 	},
-};
+}
 
 // Базовые конфигурации для разных типов аргументов
 const BaseConfigs = {
@@ -67,23 +67,23 @@ const BaseConfigs = {
 		canBeConst: true,
 		canBeDefine: false,
 	},
-};
+}
 
 export type calculateDevicePinOrIdResult = {
-	pin?: number;
-	port?: number;
-	id?: number;
-	error?: number;
-};
+	pin?: number
+	port?: number
+	id?: number
+	error?: number
+}
 
 // Вспомогательные функции для работы с результатами
 const ResultHelpers = {
 	isValidPinResult: (result: number | [number, number] | number): result is number | [number, number] => {
-		return typeof result === "number" || Array.isArray(result);
+		return typeof result === "number" || Array.isArray(result)
 	},
 
 	isValidIdResult: (result: calculateDevicePinOrIdResult): result is { id: number } => {
-		return result.id !== undefined;
+		return result.id !== undefined
 	},
 
 	formatPinResult: (pinResult: number | [number, number]): calculateDevicePinOrIdResult => {
@@ -91,97 +91,97 @@ const ResultHelpers = {
 			return {
 				pin: pinResult[0],
 				port: pinResult[1],
-			};
+			}
 		}
-		return { pin: pinResult };
+		return { pin: pinResult }
 	},
-};
+}
 
 // Основные калькуляторы значений
 export const ValueCalculators = {
 	calculateNumberLike: (context: Context, argument: Argument) => {
-		const value = parseArgumentAnyNumber(context, argument);
+		const value = parseArgumentAnyNumber(context, argument)
 		return value !== false
 			? value
-			: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_number_or_register_or_const"));
+			: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_number_or_register_or_const"))
 	},
 
 	calculateRegister: (context: Context, argument: Argument) => {
-		const reg = getRegister(context, argument.text);
+		const reg = getRegister(context, argument.text)
 		return reg !== false
 			? reg
-			: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_register"));
+			: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_register"))
 	},
 
 	calculateDevicePin: (context: Context, argument: Argument) => {
-		const pin = getDevicePin(context, argument.text);
+		const pin = getDevicePin(context, argument.text)
 		if (pin === false) {
-			return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin"));
+			return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin"))
 		}
-		return ErrorHandlers.validateDeviceConnection(context, pin, argument);
+		return ErrorHandlers.validateDeviceConnection(context, pin, argument)
 	},
 
 	calculateDeviceId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
-		const value = parseArgumentAnyNumber(context, argument);
+		const value = parseArgumentAnyNumber(context, argument)
 		if (value !== false && context.isConnectDeviceById(value)) {
 			return {
 				id: value,
-			};
+			}
 		}
 		return {
 			error: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_id")),
-		};
+		}
 	},
 
 	calculateDevicePinOrId: (context: Context, argument: Argument): calculateDevicePinOrIdResult => {
 		// Сначала пробуем обработать как пин устройства
-		let pinResult = getDevicePin(context, argument.text);
+		let pinResult = getDevicePin(context, argument.text)
 		if (pinResult === false) {
-			pinResult = ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin"));
+			pinResult = ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin"))
 		}
 		// Если получили валидный результат для пина (не число с ошибкой)
 		if (ResultHelpers.isValidPinResult(pinResult)) {
-			return ResultHelpers.formatPinResult(pinResult);
+			return ResultHelpers.formatPinResult(pinResult)
 		}
 
 		// Если не сработало как пин, пробуем как ID устройства
-		const idResult = ValueCalculators.calculateDeviceId(context, argument);
+		const idResult = ValueCalculators.calculateDeviceId(context, argument)
 
 		// Если получили ID без ошибки
 		if (ResultHelpers.isValidIdResult(idResult)) {
-			return idResult;
+			return idResult
 		}
 
 		// Если оба варианта не сработали, возвращаем ошибку
 		return {
 			error: ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_device_pin_or_id")),
-		};
+		}
 	},
 
 	calculateLogic: (context: Context, argument: Argument): ReturnType<typeof Logics.getByKey> | 0 => {
 		if (Logics.hasKey(argument.text)) {
-			return Logics.getByKey(argument.text);
+			return Logics.getByKey(argument.text)
 		}
 
-		const prop = parseArgumentAnyNumber(context, argument);
+		const prop = parseArgumentAnyNumber(context, argument)
 		if (Logics.hasValue(prop)) {
-			return prop;
+			return prop
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_device_property"));
+		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_device_property"))
 	},
 
 	calculateLogicSlot: (context: Context, argument: Argument): ReturnType<typeof LogicSlot.getByKey> | 0 => {
 		if (LogicSlot.hasKey(argument.text)) {
-			return LogicSlot.getByKey(argument.text);
+			return LogicSlot.getByKey(argument.text)
 		}
 
-		const slot = parseArgumentAnyNumber(context, argument);
+		const slot = parseArgumentAnyNumber(context, argument)
 		if (LogicSlot.hasValue(slot)) {
-			return slot;
+			return slot
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_slot"));
+		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_slot"))
 	},
 
 	calculateLogicBatchMethod: (
@@ -189,56 +189,56 @@ export const ValueCalculators = {
 		argument: Argument,
 	): ReturnType<typeof LogicBatchMethod.getByKey> | 0 => {
 		if (LogicBatchMethod.hasKey(argument.text)) {
-			return LogicBatchMethod.getByKey(argument.text);
+			return LogicBatchMethod.getByKey(argument.text)
 		}
 
-		const method = parseArgumentAnyNumber(context, argument);
+		const method = parseArgumentAnyNumber(context, argument)
 		if (LogicBatchMethod.hasValue(method)) {
-			return method;
+			return method
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_batch_method"));
+		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_batch_method"))
 	},
 	calculateLogicReagentMode: (
 		context: Context,
 		argument: Argument,
 	): ReturnType<typeof LogicReagentMode.getByKey> | 0 => {
 		if (LogicReagentMode.hasKey(argument.text)) {
-			return LogicReagentMode.getByKey(argument.text);
+			return LogicReagentMode.getByKey(argument.text)
 		}
 
-		const mode = parseArgumentAnyNumber(context, argument);
+		const mode = parseArgumentAnyNumber(context, argument)
 		if (LogicReagentMode.hasValue(mode)) {
-			return mode;
+			return mode
 		}
 
-		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_reagent_mode"));
+		return ErrorHandlers.handleError(context, argument, i18n.t("error.invalid_argument_valid_logic_reagent_mode"))
 	},
 	calculateReagentHash: (context: Context, argument: Argument): ReturnType<typeof Reagents.getByValue> | 0 => {
-		const value = parseArgumentAnyNumber(context, argument);
+		const value = parseArgumentAnyNumber(context, argument)
 		if (Reagents.hasKey(value)) {
-			return value;
+			return value
 		}
 		return ErrorHandlers.handleError(
 			context,
 			argument,
 			"error:invalid_argument_valid_reagent_hash",
 			ErrorSeverity.Weak,
-		);
+		)
 	},
 	calculateDeviceHash: (context: Context, argument: Argument): ReturnType<typeof Devices.getByValue> | 0 => {
-		const value = parseArgumentAnyNumber(context, argument);
+		const value = parseArgumentAnyNumber(context, argument)
 		if (Devices.hasKey(value)) {
-			return value;
+			return value
 		}
 		return ErrorHandlers.handleError(
 			context,
 			argument,
 			i18n.t("error.invalid_argument_valid_device_hash"),
 			ErrorSeverity.Weak,
-		);
+		)
 	},
-};
+}
 
 /**
  * Список стандартных аргументов для переиспользования
@@ -295,13 +295,15 @@ export const ArgumentCalculators = {
 	logicBatchMethod: (name?: string) => ({
 		name,
 		...BaseConfigs.Enum,
-		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicBatchMethod(context, argument),
+		calculate: (context: Context, argument: Argument) =>
+			ValueCalculators.calculateLogicBatchMethod(context, argument),
 	}),
 
 	logicReagentMode: (name?: string) => ({
 		name,
 		...BaseConfigs.Enum,
-		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateLogicReagentMode(context, argument),
+		calculate: (context: Context, argument: Argument) =>
+			ValueCalculators.calculateLogicReagentMode(context, argument),
 	}),
 	reagentHash: (name?: string) => ({
 		name,
@@ -313,4 +315,4 @@ export const ArgumentCalculators = {
 		...BaseConfigs.numberLike,
 		calculate: (context: Context, argument: Argument) => ValueCalculators.calculateDeviceHash(context, argument),
 	}),
-} satisfies { [key: string]: (name?: string) => InstructionArgument };
+} satisfies { [key: string]: (name?: string) => InstructionArgument }

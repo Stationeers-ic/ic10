@@ -1,116 +1,116 @@
-import parse from "json5/lib/parse";
-import type { Chip } from "@/Core/Chip";
-import type { Device } from "@/Core/Device";
-import type { Network } from "@/Core/Network";
-import { type Parser, ParserV1 } from "@/Envierment/ParserV1";
-import { ErrorSeverity } from "@/Ic10/Errors/Errors";
-import type { Ic10Runner } from "@/Ic10/Ic10Runner";
-import type { EnvSchema, ProjectSchema } from "@/Schemas/EnvSchema";
+import parse from "json5/lib/parse"
+import type { Chip } from "@/Core/Chip"
+import type { Device } from "@/Core/Device"
+import type { Network } from "@/Core/Network"
+import { type Parser, ParserV1 } from "@/Envierment/ParserV1"
+import { ErrorSeverity } from "@/Ic10/Errors/Errors"
+import type { Ic10Runner } from "@/Ic10/Ic10Runner"
+import type { EnvSchema, ProjectSchema } from "@/Schemas/EnvSchema"
 
 export class Builer {
-	private readonly lattestParser = ParserV1;
+	private readonly lattestParser = ParserV1
 
 	public meta: {
-		project?: ProjectSchema;
-	} = {};
+		project?: ProjectSchema
+	} = {}
 
-	public readonly Chips = new Map<number, Chip>();
-	public readonly Networks = new Map<string, Network>();
-	public readonly Devices = new Map<number, Device>();
-	public readonly Runners = new Map<number, Ic10Runner>();
-	public readonly FinishedRunners = new Set<number>();
+	public readonly Chips = new Map<number, Chip>()
+	public readonly Networks = new Map<string, Network>()
+	public readonly Devices = new Map<number, Device>()
+	public readonly Runners = new Map<number, Ic10Runner>()
+	public readonly FinishedRunners = new Set<number>()
 
-	private initialized = false;
+	private initialized = false
 
 	public reset(): void {
-		this.Chips.clear();
-		this.Devices.clear();
-		this.Networks.clear();
-		this.Runners.clear();
-		this.FinishedRunners.clear();
-		this.initialized = false;
+		this.Chips.clear()
+		this.Devices.clear()
+		this.Networks.clear()
+		this.Runners.clear()
+		this.FinishedRunners.clear()
+		this.initialized = false
 	}
 
 	static from(yml: string): Builer {
-		const BUILDER = new Builer();
-		const data = parse(yml) as EnvSchema;
-		let Parser: Parser;
+		const BUILDER = new Builer()
+		const data = parse(yml) as EnvSchema
+		let Parser: Parser
 		switch (data.version) {
 			case 1:
-				Parser = new ParserV1({ builer: BUILDER });
-				break;
+				Parser = new ParserV1({ builer: BUILDER })
+				break
 		}
-		Parser.parse(data);
-		return BUILDER;
+		Parser.parse(data)
+		return BUILDER
 	}
 
 	// Одноразовая инициализация: прогнать sandbox и проверить ошибки
 	public async init(): Promise<boolean> {
-		if (this.initialized) return;
+		if (this.initialized) return
 
 		for (const [, runner] of this.Runners.entries()) {
-			runner.switchContext("sandbox");
-			await runner.run();
-			runner.init();
+			runner.switchContext("sandbox")
+			await runner.run()
+			runner.init()
 
-			const err = runner.context.errors.filter((error) => error.severity === ErrorSeverity.Strong);
+			const err = runner.context.errors.filter((error) => error.severity === ErrorSeverity.Strong)
 			if (err.length > 0) {
-				return false;
+				return false
 			}
 
-			runner.switchContext("real");
-			runner.init();
+			runner.switchContext("real")
+			runner.init()
 		}
 
-		this.initialized = true;
-		return true;
+		this.initialized = true
+		return true
 	}
 
 	// Один тик исполнения без sandbox-прогона
 	public async step(): Promise<boolean> {
-		const promises: Promise<{ key: any; result: boolean }>[] = [];
+		const promises: Promise<{ key: any; result: boolean }>[] = []
 		for (const [key, runner] of this.Runners.entries()) {
 			if (this.FinishedRunners.has(key)) {
-				continue;
+				continue
 			}
-			promises.push(runner.step().then((result) => ({ key, result })));
+			promises.push(runner.step().then((result) => ({ key, result })))
 		}
 
-		const results = await Promise.all(promises);
+		const results = await Promise.all(promises)
 
 		// Удаляем завершённые runners
 		for (const { key, result } of results) {
 			if (!result) {
-				this.FinishedRunners.add(key);
+				this.FinishedRunners.add(key)
 			}
 		}
 
 		// true — если остались активные runners
-		return this.Runners.size - this.FinishedRunners.size > 0;
+		return this.Runners.size - this.FinishedRunners.size > 0
 	}
 
 	public toYaml(): string {
-		throw new Error("ТЫ ЕБАННУТЫЙ?????");
+		throw new Error("ТЫ ЕБАННУТЫЙ?????")
 	}
 
 	public toJson(debug: boolean = false, minify: boolean = false): string {
-		return new this.lattestParser({ builer: this }).stringify(debug, minify);
+		return new this.lattestParser({ builer: this }).stringify(debug, minify)
 	}
 
 	[Symbol.toPrimitive](hint: string): string {
-		return this.toJson(false);
+		return this.toJson(false)
 	}
 	valueOf(): string {
-		return this.toJson(false);
+		return this.toJson(false)
 	}
 	toString(): string {
-		return this.toJson(false);
+		return this.toJson(false)
 	}
 	toData(debug: boolean = false): EnvSchema {
 		try {
-			return new this.lattestParser({ builer: this }).toData(debug);
+			return new this.lattestParser({ builer: this }).toData(debug)
 		} catch (e) {
-			return {} as EnvSchema;
+			return {} as EnvSchema
 		}
 	}
 }

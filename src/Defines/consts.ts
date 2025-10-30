@@ -574,7 +574,7 @@ export const CONSTS = {
 	rad2deg: 57.295780181884766,
 	rgas: 8.31446261815324,
 	tau: 6.283185307179586,
-} as const;
+} as const
 export const GROUPED_CONSTS = {
 	AirCon: {
 		Cold: 0,
@@ -1209,5 +1209,5 @@ export const GROUPED_CONSTS = {
 	rad2deg: 57.295780181884766,
 	rgas: 8.31446261815324,
 	tau: 6.283185307179586,
-} as const;
-export default CONSTS;
+} as const
+export default CONSTS

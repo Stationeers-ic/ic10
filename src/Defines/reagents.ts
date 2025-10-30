@@ -664,5 +664,5 @@ export const REAGENTS = [
 			},
 		],
 	},
-] as const;
-export default REAGENTS;
+] as const
+export default REAGENTS

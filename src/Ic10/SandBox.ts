@@ -1,7 +1,7 @@
-import { Chip, type ChipConstructorType } from "@/Core/Chip";
-import { Device } from "@/Core/Device";
-import { Housing } from "@/Core/Housing";
-import { Network } from "@/Core/Network";
+import { Chip, type ChipConstructorType } from "@/Core/Chip"
+import { Device } from "@/Core/Device"
+import { Housing } from "@/Core/Housing"
+import { Network } from "@/Core/Network"
 
 export class SandBoxHousing extends Housing {
 	constructor(params: ChipConstructorType) {
@@ -9,7 +9,7 @@ export class SandBoxHousing extends Housing {
 			hash: 0,
 			network: new SandBoxNetwork(),
 			chip: new SandBoxChip(params),
-		});
+		})
 	}
 }
 
@@ -22,6 +22,6 @@ export class SandBoxChip extends Chip {
 		super({
 			id: 0,
 			ic10Code,
-		});
+		})
 	}
 }

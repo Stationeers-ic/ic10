@@ -1,52 +1,52 @@
-import EventEmitter from "eventemitter3";
-import type { Chip } from "@/Core/Chip";
-import type { Housing } from "@/Core/Housing";
-import type { StackInterface } from "@/Core/Stack";
-import { ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors";
-import type { Define } from "@/Ic10/Instruction/Helpers/Define";
-import type { Line } from "@/Ic10/Lines/Line";
+import EventEmitter from "eventemitter3"
+import type { Chip } from "@/Core/Chip"
+import type { Housing } from "@/Core/Housing"
+import type { StackInterface } from "@/Core/Stack"
+import { ErrorSeverity, type Ic10Error } from "@/Ic10/Errors/Errors"
+import type { Define } from "@/Ic10/Instruction/Helpers/Define"
+import type { Line } from "@/Ic10/Lines/Line"
 
 export type ContextConstructor = {
 	/** Человекочитаемое имя контекста (для логов/отладки) */
-	name: string;
+	name: string
 	/** Устройство-владелец (Housing), предоставляющее доступ к сети, чипу и пр. */
-	housing: Housing;
-};
+	housing: Housing
+}
 
 // Типы событий для Context
 export interface ContextEvents {
 	// События выполнения
-	lineChange: (line: Line | undefined) => void;
-	lineExecute: (line: Line) => void;
-	lineEnd: (line: Line) => void;
+	lineChange: (line: Line | undefined) => void
+	lineExecute: (line: Line) => void
+	lineEnd: (line: Line) => void
 
 	// События ошибок
-	error: (error: Ic10Error) => void;
-	criticalError: (error: Ic10Error) => void;
+	error: (error: Ic10Error) => void
+	criticalError: (error: Ic10Error) => void
 
 	// События памяти
-	registerRead: (register: number, value: number) => void;
-	registerWrite: (register: number, oldValue: number, newValue: number) => void;
+	registerRead: (register: number, value: number) => void
+	registerWrite: (register: number, oldValue: number, newValue: number) => void
 
 	// События стека
-	stackPush: (value: number) => void;
-	stackPop: (value: number) => void;
-	stackPeek: (value: number) => void;
+	stackPush: (value: number) => void
+	stackPop: (value: number) => void
+	stackPeek: (value: number) => void
 
 	// События устройств
-	deviceParameterRead: (pin: number, property: number, value: number) => void;
-	deviceParameterWrite: (pin: number, property: number, oldValue: number, newValue: number) => void;
-	deviceStackClear: (pin: number) => void;
-	deviceStackRead: (pin: number, index: number, value: number) => void;
-	deviceStackWrite: (pin: number, index: number, oldValue: number, newValue: number) => void;
+	deviceParameterRead: (pin: number, property: number, value: number) => void
+	deviceParameterWrite: (pin: number, property: number, oldValue: number, newValue: number) => void
+	deviceStackClear: (pin: number) => void
+	deviceStackRead: (pin: number, index: number, value: number) => void
+	deviceStackWrite: (pin: number, index: number, oldValue: number, newValue: number) => void
 
 	// События определений
-	defineSet: (name: string, value: Define) => void;
-	defineGet: (name: string, value: Define | undefined) => void;
+	defineSet: (name: string, value: Define) => void
+	defineGet: (name: string, value: Define | undefined) => void
 
 	// Общие события
-	reset: () => void;
-	jump: (fromLine: number, toLine: number) => void;
+	reset: () => void
+	jump: (fromLine: number, toLine: number) => void
 }
 
 // =============================================
@@ -56,135 +56,135 @@ export interface ContextEvents {
 /** Интерфейс для управления выполнением кода */
 export interface IExecutionContext {
 	/** Получить количество прыжков */
-	getJumpsCount(): number;
+	getJumpsCount(): number
 	/** Увеличить счетчик прыжков */
-	incrementJumpsCount(): void;
+	incrementJumpsCount(): void
 	/** Получить индекс следующей строки */
-	getNextLineIndex(): number;
+	getNextLineIndex(): number
 	/** Установить индекс следующей строки */
-	setNextLineIndex(index?: number, writeRA?: boolean): void;
+	setNextLineIndex(index?: number, writeRA?: boolean): void
 	/** Установить текущую выполняемую строку */
-	setExecuteLine(line: Line): void;
+	setExecuteLine(line: Line): void
 }
 
 /** Интерфейс для работы с алиасами и константами */
 export interface IDefinesContext {
 	/** Проверить наличие Define по имени */
-	hasDefines(name: string): boolean;
+	hasDefines(name: string): boolean
 	/** Установить значение Define */
-	setDefines(name: string, value: Define): void;
+	setDefines(name: string, value: Define): void
 	/** Получить Define по имени */
-	getDefines(name: string): Define | undefined;
+	getDefines(name: string): Define | undefined
 }
 
 /** Интерфейс для работы с памятью/регистрами */
 export interface IMemoryContext {
 	/** Проверить существование регистра */
-	hasRegister(reg: number): boolean;
+	hasRegister(reg: number): boolean
 	/** Получить значение регистра */
-	getRegister(reg: number): number;
+	getRegister(reg: number): number
 	/** Установить значение регистра */
-	setRegister(reg: number, value: number): void;
+	setRegister(reg: number, value: number): void
 }
 
 /** Интерфейс для работы с устройствами по пинам */
 export interface IDevicesByPinContext {
 	/** Проверить подключение устройства к пину */
-	isConnectDeviceByPin(pin: number): boolean;
+	isConnectDeviceByPin(pin: number): boolean
 	/** Получить параметр устройства по пину */
-	getDeviceParameterByPin(pin: number, prop: number): number;
+	getDeviceParameterByPin(pin: number, prop: number): number
 	/** Установить параметр устройства по пину */
-	setDeviceParameterByPin(pin: number, prop: number, value: number): void;
+	setDeviceParameterByPin(pin: number, prop: number, value: number): void
 	/** Очистить стек устройства по пину */
-	clearDeviceStackByPin(pin: number): void;
+	clearDeviceStackByPin(pin: number): void
 	/** Получить значение из стека устройства по пину */
-	getDeviceStackByPin(pin: number, index: number): number;
+	getDeviceStackByPin(pin: number, index: number): number
 	/** Установить значение в стек устройства по пину */
-	setDeviceStackByPin(pin: number, index: number, value: number): void;
+	setDeviceStackByPin(pin: number, index: number, value: number): void
 
-	canLoadDeviceParameterByPin(pin: number, prop: number): boolean;
-	canStoreDeviceParameterByPin(pin: number, prop: number): boolean;
+	canLoadDeviceParameterByPin(pin: number, prop: number): boolean
+	canStoreDeviceParameterByPin(pin: number, prop: number): boolean
 
-	getDevicePortChanelByPin(pin: number, port: number, chanel: number): number;
+	getDevicePortChanelByPin(pin: number, port: number, chanel: number): number
 	/** Установить параметр устройства по пину */
-	setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void;
+	setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void
 }
 
 /** Интерфейс для пакетных операций с устройствами по хэшу */
 export interface IDevicesByHashContext {
 	/** Пакетное чтение параметра устройства по хэшу */
-	deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number;
+	deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number
 	/** Пакетная запись параметра устройства по хэшу */
-	deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void;
+	deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void
 	/** Пакетное чтение параметра слота устройства по хэшу */
-	deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number;
+	deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number
 }
 
 /** Интерфейс для пакетных операций с устройствами по хэшу и имени */
 export interface IDevicesByHashAndNameContext {
 	/** Пакетное чтение параметра устройства по хэшу и имени */
-	deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number;
+	deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number
 	/** Пакетная запись параметра устройства по хэшу и имени */
-	deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void;
+	deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void
 }
 
 /** Интерфейс для работы со стеком */
 export interface IStackContext {
 	/** Положить значение в стек */
-	push(value: number): void;
+	push(value: number): void
 	/** Извлечь значение из стека */
-	pop(): number;
+	pop(): number
 	/** Посмотреть значение на вершине стека */
-	peek(): number;
+	peek(): number
 	/** Получить стек */
-	stack(): StackInterface;
+	stack(): StackInterface
 }
 
 /** Интерфейс для базовых операций контекста */
 export interface IBaseContext {
 	/** Полный сброс контекста */
-	reset(): void;
+	reset(): void
 	/** Проверить валидность чипа */
-	validChip(): boolean;
+	validChip(): boolean
 	/** Собрать ошибки из сети */
-	collectErrors(): void;
+	collectErrors(): void
 	/** Добавить ошибку */
-	addError(error: Ic10Error): this;
+	addError(error: Ic10Error): this
 
-	sleep(seconds: number): Promise<void>;
-	yield(): void;
-	hcf(): void;
+	sleep(seconds: number): Promise<void>
+	yield(): void
+	hcf(): void
 }
 
 export interface IDevicesByIdContext {
-	isConnectDeviceById(id: number): boolean;
-	clearDeviceStackById(id: number): void;
-	getDeviceStackById(id: number, index: number): number;
-	setDeviceStackById(id: number, index: number, value): void;
-	getDeviceParameterById(id: number, prop: number): number;
-	setDeviceParameterById(id: number, prop: number, value: number): void;
+	isConnectDeviceById(id: number): boolean
+	clearDeviceStackById(id: number): void
+	getDeviceStackById(id: number, index: number): number
+	setDeviceStackById(id: number, index: number, value): void
+	getDeviceParameterById(id: number, prop: number): number
+	setDeviceParameterById(id: number, prop: number, value: number): void
 }
 
 export interface IDevicesSlotContext {
-	getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
-	getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number;
-	getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number;
+	getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number
+	getDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number): number
+	getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number
 	getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,
 		deviceName: number,
 		slot: number,
 		prop: number,
 		mode: number,
-	): number;
+	): number
 
-	setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void;
-	setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void;
-	setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void;
+	setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void
+	setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void
+	setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void
 }
 
 export interface IDevicesReagentContext {
-	getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number;
-	getDeviceReagentById(devicePin: number, mode: number, reagent: number): number;
+	getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number
+	getDeviceReagentById(devicePin: number, mode: number, reagent: number): number
 }
 
 /**
@@ -207,15 +207,15 @@ export abstract class Context
 {
 	debug(...args: any[]): void {}
 	/** Имя контекста (используется в отладке/логировании) */
-	public readonly name: string;
+	public readonly name: string
 
 	/** Локальный пул ошибок, собранных за итерацию/тик (уникализирован по id) */
-	public $errors: Map<number, Ic10Error> = new Map();
+	public $errors: Map<number, Ic10Error> = new Map()
 
 	/** Ссылка на устройство-владелец, через которое доступны чип, сеть и т.п. */
-	public readonly $housing: Housing;
-	public $executeLine?: Line;
-	public $criticalError?: Ic10Error = undefined;
+	public readonly $housing: Housing
+	public $executeLine?: Line
+	public $criticalError?: Ic10Error = undefined
 
 	/**
 	 * Создает новый контекст.
@@ -223,20 +223,20 @@ export abstract class Context
 	 * @param housing Устройство-владелец, предоставляющее доступ к чипу и сети
 	 */
 	constructor({ name, housing }: ContextConstructor) {
-		super();
-		this.name = name;
-		this.$housing = housing;
+		super()
+		this.name = name
+		this.$housing = housing
 	}
-	abstract sleep(seconds: number): Promise<void>;
-	abstract yield(): void;
-	abstract hcf(): void;
+	abstract sleep(seconds: number): Promise<void>
+	abstract yield(): void
+	abstract hcf(): void
 
 	get executeLine(): Line {
-		return this.$executeLine!;
+		return this.$executeLine!
 	}
 
 	get currentLinePosition(): number {
-		return this.$executeLine?.position || 0;
+		return this.$executeLine?.position || 0
 	}
 
 	/**
@@ -244,7 +244,7 @@ export abstract class Context
 	 * Обратите внимание: ошибки уникализируются по id.
 	 */
 	get errors() {
-		return this.$errors.values().toArray();
+		return this.$errors.values().toArray()
 	}
 
 	/**
@@ -252,25 +252,25 @@ export abstract class Context
 	 * Предполагается, что чип существует к моменту вызова.
 	 */
 	public get chip(): Chip {
-		return this.$housing.chip!;
+		return this.$housing.chip!
 	}
 
 	/**
 	 * Доступ к Housing для наследников.
 	 */
 	public get housing() {
-		return this.$housing;
+		return this.$housing
 	}
 
 	public get network() {
-		return this.$housing.network;
+		return this.$housing.network
 	}
 
 	public get criticalError(): Ic10Error | false {
 		if (this.$criticalError) {
-			return this.$criticalError;
+			return this.$criticalError
 		} else {
-			return false;
+			return false
 		}
 	}
 
@@ -278,38 +278,38 @@ export abstract class Context
 	// IBaseContext implementation
 	// =============================================
 
-	abstract reset(): void;
-	abstract validChip(): boolean;
+	abstract reset(): void
+	abstract validChip(): boolean
 
 	public collectErrors(): void {
 		this.$housing.network.devices.forEach((device) => {
 			device.errors.get().forEach((error: Ic10Error) => {
 				if (this.$executeLine) {
-					error.setLine(this.$executeLine);
+					error.setLine(this.$executeLine)
 				}
-				this.addError(error);
-			});
-			device.errors.reset();
-		});
+				this.addError(error)
+			})
+			device.errors.reset()
+		})
 	}
 
 	public addError(error: Ic10Error): this {
-		error.setContext(this);
+		error.setContext(this)
 		if (this.$executeLine) {
-			error.setLine(this.$executeLine);
+			error.setLine(this.$executeLine)
 		}
 		if (error.device === undefined) {
-			error.setDevice(this.housing);
+			error.setDevice(this.housing)
 		}
 		if (error.severity === ErrorSeverity.Critical) {
-			this.$criticalError = error;
-			this.emit("criticalError", error);
+			this.$criticalError = error
+			this.emit("criticalError", error)
 		}
 		if (!this.$errors.has(error.id)) {
-			this.$errors.set(error.id, error);
-			this.emit("error", error);
+			this.$errors.set(error.id, error)
+			this.emit("error", error)
 		}
-		return this;
+		return this
 	}
 
 	/**
@@ -320,30 +320,30 @@ export abstract class Context
 	 */
 	public getIc10Code(): string {
 		if (!this.validChip()) {
-			return "";
+			return ""
 		}
-		return this.chip.getIc10Code();
+		return this.chip.getIc10Code()
 	}
 
 	// =============================================
 	// IExecutionContext implementation
 	// =============================================
 
-	abstract getJumpsCount(): number;
-	abstract incrementJumpsCount(): void;
-	abstract getNextLineIndex(): number;
-	abstract setNextLineIndex(index?: number, writeRA?: boolean): void;
+	abstract getJumpsCount(): number
+	abstract incrementJumpsCount(): void
+	abstract getNextLineIndex(): number
+	abstract setNextLineIndex(index?: number, writeRA?: boolean): void
 
 	public setExecuteLine(line: Line): void {
-		const previousLine = this.$executeLine;
-		this.$executeLine = line;
-		this.emit("lineChange", line);
+		const previousLine = this.$executeLine
+		this.$executeLine = line
+		this.emit("lineChange", line)
 
 		if (previousLine !== line && previousLine) {
-			this.emit("lineEnd", previousLine);
+			this.emit("lineEnd", previousLine)
 		}
 		if (line) {
-			this.emit("lineExecute", line);
+			this.emit("lineExecute", line)
 		}
 	}
 
@@ -351,88 +351,88 @@ export abstract class Context
 	// IDefinesContext implementation
 	// =============================================
 
-	abstract hasDefines(name: string): boolean;
-	abstract setDefines(name: string, value: Define): void;
-	abstract getDefines(name: string): Define | undefined;
+	abstract hasDefines(name: string): boolean
+	abstract setDefines(name: string, value: Define): void
+	abstract getDefines(name: string): Define | undefined
 
 	// =============================================
 	// IMemoryContext implementation
 	// =============================================
 
-	abstract hasRegister(reg: number): boolean;
-	abstract getRegister(reg: number): number;
-	abstract setRegister(reg: number, value: number): void;
+	abstract hasRegister(reg: number): boolean
+	abstract getRegister(reg: number): number
+	abstract setRegister(reg: number, value: number): void
 
 	// =============================================
 	// IDevicesByPinContext implementation
 	// =============================================
 
-	abstract isConnectDeviceByPin(pin: number): boolean;
-	abstract getDeviceParameterByPin(pin: number, prop: number): number;
-	abstract setDeviceParameterByPin(pin: number, prop: number, value: number): void;
-	abstract clearDeviceStackByPin(pin: number): void;
-	abstract getDeviceStackByPin(pin: number, index: number): number;
-	abstract setDeviceStackByPin(pin: number, index: number, value: number): void;
-	abstract canLoadDeviceParameterByPin(pin: number, prop: number): boolean;
-	abstract canStoreDeviceParameterByPin(pin: number, prop: number): boolean;
-	abstract getDevicePortChanelByPin(pin: number, port: number, chanel: number): number;
-	abstract setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void;
+	abstract isConnectDeviceByPin(pin: number): boolean
+	abstract getDeviceParameterByPin(pin: number, prop: number): number
+	abstract setDeviceParameterByPin(pin: number, prop: number, value: number): void
+	abstract clearDeviceStackByPin(pin: number): void
+	abstract getDeviceStackByPin(pin: number, index: number): number
+	abstract setDeviceStackByPin(pin: number, index: number, value: number): void
+	abstract canLoadDeviceParameterByPin(pin: number, prop: number): boolean
+	abstract canStoreDeviceParameterByPin(pin: number, prop: number): boolean
+	abstract getDevicePortChanelByPin(pin: number, port: number, chanel: number): number
+	abstract setDevicePortChanelByPin(pin: number, port: number, chanel: number, value: number): void
 
 	// =============================================
 	// IDevicesByIDContext implementation
 	// =============================================
 
-	abstract isConnectDeviceById(pin: number): boolean;
-	abstract clearDeviceStackById(id: number): void;
-	abstract getDeviceStackById(id: number, index: number): number;
-	abstract setDeviceStackById(id: number, index: number, value): void;
-	abstract getDeviceParameterById(id: number, prop: number): number;
-	abstract setDeviceParameterById(id: number, prop: number, value: number): void;
+	abstract isConnectDeviceById(pin: number): boolean
+	abstract clearDeviceStackById(id: number): void
+	abstract getDeviceStackById(id: number, index: number): number
+	abstract setDeviceStackById(id: number, index: number, value): void
+	abstract getDeviceParameterById(id: number, prop: number): number
+	abstract setDeviceParameterById(id: number, prop: number, value: number): void
 
 	// =============================================
 	// IDevicesSlotContext implementation
 	// =============================================
-	abstract getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number;
-	abstract getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number;
-	abstract getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number;
+	abstract getDeviceSlotParameterById(deviceId: number, slot: number, prop: number): number
+	abstract getDeviceSlotParameterByPin(deviceId: number, slot: number, prop: number): number
+	abstract getBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, mode: number): number
 	abstract getBatchDeviceSlotParameterByHashAndName(
 		deviceHash: number,
 		deviceName: number,
 		slot: number,
 		prop: number,
 		mode: number,
-	): number;
-	abstract setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void;
-	abstract setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void;
-	abstract setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void;
+	): number
+	abstract setDeviceSlotParameterById(deviceId: number, slot: number, prop: number, value: number): void
+	abstract setDeviceSlotParameterByPin(devicePin: number, slot: number, prop: number, value: number): void
+	abstract setBatchDeviceSlotParameterByHash(deviceHash: number, slot: number, prop: number, value: number): void
 
 	// =============================================
 	// IDevicesByHashContext implementation
 	// =============================================
 
-	abstract deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number;
-	abstract deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void;
-	abstract deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number;
+	abstract deviceBatchReadByHash(deviceHash: number, prop: number, mode: number): number
+	abstract deviceBatchWriteByHash(deviceHash: number, prop: number, value: number): void
+	abstract deviceSlotBatchReadByHash(deviceHash: number, slot: number, param: number, mode: number): number
 
 	// =============================================
 	// IDevicesByHashAndNameContext implementation
 	// =============================================
 
-	abstract deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number;
-	abstract deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void;
+	abstract deviceBatchReadByHashAndName(deviceHash: number, deviceName: number, param: number, mode: number): number
+	abstract deviceBatchWriteByHashAndName(deviceHash: number, deviceName: number, param: number, value: number): void
 
 	// =============================================
 	// IStackContext implementation
 	// =============================================
 
-	abstract push(value: number): void;
-	abstract pop(): number;
-	abstract peek(): number;
-	abstract stack(): StackInterface;
+	abstract push(value: number): void
+	abstract pop(): number
+	abstract peek(): number
+	abstract stack(): StackInterface
 
 	// =============================================
 	// IDevicesReagentContext implementation
 	// =============================================
-	abstract getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number;
-	abstract getDeviceReagentById(devicePin: number, mode: number, reagent: number): number;
+	abstract getDeviceReagentByPin(deviceId: number, mode: number, reagent: number): number
+	abstract getDeviceReagentById(devicePin: number, mode: number, reagent: number): number
 }

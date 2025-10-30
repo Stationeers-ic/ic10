@@ -1,26 +1,26 @@
-import { v4 as uuidv4 } from "uuid";
-import { DevicePorts } from "@/Core//Device/DevicePorts";
-import { DeviceError } from "@/Core/Device/DeviceError";
-import { DeviceMemory } from "@/Core/Device/DeviceMemory";
-import { DeviceProps } from "@/Core/Device/DeviceProps";
-import { DeviceReagent } from "@/Core/Device/DeviceReagent";
-import { DeviceSlots } from "@/Core/Device/DeviceSlots";
-import type { Network } from "@/Core/Network";
-import type { StackInterface } from "@/Core/Stack";
-import DEVICES, { type LogicsType } from "@/Defines/devices";
-import { HashString } from "@/helpers";
-import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
-import { crc32 } from "@/Ic10/Helpers/functions";
-import i18n from "@/Languages/lang";
+import { v4 as uuidv4 } from "uuid"
+import { DevicePorts } from "@/Core//Device/DevicePorts"
+import { DeviceError } from "@/Core/Device/DeviceError"
+import { DeviceMemory } from "@/Core/Device/DeviceMemory"
+import { DeviceProps } from "@/Core/Device/DeviceProps"
+import { DeviceReagent } from "@/Core/Device/DeviceReagent"
+import { DeviceSlots } from "@/Core/Device/DeviceSlots"
+import type { Network } from "@/Core/Network"
+import type { StackInterface } from "@/Core/Stack"
+import DEVICES, { type LogicsType } from "@/Defines/devices"
+import { HashString } from "@/helpers"
+import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors"
+import { crc32 } from "@/Ic10/Helpers/functions"
+import i18n from "@/Languages/lang"
 
-export type LogicType = NonNullable<LogicsType>[number];
+export type LogicType = NonNullable<LogicsType>[number]
 
 export type DeviceConstructor = {
-	name?: string;
-	hash: number;
-	network?: Network;
-	id?: number;
-};
+	name?: string
+	hash: number
+	network?: Network
+	id?: number
+}
 
 /**
  * Абстрактный класс устройства (Device).
@@ -29,20 +29,20 @@ export type DeviceConstructor = {
 export abstract class Device {
 	// Ссылка на сеть, к которой принадлежит устройство
 	// Уникальный хэш устройства (идентификатор типа устройства)
-	public readonly hash: number;
-	public readonly prefabName?: HashString;
-	private _name: HashString;
+	public readonly hash: number
+	public readonly prefabName?: HashString
+	private _name: HashString
 	// Сырые данные устройства из DEVICES по хэшу
-	public readonly rawData: (typeof DEVICES)[keyof typeof DEVICES];
+	public readonly rawData: (typeof DEVICES)[keyof typeof DEVICES]
 
-	private _id: number;
+	private _id: number
 
-	protected readonly $errors: DeviceError;
-	protected readonly $ports: DevicePorts;
-	protected readonly $props?: DeviceProps = undefined;
-	protected readonly $reagents?: DeviceReagent = undefined;
-	protected readonly $memory?: StackInterface = undefined;
-	protected $slots?: DeviceSlots = undefined;
+	protected readonly $errors: DeviceError
+	protected readonly $ports: DevicePorts
+	protected readonly $props?: DeviceProps = undefined
+	protected readonly $reagents?: DeviceReagent = undefined
+	protected readonly $memory?: StackInterface = undefined
+	protected $slots?: DeviceSlots = undefined
 
 	/**
 	 * Конструктор устройства.
@@ -50,158 +50,158 @@ export abstract class Device {
 	 * @param hash - хэш типа устройства
 	 */
 	public constructor({ network, hash, id, name }: DeviceConstructor) {
-		this._id = id ?? crc32(uuidv4()); // Генерация уникального ID
-		this.hash = hash;
-		this.rawData = DEVICES[this.hash]; // Получение данных устройства по хэшу
+		this._id = id ?? crc32(uuidv4()) // Генерация уникального ID
+		this.hash = hash
+		this.rawData = DEVICES[this.hash] // Получение данных устройства по хэшу
 
-		this.name = name ?? this?.rawData?.PrefabName ?? "";
+		this.name = name ?? this?.rawData?.PrefabName ?? ""
 		if (this?.rawData?.PrefabName) {
-			this.prefabName = new HashString(this.rawData.PrefabName);
+			this.prefabName = new HashString(this.rawData.PrefabName)
 		}
 
-		this.$errors = new DeviceError({ device: this });
-		this.$ports = new DevicePorts({ device: this });
+		this.$errors = new DeviceError({ device: this })
+		this.$ports = new DevicePorts({ device: this })
 		if (this.rawData === undefined || this.rawData.tags.includes("HasLogic")) {
-			this.$props = new DeviceProps({ device: this });
+			this.$props = new DeviceProps({ device: this })
 		}
 		if (this.rawData === undefined || this.rawData.tags.includes("HasReagent")) {
-			this.$reagents = new DeviceReagent({ device: this });
+			this.$reagents = new DeviceReagent({ device: this })
 		}
 		if (this.rawData === undefined || this.rawData.tags.includes("HasMemory")) {
-			this.$memory = new DeviceMemory({ device: this, stack_length: this.rawData?.memorySize ?? 512 });
+			this.$memory = new DeviceMemory({ device: this, stack_length: this.rawData?.memorySize ?? 512 })
 		}
 		if (this.rawData === undefined || this.rawData.tags.includes("HasSlot")) {
-			this.$slots = new DeviceSlots({ device: this });
+			this.$slots = new DeviceSlots({ device: this })
 		}
 
-		this.reset(); // Инициализация свойств и ошибок
-		this.$props?.forceWrite("PrefabHash", hash); // Установка свойства PrefabHash
+		this.reset() // Инициализация свойств и ошибок
+		this.$props?.forceWrite("PrefabHash", hash) // Установка свойства PrefabHash
 		if (this.rawData === undefined) {
 			this.$errors.add(
 				new Ic10Error({
 					message: i18n.t("error.device_not_found_by_hash", { hash }),
 					severity: ErrorSeverity.Weak,
 				}),
-			);
+			)
 		}
 		if (network) {
-			network.apply(this);
+			network.apply(this)
 		}
 	}
 
 	get name(): HashString {
-		return this._name;
+		return this._name
 	}
 
 	set name(name: string) {
-		this._name = new HashString(name);
+		this._name = new HashString(name)
 	}
 
 	setName(name: HashString) {
-		this._name = name;
+		this._name = name
 	}
 
 	get network(): Network {
-		return this.$ports.getNetwork();
+		return this.$ports.getNetwork()
 	}
 
 	get errors(): DeviceError {
-		return this.$errors;
+		return this.$errors
 	}
 
 	get ports(): DevicePorts {
-		return this.$ports;
+		return this.$ports
 	}
 
 	get props(): DeviceProps | undefined {
 		if (this.$props) {
-			return this.$props;
+			return this.$props
 		}
 		this.$errors.add(
 			new Ic10Error({
 				message: i18n.t("error.device_no_props"),
 				severity: ErrorSeverity.Weak,
 			}),
-		);
-		return undefined;
+		)
+		return undefined
 	}
 
 	get hasProps(): boolean {
-		return this.$props !== undefined;
+		return this.$props !== undefined
 	}
 
 	get reagents(): DeviceReagent | undefined {
 		if (this.$reagents) {
-			return this.$reagents;
+			return this.$reagents
 		}
 		this.$errors.add(
 			new Ic10Error({
 				message: i18n.t("error.device_no_reagents"),
 				severity: ErrorSeverity.Weak,
 			}),
-		);
-		return undefined;
+		)
+		return undefined
 	}
 
 	get hasReagents(): boolean {
-		return this.$reagents !== undefined;
+		return this.$reagents !== undefined
 	}
 
 	get memory(): StackInterface | undefined {
 		if (this.$memory) {
-			return this.$memory;
+			return this.$memory
 		}
 		this.$errors.add(
 			new Ic10Error({
 				message: i18n.t("error.device_no_memory"),
 				severity: ErrorSeverity.Weak,
 			}),
-		);
-		return undefined;
+		)
+		return undefined
 	}
 
 	get hasMemory(): boolean {
-		return this.$memory !== undefined;
+		return this.$memory !== undefined
 	}
 
 	get slots(): DeviceSlots | undefined {
 		if (this.$slots) {
-			return this.$slots;
+			return this.$slots
 		}
 		this.$errors.add(
 			new Ic10Error({
 				message: i18n.t("error.device_no_slots"),
 				severity: ErrorSeverity.Weak,
 			}),
-		);
-		return undefined;
+		)
+		return undefined
 	}
 
 	get hasSlots(): boolean {
 		if (this.$slots) {
-			return true;
+			return true
 		}
-		return false;
+		return false
 	}
 
 	/**
 	 * Сброс устройства: инициализация свойств, логики и ошибок.
 	 */
 	public reset() {
-		this.$errors.reset(); // Очистка ошибок
-		this.$props?.reset(); // сброс свойств
-		this.$reagents?.reset(); // сброс свойств
+		this.$errors.reset() // Очистка ошибок
+		this.$props?.reset() // сброс свойств
+		this.$reagents?.reset() // сброс свойств
 	}
 
 	/**
 	 * Геттер уникального идентификатора устройства.
 	 */
 	public get id(): number {
-		return this._id;
+		return this._id
 	}
 
 	public set id(id: number) {
-		this._id = id;
+		this._id = id
 	}
 }
 

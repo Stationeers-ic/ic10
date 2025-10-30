@@ -1,76 +1,76 @@
-import type { Context } from "@/Ic10/Context/Context";
-import type { Ic10Error } from "@/Ic10/Errors/Errors";
-import i18n from "@/Languages/lang";
+import type { Context } from "@/Ic10/Context/Context"
+import type { Ic10Error } from "@/Ic10/Errors/Errors"
+import i18n from "@/Languages/lang"
 
-export type contextNames = "real" | "sandbox";
+export type contextNames = "real" | "sandbox"
 export type contextList<T extends string | number | symbol = contextNames> = {
-	[key in T]: Context;
-};
+	[key in T]: Context
+}
 
 export type ContextTypeConstructor<T extends string | number | symbol = contextNames> = {
-	contexts: contextList<T>;
-	defaultContext: Extract<keyof contextList<T>, string>;
-};
+	contexts: contextList<T>
+	defaultContext: Extract<keyof contextList<T>, string>
+}
 
 function isContextTypeConstructor<T extends string | number | symbol = contextNames>(name: any, list: any): name is T {
 	if (typeof name !== "string") {
-		return false;
+		return false
 	}
-	return name in list;
+	return name in list
 }
 
 /**
  * Класс для переключения контекстов
  */
 export class ContextSwitcher<T extends string | number | symbol = contextNames> {
-	private readonly contexts: contextList<T>;
-	private readonly defaultContext: Extract<keyof contextList<T>, string>;
-	private currentContext?: string;
+	private readonly contexts: contextList<T>
+	private readonly defaultContext: Extract<keyof contextList<T>, string>
+	private currentContext?: string
 
 	constructor({ contexts, defaultContext }: ContextTypeConstructor<T>) {
-		this.contexts = contexts;
-		this.defaultContext = defaultContext;
+		this.contexts = contexts
+		this.defaultContext = defaultContext
 	}
 
 	get name(): string {
-		return this.currentContext ?? this.defaultContext;
+		return this.currentContext ?? this.defaultContext
 	}
 
 	get context(): Context {
-		return this.getContext();
+		return this.getContext()
 	}
 
 	public getContext(name?: T | string): Context {
-		name = name || this.currentContext || this.defaultContext;
+		name = name || this.currentContext || this.defaultContext
 		if (isContextTypeConstructor<T>(name, this.contexts)) {
-			return this.contexts[name];
+			return this.contexts[name]
 		}
-		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }));
+		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }))
 	}
 
 	switchContext(name: string) {
 		if (name in this.contexts) {
-			this.currentContext = name;
-			return this;
+			this.currentContext = name
+			return this
 		}
-		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }));
+		throw new Error(i18n.t("error.context_not_found", { name: name.toString() }))
 	}
 
 	/**
 	 * Получить уникальные ошибки из всех контекстов
 	 */
 	getErrors(): Ic10Error[] {
-		const map = new Map<number, Ic10Error>();
+		const map = new Map<number, Ic10Error>()
 		Object.keys(this.contexts).forEach((name) => {
 			if (isContextTypeConstructor<T>(name, this.context)) {
-				const context = this.contexts[name];
+				const context = this.contexts[name]
 				context.errors.forEach((err) => {
 					if (!map.has(err.id)) {
-						map.set(err.id, err);
+						map.set(err.id, err)
 					}
-				});
+				})
 			}
-		});
-		return Array.from(map.values());
+		})
+		return Array.from(map.values())
 	}
 }

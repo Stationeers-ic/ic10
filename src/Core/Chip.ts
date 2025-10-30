@@ -1,31 +1,31 @@
-import { ItemEntity } from "@/Core/Device/DeviceSlots";
-import type { Housing } from "@/Core/Housing";
-import { Stack, type StackInterface } from "@/Core/Stack";
-import CONSTS from "@/Defines/consts";
-import type { Ic10Runner } from "@/Ic10/Ic10Runner";
-import { Define } from "@/Ic10/Instruction/Helpers/Define";
+import { ItemEntity } from "@/Core/Device/DeviceSlots"
+import type { Housing } from "@/Core/Housing"
+import { Stack, type StackInterface } from "@/Core/Stack"
+import CONSTS from "@/Defines/consts"
+import type { Ic10Runner } from "@/Ic10/Ic10Runner"
+import { Define } from "@/Ic10/Instruction/Helpers/Define"
 
 export type ChipConstructorType = {
-	id: number;
-	chipHash?: number;
-	ic10Code?: string;
-	register_length?: number;
-	stack_length?: number;
-	SP?: number;
-	RA?: number;
-};
+	id: number
+	chipHash?: number
+	ic10Code?: string
+	register_length?: number
+	stack_length?: number
+	SP?: number
+	RA?: number
+}
 
 export class Chip extends ItemEntity {
-	public registers: Map<number, number> = new Map();
-	public readonly id: number;
-	public readonly memory: StackInterface;
-	public defines: Map<string, Define> = new Map();
-	private ic10Code: string;
-	public readonly register_length: number;
-	public readonly stack_length: number;
-	public readonly SP: number;
-	public readonly RA: number;
-	#housing?: Housing = undefined;
+	public registers: Map<number, number> = new Map()
+	public readonly id: number
+	public readonly memory: StackInterface
+	public defines: Map<string, Define> = new Map()
+	private ic10Code: string
+	public readonly register_length: number
+	public readonly stack_length: number
+	public readonly SP: number
+	public readonly RA: number
+	#housing?: Housing = undefined
 
 	constructor({
 		id,
@@ -36,52 +36,52 @@ export class Chip extends ItemEntity {
 		SP = 16,
 		RA = 17,
 	}: ChipConstructorType) {
-		super(chipHash ?? -744098481, 1);
-		this.id = id;
-		this.ic10Code = ic10Code ?? "";
-		this.register_length = register_length ?? 18;
-		this.stack_length = stack_length ?? 512;
-		this.SP = SP ?? 16;
-		this.RA = RA ?? 17;
-		this.memory = new Stack(this.stack_length);
-		this.reset();
+		super(chipHash ?? -744098481, 1)
+		this.id = id
+		this.ic10Code = ic10Code ?? ""
+		this.register_length = register_length ?? 18
+		this.stack_length = stack_length ?? 512
+		this.SP = SP ?? 16
+		this.RA = RA ?? 17
+		this.memory = new Stack(this.stack_length)
+		this.reset()
 	}
 
 	applyHousing(housing: Housing) {
-		this.#housing = housing;
+		this.#housing = housing
 	}
 	get housing(): Housing | undefined {
-		return this.#housing;
+		return this.#housing
 	}
 
 	getRunner(): Ic10Runner {
 		try {
-			return this.#housing?.runner;
+			return this.#housing?.runner
 		} catch (e) {
-			throw new Error("Runner not found");
+			throw new Error("Runner not found")
 		}
 	}
 
 	reset() {
-		this.memory.reset();
-		this.defines = new Map();
-		this.registers = new Map<number, number>();
+		this.memory.reset()
+		this.defines = new Map()
+		this.registers = new Map<number, number>()
 		for (let i = 0; i < this.register_length; i++) {
-			this.registers.set(i, 0);
+			this.registers.set(i, 0)
 		}
 		Object.entries(CONSTS).forEach(([key, val]) => {
-			this.defines.set(key, new Define("const", val));
-		});
-		this.defines.set("sp", new Define("alias", this.SP));
-		this.defines.set("ra", new Define("alias", this.RA));
+			this.defines.set(key, new Define("const", val))
+		})
+		this.defines.set("sp", new Define("alias", this.SP))
+		this.defines.set("ra", new Define("alias", this.RA))
 	}
 
 	getIc10Code() {
-		return this.ic10Code;
+		return this.ic10Code
 	}
 
 	setIc10Code(ic10Code: string) {
-		this.ic10Code = ic10Code;
-		return this;
+		this.ic10Code = ic10Code
+		return this
 	}
 }

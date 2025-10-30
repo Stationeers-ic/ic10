@@ -1,31 +1,31 @@
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
-import { Instruction, type InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction";
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
+import { Instruction, type InstructionArgument } from "@/Ic10/Instruction/Helpers/Instruction"
 
 export class SleepInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber("second")];
+		return [ArgumentCalculators.anyNumber("second")]
 	}
 	public run(): void | Promise<void> {
-		const second = this.getArgumentValue("second") * 1000;
+		const second = this.getArgumentValue("second") * 1000
 		if (second > 0) {
-			return this.context.sleep(second);
+			return this.context.sleep(second)
 		}
 	}
 }
 export class YieldInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
-		return [];
+		return []
 	}
 	public run(): void | Promise<void> {
-		return this.context.yield();
+		return this.context.yield()
 	}
 }
 
 export class HcfInstruction extends Instruction {
 	public argumentList(): InstructionArgument[] {
-		return [];
+		return []
 	}
 	public run(): void | Promise<void> {
-		this.context.hcf();
+		this.context.hcf()
 	}
 }

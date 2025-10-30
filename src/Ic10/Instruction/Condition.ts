@@ -1,21 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import CONSTS from "@/Defines/consts";
-import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators";
-import {
-	Instruction,
-	type InstructionArgument,
-	type InstructionTestData,
-} from "@/Ic10/Instruction/Helpers/Instruction";
+import CONSTS from "@/Defines/consts"
+import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
+import { Instruction, type InstructionArgument, type InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction"
 
 // ===== Общие хелперы =====
-const EPS = CONSTS.epsilon * 8;
-const RA = 17;
+const EPS = CONSTS.epsilon * 8
+const RA = 17
 
 function approxEqual(a: number, b: number, c: number): boolean {
-	const scale = Math.max(Math.abs(a), Math.abs(b));
-	const tol = Math.max(c * scale, EPS);
-	return Math.abs(a - b) <= tol;
+	const scale = Math.max(Math.abs(a), Math.abs(b))
+	const tol = Math.max(c * scale, EPS)
+	return Math.abs(a - b) <= tol
 }
 
 const cmp = {
@@ -25,7 +21,7 @@ const cmp = {
 	ge: (a: number, b: number) => a >= b,
 	eq: (a: number, b: number) => a === b,
 	ne: (a: number, b: number) => a !== b,
-};
+}
 
 const un = {
 	lt0: (a: number) => a < 0,
@@ -38,28 +34,28 @@ const un = {
 	na0: (a: number) => Math.abs(a) > EPS,
 	nan: (a: number) => Number.isNaN(a),
 	nanz: (a: number) => !Number.isNaN(a),
-};
+}
 
 // ===== Генераторы тестов и ожидаемых значений =====
-const expectReg = (register: number, value: number) => ({ type: "register", register, value }) as const;
+const expectReg = (register: number, value: number) => ({ type: "register", register, value }) as const
 
 function tSetUnary(op: string, cases: Array<[a: number, ok: boolean]>): InstructionTestData[] {
 	return cases.map(([a, ok]) => ({
 		code: `${op} r2 ${a}`,
 		expected: [expectReg(2, ok ? 1 : 0)],
-	}));
+	}))
 }
 function tSetBinary(op: string, cases: Array<[a: number, b: number, ok: boolean]>): InstructionTestData[] {
 	return cases.map(([a, b, ok]) => ({
 		code: `${op} r2 ${a} ${b}`,
 		expected: [expectReg(2, ok ? 1 : 0)],
-	}));
+	}))
 }
 function tSetTernary(op: string, cases: Array<[a: number, b: number, c: number, ok: boolean]>): InstructionTestData[] {
 	return cases.map(([a, b, c, ok]) => ({
 		code: `${op} r2 ${a} ${b} ${c}`,
 		expected: [expectReg(2, ok ? 1 : 0)],
-	}));
+	}))
 }
 
 // Абсолютная бинарная ветка через r0/r1 и line=4
@@ -70,7 +66,7 @@ function tAbsBinBranch(
 	return cases.map(([v0, v1, br]) => ({
 		code: `move r0 ${v0}\nmove r1 ${v1}\n${op} r0 r1 4\nmove r2 1\nmove r3 1`,
 		expected: br ? [expectReg(2, 0), expectReg(3, 1)] : [expectReg(2, 1), expectReg(3, 1)],
-	}));
+	}))
 }
 
 // Относительная бинарная ветка c relative=2
@@ -78,7 +74,7 @@ function tRelBinBranch(op: string, cases: Array<[a: number, b: number, shouldBra
 	return cases.map(([a, b, br]) => ({
 		code: `${op} ${a} ${b} 2\nmove r2 1\nmove r3 1`,
 		expected: br ? [expectReg(2, 0), expectReg(3, 1)] : [expectReg(2, 1), expectReg(3, 1)],
-	}));
+	}))
 }
 
 // Абсолютная тернарная ветка с line=3 и прологом move r2 0
@@ -89,19 +85,19 @@ function tAbsTernaryBranch(
 	return cases.map(([a, b, c, br]) => ({
 		code: `move r2 0\n${op} ${a} ${b} ${c} 3\nmove r2 1\nmove r3 1`,
 		expected: br ? [expectReg(2, 0), expectReg(3, 1)] : [expectReg(2, 1), expectReg(3, 1)],
-	}));
+	}))
 }
 
 // ===== Базовые классы записи 1/0 =====
 abstract class UnarySetConditionInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.registerLink("result"), ArgumentCalculators.anyNumber("a")];
+		return [ArgumentCalculators.registerLink("result"), ArgumentCalculators.anyNumber("a")]
 	}
-	public abstract predicate(a: number): boolean;
+	public abstract predicate(a: number): boolean
 	override run(): void {
-		const r = this.getArgumentValue<number>("result");
-		const a = this.getArgumentValue<number>("a");
-		this.context.setRegister(r, this.predicate(a) ? 1 : 0);
+		const r = this.getArgumentValue<number>("result")
+		const a = this.getArgumentValue<number>("a")
+		this.context.setRegister(r, this.predicate(a) ? 1 : 0)
 	}
 }
 
@@ -111,14 +107,14 @@ abstract class BinarySetConditionInstruction extends Instruction {
 			ArgumentCalculators.registerLink("result"),
 			ArgumentCalculators.anyNumber("a"),
 			ArgumentCalculators.anyNumber("b"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number): boolean;
+	public abstract predicate(a: number, b: number): boolean
 	override run(): void {
-		const r = this.getArgumentValue<number>("result");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		this.context.setRegister(r, this.predicate(a, b) ? 1 : 0);
+		const r = this.getArgumentValue<number>("result")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		this.context.setRegister(r, this.predicate(a, b) ? 1 : 0)
 	}
 }
 
@@ -129,15 +125,15 @@ abstract class TernarySetConditionInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("a"),
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.anyNumber("c"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number, c: number): boolean;
+	public abstract predicate(a: number, b: number, c: number): boolean
 	override run(): void {
-		const r = this.getArgumentValue<number>("result");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		const c = this.getArgumentValue<number>("c");
-		this.context.setRegister(r, this.predicate(a, b, c) ? 1 : 0);
+		const r = this.getArgumentValue<number>("result")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		const c = this.getArgumentValue<number>("c")
+		this.context.setRegister(r, this.predicate(a, b, c) ? 1 : 0)
 	}
 }
 
@@ -148,26 +144,26 @@ abstract class BinaryBranchInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("a"),
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.jumpTarget("line"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number): boolean;
+	public abstract predicate(a: number, b: number): boolean
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		if (this.predicate(a, b)) this.context.setNextLineIndex(line);
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		if (this.predicate(a, b)) this.context.setNextLineIndex(line)
 	}
 }
 
 abstract class UnaryBranchInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber("a"), ArgumentCalculators.jumpTarget("line")];
+		return [ArgumentCalculators.anyNumber("a"), ArgumentCalculators.jumpTarget("line")]
 	}
-	public abstract predicate(a: number): boolean;
+	public abstract predicate(a: number): boolean
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
-		if (this.predicate(a)) this.context.setNextLineIndex(line);
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
+		if (this.predicate(a)) this.context.setNextLineIndex(line)
 	}
 }
 
@@ -178,15 +174,15 @@ abstract class TernaryBranchInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.anyNumber("c"),
 			ArgumentCalculators.jumpTarget("line"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number, c: number): boolean;
+	public abstract predicate(a: number, b: number, c: number): boolean
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		const c = this.getArgumentValue<number>("c");
-		if (this.predicate(a, b, c)) this.context.setNextLineIndex(line);
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		const c = this.getArgumentValue<number>("c")
+		if (this.predicate(a, b, c)) this.context.setNextLineIndex(line)
 	}
 }
 
@@ -196,26 +192,26 @@ abstract class RelativeBinaryBranchInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("a"),
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.anyNumber("relative"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number): boolean;
+	public abstract predicate(a: number, b: number): boolean
 	override run(): void {
-		const relative = this.getArgumentValue<number>("relative");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		if (this.predicate(a, b)) this.context.setNextLineIndex(this.line.position + relative);
+		const relative = this.getArgumentValue<number>("relative")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		if (this.predicate(a, b)) this.context.setNextLineIndex(this.line.position + relative)
 	}
 }
 
 abstract class RelativeUnaryBranchInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.anyNumber("a"), ArgumentCalculators.anyNumber("relative")];
+		return [ArgumentCalculators.anyNumber("a"), ArgumentCalculators.anyNumber("relative")]
 	}
-	public abstract predicate(a: number): boolean;
+	public abstract predicate(a: number): boolean
 	override run(): void {
-		const relative = this.getArgumentValue<number>("relative");
-		const a = this.getArgumentValue<number>("a");
-		if (this.predicate(a)) this.context.setNextLineIndex(this.line.position + relative);
+		const relative = this.getArgumentValue<number>("relative")
+		const a = this.getArgumentValue<number>("a")
+		if (this.predicate(a)) this.context.setNextLineIndex(this.line.position + relative)
 	}
 }
 
@@ -226,47 +222,47 @@ abstract class RelativeTernaryBranchInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.anyNumber("c"),
 			ArgumentCalculators.anyNumber("relative"),
-		];
+		]
 	}
-	public abstract predicate(a: number, b: number, c: number): boolean;
+	public abstract predicate(a: number, b: number, c: number): boolean
 	override run(): void {
-		const relative = this.getArgumentValue<number>("relative");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		const c = this.getArgumentValue<number>("c");
-		if (this.predicate(a, b, c)) this.context.setNextLineIndex(this.line.position + relative);
+		const relative = this.getArgumentValue<number>("relative")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		const c = this.getArgumentValue<number>("c")
+		if (this.predicate(a, b, c)) this.context.setNextLineIndex(this.line.position + relative)
 	}
 }
 
 abstract class BinaryBranchAndLinkInstruction extends BinaryBranchInstruction {
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
 		if (this.predicate(a, b)) {
-			this.context.setNextLineIndex(line, true);
+			this.context.setNextLineIndex(line, true)
 		}
 	}
 }
 
 abstract class UnaryBranchAndLinkInstruction extends UnaryBranchInstruction {
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
 		if (this.predicate(a)) {
-			this.context.setNextLineIndex(line, true);
+			this.context.setNextLineIndex(line, true)
 		}
 	}
 }
 
 abstract class TernaryBranchAndLinkInstruction extends TernaryBranchInstruction {
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		const c = this.getArgumentValue<number>("c");
+		const line = this.getArgumentValue<number>("line")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		const c = this.getArgumentValue<number>("c")
 		if (this.predicate(a, b, c)) {
-			this.context.setNextLineIndex(line, true);
+			this.context.setNextLineIndex(line, true)
 		}
 	}
 }
@@ -274,56 +270,56 @@ abstract class TernaryBranchAndLinkInstruction extends TernaryBranchInstruction 
 // ===== Устройства (унификация) =====
 abstract class DeviceSetConditionInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.registerLink("result"), ArgumentCalculators.devicePin("device")];
+		return [ArgumentCalculators.registerLink("result"), ArgumentCalculators.devicePin("device")]
 	}
-	public abstract predicateDeviceSet(isSet: boolean): boolean;
+	public abstract predicateDeviceSet(isSet: boolean): boolean
 	override run(): void {
-		const r = this.getArgumentValue<number>("result");
-		const device = this.getArgumentValue<number>("device");
-		const isSet = this.context.isConnectDeviceByPin(device);
-		this.context.setRegister(r, this.predicateDeviceSet(isSet) ? 1 : 0);
+		const r = this.getArgumentValue<number>("result")
+		const device = this.getArgumentValue<number>("device")
+		const isSet = this.context.isConnectDeviceByPin(device)
+		this.context.setRegister(r, this.predicateDeviceSet(isSet) ? 1 : 0)
 	}
 }
 
 abstract class DeviceBranchInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("line")];
+		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("line")]
 	}
-	public abstract predicateDeviceSet(isSet: boolean): boolean;
+	public abstract predicateDeviceSet(isSet: boolean): boolean
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const device = this.getArgumentValue<number>("device");
-		const isSet = this.context.isConnectDeviceByPin(device);
-		if (this.predicateDeviceSet(isSet)) this.context.setNextLineIndex(line);
+		const line = this.getArgumentValue<number>("line")
+		const device = this.getArgumentValue<number>("device")
+		const isSet = this.context.isConnectDeviceByPin(device)
+		if (this.predicateDeviceSet(isSet)) this.context.setNextLineIndex(line)
 	}
 }
 
 abstract class RelativeDeviceBranchInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("relative")];
+		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("relative")]
 	}
-	public abstract predicateDeviceSet(isSet: boolean): boolean;
+	public abstract predicateDeviceSet(isSet: boolean): boolean
 	override run(): void {
-		const relative = this.getArgumentValue<number>("relative");
-		const device = this.getArgumentValue<number>("device");
-		const isSet = this.context.isConnectDeviceByPin(device);
+		const relative = this.getArgumentValue<number>("relative")
+		const device = this.getArgumentValue<number>("device")
+		const isSet = this.context.isConnectDeviceByPin(device)
 		if (this.predicateDeviceSet(isSet)) {
-			this.context.setNextLineIndex(this.line.position + relative);
+			this.context.setNextLineIndex(this.line.position + relative)
 		}
 	}
 }
 
 abstract class DeviceBranchAndLinkInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
-		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("line")];
+		return [ArgumentCalculators.devicePin("device"), ArgumentCalculators.anyNumber("line")]
 	}
-	public abstract predicateDeviceSet(isSet: boolean): boolean;
+	public abstract predicateDeviceSet(isSet: boolean): boolean
 	override run(): void {
-		const line = this.getArgumentValue<number>("line");
-		const device = this.getArgumentValue<number>("device");
-		const isSet = this.context.isConnectDeviceByPin(device);
+		const line = this.getArgumentValue<number>("line")
+		const device = this.getArgumentValue<number>("device")
+		const isSet = this.context.isConnectDeviceByPin(device)
 		if (this.predicateDeviceSet(isSet)) {
-			this.context.setNextLineIndex(line, true);
+			this.context.setNextLineIndex(line, true)
 		}
 	}
 }
@@ -336,9 +332,9 @@ function makeUnarySet<TBase extends abstract new (...args: any[]) => Instruction
 	//@ts-expect-error ХАК для сокращения повторений в коде
 	return class extends Base {
 		public predicate(a: number): boolean {
-			return pred(a);
+			return pred(a)
 		}
-	};
+	}
 }
 function makeBinarySet<TBase extends abstract new (...args: any[]) => Instruction>(
 	Base: TBase,
@@ -347,9 +343,9 @@ function makeBinarySet<TBase extends abstract new (...args: any[]) => Instructio
 	//@ts-expect-error ХАК для сокращения повторений в коде
 	return class extends Base {
 		public predicate(a: number, b: number): boolean {
-			return pred(a, b);
+			return pred(a, b)
 		}
-	};
+	}
 }
 function makeTernarySet<TBase extends abstract new (...args: any[]) => Instruction>(
 	Base: TBase,
@@ -358,76 +354,76 @@ function makeTernarySet<TBase extends abstract new (...args: any[]) => Instructi
 	//@ts-expect-error ХАК для сокращения повторений в коде
 	return class extends Base {
 		public predicate(a: number, b: number, c: number): boolean {
-			return pred(a, b, c);
+			return pred(a, b, c)
 		}
-	};
+	}
 }
 
 // ===== Реализации S* (запись 1/0) =====
 export class SltInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.lt) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("slt", [
 			[1, 2, true],
 			[2, 1, false],
-		]);
+		])
 	}
 }
 export class SgtInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.gt) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("sgt", [
 			[2, 1, true],
 			[1, 2, false],
-		]);
+		])
 	}
 }
 export class SleInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.le) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("sle", [
 			[2, 2, true],
 			[3, 2, false],
-		]);
+		])
 	}
 }
 export class SgeInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.ge) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("sge", [
 			[2, 2, true],
 			[1, 2, false],
-		]);
+		])
 	}
 }
 export class SeqInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("seq", [
 			[5, 5, true],
 			[5, 4, false],
-		]);
+		])
 	}
 }
 export class SneInstruction extends makeBinarySet(BinarySetConditionInstruction, cmp.ne) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetBinary("sne", [
 			[5, 4, true],
 			[5, 5, false],
-		]);
+		])
 	}
 }
 
@@ -435,23 +431,23 @@ export class SneInstruction extends makeBinarySet(BinarySetConditionInstruction,
 export class SapInstruction extends makeTernarySet(TernarySetConditionInstruction, approxEqual) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetTernary("sap", [
 			[100, 101, 0.02, true],
 			[100, 104, 0.02, false],
-		]);
+		])
 	}
 }
 export class SnaInstruction extends makeTernarySet(TernarySetConditionInstruction, (a, b, c) => !approxEqual(a, b, c)) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetTernary("sna", [
 			[100, 101, 0.02, false],
 			[100, 104, 0.02, true],
-		]);
+		])
 	}
 }
 
@@ -459,67 +455,67 @@ export class SnaInstruction extends makeTernarySet(TernarySetConditionInstructio
 export class SltzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.lt0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("sltz", [
 			[-1, true],
 			[0, false],
-		]);
+		])
 	}
 }
 export class SgtzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.gt0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("sgtz", [
 			[1, true],
 			[0, false],
-		]);
+		])
 	}
 }
 export class SlezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.le0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("slez", [
 			[0, true],
 			[1, false],
-		]);
+		])
 	}
 }
 export class SgezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ge0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("sgez", [
 			[0, true],
 			[-1, false],
-		]);
+		])
 	}
 }
 export class SeqzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.eq0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("seqz", [
 			[0, true],
 			[1, false],
-		]);
+		])
 	}
 }
 export class SnezInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ne0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("snez", [
 			[1, true],
 			[0, false],
-		]);
+		])
 	}
 }
 
@@ -527,23 +523,23 @@ export class SnezInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 export class SapzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.ap0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("sapz", [
 			[0, true],
 			[1, false],
-		]);
+		])
 	}
 }
 export class SnazInstruction extends makeUnarySet(UnarySetConditionInstruction, un.na0) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tSetUnary("snaz", [
 			[1, true],
 			[0, false],
-		]);
+		])
 	}
 }
 
@@ -551,14 +547,14 @@ export class SnazInstruction extends makeUnarySet(UnarySetConditionInstruction, 
 export class SnanInstruction extends makeUnarySet(UnarySetConditionInstruction, un.nan) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
 				code: "div r0 0 0\nsnan r1 r0\nsnanz r2 r0",
 				expected: [expectReg(1, 1), expectReg(2, 0)],
 			},
-		];
+		]
 	}
 }
 export class SnanzInstruction extends makeUnarySet(UnarySetConditionInstruction, un.nanz) {}
@@ -566,12 +562,12 @@ export class SnanzInstruction extends makeUnarySet(UnarySetConditionInstruction,
 // Устройство set/not set
 export class SdseInstruction extends DeviceSetConditionInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return isSet;
+		return isSet
 	}
 }
 export class SdnsInstruction extends DeviceSetConditionInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return !isSet;
+		return !isSet
 	}
 }
 
@@ -584,23 +580,23 @@ export class BgeInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.g
 export class BeqInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tAbsBinBranch("beq", [
 			[1, 1, true],
 			[1, 2, false],
-		]);
+		])
 	}
 }
 export class BneInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.ne) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tAbsBinBranch("bne", [
 			[1, 2, true],
 			[1, 1, false],
-		]);
+		])
 	}
 }
 
@@ -608,12 +604,12 @@ export class BneInstruction extends makeBinarySet(BinaryBranchInstruction, cmp.n
 export class BapInstruction extends makeTernarySet(TernaryBranchInstruction, approxEqual) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tAbsTernaryBranch("bap", [
 			[100, 101, 0.02, true],
 			[100, 104, 0.02, false],
-		]);
+		])
 	}
 }
 export class BnaInstruction extends makeTernarySet(TernaryBranchInstruction, (a, b, c) => !approxEqual(a, b, c)) {}
@@ -628,12 +624,12 @@ export class BnanInstruction extends makeUnarySet(UnaryBranchInstruction, un.nan
 // Абсолютные ветвления по устройству
 export class BdseInstruction extends DeviceBranchInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return isSet;
+		return isSet
 	}
 }
 export class BdnsInstruction extends DeviceBranchInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return !isSet;
+		return !isSet
 	}
 }
 
@@ -642,12 +638,12 @@ export class BrltInstruction extends makeBinarySet(RelativeBinaryBranchInstructi
 export class BrgtInstruction extends makeBinarySet(RelativeBinaryBranchInstruction, cmp.gt) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return tRelBinBranch("brgt", [
 			[2, 1, true],
 			[0, 1, false],
-		]);
+		])
 	}
 }
 export class BrleInstruction extends makeBinarySet(RelativeBinaryBranchInstruction, cmp.le) {}
@@ -676,7 +672,7 @@ export class BgealInstruction extends makeBinarySet(BinaryBranchAndLinkInstructi
 export class BeqalInstruction extends makeBinarySet(BinaryBranchAndLinkInstruction, cmp.eq) {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		// Оставляем как в оригинале из-за специфики RA/nextLineIndex
 		return [
@@ -688,7 +684,7 @@ export class BeqalInstruction extends makeBinarySet(BinaryBranchAndLinkInstructi
 				code: `move r0 1\nmove r1 2\nbeqal r0 r1 4\nmove r2 1\nmove r3 1`,
 				expected: [expectReg(RA, 0), expectReg(2, 1), expectReg(3, 1)],
 			},
-		];
+		]
 	}
 }
 export class BnealInstruction extends makeBinarySet(BinaryBranchAndLinkInstruction, cmp.ne) {}
@@ -708,7 +704,7 @@ export class BnazalInstruction extends makeUnarySet(UnaryBranchAndLinkInstructio
 export class BrdseInstruction extends RelativeDeviceBranchInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -719,16 +715,16 @@ export class BrdseInstruction extends RelativeDeviceBranchInstruction {
 				code: "brdse d1 2\nmove r0 1\nmove r1 1",
 				expected: [expectReg(1, 1), expectReg(0, 1)],
 			},
-		];
+		]
 	}
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return isSet;
+		return isSet
 	}
 }
 export class BrdnsInstruction extends RelativeDeviceBranchInstruction {
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -739,22 +735,22 @@ export class BrdnsInstruction extends RelativeDeviceBranchInstruction {
 				code: "brdns d1 2\nmove r0 1\nmove r1 1",
 				expected: [expectReg(1, 1), expectReg(0, 0)],
 			},
-		];
+		]
 	}
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return !isSet;
+		return !isSet
 	}
 }
 
 // Абсолютные ветки устройств с AL
 export class BdsealInstruction extends DeviceBranchAndLinkInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return isSet;
+		return isSet
 	}
 }
 export class BdnsalInstruction extends DeviceBranchAndLinkInstruction {
 	public predicateDeviceSet(isSet: boolean): boolean {
-		return !isSet;
+		return !isSet
 	}
 }
 // ===== Абсолютные ветвления (Unary) =====
@@ -782,23 +778,23 @@ export class SelectInstruction extends Instruction {
 			ArgumentCalculators.anyNumber("a"),
 			ArgumentCalculators.anyNumber("b"),
 			ArgumentCalculators.anyNumber("c"),
-		];
+		]
 	}
 
 	override run(): void {
-		const result = this.getArgumentValue<number>("result");
-		const a = this.getArgumentValue<number>("a");
-		const b = this.getArgumentValue<number>("b");
-		const c = this.getArgumentValue<number>("c");
+		const result = this.getArgumentValue<number>("result")
+		const a = this.getArgumentValue<number>("a")
+		const b = this.getArgumentValue<number>("b")
+		const c = this.getArgumentValue<number>("c")
 
 		// Выбираем b если a не ноль, иначе c
-		const value = a !== 0 ? b : c;
-		this.context.setRegister(result, value);
+		const value = a !== 0 ? b : c
+		this.context.setRegister(result, value)
 	}
 
 	static override tests(): InstructionTestData[] {
 		if (typeof isProd !== "undefined" && isProd) {
-			return [];
+			return []
 		}
 		return [
 			{
@@ -817,6 +813,6 @@ export class SelectInstruction extends Instruction {
 				code: "select r4 0.0001 50 60",
 				expected: [expectReg(4, 50)], // a=0.0001 (не ноль) → выбираем b=50
 			},
-		];
+		]
 	}
 }

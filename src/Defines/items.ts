@@ -5319,5 +5319,5 @@ export const ITEMS = [
 		image: "/images/3/6/36c921f493a7832b079d618c2dff17d1.png",
 		tags: ["HasImage", "HasPrefab", "Item", "Paintable"],
 	},
-] as const;
-export default ITEMS;
+] as const
+export default ITEMS

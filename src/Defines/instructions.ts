@@ -37,7 +37,8 @@ export const INSTRUCTIONS = {
 		name: "atan",
 	},
 	atan2: {
-		description: "Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)",
+		description:
+			"Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)",
 		example: "atan2 r? a(r?|num) b(r?|num)",
 		name: "atan2",
 	},
@@ -240,7 +241,8 @@ export const INSTRUCTIONS = {
 		name: "bnezal",
 	},
 	brap: {
-		description: "Relative branch to line d if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)",
+		description:
+			"Relative branch to line d if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)",
 		example: "brap a(r?|num) b(r?|num) c(r?|num) d(r?|num)",
 		name: "brap",
 	},
@@ -582,7 +584,8 @@ export const INSTRUCTIONS = {
 		name: "s",
 	},
 	sap: {
-		description: "Register = 1 if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8), otherwise 0",
+		description:
+			"Register = 1 if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8), otherwise 0",
 		example: "sap r? a(r?|num) b(r?|num) c(r?|num)",
 		name: "sap",
 	},
@@ -597,7 +600,8 @@ export const INSTRUCTIONS = {
 		name: "sb",
 	},
 	sbn: {
-		description: "Stores register value to LogicType on all output network devices with provided type hash and name.",
+		description:
+			"Stores register value to LogicType on all output network devices with provided type hash and name.",
 		example: "sbn deviceHash nameHash logicType r?",
 		name: "sbn",
 	},
@@ -777,5 +781,5 @@ export const INSTRUCTIONS = {
 		example: "yield",
 		name: "yield",
 	},
-} as const;
-export default INSTRUCTIONS;
+} as const
+export default INSTRUCTIONS
