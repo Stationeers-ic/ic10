@@ -54,7 +54,7 @@ export abstract class Device {
 		this.hash = hash
 		this.rawData = DEVICES[this.hash] // Получение данных устройства по хэшу
 
-		this.name = name ?? this?.rawData?.PrefabName ?? ""
+		this._name = new HashString(name ?? this?.rawData?.PrefabName ?? "")
 		if (this?.rawData?.PrefabName) {
 			this.prefabName = new HashString(this.rawData.PrefabName)
 		}

@@ -13,6 +13,7 @@
 		"lib": ["ESNext"],
 		"target": "ESNext",
 		"allowJs": false,
+		"strict": true,
 		"skipLibCheck": true,
 		"moduleResolution": "bundler"
 	},

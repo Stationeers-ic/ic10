@@ -54,7 +54,7 @@ export class Chip extends ItemEntity {
 		return this.#housing
 	}
 
-	getRunner(): Ic10Runner {
+	getRunner(): Ic10Runner | undefined {
 		try {
 			return this.#housing?.runner
 		} catch (e) {
