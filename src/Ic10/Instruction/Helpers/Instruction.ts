@@ -101,7 +101,7 @@ export abstract class Instruction {
 	/** Строка исходного кода, к которой привязана инструкция */
 	public readonly line: Line
 	/** Кэш описаний аргументов (правила валидации/преобразования) */
-	public $argumentList: InstructionArgument[]
+	public $argumentList!: InstructionArgument[]
 
 	/**
 	 * Создает экземпляр инструкции.

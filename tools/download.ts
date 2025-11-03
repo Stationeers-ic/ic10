@@ -390,7 +390,7 @@ function getTypeAnnotationForValue(value: any, allowNull: boolean = false): t.TS
 	const baseType = getBaseTypeAnnotation(value, 0)
 
 	if (allowNull) {
-		return t.tsUnionType([baseType, t.tsNullKeyword()])
+		return baseType
 	}
 	return baseType
 }

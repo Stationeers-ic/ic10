@@ -22,7 +22,6 @@ export class Housing extends Device {
 		this.chip = args?.chip
 		this.pin_count = args?.pin_count ?? 6
 		if (typeof this.chip !== "undefined") {
-			delete this.$memory
 			this.$memory = this.chip.memory
 			this.chip.count = 1
 			this.chip?.applyHousing(this)

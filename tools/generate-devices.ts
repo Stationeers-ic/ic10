@@ -91,7 +91,7 @@ const BASE_RULES: BaseRule[] = [
 	},
 ]
 // ==================== GENERATION ====================
-function boolMethod(name, value) {
+function boolMethod(name: string, value: any) {
 	const hasMethod = t.classMethod(
 		"method",
 		t.identifier(name),
@@ -182,7 +182,7 @@ class ClassGeneratorImpl implements ClassGenerator {
 		this.imports.get(from)!.add(what)
 	}
 
-	addClassMember(member: t.ClassMethod | t.ClassProperty) {
+	addClassMember(member: t.ClassMethod | t.ClassProperty | t.ClassPrivateProperty) {
 		this.classBody.body.push(member)
 	}
 

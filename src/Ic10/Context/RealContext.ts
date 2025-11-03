@@ -94,7 +94,7 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 
 	private updateLineNumberParameter(): void {
 		try {
-			this.housing.props.forceWrite("LineNumber", this.line)
+			this.housing.props?.forceWrite("LineNumber", this.line)
 		} catch (e) {}
 	}
 }

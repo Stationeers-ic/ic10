@@ -5,6 +5,7 @@ import type { Network } from "@/Core/Network"
 import { type Parser, ParserV1 } from "@/Envierment/ParserV1"
 import { ErrorSeverity } from "@/Ic10/Errors/Errors"
 import type { Ic10Runner } from "@/Ic10/Ic10Runner"
+import { i18n } from "@/Languages/lang"
 import type { EnvSchema, ProjectSchema } from "@/Schemas/EnvSchema"
 
 export class Builer {
@@ -34,11 +35,14 @@ export class Builer {
 	static from(yml: string): Builer {
 		const BUILDER = new Builer()
 		const data = parse(yml) as EnvSchema
-		let Parser: Parser
+		let Parser: Parser | undefined
 		switch (data.version) {
 			case 1:
 				Parser = new ParserV1({ builer: BUILDER })
 				break
+		}
+		if (!Parser) {
+			throw new Error(i18n.t("error.unknown_parser_version"))
 		}
 		Parser.parse(data)
 		return BUILDER
@@ -46,7 +50,7 @@ export class Builer {
 
 	// Одноразовая инициализация: прогнать sandbox и проверить ошибки
 	public async init(): Promise<boolean> {
-		if (this.initialized) return
+		if (this.initialized) return true
 
 		for (const [, runner] of this.Runners.entries()) {
 			runner.switchContext("sandbox")

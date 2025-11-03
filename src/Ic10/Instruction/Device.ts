@@ -5,7 +5,7 @@ import { StructureAutolathe } from "@/Devices/StructureAutolathe"
 import { StructureConsole } from "@/Devices/StructureConsole"
 import { StructureConsoleLed1x2 } from "@/Devices/StructureConsoleLed1x2"
 import { HashString } from "@/helpers"
-import { ArgumentIc10Error, ErrorSeverity } from "@/Ic10/Errors/Errors"
+import { ArgumentIc10Error, ErrorSeverity, RuntimeIc10Error } from "@/Ic10/Errors/Errors"
 import {
 	ArgumentCalculators,
 	type calculateDevicePinOrIdResult,
@@ -48,7 +48,7 @@ export class SInstruction extends Instruction {
 
 	override run(): void {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device")
-		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const value = this.getArgumentValue<number>("value")
 		if (device.pin !== undefined && device.port !== undefined) {
 			this.context.setDevicePortChanelByPin(device.pin, device.port, prop, value)
@@ -98,7 +98,7 @@ export class LInstruction extends Instruction {
 	override run(): void {
 		const result = this.getArgumentValue<number>("result")
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device")
-		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		let v: number
 
 		if (device.pin !== undefined && device.port !== undefined) {
@@ -129,7 +129,7 @@ export class LInstruction extends Instruction {
 export class SdInstruction extends Instruction {
 	override run(): void {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device")
-		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const value = this.getArgumentValue<number>("value")
 		if (device.pin !== undefined && device.port !== undefined) {
 			throw new ArgumentIc10Error({
@@ -159,7 +159,7 @@ export class LdInstruction extends Instruction {
 	override run(): void {
 		const result = this.getArgumentValue<number>("result")
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device")
-		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const prop = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		let v: number
 
 		if (device.pin !== undefined && device.port !== undefined) {
@@ -305,6 +305,14 @@ export class GetdInstruction extends Instruction {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("deviceid")
 		const address = this.getArgumentValue<number>("address")
 		const result = this.getArgumentValue<number>("result")
+		if (typeof device.id === "undefined") {
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.invalid_argument_device_id"),
+				}),
+			)
+			return
+		}
 		this.context.setRegister(result, this.context.getDeviceStackById(device.id, address))
 	}
 
@@ -341,6 +349,14 @@ export class PutdInstruction extends Instruction {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("deviceid")
 		const address = this.getArgumentValue<number>("address")
 		const value = this.getArgumentValue<number>("value")
+		if (typeof device.id === "undefined") {
+			this.addError(
+				new RuntimeIc10Error({
+					message: i18n.t("error.invalid_argument_device_id"),
+				}),
+			)
+			return
+		}
 		this.context.setDeviceStackById(device.id, address, value)
 	}
 
@@ -392,7 +408,7 @@ export class BdnvlInstruction extends Instruction {
 
 	override run(): void {
 		const devicePin = this.getArgumentValue<number>("device")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const target = this.getArgumentValue<number>("target")
 		if (this.context.canLoadDeviceParameterByPin(devicePin, logic)) {
 			this.context.setNextLineIndex(target)
@@ -438,7 +454,7 @@ export class BdnvsInstruction extends Instruction {
 
 	override run(): void {
 		const devicePin = this.getArgumentValue<number>("device")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const target = this.getArgumentValue<number>("target")
 		if (this.context.canStoreDeviceParameterByPin(devicePin, logic)) {
 			this.context.setNextLineIndex(target)
@@ -520,11 +536,11 @@ export class lbnInstruction extends Instruction {
 		const name = new HashString("a1")
 
 		const d1 = new StructureConsole({ name: "a1" })
-		d1.props.forceWrite("Setting", 4)
+		d1.props!.forceWrite("Setting", 4)
 		const d2 = new StructureConsole({ name: "a1" })
-		d2.props.forceWrite("Setting", 6)
+		d2.props!.forceWrite("Setting", 6)
 		const d3 = new StructureConsole({ name: "a2" })
-		d3.props.forceWrite("Setting", 6)
+		d3.props!.forceWrite("Setting", 6)
 
 		const devices = [
 			{ id: 1, device: d1 },
@@ -566,7 +582,7 @@ export class lbnInstruction extends Instruction {
 		const result = this.getArgumentValue<number>("result")
 		const deviceHash = this.getArgumentValue<number>("deviceHash")
 		const deviceName = this.getArgumentValue<number>("deviceName")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const mode = this.getArgumentValue<number>("mode")
 
 		const value = this.context.deviceBatchReadByHashAndName(deviceHash, deviceName, logic, mode)
@@ -581,18 +597,18 @@ export class SbnInstruction extends Instruction {
 			return []
 		}
 		const d1 = new StructureConsoleLed1x2({ name: "a1" })
-		d1.props.forceWrite("Setting", 4)
+		d1.props!.forceWrite("Setting", 4)
 		const d2 = new StructureConsoleLed1x2({ name: "a1" })
-		d2.props.forceWrite("Setting", 5)
+		d2.props!.forceWrite("Setting", 5)
 		const d3 = new StructureConsole({ name: "a2" })
-		d3.props.forceWrite("Setting", 6)
+		d3.props!.forceWrite("Setting", 6)
 
 		const devices = [
 			{ id: 1, device: d1, pin: 1 },
 			{ id: 2, device: d2, pin: 2 },
 			{ id: 3, device: d3, pin: 3 },
 		]
-		const s = Logics.getByKey("Setting")
+		const s = Logics.getByKey("Setting")!
 		return [
 			{
 				devices,
@@ -633,7 +649,7 @@ export class SbnInstruction extends Instruction {
 	override run(): void {
 		const deviceHash = this.getArgumentValue<number>("deviceHash")
 		const deviceName = this.getArgumentValue<number>("deviceName")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const value = this.getArgumentValue<number>("value")
 
 		this.context.deviceBatchWriteByHashAndName(deviceHash, deviceName, logic, value)
@@ -649,9 +665,9 @@ export class LbnsInstruction extends Instruction {
 		const item1 = new ItemEntity(1, 4)
 		const item2 = new ItemEntity(1, 6)
 		const d1 = new StructureConsole({ name: "a1" })
-		d1.slots.getSlot(0).putItem(item1)
+		d1.slots!.getSlot(0)!.putItem(item1)
 		const d2 = new StructureConsole({ name: "a1" })
-		d2.slots.getSlot(0).putItem(item2)
+		d2.slots!.getSlot(0)!.putItem(item2)
 
 		const devices = [
 			{ id: 1, device: d1 },
@@ -683,7 +699,7 @@ export class LbnsInstruction extends Instruction {
 		const deviceHash = this.getArgumentValue<number>("deviceHash")
 		const deviceName = this.getArgumentValue<number>("deviceName")
 		const slotIndex = this.getArgumentValue<number>("slotIndex")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const mode = this.getArgumentValue<number>("mode")
 
 		const v = this.context.getBatchDeviceSlotParameterByHashAndName(deviceHash, deviceName, slotIndex, logic, mode)
@@ -710,9 +726,9 @@ export class LbsInstruction extends Instruction {
 		const item1 = new ItemEntity(1, 4)
 		const item2 = new ItemEntity(1, 6)
 		const d1 = new StructureConsole({})
-		d1.slots.getSlot(0).putItem(item1)
+		d1.slots!.getSlot(0)!.putItem(item1)
 		const d2 = new StructureConsole({})
-		d2.slots.getSlot(0).putItem(item2)
+		d2.slots!.getSlot(0)!.putItem(item2)
 
 		const devices = [
 			{ id: 1, device: d1 },
@@ -743,7 +759,7 @@ export class LbsInstruction extends Instruction {
 		const result = this.getArgumentValue<number>("result")
 		const deviceHash = this.getArgumentValue<number>("deviceHash")
 		const slotIndex = this.getArgumentValue<number>("slotIndex")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const mode = this.getArgumentValue<number>("mode")
 
 		const v = this.context.getBatchDeviceSlotParameterByHash(deviceHash, slotIndex, logic, mode)
@@ -765,10 +781,9 @@ export class LrInstruction extends Instruction {
 		if (typeof isProd !== "undefined" && isProd) {
 			return []
 		}
-		const name = new HashString("a1")
 		const d1 = new StructureAutolathe({ name: "a1" })
-		const rh = Reagents.getByValue("Copper")
-		d1.reagents.set(rh, 200)
+		const rh = Reagents.getByValue("Copper")!
+		d1!.reagents!.set(rh, 200)
 		const devices = [{ id: 1, pin: 2, device: d1 }]
 
 		return [
@@ -828,9 +843,9 @@ export class LbInstruction extends Instruction {
 			return []
 		}
 		const d = new StructureConsole({})
-		d.props.forceWrite("Setting", 100)
+		d.props!.forceWrite("Setting", 100)
 		const c = new StructureConsole({})
-		c.props.forceWrite("Setting", 80)
+		c.props!.forceWrite("Setting", 80)
 
 		const devices = [
 			{ id: 1, device: d },
@@ -889,7 +904,7 @@ export class SsInstruction extends Instruction {
 	public run(): void {
 		const device = this.getArgumentValue<calculateDevicePinOrIdResult>("device")
 		const slot = this.getArgumentValue<number>("slot")
-		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType")
+		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType")!
 		const value = this.getArgumentValue<number>("value")
 
 		if (device.pin !== undefined && device.port !== undefined) {
@@ -913,7 +928,7 @@ export class SbInstruction extends Instruction {
 		if (typeof isProd !== "undefined" && isProd) {
 			return []
 		}
-		const s = Logics.getByKey("On")
+		const s = Logics.getByKey("On")!
 		const d1 = new StructureAutolathe({ name: "a1" })
 		const d2 = new StructureAutolathe({ name: "a2" })
 		const devices = [
@@ -953,7 +968,7 @@ export class SbInstruction extends Instruction {
 
 	public run(): void {
 		const device = this.getArgumentValue<number>("device")
-		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")
+		const logic = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogic>>("logic")!
 		const value = this.getArgumentValue<number>("value")
 
 		this.context.deviceBatchWriteByHash(device, logic, value)
@@ -973,7 +988,7 @@ export class SbsInstruction extends Instruction {
 	public run(): void {
 		const device = this.getArgumentValue<number>("device")
 		const slot = this.getArgumentValue<number>("slot")
-		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType")
+		const slotType = this.getArgumentValue<ReturnType<typeof ValueCalculators.calculateLogicSlot>>("slotType")!
 		const value = this.getArgumentValue<number>("value")
 
 		this.context.setBatchDeviceSlotParameterByHash(device, slot, slotType, value)
@@ -982,9 +997,9 @@ export class SbsInstruction extends Instruction {
 
 /*
 rmap:
-  Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot. 
-  
- 
+  Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot.
+
+
   rmap r? d? reagentHash(r?|num)
 */
 export class RmapInstruction extends Instruction {
@@ -1002,7 +1017,7 @@ export class RmapInstruction extends Instruction {
 
 		const data = Object.entries(REAGENTS).filter(([_, r]) => r.hash === reagent)[1][1]
 
-		this.context.setRegister(result, data.items[0].hash)
+		this.context.setRegister(result, data.items[0]!.hash)
 		this.addError(
 			new ArgumentIc10Error({
 				message: i18n.t("error.bad_impliment"),

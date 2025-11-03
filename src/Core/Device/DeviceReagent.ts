@@ -10,15 +10,15 @@ export type ReagentIterator = {
 export class DeviceReagent extends DeviceScope {
 	#reagents: Map<number, number> = new Map()
 
-	public get(reagentHash): number {
+	public get(reagentHash: number): number {
 		if (this.#reagents.has(reagentHash)) {
-			return this.#reagents.get(reagentHash)
+			return this.#reagents.get(reagentHash)!
 		} else {
 			return 0
 		}
 	}
 
-	public set(reagentHash, count): void {
+	public set(reagentHash: number, count: number): void {
 		if (count > 0) {
 			this.#reagents.set(reagentHash, count)
 		} else {
@@ -34,12 +34,14 @@ export class DeviceReagent extends DeviceScope {
 	}
 
 	[Symbol.iterator](): IterableIterator<ReagentIterator> {
-		const entries = Array.from(this.#reagents.entries()).map(([hash, count]) => {
-			if (Reagents.hasKey(hash)) {
-				const name = Reagents.getByKey(hash) ?? ""
-				return { hash, count, name } satisfies ReagentIterator
-			}
-		})
+		const entries = Array.from(this.#reagents.entries())
+			.map(([hash, count]) => {
+				if (Reagents.hasKey(hash)) {
+					const name = Reagents.getByKey(hash) ?? ""
+					return { hash, count, name } satisfies ReagentIterator
+				}
+			})
+			.filter((e) => typeof e !== "undefined")
 		return entries[Symbol.iterator]()
 	}
 }

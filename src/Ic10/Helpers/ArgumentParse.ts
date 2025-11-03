@@ -28,9 +28,16 @@ export function jsThing(value: number): number {
  */
 export function getConst(argument: Argument, group?: string): number | false {
 	if (group === undefined) {
-		return argument.text in CONSTS ? CONSTS[argument.text] : false
+		// Приводим argument.text к ключу CONSTS
+		return argument.text in CONSTS ? CONSTS[argument.text as keyof typeof CONSTS] : false
 	}
-	return argument.text in GROUPED_CONSTS[group] ? GROUPED_CONSTS[group][argument.text] : false
+
+	// Проверяем существование группы и ключа в группе
+	if (group in GROUPED_CONSTS && argument.text in (GROUPED_CONSTS as any)[group]) {
+		const groupObj = (GROUPED_CONSTS as any)[group]
+		return groupObj[argument.text as keyof typeof groupObj]
+	}
+	return false
 }
 
 /**
@@ -96,11 +103,13 @@ export function parseStr(context: Context, argument: Argument): number | false {
 	try {
 		return stringToCode(match.groups.str)
 	} catch (error) {
-		context.addError(
-			new TypeIc10Error({
-				message: error.message,
-			}).setArgument(argument),
-		)
+		if (error instanceof Error) {
+			context.addError(
+				new TypeIc10Error({
+					message: error.message,
+				}).setArgument(argument),
+			)
+		}
 		return 0
 	}
 }

@@ -16,6 +16,7 @@ import {
 	EnvSchema,
 	type HousingSchema,
 	type NetworkSchema,
+	type PinSchema,
 	type PortSchema,
 	type ProjectSchema,
 	type PropsSchema,
@@ -197,7 +198,7 @@ class SerializerV1 {
 			}
 
 			props.push({
-				name: Logics.getByValue(key),
+				name: Logics.getByValue(key)!,
 				value,
 			})
 		}
@@ -271,18 +272,22 @@ class SerializerV1 {
 	private serializeDeviceProps(device: Device): PropsSchema[] | undefined {
 		const data: PropsSchema[] = []
 		const ignoredProps = ["PrefabHash", "LineNumber"]
-		for (const element of device.props) {
-			if (element.value && !ignoredProps.includes(element.logicName)) {
-				data.push({
-					name: element.logicName,
-					value: element.value,
-				} satisfies PropsSchema)
+		if (device.props) {
+			for (const element of device.props) {
+				if (element.value && !ignoredProps.includes(element.logicName)) {
+					data.push({
+						name: element.logicName,
+						value: element.value,
+					} satisfies PropsSchema)
+				}
 			}
+
+			if (data.length === 0) {
+				return undefined
+			}
+			return data
 		}
-		if (data.length === 0) {
-			return undefined
-		}
-		return data
+		return undefined
 	}
 
 	/**
@@ -292,28 +297,30 @@ class SerializerV1 {
 		if (!device.hasSlots) return undefined
 
 		const slotsData: SlotSchema[] = []
-
-		for (const [slotIndex, slot] of device.slots) {
-			if (slot.hasItem()) {
-				const item = slot.getItem()
-				if (item) {
-					let itemName: ItemName
-					if (Items.hasValue(item.hash)) {
-						itemName = item.hash
+		if (device.slots) {
+			for (const [slotIndex, slot] of device.slots) {
+				if (slot.hasItem()) {
+					const item = slot.getItem()
+					if (item) {
+						let itemName: ItemName
+						if (Items.hasValue(item.hash)) {
+							itemName = item.hash
+						}
+						if (Items.hasKey(item.hash)) {
+							itemName = Items.getByKey(item.hash)!
+						}
+						slotsData.push({
+							index: slotIndex,
+							item: itemName!,
+							amount: item.count,
+						})
 					}
-					if (Items.hasKey(item.hash)) {
-						itemName = Items.getByKey(item.hash)
-					}
-					slotsData.push({
-						index: slotIndex,
-						item: itemName,
-						amount: item.count,
-					})
 				}
 			}
-		}
 
-		return slotsData.length > 0 ? slotsData : undefined
+			return slotsData.length > 0 ? slotsData : undefined
+		}
+		return undefined
 	}
 
 	/**
@@ -324,20 +331,23 @@ class SerializerV1 {
 
 		const reagentsData: ReagentSchema[] = []
 
-		for (const reagent of device.reagents) {
-			if (reagent.count > 0) {
-				if (Reagents.hasValue(reagent.name)) {
-					reagentsData.push({
-						name: reagent.name,
-						amount: reagent.count,
-					})
-				} else {
-					throw new Error(i18n.t("error.parser.unknown_reagent_name", { name: reagent.name }))
+		if (device.reagents) {
+			for (const reagent of device.reagents) {
+				if (reagent.count > 0) {
+					if (Reagents.hasValue(reagent.name)) {
+						reagentsData.push({
+							name: reagent.name,
+							amount: reagent.count,
+						})
+					} else {
+						throw new Error(i18n.t("error.parser.unknown_reagent_name", { name: reagent.name }))
+					}
 				}
 			}
-		}
 
-		return reagentsData.length > 0 ? reagentsData : undefined
+			return reagentsData.length > 0 ? reagentsData : undefined
+		}
+		return undefined
 	}
 }
 
@@ -428,7 +438,7 @@ class DeserializerV1 {
 				)
 			}
 
-			network.chanels.set(Logics.getByKey(name), value)
+			network.chanels.set(Logics.getByKey(name)!, value)
 		}
 	}
 
@@ -447,12 +457,12 @@ class DeserializerV1 {
 	}
 
 	private connectPins(housingSchema: HousingSchema) {
-		if (housingSchema.pins?.length > 0) {
+		if (housingSchema.pins && housingSchema.pins.length > 0) {
 			housingSchema.pins.forEach((pin) => this.connectPin(pin, housingSchema))
 		}
 	}
 
-	private connectPin(pin: HousingSchema["pins"][number], housingSchema: HousingSchema) {
+	private connectPin(pin: PinSchema, housingSchema: HousingSchema) {
 		if (!this.builer.Devices.has(pin.device)) {
 			throw new Error(
 				i18n.t("error.parser.device_not_found_for_pin", {
@@ -474,7 +484,7 @@ class DeserializerV1 {
 		const housing = this.builer.Devices.get(housingSchema.id)
 		const device = this.builer.Devices.get(pin.device)
 
-		if (housing.network.id !== device.network.id) {
+		if (housing && device && housing.network.id !== device.network.id) {
 			throw new Error(
 				i18n.t("error.parser.network_mismatch", {
 					housing_network: housing.network.id,
@@ -486,7 +496,7 @@ class DeserializerV1 {
 			)
 		}
 
-		if (!(housing instanceof Housing)) {
+		if (housing && !(housing instanceof Housing)) {
 			throw new Error(
 				i18n.t("error.parser.device_not_housing", {
 					device_id: housingSchema.id,
@@ -505,7 +515,7 @@ class DeserializerV1 {
 			)
 		}
 
-		housing.connectDevices(pinNumber, device)
+		housing!.connectDevices(pinNumber, device!)
 	}
 
 	private parseDevice(deviceSchema: DeviceSchema | HousingSchema): void {
@@ -577,16 +587,18 @@ class DeserializerV1 {
 
 		for (const { name, value } of deviceSchema.props) {
 			try {
-				device.props.forceWrite(name, value)
+				device.props?.forceWrite(name, value)
 			} catch (error) {
-				throw new Error(
-					i18n.t("error.parser.failed_to_set_property", {
-						property: name,
-						device: deviceSchema.id,
-						value: value,
-						error: error.message,
-					}),
-				)
+				if (error instanceof Error) {
+					throw new Error(
+						i18n.t("error.parser.failed_to_set_property", {
+							property: name,
+							device: deviceSchema.id,
+							value: value,
+							error: error.message,
+						}),
+					)
+				}
 			}
 		}
 	}
@@ -597,7 +609,7 @@ class DeserializerV1 {
 		}
 
 		for (const slotData of deviceSchema.slots) {
-			const slot = device.slots.getSlot(slotData.index)
+			const slot = device.slots?.getSlot(slotData.index)
 			if (!slot) {
 				throw new Error(
 					i18n.t("error.parser.slot_not_found", {
@@ -610,7 +622,7 @@ class DeserializerV1 {
 
 			let itemHash: ItemHash
 			if (Items.hasValue(slotData.item)) {
-				itemHash = Items.getByValue(slotData.item)
+				itemHash = Items.getByValue(slotData.item)!
 			} else {
 				throw new Error(
 					i18n.t("error.parser.unknown_item", {
@@ -626,14 +638,16 @@ class DeserializerV1 {
 				const item = new ItemEntity(itemHash, slotData.amount)
 				slot.putItem(item, true)
 			} catch (error) {
-				throw new Error(
-					i18n.t("error.parser.failed_to_put_item_in_slot", {
-						item: slotData.item,
-						slot: slotData.index,
-						device: deviceSchema.id,
-						error: error.message,
-					}),
-				)
+				if (error instanceof Error) {
+					throw new Error(
+						i18n.t("error.parser.failed_to_put_item_in_slot", {
+							item: slotData.item,
+							slot: slotData.index,
+							device: deviceSchema.id,
+							error: error.message,
+						}),
+					)
+				}
 			}
 		}
 	}
@@ -655,17 +669,19 @@ class DeserializerV1 {
 			}
 
 			try {
-				const reagentHash = Reagents.getByValue(reagentData.name)
-				device.reagents.set(reagentHash, reagentData.amount)
+				const reagentHash = Reagents.getByValue(reagentData.name)!
+				device.reagents?.set(reagentHash, reagentData.amount)
 			} catch (error) {
-				throw new Error(
-					i18n.t("error.parser.failed_to_set_reagent", {
-						reagent: reagentData.name,
-						device: deviceSchema.id,
-						amount: reagentData.amount,
-						error: error.message,
-					}),
-				)
+				if (error instanceof Error) {
+					throw new Error(
+						i18n.t("error.parser.failed_to_set_reagent", {
+							reagent: reagentData.name,
+							device: deviceSchema.id,
+							amount: reagentData.amount,
+							error: error.message,
+						}),
+					)
+				}
 			}
 		}
 	}
@@ -680,7 +696,7 @@ class DeserializerV1 {
 			)
 		}
 
-		return this.builer.Networks.get(networkId)
+		return this.builer.Networks.get(networkId)!
 	}
 
 	private connectPort(device: Device, network: Network, port: PortSchema["port"]): void {
@@ -701,16 +717,19 @@ class DeserializerV1 {
 		}
 	}
 
-	private isDevice(prefabName: any): prefabName is PrefabName {
-		return typeof DevicesByPrefabName[prefabName] !== "undefined"
+	private isDevicePrefabName(prefabName: any): prefabName is PrefabName {
+		return typeof (DevicesByPrefabName as any)[prefabName] !== "undefined"
+	}
+	private isHousingPrefabName(prefabName: any): prefabName is HousingName {
+		return typeof (DeviceClassesByBase.Housing as any)[prefabName] !== "undefined"
 	}
 
 	private isHousing(device: DeviceSchema): device is HousingSchema {
-		return typeof DeviceClassesByBase.Housing[device.PrefabName] !== "undefined"
+		return typeof (DeviceClassesByBase.Housing as any)[device.PrefabName] !== "undefined"
 	}
 
 	private findHousingClass(prefabName: string): HousingClass {
-		if (!this.isDevice(prefabName)) {
+		if (!this.isHousingPrefabName(prefabName)) {
 			throw new Error(
 				i18n.t("error.parser.unknown_device_prefab", {
 					prefab: prefabName,
@@ -733,7 +752,7 @@ class DeserializerV1 {
 	}
 
 	private findDeviceClass(prefabName: string): DeviceClass {
-		if (!this.isDevice(prefabName)) {
+		if (!this.isDevicePrefabName(prefabName)) {
 			throw new Error(
 				i18n.t("error.parser.unknown_device_prefab", {
 					prefab: prefabName,

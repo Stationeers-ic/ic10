@@ -190,7 +190,16 @@ export class RuntimeIc10Error extends ArgumentIc10Error {
 		})
 	}
 }
-export class DebugInfo extends ArgumentIc10Error {
+export class MathIc10Error extends RuntimeIc10Error {
+	constructor(params: GameLangErrorConstructorType) {
+		super({
+			...params,
+			code: params.code ?? "MATH_ERROR",
+			severity: params.severity ?? ErrorSeverity.Critical,
+		})
+	}
+}
+export class DebugInfo extends RuntimeIc10Error {
 	constructor(params: GameLangErrorConstructorType) {
 		super({
 			...params,

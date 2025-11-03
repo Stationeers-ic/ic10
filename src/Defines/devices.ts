@@ -42239,14 +42239,14 @@ export const DEVICES: DevicesType = {
 	},
 } as any
 export default DEVICES
-export type IdType = number | null
-export type TitleType = string | null
-export type KeyType = string | null
-export type PrefabNameType = string | null
-export type PrefabHashType = number | null
-export type HasChipType = boolean | null
-export type DeviceConnectCountType = number | null
-export type ImageType = string | null
+export type IdType = number
+export type TitleType = string
+export type KeyType = string
+export type PrefabNameType = string
+export type PrefabHashType = number
+export type HasChipType = boolean
+export type DeviceConnectCountType = number
+export type ImageType = string
 export type ModsType = (
 	| "A#-1"
 	| "A#-2"
@@ -42536,7 +42536,7 @@ export type ModsType = (
 	| "XNOR"
 	| "XOR"
 )[]
-export type HasMemoryType = boolean | null
+export type HasMemoryType = boolean
 export type TagsType = (
 	| "AccessCard"
 	| "Backpack"
@@ -42578,12 +42578,10 @@ export type TagsType = (
 	| "Structure"
 	| "Suit"
 )[]
-export type LogicsType =
-	| {
-			name: string
-			permissions: string[]
-	  }[]
-	| null
+export type LogicsType = {
+	name: string
+	permissions: string[]
+}[]
 export type ConnectionsType = (
 	| "Chute Input"
 	| "Chute Output"
@@ -42606,23 +42604,19 @@ export type ConnectionsType = (
 	| "Power and Data Input"
 	| "Power and Data Output"
 )[]
-export type SlotsType =
-	| {
-			SlotName: string
-			SlotType: string
-			SlotIndex: number
-			logic: string[]
-	  }[]
-	| null
-export type MemoryAccessType = string | null
-export type MemorySizeType = number | null
-export type LogicInstructionsType =
-	| {
-			Index: number
-			Info: string
-			Text: string
-	  }[]
-	| null
+export type SlotsType = {
+	SlotName: string
+	SlotType: string
+	SlotIndex: number
+	logic: string[]
+}[]
+export type MemoryAccessType = string
+export type MemorySizeType = number
+export type LogicInstructionsType = {
+	Index: number
+	Info: string
+	Text: string
+}[]
 export interface DeviceType {
 	id: IdType
 	Title: TitleType

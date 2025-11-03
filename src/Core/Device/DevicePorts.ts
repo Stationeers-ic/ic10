@@ -1,4 +1,4 @@
-import { DeviceScope } from "@/Core/Device/DeviceScope"
+import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope"
 import type { Network, NetworkType } from "@/Core/Network"
 import type { ConnectionsType } from "@/Defines/devices"
 import { BiMap } from "@/helpers"
@@ -17,7 +17,7 @@ export class DevicePorts extends DeviceScope {
 	private portIndices: BiMap<PortType, number>
 	private portNetworks: Map<PortType, Network> = new Map()
 
-	constructor(props) {
+	constructor(props: DeviceScopeConstructor) {
 		super(props)
 
 		// Создаем карту соответствия типа порта его индексу
@@ -71,16 +71,21 @@ export class DevicePorts extends DeviceScope {
 
 	public setPortChanel(port: PortType | number, Chanel: number, value: number): void {
 		if (typeof port === "number") {
-			port = this.portIndices.getByValue(port)
+			port = this.portIndices.getByValue(port)!
 		}
-		this.getNetwork(port).chanels.set(Chanel, value)
+		if (typeof port !== "undefined") {
+			this.getNetwork(port).chanels.set(Chanel, value)
+		}
 	}
 
 	public getPortChanel(port: PortType | number, Chanel: number): number {
 		if (typeof port === "number") {
-			port = this.portIndices.getByValue(port)
+			port = this.portIndices.getByValue(port)!
 		}
-		return this.getNetwork(port).chanels.get(Chanel)
+		if (typeof port !== "undefined") {
+			return this.getNetwork(port).chanels.get(Chanel) ?? 0
+		}
+		return 0
 	}
 
 	public setNetwork(port: number, network: Network): void {
@@ -88,21 +93,23 @@ export class DevicePorts extends DeviceScope {
 			throw new Error(i18n.t("error.port_not_found"))
 		}
 		const portName = this.portIndices.getByValue(port)
-		if (!this.canConnect(network.type, portName)) {
-			throw new Error(
-				i18n.t("error.cannot_connect_network_to_port", {
-					networkType: network.type,
-					portName,
-				}),
-			)
+		if (portName) {
+			if (!this.canConnect(network.type, portName)) {
+				throw new Error(
+					i18n.t("error.cannot_connect_network_to_port", {
+						networkType: network.type,
+						portName,
+					}),
+				)
+			}
+			this.portNetworks.set(portName, network)
 		}
-		this.portNetworks.set(portName, network)
 	}
 
 	public getNetwork(portOrindex: PortType | number | undefined = undefined): Network {
 		let port: PortType
 		if (typeof portOrindex === "undefined") {
-			port = this.portIndices.getByValue(this.getDefaultPortIndex())
+			port = this.portIndices.getByValue(this.getDefaultPortIndex())!
 		} else if (typeof portOrindex === "number") {
 			if (!this.portIndices.hasValue(portOrindex)) {
 				throw new Error(
@@ -112,12 +119,12 @@ export class DevicePorts extends DeviceScope {
 					}),
 				)
 			}
-			port = this.portIndices.getByValue(portOrindex)
+			port = this.portIndices.getByValue(portOrindex)!
 		} else {
 			port = portOrindex
 		}
 		if (this.portNetworks.has(port)) {
-			return this.portNetworks.get(port)
+			return this.portNetworks.get(port)!
 		}
 		throw new Error(
 			i18n.t("error.no_network_for_port", {

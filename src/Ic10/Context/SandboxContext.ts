@@ -186,7 +186,7 @@ abstract class SandboxDevicesByIdBase extends SandboxStackBase implements IDevic
 	override getDeviceStackById(id: number, index: number): number {
 		return 0
 	}
-	override setDeviceStackById(id: number, index: number, value): void {}
+	override setDeviceStackById(id: number, index: number, value: number): void {}
 
 	override getDeviceParameterById(id: number, prop: number): number {
 		return 0

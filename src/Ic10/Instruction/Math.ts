@@ -1,4 +1,5 @@
 import icMath from "@stationeers-ic/exact-ic10-math"
+import { MathIc10Error } from "@/Ic10/Errors/Errors"
 import { ArgumentCalculators } from "@/Ic10/Instruction/Helpers/ArgumentCalculators"
 import { Instruction, type InstructionArgument, type InstructionTestData } from "@/Ic10/Instruction/Helpers/Instruction"
 import i18n from "@/Languages/lang"
@@ -157,7 +158,16 @@ export class NotInstruction extends UnaryMathInstruction {
 		]
 	}
 	public operation(a: number): number {
-		return icMath.not(a)
+		const out = icMath.not(a)
+		if (!out) {
+			this.addError(
+				new MathIc10Error({
+					message: i18n.t("error.math_operation_failed", { operation: "not" }),
+				}),
+			)
+			return 0
+		}
+		return out
 	}
 }
 
@@ -722,6 +732,14 @@ export class ExtInstruction extends Instruction {
 		const length = this.getArgumentValue<number>("length")
 
 		const result = icMath.ext(source, start, length)
+		if (result === null) {
+			this.addError(
+				new MathIc10Error({
+					message: i18n.t("error.math_operation_failed", { operation: "EXT" }),
+				}),
+			)
+			return
+		}
 		this.context.setRegister(r, result)
 	}
 }
@@ -743,6 +761,14 @@ export class InsInstruction extends Instruction {
 		const length = this.getArgumentValue<number>("length")
 
 		const result = icMath.ins(r, payload, start, length)
+		if (!result) {
+			this.addError(
+				new MathIc10Error({
+					message: i18n.t("error.math_operation_failed", { operation: "ins" }),
+				}),
+			)
+			return
+		}
 		this.context.setRegister(r, result)
 	}
 }
