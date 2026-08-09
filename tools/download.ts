@@ -12,7 +12,7 @@ const missingMode = process.argv.includes("--missing");
 
 export async function downloadWithProgress(url: string, varName: string) {
 	const { headers } = await axios.head(url);
-	const totalLength = parseInt(headers["content-length"], 10);
+	const totalLength = parseInt(headers["content-length"] as string, 10);
 
 	const bar = new cliProgress.SingleBar(
 		{
@@ -182,7 +182,7 @@ async function downloadDevices() {
 
 	// Генерация AST для файла TypeScript
 	const ast = generateDevicesAST(items, responseData, tagsData);
-	const { code } = generate(ast);
+	const { code } = generate(ast as any);
 
 	fs.writeFileSync(dataPath, code);
 	console.log(`Файл ${dataPath} успешно создан!`);

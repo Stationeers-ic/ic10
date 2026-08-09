@@ -55,11 +55,11 @@ export class Chip extends ItemEntity {
 	}
 
 	getRunner(): Ic10Runner {
-		try {
-			return this.#housing?.runner;
-		} catch (e) {
+		const runner = this.#housing?.runner;
+		if (!runner) {
 			throw new Error("Runner not found");
 		}
+		return runner;
 	}
 
 	reset() {

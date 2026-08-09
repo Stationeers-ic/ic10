@@ -36,7 +36,7 @@ async function main() {
 
 	// Проходим по всем инструкциям в отсортированном порядке
 	for (const key of sortedInstructionKeys) {
-		const instruction = instructions[key];
+		const instruction = (instructions as any)[key];
 
 		// Проверяем наличие инструкции
 		if (!instruction) {

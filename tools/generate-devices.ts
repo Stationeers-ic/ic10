@@ -91,7 +91,7 @@ const BASE_RULES: BaseRule[] = [
 	},
 ];
 // ==================== GENERATION ====================
-function boolMethod(name, value) {
+function boolMethod(name: string, value: boolean) {
 	const hasMethod = t.classMethod(
 		"method",
 		t.identifier(name),
@@ -121,7 +121,7 @@ class ClassGeneratorImpl implements ClassGenerator {
 	constructor(device: ExtendedDeviceType, baseSpec: BaseSpec) {
 		this.device = device;
 		this.baseSpec = baseSpec;
-		this.className = toPascalCase(device.Key);
+		this.className = toPascalCase(device.Key as unknown as string);
 		this.classBody = t.classBody([]);
 
 		if (!this.className) {
@@ -159,7 +159,7 @@ class ClassGeneratorImpl implements ClassGenerator {
 					typeof value === "number" ? t.numericLiteral(value) : t.stringLiteral(String(value)),
 				),
 			),
-			t.objectProperty(t.identifier("hash"), t.numericLiteral(this.device.PrefabHash)),
+			t.objectProperty(t.identifier("hash"), t.numericLiteral(this.device.PrefabHash as number)),
 		];
 
 		this.superCall = t.callExpression(t.super(), [t.objectExpression(superProps)]);
@@ -182,7 +182,7 @@ class ClassGeneratorImpl implements ClassGenerator {
 		this.imports.get(from)!.add(what);
 	}
 
-	addClassMember(member: t.ClassMethod | t.ClassProperty) {
+	addClassMember(member: t.ClassMethod | t.ClassProperty | t.ClassPrivateProperty) {
 		this.classBody.body.push(member);
 	}
 
@@ -257,7 +257,7 @@ class ClassGeneratorImpl implements ClassGenerator {
 
 		// Генерируем код
 		const program = t.program([...importDeclarations, classDecl]);
-		const { code } = generate(program, { retainLines: true, concise: false });
+		const { code } = generate(program as any, { retainLines: true, concise: false });
 		return `/* Auto-generated. Do not edit. */\n${code.trim()}`;
 	}
 }
@@ -323,7 +323,7 @@ function buildIndexContent(devices: ExtendedDeviceType[]): string {
 		if (!base) continue;
 		entries.push({
 			device: d,
-			className: toPascalCase(d.Key),
+			className: toPascalCase(d.Key as string),
 			baseName: base.baseName,
 		});
 	}
@@ -400,7 +400,7 @@ function buildIndexContent(devices: ExtendedDeviceType[]): string {
 	// Сборка программы
 	const program = t.program([...importDecls, deviceClassesDecl, classesByBaseDecl, devicesByPrefabNameDecl]);
 
-	const { code } = generate(program, { retainLines: true, concise: false });
+	const { code } = generate(program as any, { retainLines: true, concise: false });
 	return header + code;
 }
 
@@ -434,7 +434,7 @@ async function main() {
 			continue;
 		}
 
-		const className = toPascalCase(device.Key);
+		const className = toPascalCase(device.Key as unknown as string);
 		if (!className) {
 			skipInvalidName++;
 			continue;

@@ -36,7 +36,7 @@ type DeviceName = (typeof DEVICES)[keyof typeof DEVICES]["PrefabName"];
 
 // Использование
 export const Reagents = new BiMap<ReagentHash, ReagentName>();
-export const Devices = new BiMap<DeviceHash, DeviceName>();
+export const Devices = new BiMap<Exclude<DeviceHash, null>, Exclude<DeviceName, null>>();
 export const Items = new BiMap<ItemHash, ItemName>();
 REAGENTS.forEach((reagent) => {
 	if (reagent.hash) {
@@ -50,7 +50,7 @@ ITEMS.forEach((item) => {
 });
 Object.entries(DEVICES).forEach(([_, device]) => {
 	if (device.PrefabHash) {
-		Devices.set(device.PrefabHash, device.PrefabName);
+		Devices.set(device.PrefabHash, device.PrefabName as Exclude<DeviceName, null>);
 	}
 });
 

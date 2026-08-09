@@ -31,7 +31,7 @@ export abstract class Device {
 	// Уникальный хэш устройства (идентификатор типа устройства)
 	public readonly hash: number;
 	public readonly prefabName?: HashString;
-	private _name: HashString;
+	private _name!: HashString;
 	// Сырые данные устройства из DEVICES по хэшу
 	public readonly rawData: (typeof DEVICES)[keyof typeof DEVICES];
 

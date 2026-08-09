@@ -161,7 +161,7 @@ export class NotInstruction extends UnaryMathInstruction {
 		];
 	}
 	public operation(a: number): number {
-		return icMath.not(a);
+		return icMath.not(a)!;
 	}
 }
 
@@ -725,7 +725,7 @@ export class ExtInstruction extends Instruction {
 		const start = this.getArgumentValue<number>("start");
 		const length = this.getArgumentValue<number>("length");
 
-		const result = icMath.ext(source, start, length);
+		const result = icMath.ext(source, start, length)!;
 		this.context.setRegister(r, result);
 	}
 }
@@ -746,7 +746,7 @@ export class InsInstruction extends Instruction {
 		const start = this.getArgumentValue<number>("start");
 		const length = this.getArgumentValue<number>("length");
 
-		const result = icMath.ins(r, payload, start, length);
+		const result = icMath.ins(r, payload, start, length)!;
 		this.context.setRegister(r, result);
 	}
 }

@@ -113,7 +113,7 @@ function runScript(command: string) {
 }
 
 const watcher = watch(CONFIG.watchPath, { recursive: true }, (event, filename) => {
-	const filepath = join(CONFIG.watchPath, filename);
+	const filepath = join(CONFIG.watchPath, filename!);
 
 	if (!filename || isIgnored(filepath)) {
 		return;

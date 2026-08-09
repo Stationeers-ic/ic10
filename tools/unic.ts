@@ -115,7 +115,7 @@ function getUniqueValuesByPath(devices: Devices, path: string): any[] {
 function testPath(path: string) {
 	try {
 		console.log(`\nTesting path: "${path}"`);
-		const result = getUniqueValuesByPath(DEVICES, path);
+		const result = getUniqueValuesByPath(DEVICES as any, path);
 		console.table(result);
 	} catch (error) {
 		console.error(`Error: ${(error as Error).message}`);

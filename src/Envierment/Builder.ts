@@ -39,6 +39,8 @@ export class Builer {
 			case 1:
 				Parser = new ParserV1({ builer: BUILDER });
 				break;
+			default:
+				throw new Error(`Unsupported version: ${data.version}`);
 		}
 		Parser.parse(data);
 		return BUILDER;
@@ -46,7 +48,7 @@ export class Builer {
 
 	// Одноразовая инициализация: прогнать sandbox и проверить ошибки
 	public async init(): Promise<boolean> {
-		if (this.initialized) return;
+		if (this.initialized) return true;
 
 		for (const [, runner] of this.Runners.entries()) {
 			runner.switchContext("sandbox");

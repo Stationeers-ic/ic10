@@ -57,7 +57,7 @@ export class Ic10Runner extends EventEmitter<Ic10RunnerEvents> {
 	private readonly jumpLimit: number;
 	private executionStopped: boolean = false;
 	public readonly randomSeed?: number;
-	public readonly random: Random;
+	public readonly random!: Random;
 
 	constructor({ housing, jumpLimit = 1000, randomSeed }: Ic10RunnerConstructor) {
 		super();

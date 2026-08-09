@@ -28,9 +28,9 @@ export function jsThing(value: number): number {
  */
 export function getConst(argument: Argument, group?: string): number | false {
 	if (group === undefined) {
-		return argument.text in CONSTS ? CONSTS[argument.text] : false;
+		return argument.text in CONSTS ? CONSTS[argument.text as keyof typeof CONSTS] : false;
 	}
-	return argument.text in GROUPED_CONSTS[group] ? GROUPED_CONSTS[group][argument.text] : false;
+	return argument.text in (GROUPED_CONSTS as any)[group] ? (GROUPED_CONSTS as any)[group][argument.text] : false;
 }
 
 /**
@@ -98,7 +98,7 @@ export function parseStr(context: Context, argument: Argument): number | false {
 	} catch (error) {
 		context.addError(
 			new TypeIc10Error({
-				message: error.message,
+				message: (error as Error).message,
 			}).setArgument(argument),
 		);
 		return 0;

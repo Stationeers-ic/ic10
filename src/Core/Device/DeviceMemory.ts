@@ -38,7 +38,7 @@ export class DeviceMemory extends DeviceScope implements StackInterface {
 
 	public pop(): number {
 		if (this.$stack.size > 0) {
-			const value = this.$stack.get(this.$stack.size - 1);
+			const value = this.$stack.get(this.$stack.size - 1)!;
 			this.$stack.delete(this.$stack.size - 1);
 			return value;
 		} else {
@@ -51,7 +51,7 @@ export class DeviceMemory extends DeviceScope implements StackInterface {
 	}
 
 	toArray(): number[] {
-		const arr = [].fill(this.stack_length, 0);
+		const arr: number[] = new Array(this.stack_length).fill(0);
 		this.$stack.forEach((value, index) => {
 			if (index < this.stack_length) {
 				arr[index] = value;

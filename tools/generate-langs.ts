@@ -54,7 +54,7 @@ export async function generateLangIndex({
 	);
 
 	const program = t.program([...imports, exportDeclaration]);
-	const { code } = generate(program);
+	const { code } = generate(program as any);
 
 	// Создаем директорию если нужно
 	const outputDir = path.dirname(outputFile);

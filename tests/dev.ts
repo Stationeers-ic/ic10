@@ -25,11 +25,11 @@ if (err.length === 0) {
 }
 console.table(runner.realContext.chip.registers);
 
-const props = runner.realContext.housing.props;
+const props = runner.realContext.housing.props!;
 const keys = Reflect.ownKeys(props);
-const table = keys.map((key: string) => ({
+const table = keys.map((key: string | symbol) => ({
 	property: key,
-	value: props[key],
+	value: (props as any)[key],
 }));
 console.table(table);
 runner.contextSwitcher.getErrors().forEach((e) => {

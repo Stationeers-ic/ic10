@@ -42,7 +42,7 @@ describe("Выполнено", () => {
 			console.log("\nНереализованные инструкции:");
 			notImplemented.forEach((key) => {
 				console.log(`\n${key}:`);
-				console.log(`  ${INSTRUCTIONS[key].description}  ${INSTRUCTIONS[key].example}`);
+				console.log(`  ${(INSTRUCTIONS as any)[key].description}  ${(INSTRUCTIONS as any)[key].example}`);
 			});
 		}
 

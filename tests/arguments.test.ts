@@ -395,7 +395,7 @@ describe("Edge Cases", () => {
 		runner.switchContext("real");
 		await runner.run();
 		// host should resolve to db (pin -1), so we can read Setting from housing
-		expect(runner.realContext.getDeviceParameterByPin(-1, "Setting")).toBe(1);
+		expect(runner.realContext.getDeviceParameterByPin(-1, "Setting" as any)).toBe(1);
 	});
 
 	test("handles multiple recursion levels", () => {

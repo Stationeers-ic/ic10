@@ -73,7 +73,7 @@ export function resolveExpectation(
 ): { label: string; expected: number; got: number } {
 	switch (exp.type) {
 		case "register": {
-			const got = runner.realContext.chip.registers.get(exp.register);
+			const got = runner.realContext.chip.registers.get(exp.register) ?? 0;
 			return { label: `r${exp.register}`, expected: exp.value, got };
 		}
 		case "device": {

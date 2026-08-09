@@ -31,7 +31,7 @@ async function generateIndex() {
 	const program = t.program(exportNodes);
 
 	// Генерируем код из AST
-	const { code } = generate(program);
+	const { code } = generate(program as any);
 
 	// Формируем окончательное содержимое файла
 	const content = `// AUTO-GENERATED FILE. DO NOT EDIT.

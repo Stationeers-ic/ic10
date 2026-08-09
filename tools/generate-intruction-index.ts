@@ -107,13 +107,13 @@ async function generateInstructionsIndex() {
 			const fileClasses: Array<{ name: string; node: t.ClassDeclaration; filePath: string }> = [];
 
 			// Сначала собираем все классы в файле
-			traverse(ast, {
+			traverse(ast as any, {
 				ClassDeclaration(path) {
 					const className = path.node.id?.name;
 					if (className) {
 						fileClasses.push({
 							name: className,
-							node: path.node,
+							node: path.node as any,
 							filePath: file,
 						});
 					}
