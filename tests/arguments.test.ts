@@ -192,6 +192,7 @@ describe("getDevicePin", () => {
 
 		expect(getDevicePin(context, "d0")).toBe(0);
 		expect(getDevicePin(context, "d5")).toBe(5);
+		expect(getDevicePin(context, "d99")).toBe(99);
 	});
 
 	test("handles recursive devices", () => {
@@ -335,12 +336,18 @@ describe("Regular Expressions", () => {
 		test("matches valid single devices", () => {
 			expect(singleDevice.test("d0")).toBe(true);
 			expect(singleDevice.test("d5")).toBe(true);
+			expect(singleDevice.test("d99")).toBe(true);
+		});
+
+		test("matches db", () => {
+			expect(singleDevice.test("db")).toBe(true);
 		});
 
 		test("rejects invalid single devices", () => {
 			expect(singleDevice.test("d")).toBe(false);
 			expect(singleDevice.test("0")).toBe(false);
 			expect(singleDevice.test("dd5")).toBe(false);
+			expect(singleDevice.test("db:0")).toBe(false);
 		});
 	});
 
@@ -382,6 +389,15 @@ describe("Regular Expressions", () => {
 });
 
 describe("Edge Cases", () => {
+	test("alias host db works", async () => {
+		const runner = createRunner(["alias host db", "s host Setting 1"]);
+		await runner.run();
+		runner.switchContext("real");
+		await runner.run();
+		// host should resolve to db (pin -1), so we can read Setting from housing
+		expect(runner.realContext.getDeviceParameterByPin(-1, "Setting")).toBe(1);
+	});
+
 	test("handles multiple recursion levels", () => {
 		const context = createMockContext();
 

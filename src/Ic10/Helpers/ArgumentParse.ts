@@ -7,7 +7,7 @@ import type { Argument } from "@/Ic10/Instruction/Helpers/Argument";
 // Регулярные выражения для парсинга
 export const singleRegister = /^r(?<reg>\d+)$/;
 export const recursiveRegister = /^(?<count>r{2,})(?<reg>\d+)$/;
-export const singleDevice = /^d(?<reg>\d+)$/;
+export const singleDevice = /^d(?<reg>\d+)$|^db$/;
 export const recursiveDevice = /^d(?<count>r+)(?<reg>\d+)$/;
 export const singleDeviceWithPort = /^d(?<reg>\d+):(?<port>\d+)$/;
 export const recursiveDeviceWithPort = /^d(?<count>r+)(?<reg>\d+):(?<port>\d+)$/;
