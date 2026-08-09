@@ -1,5 +1,5 @@
 import i18next from "i18next";
-export const i18n = i18next.createInstance();
+export const i18n: ReturnType<typeof i18next.createInstance> = i18next.createInstance();
 const oldT = i18n.t;
 
 const newT = (...args: Parameters<typeof i18n.t>): ReturnType<typeof i18n.t> => {
