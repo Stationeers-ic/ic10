@@ -1,11 +1,10 @@
 {
 	"compilerOptions": {
 		"module": "ESNext",
-		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@tests/*": ["tests/*"],
-			"@tools/*": ["tools/*"]
+			"@/*": ["./src/*"],
+			"@tests/*": ["./tests/*"],
+			"@tools/*": ["./tools/*"]
 		},
 		"lib": ["ESNext"],
 		"target": "ESNext",
