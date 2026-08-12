@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Device } from "@/Core/Device";
+import type { NetworkTypeSchema } from "@/Schemas/EnvSchema";
 import type { PortType } from "./Device/DevicePorts";
 
-export type NetworkType = "data" | "power" | "chute" | "pipe" | "liquid" | "wireless" | "landing";
+export type NetworkType = NetworkTypeSchema;
 
 export type NetworkConstructor = {
 	networkType: NetworkType;

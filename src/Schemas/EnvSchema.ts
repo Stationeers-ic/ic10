@@ -163,7 +163,7 @@ export const DeviceSchema = strictObject({
 
 // --- Network Schemas ---
 
-const NETWORK_TYPES = ["data", "power", "chute", "pipe", "wireless", "landing"];
+const NETWORK_TYPES = ["data", "power", "chute", "liquid", "pipe", "wireless", "landing"];
 
 export const NetworkTypeSchema = picklist(NETWORK_TYPES);
 
