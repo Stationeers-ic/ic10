@@ -2,11 +2,12 @@ import { createRunner } from "@tests/helpers";
 import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 
 const code = `
-move r99 99
-move r2 1
+
+move sp 0
+
 `;
 const runner = createRunner(code, {
-	register_length: 16,
+	register_length: 18,
 	stack_length: 512,
 	hash: 125,
 });
@@ -23,7 +24,7 @@ if (err.length === 0) {
 		console.error(error.formated_message);
 	});
 }
-console.table(runner.realContext.chip.registers);
+// console.table(runner.realContext.chip.registers);
 
 const props = runner.realContext.housing.props!;
 const keys = Reflect.ownKeys(props);
@@ -31,7 +32,7 @@ const table = keys.map((key: string | symbol) => ({
 	property: key,
 	value: (props as any)[key],
 }));
-console.table(table);
+// console.table(table);
 runner.contextSwitcher.getErrors().forEach((e) => {
 	console.log(e.formated_message);
 });

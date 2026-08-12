@@ -40,6 +40,11 @@ export class MoveInstruction extends Instruction {
 				code: "move r6 %101",
 				expected: [{ type: "register", register: 6, value: 5 }],
 			},
+			{
+				title: "move to sp alias with leading empty lines",
+				code: "\n\nmove sp 5",
+				expected: [{ type: "register", register: 16, value: 5 }],
+			},
 		];
 	}
 

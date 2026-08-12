@@ -69,7 +69,7 @@ abstract class ExecutionBase extends Context implements IExecutionContext {
 			return;
 		}
 
-		const raValue = parseInt(raDefine.value, 10);
+		const raValue = parseInt(raDefine.value.replace(/^r/, ""), 10);
 		if (Number.isNaN(raValue)) {
 			this.addError(
 				new RuntimeIc10Error({
@@ -423,7 +423,7 @@ abstract class StackBase extends DevicesByPinBase implements IStackContext {
 			return 0;
 		}
 
-		const spValue = parseInt(spDefine.value, 10);
+		const spValue = parseInt(spDefine.value.replace(/^r/, ""), 10);
 		if (Number.isNaN(spValue)) {
 			this.addError(
 				new RuntimeIc10Error({

@@ -237,6 +237,9 @@ export class SandboxContext extends SandboxDevicesSlotBase {
 
 	public override addError(error: Ic10Error): this {
 		error.setContext(this);
+		if (this.$executeLine) {
+			error.setLine(this.$executeLine);
+		}
 		if (!this.$errors.has(error.id)) {
 			this.$errors.set(error.id, error);
 		}
