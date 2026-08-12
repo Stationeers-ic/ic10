@@ -12,7 +12,7 @@ import {
 	type IExecutionContext,
 	type IMemoryContext,
 } from "@/Ic10/Context/Context";
-import type { Ic10Error } from "@/Ic10/Errors/Errors";
+import { ErrorSeverity, Ic10Error } from "@/Ic10/Errors/Errors";
 import type { Define } from "@/Ic10/Instruction/Helpers/Define";
 import { SandBoxHousing } from "@/Ic10/SandBox";
 
@@ -156,20 +156,37 @@ abstract class SandboxDevicesByHashAndNameBase
 // =============================================
 
 abstract class SandboxStackBase extends SandboxDevicesByHashAndNameBase {
+	private readonly $sandboxStack: Map<number, number> = new Map();
+	private readonly $sandboxStackLength: number = 512;
+
 	override push(value: number): void {
-		// Заглушка для песочницы
+		if (this.$sandboxStack.size >= this.$sandboxStackLength) {
+			throw new Ic10Error({
+				message: "Stack overflow",
+				severity: ErrorSeverity.Weak,
+			});
+		}
+		this.$sandboxStack.set(this.$sandboxStack.size, value);
 	}
 
 	override pop(): number {
+		if (this.$sandboxStack.size > 0) {
+			const value = this.$sandboxStack.get(this.$sandboxStack.size - 1)!;
+			this.$sandboxStack.delete(this.$sandboxStack.size - 1);
+			return value;
+		}
 		return 0;
 	}
 
 	override peek(): number {
+		if (this.$sandboxStack.size > 0) {
+			return this.$sandboxStack.get(this.$sandboxStack.size - 1)!;
+		}
 		return 0;
 	}
 
 	override stack(): StackInterface {
-		return new Stack(Infinity);
+		return new Stack(this.$sandboxStackLength);
 	}
 }
 

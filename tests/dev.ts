@@ -3,8 +3,9 @@ import { ErrorSeverity } from "@/Ic10/Errors/Errors";
 
 const code = `
 
-move sp 0
+push 1
 
+j 0
 `;
 const runner = createRunner(code, {
 	register_length: 18,
