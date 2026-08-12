@@ -19,7 +19,7 @@ export function createRunner(ic10Code: string | string[], options?: Partial<Crea
 	const chip = new Chip({
 		id: 0,
 		ic10Code,
-		register_length: options?.register_length ?? 16,
+		register_length: options?.register_length ?? 18,
 		stack_length: options?.stack_length ?? 512,
 	});
 	const socket = new StructureCircuitHousing({
