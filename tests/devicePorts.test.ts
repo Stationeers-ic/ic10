@@ -27,10 +27,10 @@ describe("DevicePorts.getPortTypes", () => {
 	});
 
 	test("Pipe Liquid ports return pipe type", () => {
-		expect(DevicePorts.getPortTypes("Pipe Liquid Input")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Output")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Input 2")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Output 2")).toBe("pipe");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Input")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Output")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Input 2")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Output 2")).toBe("liquid");
 	});
 
 	test("Landing Pad Input returns landing type", () => {
@@ -112,14 +112,10 @@ describe("DevicePorts.canConnect (via static getPortTypes)", () => {
 	});
 
 	test("Pipe Liquid ports accept pipe network", () => {
-		expect(DevicePorts.getPortTypes("Pipe Liquid Input")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Output")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Input 2")).toBe("pipe");
-		expect(DevicePorts.getPortTypes("Pipe Liquid Output 2")).toBe("pipe");
-	});
-
-	test("Landing Pad Input accepts landing network", () => {
-		expect(DevicePorts.getPortTypes("Landing Pad Input")).toBe("landing");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Input")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Output")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Input 2")).toBe("liquid");
+		expect(DevicePorts.getPortTypes("Pipe Liquid Output 2")).toBe("liquid");
 	});
 
 	test("Landing Pad Input rejects data network", () => {

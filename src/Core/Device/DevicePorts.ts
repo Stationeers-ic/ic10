@@ -75,7 +75,7 @@ export class DevicePorts extends DeviceScope {
 			case "Pipe Liquid Input 2":
 			case "Pipe Liquid Output":
 			case "Pipe Liquid Output 2":
-				return "pipe";
+				return "liquid";
 			case "Landing Pad Input":
 				return "landing";
 			default:
