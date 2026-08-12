@@ -258,7 +258,7 @@ class SerializerV1 {
 		const data: PortSchema[] = [];
 		for (const element of device.ports) {
 			data.push({
-				port: element.isDefault ? "default" : element.port,
+				port: element.port,
 				network: element.network.id,
 			} satisfies PortSchema);
 		}
