@@ -1,7 +1,6 @@
 import { DeviceScope, type DeviceScopeConstructor } from "@/Core/Device/DeviceScope";
 import type { Network, NetworkType } from "@/Core/Network";
 import type { ConnectionsType } from "@/Defines/devices";
-import { BiMap } from "@/helpers";
 import i18n from "@/Languages/lang";
 
 export type PortType = Extract<ConnectionsType[keyof ConnectionsType], string>;
@@ -14,97 +13,125 @@ export type PortEntry = {
 export type PortIterator = IterableIterator<PortEntry>;
 
 export class DevicePorts extends DeviceScope {
-	private portIndices: BiMap<PortType, number>;
+	private portIndices: Map<PortType, number> = new Map();
+	private portIndexToTypes: Map<number, PortType[]> = new Map();
 	private portNetworks: Map<PortType, Network> = new Map();
+
+	private static expandCompositePort(port: PortType): PortType[] {
+		switch (port) {
+			case "Power and Data Input":
+				return ["Data Input", "Power Input"];
+			case "Power and Data Output":
+				return ["Data Output", "Power Output"];
+			case "Connection":
+				return ["Data Input", "Power Input"];
+			default:
+				return [port];
+		}
+	}
 
 	constructor(props: DeviceScopeConstructor) {
 		super(props);
 
-		// Создаем карту соответствия типа порта его индексу
-		this.portIndices = new BiMap();
 		this.scope.rawData?.connections.forEach((connection: PortType, index: number) => {
-			this.portIndices.set(connection, index);
+			const expandedPorts = DevicePorts.expandCompositePort(connection);
+			for (const port of expandedPorts) {
+				this.portIndices.set(port, index);
+				if (!this.portIndexToTypes.has(index)) {
+					this.portIndexToTypes.set(index, []);
+				}
+				this.portIndexToTypes.get(index)!.push(port);
+			}
 		});
 		if (this.portIndices.size === 0) {
-			this.portIndices.set("Connection", 0);
+			this.portIndices.set("Data Input", 0);
+			this.portIndexToTypes.set(0, ["Data Input"]);
 		}
 	}
 
 	public canConnect(networkType: NetworkType, portName: PortType): boolean {
-		const portTypes = DevicePorts.getPortTypes(portName);
-		return portTypes.includes(networkType);
+		return DevicePorts.getPortTypes(portName) === networkType;
 	}
 
-	public static getPortTypes(portName: PortType): NetworkType[] {
+	public static getPortTypes(portName: PortType): NetworkType {
 		switch (portName) {
 			case "Data Input":
 			case "Data Output":
-				return ["data"];
+				return "data";
 			case "Power Input":
 			case "Power Output":
-				return ["power"];
-			case "Power and Data Input":
-			case "Power and Data Output":
-			case "Connection":
-				return ["data", "power"];
+				return "power";
 			case "Chute Input":
 			case "Chute Output":
 			case "Chute Output 2":
-				return ["chute"];
+				return "chute";
 			case "Pipe Input":
 			case "Pipe Input 2":
 			case "Pipe Output":
 			case "Pipe Output 2":
 			case "Pipe Waste":
-				return ["pipe"];
+				return "pipe";
 			case "Pipe Liquid Input":
 			case "Pipe Liquid Input 2":
 			case "Pipe Liquid Output":
 			case "Pipe Liquid Output 2":
-				return ["pipe"];
+				return "pipe";
 			case "Landing Pad Input":
-				return ["landing"];
+				return "landing";
 			default:
-				return [];
+				return "data";
 		}
 	}
 
 	public setPortChanel(port: PortType | number, Chanel: number, value: number): void {
 		if (typeof port === "number") {
-			port = this.portIndices.getByValue(port)!;
+			const portTypes = this.portIndexToTypes.get(port);
+			if (portTypes && portTypes.length > 0) {
+				port = portTypes[0];
+			}
 		}
 		this.getNetwork(port).chanels.set(Chanel, value);
 	}
 
 	public getPortChanel(port: PortType | number, Chanel: number): number {
 		if (typeof port === "number") {
-			port = this.portIndices.getByValue(port)!;
+			const portTypes = this.portIndexToTypes.get(port);
+			if (portTypes && portTypes.length > 0) {
+				port = portTypes[0];
+			}
 		}
 		return this.getNetwork(port).chanels.get(Chanel)!;
 	}
 
 	public setNetwork(port: number, network: Network): void {
-		if (!this.portIndices.hasValue(port)) {
+		if (!this.portIndexToTypes.has(port)) {
 			throw new Error(i18n.t("error.port_not_found"));
 		}
-		const portName = this.portIndices.getByValue(port)!;
-		if (!this.canConnect(network.type, portName)) {
+		const portTypes = this.portIndexToTypes.get(port)!;
+		const compatiblePort = portTypes.find((pt) => DevicePorts.getPortTypes(pt) === network.type);
+		if (!compatiblePort) {
 			throw new Error(
 				i18n.t("error.cannot_connect_network_to_port", {
 					networkType: network.type,
-					portName,
+					portName: portTypes.join(", "),
 				}),
 			);
 		}
-		this.portNetworks.set(portName, network);
+		this.portNetworks.set(compatiblePort, network);
 	}
 
 	public getNetwork(portOrindex: PortType | number | undefined = undefined): Network {
 		let port: PortType;
 		if (typeof portOrindex === "undefined") {
-			port = this.portIndices.getByValue(this.getDefaultPortIndex())!;
+			const defaultIndex = this.getDefaultPortIndex();
+			const portTypes = this.portIndexToTypes.get(defaultIndex);
+			if (portTypes && portTypes.length > 0) {
+				port = portTypes[0];
+			} else {
+				port = "Data Input";
+			}
 		} else if (typeof portOrindex === "number") {
-			if (!this.portIndices.hasValue(portOrindex)) {
+			if (!this.portIndexToTypes.has(portOrindex)) {
 				throw new Error(
 					i18n.t("error.port_index_not_found", {
 						index: portOrindex,
@@ -112,7 +139,18 @@ export class DevicePorts extends DeviceScope {
 					}),
 				);
 			}
-			port = this.portIndices.getByValue(portOrindex)!;
+			const portTypes = this.portIndexToTypes.get(portOrindex)!;
+			for (const pt of portTypes) {
+				if (this.portNetworks.has(pt)) {
+					return this.portNetworks.get(pt)!;
+				}
+			}
+			throw new Error(
+				i18n.t("error.no_network_for_port", {
+					port: portOrindex,
+					hash: this.scope.hash,
+				}),
+			);
 		} else {
 			port = portOrindex;
 		}
@@ -132,20 +170,20 @@ export class DevicePorts extends DeviceScope {
 	 * @returns индекс порта или -1 если порт не найден
 	 */
 	public getPortIndex(type: PortType): number {
-		return this.portIndices.getByKey(type) ?? -1;
+		return this.portIndices.get(type) ?? -1;
 	}
 
 	/**
 	 * Проверить существует ли порт указанного типа
 	 */
 	public hasPort(type: PortType): boolean {
-		return this.portIndices.hasKey(type);
+		return this.portIndices.has(type);
 	}
 
 	/**
 	 * Получить все порты устройства в виде Map
 	 */
-	public getAllPorts(): BiMap<PortType, number> {
+	public getAllPorts(): Map<PortType, number> {
 		return this.portIndices;
 	}
 
@@ -164,24 +202,12 @@ export class DevicePorts extends DeviceScope {
 		if (this.hasPort("Data Input")) {
 			return this.getPortIndex("Data Input");
 		}
-		if (this.hasPort("Power and Data Input")) {
-			return this.getPortIndex("Power and Data Input");
-		}
-		if (this.hasPort("Connection")) {
-			return this.getPortIndex("Connection");
-		}
 		return -1;
 	}
 
 	public getPowerPortIndex(): number {
 		if (this.hasPort("Power Input")) {
 			return this.getPortIndex("Power Input");
-		}
-		if (this.hasPort("Power and Data Input")) {
-			return this.getPortIndex("Power and Data Input");
-		}
-		if (this.hasPort("Connection")) {
-			return this.getPortIndex("Connection");
 		}
 		return -1;
 	}
@@ -208,7 +234,6 @@ export class DevicePorts extends DeviceScope {
 							},
 						};
 					}
-					// если нет сети для порта, пропускаем
 				}
 				return { done: true, value: undefined as any };
 			},
