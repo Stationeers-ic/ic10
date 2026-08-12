@@ -4,7 +4,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"description": "",
 	"main": "./dist/ic10.cjs",
 	"module": "./dist/index.js",
