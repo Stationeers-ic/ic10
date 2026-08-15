@@ -44,6 +44,13 @@ export const REAGENTS = [
 		],
 	},
 	{
+		title: "Cheese",
+		name: "Cheese",
+		hash: -362654475,
+		image: "/images/e/c/ec5933ff93493a82e8fc54ed717a8dee.png",
+		items: [],
+	},
+	{
 		title: "Cobalt",
 		name: "Cobalt",
 		hash: 1702246124,

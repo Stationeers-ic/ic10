@@ -751,6 +751,143 @@ export class InsInstruction extends Instruction {
 	}
 }
 
+export class ClampInstruction extends Instruction {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
+		return [
+			{
+				code: "clamp r1 5 0 10",
+				expected: [{ type: "register", register: 1, value: 5 }],
+			},
+			{
+				code: "clamp r2 -5 0 10",
+				expected: [{ type: "register", register: 2, value: 0 }],
+			},
+			{
+				code: "clamp r3 15 0 10",
+				expected: [{ type: "register", register: 3, value: 10 }],
+			},
+			{
+				code: "clamp r4 3 3 3",
+				expected: [{ type: "register", register: 4, value: 3 }],
+			},
+			{
+				code: "clamp r5 10 20 30",
+				expected: [{ type: "register", register: 5, value: 20 }],
+			},
+			{
+				code: "clamp r6 25 20 30",
+				expected: [{ type: "register", register: 6, value: 25 }],
+			},
+			{
+				code: "clamp r7 35 20 30",
+				expected: [{ type: "register", register: 7, value: 30 }],
+			},
+		];
+	}
+
+	override argumentList(): InstructionArgument[] {
+		return [
+			ArgumentCalculators.registerLink("result"),
+			ArgumentCalculators.anyNumber("a"),
+			ArgumentCalculators.anyNumber("min"),
+			ArgumentCalculators.anyNumber("max"),
+		];
+	}
+
+	override run(): void {
+		const r = this.getArgumentValue<number>("result");
+		const a = this.getArgumentValue<number>("a");
+		const min = this.getArgumentValue<number>("min");
+		const max = this.getArgumentValue<number>("max");
+		this.context.setRegister(r, Math.min(Math.max(a, min), max));
+	}
+}
+
+export class RolInstruction extends BinaryMathInstruction {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
+		return [
+			{
+				code: "rol r1 1 1",
+				expected: [{ type: "register", register: 1, value: 2 }],
+			},
+			{
+				code: "rol r2 1 31",
+				expected: [{ type: "register", register: 2, value: -2147483648 }],
+			},
+			{
+				code: "rol r3 0 5",
+				expected: [{ type: "register", register: 3, value: 0 }],
+			},
+		];
+	}
+
+	public operation(a: number, b: number): number {
+		const shift = b & 31;
+		const x = a | 0;
+		return (x << shift) | (x >>> (32 - shift)) | 0;
+	}
+}
+
+export class RorInstruction extends BinaryMathInstruction {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
+		return [
+			{
+				code: "ror r1 2 1",
+				expected: [{ type: "register", register: 1, value: 1 }],
+			},
+			{
+				code: "ror r2 -2147483648 1",
+				expected: [{ type: "register", register: 2, value: 1073741824 }],
+			},
+			{
+				code: "ror r3 0 5",
+				expected: [{ type: "register", register: 3, value: 0 }],
+			},
+		];
+	}
+
+	public operation(a: number, b: number): number {
+		const shift = b & 31;
+		const x = a | 0;
+		return (x >>> shift) | (x << (32 - shift)) | 0;
+	}
+}
+
+export class SgnInstruction extends UnaryMathInstruction {
+	static override tests(): InstructionTestData[] {
+		if (typeof isProd !== "undefined" && isProd) {
+			return [];
+		}
+		return [
+			{
+				code: "sgn r1 5",
+				expected: [{ type: "register", register: 1, value: 1 }],
+			},
+			{
+				code: "sgn r2 -5",
+				expected: [{ type: "register", register: 2, value: -1 }],
+			},
+			{
+				code: "sgn r3 0",
+				expected: [{ type: "register", register: 3, value: 0 }],
+			},
+		];
+	}
+
+	public operation(a: number): number {
+		return a > 0 ? 1 : a < 0 ? -1 : 0;
+	}
+}
+
 export class LerpInstruction extends Instruction {
 	override argumentList(): InstructionArgument[] {
 		return [

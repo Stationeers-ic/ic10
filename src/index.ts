@@ -29,6 +29,7 @@ export * from "@/Devices/ItemBatteryCell";
 export * from "@/Devices/ItemBatteryCellLarge";
 export * from "@/Devices/ItemBatteryCellNuclear";
 export * from "@/Devices/ItemBeacon";
+export * from "@/Devices/ItemCableGun";
 export * from "@/Devices/ItemDrill";
 export * from "@/Devices/ItemEmergencyAngleGrinder";
 export * from "@/Devices/ItemEmergencyArcWelder";

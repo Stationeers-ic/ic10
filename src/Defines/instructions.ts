@@ -5,7 +5,7 @@ export const INSTRUCTIONS = {
 		name: "abs",
 	},
 	acos: {
-		description: "Returns the cosine of the specified angle (radians)",
+		description: "Returns the angle (radians) whos cosine is the specified value",
 		example: "acos r? a(r?|num)",
 		name: "acos",
 	},
@@ -47,7 +47,8 @@ export const INSTRUCTIONS = {
 		name: "bap",
 	},
 	bapal: {
-		description: "Branch to line c if a != b and store next line number in ra",
+		description:
+			"Branch to line d if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8) and store next line number in ra",
 		example: "bapal a(r?|num) b(r?|num) c(r?|num) d(r?|num)",
 		name: "bapal",
 	},
@@ -200,7 +201,7 @@ export const INSTRUCTIONS = {
 	},
 	bnaal: {
 		description:
-			"Branch to line d if abs(a - b) &lt;= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8) and store next line number in ra",
+			"Branch to line d if abs(a - b) &gt; max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8) and store next line number in ra",
 		example: "bnaal a(r?|num) b(r?|num) c(r?|num) d(r?|num)",
 		name: "bnaal",
 	},
@@ -338,6 +339,11 @@ export const INSTRUCTIONS = {
 		description: "Register = smallest integer greater than a",
 		example: "ceil r? a(r?|num)",
 		name: "ceil",
+	},
+	clamp: {
+		description: "Stores a clamped to the inclusive range [min, max] in the register provided.",
+		example: "clamp r? a(r?|num) min(r?|num) max(r?|num)",
+		name: "clamp",
 	},
 	clr: {
 		description: "Clears the stack memory for the provided device.",
@@ -571,6 +577,18 @@ export const INSTRUCTIONS = {
 		example: "rmap r? d? reagentHash(r?|num)",
 		name: "rmap",
 	},
+	rol: {
+		description:
+			"Performs a bitwise left rotation on the binary representation of a by b places, wrapping the bits shifted out of the most significant position back into the least significant position.",
+		example: "rol r? a(r?|num) b(r?|num)",
+		name: "rol",
+	},
+	ror: {
+		description:
+			"Performs a bitwise right rotation on the binary representation of a by b places, wrapping the bits shifted out of the least significant position back into the most significant position.",
+		example: "ror r? a(r?|num) b(r?|num)",
+		name: "ror",
+	},
 	round: {
 		description: "Register = a rounded to nearest integer",
 		example: "round r? a(r?|num)",
@@ -646,6 +664,12 @@ export const INSTRUCTIONS = {
 		description: "Register = 1 if a &gt;= 0, otherwise 0",
 		example: "sgez r? a(r?|num)",
 		name: "sgez",
+	},
+	sgn: {
+		description:
+			"Stores the sign of a in the register: -1 if a is negative, 1 if positive, and 0 if a is zero (or not a number).",
+		example: "sgn r? a(r?|num)",
+		name: "sgn",
 	},
 	sgt: {
 		description: "Register = 1 if a &gt; b, otherwise 0",

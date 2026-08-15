@@ -1,6 +1,5 @@
 // Auto-generated. Do not edit.
 /* eslint-disable */
-import { H2combustor } from "./H2combustor";
 import { ItemAdvancedTablet } from "./ItemAdvancedTablet";
 import { ItemAngleGrinder } from "./ItemAngleGrinder";
 import { ItemArcWelder } from "./ItemArcWelder";
@@ -8,6 +7,7 @@ import { ItemBatteryCell } from "./ItemBatteryCell";
 import { ItemBatteryCellLarge } from "./ItemBatteryCellLarge";
 import { ItemBatteryCellNuclear } from "./ItemBatteryCellNuclear";
 import { ItemBeacon } from "./ItemBeacon";
+import { ItemCableGun } from "./ItemCableGun";
 import { ItemDrill } from "./ItemDrill";
 import { ItemEmergencyAngleGrinder } from "./ItemEmergencyAngleGrinder";
 import { ItemEmergencyArcWelder } from "./ItemEmergencyArcWelder";
@@ -21,6 +21,9 @@ import { ItemHardJetpack } from "./ItemHardJetpack";
 import { ItemHardSuit } from "./ItemHardSuit";
 import { ItemHardsuitHelmet } from "./ItemHardsuitHelmet";
 import { ItemIcarusHelmet } from "./ItemIcarusHelmet";
+import { ItemInjectorEpi } from "./ItemInjectorEpi";
+import { ItemInjectorHealth } from "./ItemInjectorHealth";
+import { ItemInjectorStun } from "./ItemInjectorStun";
 import { ItemIntegratedCircuit10 } from "./ItemIntegratedCircuit10";
 import { ItemJetpackBasic } from "./ItemJetpackBasic";
 import { ItemLabeller } from "./ItemLabeller";
@@ -35,11 +38,15 @@ import { ItemMkiiarcWelder } from "./ItemMkiiarcWelder";
 import { ItemMkiidrill } from "./ItemMkiidrill";
 import { ItemMkiiminingDrill } from "./ItemMkiiminingDrill";
 import { ItemNvg } from "./ItemNvg";
+import { ItemOreDetector } from "./ItemOreDetector";
 import { ItemPlantSampler } from "./ItemPlantSampler";
 import { ItemRemoteDetonator } from "./ItemRemoteDetonator";
 import { ItemSensorLenses } from "./ItemSensorLenses";
 import { ItemSpaceHelmet } from "./ItemSpaceHelmet";
 import { ItemSpacepack } from "./ItemSpacepack";
+import { ItemSuitHarm } from "./ItemSuitHarm";
+import { ItemSuitHelmetHarm } from "./ItemSuitHelmetHarm";
+import { ItemSurvivalBelt } from "./ItemSurvivalBelt";
 import { ItemTablet } from "./ItemTablet";
 import { ItemTerrainManipulator } from "./ItemTerrainManipulator";
 import { ItemWearLamp } from "./ItemWearLamp";
@@ -83,6 +90,7 @@ import { StructureCableFuse1k } from "./StructureCableFuse1k";
 import { StructureCableFuse5k } from "./StructureCableFuse5k";
 import { StructureCableFuse50k } from "./StructureCableFuse50k";
 import { StructureCableFuse100k } from "./StructureCableFuse100k";
+import { StructureCableFuse500k } from "./StructureCableFuse500k";
 import { StructureCamera } from "./StructureCamera";
 import { StructureCapsuleTankGas } from "./StructureCapsuleTankGas";
 import { StructureCapsuleTankLiquid } from "./StructureCapsuleTankLiquid";
@@ -112,6 +120,8 @@ import { StructureChuteUmbilicalMale } from "./StructureChuteUmbilicalMale";
 import { StructureCircuitHousing } from "./StructureCircuitHousing";
 import { StructureCircuitHousingCompact } from "./StructureCircuitHousingCompact";
 import { StructureCombustionCentrifuge } from "./StructureCombustionCentrifuge";
+import { StructureCombustionDeepMiner } from "./StructureCombustionDeepMiner";
+import { StructureCombustor } from "./StructureCombustor";
 import { StructureCompositeDoor } from "./StructureCompositeDoor";
 import { StructureCompositeWindowShutterController } from "./StructureCompositeWindowShutterController";
 import { StructureComputer } from "./StructureComputer";
@@ -123,10 +133,16 @@ import { StructureCondensationValve } from "./StructureCondensationValve";
 import { StructureConsole } from "./StructureConsole";
 import { StructureConsoleDual } from "./StructureConsoleDual";
 import { StructureConsoleLed1x2 } from "./StructureConsoleLed1x2";
+import { StructureConsoleLed1x2back } from "./StructureConsoleLed1x2back";
+import { StructureConsoleLed1x2side } from "./StructureConsoleLed1x2side";
 import { StructureConsoleLed1x3 } from "./StructureConsoleLed1x3";
 import { StructureConsoleLed5 } from "./StructureConsoleLed5";
 import { StructureConsoleMonitor } from "./StructureConsoleMonitor";
 import { StructureCornerLocker } from "./StructureCornerLocker";
+import { StructureCrewModuleActiveVent } from "./StructureCrewModuleActiveVent";
+import { StructureCrewModuleChair } from "./StructureCrewModuleChair";
+import { StructureCrewModuleLight } from "./StructureCrewModuleLight";
+import { StructureCrewModuleScreen } from "./StructureCrewModuleScreen";
 import { StructureCryoTubeHorizontal } from "./StructureCryoTubeHorizontal";
 import { StructureCryoTubeVertical } from "./StructureCryoTubeVertical";
 import { StructureDaylightSensor } from "./StructureDaylightSensor";
@@ -134,7 +150,7 @@ import { StructureDeepMiner } from "./StructureDeepMiner";
 import { StructureDigitalValve } from "./StructureDigitalValve";
 import { StructureDiode } from "./StructureDiode";
 import { StructureDiodeSlide } from "./StructureDiodeSlide";
-import { StructureDrinkingFountain } from "./StructureDrinkingFountain";
+import { StructureDrinkingFountain2x1 } from "./StructureDrinkingFountain2x1";
 import { StructureElectrolyzer } from "./StructureElectrolyzer";
 import { StructureElectronicsPrinter } from "./StructureElectronicsPrinter";
 import { StructureElevatorLevelFront } from "./StructureElevatorLevelFront";
@@ -144,7 +160,9 @@ import { StructureElevatorShaftIndustrial } from "./StructureElevatorShaftIndust
 import { StructureEmergencyButton } from "./StructureEmergencyButton";
 import { StructureEvaporationChamber } from "./StructureEvaporationChamber";
 import { StructureExpansionValve } from "./StructureExpansionValve";
+import { StructureFermenter } from "./StructureFermenter";
 import { StructureFiltration } from "./StructureFiltration";
+import { StructureFiltrationLiquid } from "./StructureFiltrationLiquid";
 import { StructureFlashingLight } from "./StructureFlashingLight";
 import { StructureFlatBench } from "./StructureFlatBench";
 import { StructureFridgeBig } from "./StructureFridgeBig";
@@ -197,10 +215,6 @@ import { StructureLiquidPipeAnalyzer } from "./StructureLiquidPipeAnalyzer";
 import { StructureLiquidPipeHeater } from "./StructureLiquidPipeHeater";
 import { StructureLiquidPipeRadiator } from "./StructureLiquidPipeRadiator";
 import { StructureLiquidPressureRegulator } from "./StructureLiquidPressureRegulator";
-import { StructureLiquidTankBig } from "./StructureLiquidTankBig";
-import { StructureLiquidTankBigInsulated } from "./StructureLiquidTankBigInsulated";
-import { StructureLiquidTankSmall } from "./StructureLiquidTankSmall";
-import { StructureLiquidTankSmallInsulated } from "./StructureLiquidTankSmallInsulated";
 import { StructureLiquidTankStorage } from "./StructureLiquidTankStorage";
 import { StructureLiquidTurboVolumePump } from "./StructureLiquidTurboVolumePump";
 import { StructureLiquidUmbilicalFemale } from "./StructureLiquidUmbilicalFemale";
@@ -226,6 +240,7 @@ import { StructureLogicReader } from "./StructureLogicReader";
 import { StructureLogicReagentReader } from "./StructureLogicReagentReader";
 import { StructureLogicRocketDownlink } from "./StructureLogicRocketDownlink";
 import { StructureLogicRocketUplink } from "./StructureLogicRocketUplink";
+import { StructureLogicRocketUplinkCompact } from "./StructureLogicRocketUplinkCompact";
 import { StructureLogicSelect } from "./StructureLogicSelect";
 import { StructureLogicSlotReader } from "./StructureLogicSlotReader";
 import { StructureLogicSorter } from "./StructureLogicSorter";
@@ -247,6 +262,7 @@ import { StructureNitrolyzer } from "./StructureNitrolyzer";
 import { StructureOccupancySensor } from "./StructureOccupancySensor";
 import { StructureOverheadShortCornerLocker } from "./StructureOverheadShortCornerLocker";
 import { StructureOverheadShortLocker } from "./StructureOverheadShortLocker";
+import { StructurePacker } from "./StructurePacker";
 import { StructurePassiveLargeRadiatorGas } from "./StructurePassiveLargeRadiatorGas";
 import { StructurePassiveLargeRadiatorLiquid } from "./StructurePassiveLargeRadiatorLiquid";
 import { StructurePassiveLiquidDrain } from "./StructurePassiveLiquidDrain";
@@ -275,7 +291,9 @@ import { StructurePowerUmbilicalFemaleSide } from "./StructurePowerUmbilicalFema
 import { StructurePowerUmbilicalMale } from "./StructurePowerUmbilicalMale";
 import { StructurePressurantValve } from "./StructurePressurantValve";
 import { StructurePressureFedGasEngine } from "./StructurePressureFedGasEngine";
+import { StructurePressureFedGasEngineHeavy } from "./StructurePressureFedGasEngineHeavy";
 import { StructurePressureFedLiquidEngine } from "./StructurePressureFedLiquidEngine";
+import { StructurePressureFedLiquidEngineHeavy } from "./StructurePressureFedLiquidEngineHeavy";
 import { StructurePressurePlateLarge } from "./StructurePressurePlateLarge";
 import { StructurePressurePlateMedium } from "./StructurePressurePlateMedium";
 import { StructurePressurePlateSmall } from "./StructurePressurePlateSmall";
@@ -293,6 +311,7 @@ import { StructureRocketCircuitHousing } from "./StructureRocketCircuitHousing";
 import { StructureRocketEngineTiny } from "./StructureRocketEngineTiny";
 import { StructureRocketFiltrationGas } from "./StructureRocketFiltrationGas";
 import { StructureRocketGasCollector } from "./StructureRocketGasCollector";
+import { StructureRocketLargePayloadBay } from "./StructureRocketLargePayloadBay";
 import { StructureRocketManufactory } from "./StructureRocketManufactory";
 import { StructureRocketMiner } from "./StructureRocketMiner";
 import { StructureRocketScanner } from "./StructureRocketScanner";
@@ -320,6 +339,10 @@ import { StructureSmallDirectHeatExchangeLiquidtoGas } from "./StructureSmallDir
 import { StructureSmallDirectHeatExchangeLiquidtoLiquid } from "./StructureSmallDirectHeatExchangeLiquidtoLiquid";
 import { StructureSmallSatelliteDish } from "./StructureSmallSatelliteDish";
 import { StructureSolarPanel } from "./StructureSolarPanel";
+import { StructureSolarPanel1x5 } from "./StructureSolarPanel1x5";
+import { StructureSolarPanel1x5reinforced } from "./StructureSolarPanel1x5reinforced";
+import { StructureSolarPanel1x5reinforcedSingle } from "./StructureSolarPanel1x5reinforcedSingle";
+import { StructureSolarPanel1x5single } from "./StructureSolarPanel1x5single";
 import { StructureSolarPanel45 } from "./StructureSolarPanel45";
 import { StructureSolarPanel45reinforced } from "./StructureSolarPanel45reinforced";
 import { StructureSolarPanelDual } from "./StructureSolarPanelDual";
@@ -334,16 +357,16 @@ import { StructureStackerReverse } from "./StructureStackerReverse";
 import { StructureStirlingEngine } from "./StructureStirlingEngine";
 import { StructureStorageLocker } from "./StructureStorageLocker";
 import { StructureSuitStorage } from "./StructureSuitStorage";
-import { StructureTankBig } from "./StructureTankBig";
-import { StructureTankBigInsulated } from "./StructureTankBigInsulated";
-import { StructureTankSmall } from "./StructureTankSmall";
-import { StructureTankSmallAir } from "./StructureTankSmallAir";
-import { StructureTankSmallFuel } from "./StructureTankSmallFuel";
-import { StructureTankSmallInsulated } from "./StructureTankSmallInsulated";
+import { StructureSuitStorageFrame } from "./StructureSuitStorageFrame";
+import { StructureSuitStorageLocker } from "./StructureSuitStorageLocker";
+import { StructureSuperLargeDirectHeatExchangeGastoGas } from "./StructureSuperLargeDirectHeatExchangeGastoGas";
+import { StructureSuperLargeDirectHeatExchangeGastoLiquid } from "./StructureSuperLargeDirectHeatExchangeGastoLiquid";
+import { StructureSuperLargeDirectHeatExchangeLiquidToLiquid } from "./StructureSuperLargeDirectHeatExchangeLiquidToLiquid";
 import { StructureToolManufactory } from "./StructureToolManufactory";
 import { StructureTraderWaypoint } from "./StructureTraderWaypoint";
 import { StructureTransformer } from "./StructureTransformer";
 import { StructureTransformerMedium } from "./StructureTransformerMedium";
+import { StructureTransformerMediumReversed } from "./StructureTransformerMediumReversed";
 import { StructureTransformerSmall } from "./StructureTransformerSmall";
 import { StructureTransformerSmallReversed } from "./StructureTransformerSmallReversed";
 import { StructureTurboVolumePump } from "./StructureTurboVolumePump";
@@ -366,7 +389,6 @@ import { StructureWaterWallCooler } from "./StructureWaterWallCooler";
 import { StructureWeatherStation } from "./StructureWeatherStation";
 import { StructureWindTurbine } from "./StructureWindTurbine";
 export const DeviceClasses = [
-	H2combustor,
 	ItemAdvancedTablet,
 	ItemAngleGrinder,
 	ItemArcWelder,
@@ -374,6 +396,7 @@ export const DeviceClasses = [
 	ItemBatteryCellLarge,
 	ItemBatteryCellNuclear,
 	ItemBeacon,
+	ItemCableGun,
 	ItemDrill,
 	ItemEmergencyAngleGrinder,
 	ItemEmergencyArcWelder,
@@ -387,6 +410,9 @@ export const DeviceClasses = [
 	ItemHardSuit,
 	ItemHardsuitHelmet,
 	ItemIcarusHelmet,
+	ItemInjectorEpi,
+	ItemInjectorHealth,
+	ItemInjectorStun,
 	ItemIntegratedCircuit10,
 	ItemJetpackBasic,
 	ItemLabeller,
@@ -401,11 +427,15 @@ export const DeviceClasses = [
 	ItemMkiiminingDrill,
 	ItemMkIitoolbelt,
 	ItemNvg,
+	ItemOreDetector,
 	ItemPlantSampler,
 	ItemRemoteDetonator,
 	ItemSensorLenses,
 	ItemSpaceHelmet,
 	ItemSpacepack,
+	ItemSuitHarm,
+	ItemSuitHelmetHarm,
+	ItemSurvivalBelt,
 	ItemTablet,
 	ItemTerrainManipulator,
 	ItemWearLamp,
@@ -447,6 +477,7 @@ export const DeviceClasses = [
 	StructureCableAnalysizer,
 	StructureCableFuse100k,
 	StructureCableFuse1k,
+	StructureCableFuse500k,
 	StructureCableFuse50k,
 	StructureCableFuse5k,
 	StructureCamera,
@@ -478,6 +509,8 @@ export const DeviceClasses = [
 	StructureCircuitHousing,
 	StructureCircuitHousingCompact,
 	StructureCombustionCentrifuge,
+	StructureCombustionDeepMiner,
+	StructureCombustor,
 	StructureCompositeDoor,
 	StructureCompositeWindowShutterController,
 	StructureComputer,
@@ -489,10 +522,16 @@ export const DeviceClasses = [
 	StructureConsole,
 	StructureConsoleDual,
 	StructureConsoleLed1x2,
+	StructureConsoleLed1x2back,
+	StructureConsoleLed1x2side,
 	StructureConsoleLed1x3,
 	StructureConsoleLed5,
 	StructureConsoleMonitor,
 	StructureCornerLocker,
+	StructureCrewModuleActiveVent,
+	StructureCrewModuleChair,
+	StructureCrewModuleLight,
+	StructureCrewModuleScreen,
 	StructureCryoTubeHorizontal,
 	StructureCryoTubeVertical,
 	StructureDaylightSensor,
@@ -500,7 +539,7 @@ export const DeviceClasses = [
 	StructureDigitalValve,
 	StructureDiode,
 	StructureDiodeSlide,
-	StructureDrinkingFountain,
+	StructureDrinkingFountain2x1,
 	StructureElectrolyzer,
 	StructureElectronicsPrinter,
 	StructureElevatorLevelFront,
@@ -510,7 +549,9 @@ export const DeviceClasses = [
 	StructureEmergencyButton,
 	StructureEvaporationChamber,
 	StructureExpansionValve,
+	StructureFermenter,
 	StructureFiltration,
+	StructureFiltrationLiquid,
 	StructureFlashingLight,
 	StructureFlatBench,
 	StructureFridgeBig,
@@ -563,10 +604,6 @@ export const DeviceClasses = [
 	StructureLiquidPipeHeater,
 	StructureLiquidPipeRadiator,
 	StructureLiquidPressureRegulator,
-	StructureLiquidTankBig,
-	StructureLiquidTankBigInsulated,
-	StructureLiquidTankSmall,
-	StructureLiquidTankSmallInsulated,
 	StructureLiquidTankStorage,
 	StructureLiquidTurboVolumePump,
 	StructureLiquidUmbilicalFemale,
@@ -592,6 +629,7 @@ export const DeviceClasses = [
 	StructureLogicReagentReader,
 	StructureLogicRocketDownlink,
 	StructureLogicRocketUplink,
+	StructureLogicRocketUplinkCompact,
 	StructureLogicSelect,
 	StructureLogicSlotReader,
 	StructureLogicSorter,
@@ -613,6 +651,7 @@ export const DeviceClasses = [
 	StructureOccupancySensor,
 	StructureOverheadShortCornerLocker,
 	StructureOverheadShortLocker,
+	StructurePacker,
 	StructurePassiveLargeRadiatorGas,
 	StructurePassiveLargeRadiatorLiquid,
 	StructurePassiveLiquidDrain,
@@ -641,7 +680,9 @@ export const DeviceClasses = [
 	StructurePowerUmbilicalMale,
 	StructurePressurantValve,
 	StructurePressureFedGasEngine,
+	StructurePressureFedGasEngineHeavy,
 	StructurePressureFedLiquidEngine,
+	StructurePressureFedLiquidEngineHeavy,
 	StructurePressurePlateLarge,
 	StructurePressurePlateMedium,
 	StructurePressurePlateSmall,
@@ -659,6 +700,7 @@ export const DeviceClasses = [
 	StructureRocketEngineTiny,
 	StructureRocketFiltrationGas,
 	StructureRocketGasCollector,
+	StructureRocketLargePayloadBay,
 	StructureRocketManufactory,
 	StructureRocketMiner,
 	StructureRocketScanner,
@@ -686,6 +728,10 @@ export const DeviceClasses = [
 	StructureSmallDirectHeatExchangeLiquidtoLiquid,
 	StructureSmallSatelliteDish,
 	StructureSolarPanel,
+	StructureSolarPanel1x5,
+	StructureSolarPanel1x5reinforced,
+	StructureSolarPanel1x5reinforcedSingle,
+	StructureSolarPanel1x5single,
 	StructureSolarPanel45,
 	StructureSolarPanel45reinforced,
 	StructureSolarPanelDual,
@@ -700,16 +746,16 @@ export const DeviceClasses = [
 	StructureStirlingEngine,
 	StructureStorageLocker,
 	StructureSuitStorage,
-	StructureTankBig,
-	StructureTankBigInsulated,
-	StructureTankSmall,
-	StructureTankSmallAir,
-	StructureTankSmallFuel,
-	StructureTankSmallInsulated,
+	StructureSuitStorageFrame,
+	StructureSuitStorageLocker,
+	StructureSuperLargeDirectHeatExchangeGastoGas,
+	StructureSuperLargeDirectHeatExchangeGastoLiquid,
+	StructureSuperLargeDirectHeatExchangeLiquidToLiquid,
 	StructureToolManufactory,
 	StructureTraderWaypoint,
 	StructureTransformer,
 	StructureTransformerMedium,
+	StructureTransformerMediumReversed,
 	StructureTransformerSmall,
 	StructureTransformerSmallReversed,
 	StructureTurboVolumePump,
@@ -734,17 +780,21 @@ export const DeviceClasses = [
 ] as const;
 export const DeviceClassesByBase = {
 	Housing: {
-		H2Combustor: H2combustor,
 		ItemAdvancedTablet: ItemAdvancedTablet,
 		ItemHardSuit: ItemHardSuit,
 		ItemLaptop: ItemLaptop,
+		ItemSurvivalBelt: ItemSurvivalBelt,
 		Robot: Robot,
 		StructureAirConditioner: StructureAirConditioner,
 		StructureCircuitHousing: StructureCircuitHousing,
 		StructureCircuitHousingCompact: StructureCircuitHousingCompact,
 		StructureCombustionCentrifuge: StructureCombustionCentrifuge,
+		StructureCombustionDeepMiner: StructureCombustionDeepMiner,
+		StructureCombustor: StructureCombustor,
 		StructureElectrolyzer: StructureElectrolyzer,
+		StructureFermenter: StructureFermenter,
 		StructureFiltration: StructureFiltration,
+		StructureFiltrationLiquid: StructureFiltrationLiquid,
 		StructureNitrolyzer: StructureNitrolyzer,
 		StructureRocketCircuitHousing: StructureRocketCircuitHousing,
 	} as const,
@@ -755,6 +805,7 @@ export const DeviceClassesByBase = {
 		ItemBatteryCellLarge: ItemBatteryCellLarge,
 		ItemBatteryCellNuclear: ItemBatteryCellNuclear,
 		ItemBeacon: ItemBeacon,
+		ItemCableGun: ItemCableGun,
 		ItemDrill: ItemDrill,
 		ItemEmergencyAngleGrinder: ItemEmergencyAngleGrinder,
 		ItemEmergencyArcWelder: ItemEmergencyArcWelder,
@@ -767,6 +818,9 @@ export const DeviceClassesByBase = {
 		ItemHardJetpack: ItemHardJetpack,
 		ItemHardsuitHelmet: ItemHardsuitHelmet,
 		ItemIcarusHelmet: ItemIcarusHelmet,
+		ItemInjectorEpi: ItemInjectorEpi,
+		ItemInjectorHealth: ItemInjectorHealth,
+		ItemInjectorStun: ItemInjectorStun,
 		ItemIntegratedCircuit10: ItemIntegratedCircuit10,
 		ItemJetpackBasic: ItemJetpackBasic,
 		ItemLabeller: ItemLabeller,
@@ -780,11 +834,14 @@ export const DeviceClassesByBase = {
 		ItemMKIIMiningDrill: ItemMkiiminingDrill,
 		ItemMkIIToolbelt: ItemMkIitoolbelt,
 		ItemNVG: ItemNvg,
+		ItemOreDetector: ItemOreDetector,
 		ItemPlantSampler: ItemPlantSampler,
 		ItemRemoteDetonator: ItemRemoteDetonator,
 		ItemSensorLenses: ItemSensorLenses,
 		ItemSpaceHelmet: ItemSpaceHelmet,
 		ItemSpacepack: ItemSpacepack,
+		ItemSuitHARM: ItemSuitHarm,
+		ItemSuitHelmetHARM: ItemSuitHelmetHarm,
 		ItemTablet: ItemTablet,
 		ItemTerrainManipulator: ItemTerrainManipulator,
 		ItemWearLamp: ItemWearLamp,
@@ -826,6 +883,7 @@ export const DeviceClassesByBase = {
 		StructureCableAnalysizer: StructureCableAnalysizer,
 		StructureCableFuse100k: StructureCableFuse100k,
 		StructureCableFuse1k: StructureCableFuse1k,
+		StructureCableFuse500k: StructureCableFuse500k,
 		StructureCableFuse50k: StructureCableFuse50k,
 		StructureCableFuse5k: StructureCableFuse5k,
 		StructureCamera: StructureCamera,
@@ -865,10 +923,16 @@ export const DeviceClassesByBase = {
 		StructureConsole: StructureConsole,
 		StructureConsoleDual: StructureConsoleDual,
 		StructureConsoleLED1x2: StructureConsoleLed1x2,
+		StructureConsoleLED1x2Back: StructureConsoleLed1x2back,
+		StructureConsoleLED1x2Side: StructureConsoleLed1x2side,
 		StructureConsoleLED1x3: StructureConsoleLed1x3,
 		StructureConsoleLED5: StructureConsoleLed5,
 		StructureConsoleMonitor: StructureConsoleMonitor,
 		StructureCornerLocker: StructureCornerLocker,
+		StructureCrewModuleActiveVent: StructureCrewModuleActiveVent,
+		StructureCrewModuleChair: StructureCrewModuleChair,
+		StructureCrewModuleLight: StructureCrewModuleLight,
+		StructureCrewModuleScreen: StructureCrewModuleScreen,
 		StructureCryoTubeHorizontal: StructureCryoTubeHorizontal,
 		StructureCryoTubeVertical: StructureCryoTubeVertical,
 		StructureDaylightSensor: StructureDaylightSensor,
@@ -876,7 +940,7 @@ export const DeviceClassesByBase = {
 		StructureDigitalValve: StructureDigitalValve,
 		StructureDiode: StructureDiode,
 		StructureDiodeSlide: StructureDiodeSlide,
-		StructureDrinkingFountain: StructureDrinkingFountain,
+		StructureDrinkingFountain2x1: StructureDrinkingFountain2x1,
 		StructureElectronicsPrinter: StructureElectronicsPrinter,
 		StructureElevatorLevelFront: StructureElevatorLevelFront,
 		StructureElevatorLevelIndustrial: StructureElevatorLevelIndustrial,
@@ -937,10 +1001,6 @@ export const DeviceClassesByBase = {
 		StructureLiquidPipeHeater: StructureLiquidPipeHeater,
 		StructureLiquidPipeRadiator: StructureLiquidPipeRadiator,
 		StructureLiquidPressureRegulator: StructureLiquidPressureRegulator,
-		StructureLiquidTankBig: StructureLiquidTankBig,
-		StructureLiquidTankBigInsulated: StructureLiquidTankBigInsulated,
-		StructureLiquidTankSmall: StructureLiquidTankSmall,
-		StructureLiquidTankSmallInsulated: StructureLiquidTankSmallInsulated,
 		StructureLiquidTankStorage: StructureLiquidTankStorage,
 		StructureLiquidTurboVolumePump: StructureLiquidTurboVolumePump,
 		StructureLiquidUmbilicalFemale: StructureLiquidUmbilicalFemale,
@@ -966,6 +1026,7 @@ export const DeviceClassesByBase = {
 		StructureLogicReagentReader: StructureLogicReagentReader,
 		StructureLogicRocketDownlink: StructureLogicRocketDownlink,
 		StructureLogicRocketUplink: StructureLogicRocketUplink,
+		StructureLogicRocketUplinkCompact: StructureLogicRocketUplinkCompact,
 		StructureLogicSelect: StructureLogicSelect,
 		StructureLogicSlotReader: StructureLogicSlotReader,
 		StructureLogicSorter: StructureLogicSorter,
@@ -986,6 +1047,7 @@ export const DeviceClassesByBase = {
 		StructureOccupancySensor: StructureOccupancySensor,
 		StructureOverheadShortCornerLocker: StructureOverheadShortCornerLocker,
 		StructureOverheadShortLocker: StructureOverheadShortLocker,
+		StructurePacker: StructurePacker,
 		StructurePassiveLargeRadiatorGas: StructurePassiveLargeRadiatorGas,
 		StructurePassiveLargeRadiatorLiquid: StructurePassiveLargeRadiatorLiquid,
 		StructurePassiveLiquidDrain: StructurePassiveLiquidDrain,
@@ -1014,7 +1076,9 @@ export const DeviceClassesByBase = {
 		StructurePowerUmbilicalMale: StructurePowerUmbilicalMale,
 		StructurePressurantValve: StructurePressurantValve,
 		StructurePressureFedGasEngine: StructurePressureFedGasEngine,
+		StructurePressureFedGasEngineHeavy: StructurePressureFedGasEngineHeavy,
 		StructurePressureFedLiquidEngine: StructurePressureFedLiquidEngine,
+		StructurePressureFedLiquidEngineHeavy: StructurePressureFedLiquidEngineHeavy,
 		StructurePressurePlateLarge: StructurePressurePlateLarge,
 		StructurePressurePlateMedium: StructurePressurePlateMedium,
 		StructurePressurePlateSmall: StructurePressurePlateSmall,
@@ -1031,6 +1095,7 @@ export const DeviceClassesByBase = {
 		StructureRocketEngineTiny: StructureRocketEngineTiny,
 		StructureRocketFiltrationGas: StructureRocketFiltrationGas,
 		StructureRocketGasCollector: StructureRocketGasCollector,
+		StructureRocketLargePayloadBay: StructureRocketLargePayloadBay,
 		StructureRocketManufactory: StructureRocketManufactory,
 		StructureRocketMiner: StructureRocketMiner,
 		StructureRocketScanner: StructureRocketScanner,
@@ -1058,6 +1123,10 @@ export const DeviceClassesByBase = {
 		StructureSmallDirectHeatExchangeLiquidtoLiquid: StructureSmallDirectHeatExchangeLiquidtoLiquid,
 		StructureSmallSatelliteDish: StructureSmallSatelliteDish,
 		StructureSolarPanel: StructureSolarPanel,
+		StructureSolarPanel1x5: StructureSolarPanel1x5,
+		StructureSolarPanel1x5Reinforced: StructureSolarPanel1x5reinforced,
+		StructureSolarPanel1x5ReinforcedSingle: StructureSolarPanel1x5reinforcedSingle,
+		StructureSolarPanel1x5Single: StructureSolarPanel1x5single,
 		StructureSolarPanel45: StructureSolarPanel45,
 		StructureSolarPanel45Reinforced: StructureSolarPanel45reinforced,
 		StructureSolarPanelDual: StructureSolarPanelDual,
@@ -1072,16 +1141,16 @@ export const DeviceClassesByBase = {
 		StructureStirlingEngine: StructureStirlingEngine,
 		StructureStorageLocker: StructureStorageLocker,
 		StructureSuitStorage: StructureSuitStorage,
-		StructureTankBig: StructureTankBig,
-		StructureTankBigInsulated: StructureTankBigInsulated,
-		StructureTankSmall: StructureTankSmall,
-		StructureTankSmallAir: StructureTankSmallAir,
-		StructureTankSmallFuel: StructureTankSmallFuel,
-		StructureTankSmallInsulated: StructureTankSmallInsulated,
+		StructureSuitStorageFrame: StructureSuitStorageFrame,
+		StructureSuitStorageLocker: StructureSuitStorageLocker,
+		StructureSuperLargeDirectHeatExchangeGastoGas: StructureSuperLargeDirectHeatExchangeGastoGas,
+		StructureSuperLargeDirectHeatExchangeGastoLiquid: StructureSuperLargeDirectHeatExchangeGastoLiquid,
+		StructureSuperLargeDirectHeatExchangeLiquidToLiquid: StructureSuperLargeDirectHeatExchangeLiquidToLiquid,
 		StructureToolManufactory: StructureToolManufactory,
 		StructureTraderWaypoint: StructureTraderWaypoint,
 		StructureTransformer: StructureTransformer,
 		StructureTransformerMedium: StructureTransformerMedium,
+		"StructureTransformerMedium(Reversed)": StructureTransformerMediumReversed,
 		StructureTransformerSmall: StructureTransformerSmall,
 		StructureTransformerSmallReversed: StructureTransformerSmallReversed,
 		StructureTurboVolumePump: StructureTurboVolumePump,
@@ -1106,7 +1175,6 @@ export const DeviceClassesByBase = {
 	} as const,
 } as const;
 export const DevicesByPrefabName = {
-	H2Combustor: H2combustor,
 	ItemAdvancedTablet: ItemAdvancedTablet,
 	ItemAngleGrinder: ItemAngleGrinder,
 	ItemArcWelder: ItemArcWelder,
@@ -1114,6 +1182,7 @@ export const DevicesByPrefabName = {
 	ItemBatteryCellLarge: ItemBatteryCellLarge,
 	ItemBatteryCellNuclear: ItemBatteryCellNuclear,
 	ItemBeacon: ItemBeacon,
+	ItemCableGun: ItemCableGun,
 	ItemDrill: ItemDrill,
 	ItemEmergencyAngleGrinder: ItemEmergencyAngleGrinder,
 	ItemEmergencyArcWelder: ItemEmergencyArcWelder,
@@ -1127,6 +1196,9 @@ export const DevicesByPrefabName = {
 	ItemHardSuit: ItemHardSuit,
 	ItemHardsuitHelmet: ItemHardsuitHelmet,
 	ItemIcarusHelmet: ItemIcarusHelmet,
+	ItemInjectorEpi: ItemInjectorEpi,
+	ItemInjectorHealth: ItemInjectorHealth,
+	ItemInjectorStun: ItemInjectorStun,
 	ItemIntegratedCircuit10: ItemIntegratedCircuit10,
 	ItemJetpackBasic: ItemJetpackBasic,
 	ItemLabeller: ItemLabeller,
@@ -1141,11 +1213,15 @@ export const DevicesByPrefabName = {
 	ItemMKIIMiningDrill: ItemMkiiminingDrill,
 	ItemMkIIToolbelt: ItemMkIitoolbelt,
 	ItemNVG: ItemNvg,
+	ItemOreDetector: ItemOreDetector,
 	ItemPlantSampler: ItemPlantSampler,
 	ItemRemoteDetonator: ItemRemoteDetonator,
 	ItemSensorLenses: ItemSensorLenses,
 	ItemSpaceHelmet: ItemSpaceHelmet,
 	ItemSpacepack: ItemSpacepack,
+	ItemSuitHARM: ItemSuitHarm,
+	ItemSuitHelmetHARM: ItemSuitHelmetHarm,
+	ItemSurvivalBelt: ItemSurvivalBelt,
 	ItemTablet: ItemTablet,
 	ItemTerrainManipulator: ItemTerrainManipulator,
 	ItemWearLamp: ItemWearLamp,
@@ -1187,6 +1263,7 @@ export const DevicesByPrefabName = {
 	StructureCableAnalysizer: StructureCableAnalysizer,
 	StructureCableFuse100k: StructureCableFuse100k,
 	StructureCableFuse1k: StructureCableFuse1k,
+	StructureCableFuse500k: StructureCableFuse500k,
 	StructureCableFuse50k: StructureCableFuse50k,
 	StructureCableFuse5k: StructureCableFuse5k,
 	StructureCamera: StructureCamera,
@@ -1218,6 +1295,8 @@ export const DevicesByPrefabName = {
 	StructureCircuitHousing: StructureCircuitHousing,
 	StructureCircuitHousingCompact: StructureCircuitHousingCompact,
 	StructureCombustionCentrifuge: StructureCombustionCentrifuge,
+	StructureCombustionDeepMiner: StructureCombustionDeepMiner,
+	StructureCombustor: StructureCombustor,
 	StructureCompositeDoor: StructureCompositeDoor,
 	StructureCompositeWindowShutterController: StructureCompositeWindowShutterController,
 	StructureComputer: StructureComputer,
@@ -1229,10 +1308,16 @@ export const DevicesByPrefabName = {
 	StructureConsole: StructureConsole,
 	StructureConsoleDual: StructureConsoleDual,
 	StructureConsoleLED1x2: StructureConsoleLed1x2,
+	StructureConsoleLED1x2Back: StructureConsoleLed1x2back,
+	StructureConsoleLED1x2Side: StructureConsoleLed1x2side,
 	StructureConsoleLED1x3: StructureConsoleLed1x3,
 	StructureConsoleLED5: StructureConsoleLed5,
 	StructureConsoleMonitor: StructureConsoleMonitor,
 	StructureCornerLocker: StructureCornerLocker,
+	StructureCrewModuleActiveVent: StructureCrewModuleActiveVent,
+	StructureCrewModuleChair: StructureCrewModuleChair,
+	StructureCrewModuleLight: StructureCrewModuleLight,
+	StructureCrewModuleScreen: StructureCrewModuleScreen,
 	StructureCryoTubeHorizontal: StructureCryoTubeHorizontal,
 	StructureCryoTubeVertical: StructureCryoTubeVertical,
 	StructureDaylightSensor: StructureDaylightSensor,
@@ -1240,7 +1325,7 @@ export const DevicesByPrefabName = {
 	StructureDigitalValve: StructureDigitalValve,
 	StructureDiode: StructureDiode,
 	StructureDiodeSlide: StructureDiodeSlide,
-	StructureDrinkingFountain: StructureDrinkingFountain,
+	StructureDrinkingFountain2x1: StructureDrinkingFountain2x1,
 	StructureElectrolyzer: StructureElectrolyzer,
 	StructureElectronicsPrinter: StructureElectronicsPrinter,
 	StructureElevatorLevelFront: StructureElevatorLevelFront,
@@ -1250,7 +1335,9 @@ export const DevicesByPrefabName = {
 	StructureEmergencyButton: StructureEmergencyButton,
 	StructureEvaporationChamber: StructureEvaporationChamber,
 	StructureExpansionValve: StructureExpansionValve,
+	StructureFermenter: StructureFermenter,
 	StructureFiltration: StructureFiltration,
+	StructureFiltrationLiquid: StructureFiltrationLiquid,
 	StructureFlashingLight: StructureFlashingLight,
 	StructureFlatBench: StructureFlatBench,
 	StructureFridgeBig: StructureFridgeBig,
@@ -1303,10 +1390,6 @@ export const DevicesByPrefabName = {
 	StructureLiquidPipeHeater: StructureLiquidPipeHeater,
 	StructureLiquidPipeRadiator: StructureLiquidPipeRadiator,
 	StructureLiquidPressureRegulator: StructureLiquidPressureRegulator,
-	StructureLiquidTankBig: StructureLiquidTankBig,
-	StructureLiquidTankBigInsulated: StructureLiquidTankBigInsulated,
-	StructureLiquidTankSmall: StructureLiquidTankSmall,
-	StructureLiquidTankSmallInsulated: StructureLiquidTankSmallInsulated,
 	StructureLiquidTankStorage: StructureLiquidTankStorage,
 	StructureLiquidTurboVolumePump: StructureLiquidTurboVolumePump,
 	StructureLiquidUmbilicalFemale: StructureLiquidUmbilicalFemale,
@@ -1332,6 +1415,7 @@ export const DevicesByPrefabName = {
 	StructureLogicReagentReader: StructureLogicReagentReader,
 	StructureLogicRocketDownlink: StructureLogicRocketDownlink,
 	StructureLogicRocketUplink: StructureLogicRocketUplink,
+	StructureLogicRocketUplinkCompact: StructureLogicRocketUplinkCompact,
 	StructureLogicSelect: StructureLogicSelect,
 	StructureLogicSlotReader: StructureLogicSlotReader,
 	StructureLogicSorter: StructureLogicSorter,
@@ -1353,6 +1437,7 @@ export const DevicesByPrefabName = {
 	StructureOccupancySensor: StructureOccupancySensor,
 	StructureOverheadShortCornerLocker: StructureOverheadShortCornerLocker,
 	StructureOverheadShortLocker: StructureOverheadShortLocker,
+	StructurePacker: StructurePacker,
 	StructurePassiveLargeRadiatorGas: StructurePassiveLargeRadiatorGas,
 	StructurePassiveLargeRadiatorLiquid: StructurePassiveLargeRadiatorLiquid,
 	StructurePassiveLiquidDrain: StructurePassiveLiquidDrain,
@@ -1381,7 +1466,9 @@ export const DevicesByPrefabName = {
 	StructurePowerUmbilicalMale: StructurePowerUmbilicalMale,
 	StructurePressurantValve: StructurePressurantValve,
 	StructurePressureFedGasEngine: StructurePressureFedGasEngine,
+	StructurePressureFedGasEngineHeavy: StructurePressureFedGasEngineHeavy,
 	StructurePressureFedLiquidEngine: StructurePressureFedLiquidEngine,
+	StructurePressureFedLiquidEngineHeavy: StructurePressureFedLiquidEngineHeavy,
 	StructurePressurePlateLarge: StructurePressurePlateLarge,
 	StructurePressurePlateMedium: StructurePressurePlateMedium,
 	StructurePressurePlateSmall: StructurePressurePlateSmall,
@@ -1399,6 +1486,7 @@ export const DevicesByPrefabName = {
 	StructureRocketEngineTiny: StructureRocketEngineTiny,
 	StructureRocketFiltrationGas: StructureRocketFiltrationGas,
 	StructureRocketGasCollector: StructureRocketGasCollector,
+	StructureRocketLargePayloadBay: StructureRocketLargePayloadBay,
 	StructureRocketManufactory: StructureRocketManufactory,
 	StructureRocketMiner: StructureRocketMiner,
 	StructureRocketScanner: StructureRocketScanner,
@@ -1426,6 +1514,10 @@ export const DevicesByPrefabName = {
 	StructureSmallDirectHeatExchangeLiquidtoLiquid: StructureSmallDirectHeatExchangeLiquidtoLiquid,
 	StructureSmallSatelliteDish: StructureSmallSatelliteDish,
 	StructureSolarPanel: StructureSolarPanel,
+	StructureSolarPanel1x5: StructureSolarPanel1x5,
+	StructureSolarPanel1x5Reinforced: StructureSolarPanel1x5reinforced,
+	StructureSolarPanel1x5ReinforcedSingle: StructureSolarPanel1x5reinforcedSingle,
+	StructureSolarPanel1x5Single: StructureSolarPanel1x5single,
 	StructureSolarPanel45: StructureSolarPanel45,
 	StructureSolarPanel45Reinforced: StructureSolarPanel45reinforced,
 	StructureSolarPanelDual: StructureSolarPanelDual,
@@ -1440,16 +1532,16 @@ export const DevicesByPrefabName = {
 	StructureStirlingEngine: StructureStirlingEngine,
 	StructureStorageLocker: StructureStorageLocker,
 	StructureSuitStorage: StructureSuitStorage,
-	StructureTankBig: StructureTankBig,
-	StructureTankBigInsulated: StructureTankBigInsulated,
-	StructureTankSmall: StructureTankSmall,
-	StructureTankSmallAir: StructureTankSmallAir,
-	StructureTankSmallFuel: StructureTankSmallFuel,
-	StructureTankSmallInsulated: StructureTankSmallInsulated,
+	StructureSuitStorageFrame: StructureSuitStorageFrame,
+	StructureSuitStorageLocker: StructureSuitStorageLocker,
+	StructureSuperLargeDirectHeatExchangeGastoGas: StructureSuperLargeDirectHeatExchangeGastoGas,
+	StructureSuperLargeDirectHeatExchangeGastoLiquid: StructureSuperLargeDirectHeatExchangeGastoLiquid,
+	StructureSuperLargeDirectHeatExchangeLiquidToLiquid: StructureSuperLargeDirectHeatExchangeLiquidToLiquid,
 	StructureToolManufactory: StructureToolManufactory,
 	StructureTraderWaypoint: StructureTraderWaypoint,
 	StructureTransformer: StructureTransformer,
 	StructureTransformerMedium: StructureTransformerMedium,
+	"StructureTransformerMedium(Reversed)": StructureTransformerMediumReversed,
 	StructureTransformerSmall: StructureTransformerSmall,
 	StructureTransformerSmallReversed: StructureTransformerSmallReversed,
 	StructureTurboVolumePump: StructureTurboVolumePump,

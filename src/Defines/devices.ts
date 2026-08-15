@@ -22,6 +22,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -29,6 +30,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38,6 +40,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -45,6 +48,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -133,6 +137,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -140,6 +145,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -149,6 +155,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -156,6 +163,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -165,6 +173,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -172,6 +181,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -181,6 +191,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -188,6 +199,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -197,6 +209,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -204,6 +217,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -213,6 +227,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -220,6 +235,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -229,6 +245,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -236,6 +253,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -245,6 +263,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -252,6 +271,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -261,6 +281,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -268,6 +289,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -277,6 +299,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -284,6 +307,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -293,6 +317,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -300,6 +325,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -309,6 +335,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -316,6 +343,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -333,6 +361,10 @@ export const DEVICES: DevicesType = {
 		logics: [
 			{
 				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "DispenseSlot",
 				permissions: ["Read", "Write"],
 			},
 			{
@@ -385,6 +417,14 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetPrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetSlotIndex",
 				permissions: ["Read"],
 			},
 			{
@@ -480,6 +520,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -487,6 +528,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -559,6 +601,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -571,11 +625,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -603,6 +781,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -610,6 +789,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -619,6 +799,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -626,6 +807,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -709,6 +891,136 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"94539235": {
+		id: 94539235,
+		Title: "Loader",
+		Key: "StructurePacker",
+		PrefabName: "StructurePacker",
+		PrefabHash: 94539235,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/7/a/7abc08493750f958489d9ff8bcae1011.png",
+		mods: ["Auto", "Logic"],
+		connections: ["Chute Input", "Chute Input 2", "Chute Output", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Payload",
+				SlotType: "Payload",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Recipient",
+				SlotType: "Recipient",
+				SlotIndex: 1,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Export",
+				SlotType: "Export",
+				SlotIndex: 2,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Dispense",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"101488029": {
 		id: 101488029,
 		Title: "Umbilical Socket (Power)",
@@ -741,6 +1053,87 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"102601368": {
+		id: 102601368,
+		Title: "Landingpad Tank Connector (Liquid)",
+		Key: "Landingpad_LiquidTankConnectorPiece",
+		PrefabName: "Landingpad_LiquidTankConnectorPiece",
+		PrefabHash: 102601368,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/c/8/c8dfb0b478d5c9a98c7010b81b07fa70.png",
+		mods: ["Mode0", "Mode1"],
+		connections: ["Landing Pad Input", "Landing Pad Input", "Landing Pad Input", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Portable Slot",
+				SlotType: "Portable Slot",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+		],
+		logics: [
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"111280987": {
 		id: 111280987,
 		Title: "Terrain Manipulator",
@@ -749,7 +1142,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 111280987,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/5/9/5943057dd621204a835129117d25793e.png",
+		image: "/images/f/0/f002463578c05b36baa7d03d7fe049cb.png",
 		mods: ["Mode0", "Mode1"],
 		connections: [],
 		hasMemory: false,
@@ -769,6 +1162,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -777,7 +1171,7 @@ export const DEVICES: DevicesType = {
 				SlotName: "Dirt Canister",
 				SlotType: "Dirt Canister",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasMode", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -803,6 +1197,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -816,7 +1214,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 141535121,
 		hasChip: true,
 		deviceConnectCount: 0,
-		image: "/images/e/a/ea12bc830fa5e1769bb26c7875dc8831.png",
+		image: "/images/1/8/18cb4d1056d6235ae59a3dea0a143a2f.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -828,7 +1226,7 @@ export const DEVICES: DevicesType = {
 				SlotName: "Programmable Chip",
 				SlotType: "Programmable Chip",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Battery",
@@ -840,6 +1238,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 					"Charge",
@@ -850,7 +1249,7 @@ export const DEVICES: DevicesType = {
 				SlotName: "Motherboard",
 				SlotType: "Motherboard",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasChip", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -877,6 +1276,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -916,6 +1319,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"LineNumber",
 					"MaxQuantity",
 					"OccupantHash",
@@ -924,6 +1328,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -1011,6 +1416,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1018,6 +1424,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -1084,7 +1491,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 173023800,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/b/1/b13e73ae3ff2547b14af13be96ee4a99.png",
+		image: "/images/2/2/22e00e13db5d9961e2d9b3b8d350d0c6.png",
 		mods: ["Mode0", "Mode1"],
 		connections: [],
 		hasMemory: false,
@@ -1104,6 +1511,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -1125,6 +1533,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -1200,6 +1612,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -1212,11 +1696,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -1264,6 +1760,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1271,6 +1768,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1280,6 +1778,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1287,6 +1786,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1296,6 +1796,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1303,6 +1804,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1312,6 +1814,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1319,6 +1822,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1328,6 +1832,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1335,6 +1840,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1344,6 +1850,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1351,6 +1858,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1360,6 +1868,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1367,6 +1876,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1376,6 +1886,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1383,6 +1894,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1392,6 +1904,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1399,6 +1912,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1408,6 +1922,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1415,6 +1930,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1424,6 +1940,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1431,6 +1948,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1440,6 +1958,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1447,6 +1966,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1456,6 +1976,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1463,6 +1984,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1472,6 +1994,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1479,6 +2002,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -1488,6 +2012,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -1495,6 +2020,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -1574,7 +2100,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 201215010,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/c/b/cbcf918dabdff187220d9111a319e45e.png",
+		image: "/images/8/4/843d536b5dd2dd384385af7132097da1.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -1594,6 +2120,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -1610,6 +2137,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -1623,7 +2154,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 205916793,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/b/7/b772959833ef81747675f288fe17f19f.png",
+		image: "/images/1/9/194bfc8893086bbf884ac9247134c7c2.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -1662,6 +2193,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -1670,7 +2205,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -1678,7 +2229,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -1694,11 +2257,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -1714,6 +2289,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -1722,11 +2301,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -1815,6 +2394,50 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"223034547": {
+		id: 223034547,
+		Title: "Super-Large Direct Heat Exchanger (Liquids)",
+		Key: "StructureSuperLargeDirectHeatExchangeLiquidToLiquid",
+		PrefabName: "StructureSuperLargeDirectHeatExchangeLiquidToLiquid",
+		PrefabHash: 223034547,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/4/d/4d319a998ee2a0f4b67bb8713c565bb1.png",
+		mods: [],
+		connections: ["Pipe Liquid Input", "Pipe Liquid Input"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"235638270": {
 		id: 235638270,
 		Title: "Console",
@@ -1838,6 +2461,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"Mode",
 					"OccupantHash",
@@ -1846,23 +2470,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Data Disk",
-				SlotType: "Data Disk",
-				SlotIndex: 1,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"Mode",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -1878,6 +2486,10 @@ export const DEVICES: DevicesType = {
 			"Structure",
 		],
 		logics: [
+			{
+				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
@@ -1924,7 +2536,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 240174650,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/d/dd5610040c37fc61545c27d9419831a0.png",
+		image: "/images/d/1/d1135864872b305037787ca23c15a2b0.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -1944,6 +2556,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -1957,6 +2570,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -2016,10 +2633,56 @@ export const DEVICES: DevicesType = {
 		image: "/images/0/0/00d97d0b262ed1b2a58d2506df49116a.png",
 		mods: [],
 		connections: ["Connection", "Connection", "Pipe Input", "Pipe Input 2", "Pipe Output"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
+		hasMemory: true,
+		memoryAccess: "Read",
+		memorySize: 192,
+		logicInstructions: [
+			{
+				Index: 1,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotHelmet OP_CODE: 1",
+			},
+			{
+				Index: 2,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotSuit OP_CODE: 2",
+			},
+			{
+				Index: 3,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBackpack OP_CODE: 3",
+			},
+			{
+				Index: 4,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotAirTank OP_CODE: 4",
+			},
+			{
+				Index: 5,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotWasteTank OP_CODE: 5",
+			},
+			{
+				Index: 6,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBatteryCell OP_CODE: 6",
+			},
+			{
+				Index: 7,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotPropellentTank OP_CODE: 7",
+			},
+			{
+				Index: 8,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotFilter OP_CODE: 8",
+			},
+			{
+				Index: 9,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotCoolantTank OP_CODE: 9",
+			},
+		],
 		slots: [
 			{
 				SlotName: "Helmet",
@@ -2033,6 +2696,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2041,6 +2705,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -2052,6 +2717,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2060,6 +2726,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 					"PressureAir",
 					"PressureWaste",
 				],
@@ -2073,6 +2740,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2081,6 +2749,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -2090,6 +2759,8 @@ export const DEVICES: DevicesType = {
 			"Electric",
 			"HasImage",
 			"HasLogic",
+			"HasLogicInstructions",
+			"HasMemory",
 			"HasPrefab",
 			"HasSlot",
 			"Paintable",
@@ -2103,6 +2774,18 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Setting",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
 			},
 			{
 				name: "Error",
@@ -2125,7 +2808,355 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -2134,6 +3165,110 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StackSize",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"259902657": {
+		id: 259902657,
+		Title: "Ore Detector",
+		Key: "ItemOreDetector",
+		PrefabName: "ItemOreDetector",
+		PrefabHash: 259902657,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/6/7/67843524d6ad0120aea96a7b25e2b968.png",
+		mods: [
+			"Iron",
+			"Coal",
+			"Volatiles",
+			"Cobalt",
+			"Nitrice",
+			"Copper",
+			"Gold",
+			"Ice",
+			"Nickel",
+			"Lead",
+			"Silver",
+			"Silicon",
+			"Oxite",
+		],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Battery",
+				SlotType: "Battery",
+				SlotIndex: 0,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
+			},
+		],
+		tags: ["HasImage", "HasLogic", "HasMode", "HasPrefab", "HasSlot", "Item", "Paintable"],
+		logics: [
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
 				permissions: ["Read"],
 			},
 		],
@@ -2213,6 +3348,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2220,6 +3356,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -2289,196 +3426,58 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"272136332": {
-		id: 272136332,
-		Title: "Tank Small (Insulated)",
-		Key: "StructureTankSmallInsulated",
-		PrefabName: "StructureTankSmallInsulated",
-		PrefabHash: 272136332,
+	"272902242": {
+		id: 272902242,
+		Title: "Cable Gun",
+		Key: "ItemCableGun",
+		PrefabName: "ItemCableGun",
+		PrefabHash: 272902242,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/7/a/7a4692a6462794f8d20c1218061fcedd.png",
+		image: "/images/d/e/de1b3394a2e8cf1c5ca4a4e5dd264316.png",
 		mods: [],
-		connections: ["Connection", "Pipe Input"],
+		connections: [],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
 		logicInstructions: [],
-		slots: [],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasImage",
-			"HasLogic",
-			"HasPrefab",
-			"HasVolume",
-			"Paintable",
-			"Structure",
+		slots: [
+			{
+				SlotName: "Battery",
+				SlotType: "Battery",
+				SlotIndex: 0,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
+			},
+			{
+				SlotName: "Cable Ammo",
+				SlotType: "Cable Ammo",
+				SlotIndex: 1,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
 		],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
 		logics: [
 			{
-				name: "Open",
+				name: "On",
 				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
 			},
 			{
 				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
 				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -2570,12 +3569,33 @@ export const DEVICES: DevicesType = {
 		image: "/images/b/4/b41e21faf01f8a3a6aaf657e5816aa76.png",
 		mods: [],
 		connections: ["Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
+		hasMemory: true,
+		memoryAccess: "Read",
+		memorySize: 144,
+		logicInstructions: [
+			{
+				Index: 1,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-39     | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 40-63    | UNUSED                       | 24         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "OccupancyInstruction.Entity OP_CODE: 1",
+			},
+			{
+				Index: 2,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "OccupancyInstruction.Inventory OP_CODE: 2",
+			},
+		],
 		slots: [],
-		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"HasImage",
+			"HasLogic",
+			"HasLogicInstructions",
+			"HasMemory",
+			"HasPrefab",
+			"Paintable",
+			"Structure",
+		],
 		logics: [
 			{
 				name: "Activate",
@@ -2597,6 +3617,10 @@ export const DEVICES: DevicesType = {
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
+			{
+				name: "StackSize",
+				permissions: ["Read"],
+			},
 		],
 	},
 	"324791548": {
@@ -2607,7 +3631,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 324791548,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/5/e/5ea2c5c02ce2c5f511e348c5901ed36e.png",
+		image: "/images/1/0/10f5f71fe864916d308c7ee7648c84c4.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -2627,6 +3651,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -2640,6 +3665,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -2705,7 +3734,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -2717,6 +3746,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2724,6 +3754,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -2733,6 +3764,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -2740,6 +3772,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -2903,6 +3936,94 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"338182791": {
+		id: 338182791,
+		Title: "LED Display (Medium Back)",
+		Key: "StructureConsoleLED1x2Back",
+		PrefabName: "StructureConsoleLED1x2Back",
+		PrefabHash: 338182791,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/7/a/7a4f70277f4cf02647c2f6c817cef759.png",
+		mods: [
+			"Default",
+			"Percent",
+			"String",
+			"Fahrenheit",
+			"Litres",
+			"Mol",
+			"Pa",
+			"Newtons",
+			"Degrees",
+			"Power",
+			"Kelvin",
+			"Celsius",
+			"Meters",
+			"Credits",
+			"Seconds",
+			"Minutes",
+			"Days",
+		],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Color",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"374891127": {
 		id: 374891127,
 		Title: "Hardsuit Backpack",
@@ -2911,7 +4032,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 374891127,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/7/f/7fcc00a30e39cf2f1e139cedb2f4926d.png",
+		image: "/images/d/e/de157fcc62f653a45d8d91f25b3a28bc.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -2923,77 +4044,129 @@ export const DEVICES: DevicesType = {
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 10,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 11,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 12,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 13,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 14,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 15,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 16,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 17,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 18,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 19,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["Backpack", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
 		logics: [
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
 			{
 				name: "ReferenceId",
 				permissions: ["Read"],
@@ -3071,7 +4244,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -3079,7 +4268,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -3095,11 +4296,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -3115,6 +4328,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -3123,11 +4340,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -3175,6 +4392,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -3183,6 +4401,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -3192,6 +4411,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -3200,6 +4420,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -3305,6 +4526,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -3313,55 +4535,55 @@ export const DEVICES: DevicesType = {
 				SlotName: "Programmable Chip",
 				SlotType: "Programmable Chip",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasChip", "HasImage", "HasLogic", "HasMode", "HasPrefab", "HasSlot", "Paintable"],
@@ -3416,6 +4638,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -3531,7 +4757,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -3539,7 +4781,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -3555,11 +4809,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -3575,6 +4841,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -3583,11 +4853,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -3689,7 +4959,7 @@ export const DEVICES: DevicesType = {
 		logicInstructions: [
 			{
 				Index: "A",
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "TraderInstruction.TraderSellThingData OP_CODE: 10",
 			},
 			{
@@ -3699,7 +4969,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: "C",
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "TraderInstruction.TraderSellThingChildData OP_CODE: 12",
 			},
 			{
@@ -3739,12 +5009,12 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 2,
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-39     | TRADER\\_ID\\_HASH               | INT\\_32     |\r\n| 40-63    | UNUSED                       | 24         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-39     | TRADER\\_ID\\_HASH               | UINT\\_32    |\r\n| 40-63    | UNUSED                       | 24         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "TraderInstruction.StrongestContactIdHash OP_CODE: 2",
 			},
 			{
 				Index: 3,
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SHUTTLE\\_TYPE                 | BYTE\\_8     |\r\n| 16-23    | CONTACT\\_TIER                 | BYTE\\_8     |\r\n| 24-31    | CONTACTED                    | BOOL\\_8     |\r\n| 32-63    | UNUSED                       | 32         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SHUTTLE\\_TYPE                 | BYTE\\_8     |\r\n| 16-23    | CONTACT\\_SLOT\\_INDEX           | BYTE\\_8     |\r\n| 24-31    | CONTACTED                    | BYTE\\_8     |\r\n| 32-63    | UNUSED                       | 32         |",
 				Text: "TraderInstruction.StrongestContactMetaData OP_CODE: 3",
 			},
 			{
@@ -3764,12 +5034,12 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 7,
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "TraderInstruction.TraderBuyThingData OP_CODE: 7",
 			},
 			{
 				Index: 8,
-				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY                     | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "TraderInstruction.TraderBuyThingChildData OP_CODE: 8",
 			},
 			{
@@ -3819,6 +5089,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Vertical",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "ContactSlotIndex",
+				permissions: ["Read"],
 			},
 			{
 				name: "ContactTypeId",
@@ -3909,6 +5183,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -3916,6 +5191,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -3948,6 +5224,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "Error",
 				permissions: ["Read"],
 			},
@@ -3972,7 +5256,243 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -3981,6 +5501,34 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "Volume",
+				permissions: ["Read"],
+			},
+			{
+				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 			{
@@ -4012,6 +5560,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -4019,6 +5568,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -4028,6 +5578,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -4035,6 +5586,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -4148,6 +5700,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -4155,6 +5708,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -4395,6 +5949,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -4431,6 +5989,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -4438,6 +5997,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -4447,6 +6007,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -4454,6 +6015,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -4549,7 +6111,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -4557,7 +6135,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -4573,11 +6163,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -4593,6 +6195,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -4601,11 +6207,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -4878,196 +6484,6 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"608607718": {
-		id: 608607718,
-		Title: "Liquid Tank Small (Insulated)",
-		Key: "StructureLiquidTankSmallInsulated",
-		PrefabName: "StructureLiquidTankSmallInsulated",
-		PrefabHash: 608607718,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/c/5/c5373d2d16d566c550fa33194435a552.png",
-		mods: [],
-		connections: ["Connection", "Pipe Liquid Input"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasImage",
-			"HasLogic",
-			"HasPrefab",
-			"HasVolume",
-			"Paintable",
-			"Structure",
-		],
-		logics: [
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
-				permissions: ["Read"],
-			},
-		],
-	},
 	"648608238": {
 		id: 648608238,
 		Title: "Chute Digital Valve Left",
@@ -5091,6 +6507,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5098,6 +6515,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -5163,7 +6581,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 678483886,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/7/4/740a9b4d848c8e1453f91a1c6176e423.png",
+		image: "/images/1/a/1a2870346e031ec2641191ad0480e01b.png",
 		mods: ["Mode0", "Mode1"],
 		connections: [],
 		hasMemory: false,
@@ -5183,6 +6601,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -5215,6 +6634,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -5243,6 +6666,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5250,6 +6674,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -5259,6 +6684,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5266,6 +6692,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -5355,6 +6782,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5362,6 +6790,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -5434,6 +6863,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -5447,7 +6880,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 714830451,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/1/2/12dfb4787e31fdbf5c19f21502d9ba26.png",
+		image: "/images/c/0/c0d1492639095f950b0c283939330f98.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -5486,6 +6919,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -5494,7 +6931,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -5502,7 +6955,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -5518,11 +6983,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -5538,6 +7015,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -5546,11 +7027,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -5598,6 +7079,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5605,6 +7087,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -5614,6 +7097,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5621,6 +7105,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -5714,6 +7199,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5721,6 +7207,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -5730,6 +7217,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -5737,6 +7225,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -5802,7 +7291,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -5810,7 +7335,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -5818,7 +7375,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -5826,11 +7391,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -5858,6 +7459,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -5870,15 +7479,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -6026,6 +7643,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"Mode",
 					"OccupantHash",
@@ -6034,23 +7652,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Data Disk",
-				SlotType: "Data Disk",
-				SlotIndex: 1,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"Mode",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -6066,6 +7668,10 @@ export const DEVICES: DevicesType = {
 			"Structure",
 		],
 		logics: [
+			{
+				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
@@ -6113,7 +7719,7 @@ export const DEVICES: DevicesType = {
 		hasChip: false,
 		deviceConnectCount: 0,
 		image: "/images/6/6/66ef29c76cb67fee5f17db67c09ec37a.png",
-		mods: ["Invalid", "None", "Mine", "Survey", "Discover", "Chart", "Deploy"],
+		mods: ["Invalid", "None", "Mine", "Survey", "Discover", "Chart", "Deploy", "Surface Scan", "Transfer"],
 		connections: ["Connection"],
 		hasMemory: true,
 		memoryAccess: "Read Write",
@@ -6127,15 +7733,25 @@ export const DEVICES: DevicesType = {
 			{
 				Index: 2,
 				Info: "| VALID ONLY AT ADDRESSES 0 TO 53                      | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-23     | STACK\\_ADDRESS                | USHORT\\_16  |\r\n| 24-63    | UNUSED                       | 40         |",
-				Text: "RocketAvionicsInstruction.JumpToAddress OP_CODE: 4",
+				Text: "RocketAvionicsInstruction.JumpToAddress OP_CODE: 2",
 			},
 			{
 				Index: 3,
 				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | RESOURCE\\_TYPE                | BYTE\\_8     |\r\n| 16-23    | DENSITY\\_RATIO\\_10             | BYTE\\_8     |\r\n| 24-31    | RICHNESS\\_RATIO\\_10            | BYTE\\_8     |\r\n| 32-39    | SIZE\\_RATIO\\_10                | BYTE\\_8     |\r\n| 40-63    | UNUSED                       | 24         |",
-				Text: "RocketAvionicsInstruction.ChildResourceSite OP_CODE: 5",
+				Text: "RocketAvionicsInstruction.ResourceSite OP_CODE: 3",
 			},
 			{
 				Index: 4,
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | RESOURCE\\_TYPE                | BYTE\\_8     |\r\n| 16-31    | SURVEY\\_PROGRESS              | USHORT\\_16  |\r\n| 32-63    | UNUSED                       | 32         |",
+				Text: "RocketAvionicsInstruction.SurveySite OP_CODE: 4",
+			},
+			{
+				Index: 5,
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | RESOURCE\\_TYPE                | BYTE\\_8     |\r\n| 16-23    | DENSITY\\_RATIO\\_10             | BYTE\\_8     |\r\n| 24-31    | RICHNESS\\_RATIO\\_10            | BYTE\\_8     |\r\n| 32-39    | SIZE\\_RATIO\\_10                | BYTE\\_8     |\r\n| 40-63    | UNUSED                       | 24         |",
+				Text: "RocketAvionicsInstruction.ChildResourceSite OP_CODE: 5",
+			},
+			{
+				Index: 6,
 				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | RESOURCE\\_TYPE                | BYTE\\_8     |\r\n| 16-31    | SURVEY\\_PROGRESS              | USHORT\\_16  |\r\n| 32-63    | UNUSED                       | 32         |",
 				Text: "RocketAvionicsInstruction.ChildSurveySite OP_CODE: 6",
 			},
@@ -6172,6 +7788,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
 				name: "Acceleration",
 				permissions: ["Read"],
 			},
@@ -6200,6 +7820,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "CurrentNodeType",
+				permissions: ["Read"],
+			},
+			{
 				name: "Density",
 				permissions: ["Read"],
 			},
@@ -6217,6 +7841,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "FlightControlRule",
+				permissions: ["Read"],
+			},
+			{
+				name: "Gravity",
 				permissions: ["Read"],
 			},
 			{
@@ -6256,7 +7884,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -6264,7 +7908,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -6280,11 +7936,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -6300,6 +7968,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -6308,11 +7980,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -6353,6 +8025,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Survey",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetNodeType",
 				permissions: ["Read"],
 			},
 			{
@@ -6416,6 +8092,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -6423,6 +8100,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -6536,7 +8214,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -6544,7 +8238,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -6560,11 +8266,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -6580,6 +8298,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -6588,11 +8310,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -6692,6 +8414,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -6699,6 +8422,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -6790,7 +8514,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 873418029,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/9/399a34efa5f99ead3ec8d1caab03cb26.png",
+		image: "/images/d/8/d83adc93b278b09dd7eb8684090f2e9b.png",
 		mods: ["All", "Any", "None"],
 		connections: ["Chute Output 2", "Chute Input", "Chute Output", "Connection"],
 		hasMemory: true,
@@ -6836,6 +8560,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -6843,6 +8568,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -6852,6 +8578,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -6859,6 +8586,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -6868,6 +8596,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -6875,22 +8604,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Data Disk",
-				SlotType: "Data Disk",
-				SlotIndex: 3,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -7058,6 +8772,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7065,6 +8780,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -7346,6 +9062,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -7358,11 +9146,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -7387,15 +9187,15 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"955744474": {
-		id: 955744474,
-		Title: "Small Tank (Air)",
-		Key: "StructureTankSmallAir",
-		PrefabName: "StructureTankSmallAir",
-		PrefabHash: 955744474,
+	"939649277": {
+		id: 939649277,
+		Title: "Solar Panel (Dual 1x5)",
+		Key: "StructureSolarPanel1x5",
+		PrefabName: "StructureSolarPanel1x5",
+		PrefabHash: 939649277,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/8/c/8cb1ef03504656329d36225865fac38b.png",
+		image: "/images/8/8/88da41abb98b3f2faf5a554f80e5d5e0.png",
 		mods: [],
 		connections: ["Connection", "Connection"],
 		hasMemory: false,
@@ -7403,22 +9203,18 @@ export const DEVICES: DevicesType = {
 		memorySize: null,
 		logicInstructions: [],
 		slots: [],
-		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "HasVolume", "Structure"],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
 		logics: [
 			{
-				name: "Open",
+				name: "Horizontal",
 				permissions: ["Read", "Write"],
 			},
 			{
-				name: "Setting",
+				name: "Vertical",
 				permissions: ["Read", "Write"],
 			},
 			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
+				name: "Charge",
 				permissions: ["Read"],
 			},
 			{
@@ -7434,111 +9230,51 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioCarbonDioxide",
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"950595166": {
+		id: 950595166,
+		Title: "Crew Light",
+		Key: "StructureCrewModuleLight",
+		PrefabName: "StructureCrewModuleLight",
+		PrefabHash: 950595166,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/d/e/dea7adcc396db66827706681159066b8.png",
+		mods: [],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "NameHash",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioCarbonDioxideOutput",
+				name: "Power",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -7546,27 +9282,7 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
+				name: "RequiredPower",
 				permissions: ["Read"],
 			},
 		],
@@ -7594,6 +9310,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7601,6 +9318,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7610,6 +9328,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7617,6 +9336,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7626,6 +9346,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7633,6 +9354,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -7734,6 +9456,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7741,6 +9464,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7750,6 +9474,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7757,6 +9482,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7766,6 +9492,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7773,6 +9500,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7782,6 +9510,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7789,6 +9518,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7798,6 +9528,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7805,6 +9536,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7814,6 +9546,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7821,6 +9554,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7830,6 +9564,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7837,6 +9572,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7846,6 +9582,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7853,6 +9590,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7862,6 +9600,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7869,6 +9608,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7878,6 +9618,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7885,6 +9626,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7894,6 +9636,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7901,6 +9644,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7910,6 +9654,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7917,6 +9662,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7926,6 +9672,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7933,6 +9680,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7942,6 +9690,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7949,6 +9698,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -7958,6 +9708,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -7965,6 +9716,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -8042,7 +9794,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -8050,7 +9838,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -8058,7 +9878,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -8066,11 +9894,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -8098,6 +9962,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -8110,15 +9982,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -8163,7 +10043,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 982514123,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/6/8/689233329c47967cbe211bfdca92231e.png",
+		image: "/images/0/a/0ad137bca7b6755f406bfab070055a8d.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -8183,6 +10063,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -8200,6 +10081,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -8377,190 +10262,6 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1013514688": {
-		id: 1013514688,
-		Title: "Small Tank",
-		Key: "StructureTankSmall",
-		PrefabName: "StructureTankSmall",
-		PrefabHash: 1013514688,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/6/8/68528ab261bdd3239964961d55d9c1c5.png",
-		mods: [],
-		connections: ["Connection", "Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "HasVolume", "Paintable", "Structure"],
-		logics: [
-			{
-				name: "Open",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
-				permissions: ["Read"],
-			},
-		],
-	},
 	"1036015121": {
 		id: 1036015121,
 		Title: "Cable Analyzer",
@@ -8677,7 +10378,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1055173191,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/e/3/e3c319d3c467852e4739d3ddfd5364e5.png",
+		image: "/images/9/f/9f03094de4451289bbee50800292c9c4.png",
 		mods: ["Default", "Flatten"],
 		connections: [],
 		hasMemory: false,
@@ -8697,6 +10398,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -8722,6 +10424,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -8753,6 +10459,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -8760,6 +10467,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -8769,6 +10477,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -8776,6 +10485,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -8916,22 +10626,41 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1098900430": {
-		id: 1098900430,
-		Title: "Liquid Tank Big",
-		Key: "StructureLiquidTankBig",
-		PrefabName: "StructureLiquidTankBig",
-		PrefabHash: 1098900430,
+	"1081471167": {
+		id: 1081471167,
+		Title: "Payload Bay Large",
+		Key: "StructureRocketLargePayloadBay",
+		PrefabName: "StructureRocketLargePayloadBay",
+		PrefabHash: 1081471167,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/3/33d78ebc96c0e01d5c68c15ddbe5cf0c.png",
+		image: "/images/6/5/655002227a3e1b3a4a195c04311d7732.png",
 		mods: [],
-		connections: ["Connection", "Pipe Liquid Input"],
+		connections: ["Connection", "Pipe Input", "Pipe Liquid Input"],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
 		logicInstructions: [],
-		slots: [],
+		slots: [
+			{
+				SlotName: "Payload",
+				SlotType: "Payload",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
 		tags: [
 			"Buildable",
 			"Connectable",
@@ -8939,21 +10668,167 @@ export const DEVICES: DevicesType = {
 			"HasImage",
 			"HasLogic",
 			"HasPrefab",
-			"HasVolume",
+			"HasSlot",
 			"Paintable",
 			"Structure",
 		],
 		logics: [
 			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PositionX",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PositionZ",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"1103525139": {
+		id: 1103525139,
+		Title: "Fermenter",
+		Key: "StructureFermenter",
+		PrefabName: "StructureFermenter",
+		PrefabHash: 1103525139,
+		hasChip: true,
+		deviceConnectCount: 0,
+		image: "/images/1/a/1a6cf1d46b5891b9c3f7c352d509c68f.png",
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
+		connections: ["Data Input", "Pipe Liquid Output", "Power Input", "Chute Input"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Import",
+				SlotType: "Import",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Programmable Chip",
+				SlotType: "Programmable Chip",
+				SlotIndex: 1,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasChip",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasReagent",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
 				name: "Setting",
 				permissions: ["Read", "Write"],
 			},
 			{
-				name: "Combustion",
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput2",
 				permissions: ["Read"],
 			},
 			{
 				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CompletionRatio",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "ImportCount",
 				permissions: ["Read"],
 			},
 			{
@@ -8965,11 +10840,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
 				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
-				name: "Pressure",
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -8981,7 +10864,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioCarbonDioxide",
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -8989,39 +10876,227 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioHydrogen",
+				name: "RatioHeliumInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidCarbonDioxide",
+				name: "RatioHeliumInput2",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidHydrogen",
+				name: "RatioHeliumOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidNitrogen",
+				name: "RatioHydrazineInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidNitrousOxide",
+				name: "RatioHydrazineInput2",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidOxygen",
+				name: "RatioHydrazineOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidPollutant",
+				name: "RatioHydrochloricAcidInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioHydrochloricAcidInput2",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioNitrogen",
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9029,7 +11104,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioNitrousOxide",
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9037,7 +11116,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioOxygen",
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9045,7 +11128,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioPollutant",
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9053,23 +11152,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioPollutedWater",
+				name: "RatioPollutedWaterInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioPollutedWaterInput2",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioPollutedWaterOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioWater",
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9081,7 +11204,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Temperature",
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9089,7 +11220,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "TotalMoles",
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput2",
 				permissions: ["Read"],
 			},
 			{
@@ -9097,12 +11232,8 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
-				permissions: ["Read"],
+				name: "ClearMemory",
+				permissions: ["Write"],
 			},
 		],
 	},
@@ -9169,7 +11300,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -9177,7 +11344,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -9185,7 +11384,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -9193,11 +11400,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -9225,6 +11468,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -9237,15 +11488,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -9309,6 +11568,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9316,6 +11576,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9325,6 +11586,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9332,6 +11594,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9341,6 +11604,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9348,6 +11612,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9357,6 +11622,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9364,6 +11630,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9373,6 +11640,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9380,6 +11648,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9389,6 +11658,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9396,6 +11666,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9405,6 +11676,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9412,6 +11684,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9421,6 +11694,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9428,6 +11702,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9437,6 +11712,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9444,6 +11720,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9453,6 +11730,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9460,6 +11738,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9469,6 +11748,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9476,6 +11756,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9485,6 +11766,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9492,6 +11774,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9501,6 +11784,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9508,6 +11792,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9517,6 +11802,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9524,6 +11810,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9533,6 +11820,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9540,6 +11828,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9549,6 +11838,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9556,6 +11846,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9565,6 +11856,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9572,6 +11864,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9581,6 +11874,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9588,6 +11882,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9597,6 +11892,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9604,6 +11900,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9613,6 +11910,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9620,6 +11918,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9629,6 +11928,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9636,6 +11936,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9645,6 +11946,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9652,6 +11954,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9661,6 +11964,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9668,6 +11972,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9677,6 +11982,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9684,6 +11990,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9693,6 +12000,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9700,6 +12008,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9709,6 +12018,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9716,6 +12026,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9725,6 +12036,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9732,6 +12044,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9741,6 +12054,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9748,6 +12062,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9757,6 +12072,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9764,6 +12080,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9773,6 +12090,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9780,6 +12098,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9789,6 +12108,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9796,6 +12116,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9805,6 +12126,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9812,6 +12134,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9821,6 +12144,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9828,6 +12152,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9837,6 +12162,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9844,6 +12170,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9853,6 +12180,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9860,6 +12188,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9869,6 +12198,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9876,6 +12206,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9885,6 +12216,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9892,6 +12224,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9901,6 +12234,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9908,6 +12242,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9917,6 +12252,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9924,6 +12260,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9933,6 +12270,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9940,6 +12278,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9949,6 +12288,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9956,6 +12296,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9965,6 +12306,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9972,6 +12314,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9981,6 +12324,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -9988,6 +12332,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -9997,6 +12342,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10004,6 +12350,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10013,6 +12360,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10020,6 +12368,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10029,6 +12378,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10036,6 +12386,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10045,6 +12396,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10052,6 +12404,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10061,6 +12414,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10068,6 +12422,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10077,6 +12432,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10084,6 +12440,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10093,6 +12450,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10100,6 +12458,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10109,6 +12468,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10116,6 +12476,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10125,6 +12486,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10132,6 +12494,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10141,6 +12504,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10148,6 +12512,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10157,6 +12522,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10164,6 +12530,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10173,6 +12540,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10180,6 +12548,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10189,6 +12558,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10196,6 +12566,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10205,6 +12576,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10212,6 +12584,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10221,6 +12594,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10228,6 +12602,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10237,6 +12612,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10244,6 +12620,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10253,6 +12630,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10260,6 +12638,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10269,6 +12648,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10276,6 +12656,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10285,6 +12666,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10292,6 +12674,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10301,6 +12684,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10308,6 +12692,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10317,6 +12702,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10324,6 +12710,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10333,6 +12720,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10340,6 +12728,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10349,6 +12738,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10356,6 +12746,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10365,6 +12756,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10372,6 +12764,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10381,6 +12774,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10388,6 +12782,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10397,6 +12792,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10404,6 +12800,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10413,6 +12810,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10420,6 +12818,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10429,6 +12828,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10436,6 +12836,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10445,6 +12846,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10452,6 +12854,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10461,6 +12864,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10468,6 +12872,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10477,6 +12882,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10484,6 +12890,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10493,6 +12900,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10500,6 +12908,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10509,6 +12918,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10516,6 +12926,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10525,6 +12936,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10532,6 +12944,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10541,6 +12954,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10548,6 +12962,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10557,6 +12972,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10564,6 +12980,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10573,6 +12990,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10580,6 +12998,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10589,6 +13008,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10596,6 +13016,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10605,6 +13026,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10612,6 +13034,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10621,6 +13044,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10628,6 +13052,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10637,6 +13062,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10644,6 +13070,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10653,6 +13080,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10660,6 +13088,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10669,6 +13098,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10676,6 +13106,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10685,6 +13116,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10692,6 +13124,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10701,6 +13134,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10708,6 +13142,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10717,6 +13152,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10724,6 +13160,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10733,6 +13170,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10740,6 +13178,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10749,6 +13188,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10756,6 +13196,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10765,6 +13206,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10772,6 +13214,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10781,6 +13224,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10788,6 +13232,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10797,6 +13242,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10804,6 +13250,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10813,6 +13260,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10820,6 +13268,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10829,6 +13278,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10836,6 +13286,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10845,6 +13296,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10852,6 +13304,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10861,6 +13314,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10868,6 +13322,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10877,6 +13332,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10884,6 +13340,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10893,6 +13350,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10900,6 +13358,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10909,6 +13368,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10916,6 +13376,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -10925,6 +13386,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -10932,6 +13394,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -11016,10 +13479,16 @@ export const DEVICES: DevicesType = {
 		image: "/images/e/f/ef7c81d45a20a0d060d482349872591b.png",
 		mods: ["Mode0", "Mode1"],
 		connections: ["Chute Input", "Chute Output", "Connection", "Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
+		hasMemory: true,
+		memoryAccess: "Read",
+		memorySize: 4800,
+		logicInstructions: [
+			{
+				Index: 1,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-20     | QUANTITY                     | UINT13\\_13  |\r\n| 21-52    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 53-63    | UNUSED                       | 11         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SiloInstruction.SlotContents OP_CODE: 1",
+			},
+		],
 		slots: [
 			{
 				SlotName: "Import",
@@ -11028,6 +13497,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11035,6 +13505,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -11044,6 +13515,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11051,6 +13523,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -11060,6 +13533,8 @@ export const DEVICES: DevicesType = {
 			"Electric",
 			"HasImage",
 			"HasLogic",
+			"HasLogicInstructions",
+			"HasMemory",
 			"HasMode",
 			"HasPrefab",
 			"HasSlot",
@@ -11069,6 +13544,14 @@ export const DEVICES: DevicesType = {
 		logics: [
 			{
 				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Dispense",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "DispenseSlot",
 				permissions: ["Read", "Write"],
 			},
 			{
@@ -11121,6 +13604,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StackSize",
 				permissions: ["Read"],
 			},
 			{
@@ -11196,7 +13683,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -11204,7 +13707,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -11220,11 +13735,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -11240,6 +13767,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -11248,11 +13779,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -11300,6 +13831,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11307,6 +13839,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -11443,6 +13976,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11450,6 +13984,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -11499,6 +14034,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -11524,6 +14063,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 		],
@@ -11672,29 +14215,30 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1238905683": {
-		id: 1238905683,
-		Title: "Combustion Centrifuge",
-		Key: "StructureCombustionCentrifuge",
-		PrefabName: "StructureCombustionCentrifuge",
-		PrefabHash: 1238905683,
+	"1234476501": {
+		id: 1234476501,
+		Title: "Combustion Deep Miner",
+		Key: "StructureCombustionDeepMiner",
+		PrefabName: "StructureCombustionDeepMiner",
+		PrefabHash: 1234476501,
 		hasChip: true,
 		deviceConnectCount: 0,
-		image: "/images/a/9/a9d51cc390e85c40a14eb24a3269b39a.png",
+		image: "/images/2/d/2dedb790071eb57a7cc9038fe576d1ff.png",
 		mods: [],
-		connections: ["Chute Input", "Chute Output", "Connection", "Connection", "Pipe Input", "Pipe Output"],
+		connections: ["Chute Output", "Connection", "Connection", "Pipe Input", "Pipe Output"],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
 		logicInstructions: [],
 		slots: [
 			{
-				SlotName: "Import",
-				SlotType: "Import",
+				SlotName: "Export",
+				SlotType: "Export",
 				SlotIndex: 0,
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11702,31 +14246,17 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Export",
-				SlotType: "Export",
-				SlotIndex: 1,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
 				SlotName: "Programmable Chip",
 				SlotType: "Programmable Chip",
-				SlotIndex: 2,
+				SlotIndex: 1,
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -11734,6 +14264,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -11831,7 +14362,63 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -11847,7 +14434,51 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -11887,6 +14518,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
@@ -11899,15 +14542,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -11947,6 +14614,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -11963,6 +14642,26 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
@@ -11975,15 +14674,537 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioWater",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesInput",
+				name: "RatioWaterInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "Rpm",
+				permissions: ["Read"],
+			},
+			{
+				name: "Stress",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ClearMemory",
+				permissions: ["Write"],
+			},
+		],
+	},
+	"1238905683": {
+		id: 1238905683,
+		Title: "Combustion Centrifuge",
+		Key: "StructureCombustionCentrifuge",
+		PrefabName: "StructureCombustionCentrifuge",
+		PrefabHash: 1238905683,
+		hasChip: true,
+		deviceConnectCount: 0,
+		image: "/images/a/9/a9d51cc390e85c40a14eb24a3269b39a.png",
+		mods: [],
+		connections: ["Chute Input", "Chute Output", "Connection", "Connection", "Pipe Input", "Pipe Output"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Import",
+				SlotType: "Import",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Export",
+				SlotType: "Export",
+				SlotIndex: 1,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Programmable Chip",
+				SlotType: "Programmable Chip",
+				SlotIndex: 2,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasChip",
+			"HasImage",
+			"HasLogic",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "CombustionLimiter",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Throttle",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "ExportCount",
+				permissions: ["Read"],
+			},
+			{
+				name: "ImportCount",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -12080,200 +15301,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Setting",
-				permissions: ["Read"],
-			},
-		],
-	},
-	"1280378227": {
-		id: 1280378227,
-		Title: "Tank Big (Insulated)",
-		Key: "StructureTankBigInsulated",
-		PrefabName: "StructureTankBigInsulated",
-		PrefabHash: 1280378227,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/8/7/87058b3087e2a1e9b9ce3328639cc302.png",
-		mods: [],
-		connections: ["Connection", "Pipe Input"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasImage",
-			"HasLogic",
-			"HasPrefab",
-			"HasVolume",
-			"Paintable",
-			"Structure",
-		],
-		logics: [
-			{
-				name: "Open",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -12487,7 +15514,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -12499,6 +15526,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -12506,6 +15534,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -12515,6 +15544,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -12522,6 +15552,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -12756,6 +15787,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -12763,6 +15795,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -12772,6 +15805,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -12779,6 +15813,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -12829,6 +15864,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -12836,6 +15872,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -12901,7 +15938,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1385062886,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/1/6/16af0d5def2c0af727be0cfbe8370eb2.png",
+		image: "/images/8/0/80bfaab3bfccad90b780b848d8531bef.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -12921,6 +15958,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -12934,6 +15972,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -13049,7 +16091,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13057,7 +16135,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13065,7 +16175,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13073,11 +16191,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13105,6 +16259,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -13117,15 +16279,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13289,7 +16459,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -13297,7 +16483,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -13313,11 +16511,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -13333,6 +16543,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -13341,11 +16555,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -13490,6 +16704,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13503,6 +16718,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13513,6 +16729,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13526,6 +16743,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13536,6 +16754,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13549,6 +16768,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13559,6 +16779,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13572,6 +16793,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13582,6 +16804,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13595,6 +16818,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13605,6 +16829,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13618,6 +16843,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13628,6 +16854,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13641,6 +16868,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -13651,6 +16879,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"Efficiency",
+					"FreeSlots",
 					"Growth",
 					"Health",
 					"Mature",
@@ -13664,6 +16893,7 @@ export const DEVICES: DevicesType = {
 					"Seeding",
 					"SeedingRatio",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -13737,7 +16967,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13745,7 +17011,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13753,7 +17051,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13761,11 +17067,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13793,6 +17135,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -13805,15 +17155,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -13873,6 +17231,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -13880,15 +17239,17 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
-				SlotName: "",
-				SlotType: "",
+				SlotName: "Mask",
+				SlotType: "Mask",
 				SlotIndex: 1,
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -13896,6 +17257,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 					"Lock",
 					"On",
 					"Open",
@@ -13948,6 +17310,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -13980,6 +17346,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "StunDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Temperature",
 				permissions: ["Read"],
 			},
@@ -13993,7 +17363,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1467558064,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/4/b/4b053067109f2adb9ff777e3750323d7.png",
+		image: "/images/e/0/e08eca42ca75464578077979cd6ce847.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -14005,77 +17375,81 @@ export const DEVICES: DevicesType = {
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 10,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 11,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
 		logics: [
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
 			{
 				name: "ReferenceId",
 				permissions: ["Read"],
@@ -14105,6 +17479,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14112,6 +17487,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14121,6 +17497,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14128,6 +17505,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14137,6 +17515,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14144,6 +17523,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14153,6 +17533,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14160,6 +17541,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14169,6 +17551,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14176,6 +17559,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14185,6 +17569,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14192,6 +17577,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14201,6 +17587,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14208,6 +17595,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14217,6 +17605,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14224,6 +17613,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14233,6 +17623,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14240,6 +17631,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14249,6 +17641,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14256,6 +17649,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -14291,7 +17685,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1470787934,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/b/db8a79555a49db234bb3804476abaf5e.png",
+		image: "/images/d/f/df562d7979fcb42dfcab0e8f89f6776f.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -14303,97 +17697,233 @@ export const DEVICES: DevicesType = {
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Tool",
 				SlotType: "Tool",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 10,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 11,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 12,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 13,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 14,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Ore",
 				SlotType: "Ore",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
 		logics: [
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"1509809836": {
+		id: 1509809836,
+		Title: "Survival Belt",
+		Key: "ItemSurvivalBelt",
+		PrefabName: "ItemSurvivalBelt",
+		PrefabHash: 1509809836,
+		hasChip: true,
+		deviceConnectCount: 0,
+		image: "/images/1/3/13ba6392720c6ab002bce03b88ddd743.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Programmable Chip",
+				SlotType: "Programmable Chip",
+				SlotIndex: 0,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Battery",
+				SlotType: "Battery",
+				SlotIndex: 1,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"Charge",
+					"ChargeRatio",
+				],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 10,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "None",
+				SlotType: "None",
+				SlotIndex: 11,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Auto-Injector",
+				SlotType: "Auto-Injector",
+				SlotIndex: 2,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Auto-Injector",
+				SlotType: "Auto-Injector",
+				SlotIndex: 3,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 4,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 5,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 6,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 7,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 8,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Tool",
+				SlotType: "Tool",
+				SlotIndex: 9,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+		],
+		tags: ["HasChip", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
+		logics: [
+			{
+				name: "SoundAlert",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Volume",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "EntityState",
+				permissions: ["Read"],
+			},
+			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 		],
@@ -14423,6 +17953,94 @@ export const DEVICES: DevicesType = {
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"1516738565": {
+		id: 1516738565,
+		Title: "LED Display (Medium Side)",
+		Key: "StructureConsoleLED1x2Side",
+		PrefabName: "StructureConsoleLED1x2Side",
+		PrefabHash: 1516738565,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/7/a/7a4f70277f4cf02647c2f6c817cef759.png",
+		mods: [
+			"Default",
+			"Percent",
+			"String",
+			"Fahrenheit",
+			"Litres",
+			"Mol",
+			"Pa",
+			"Newtons",
+			"Degrees",
+			"Power",
+			"Kelvin",
+			"Celsius",
+			"Meters",
+			"Credits",
+			"Seconds",
+			"Minutes",
+			"Days",
+		],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Color",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
 			},
 			{
 				name: "NameHash",
@@ -14539,6 +18157,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14546,6 +18165,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -14678,6 +18298,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14685,6 +18306,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14694,6 +18316,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14701,6 +18324,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -14710,6 +18334,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14717,6 +18342,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -14902,6 +18528,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -14912,6 +18539,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -14939,6 +18567,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogen",
 				permissions: ["Read"],
 			},
@@ -14951,11 +18651,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -14995,6 +18707,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -15002,6 +18715,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -15174,6 +18888,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -15181,6 +18896,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -15208,7 +18924,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1687692899,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/6/0/60f072d97396059586f98dc21d5f55b2.png",
+		image: "/images/e/7/e73e6089ad92a74db5ccf6a96f344a19.png",
 		mods: [],
 		connections: ["Connection", "Data Input", "Power Input"],
 		hasMemory: false,
@@ -15267,6 +18983,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -15279,11 +19067,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -15331,6 +19131,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -15341,6 +19142,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -15368,6 +19170,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogen",
 				permissions: ["Read"],
 			},
@@ -15380,11 +19254,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -15493,7 +19379,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1716878560,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/4/f/4f75734a2a5b58ee13c5c3284200426c.png",
+		image: "/images/7/5/75f8f805d2b9c27c4bd26e9377a005a7.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -15505,13 +19391,33 @@ export const DEVICES: DevicesType = {
 				SlotName: "Gas Filter",
 				SlotType: "Gas Filter",
 				SlotIndex: 0,
-				logic: ["Class", "Damage", "FilterType", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: [
+					"Class",
+					"Damage",
+					"FilterType",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
 			},
 			{
 				SlotName: "Gas Filter",
 				SlotType: "Gas Filter",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "FilterType", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: [
+					"Class",
+					"Damage",
+					"FilterType",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "HasVolume", "Item", "Paintable"],
@@ -15529,6 +19435,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -15537,7 +19447,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -15545,7 +19471,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -15561,11 +19499,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -15581,6 +19531,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -15589,11 +19543,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -15626,7 +19580,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1722785341,
 		hasChip: true,
 		deviceConnectCount: 0,
-		image: "/images/d/a/da635c23763f6833c26a6bddcab31c3e.png",
+		image: "/images/b/c/bcab0db2e54cf5e762df35ea46e239ba.png",
 		mods: ["Mode0", "Mode1"],
 		connections: [],
 		hasMemory: false,
@@ -15646,6 +19600,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -15654,19 +19609,19 @@ export const DEVICES: DevicesType = {
 				SlotName: "Cartridge",
 				SlotType: "Cartridge",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Cartridge1",
 				SlotType: "Cartridge1",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Programmable Chip",
 				SlotType: "Programmable Chip",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasChip", "HasImage", "HasLogic", "HasMode", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -15700,7 +19655,92 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"1724924668": {
+		id: 1724924668,
+		Title: "Landingpad Tank Connector (Gas)",
+		Key: "Landingpad_GasTankConnectorPiece",
+		PrefabName: "Landingpad_GasTankConnectorPiece",
+		PrefabHash: 1724924668,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/c/e/cedc425828351ddcb34e72d8ee85da75.png",
+		mods: ["Mode0", "Mode1"],
+		connections: ["Landing Pad Input", "Landing Pad Input", "Landing Pad Input", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Portable Slot",
+				SlotType: "Portable Slot",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+		],
+		logics: [
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
 				permissions: ["Read"],
 			},
 		],
@@ -15846,6 +19886,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -15854,6 +19895,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -15863,6 +19905,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -15871,6 +19914,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -16162,7 +20206,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -16174,6 +20218,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -16181,6 +20226,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -16190,6 +20236,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -16197,6 +20244,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -16309,6 +20357,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -16316,6 +20365,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -16477,338 +20527,6 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1840108251": {
-		id: 1840108251,
-		Title: "H2 Combustor",
-		Key: "H2Combustor",
-		PrefabName: "H2Combustor",
-		PrefabHash: 1840108251,
-		hasChip: true,
-		deviceConnectCount: 2,
-		image: "/images/3/e/3e6dcb3cc6a3bc67cb9518778a9ccd74.png",
-		mods: ["Idle", "Active"],
-		connections: ["Connection", "Pipe Input", "Pipe Output", "Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [
-			{
-				SlotName: "Programmable Chip",
-				SlotType: "Programmable Chip",
-				SlotIndex: 0,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
-				],
-			},
-		],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasChip",
-			"HasImage",
-			"HasLogic",
-			"HasMode",
-			"HasPrefab",
-			"HasSlot",
-			"Paintable",
-		],
-		logics: [
-			{
-				name: "Activate",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Lock",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Mode",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "On",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Open",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Error",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Power",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxideInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogenInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxideInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygenInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutantInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteamInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteamOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "RequiredPower",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-		],
-	},
 	"1847265835": {
 		id: 1847265835,
 		Title: "Wall Light (Long Angled)",
@@ -16905,6 +20623,38 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"1880475854": {
+		id: 1880475854,
+		Title: "Crew Module Screen",
+		Key: "StructureCrewModuleScreen",
+		PrefabName: "StructureCrewModuleScreen",
+		PrefabHash: 1880475854,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/d/8/d8c955b01631790d505d60f930531b72.png",
+		mods: [],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"1898243702": {
 		id: 1898243702,
 		Title: "Nitrolyzer",
@@ -16913,8 +20663,8 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1898243702,
 		hasChip: true,
 		deviceConnectCount: 2,
-		image: "/images/c/e/ce44af0bf91f3a66d0ddfdb49d831bbc.png",
-		mods: ["Idle", "Active"],
+		image: "/images/8/d/8d0d11e1fbbaf89f56221c68b8573907.png",
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
 		connections: ["Connection", "Pipe Input", "Pipe Input 2", "Pipe Output", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
@@ -16928,6 +20678,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -16935,6 +20686,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -17045,7 +20797,83 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -17065,7 +20893,67 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -17117,6 +21005,22 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
@@ -17133,19 +21037,51 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput2",
+				name: "RatioLiquidSilanolInput2",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -17197,6 +21133,22 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -17217,6 +21169,34 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
@@ -17230,22 +21210,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioSteamOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput2",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -17306,6 +21270,50 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"1905804401": {
+		id: 1905804401,
+		Title: "Super-Large Direct Heat Exchanger (Gas to Liquid)",
+		Key: "StructureSuperLargeDirectHeatExchangeGastoLiquid",
+		PrefabName: "StructureSuperLargeDirectHeatExchangeGastoLiquid",
+		PrefabHash: 1905804401,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/d/b/dbba60ec69248bf5ad4a4e7a9083fc62.png",
+		mods: [],
+		connections: ["Pipe Liquid Input", "Pipe Input"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"1913391845": {
 		id: 1913391845,
 		Title: "Large Satellite Dish",
@@ -17351,6 +21359,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Vertical",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "ContactSlotIndex",
+				permissions: ["Read"],
 			},
 			{
 				name: "ContactTypeId",
@@ -17705,6 +21717,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17712,6 +21725,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -17723,6 +21737,58 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"1945473703": {
+		id: 1945473703,
+		Title: "Solar Panel (Heavy Dual 1x5)",
+		Key: "StructureSolarPanel1x5Reinforced",
+		PrefabName: "StructureSolarPanel1x5Reinforced",
+		PrefabHash: 1945473703,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/6/4/6461cc7ef4741de839d45a12a1443561.png",
+		mods: [],
+		connections: ["Connection", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Horizontal",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Vertical",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Charge",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
@@ -17756,6 +21822,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17763,6 +21830,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -17774,6 +21842,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17781,6 +21850,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -17792,6 +21862,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17799,6 +21870,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -17810,6 +21882,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17817,6 +21890,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -17828,6 +21902,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17835,6 +21910,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -17907,6 +21983,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17914,6 +21991,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -17923,6 +22001,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -17930,6 +22009,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -18005,7 +22085,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -18013,7 +22109,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -18029,11 +22137,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -18049,6 +22169,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -18057,11 +22181,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -18117,6 +22241,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -18124,6 +22249,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -18200,6 +22326,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -18207,6 +22334,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -18312,54 +22440,6 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1968371847": {
-		id: 1968371847,
-		Title: "Drinking Fountain",
-		Key: "StructureDrinkingFountain",
-		PrefabName: "StructureDrinkingFountain",
-		PrefabHash: 1968371847,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/f/8/f8f81a2bc7a9df751baed962063d4749.png",
-		mods: [],
-		connections: ["Pipe Liquid Input", "Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
-		logics: [
-			{
-				name: "On",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Error",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Power",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "RequiredPower",
-				permissions: ["Read"],
-			},
-		],
-	},
 	"1969189000": {
 		id: 1969189000,
 		Title: "Jetpack Basic",
@@ -18368,7 +22448,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1969189000,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/4/7/4718a8b5d2a0d95d14a82bb725c4b31b.png",
+		image: "/images/3/0/303e2cbf6a8d7022bab2c12c8f4858ea.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -18388,6 +22468,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -18396,55 +22477,55 @@ export const DEVICES: DevicesType = {
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["Backpack", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Jetpack", "Paintable"],
@@ -18456,6 +22537,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -18487,6 +22572,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"FilterType",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -18494,6 +22580,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -18592,7 +22679,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -18604,7 +22707,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
 				permissions: ["Read"],
 			},
 			{
@@ -18632,6 +22751,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
@@ -18640,11 +22763,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
 				permissions: ["Read"],
 			},
 			{
@@ -18672,6 +22803,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -18684,19 +22819,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
 				name: "RatioSteamInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
 				permissions: ["Read"],
 			},
 			{
@@ -18820,6 +22951,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -18830,6 +22962,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -18840,6 +22973,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -18850,6 +22984,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -18900,196 +23035,6 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"1988118157": {
-		id: 1988118157,
-		Title: "Liquid Tank Small",
-		Key: "StructureLiquidTankSmall",
-		PrefabName: "StructureLiquidTankSmall",
-		PrefabHash: 1988118157,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/9/6/96ebf8f4d83cc9556743fb3526360715.png",
-		mods: [],
-		connections: ["Connection", "Pipe Liquid Input"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasImage",
-			"HasLogic",
-			"HasPrefab",
-			"HasVolume",
-			"Paintable",
-			"Structure",
-		],
-		logics: [
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
-				permissions: ["Read"],
-			},
-		],
-	},
 	"1997212478": {
 		id: 1997212478,
 		Title: "Weather Station",
@@ -19098,7 +23043,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 1997212478,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/7/8/7821d408053694c08b1523a403712a3d.png",
+		image: "/images/c/c/cc2fb72a30ed0fbf50371cf20f5f2bc3.png",
 		mods: ["NoStorm", "StormIncoming", "InStorm"],
 		connections: ["Connection", "Connection"],
 		hasMemory: false,
@@ -19144,6 +23089,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "NextWeatherEventTime",
+				permissions: ["Read"],
+			},
+			{
+				name: "NextWeatherHash",
 				permissions: ["Read"],
 			},
 			{
@@ -19229,6 +23178,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -19236,6 +23186,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -19245,6 +23196,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -19252,6 +23204,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -19338,7 +23291,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: 2009673399,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/c/3c54049ee606202972e056a68fe8bd36.png",
+		image: "/images/f/e/fed75f2d3461ba25839f5a55a2dfb6aa.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -19358,6 +23311,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -19371,6 +23325,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -19402,6 +23360,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -19409,6 +23368,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -19513,6 +23473,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"LineNumber",
 					"MaxQuantity",
 					"OccupantHash",
@@ -19521,6 +23482,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -19613,6 +23575,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -19623,6 +23586,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Open",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -19721,6 +23688,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -19733,11 +23712,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -19793,6 +23896,10 @@ export const DEVICES: DevicesType = {
 		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
 		logics: [
 			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
 				name: "NameHash",
 				permissions: ["Read"],
 			},
@@ -19802,10 +23909,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Setting",
 				permissions: ["Read"],
 			},
 		],
@@ -19870,190 +23973,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
-				permissions: ["Read"],
-			},
-		],
-	},
-	"2102454415": {
-		id: 2102454415,
-		Title: "Small Tank (Fuel)",
-		Key: "StructureTankSmallFuel",
-		PrefabName: "StructureTankSmallFuel",
-		PrefabHash: 2102454415,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/7/c/7ca24e8905323a13ede07fabd9f4581f.png",
-		mods: [],
-		connections: ["Connection", "Connection"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "HasVolume", "Paintable", "Structure"],
-		logics: [
-			{
-				name: "Open",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -20130,7 +24049,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -462415758,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/9/3/93d73f25e425d4de0e6d902db60dedb3.png",
+		image: "/images/e/f/efd7c9130cb98cedc3db19b5ce279355.png",
 		mods: ["Empty", "Critical", "VeryLow", "Low", "Medium", "High", "Full"],
 		connections: [],
 		hasMemory: false,
@@ -20143,6 +24062,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Mode",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -20158,7 +24081,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -41519077,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/9/3/93bc0e60c139e7b454dbbae93b48a098.png",
+		image: "/images/b/7/b7ea568231173913a4623afeb6605884.png",
 		mods: ["Empty", "Critical", "VeryLow", "Low", "Medium", "High", "Full"],
 		connections: [],
 		hasMemory: false,
@@ -20171,6 +24094,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Mode",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -20250,7 +24177,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -2085885850,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/a/6/a685bd14620a45349d646cb01a5b3132.png",
+		image: "/images/3/a/3af5a18daae782743da66dfd8b7dd3b6.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -20270,6 +24197,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20290,6 +24218,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -20303,7 +24235,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -21970188,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/9/a/9a9141eb627a0e630b49dbd3bc8183ba.png",
+		image: "/images/5/b/5b5d779412b5b2e53743666355cf8314.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -20323,6 +24255,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20344,6 +24277,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -20375,6 +24312,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -20388,7 +24329,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -869869491,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/9/b/9b0ad7987f1a0874b12873c3e33eeca2.png",
+		image: "/images/6/6/66d9ac627834e78f532c501e0c4a932d.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -20408,6 +24349,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20425,6 +24367,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -20461,6 +24407,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20474,6 +24421,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -20510,6 +24461,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20523,6 +24475,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -20559,6 +24515,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20575,6 +24532,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -20588,7 +24549,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -838472102,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/1/b/1b3029c1c3ba782ae395e3aa4861b217.png",
+		image: "/images/3/a/3a10f5babc372bba65d104f99e7b340f.png",
 		mods: ["Low Power", "High Power"],
 		connections: [],
 		hasMemory: false,
@@ -20608,6 +24569,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20628,6 +24590,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -20641,7 +24607,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1306016444,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/7/6/766436958eb8e54d141722deadce21d3.png",
+		image: "/images/1/0/1009fbdffd84f023a09c9cec0bf4ccb5.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -20661,12 +24627,13 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
 			},
 		],
-		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item"],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
 		logics: [
 			{
 				name: "On",
@@ -20674,6 +24641,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -20690,7 +24661,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -412551656,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/4/0/4054db7ec830a8d317244f9df4fdab9d.png",
+		image: "/images/1/e/1e7061e5957c982653c9603e6e250b1c.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -20710,6 +24681,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20718,85 +24690,85 @@ export const DEVICES: DevicesType = {
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 10,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 11,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 12,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 13,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 14,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["Backpack", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Jetpack", "Paintable"],
@@ -20808,6 +24780,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -20823,7 +24799,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1758310454,
 		hasChip: true,
 		deviceConnectCount: 0,
-		image: "/images/6/b/6ba3dbc8930c507843befcb534fbc54e.png",
+		image: "/images/7/d/7dcaf0f5fdc1a6ae7479fa008e1b1498.png",
 		mods: [],
 		connections: [],
 		hasMemory: true,
@@ -20843,6 +24819,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20859,6 +24836,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -20873,6 +24851,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 					"Charge",
@@ -20883,31 +24862,71 @@ export const DEVICES: DevicesType = {
 				SlotName: "Programmable Chip",
 				SlotType: "Programmable Chip",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 			{
 				SlotName: "Filter",
 				SlotType: "Filter",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId", "FilterType"],
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
 			},
 		],
 		tags: ["HasChip", "HasImage", "HasLogic", "HasMemory", "HasPrefab", "HasSlot", "HasVolume", "Item", "Suit"],
@@ -20997,6 +25016,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -21009,7 +25032,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -21017,7 +25056,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21033,11 +25084,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21053,6 +25116,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -21061,11 +25128,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -21126,7 +25193,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -84573099,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/e/9/e9120a0b2a5a0d2590c735d7c0de9e9d.png",
+		image: "/images/e/2/e2787bec8a1b82efec874f152e118b00.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21165,6 +25232,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -21173,7 +25244,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -21181,7 +25268,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21197,11 +25296,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21217,6 +25328,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -21225,11 +25340,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -21262,7 +25377,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1555582482,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/3/d3100dd4f0aa156d4debc60a193ba0a0.png",
+		image: "/images/e/8/e8eb09affde28d7def1e11869abf7773.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21301,6 +25416,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "Pressure",
 				permissions: ["Read"],
 			},
@@ -21309,7 +25428,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -21317,7 +25452,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21333,11 +25480,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -21353,6 +25512,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -21361,11 +25524,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -21390,6 +25553,102 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"-1821597879": {
+		id: -1821597879,
+		Title: "Auto-Injector (Stim)",
+		Key: "ItemInjectorEpi",
+		PrefabName: "ItemInjectorEpi",
+		PrefabHash: -1821597879,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/d/1/d1a8adf24fef29679cc1a6c96fdbd9e4.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "Item"],
+		logics: [
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Activate",
+				permissions: ["Write"],
+			},
+		],
+	},
+	"-1442148233": {
+		id: -1442148233,
+		Title: "Auto-Injector (Health)",
+		Key: "ItemInjectorHealth",
+		PrefabName: "ItemInjectorHealth",
+		PrefabHash: -1442148233,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/6/4/64fba7330f825d5da683db36dc4e8f34.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "Item"],
+		logics: [
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Activate",
+				permissions: ["Write"],
+			},
+		],
+	},
+	"-476591173": {
+		id: -476591173,
+		Title: "Auto-Injector (Stun)",
+		Key: "ItemInjectorStun",
+		PrefabName: "ItemInjectorStun",
+		PrefabHash: -476591173,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/0/d/0dce7da5e15ed653e81c66293ca65f27.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "Item"],
+		logics: [
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Activate",
+				permissions: ["Write"],
+			},
+		],
+	},
 	"-744098481": {
 		id: -744098481,
 		Title: "Integrated Circuit (IC10)",
@@ -21398,7 +25657,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -744098481,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/f/f/ff4656d594e2ba2d94e3694a041c6a93.png",
+		image: "/images/e/b/eb0e502fd0052ba6425ab5661fc24ecf.png",
 		mods: [],
 		connections: [],
 		hasMemory: true,
@@ -21410,6 +25669,10 @@ export const DEVICES: DevicesType = {
 		logics: [
 			{
 				name: "LineNumber",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -21426,7 +25689,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -743968726,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/b/a/ba7c7da7488ebca1cf9c34c637ac481b.png",
+		image: "/images/c/e/cef6e641c5af7a2d527b10422d8d0034.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21446,6 +25709,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21466,6 +25730,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -21479,7 +25747,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1152751269,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/5/d566b37c1a80c67dc46d6da05655eb30.png",
+		image: "/images/0/c/0cb66f55a8d455d4ef6c5c995730e4a3.png",
 		mods: ["Outward", "Inward"],
 		connections: [],
 		hasMemory: false,
@@ -21499,6 +25767,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21524,6 +25793,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -21540,7 +25813,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1663349918,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/9/d9a011a9f9a8bca8fb0bb16c8a2084a5.png",
+		image: "/images/2/c/2c804efdbec2c84c48d09dbb8e359e47.png",
 		mods: ["Default", "Flatten"],
 		connections: [],
 		hasMemory: false,
@@ -21560,6 +25833,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21585,6 +25859,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -21601,7 +25879,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -2061979347,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/b/1/b1febd2860031c69db2d052635a34185.png",
+		image: "/images/6/d/6d93c679e1d7f6e0bf94338c6939c6d3.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21621,6 +25899,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21637,6 +25916,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -21650,7 +25933,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1875271296,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/9/7/978b1b56a5d93ab322edc41773c2fdbe.png",
+		image: "/images/8/3/8343fecb8b61bb34602f6d77ae4c6962.png",
 		mods: ["Default", "Flatten"],
 		connections: [],
 		hasMemory: false,
@@ -21670,6 +25953,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21698,6 +25982,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -21711,7 +25999,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1176140051,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/6/36c14519c7687428e632e4aebe3eb759.png",
+		image: "/images/6/8/689472fd6279f69a1a93bc02d70e40a6.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21731,6 +26019,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21739,7 +26028,7 @@ export const DEVICES: DevicesType = {
 				SlotName: "Sensor Processing Unit",
 				SlotType: "Sensor Processing Unit",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -21750,6 +26039,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -21766,7 +26059,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1260618380,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/b/db0b09e94499163c2906efbcdd3c5a0d.png",
+		image: "/images/e/1/e1b93ca3117b5a0aa20c168cbf4f2e37.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21786,6 +26079,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21794,55 +26088,55 @@ export const DEVICES: DevicesType = {
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 2,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 3,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 4,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 5,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 6,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 7,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 8,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 			{
 				SlotName: "None",
 				SlotType: "None",
 				SlotIndex: 9,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -21856,8 +26150,602 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
+			},
+		],
+	},
+	"-347191982": {
+		id: -347191982,
+		Title: "HARM Suit",
+		Key: "ItemSuitHARM",
+		PrefabName: "ItemSuitHARM",
+		PrefabHash: -347191982,
+		hasChip: true,
+		deviceConnectCount: 0,
+		image: "/images/6/f/6fd5e690cf73596493168cef258ef93f.png",
+		mods: [],
+		connections: [],
+		hasMemory: true,
+		memoryAccess: "Read Write",
+		memorySize: 0,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Air Tank",
+				SlotType: "Air Tank",
+				SlotIndex: 0,
+				logic: [
+					"Pressure",
+					"Temperature",
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
+			},
+			{
+				SlotName: "Waste Tank",
+				SlotType: "Waste Tank",
+				SlotIndex: 1,
+				logic: [
+					"Pressure",
+					"Temperature",
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+				],
+			},
+			{
+				SlotName: "Coolant Tank",
+				SlotType: "Coolant Tank",
+				SlotIndex: 2,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Battery",
+				SlotType: "Battery",
+				SlotIndex: 3,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"Charge",
+					"ChargeRatio",
+				],
+			},
+			{
+				SlotName: "Chip",
+				SlotType: "Chip",
+				SlotIndex: 4,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+			{
+				SlotName: "Filter1",
+				SlotType: "Filter1",
+				SlotIndex: 5,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
+			},
+			{
+				SlotName: "Filter2",
+				SlotType: "Filter2",
+				SlotIndex: 6,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
+			},
+			{
+				SlotName: "Filter3",
+				SlotType: "Filter3",
+				SlotIndex: 7,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
+			},
+			{
+				SlotName: "Filter4",
+				SlotType: "Filter4",
+				SlotIndex: 8,
+				logic: [
+					"Class",
+					"Damage",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"FilterType",
+				],
+			},
+			{
+				SlotName: "Back",
+				SlotType: "Back",
+				SlotIndex: 9,
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
+			},
+		],
+		tags: ["HasChip", "HasImage", "HasLogic", "HasMemory", "HasPrefab", "HasSlot", "HasVolume", "Item"],
+		logics: [
+			{
+				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "AirRelease",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Filtration",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PressureSetting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "SoundAlert",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "TemperatureSetting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Volume",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EntityState",
+				permissions: ["Read"],
+			},
+			{
+				name: "ForwardX",
+				permissions: ["Read"],
+			},
+			{
+				name: "ForwardY",
+				permissions: ["Read"],
+			},
+			{
+				name: "ForwardZ",
+				permissions: ["Read"],
+			},
+			{
+				name: "Orientation",
+				permissions: ["Read"],
+			},
+			{
+				name: "PositionX",
+				permissions: ["Read"],
+			},
+			{
+				name: "PositionY",
+				permissions: ["Read"],
+			},
+			{
+				name: "PositionZ",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureExternal",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureExternal",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityMagnitude",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityRelativeX",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityRelativeY",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityRelativeZ",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityX",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityY",
+				permissions: ["Read"],
+			},
+			{
+				name: "VelocityZ",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-981522067": {
+		id: -981522067,
+		Title: "HARM Helmet",
+		Key: "ItemSuitHelmetHARM",
+		PrefabName: "ItemSuitHelmetHARM",
+		PrefabHash: -981522067,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/4/6/46b8d2a303d237e92b3b13774ac55620.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["HasImage", "HasLogic", "HasPrefab", "HasVolume", "Item"],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "SoundAlert",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Volume",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "Flush",
+				permissions: ["Write"],
 			},
 		],
 	},
@@ -21869,7 +26757,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -229808600,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/f/0/f0ba1d7d2bd4161f7319843c9ebe6feb.png",
+		image: "/images/2/d/2d9c5ea62e378271c2d98f3e9022707b.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -21889,6 +26777,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21897,7 +26786,7 @@ export const DEVICES: DevicesType = {
 				SlotName: "Cartridge",
 				SlotType: "Cartridge",
 				SlotIndex: 1,
-				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "Quantity", "ReferenceId"],
+				logic: ["Class", "Damage", "MaxQuantity", "OccupantHash", "Occupied", "PrefabHash", "Quantity", "ReferenceId"],
 			},
 		],
 		tags: ["HasImage", "HasLogic", "HasPrefab", "HasSlot", "Item", "Paintable"],
@@ -21912,6 +26801,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
 				permissions: ["Read"],
 			},
 			{
@@ -21948,6 +26841,7 @@ export const DEVICES: DevicesType = {
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
+					"PrefabHash",
 					"Quantity",
 					"ReferenceId",
 				],
@@ -21964,6 +26858,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
 				permissions: ["Read"],
 			},
@@ -21977,7 +26875,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -504717121,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/a/4/a4cc76fa5c1b6ff133e54818cd36806a.png",
+		image: "/images/f/b/fbca1ddd1e287e9582c76eaf3daa3a4e.png",
 		mods: ["Empty", "Critical", "VeryLow", "Low", "Medium", "High", "Full"],
 		connections: [],
 		hasMemory: false,
@@ -21990,6 +26888,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Mode",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
 			},
 			{
 				name: "ReferenceId",
@@ -22064,7 +26966,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -22072,7 +26990,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22088,11 +27018,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22108,6 +27050,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -22116,11 +27062,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -22208,7 +27154,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -22216,7 +27178,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22232,11 +27206,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22252,6 +27238,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -22260,11 +27250,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -22352,7 +27342,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -22360,7 +27366,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22376,11 +27394,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22396,6 +27426,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -22404,11 +27438,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -22496,7 +27530,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -22504,7 +27554,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22520,11 +27582,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -22540,6 +27614,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -22548,11 +27626,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -22700,6 +27778,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -22707,6 +27786,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -22788,6 +27868,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -22800,11 +27952,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -22886,7 +28050,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -22898,6 +28062,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -22905,6 +28070,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -22914,6 +28080,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -22921,6 +28088,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -23019,7 +28187,7 @@ export const DEVICES: DevicesType = {
 		hasChip: true,
 		deviceConnectCount: 2,
 		image: "/images/6/1/61a01c955b27562b4fb27508273aba5f.png",
-		mods: ["Idle", "Active"],
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
 		connections: ["Connection", "Pipe Input", "Pipe Output", "Pipe Waste", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
@@ -23033,6 +28201,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23040,6 +28209,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -23146,6 +28316,66 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidCarbonDioxideInput",
 				permissions: ["Read"],
 			},
@@ -23155,6 +28385,54 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioLiquidCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -23194,6 +28472,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutantInput",
 				permissions: ["Read"],
 			},
@@ -23206,15 +28496,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSilanolOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput2",
+				name: "RatioLiquidSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -23254,6 +28568,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantInput",
 				permissions: ["Read"],
 			},
@@ -23266,6 +28592,30 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteamInput",
 				permissions: ["Read"],
 			},
@@ -23275,18 +28625,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioSteamOutput2",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -23436,6 +28774,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23443,6 +28782,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -23452,6 +28792,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23459,6 +28800,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -23563,6 +28905,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23570,6 +28913,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -23579,6 +28923,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23586,6 +28931,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -23672,7 +29018,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1672404896,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/d/0/d0d3dce05ebb050a6f00c6403c1e4744.png",
+		image: "/images/a/a/aa0a22ec00e74dea04c3e740a49ac85d.png",
 		mods: [],
 		connections: ["Chute Input", "Chute Output", "Connection", "Connection"],
 		hasMemory: true,
@@ -23721,7 +29067,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -23733,6 +29079,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23740,6 +29087,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -23749,6 +29097,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -23756,6 +29105,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -24058,6 +29408,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24065,6 +29416,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -24076,6 +29428,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24083,6 +29436,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -24214,7 +29568,7 @@ export const DEVICES: DevicesType = {
 		deviceConnectCount: 0,
 		image: "/images/1/d/1d7babf63d29b3fe98f1f244632d66df.png",
 		mods: ["Empty", "Critical", "VeryLow", "Low", "Medium", "High", "Full"],
-		connections: ["Power Input", "Power Output", "Connection"],
+		connections: ["Power Input", "Power and Data Output", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
@@ -24278,7 +29632,7 @@ export const DEVICES: DevicesType = {
 		deviceConnectCount: 0,
 		image: "/images/8/c/8cf51805b8172a4ade250e2ee154e083.png",
 		mods: ["Empty", "Critical", "VeryLow", "Low", "Medium", "High", "Full"],
-		connections: ["Power Input", "Power Output", "Connection"],
+		connections: ["Power Input", "Power and Data Output", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
 		memorySize: null,
@@ -24371,6 +29725,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "PositionX",
+				permissions: ["Read"],
+			},
+			{
+				name: "PositionY",
+				permissions: ["Read"],
+			},
+			{
+				name: "PositionZ",
+				permissions: ["Read"],
+			},
+			{
 				name: "Power",
 				permissions: ["Read"],
 			},
@@ -24411,6 +29777,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24419,6 +29786,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -24428,6 +29796,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24436,6 +29805,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -24504,6 +29874,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24512,6 +29883,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -24521,6 +29893,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24529,6 +29902,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -24597,6 +29971,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24605,6 +29980,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -24614,6 +29990,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -24622,6 +29999,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -24676,6 +30054,38 @@ export const DEVICES: DevicesType = {
 		hasChip: false,
 		deviceConnectCount: 0,
 		image: "/images/c/2/c262177c40d4f4e23c01f149c9fe45d0.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Cable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-1616441118": {
+		id: -1616441118,
+		Title: "Cable Fuse (500kW)",
+		Key: "StructureCableFuse500k",
+		PrefabName: "StructureCableFuse500k",
+		PrefabHash: -1616441118,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/8/3/8395dfcdac92db8ed16707e48c74a268.png",
 		mods: [],
 		connections: [],
 		hasMemory: false,
@@ -24866,7 +30276,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -24874,7 +30320,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -24882,7 +30360,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -24890,11 +30376,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -24922,6 +30444,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -24934,15 +30464,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -25006,6 +30544,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25013,6 +30552,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25022,6 +30562,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25029,6 +30570,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25038,6 +30580,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25045,6 +30588,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25054,6 +30598,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25061,6 +30606,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25070,6 +30616,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25077,6 +30624,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25086,6 +30634,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25093,6 +30642,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25102,6 +30652,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25109,6 +30660,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25118,6 +30670,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25125,6 +30678,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25134,6 +30688,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25141,6 +30696,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25150,6 +30706,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25157,6 +30714,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25166,6 +30724,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25173,6 +30732,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25182,6 +30742,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25189,6 +30750,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25198,6 +30760,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25205,6 +30768,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25214,6 +30778,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25221,6 +30786,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25230,6 +30796,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25237,6 +30804,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25246,6 +30814,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25253,6 +30822,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25262,6 +30832,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25269,6 +30840,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25278,6 +30850,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25285,6 +30858,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25294,6 +30868,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25301,6 +30876,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25310,6 +30886,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25317,6 +30894,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25326,6 +30904,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25333,6 +30912,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25342,6 +30922,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25349,6 +30930,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25358,6 +30940,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25365,6 +30948,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25374,6 +30958,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25381,6 +30966,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25390,6 +30976,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25397,6 +30984,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25406,6 +30994,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25413,6 +31002,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25422,6 +31012,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25429,6 +31020,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25438,6 +31030,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25445,6 +31038,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25454,6 +31048,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25461,6 +31056,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25470,6 +31066,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25477,6 +31074,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25486,6 +31084,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25493,6 +31092,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25502,6 +31102,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25509,6 +31110,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25518,6 +31120,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25525,6 +31128,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25534,6 +31138,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25541,6 +31146,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25550,6 +31156,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25557,6 +31164,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25566,6 +31174,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25573,6 +31182,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25582,6 +31192,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25589,6 +31200,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25598,6 +31210,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25605,6 +31218,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25614,6 +31228,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25621,6 +31236,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25630,6 +31246,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25637,6 +31254,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25646,6 +31264,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25653,6 +31272,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25662,6 +31282,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25669,6 +31290,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25678,6 +31300,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25685,6 +31308,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25694,6 +31318,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25701,6 +31326,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25710,6 +31336,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25717,6 +31344,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25726,6 +31354,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25733,6 +31362,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25742,6 +31372,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25749,6 +31380,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25758,6 +31390,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25765,6 +31398,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25774,6 +31408,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25781,6 +31416,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25790,6 +31426,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25797,6 +31434,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25806,6 +31444,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25813,6 +31452,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -25822,6 +31462,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25829,6 +31470,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -25925,6 +31567,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25932,6 +31575,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -25974,6 +31618,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -25981,6 +31626,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26023,6 +31669,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26030,6 +31677,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26072,6 +31720,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26079,6 +31728,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26121,6 +31771,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26128,6 +31779,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26170,6 +31822,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26177,6 +31830,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26253,6 +31907,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26260,6 +31915,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26341,6 +31997,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26348,6 +32005,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26428,6 +32086,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26435,6 +32094,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26489,6 +32149,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26496,6 +32157,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26554,6 +32216,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26561,6 +32224,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26613,6 +32277,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26620,6 +32285,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26672,6 +32338,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26679,6 +32346,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26760,6 +32428,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"LineNumber",
 					"MaxQuantity",
 					"OccupantHash",
@@ -26768,6 +32437,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -26828,6 +32498,633 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "StackSize",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-1037204948": {
+		id: -1037204948,
+		Title: "Combustor",
+		Key: "StructureCombustor",
+		PrefabName: "StructureCombustor",
+		PrefabHash: -1037204948,
+		hasChip: true,
+		deviceConnectCount: 2,
+		image: "/images/7/3/73f6b08862c2b569e42c662739d9e78f.png",
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
+		connections: [
+			"Connection",
+			"Connection",
+			"Pipe Liquid Input",
+			"Connection",
+			"Pipe Input 2",
+			"Connection",
+			"Pipe Output",
+		],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Programmable Chip",
+				SlotType: "Programmable Chip",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasChip",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
 				permissions: ["Read"],
 			},
 		],
@@ -26985,6 +33282,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -26992,6 +33290,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27001,6 +33300,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27008,6 +33308,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27017,6 +33318,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27024,6 +33326,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -27100,6 +33403,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27107,6 +33411,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -27183,6 +33488,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27190,6 +33496,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27199,6 +33506,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27206,6 +33514,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27215,6 +33524,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27222,6 +33532,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -27346,6 +33657,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"Mode",
 					"OccupantHash",
@@ -27354,23 +33666,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Data Disk",
-				SlotType: "Data Disk",
-				SlotIndex: 1,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"Mode",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -27386,6 +33682,10 @@ export const DEVICES: DevicesType = {
 			"Structure",
 		],
 		logics: [
+			{
+				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
 			{
 				name: "On",
 				permissions: ["Read", "Write"],
@@ -27441,6 +33741,8 @@ export const DEVICES: DevicesType = {
 			"Litres",
 			"Mol",
 			"Pa",
+			"Newtons",
+			"Degrees",
 			"Power",
 			"Kelvin",
 			"Celsius",
@@ -27527,6 +33829,8 @@ export const DEVICES: DevicesType = {
 			"Litres",
 			"Mol",
 			"Pa",
+			"Newtons",
+			"Degrees",
 			"Power",
 			"Kelvin",
 			"Celsius",
@@ -27613,6 +33917,8 @@ export const DEVICES: DevicesType = {
 			"Litres",
 			"Mol",
 			"Pa",
+			"Newtons",
+			"Degrees",
 			"Power",
 			"Kelvin",
 			"Celsius",
@@ -27705,6 +34011,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27712,6 +34019,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27721,6 +34029,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27728,6 +34037,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27737,6 +34047,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27744,6 +34055,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27753,6 +34065,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27760,6 +34073,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27769,6 +34083,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27776,6 +34091,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -27785,6 +34101,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27792,6 +34109,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -27805,6 +34123,275 @@ export const DEVICES: DevicesType = {
 				name: "Open",
 				permissions: ["Read", "Write"],
 			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-1817129150": {
+		id: -1817129150,
+		Title: "Crew Module Active Vent",
+		Key: "StructureCrewModuleActiveVent",
+		PrefabName: "StructureCrewModuleActiveVent",
+		PrefabHash: -1817129150,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/b/4/b45ee7edb14b2337a90959fae72076ef.png",
+		mods: ["Outward", "Inward"],
+		connections: ["Connection", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PressureExternal",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "PressureInternal",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-156109268": {
+		id: -156109268,
+		Title: "Crew Module Chair",
+		Key: "StructureCrewModuleChair",
+		PrefabName: "StructureCrewModuleChair",
+		PrefabHash: -156109268,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/4/0/40add7fec576eefbeddd9ae13ffa2c96.png",
+		mods: [],
+		connections: [],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Seat",
+				SlotType: "Seat",
+				SlotIndex: 0,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: ["Buildable", "Electric", "HasImage", "HasLogic", "HasPrefab", "HasSlot", "Paintable", "Structure"],
+		logics: [
 			{
 				name: "NameHash",
 				permissions: ["Read"],
@@ -27842,6 +34429,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27849,15 +34437,17 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
-				SlotName: "",
-				SlotType: "",
+				SlotName: "Mask",
+				SlotType: "Mask",
 				SlotIndex: 1,
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -27865,6 +34455,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 					"Lock",
 					"On",
 					"Open",
@@ -27917,6 +34508,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -27946,6 +34541,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 			{
@@ -28018,6 +34617,54 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"-739488459": {
+		id: -739488459,
+		Title: "Drinking Fountain",
+		Key: "StructureDrinkingFountain2x1",
+		PrefabName: "StructureDrinkingFountain2x1",
+		PrefabHash: -739488459,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/9/4/94e875ebb2ca83e62eb2532fbd3c6590.png",
+		mods: [],
+		connections: ["Pipe Liquid Input", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"-1668992663": {
 		id: -1668992663,
 		Title: "Electrolyzer",
@@ -28027,7 +34674,7 @@ export const DEVICES: DevicesType = {
 		hasChip: true,
 		deviceConnectCount: 2,
 		image: "/images/7/d/7ddae25176ae34aa2eb52abcad770565.png",
-		mods: ["Idle", "Active"],
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
 		connections: ["Connection", "Pipe Liquid Input", "Pipe Output", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
@@ -28041,6 +34688,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -28048,6 +34696,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -28090,10 +34739,6 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
 				name: "CombustionInput",
 				permissions: ["Read"],
 			},
@@ -28122,10 +34767,6 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
 				name: "PressureInput",
 				permissions: ["Read"],
 			},
@@ -28138,10 +34779,6 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
 				name: "RatioCarbonDioxideInput",
 				permissions: ["Read"],
 			},
@@ -28150,11 +34787,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioHydrogen",
+				name: "RatioHeliumInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidCarbonDioxide",
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28166,11 +34835,35 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidHydrogen",
+				name: "RatioLiquidHydrazineInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidNitrogen",
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28182,19 +34875,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
 				name: "RatioLiquidNitrousOxideInput",
 				permissions: ["Read"],
 			},
 			{
 				name: "RatioLiquidNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
 				permissions: ["Read"],
 			},
 			{
@@ -28206,7 +34891,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidPollutant",
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28218,19 +34907,27 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSodiumChlorideInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioNitrogen",
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28242,19 +34939,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
 				name: "RatioNitrousOxideInput",
 				permissions: ["Read"],
 			},
 			{
 				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
 				permissions: ["Read"],
 			},
 			{
@@ -28266,7 +34955,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioPollutant",
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28278,11 +34971,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioPollutedWater",
+				name: "RatioPollutedWaterInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -28291,22 +34992,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioSteamOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
 				permissions: ["Read"],
 			},
 			{
@@ -28326,19 +35011,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
 				name: "TemperatureInput",
 				permissions: ["Read"],
 			},
 			{
 				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 			{
@@ -28490,7 +35167,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -28498,7 +35191,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -28514,11 +35219,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -28534,6 +35251,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -28542,11 +35263,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -28580,7 +35301,7 @@ export const DEVICES: DevicesType = {
 		hasChip: true,
 		deviceConnectCount: 2,
 		image: "/images/3/b/3b03a44e3c9c218affa1ce1886d448aa.png",
-		mods: ["Idle", "Active"],
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
 		connections: ["Connection", "Pipe Input", "Pipe Output", "Pipe Waste", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
@@ -28595,6 +35316,7 @@ export const DEVICES: DevicesType = {
 					"FilterType",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -28602,6 +35324,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -28612,6 +35335,7 @@ export const DEVICES: DevicesType = {
 					"FilterType",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -28619,6 +35343,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -28628,6 +35353,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -28635,6 +35361,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -28733,6 +35460,66 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidCarbonDioxideInput",
 				permissions: ["Read"],
 			},
@@ -28742,6 +35529,54 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioLiquidCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -28781,6 +35616,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutantInput",
 				permissions: ["Read"],
 			},
@@ -28793,15 +35640,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSilanolOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput2",
+				name: "RatioLiquidSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -28841,6 +35712,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantInput",
 				permissions: ["Read"],
 			},
@@ -28850,6 +35733,30 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioPollutantOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -28865,15 +35772,528 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesInput",
+				name: "RatioWaterInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioWaterOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput2",
+				name: "RatioWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput2",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-1399038877": {
+		id: -1399038877,
+		Title: "Filtration Liquid",
+		Key: "StructureFiltrationLiquid",
+		PrefabName: "StructureFiltrationLiquid",
+		PrefabHash: -1399038877,
+		hasChip: true,
+		deviceConnectCount: 2,
+		image: "/images/7/d/7dd09fbc4a7933dd47860e891b4913c5.png",
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
+		connections: ["Connection", "Pipe Liquid Input", "Pipe Liquid Output", "Pipe Liquid Waste", "Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [
+			{
+				SlotName: "Gas Filter",
+				SlotType: "Gas Filter",
+				SlotIndex: 0,
+				logic: [
+					"FilterType",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Gas Filter",
+				SlotType: "Gas Filter",
+				SlotIndex: 1,
+				logic: [
+					"FilterType",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Programmable Chip",
+				SlotType: "Programmable Chip",
+				SlotIndex: 2,
+				logic: [
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasChip",
+			"HasImage",
+			"HasLogic",
+			"HasMode",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Mode",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Open",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -28978,7 +36398,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1252983604,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/8/b/8b051a4396a7e89e585d33a46eec5f62.png",
+		image: "/images/c/5/c58c2f5c06aa08f83a9efbeabfb1d089.png",
 		mods: [],
 		connections: ["Connection"],
 		hasMemory: false,
@@ -28986,7 +36406,7 @@ export const DEVICES: DevicesType = {
 		memorySize: null,
 		logicInstructions: [],
 		slots: [],
-		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Structure"],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
 		logics: [
 			{
 				name: "Combustion",
@@ -29009,7 +36429,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -29017,7 +36453,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29033,11 +36481,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29053,6 +36513,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -29061,11 +36525,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -29078,6 +36542,14 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -29385,7 +36857,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -29393,7 +36881,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29409,11 +36909,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29429,6 +36941,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -29437,11 +36953,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -29687,7 +37203,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -29699,6 +37215,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -29706,6 +37223,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -29715,6 +37233,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -29722,6 +37241,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -29841,6 +37361,7 @@ export const DEVICES: DevicesType = {
 					"SeedingRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -29848,6 +37369,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -29857,6 +37379,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -29864,6 +37387,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -29890,7 +37414,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -29898,7 +37438,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29914,11 +37466,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -29934,6 +37498,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -29942,11 +37510,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -30287,6 +37855,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -30299,11 +37879,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -30445,7 +38149,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30453,7 +38193,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30461,7 +38233,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30469,11 +38249,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30501,6 +38317,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -30513,15 +38337,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30625,7 +38457,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30633,7 +38501,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30641,7 +38541,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30649,11 +38557,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30681,6 +38625,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -30693,15 +38645,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -30765,6 +38725,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30772,6 +38733,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30878,6 +38840,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30885,6 +38848,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30894,6 +38858,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30901,6 +38866,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30910,6 +38876,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30917,6 +38884,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30926,6 +38894,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30933,6 +38902,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30942,6 +38912,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30949,6 +38920,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30958,6 +38930,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30965,6 +38938,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30974,6 +38948,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30981,6 +38956,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -30990,6 +38966,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -30997,6 +38974,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31006,6 +38984,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31013,6 +38992,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31022,6 +39002,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31029,6 +39010,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31038,6 +39020,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31045,6 +39028,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31054,6 +39038,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31061,6 +39046,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31070,6 +39056,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31077,6 +39064,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31086,6 +39074,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31093,6 +39082,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31102,6 +39092,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31109,6 +39100,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31118,6 +39110,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31125,6 +39118,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31134,6 +39128,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31141,6 +39136,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31150,6 +39146,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31157,6 +39154,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31166,6 +39164,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31173,6 +39172,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31182,6 +39182,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31189,6 +39190,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -31330,7 +39332,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -31338,7 +39356,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -31354,11 +39384,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -31374,6 +39416,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -31382,11 +39428,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -31467,196 +39513,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
-				permissions: ["Read"],
-			},
-		],
-	},
-	"-1430440215": {
-		id: -1430440215,
-		Title: "Liquid Tank Big (Insulated)",
-		Key: "StructureLiquidTankBigInsulated",
-		PrefabName: "StructureLiquidTankBigInsulated",
-		PrefabHash: -1430440215,
-		hasChip: false,
-		deviceConnectCount: 0,
-		image: "/images/e/a/eaec83dd08fa7203b312376e5c409625.png",
-		mods: [],
-		connections: ["Connection", "Pipe Liquid Input"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
-		tags: [
-			"Buildable",
-			"Connectable",
-			"Electric",
-			"HasImage",
-			"HasLogic",
-			"HasPrefab",
-			"HasVolume",
-			"Paintable",
-			"Structure",
-		],
-		logics: [
-			{
-				name: "Setting",
-				permissions: ["Read", "Write"],
-			},
-			{
-				name: "Combustion",
-				permissions: ["Read"],
-			},
-			{
-				name: "CombustionOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Maximum",
-				permissions: ["Read"],
-			},
-			{
-				name: "NameHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "PrefabHash",
-				permissions: ["Read"],
-			},
-			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Ratio",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -31908,6 +39764,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31915,6 +39772,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31924,6 +39782,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31931,6 +39790,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31940,6 +39800,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31947,6 +39808,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -31956,6 +39818,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -31963,6 +39826,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -32358,6 +40222,54 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"-124589902": {
+		id: -124589902,
+		Title: "Logic Uplink (Compact)",
+		Key: "StructureLogicRocketUplinkCompact",
+		PrefabName: "StructureLogicRocketUplinkCompact",
+		PrefabHash: -124589902,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/e/a/ea2e8ae6c4352ee672041cea4c1d938d.png",
+		mods: [],
+		connections: ["Connection", "Power Input"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"-767867194": {
 		id: -767867194,
 		Title: "Slot Reader",
@@ -32605,6 +40517,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -32617,11 +40541,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -32649,6 +40697,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -32661,11 +40721,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -32767,6 +40951,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -32779,11 +40975,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -32811,6 +41131,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyConvected",
+				permissions: ["Read"],
+			},
+			{
+				name: "EnergyRadiated",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -32823,11 +41155,135 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
 				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
 				permissions: ["Read"],
 			},
 		],
@@ -32895,7 +41351,43 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -32903,7 +41395,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -32911,7 +41435,15 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -32919,11 +41451,47 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -32951,6 +41519,14 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -32963,15 +41539,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -33079,6 +41663,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -33086,6 +41671,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -33095,6 +41681,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -33102,6 +41689,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -33436,6 +42024,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -33443,6 +42032,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -33511,6 +42101,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -33518,6 +42109,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -33614,6 +42206,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -33626,11 +42290,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -33856,7 +42532,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -33864,7 +42556,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -33880,11 +42584,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -33900,6 +42616,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -33908,11 +42628,391 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-762538653": {
+		id: -762538653,
+		Title: "Heavy Pressure Fed Gas Engine",
+		Key: "StructurePressureFedGasEngineHeavy",
+		PrefabName: "StructurePressureFedGasEngineHeavy",
+		PrefabHash: -762538653,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/8/1/81627bf32b6bd5ef5d994f0dc31137e4.png",
+		mods: [],
+		connections: ["Pipe Input", "Pipe Input 2", "Power and Data Output"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Throttle",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PassedMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "Temperature",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMoles",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-2122207560": {
+		id: -2122207560,
+		Title: "Heavy Pressure Fed Liquid Engine",
+		Key: "StructurePressureFedLiquidEngineHeavy",
+		PrefabName: "StructurePressureFedLiquidEngineHeavy",
+		PrefabHash: -2122207560,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/0/5/059100500c7dab2b5d8def87213bee52.png",
+		mods: [],
+		connections: ["Pipe Liquid Input", "Pipe Liquid Input 2", "Power and Data Output"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Throttle",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Combustion",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PassedMoles",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Pressure",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxide",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutant",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWater",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -34080,7 +43180,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -34088,7 +43204,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -34104,11 +43232,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -34124,6 +43264,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -34132,11 +43276,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -34248,6 +43392,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34255,6 +43400,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34264,6 +43410,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34271,6 +43418,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -34344,7 +43492,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1577831321,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/1/31c91b02d99c631180f258948598f54d.png",
+		image: "/images/8/d/8de3745eccabacad9c1980ee34ed07d0.png",
 		mods: [],
 		connections: ["Chute Input", "Chute Output", "Connection", "Connection"],
 		hasMemory: false,
@@ -34359,6 +43507,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34366,6 +43515,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34375,6 +43525,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34382,6 +43533,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34391,6 +43543,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34398,6 +43551,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34407,6 +43561,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34414,6 +43569,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34423,6 +43579,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34430,6 +43587,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34439,6 +43597,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34446,6 +43605,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34455,6 +43615,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34462,6 +43623,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34471,6 +43633,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34478,6 +43641,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34487,6 +43651,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34494,6 +43659,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34503,6 +43669,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34510,6 +43677,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34519,6 +43687,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34526,6 +43695,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34535,6 +43705,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34542,6 +43713,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34551,6 +43723,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34558,6 +43731,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34567,6 +43741,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34574,6 +43749,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34583,6 +43759,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34590,6 +43767,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34599,6 +43777,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34606,6 +43785,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34615,6 +43795,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34622,6 +43803,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34631,6 +43813,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34638,6 +43821,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34647,6 +43831,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34654,6 +43839,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34663,6 +43849,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34670,6 +43857,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34679,6 +43867,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34686,6 +43875,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34695,6 +43885,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34702,6 +43893,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34711,6 +43903,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34718,6 +43911,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34727,6 +43921,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34734,6 +43929,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34743,6 +43939,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34750,6 +43947,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34759,6 +43957,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34766,6 +43965,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34775,6 +43975,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34782,6 +43983,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34791,6 +43993,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34798,6 +44001,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34807,6 +44011,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34814,6 +44019,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34823,6 +44029,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34830,6 +44037,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34839,6 +44047,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34846,6 +44055,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34855,6 +44065,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34862,6 +44073,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34871,6 +44083,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34878,6 +44091,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34887,6 +44101,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34894,6 +44109,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34903,6 +44119,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34910,6 +44127,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34919,6 +44137,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34926,6 +44145,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34935,6 +44155,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34942,6 +44163,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34951,6 +44173,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34958,6 +44181,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34967,6 +44191,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34974,6 +44199,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34983,6 +44209,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -34990,6 +44217,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -34999,6 +44227,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35006,6 +44235,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35015,6 +44245,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35022,6 +44253,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35031,6 +44263,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35038,6 +44271,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35047,6 +44281,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35054,6 +44289,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35063,6 +44299,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35070,6 +44307,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35079,6 +44317,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35086,6 +44325,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35095,6 +44335,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35102,6 +44343,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35111,6 +44353,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35118,6 +44361,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35127,6 +44371,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35134,6 +44379,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35143,6 +44389,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35150,6 +44397,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35159,6 +44407,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35166,6 +44415,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35175,6 +44425,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35182,6 +44433,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35191,6 +44443,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35198,6 +44451,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35207,6 +44461,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35214,6 +44469,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35223,6 +44479,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35230,6 +44487,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35239,6 +44497,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35246,6 +44505,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35255,6 +44515,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35262,6 +44523,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35271,6 +44533,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35278,6 +44541,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35287,6 +44551,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35294,6 +44559,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35303,6 +44569,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35310,6 +44577,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35319,6 +44587,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35326,6 +44595,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35335,6 +44605,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35342,6 +44613,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35351,6 +44623,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35358,6 +44631,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35367,6 +44641,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35374,6 +44649,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35383,6 +44659,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35390,6 +44667,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35399,6 +44677,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35406,6 +44685,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35415,6 +44695,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35422,6 +44703,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35431,6 +44713,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35438,6 +44721,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35447,6 +44731,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35454,6 +44739,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35463,6 +44749,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35470,6 +44757,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35479,6 +44767,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35486,6 +44775,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35495,6 +44785,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35502,6 +44793,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35511,6 +44803,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35518,6 +44811,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35527,6 +44821,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35534,6 +44829,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35543,6 +44839,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35550,6 +44847,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35559,6 +44857,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35566,6 +44865,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35575,6 +44875,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35582,6 +44883,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35591,6 +44893,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35598,6 +44901,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35607,6 +44911,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35614,6 +44919,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35623,6 +44929,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35630,6 +44937,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35639,6 +44947,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35646,6 +44955,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35655,6 +44965,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35662,6 +44973,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35671,6 +44983,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35678,6 +44991,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35687,6 +45001,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35694,6 +45009,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35703,6 +45019,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35710,6 +45027,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35719,6 +45037,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35726,6 +45045,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35735,6 +45055,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35742,6 +45063,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35751,6 +45073,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35758,6 +45081,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35767,6 +45091,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35774,6 +45099,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35783,6 +45109,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35790,6 +45117,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35799,6 +45127,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35806,6 +45135,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35815,6 +45145,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35822,6 +45153,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35831,6 +45163,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35838,6 +45171,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35847,6 +45181,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35854,6 +45189,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35863,6 +45199,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35870,6 +45207,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35879,6 +45217,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35886,6 +45225,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35895,6 +45235,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35902,6 +45243,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35911,6 +45253,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35918,6 +45261,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35927,6 +45271,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35934,6 +45279,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35943,6 +45289,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35950,6 +45297,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35959,6 +45307,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35966,6 +45315,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -35975,6 +45325,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -35982,6 +45333,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -35999,6 +45351,10 @@ export const DEVICES: DevicesType = {
 		logics: [
 			{
 				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "DispenseSlot",
 				permissions: ["Read", "Write"],
 			},
 			{
@@ -36062,7 +45418,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -36070,7 +45442,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -36086,11 +45470,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -36106,6 +45502,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -36114,11 +45514,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -36131,6 +45531,14 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetPrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetSlotIndex",
 				permissions: ["Read"],
 			},
 			{
@@ -36214,6 +45622,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36221,6 +45630,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -36295,7 +45705,7 @@ export const DEVICES: DevicesType = {
 		hasChip: false,
 		deviceConnectCount: 0,
 		image: "/images/3/7/37da2e11f988bdebbde7243d6cd205d5.png",
-		mods: ["Idle", "Active"],
+		mods: ["\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D", "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"],
 		connections: ["Pipe Input", "Pipe Output", "Pipe Waste", "Connection"],
 		hasMemory: false,
 		memoryAccess: null,
@@ -36310,6 +45720,7 @@ export const DEVICES: DevicesType = {
 					"Class",
 					"Damage",
 					"FilterType",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36317,6 +45728,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -36410,6 +45822,66 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidCarbonDioxideInput",
 				permissions: ["Read"],
 			},
@@ -36419,6 +45891,54 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioLiquidCarbonDioxideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -36458,6 +45978,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutantInput",
 				permissions: ["Read"],
 			},
@@ -36470,15 +46002,39 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesInput",
+				name: "RatioLiquidSilanolInput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput",
+				name: "RatioLiquidSilanolOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatilesOutput2",
+				name: "RatioLiquidSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -36518,6 +46074,18 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantInput",
 				permissions: ["Read"],
 			},
@@ -36530,6 +46098,30 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput2",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioSteamInput",
 				permissions: ["Read"],
 			},
@@ -36539,18 +46131,6 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RatioSteamOutput2",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesInput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput2",
 				permissions: ["Read"],
 			},
 			{
@@ -36650,7 +46230,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -36658,7 +46254,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -36674,11 +46282,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -36694,6 +46314,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -36702,11 +46326,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -36754,6 +46378,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36761,6 +46386,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -36770,6 +46396,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36777,6 +46404,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -36869,6 +46497,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36876,6 +46505,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -36964,7 +46594,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -36976,6 +46606,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36983,6 +46614,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -36992,6 +46624,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -36999,6 +46632,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37111,6 +46745,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37118,6 +46753,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37127,6 +46763,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37134,6 +46771,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37143,6 +46781,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37150,6 +46789,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37159,6 +46799,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37166,6 +46807,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37175,6 +46817,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37182,6 +46825,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37191,6 +46835,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37198,6 +46843,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37207,6 +46853,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37214,6 +46861,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37223,6 +46871,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37230,6 +46879,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37239,6 +46889,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37246,6 +46897,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -37255,6 +46907,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37262,6 +46915,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37416,6 +47070,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37423,6 +47078,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37465,6 +47121,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37472,6 +47129,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37516,6 +47174,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -37541,6 +47203,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 		],
@@ -37568,6 +47234,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37575,6 +47242,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37624,6 +47292,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -37649,6 +47321,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 		],
@@ -37676,6 +47352,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -37683,6 +47360,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -37732,6 +47410,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "HealthDamage",
+				permissions: ["Read"],
+			},
+			{
 				name: "Maximum",
 				permissions: ["Read"],
 			},
@@ -37757,6 +47439,10 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StunDamage",
 				permissions: ["Read"],
 			},
 		],
@@ -37850,6 +47536,10 @@ export const DEVICES: DevicesType = {
 			{
 				name: "Vertical",
 				permissions: ["Read", "Write"],
+			},
+			{
+				name: "ContactSlotIndex",
+				permissions: ["Read"],
 			},
 			{
 				name: "ContactTypeId",
@@ -37965,6 +47655,110 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"-2049226859": {
+		id: -2049226859,
+		Title: "Solar Panel (Heavy 1x5)",
+		Key: "StructureSolarPanel1x5ReinforcedSingle",
+		PrefabName: "StructureSolarPanel1x5ReinforcedSingle",
+		PrefabHash: -2049226859,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/c/a/ca4d14e6bb462a721abd18c55934d449.png",
+		mods: [],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Horizontal",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Vertical",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Charge",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-295209029": {
+		id: -295209029,
+		Title: "Solar Panel (1x5)",
+		Key: "StructureSolarPanel1x5Single",
+		PrefabName: "StructureSolarPanel1x5Single",
+		PrefabHash: -295209029,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/1/1/11d4a185590853b8870220bbdcd116d8.png",
+		mods: [],
+		connections: ["Connection"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Horizontal",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Vertical",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Charge",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"-1554349863": {
 		id: -1554349863,
 		Title: "Solar Panel (Angled)",
@@ -37973,7 +47767,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1554349863,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/5/4/54e0c68f17837e8edfe0c1fac828e627.png",
+		image: "/images/0/3/03b25d1f2ed720b67d94fb50a570fd3c.png",
 		mods: [],
 		connections: ["Connection"],
 		hasMemory: false,
@@ -38181,7 +47975,7 @@ export const DEVICES: DevicesType = {
 		PrefabHash: -1009150565,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/3/9/399a34efa5f99ead3ec8d1caab03cb26.png",
+		image: "/images/9/8/98c9f20512d9fea212f80c937e41dee2.png",
 		mods: ["Split", "Filter", "Logic"],
 		connections: ["Chute Output 2", "Chute Input", "Chute Output", "Connection"],
 		hasMemory: false,
@@ -38196,6 +47990,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38203,6 +47998,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38212,6 +48008,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38219,6 +48016,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38228,6 +48026,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38235,22 +48034,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
-				],
-			},
-			{
-				SlotName: "Data Disk",
-				SlotType: "Data Disk",
-				SlotIndex: 3,
-				logic: [
-					"Class",
-					"Damage",
-					"MaxQuantity",
-					"OccupantHash",
-					"Occupied",
-					"PrefabHash",
-					"Quantity",
-					"ReferenceId",
-					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -38344,6 +48128,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38351,6 +48136,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38360,6 +48146,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38367,6 +48154,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38376,6 +48164,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38383,6 +48172,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -38484,6 +48274,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38494,6 +48285,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -38567,7 +48359,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHelium",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcohol",
 				permissions: ["Read"],
 			},
 			{
@@ -38575,7 +48383,19 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidHydrazine",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcid",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidHydrogen",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -38591,11 +48411,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioLiquidOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioLiquidPollutant",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioLiquidVolatiles",
+				name: "RatioLiquidSilanol",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChloride",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethane",
 				permissions: ["Read"],
 			},
 			{
@@ -38611,6 +48443,10 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzone",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutant",
 				permissions: ["Read"],
 			},
@@ -38619,11 +48455,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioSteam",
+				name: "RatioSilanol",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatiles",
+				name: "RatioSteam",
 				permissions: ["Read"],
 			},
 			{
@@ -38679,6 +48515,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38686,6 +48523,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38695,6 +48533,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38702,6 +48541,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38711,6 +48551,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38718,6 +48559,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38727,6 +48569,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38734,6 +48577,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38743,6 +48587,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38750,6 +48595,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38759,6 +48605,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38766,6 +48613,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38775,6 +48623,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38782,6 +48631,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38791,6 +48641,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38798,6 +48649,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38807,6 +48659,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38814,6 +48667,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38823,6 +48677,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38830,6 +48685,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38839,6 +48695,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38846,6 +48703,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38855,6 +48713,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38862,6 +48721,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38871,6 +48731,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38878,6 +48739,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38887,6 +48749,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38894,6 +48757,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38903,6 +48767,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38910,6 +48775,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38919,6 +48785,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38926,6 +48793,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38935,6 +48803,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38942,6 +48811,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38951,6 +48821,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38958,6 +48829,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38967,6 +48839,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38974,6 +48847,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38983,6 +48857,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -38990,6 +48865,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -38999,6 +48875,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39006,6 +48883,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39015,6 +48893,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39022,6 +48901,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39031,6 +48911,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39038,6 +48919,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39047,6 +48929,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39054,6 +48937,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39063,6 +48947,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39070,6 +48955,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39079,6 +48965,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39086,6 +48973,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39095,6 +48983,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39102,6 +48991,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39111,6 +49001,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39118,6 +49009,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39127,6 +49019,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39134,6 +49027,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39143,6 +49037,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39150,6 +49045,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -39177,36 +49073,153 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
-	"-1606848156": {
-		id: -1606848156,
-		Title: "Large Tank",
-		Key: "StructureTankBig",
-		PrefabName: "StructureTankBig",
-		PrefabHash: -1606848156,
+	"-504802150": {
+		id: -504802150,
+		Title: "Suit Storage Frame",
+		Key: "StructureSuitStorageFrame",
+		PrefabName: "StructureSuitStorageFrame",
+		PrefabHash: -504802150,
 		hasChip: false,
 		deviceConnectCount: 0,
-		image: "/images/c/0/c098f66ea20c556183449ed05e2b3235.png",
+		image: "/images/5/e/5e9956c683867013035e19d82fad907a.png",
 		mods: [],
-		connections: ["Connection", "Pipe Input"],
-		hasMemory: false,
-		memoryAccess: null,
-		memorySize: null,
-		logicInstructions: [],
-		slots: [],
+		connections: ["Connection", "Connection", "Pipe Input", "Pipe Input 2", "Pipe Output"],
+		hasMemory: true,
+		memoryAccess: "Read",
+		memorySize: 192,
+		logicInstructions: [
+			{
+				Index: 1,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotHelmet OP_CODE: 1",
+			},
+			{
+				Index: 2,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotSuit OP_CODE: 2",
+			},
+			{
+				Index: 3,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBackpack OP_CODE: 3",
+			},
+			{
+				Index: 4,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotAirTank OP_CODE: 4",
+			},
+			{
+				Index: 5,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotWasteTank OP_CODE: 5",
+			},
+			{
+				Index: 6,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBatteryCell OP_CODE: 6",
+			},
+			{
+				Index: 7,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotPropellentTank OP_CODE: 7",
+			},
+			{
+				Index: 8,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotFilter OP_CODE: 8",
+			},
+			{
+				Index: 9,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotCoolantTank OP_CODE: 9",
+			},
+		],
+		slots: [
+			{
+				SlotName: "Helmet",
+				SlotType: "Helmet",
+				SlotIndex: 0,
+				logic: [
+					"Lock",
+					"On",
+					"Open",
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Suit",
+				SlotType: "Suit",
+				SlotIndex: 1,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+					"PressureAir",
+					"PressureWaste",
+				],
+			},
+			{
+				SlotName: "Back",
+				SlotType: "Back",
+				SlotIndex: 2,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
 		tags: [
 			"Buildable",
 			"Connectable",
 			"Electric",
 			"HasImage",
 			"HasLogic",
+			"HasLogicInstructions",
+			"HasMemory",
 			"HasPrefab",
-			"HasVolume",
+			"HasSlot",
 			"Paintable",
 			"Structure",
 		],
 		logics: [
 			{
-				name: "Open",
+				name: "On",
 				permissions: ["Read", "Write"],
 			},
 			{
@@ -39214,12 +49227,1023 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read", "Write"],
 			},
 			{
-				name: "Combustion",
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput2",
 				permissions: ["Read"],
 			},
 			{
 				name: "CombustionOutput",
 				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StackSize",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-346183425": {
+		id: -346183425,
+		Title: "Suit Storage Locker",
+		Key: "StructureSuitStorageLocker",
+		PrefabName: "StructureSuitStorageLocker",
+		PrefabHash: -346183425,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/b/e/be1d9a8e1702d5fe8b40773e61dfb710.png",
+		mods: [],
+		connections: ["Connection", "Connection", "Pipe Input", "Pipe Input 2", "Pipe Output"],
+		hasMemory: true,
+		memoryAccess: "Read",
+		memorySize: 192,
+		logicInstructions: [
+			{
+				Index: 1,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotHelmet OP_CODE: 1",
+			},
+			{
+				Index: 2,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotSuit OP_CODE: 2",
+			},
+			{
+				Index: 3,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBackpack OP_CODE: 3",
+			},
+			{
+				Index: 4,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotAirTank OP_CODE: 4",
+			},
+			{
+				Index: 5,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotWasteTank OP_CODE: 5",
+			},
+			{
+				Index: 6,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotBatteryCell OP_CODE: 6",
+			},
+			{
+				Index: 7,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotPropellentTank OP_CODE: 7",
+			},
+			{
+				Index: 8,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotFilter OP_CODE: 8",
+			},
+			{
+				Index: 9,
+				Info: "| 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | SLOT\\_INDEX                   | BYTE\\_8     |\r\n| 16-47    | PREFAB\\_HASH                  | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
+				Text: "SuitStorageInstruction.SlotCoolantTank OP_CODE: 9",
+			},
+		],
+		slots: [
+			{
+				SlotName: "Helmet",
+				SlotType: "Helmet",
+				SlotIndex: 0,
+				logic: [
+					"Lock",
+					"On",
+					"Open",
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+			{
+				SlotName: "Suit",
+				SlotType: "Suit",
+				SlotIndex: 1,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+					"PressureAir",
+					"PressureWaste",
+				],
+			},
+			{
+				SlotName: "Back",
+				SlotType: "Back",
+				SlotIndex: 2,
+				logic: [
+					"Charge",
+					"ChargeRatio",
+					"Class",
+					"Damage",
+					"FreeSlots",
+					"MaxQuantity",
+					"OccupantHash",
+					"Occupied",
+					"PrefabHash",
+					"Pressure",
+					"Quantity",
+					"ReferenceId",
+					"SortingClass",
+					"TotalSlots",
+				],
+			},
+		],
+		tags: [
+			"Buildable",
+			"Connectable",
+			"Electric",
+			"HasImage",
+			"HasLogic",
+			"HasLogicInstructions",
+			"HasMemory",
+			"HasPrefab",
+			"HasSlot",
+			"Paintable",
+			"Structure",
+		],
+		logics: [
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "CombustionInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "CombustionOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "PressureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "StackSize",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TemperatureOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesInput2",
+				permissions: ["Read"],
+			},
+			{
+				name: "TotalMolesOutput",
+				permissions: ["Read"],
+			},
+		],
+	},
+	"-257115623": {
+		id: -257115623,
+		Title: "Super-Large Direct Heat Exchanger (Gases)",
+		Key: "StructureSuperLargeDirectHeatExchangeGastoGas",
+		PrefabName: "StructureSuperLargeDirectHeatExchangeGastoGas",
+		PrefabHash: -257115623,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/7/b/7bad3298898f960f9c54e407508a13fd.png",
+		mods: [],
+		connections: ["Pipe Input", "Pipe Input"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
 			},
 			{
 				name: "Maximum",
@@ -39234,139 +50258,11 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
-				name: "Pressure",
-				permissions: ["Read"],
-			},
-			{
-				name: "PressureOutput",
-				permissions: ["Read"],
-			},
-			{
 				name: "Ratio",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioCarbonDioxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidCarbonDioxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidHydrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioLiquidVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrogenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxide",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioNitrousOxideOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygen",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioOxygenOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutant",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutantOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioPollutedWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioSteam",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatiles",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioVolatilesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWater",
-				permissions: ["Read"],
-			},
-			{
-				name: "RatioWaterOutput",
-				permissions: ["Read"],
-			},
-			{
 				name: "ReferenceId",
-				permissions: ["Read"],
-			},
-			{
-				name: "Temperature",
-				permissions: ["Read"],
-			},
-			{
-				name: "TemperatureOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMoles",
-				permissions: ["Read"],
-			},
-			{
-				name: "TotalMolesOutput",
-				permissions: ["Read"],
-			},
-			{
-				name: "Volume",
-				permissions: ["Read"],
-			},
-			{
-				name: "VolumeOfLiquid",
 				permissions: ["Read"],
 			},
 		],
@@ -39428,7 +50324,7 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				Index: 9,
-				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | INT\\_32     |\r\n| 48-63    | UNUSED                       | 16         |",
+				Info: "| VALID ONLY AT ADDRESSES 54 TO 62                     | | 0-7      | OP\\_CODE                      | BYTE\\_8     |\r\n| 8-15     | QUANTITY\\_CEIL                | BYTE\\_8     |\r\n| 16-47    | REAGENT\\_HASH                 | UINT\\_32    |\r\n| 48-63    | UNUSED                       | 16         |\r\n| HASH REPORTED UNSIGNED - MUST BE MANUALLY SIGNED     |",
 				Text: "PrinterInstruction.MissingRecipeReagent OP_CODE: 9",
 			},
 		],
@@ -39440,6 +50336,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39447,6 +50344,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39456,6 +50354,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39463,6 +50362,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -39680,6 +50580,70 @@ export const DEVICES: DevicesType = {
 			},
 		],
 	},
+	"-771036757": {
+		id: -771036757,
+		Title: "Transformer Reversed (Medium)",
+		Key: "StructureTransformerMedium(Reversed)",
+		PrefabName: "StructureTransformerMedium(Reversed)",
+		PrefabHash: -771036757,
+		hasChip: false,
+		deviceConnectCount: 0,
+		image: "/images/7/6/76f33d1f0cec237be352dd320ca18290.png",
+		mods: [],
+		connections: ["Power Input", "Power and Data Output"],
+		hasMemory: false,
+		memoryAccess: null,
+		memorySize: null,
+		logicInstructions: [],
+		slots: [],
+		tags: ["Buildable", "Connectable", "Electric", "HasImage", "HasLogic", "HasPrefab", "Paintable", "Structure"],
+		logics: [
+			{
+				name: "Lock",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "On",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Setting",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "Error",
+				permissions: ["Read"],
+			},
+			{
+				name: "Maximum",
+				permissions: ["Read"],
+			},
+			{
+				name: "NameHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Power",
+				permissions: ["Read"],
+			},
+			{
+				name: "PrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "Ratio",
+				permissions: ["Read"],
+			},
+			{
+				name: "ReferenceId",
+				permissions: ["Read"],
+			},
+			{
+				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+		],
+	},
 	"-890946730": {
 		id: -890946730,
 		Title: "Transformer (Small)",
@@ -39815,6 +50779,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39822,6 +50787,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39831,6 +50797,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39838,6 +50805,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39847,6 +50815,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39854,6 +50823,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39863,6 +50833,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39870,6 +50841,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39879,6 +50851,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39886,6 +50859,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39895,6 +50869,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39902,6 +50877,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39911,6 +50887,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39918,6 +50895,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39927,6 +50905,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39934,6 +50913,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39943,6 +50923,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39950,6 +50931,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39959,6 +50941,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39966,6 +50949,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39975,6 +50959,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39982,6 +50967,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -39991,6 +50977,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -39998,6 +50985,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40007,6 +50995,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40014,6 +51003,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40023,6 +51013,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40030,6 +51021,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40039,6 +51031,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40046,6 +51039,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40055,6 +51049,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40062,6 +51057,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40071,6 +51067,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40078,6 +51075,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40087,6 +51085,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40094,6 +51093,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40103,6 +51103,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40110,6 +51111,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40119,6 +51121,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40126,6 +51129,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40135,6 +51139,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40142,6 +51147,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40151,6 +51157,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40158,6 +51165,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40167,6 +51175,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40174,6 +51183,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40183,6 +51193,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40190,6 +51201,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40199,6 +51211,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40206,6 +51219,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40215,6 +51229,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40222,6 +51237,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40231,6 +51247,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40238,6 +51255,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40247,6 +51265,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40254,6 +51273,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40263,6 +51283,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40270,6 +51291,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40279,6 +51301,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40286,6 +51309,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40295,6 +51319,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40302,6 +51327,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40311,6 +51337,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40318,6 +51345,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40327,6 +51355,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40334,6 +51363,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40343,6 +51373,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40350,6 +51381,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40359,6 +51391,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40366,6 +51399,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40375,6 +51409,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40382,6 +51417,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40391,6 +51427,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40398,6 +51435,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40407,6 +51445,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40414,6 +51453,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40423,6 +51463,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40430,6 +51471,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40439,6 +51481,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40446,6 +51489,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40455,6 +51499,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40462,6 +51507,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40471,6 +51517,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40478,6 +51525,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40487,6 +51535,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40494,6 +51543,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40503,6 +51553,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40510,6 +51561,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40519,6 +51571,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40526,6 +51579,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40535,6 +51589,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40542,6 +51597,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40551,6 +51607,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40558,6 +51615,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40567,6 +51625,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40574,6 +51633,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40583,6 +51643,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40590,6 +51651,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40599,6 +51661,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40606,6 +51669,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40615,6 +51679,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40622,6 +51687,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40631,6 +51697,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40638,6 +51705,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40647,6 +51715,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40654,6 +51723,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40663,6 +51733,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40670,6 +51741,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40679,6 +51751,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40686,6 +51759,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40695,6 +51769,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40702,6 +51777,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40711,6 +51787,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40718,6 +51795,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40727,6 +51805,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40734,6 +51813,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40743,6 +51823,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40750,6 +51831,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40759,6 +51841,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40766,6 +51849,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40775,6 +51859,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40782,6 +51867,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40791,6 +51877,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40798,6 +51885,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40807,6 +51895,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40814,6 +51903,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40823,6 +51913,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40830,6 +51921,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40839,6 +51931,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40846,6 +51939,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40855,6 +51949,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40862,6 +51957,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40871,6 +51967,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40878,6 +51975,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40887,6 +51985,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40894,6 +51993,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40903,6 +52003,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40910,6 +52011,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40919,6 +52021,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40926,6 +52029,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40935,6 +52039,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40942,6 +52047,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40951,6 +52057,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40958,6 +52065,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40967,6 +52075,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40974,6 +52083,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40983,6 +52093,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -40990,6 +52101,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -40999,6 +52111,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41006,6 +52119,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41015,6 +52129,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41022,6 +52137,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41031,6 +52147,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41038,6 +52155,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41047,6 +52165,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41054,6 +52173,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41063,6 +52183,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41070,6 +52191,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41079,6 +52201,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41086,6 +52209,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41095,6 +52219,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41102,6 +52227,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41111,6 +52237,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41118,6 +52245,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41127,6 +52255,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41134,6 +52263,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41143,6 +52273,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41150,6 +52281,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41159,6 +52291,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41166,6 +52299,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41175,6 +52309,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41182,6 +52317,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41191,6 +52327,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41198,6 +52335,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41207,6 +52345,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41214,6 +52353,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41223,6 +52363,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41230,6 +52371,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41239,6 +52381,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41246,6 +52389,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41255,6 +52399,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41262,6 +52407,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41271,6 +52417,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41278,6 +52425,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41287,6 +52435,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41294,6 +52443,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41303,6 +52453,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41310,6 +52461,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41319,6 +52471,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41326,6 +52479,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41335,6 +52489,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41342,6 +52497,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41351,6 +52507,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41358,6 +52515,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41367,6 +52525,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41374,6 +52533,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41383,6 +52543,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41390,6 +52551,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41399,6 +52561,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41406,6 +52569,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41415,6 +52579,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41422,6 +52587,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 			{
@@ -41431,6 +52597,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41438,6 +52605,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -41455,6 +52623,10 @@ export const DEVICES: DevicesType = {
 		logics: [
 			{
 				name: "Activate",
+				permissions: ["Read", "Write"],
+			},
+			{
+				name: "DispenseSlot",
 				permissions: ["Read", "Write"],
 			},
 			{
@@ -41507,6 +52679,14 @@ export const DEVICES: DevicesType = {
 			},
 			{
 				name: "RequiredPower",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetPrefabHash",
+				permissions: ["Read"],
+			},
+			{
+				name: "TargetSlotIndex",
 				permissions: ["Read"],
 			},
 			{
@@ -41602,6 +52782,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41609,6 +52790,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -41673,6 +52855,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -41685,11 +52939,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -41787,6 +53053,7 @@ export const DEVICES: DevicesType = {
 					"ChargeRatio",
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41794,6 +53061,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -41862,6 +53130,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41872,6 +53141,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -41882,6 +53152,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -41892,6 +53163,7 @@ export const DEVICES: DevicesType = {
 					"ReferenceId",
 					"SortingClass",
 					"Temperature",
+					"TotalSlots",
 					"Volume",
 				],
 			},
@@ -42029,6 +53301,7 @@ export const DEVICES: DevicesType = {
 				logic: [
 					"Class",
 					"Damage",
+					"FreeSlots",
 					"MaxQuantity",
 					"OccupantHash",
 					"Occupied",
@@ -42036,6 +53309,7 @@ export const DEVICES: DevicesType = {
 					"Quantity",
 					"ReferenceId",
 					"SortingClass",
+					"TotalSlots",
 				],
 			},
 		],
@@ -42100,6 +53374,78 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioHeliumOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidAlcoholOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidCarbonDioxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrazineOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrochloricAcidOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidHydrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrogenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidNitrousOxideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOxygenOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidPollutantOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioLiquidSodiumChlorideOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioMethaneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioNitrogenOutput",
 				permissions: ["Read"],
 			},
@@ -42112,11 +53458,23 @@ export const DEVICES: DevicesType = {
 				permissions: ["Read"],
 			},
 			{
+				name: "RatioOzoneOutput",
+				permissions: ["Read"],
+			},
+			{
 				name: "RatioPollutantOutput",
 				permissions: ["Read"],
 			},
 			{
-				name: "RatioVolatilesOutput",
+				name: "RatioPollutedWaterOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSilanolOutput",
+				permissions: ["Read"],
+			},
+			{
+				name: "RatioSteamOutput",
 				permissions: ["Read"],
 			},
 			{
@@ -42211,7 +53569,6 @@ export type ModsType = (
 	| "AND"
 	| "Abs"
 	| "Acos"
-	| "Active"
 	| "Add"
 	| "AirlockCycling"
 	| "Alarm1"
@@ -42232,6 +53589,7 @@ export type ModsType = (
 	| "Asin"
 	| "Atan"
 	| "Atan2"
+	| "Auto"
 	| "Automatic"
 	| "B-1"
 	| "B-2"
@@ -42271,6 +53629,9 @@ export type ModsType = (
 	| "Charged"
 	| "Charging"
 	| "Chart"
+	| "Coal"
+	| "Cobalt"
+	| "Copper"
 	| "Cos"
 	| "Credits"
 	| "Critical"
@@ -42300,6 +53661,7 @@ export type ModsType = (
 	| "Days"
 	| "Dead"
 	| "Default"
+	| "Degrees"
 	| "Deploy"
 	| "Depressurising"
 	| "Discharged"
@@ -42375,6 +53737,7 @@ export type ModsType = (
 	| "G7"
 	| "G8"
 	| "Generating"
+	| "Gold"
 	| "Greater"
 	| "Half Note"
 	| "HaltWhoGoesThere"
@@ -42384,14 +53747,17 @@ export type ModsType = (
 	| "HighCarbonDioxide"
 	| "Holding"
 	| "Horizontal"
+	| "Ice"
 	| "Idle"
 	| "InStorm"
 	| "Inactive"
 	| "IntruderAlert"
 	| "Invalid"
 	| "Inward"
+	| "Iron"
 	| "Kelvin"
 	| "Landed"
+	| "Lead"
 	| "Left"
 	| "Less"
 	| "LiftOff"
@@ -42418,6 +53784,9 @@ export type ModsType = (
 	| "Music3"
 	| "NAND"
 	| "NOR"
+	| "Newtons"
+	| "Nickel"
+	| "Nitrice"
 	| "NoContact"
 	| "NoStorm"
 	| "None"
@@ -42430,6 +53799,7 @@ export type ModsType = (
 	| "One"
 	| "Operate"
 	| "Outward"
+	| "Oxite"
 	| "Pa"
 	| "PathToTarget"
 	| "Percent"
@@ -42447,6 +53817,8 @@ export type ModsType = (
 	| "RocketLaunching"
 	| "Round"
 	| "Seconds"
+	| "Silicon"
+	| "Silver"
 	| "Sin"
 	| "Sixteenth Note"
 	| "Split"
@@ -42456,6 +53828,7 @@ export type ModsType = (
 	| "StormIncoming"
 	| "String"
 	| "Subtract"
+	| "Surface Scan"
 	| "Survey"
 	| "SystemFailure"
 	| "Tan"
@@ -42464,17 +53837,21 @@ export type ModsType = (
 	| "Three"
 	| "TraderIncoming"
 	| "TraderLanded"
+	| "Transfer"
 	| "Two"
 	| "UnHappy"
 	| "Unlinked"
 	| "Unload"
 	| "Vertical"
 	| "VeryLow"
+	| "Volatiles"
 	| "Warning"
 	| "Welcome"
 	| "Whole Note"
 	| "XNOR"
 	| "XOR"
+	| "\u0410\u043A\u0442\u0438\u0432\u0435\u043D"
+	| "\u041D\u0435\u0430\u043A\u0442\u0438\u0432\u0435\u043D"
 )[];
 export type HasMemoryType = boolean | null;
 export type TagsType = (
@@ -42526,6 +53903,7 @@ export type LogicsType =
 	| null;
 export type ConnectionsType = (
 	| "Chute Input"
+	| "Chute Input 2"
 	| "Chute Output"
 	| "Chute Output 2"
 	| "Connection"
@@ -42538,6 +53916,7 @@ export type ConnectionsType = (
 	| "Pipe Liquid Input 2"
 	| "Pipe Liquid Output"
 	| "Pipe Liquid Output 2"
+	| "Pipe Liquid Waste"
 	| "Pipe Output"
 	| "Pipe Output 2"
 	| "Pipe Waste"
