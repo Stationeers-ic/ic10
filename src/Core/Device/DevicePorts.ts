@@ -43,10 +43,6 @@ export class DevicePorts extends DeviceScope {
 				this.portIndexToTypes.get(index)!.push(port);
 			}
 		});
-		if (this.portIndices.size === 0) {
-			this.portIndices.set("Data Input", 0);
-			this.portIndexToTypes.set(0, ["Data Input"]);
-		}
 	}
 
 	public canConnect(networkType: NetworkType, portName: PortType): boolean {
